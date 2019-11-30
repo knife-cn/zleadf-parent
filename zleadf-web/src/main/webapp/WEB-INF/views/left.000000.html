@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <title>直链商城</title>
+    <link rel="stylesheet" href="../../shopping/css/laydate.css">
+    <link rel="stylesheet" href="../../shopping/css/left.css" />
+    <link rel="stylesheet" href="../../shopping/css/header.css" />
+</head>
+
+<body>
+    <div class="complete">
+        <!--top-->
+        <div id="head">
+
+        </div>
+        <div class="serch">
+            <div class="serch_con">
+                <!-- logo -->
+                <div class="logo">
+                    <img src="../../shopping/img/index/logo.png" />
+                </div>
+                <div class="searcha">
+                    <!-- 搜索框 -->
+                    <div class="search">
+                        <!-- <div class="search_frame">
+                            <input type="text" id="resou" />
+                        </div> -->
+                        <form autocomplete="off" class="search_frame" onsubmit="return false">
+                            <input type="text" id="resou" maxlength="50" />
+                        </form>
+                        <!-- 搜索按钮 -->
+                        <div class="search_icon" id="search_icon">
+                            <img src="../../shopping/img/index/ic_sousuo.png" />
+                        </div>
+                        <!--简单查询-->
+                        <div class="pro">
+                            <ul class="proCon">
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 热搜词 -->
+                    <div class="search_hot">
+                        <ul class="search_hot_ul" id="search_hot_ul">
+                            <!--<li>电气控制</li>-->
+                            <!--<li>刀具磨具</li>-->
+                            <!--<li>电气控制</li>-->
+                            <!--<li>电气控制</li>-->
+                            <!--<li>电气控制</li>-->
+                            <!--<li>电气控制</li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--渐变-->
+        <div class="top2"></div>
+        <!--内容-->
+        <div class="content">
+            <!--左-->
+            <div class="left">
+                <ul>
+                    <li class="onedaoli">
+                        <div class="tu"><img src="../../shopping/img/lhpimg/juxin1.png" /></div>
+                        <div class="dao">订单中心</div>
+                        <ul class="towdao">
+                            <a style="text-decoration: none;color: silver" href="#dd">
+                                <li class="yan" id="User1">我的订单</li>
+                            </a>
+                        </ul>
+                    </li>
+                    <li class="onedaoli">
+                        <div class="tu"><img src="../../shopping/img/lhpimg/juxin.png" /></div>
+                        <div class="dao">基本信息</div>
+                        <ul class="towdao">
+                            <a style="text-decoration: none" href="#gx">
+                                <li class="towdaoli" id="Personal">个人信息</li>
+                            </a>
+                            <a style="text-decoration: none" href="#dz">
+                                <li class="towdaoli" id="Receiving">收货地址</li>
+                            </a>
+                            <a style="text-decoration: none" href="#sc">
+                                <li class="towdaoli" id="collection1">收藏信息</li>
+                            </a>
+                            <a style="text-decoration: none" href="#pz">
+                                <li class="towdaoli" id="upload1">上传凭证</li>
+                            </a>
+                        </ul>
+                    </li>
+                    <li class="onedaoli">
+                        <div class="tu"><img src="../../shopping/img/lhpimg/juxin2.png" /></div>
+                        <div class="dao">安全信息</div>
+                        <ul class="towdao">
+                            <a style="text-decoration: none" href="#gm">
+                                <li class="towdaoli" id="Change">修改密码</li>
+                            </a>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <!--右-->
+            <div class="rightda" id="User_center" style="display:block">
+            </div>
+            <div class="rightda" id="upload" style="display: none">
+            </div>
+            <div class="rightda" id="Change_Password1" style="display: none">
+            </div>
+            <div class="rightda" id="collection" style="display: none">
+            </div>
+            <div class="rightda" id="Personal_information" style="display: none">
+            </div>
+            <div class="rightda" id="Receiving_address" style="display: none">
+            </div>
+
+        </div>
+        <iframe src="footer.html" width="100%" height="295px" style="border: none;"></iframe>
+    </div>
+    <div class="meng" id="megou">
+
+        <div class="guanlian">
+            <div class="toptan" id="tuicart"><img src="../../shopping/img/lhpimg/guanbi.png" class="img" /></div>
+            <div class="icons"><img src="../../shopping/img/lhpimg/Fill_2.png" /></div>
+            <div class="success_add">成功加入购物车</div>
+
+            <div id="fo" class="yiyan">去购物车结算</div>
+        </div>
+    </div>
+    <div class="collection_popbox">
+
+        <div class='collection_popbox_content'>
+            <img src="../../shopping/img/searchPage/Fill 1.png">
+            <img src="../../shopping/img/footer/close.png" class='collection_close'>
+            <p>确定要取消收藏商品吗？</p>
+            <div>
+                <a href="javascript:;">确定</a>
+                <a href="javascript:;">取消</a>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- 弹窗 -->
+    <div id="dialog_upload8">
+        <!--蒙版-->
+        <div class="meng8" id="meng8">
+            <div class="guanlian8" id="dialog8">
+                <!-- 头 -->
+                <img src="../../shopping/img/lhpimg/guanbi.png" id="qu2" class="img8" />
+                <div class="scroll8">
+                    <div class="title8">
+                        <span>上传凭证</span>
+                    </div>
+                    <!--内容-->
+                    <div class="message_tit8">
+                        <p>付款金额</p>
+                        <input placeholder="" name="names" id="inputs" class="order_input8" type="text">
+                        <p>付款方式</p>
+                        <input placeholder="" id="payWay" class="order_input8" type="text">
+                        <p>付款时间</p>
+                        <!-- <input placeholder="" name="time" readOnly="true" id="h3Ele2" class="order_input8" type="text"> -->
+                        <input placeholder="" name="time" readOnly="true" id="h3Ele2" class="order_input8 mydate" type="text">
+                        <!-- <img class="date_up" src="../../shopping/img/lhpimg/Datepicker_nomal.png" style='cursor: pointer;'> -->
+                        <!--时间控件-->
+                        <!-- <div id='schedule-box1' class="boxshaw1">
+                            <input placeholder="开始时间" id="mydate" />
+                        </div> -->
+                        <div class="anniu_uplode8">
+                            <span>上传图片  <input  type="file" style="width: 110px;height: 45px;" name="demo_input" class='fileu2'   accept="image/bmp,image/jpg,image/png,image/jpeg"/></span>
+                            <p>图片不大于2M，格式支持JPG/PNG/JPEG/BMP。上传图片后，点击可放大</p>
+                        </div>
+                        <div id="imgBox">
+                            <img id="imgsrc2" src="" alt="">
+                        </div>
+                    </div>
+                    <div class="tipsN">
+                        <!--提示信息-->
+                    </div>
+                </div>
+                <!--尾-->
+                <div class="bottom8">
+                    <span id="qu8" class="yiyan8 qu8 ">取消</span>
+                    <span id="fo8" class="yiyan8 fo8">确定</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
+
+    <!---->
+    <script type="text/javascript" src="../../shopping/js/jquery-2.1.0.js"></script>
+    <script src="../../shopping/js/laydate.js"></script>
+    <!--<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>-->
+    <!--<script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.min.js"></script>-->
+    <!--<script type="text/javascript" src="../../shopping/js/User_center.js" ></script>-->
+    <!-- <script type="text/javascript" src="../../shopping/js/head.js"></script> -->
+    <script type="text/javascript" src="../../shopping/js/jinzi.js"></script>
+    <script type="text/javascript" src="../../shopping/js/urlcs.js"></script>
+    <script>
+        $(function() {
+
+            var pt = window.location.hash.substring(1);
+            $("#head").load("head.html", function() {
+                $('#yh').click(function() { //点击a标签
+                    if ($('.yxi').is(':hidden')) { //如果当前隐藏
+                        $('.yxi').show(); //那么就显示div
+                        $('#yho').hide();
+                        $('#yht').show();
+
+                    } else { //否则
+                        $('.yxi').hide(); //就隐藏div
+                        $('#yho').show();
+                        $('#yht').hide();
+                    }
+                })
+            });
+
+            $("#Receiving_address").load("Receiving_address.html");
+            $("#User_center").load("User_center.html");
+            $("#Personal_information").load("Personal_information.html");
+            $("#collection").load("collection.html", function() {
+                $('.ct_lt').children('div').children('img').click(function() {
+                    if ($('#allProduct').find('.active').length > 0) {
+                        $('.collection_popbox').show();
+                    }
+                    return false;
+                })
+
+                $('.collection_popbox').find('.collection_close').click(function() {
+                    $('.collection_popbox').hide()
+                })
+
+                $('.collection_popbox').find('a').eq(1).click(function() {
+                    $('.collection_popbox').hide()
+                })
+                $('.collection_popbox').find('a').eq(0).click(function() {
+                    var coll = $('#allProduct').find('.active').length;
+                    // console.log(coll)
+                    if (coll > 0) {
+                        // console.log('删除收藏品')
+                        $('.collection_popbox').hide();
+                        $('.all_control').removeClass('active').html('批量管理').siblings('div').css('display', 'none').children('span').removeClass('active')
+                        for (var i = coll - 1; i >= 0; i--) {
+                            var shouId = $('#allProduct').find('.active').eq(i).attr("data-id9")
+                            $('#allProduct').find('.active').eq(i).parent().remove()
+                            $.ajax({
+                                type: "post", //提交请求的方式
+                                cache: true, //是否有缓存
+                                async: false,
+                                url: "/zlead/fplat/deleteCollect/" + shouId + "", //访问servlet的路径
+                                dataType: "json", //没有这个，将把后台放会的json解析成字符串
+                                data: {
+
+                                },
+                                async: true, //是否异步
+                                success: function(res) {
+                                    // console.log("success");
+                                },
+                                error: function(request) { //请求出错
+                                    // console.log("出错");
+                                }
+                            })
+                        }
+                        location.href = 'left.html#sc'
+                    }
+
+
+                })
+
+
+            });
+            // $(document).click(function() {
+            //     $('.collection_popbox').hide()
+            // })
+
+
+            $("#Change_Password1").load("Change_Password1.html");
+            $("#upload").load("upload.html", function() {
+
+                var data666;
+                var lengths;
+                $(function() {
+                    window.localStorage.removeItem("loadImg");
+                    //獲取頁面內容
+                    $.ajax({
+                        type: "get", //提交请求的方式
+                        cache: true, //是否有缓存
+                        // url: "/zlead/voucher/voucherList", //访问servlet的路径
+                        url: "/zlead/order/getAllnoVoucherOrderList", //访问servlet的路径
+                        dataType: "json", //没有这个，将把后台放会的json解析成字符串
+                        beforeSend: function() {
+                            $('.loading').show();
+                        },
+                        async: true, //是否异步
+                        success: function(res) {
+                            $('.loading').hide();
+                            if (res.code == 1) {
+                                $('.uploadFile').show();
+                                $('.upload_no').hide();
+                                data666 = res.data.result;
+                                lengths = data666.length;
+                                var datas = {
+                                    list: data666
+                                };
+                                //勿删
+                                /*function dateFormat(date, format) {
+                                    date = new Date();
+                                    if (date.getFullYear()) {
+                                        date = new Date();
+                                    } else {
+                                        date = new Date(Date.parse(date.replace(/-/g, "/")));
+                                    }
+                                    var map = {
+                                        "M": date.getMonth() + 1, //月份
+                                        "d": date.getDate(), //日
+                                        "h": date.getHours(), //小时
+                                        "m": date.getMinutes(), //分
+                                        "s": date.getSeconds(), //秒
+                                        "q": Math.floor((date.getMonth() + 3) / 3), //季度
+                                        "S": date.getMilliseconds() //毫秒
+                                    };
+                                    format = format.replace(/([yMdhmsqS])+/g, function(all, t) {
+                                        var v = map[t];
+                                        if (v !== undefined) {
+                                            if (all.length > 1) {
+                                                v = '0' + v;
+                                                v = v.substr(v.length - 2);
+                                            }
+                                            return v;
+                                        } else if (t === 'y') {
+                                            return (date.getFullYear() + '').substr(4 - all.length);
+                                        }
+
+                                        return all;
+                                    });
+                                    return format;
+                                };*/
+                                function dateFormat(time) {
+                                    var t = new Date(time);
+                                    var str = '';
+
+                                    var y = t.getFullYear();
+                                    var month = t.getMonth() + 1;
+                                    var d = t.getDate();
+                                    var h = t.getHours() < 10 ? '0' + t.getHours() : t.getHours();
+                                    var m = t.getMinutes() < 10 ? '0' + t.getMinutes() : t.getMinutes();
+                                    var s = t.getSeconds() < 10 ? '0' + t.getSeconds() : t.getSeconds();
+
+                                    str += y + '/' + month + '/' + d + '    ' + h + ':' + m + ":" + s;
+                                    return str;
+                                }
+                                template.defaults.imports.dateFormat = dateFormat;
+
+                                // var mySchedule = new Schedule({
+                                //     el: '#schedule-box1',
+
+                                //     //date: '2018-9-20',
+                                //     clickCb: function(y, m, d) {
+                                //         $("#h3Ele2").val(y + '/' + m + '/' + d);
+                                //         $(".boxshaw1").hide();
+                                //     },
+                                //     nextMonthCb: function(y, m, d) {
+
+                                //         $("#h3Ele2").val(y + '/' + m + '/' + d);
+                                //         $(".boxshaw1").hide()
+                                //     },
+                                //     nextYeayCb: function(y, m, d) {
+
+                                //         $("#h3Ele2").val(y + '/' + m + '/' + d);
+                                //         $(".boxshaw1").hide()
+                                //     },
+                                //     prevMonthCb: function(y, m, d) {
+
+                                //         $("#h3Ele2").val(y + '/' + m + '/' + d);
+                                //         $(".boxshaw1").hide()
+                                //     },
+                                //     prevYearCb: function(y, m, d) {
+
+                                //         $("#h3Ele2").val(y + '/' + m + '/' + d);
+                                //         $(".boxshaw1").hide()
+                                //     }
+                                // });
+                                var html = template("tel_upload", datas)
+                                $(".list_sty").append(html)
+
+                                // $(document).click(function() {
+                                //     $('#schedule-box1').hide()
+                                //     console.log('这是点击了document')
+                                // })
+
+
+
+                                // $(document).click(function() {
+                                //     $('#schedule-box1').hide()
+                                //     console.log('这是点击了document')
+                                // })
+
+                            } else {
+                                $('.upload_no').show();
+                                $('.uploadFile').hide();
+                            }
+                        }
+                    });
+
+                    //付款金额输入框校验
+                    $("#inputs").keyup(function() {
+                        var reg = /^\d+\.?(\d{1,2})?$/;
+                        if (!reg.test($(this).val()) && $(this).val() != "") {
+                            $(this).val($(this).val().substring(0, $(this).val().length - 1));
+                            return;
+                        } else if (($(this).val().length == 2) && ($(this).val().indexOf("0") == 0) && !($(this).val().indexOf(".") == 1)) {
+                            $(this).val($(this).val().substring(0, $(this).val().length - 1));
+                            return;
+                        }
+                    });
+
+                    var arr = [];
+                    var bool;
+                    var dataid;
+                    var Ids;
+
+                    //点击li标签
+                    $(".list_sty").on("click", "li", function() {
+                        $(this).find(".sty_img2").toggle();
+                        dataid = $(this).attr("data-id");
+
+                        $(this).toggleClass("active1");
+                        bool = $(this).hasClass("active1");
+                        if (bool) {
+                            arr.push(dataid);
+                            if ($(this).siblings().hasClass("active1")) {
+                                $(".all").show();
+                                $(".img_show").hide();
+                            }
+                        } else {
+                            $(".all").hide();
+                            $(".img_show").show();
+                            arr.forEach(function(item, index) {
+                                if (dataid == item) {
+                                    arr.splice(index, 1)
+                                }
+                            })
+                        }
+                        $("#allNum").html(arr.length);
+                        if (arr.length < lengths) {
+                            $(".img_show").hide();
+                            $(".all").show()
+                        } else {
+                            $(".img_show").show();
+                            $(".all").hide()
+                        }
+
+                        // 上传凭证按钮点击
+                        myUpload($('.active1').length);
+                    });
+
+                    //点击订单号
+                    $(document).on("click", ".goDetails", function() {
+                        var id = $(this).attr("data-id");
+                        var vStatus = $(this).attr("data-status");
+                        if (vStatus == 0) { //创建订单
+                            window.location.href = "User_center2.html?id=" + id
+                        } else if (vStatus == 1) { //付款成功
+                            window.location.href = "User_center3.html?id=" + id
+                        } else if (vStatus == 2) { //商品出库
+                            window.location.href = "User_center4.html?id=" + id
+                        } else if (vStatus == 3) { //完成订单
+                            window.location.href = "User_center5.html?id=" + id
+                        }
+                        return false;
+                    });
+
+                    //点击全选
+                    var bool2;
+                    $(".all").on("click", function() {
+                        $(".sty_img2").show();
+                        $(".sty_img").hide();
+                        $(this).hide();
+                        $(".img_show").show();
+                        $(".list_sty li").addClass("active1");
+                        bool2 = $(".list_sty li").hasClass("active1");
+                        if (bool2) {
+                            arr = [];
+                            data666.forEach(function(item) {
+                                arr.push(item.id)
+                            })
+
+                        }
+                        // console.log(arr);
+                        $("#allNum").html(arr.length);
+                        myUpload($('.active1').length);
+                    });
+                    $(".img_show").on("click", function() {
+                        arr = [];
+                        $(".sty_img2").hide();
+                        $(".sty_img").show();
+                        $(this).hide();
+                        $(".all").show();
+                        $(".list_sty li").removeClass("active1");
+                        // console.log(arr);
+                        $("#allNum").html(arr.length);
+                        myUpload($('.active1').length);
+                    });
+
+                    var xhr;
+                    var fmt1;
+                    var images;
+                    var uploadcallback;
+
+                    //上传图片
+                    function bo_upload_complete2(data) {
+                        uploadcallback(data);
+                    }
+
+                    function bo_upload2(file, callback) {
+                        //时间格式处理---勿删
+                        // Date.prototype.Format = function(fmt) {
+                        //     var o = {
+                        //         "M+": this.getMonth() + 1, //月份
+                        //         "d+": this.getDate(), //日
+                        //         "H+": this.getHours(), //小时
+                        //         "m+": this.getMinutes(), //分
+                        //         "s+": this.getSeconds(), //秒
+                        //         "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+                        //         "S": this.getMilliseconds() //毫秒
+                        //     };
+                        //     if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+                        //     for (var k in o)
+                        //         if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+                        //     return fmt;
+                        // };
+                        // fmt1 = (file.lastModifiedDate).Format("yyyy/MM/dd HH:mm:ss")
+
+                        //限制图片大小
+                        var num = file.size / 1024 / 1024;
+                        if (num > 2) {
+                            alert("上传图片不能大于2M!");
+                            return
+                        }
+                        if (!window.FormData || !window.FileList) {
+                            throw ('您的浏览器不支持ajax upload');
+                        }
+
+                        uploadcallback = callback;
+                        if (xhr == null) {
+                            xhr = new XMLHttpRequest();
+                            xhr.upload.addEventListener("progress", function(evt) {
+                                // console.log(123+"===");
+                            }, false);
+                            xhr.addEventListener("load", function(evt) {
+                                // console.log(evt.target.responseText);
+                                var ret = eval('(' + evt.target.responseText + ')');
+                                bo_upload_complete2(ret);
+                            }, false);
+                            xhr.addEventListener("error", function(evt) {
+                                // console.log(12345);
+                                alert("上传出错" + evt.toString());
+                            }, false);
+                            xhr.addEventListener("abort", function(evt) {
+                                // console.log(123456);
+                                alert("用户取消上传");
+                            }, false);
+                        }
+
+                        var formData = new FormData();
+                        formData.append('demo_input', file);
+                        // console.log(file)
+                        xhr.open('POST', '/ajeasy/fdfs/uploading');
+                        xhr.send(formData);
+                    }
+
+                    $('.fileu2').change(function(e) {
+                        // e.target.files[0]
+                        // console.log(this.files[0])
+                        // console.log(this.files)
+                        // console.log(e.target.files[0])
+                        // console.log(e.target.files[0].name);
+
+                        var imgName = e.target.files[0].name;
+                        //限制图片上传类型
+                        var ext;
+                        var idx = imgName.lastIndexOf(".");
+
+                        if (imgName == "") {
+                            $(".tipsN").text("请上传图片");
+                        } else {
+                            if (idx != -1) {
+                                ext = imgName.substr(idx + 1).toUpperCase();
+                                ext = ext.toLowerCase();
+                                if (ext != "jpg" && ext != "png" && ext != "jpeg" && ext != "bmp") {
+                                    $(".tipsN").text("请上传JPG/PNG/JPEG/BMP格式的图片");
+                                    $("#imgsrc2").attr("src", "");
+                                    $("#imgsrc22").css("visibility", "hidden");
+                                    window.localStorage.removeItem("loadImg");
+                                    return;
+                                } else {
+                                    $(".tipsN").text();
+                                    bo_upload2(e.target.files[0], function(data) {
+                                        // console.log(data)
+                                        if (data.err) {
+                                            return
+                                        } else {
+                                            $(this).val("");
+                                            images = data.data;
+                                            var src = images;
+                                            // console.log(src);
+                                            $("#imgsrc22").css("visibility", "visible");
+                                            window.localStorage.setItem("loadImg", src);
+                                            $('#imgsrc2').attr('src', src)
+                                        }
+                                    })
+                                }
+                            }
+                        }
+
+                    });
+
+                    var amount;
+                    var payTime;
+                    var payWay;
+                    //点击上传付款凭证
+                    $("#fo8").click(function() {
+                        // console.log(window.localStorage.getItem("loadImg"));
+                        var loadImg = window.localStorage.getItem("loadImg");
+                        payTime = $("#h3Ele2").val();
+                        amount = $("#inputs").val();
+                        payWay = $("#payWay").val();
+                        Ids = arr.join(",");
+                        if (amount == "") {
+                            $("#inputs").css("border-color", "rgb(253, 87, 0)");
+                            $("#payWay").css("border-color", "rgb(229, 229, 229)");
+                            $("#h3Ele2").css("border-color", "rgb(229, 229, 229)");
+                            $(".tipsN").text("请输入付款金额");
+                        } else if ((/^\d+\.?(\d{1,2})?$/).test(amount) == false) {
+                            $("#inputs").css("border-color", "rgb(253, 87, 0)");
+                            $("#payWay").css("border-color", "rgb(229, 229, 229)");
+                            $("#h3Ele2").css("border-color", "rgb(229, 229, 229)");
+                            $(".tipsN").text("请输入最多两位小数的数字");
+                        } else if (payWay == "") {
+                            $("#inputs").css("border-color", "rgb(229, 229, 229)");
+                            $("#payWay").css("border-color", "rgb(253, 87, 0");
+                            $("#h3Ele2").css("border-color", "rgb(229, 229, 229)");
+                            $(".tipsN").text("请选择付款方式");
+                        } else if (payTime == "") {
+                            $("#inputs").css("border-color", "rgb(229, 229, 229)");
+                            $("#payWay").css("border-color", "rgb(229, 229, 229)");
+                            $("#h3Ele2").css("border-color", "rgb(253, 87, 0");
+                            $(".tipsN").text("请选择付款时间");
+                        } else if (loadImg == "" || loadImg == "undefined" || loadImg == null) {
+                            $("#inputs").css("border-color", "rgb(229, 229, 229)");
+                            $("#payWay").css("border-color", "rgb(229, 229, 229)");
+                            $("#h3Ele2").css("border-color", "rgb(229, 229, 229)");
+                            $(".tipsN").text("请上传图片");
+                        } else {
+                            $.ajax({
+                                type: "post", //提交请求的方式
+                                cache: true, //是否有缓存
+                                url: "/zlead/voucher/addVoucher", //访问servlet的路径
+                                dataType: "json", //没有这个，将把后台放会的json解析成字符串
+                                async: true, //是否异步
+                                data: {
+                                    amount: amount,
+                                    img: window.localStorage.getItem("loadImg"),
+                                    payType: '1',
+                                    payTime: payTime,
+                                    // uploadTime: fmt1,
+                                    // remark: '454',//可不传
+                                    orderIds: Ids
+                                },
+                                success: function(res) {
+                                    if (res.code == 1) {
+                                        $(".tishi3").show();
+                                        $(".tishi3").show().delay(3000).hide(0);
+                                        $("#dialog_upload8").hide();
+                                        window.location.reload();
+                                    } else {
+                                        // alert("没有上传成功！")
+                                        $(".msg2").html("没有上传成功！");
+                                        $(".meng21").show();
+                                        $(".popupMsg21").show();
+                                    }
+                                }
+                            })
+                        }
+
+                    });
+                    // 日期控件
+                    // console.dir(laydate, '-----------------')
+                    // laydate.render({
+                    //     elem: '.mydate'
+                    // });
+                    // console.log('1111111111-日期控件');
+
+                    $("#h3Ele2").bind("input propertychange", function(event) {
+                        var val = parseInt($("#h3Ele2").val());
+                        if (isNaN(val)) {
+                            alert("付款金额应为数字！");
+                            $("#h3Ele2").val("");
+                            return
+                        }
+                    });
+
+
+                    $(".order_input8").click(function() {
+                        $(this).css("border-color", "#FD5700");
+                        $(this).siblings().css("border-color", "#E5E5E5")
+                    });
+
+                    //  关闭弹窗
+                    $("#qu2").click(function() {
+                        $("body").css('overflow-y', '');
+                        $("#dialog_upload8").hide()
+                    });
+
+                    //  关闭弹窗
+                    $("#qu8").click(function() {
+                        $("body").css('overflow-y', '');
+                        $("#dialog_upload8").hide()
+                    });
+
+                    $(".btn").on("click", function() {
+                        // $(".dialog").show()
+                    });
+
+                    $(".con").on("click", function() {
+                        $(".dialog").show()
+                    });
+
+                    $(".cov").on("click", function() {
+                        $(".dialog").hide()
+                    });
+
+                    $('#cat').click(function() { //点击a标签
+                        if ($('.cart_xi').is(':hidden')) { //如果当前隐藏
+                            $('.cart_xi').show(); //那么就显示div
+                            $('#xt').show();
+                            $('#st').hide();
+                        } else { //否则
+                            $('.cart_xi').hide(); //就隐藏div
+                            $('#xt').hide();
+                            $('#st').show();
+                        }
+                    });
+
+                    $('#gen_b').click(function() { //点击a标签
+                        if ($('.info_xione').is(':hidden')) { //如果当前隐藏
+                            $('.info_xione').show(); //那么就显示div
+                        } else { //否则
+                            $('.info_xione').hide(); //就隐藏div
+                        }
+                    });
+                    $('#yh').click(function() { //点击a标签
+                        if ($('.yxi').is(':hidden')) { //如果当前隐藏
+                            $('.yxi').show(); //那么就显示div
+                            $('#yho').hide();
+                            $('#yht').show();
+
+                        } else { //否则
+                            $('.yxi').hide(); //就隐藏div
+                            $('#yho').show();
+                            $('#yht').hide();
+                        }
+                    });
+                    $('#ino').click(function() { //点击a标签
+                        if ($('.info_xi').is(':hidden')) { //如果当前隐藏
+                            $('.info_xi').show(); //那么就显示div
+                            $('#xo').show();
+                            $('#so').hide();
+                        } else { //否则
+                            $('.info_xi').hide(); //就隐藏div
+                            $('.info_xione').hide();
+                            $('#xo').hide();
+                            $('#so').show();
+                        }
+                    });
+                    $('#ino').click(function() { //点击a标签
+                        $('.cart_xi').hide(); //就隐藏div
+                    });
+                    $('#cat').click(function() { //点击a标签
+                        $('.info_xi').hide(); //就隐藏div
+                        $('.info_xione').hide();
+
+                    });
+
+                    //点击可放大
+                    $("#imgsrc").click(function() {
+
+                        $("#dialog_upload8").css("opacity", '0');
+                        $("#dialog-bg2").show();
+                        var imgs = $(this).attr("src");
+                        $("#img-box2 img").attr("src", imgs)
+                    });
+
+                    //放大
+                    $("#fangda").click(function() {
+                        $(".moban_img2").css("transform", "scale(1.3)");
+                        $(this).hide();
+                        $("#fangda2").show()
+
+                    })
+                    $("#fangda2").click(function() {
+                        $(".moban_img2").css("transform", "scale(1.6)");
+                        $(this).hide();
+                        $("#fangda3").show()
+                    });
+                    $("#fangda3").click(function() {
+                        $(".moban_img2").css("transform", "scale(2.2)");
+                        $(this).hide();
+                        $("#fangda4").show()
+                    });
+                    $("#fangda4").click(function() {
+                        $(".moban_img2").css("transform", "scale(2.5)");
+                        $(this).hide();
+                        $("#fangda").show()
+                    });
+
+                    //还原
+                    $("#huanyuan").click(function() {
+                        $(".moban_img2").css("transform", "scale(1.0)")
+                    });
+                    //缩小
+                    $("#suoxiao").click(function() {
+                        $(".moban_img2").css("transform", "scale(0.8)");
+                        $(this).hide();
+                        $("#suoxiao2").show()
+                    });
+                    $("#suoxiao2").click(function() {
+                        $(".moban_img2").css("transform", "scale(0.6)");
+                        $(this).hide();
+                        $("#suoxiao3").show()
+                    });
+                    $("#suoxiao3").click(function() {
+                        $(".moban_img2").css("transform", "scale(0.5)");
+                        $(this).hide();
+                        $("#suoxiao4").show()
+                    });
+                    $("#suoxiao4").click(function() {
+                        $(".moban_img2").css("transform", "scale(0.2)");
+                        $(this).hide();
+                        $("#suoxiao").show()
+                    });
+                    //旋转
+                    $("#xuanzhuan").click(function() {
+                        $(".moban_img2").css({
+                            transform: "rotate(90deg)",
+                            "transform-origin": "50% 50%"
+                        });
+                        $(this).hide();
+                        $("#xuanzhuan2").show()
+                    });
+                    $("#xuanzhuan2").click(function() {
+                        $(".moban_img2").css({
+                            transform: "rotate(180deg)",
+                            "transform-origin": "50% 50%"
+                        });
+                        $(this).hide();
+                        $("#xuanzhuan3").show()
+                    });
+                    $("#xuanzhuan3").click(function() {
+                        $(".moban_img2").css({
+                            transform: "rotate(270deg)",
+                            "transform-origin": "50% 50%"
+                        });
+                        $(this).hide();
+                        $("#xuanzhuan4").show()
+                    });
+                    $("#xuanzhuan4").click(function() {
+                        $(".moban_img2").css({
+                            transform: "rotate(360deg)",
+                            "transform-origin": "50% 50%"
+                        });
+                        $(this).hide();
+                        $("#xuanzhuan").show()
+                    });
+
+                    //关闭放大效果
+                    $(".closeImg img").click(function() {
+                        $("#dialog_upload8").css("opacity", '1');
+                        $("#dialog-bg2").hide()
+                    })
+
+                    //弹窗关闭按钮
+                    $(".know").click(function() {
+                        $(".meng21").hide();
+                        $(".popupMsg21").hide();
+                    });
+                    //弹窗关闭按钮--X
+                    $(".close").click(function() {
+                        $(".meng21").hide();
+                        $(".popupMsg21").hide();
+                    });
+
+                }); //
+
+                // 上传凭证按钮点击
+                function myUpload(len) {
+                    if (len > 0) {
+                        $("#upload_btns").css({
+                            background: 'rgba(253,87,0,1)'
+                        });
+
+                        $("#upload_btns").click(function() {
+                            var activeC = $(".list_sty").find("li");
+                            var arrId = [];
+                            for (var i = 0; i < activeC.length; i++) {
+                                if ((activeC.eq(i)).hasClass("active1")) {
+                                    arrId.push(activeC.eq(i).attr("data-shopId"))
+                                }
+                            }
+                            // console.log(arrId)
+                            if (arrId.length == 0) { //未选中
+
+                            } else if (arrId.length > 0) { //选中一个，工厂不会重复
+                                var isTrue = true;
+                                for (var i = 0; i < arrId.length; i++) {
+                                    if (arrId.indexOf(arrId[i]) != 0) {
+                                        isTrue = false;
+                                    }
+                                }
+                                if (isTrue == true) { //工厂不会重复
+                                    $("body").css('overflow-y', 'hidden');
+                                    $("#dialog_upload8").show();
+                                    $('.order_input8').val(''); // 初始化表单数据为空
+                                    $(document).click(function() {
+                                        $('#schedule-box1').hide();
+                                    });
+                                    $('.date_up').click(function() {
+                                        return false;
+                                    })
+                                } else { //工厂id不完全重复，多家工厂无法上传
+                                    $(".meng21").show();
+                                    $(".popupMsg21").show();
+                                }
+                            }
+                        })
+                    } else {
+                        $("#upload_btns").css({
+                            background: 'rgba(201, 201, 201, 1)'
+                        });
+                        $("#upload_btns").off("click")
+                    }
+                }
+
+
+
+
+
+
+            });
+            // $.getScript("../../shopping/js/head.js");
+
+            $(".towdao li").click(function() {
+                $("li").removeClass("yan");
+                $(this).addClass("yan");
+
+            });
+            if (pt == "dd") {
+                $("#upload").hide();
+                $("#Change_Password1").hide();
+                $("#collection").hide();
+                $("#Personal_information").hide();
+                $("#Receiving_address").hide();
+                $("#User_center").show();
+
+                $("li").removeClass("yan");
+                $("#User1").addClass("yan");
+            }
+            $("#User1").click(function() {
+                $("#upload").hide();
+                $("#Change_Password1").hide();
+                $("#collection").hide();
+                $("#Personal_information").hide();
+                $("#Receiving_address").hide();
+                $("#User_center").show();
+            });
+            if (pt == "gx") {
+                $("#upload").hide();
+                $("#collection").hide();
+                $("#Change_Password1").hide();
+                $("#Receiving_address").hide();
+                $("#User_center").hide();
+                $("#Personal_information").show();
+                $("li").removeClass("yan");
+                $("#Personal").addClass("yan");
+
+            }
+            $("#Personal").click(function() {
+                $("#upload").hide();
+                $("#collection").hide();
+                $("#Change_Password1").hide();
+                $("#Receiving_address").hide();
+                $("#User_center").hide();
+                $("#Personal_information").show();
+
+            });
+            if (pt == "dz") {
+                $("#upload").hide();
+                $("#collection").hide();
+                $("#Personal_information").hide();
+                $("#Change_Password1").hide();
+                $("#User_center").hide();
+                $("#Receiving_address").show();
+                $("li").removeClass("yan");
+                $("#Receiving").addClass("yan");
+            }
+            $("#Receiving").click(function() {
+                $("#upload").hide();
+                $("#collection").hide();
+                $("#Personal_information").hide();
+                $("#Change_Password1").hide();
+                $("#User_center").hide();
+                $("#Receiving_address").show();
+
+            });
+            if (pt == "sc") {
+                $("#upload").hide();
+                $("#Receiving_address").hide();
+                $("#Personal_information").hide();
+                $("#Change_Password1").hide();
+                $("#User_center").hide();
+                $("#collection").show();
+                $("li").removeClass("yan");
+                $("#collection1").addClass("yan");
+            }
+            $("#collection1").click(function() {
+                $("#upload").hide();
+                $("#Receiving_address").hide();
+                $("#Personal_information").hide();
+                $("#Change_Password1").hide();
+                $("#User_center").hide();
+
+                $("#collection").show();
+            });
+            if (pt == "pz") {
+                $("#Receiving_address").hide();
+                $("#Personal_information").hide();
+                $("#Change_Password1").hide();
+                $("#User_center").hide();
+                $("#collection").hide();
+                $("#upload").show();
+                $("li").removeClass("yan");
+                $("#upload1").addClass("yan");
+            }
+
+            $("#upload1").click(function() {
+
+                $("#Receiving_address").hide();
+                $("#Personal_information").hide();
+                $("#Change_Password1").hide();
+                $("#User_center").hide();
+                $("#collection").hide();
+                $("#upload").show();
+            });
+            if (pt == "gm") {
+                $("#Receiving_address").hide();
+                $("#Personal_information").hide();
+                $("#upload").hide();
+                $("#User_center").hide();
+                $("#collection").hide();
+                $("#Change_Password1").show();
+                $("li").removeClass("yan");
+                $("#Change").addClass("yan");
+            }
+            $("#Change").click(function() {
+
+                $("#Receiving_address").hide();
+                $("#Personal_information").hide();
+                $("#upload").hide();
+                $("#User_center").hide();
+                $("#collection").hide();
+                $("#Change_Password1").show();
+            });
+        });
+
+        laydate.render({
+            elem: '.mydate'
+        });
+    </script>
+</body>
+
+
+</html>

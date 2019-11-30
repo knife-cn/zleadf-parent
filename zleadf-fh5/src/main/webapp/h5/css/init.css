@@ -1,0 +1,595 @@
+@charset "utf-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "微软雅黑" !important;
+    font-size: 0.5rem;
+}
+
+body {
+    font-family: "微软雅黑" !important;
+}
+
+a:link,
+a:visited {
+    text-decoration: none;
+}
+
+input,
+textarea,
+select {
+    border: none;
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+i {
+    font-style: normal;
+}
+
+.f-fl {
+    float: left;
+}
+
+.f-fr {
+    float: right;
+}
+
+.clearfix {
+    clear: both;
+}
+
+
+/* 盒子的属性——默认换行 */
+
+html,
+body,
+div,
+ul,
+li,
+ol,
+li,
+dl,
+dt,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+table,
+thead,
+tbody,
+tfoot,
+tr,
+th,
+td,
+form {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+
+/* 列表 */
+
+ul,
+ol {
+    list-style: none;
+    font-size: inherit;
+    color: inherit;
+}
+
+
+/* 表格 */
+
+table {
+    empty-cells: show;
+}
+
+
+/* 定义了不包含任何内容的表单元格如何表示*/
+
+
+/* 行内样式的属性--默认不换行 */
+
+
+/* 文字 */
+
+span,
+b,
+i,
+em,
+del,
+strong,
+big,
+small,
+pre {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: inherit;
+    color: inherit;
+}
+
+del {
+    text-decoration: none;
+}
+
+
+/* 下划线和删除线的样式去除 */
+
+em {
+    font-style: normal;
+}
+
+
+/* 只是作为钩子来使用 */
+
+
+/* 图片 */
+
+a img {
+    border: 0;
+}
+
+img {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+
+/* 链接 */
+
+a {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    text-decoration: none;
+    font-size: inherit;
+    color: inherit;
+}
+
+
+/* 框架 */
+
+iframe,
+frame,
+frameset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: inherit;
+    color: inherit;
+}
+
+
+/* 表单元素 */
+
+input,
+textarea,
+button,
+select,
+option,
+label,
+optgroup,
+fieldset,
+legend {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: inherit;
+    color: inherit;
+    outline: none;
+    -webkit-appearance: none;
+    border-radius: 0;
+    resize: none;
+}
+
+button::-moz-focus-inner,
+input[type=reset]::-moz-focus-inner,
+input[type=button]::-moz-focus-inner,
+input[type=submit]::-moz-focus-inner,
+input[type=file]>input[type=button]::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+}
+
+:focus {
+    outline: 0;
+}
+
+
+/* 获取焦点的任何元素都不会出现一个虚框 */
+
+
+/* 常用命令的总结 */
+
+.fl,
+.f-fl {
+    float: left;
+}
+
+.fr,
+.f-fr {
+    float: right;
+}
+
+.fn {
+    float: none;
+}
+
+.al {
+    text-align: left;
+}
+
+.ac {
+    text-align: center;
+}
+
+.ar {
+    text-align: right;
+}
+
+.clr {
+    display: block;
+    overflow: hidden;
+    clear: both;
+    height: 0;
+    line-height: 0;
+    font-size: 0;
+}
+
+*+html .clearfix {
+    min-height: 1%
+}
+
+.overflow {
+    overflow: hidden;
+}
+
+.form label,
+.form input,
+.form select,
+.form textarea,
+.form button,
+.form .label {
+    font-size: 12px;
+}
+
+.block {
+    display: block;
+    overflow: hidden;
+}
+
+.hide {
+    display: none;
+}
+
+.invisible {
+    visibility: hidden
+}
+
+
+/* 仍然占据空间，区别于display:none */
+
+h1 {
+    font: 20px "microsoft yahei", "\5b8b\4f53"
+}
+
+h2,
+h3 {
+    font-size: 14px
+}
+
+h4,
+h5,
+h6 {
+    font-size: 12px
+}
+
+a {
+    color: #666;
+    text-decoration: none
+}
+
+* {
+    font: 13px/1.5 MicrosoftYaHei, '微软雅黑', tahoma, arial, "Hiragino Sans GB", \5b8b\4f53;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    border: none;
+    text-decoration: none;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden
+}
+
+input,
+button,
+select,
+textarea {
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+}
+
+.artwork_upload input:focus,
+.artwork_upload textarea:focus,
+.userinfo input:focus,
+.userinfo textarea:focus,
+.login_register input[type=text]:focus,
+.login_register input[type=password]:focus,
+.complete_msg input:focus {
+    box-shadow: 0 0 1px 1px #e62420;
+}
+
+.selecter {
+    margin: 5px 0;
+}
+
+a,
+button,
+input,
+optgroup,
+select,
+textarea {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    /*去掉a、input和button点击时的蓝色外边框和灰色半透明背景*/
+}
+
+a,
+img {
+    -webkit-touch-callout: none;
+    /*禁止长按链接与图片弹出菜单*/
+}
+
+textarea {
+    font-size: 14px;
+}
+
+div,
+p,
+section {
+    /*box-sizing: border-box;*/
+}
+
+body {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+}
+
+.icon {
+    width: 1rem;
+    height: 1rem;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+}
+
+
+/*头部*/
+
+#header {
+    width: 100%;
+    height: 1.8rem;
+    line-height: 1.8rem;
+    color: #fff;
+    background: #1b1a1f;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    font-size: 0.6rem;
+}
+
+#header a {
+    float: left;
+    color: #fff;
+}
+
+
+/*注册登录找回密码*/
+
+p.title {
+    font-size: 0.6rem;
+    color: #646464;
+    text-align: center;
+    margin: 1.12rem 0 0.64rem 0;
+}
+
+.logo {
+    text-align: center;
+    padding-top: 3rem;
+}
+
+.logo p {
+    width: 7.5rem;
+    float: left;
+    height: 2.5rem;
+    line-height: 6rem;
+    color: #646464;
+    font-size: 0.48rem;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.logo p.cur {
+    color: #303030;
+}
+
+.logo p.cur:nth-child(1) {
+    background: url(../images/pt01.png) no-repeat;
+    background-size: 2.5rem 2.5rem;
+    background-position: 3.5rem center;
+}
+
+.logo p:nth-child(1) {
+    background: url(../images/pt02.png) no-repeat;
+    background-size: 2.5rem 2.5rem;
+    background-position: 3.5rem center;
+    padding-right: 1.8rem;
+    text-align: right;
+}
+
+.logo p:nth-child(2) {
+    background: url(../images/zx02.png) no-repeat;
+    background-size: 2.5rem 2.5rem;
+    background-position: 1rem center;
+    padding-left: 1.1rem;
+    text-align: left;
+}
+
+.logo p.cur:nth-child(2) {
+    background: url(../images/zx01.png) no-repeat;
+    background-size: 2.5rem 2.5rem;
+    background-position: 1rem center;
+}
+
+.logo img {
+    display: block;
+    margin: 0 auto;
+    /*width: 4rem;*/
+    height: 4rem;
+}
+
+.form {
+    padding-top: 2rem;
+}
+
+.form p {
+    width: 12rem;
+    height: 1.5rem;
+    margin: 0 auto 0.5rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.form p input {
+    width: 12rem;
+    height: 1.5rem;
+    font-size: 0.56rem;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.form p .code {
+    width: 8.7rem;
+    float: left;
+}
+
+.form p span.hr {
+    width: 1px;
+    background-color: #979797;
+    height: 0.6rem;
+    margin-top: 0.45rem;
+    float: left;
+    display: block;
+}
+
+.form p .getcode {
+    background-color: #FFFFFF;
+    float: right;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    padding-left: 0.3rem;
+    box-sizing: border-box;
+    color: #000;
+    margin-top: 0.4rem;
+    width: 3.22rem;
+    font-size: 0.48rem;
+}
+
+#btn {
+    display: block;
+    width: 12rem;
+    height: 1.6rem;
+    font-size: 0.6rem;
+    margin: 1.6rem auto 0;
+    color: #fff;
+    background: #ccc;
+    border-radius: 0.2rem;
+}
+
+#btn1 {
+    display: block;
+    width: 12rem;
+    height: 1.6rem;
+    font-size: 0.6rem;
+    margin: 1.6rem auto 0;
+    color: #fff;
+    background: black;
+    border-radius: 0.2rem;
+}
+
+.forget {
+    width: 12rem;
+    margin: 0 auto;
+    padding-top: 0.5rem;
+}
+
+.forget a {
+    color: #969696;
+}
+
+.wx {
+    height: 1.2rem;
+    line-height: 1.2rem;
+    width: 100%;
+    text-align: center;
+    margin: 3rem auto 0;
+    display: none;
+}
+
+.wx i {
+    display: inline-block;
+    position: relative;
+    margin-right: 0.3rem;
+    top: 0.4rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    background: url(../images/wx_icon.png) no-repeat;
+    background-size: cover;
+}
+
+.regist_agreen {
+    text-align: center;
+    font-size: 0.48rem;
+    color: #646464;
+    border: none;
+    border: none !important;
+    width: 100% !important;
+    margin-top: 1rem !important;
+}
+
+.regist_agreen a {
+    text-decoration: none;
+    color: #E72420;
+}
+
+.login {
+    width: 15rem;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}

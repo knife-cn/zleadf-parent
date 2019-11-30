@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <title>直链商城</title>
+</head>
+<link rel="stylesheet" href="../../shopping/css/collection.css" />
+
+<body>
+
+    <div class="collection">
+        <div class="collection_top">
+            <div class="ct_lt">
+                <span>收藏信息</span>
+                <a href="javascript:;" class='all_control'>批量管理</a>
+                <div class="cp">
+                    <span></span>
+                    <b>全选</b>
+                    <img src="../../shopping/img/car/Trash.png" />
+                </div>
+
+            </div>
+            <div class="ct_rg">
+                <div class="gl">
+                    <div class="quxaa">
+                        <div class="quxn">
+                            <img src="../../shopping/img/searchPage/Checked_default.png" />
+                        </div>
+                        <span>全选</span>
+                    </div>
+                    <div class="delt">
+                        <img src="../../shopping/img/head/File add (2).png" />
+                    </div>
+                    <div class="xii"></div>
+                    <div class="quo"><span>取消管理</span></div>
+                </div>
+                <!--<span class="gpl" id="gpl">批量管理</span>-->
+
+            </div>
+        </div>
+        <div class="collection_pro">
+            <div class="serProut_con">
+                <ul id="allProduct">
+
+                </ul>
+            </div>
+            <!-- <div class="serProut_conb">
+					<ul>
+						<li>
+							<div class="com">
+							<div class="porut_img">
+								<img src="../../shopping/img/index/Bitmap.png" />
+
+								<div class="porut_mob">
+									<img class="porut_mobimg" style="width: 24px;height: 19px;" src="../../shopping/img/searchPage/weis.png" />
+									<img class="porut_mobgimg" style="width: 24px;height: 19px;" src="../../shopping/img/searchPage/gx.png" />
+								</div>
+							</div>
+							<p class="porut_p" >¥197.00</p>
+							<p class="porut_pa">STANLEY 史丹利冲击电钻锂电手电钻电动</p>
+							<div class="hre">
+
+							</div>
+						</div>
+						</li>
+					</ul>
+				</div> -->
+
+        </div>
+        <!-- 无收藏商品的时候提示 -->
+        <div class='collection_no'>
+            <img src="../../shopping/img/index/collection.png" />
+            <h5>暂无收藏哦~</h5>
+            <p>您可以<a href="index.html">去逛逛></a></p>
+        </div>
+    </div>
+    <!-- 加载效果 -->
+    <div class='loading'>
+        <img src="../../shopping/img/upload/login.gif" alt="">
+        <p>正在急速加载中...</p>
+    </div>
+
+    <div class="meng" id="goLogin3">
+        <div class="guanlian1">
+            <div class="toptan" id="tuLogin"><img src="../../shopping/img/lhpimg/guanbi.png" class="img" /></div>
+            <div class="tu6"><img src="../../shopping/img/lhpimg/Fill_1.png" /></div>
+            <div class="ren6">还没登录哦!</div>
+
+            <div id="logins3" class="gologin">去登录</div>
+        </div>
+    </div>
+
+    <!--立即购买和添加购物车弹窗-->
+    <div class="meng4"></div>
+    <div class="popupMsg4">
+        <img class="close" src="../../shopping/img/car/close@2x.png" />
+        <img class="tips" src="../../shopping/img/car/Fill 1.png" />
+        <p class="msg4"></p>
+        <div class="know">知道了</div>
+    </div>
+    <!-- 取消收藏 弹窗 -->
+    <div class="popupMsg5">
+        <img class="cancel img_close" src="../../shopping/img/car/close@2x.png" />
+        <img class="tips" src="../../shopping/img/car/Fill 1.png" />
+
+        <h6>确定要删除该商品吗？</h6>
+        <p>
+            <a href="javascript:;" class="close">确定</a>
+            <a href="javascript:;" class="cancel">取消</a>
+        </p>
+
+    </div>
+
+    <div class="meng" id="megou">
+        <div class="guanlian">
+            <div class="toptan" id="tuicart"><img src="../../shopping/img/lhpimg/guanbi.png" class="img" /></div>
+            <div class="icons"><img src="../../shopping/img/lhpimg/Fill_2.png" /></div>
+            <div class="success_add">成功加入购物车</div>
+
+            <div id="fo" class="yiyan">去购物车结算</div>
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript" src="../../shopping/js/jquery-2.1.0.js"></script>
+<script src="../../shopping/lib/artTemplate/artTemplate/template-web.js"></script>
+<script type="text/javascript" src="../../shopping/js/collection.js"></script>
+<!--<script type="text/javascript" src="../../shopping/js/jinzi.js" ></script>-->
+<script type="text/html" id="collections">
+    {{each data v i}} {{if v.isMarket ==1}}
+    <li isMarket=1>
+        {{else}}
+        <li isMarket=0>
+            {{/if}}
+            <div class="porut_img">
+                <img src="{{v.image}}" />
+                <div class="porut_mo">
+                    <div class="porut_ku">
+                        {{if v.isMarket ==1}}
+                        <div class="porut_kua" id="gouma" data-id9="{{v.id}}">
+                            <img class="porut_kuaimg" src="../../shopping/img/searchPage/gmai.png" />
+                            <img class="porut_hkuaimg" src="../../shopping/img/searchPage/hgmai.png" />
+
+                            <div class="gmtk">
+                                <div class="gma">
+                                    <span>立即购买</span>
+                                </div>
+                                <div class="xjt">
+                                    <img src="../../shopping/img/searchPage/xjt.png" />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="porut_kub" id="gou8" data-id9="{{v.id}}">
+                            <img class="porut_kuaimg" src="../../shopping/img/searchPage/gwc.png" />
+                            <img class="porut_hkuaimg" src="../../shopping/img/searchPage/hgwc.png" />
+
+                            <div class="gmtk">
+                                <div class="gma">
+                                    <span>加入购物车</span>
+                                </div>
+                                <div class="xjt">
+                                    <img src="../../shopping/img/searchPage/xjt.png" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="porut_kuc" data-id9="{{v.id}}" id="del8">
+                            <img class="porut_kuaimg" src="../../shopping/img/searchPage/scde.png" />
+                            <img class="porut_hkuaimg" src="../../shopping/img/searchPage/hscdel.png" />
+                            <div class="gmtk">
+                                <div class="gma">
+                                    <span>删除商品</span>
+                                </div>
+                                <div class="xjt">
+                                    <img src="../../shopping/img/searchPage/xjt.png" />
+                                </div>
+                            </div>
+                        </div>
+                        {{else}}
+                        <div class="porut_kuc" data-id9="{{v.id}}" id="del8" style='margin:0 auto;float:inherit'>
+                            <img class="porut_kuaimg" src="../../shopping/img/searchPage/scde.png" />
+                            <img class="porut_hkuaimg" src="../../shopping/img/searchPage/hscdel.png" />
+                            <div class="gmtk">
+                                <div class="gma">
+                                    <span>删除商品</span>
+                                </div>
+                                <div class="xjt">
+                                    <img src="../../shopping/img/searchPage/xjt.png" />
+                                </div>
+                            </div>
+                        </div>
+                        {{/if}}
+                    </div>
+                </div>
+
+            </div>
+            {{if v.isMarket ==1}}
+            <p class="porut_p"><span>¥{{v.price.toFixed(2)}}<span></p>
+        {{else}}
+        <p class="porut_p"><img  src="../../shopping/img/car/label_shixiao.png" style='width:44px;height:25px;' /></p>
+        {{/if}}
+        <p class="porut_pa" title="{{v.goodsName}}">{{v.goodsName.length>22?(v.goodsName.substr(0,22)+"..."):v.goodsName}}</p>
+        <div class="hre">
+        </div>
+        <div class='popBox'>
+            <div class='popBox_content'>
+                <h6>您真的要取消收藏吗？</h6>
+                <p>
+                    <a href="javascript:;" class='close'>确定</a>
+                    <a href="javascript:;" class='cancel'>取消</a>
+                </p>
+            </div>
+        </div>
+        <div class='det_all' data-id9="{{v.id}}">
+            <div>
+                <img src="../../shopping/img/searchPage/weis.png" alt="">
+            </div>
+        </div>
+    </li>
+    {{/each}}
+
+</script>
+
+</html>

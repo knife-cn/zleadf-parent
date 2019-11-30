@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+		
+	<context:annotation-config />
+
+	<!-- 读取资源文件 -->
+	<!-- 引入外部properties配置文件 -->
+	<bean id="configProperties"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:application.properties" />
+	</bean> 
+	
+	
+	   <context:component-scan base-package="com.puqian.controller"/>
+       <context:component-scan base-package="com.puqian.service.impl"/>
+       <context:component-scan base-package="com.puqian.reception.controller"/>
+       <context:component-scan base-package="com.puqian.reception.service"/>
+       <context:component-scan base-package="com.puqian.aliPay.service.impl"/>
+       <context:component-scan base-package="com.puqian.aliPay.controller"/>
+       <context:component-scan base-package="com.puqian.enterprise.controller"/>
+       <context:component-scan base-package="com.puqian.enterprise.service.impl"/>
+       <context:component-scan base-package="com.puqian.task"/>
+       <context:component-scan base-package="com.puqian.wxpay"/>
+
+	<!-- 
+    <context:component-scan base-package="com.tgb.mysqlConnectionInfo">
+    </context:component-scan>
+	<bean id="configProperties"
+		class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		<property name="location" value="classpath:config/jdbc.properties" />
+	</bean> 
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name="properties" ref="configProperties" />
+    </bean>
+	-->
+
+	<!-- 1. 数据源 : dataSource -->
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driverClassName}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+	</bean>
+	
+	 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="classpath:config/mybatis-config.xml"></property>
+        <property name="mapperLocations">
+            <list>  
+                <value>classpath*:com/xhs/mapper/*.xml</value>
+            </list>
+        </property>
+
+    </bean>
+     
+ 
+    <!-- 配置扫描器 -->
+    <bean id="daoScan" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+       <!-- 扫描com.wangyin.dao这个包以及它的子包下的所有映射接口类 --> 
+        <property name="basePackage" value="com.puqian.dao" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+    </bean>
+ 
+	<!--
+		4. 事务管理 : DataSourceTransactionManager dataSource:引用上面定义的数据源
+	-->
+	<bean id="txManager"
+		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<!-- 5. 使用声明式事务
+		 transaction-manager：引用上面定义的事务管理器
+	 -->
+	<tx:annotation-driven transaction-manager="txManager" />
+	
+	<!--
+	<import resource="spring-redis.xml"></import>
+  -->
+	
+</beans>

@@ -1,0 +1,84 @@
+body,html{
+	background: #eeeeee;
+}
+.addressInfo {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	background: #eeeeee;
+}
+.addressTitle{
+	width:100%;
+	height:0.9rem;
+	background:#3c3f41;
+	overflow:hidden;
+	color:#fff;
+	line-height:0.9rem;
+	font-size:0.3rem;
+}
+.addressTitle span{
+	margin-left:2.5rem;
+}
+.InfoList{
+	width:7.02rem;
+	height:auto;
+	overflow:hidden;
+	margin:0.24rem auto;
+}
+.InfoList ul{
+	list-style:none;
+}
+.InfoList ul li{
+	width:100%;
+	height:2.63rem;
+	background:#fff;
+	border-radius:0.15rem;
+	margin-bottom:0.24rem;
+}
+.InfoList-p1{
+	color:#737373;
+	font-size:0.24rem;
+	line-height:0.6rem;
+	margin-left:0.2rem;
+}
+.InfoList-span{
+	margin-left:0.2rem;
+}
+.addressImg{
+	width:0.5rem;
+	height:0.5rem;
+	padding-top:0.1rem;
+	float:left;
+}
+.change-div{
+	width:100%;
+	height:0.8rem;
+	border-top:0.025rem dashed #d3d3d3;
+	line-height:0.8rem;
+}
+.change-div input{
+	margin:0.27rem 0.2rem;
+	float:left;
+}
+.change-div span{
+	color:#737373;
+	font-size:0.24rem;
+	float:left;
+}
+.edit{
+	width:0.48rem;
+	height:0.48rem;
+	float:left;
+	margin:0.16rem 0.24rem 0 3.9rem;
+}
+.del{
+	width:0.48rem;
+	height:0.48rem;
+	float:left;
+	margin-top:0.16rem;
+}
+.addressButton img{
+	width:1.88rem;
+	height:0.87rem;
+	margin:0 auto;
+}

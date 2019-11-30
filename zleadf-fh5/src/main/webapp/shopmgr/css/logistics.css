@@ -1,0 +1,92 @@
+body,html{
+	background: #eeeeee;
+}
+.logisticsInfo {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	background: #eeeeee;
+}
+.logisticsTitle{
+	width:100%;
+	height:0.9rem;
+	background:#3c3f41;
+	overflow:hidden;
+	color:#fff;
+	line-height:0.9rem;
+	font-size:0.3rem;
+}
+.logisticsTitle span{
+	margin-left:2.5rem;
+}
+.logistics{
+	width:7.02rem;
+	height:1.75rem;
+	margin:0.24rem auto;
+	background:#fff;
+	border-radius:0.15rem;
+}
+.logistics-img{
+	width:1.55rem;
+	height:100%;
+	float:left;
+}
+.logisticsImg{
+	width:1.2rem;
+	height:1.4rem;
+	margin:0.175rem auto;
+}
+.logistics-info{
+	width:5.46rem;
+	height:100%;
+	float:left;
+}
+.logistics-info p{
+	font-size:0.26rem;
+	margin-top:0.18rem;
+	color:#737373;
+}
+.logistics-info img{
+	width:0.15rem;
+	height:0.15rem;
+	float:left;
+	margin-right:0.12rem;
+	padding-top:0.09rem;
+}
+.logistics-div{
+	width:7.02rem;
+	height:auto;
+	overflow:hidden;
+	margin:0 auto;
+	background:#fff;
+	border-radius:0.15rem;
+}
+.logistics-div-1{
+	width:1.6rem;
+	height:100%;
+	float:left;
+}
+.logistics-div-1 ul{
+	list-style:none;
+}
+.logistics-div-1 ul li{
+	width:100%;
+	height:1.3rem;
+	float:left;
+	text-align:center;
+}
+.logistics-div-2{
+	width:5.42rem;
+	height:100%;
+	float:left;
+}
+.logistics-div-2 ul{
+	list-style:none;
+}
+.logistics-div-2 ul li{
+	width:100%;
+	height:1.3rem;
+	float:left;
+	line-height:0.3rem;
+	text-align:center;
+}

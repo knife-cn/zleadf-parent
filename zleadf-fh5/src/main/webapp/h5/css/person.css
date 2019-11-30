@@ -1,0 +1,49 @@
+html,
+body {
+  background: #f2f5fb;
+}
+.p_container {
+  background-color: #fff;
+}
+.p_container ul {
+  margin-left: 0.3rem;
+}
+.p_container ul li {
+  height: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.p_container ul li p {
+  font-size: 0.28rem;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: #666666;
+}
+.p_container ul li div {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 70%;
+}
+.p_container ul li div .header_pic {
+  width: 0.8rem;
+  height: 0.8rem;
+  margin-right: 0.2rem;
+}
+.p_container ul li div .r_arrow {
+  width: 0.32rem;
+  height: 0.32rem;
+  margin-right: 0.24rem;
+}
+.p_container ul li div input {
+  text-align: right;
+  margin-right: 0.24rem;
+  width: 100%;
+  font-size: 0.28rem;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: #333333;
+  background: #fff;
+}

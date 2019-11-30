@@ -1,0 +1,111 @@
+.s_containner {
+  height: 100%;
+  padding-left: 0.3rem;
+}
+.s_containner .search {
+  position: relative;
+}
+.s_containner .search .search_container {
+  width: 5.3rem;
+  height: 0.64rem;
+  background: #e9eff7;
+  border-radius: 16px;
+  padding-left: 0.74rem;
+  font-size: 13px;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #202020;
+  margin-right: 0.3rem;
+  margin: 0.18rem 0.3rem 0.4rem 0;
+}
+.s_containner .search .icon_search,
+.s_containner .search .icon_search_cancel {
+  width: 0.3rem;
+  height: 0.3rem;
+  position: absolute;
+}
+.s_containner .search .icon_search {
+  top: 0.35rem;
+  left: 0.28rem;
+}
+.s_containner .search .icon_search_cancel {
+  top: 0.35rem;
+  right: 1.38rem;
+}
+.s_containner .no_good {
+  width: 100%;
+  display: none;
+}
+.s_containner .no_good img {
+  width: 3.2rem;
+  height: 2.76rem;
+  margin: 2.1rem 0 0 1.86rem;
+}
+.s_containner .no_good .tips {
+  font-size: 16px;
+  font-family: PingFang-SC-Medium;
+  font-weight: 500;
+  color: #929ca8;
+  text-align: center;
+  margin: 0.32rem 0 0.2rem 0;
+}
+.s_containner .no_good .change_word {
+  font-size: 12px;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #929ca8;
+  text-align: center;
+}
+.s_containner .search_title {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.2rem;
+}
+.s_containner .search_title img {
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-right: 0.28rem;
+}
+.s_containner .search_title p {
+  font-size: 0.28rem;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #666666;
+}
+.s_containner .search_history ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.s_containner .search_history ul li {
+  background: #f6f6f6;
+  border-radius: 8px;
+  padding: 0.12rem 0.36rem;
+  margin-right: 0.3rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.26rem;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #666666;
+}
+.s_containner .show_search_items {
+  width: 100%;
+}
+.s_containner .show_search_items ul {
+  width: 100%;
+}
+.s_containner .show_search_items ul li {
+  width: 100%;
+  border-bottom: 1px solid #E5E5E5;
+  padding: 0.2rem 0;
+  font-size: 0.26rem;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #202020;
+}
+.s_containner .show {
+  display: block;
+}
+.s_containner .hide {
+  display: none;
+}

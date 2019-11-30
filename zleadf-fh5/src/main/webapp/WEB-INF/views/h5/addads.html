@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <!-- 宽度设置为设备实际宽度，初始化倍数为1，最小倍数为1，最大倍数为1，用户缩放为否 -->
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- 删除默认的苹果工具栏和菜单栏 -->
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <!-- 苹果手机顶部为黑色 -->
+    <meta name="apple-mobile-web-status-bar-style" content="block"/>
+    <!-- 屏蔽浏览器自动识别数字为电话号码 -->
+    <meta name="fromat-detecition" content="telephone=no"/>
+    <title>宏古</title>
+    <link rel="stylesheet" href="../../../shopmgr/css/common.css"/>
+    <link rel="stylesheet" href="../../../shopmgr/css/style.css?v=1.1"/>
+    <link rel="stylesheet" href="../../../shopmgr/css/allianceEnter.css"/>
+    <script type="text/javascript" src="../../../h5/js/library/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="../../../h5/js/config/url.js?v=1"></script>
+    <script type="text/javascript" src="../../../h5/js/config/comn.js?v=1"></script>
+    <script type="text/javascript" src="../../../h5/js/config/iscroll-zoom.js"></script>
+    <script type="text/javascript" src="../../../h5/js/config/zepto.min.js"></script>
+    <script type="text/javascript" src="../../../h5/js/page/addads.js"></script>
+    <script type="text/javascript" src="../../../h5/js/config/ajaxfileupload.js"></script>
+</head>
+<body>
+<div id="errorMsg"></div>
+<div class="allianceInfo">
+    <div class="allianceTitle">
+        <img src="../../../h5/images/Shape@2x.png" class="fl go-back-1 fanhui">
+        <span>添加广告</span>
+    </div>
+    <form id="adsForm">
+        <input type="hidden" class="shopId" id="shopId" name="shopId" value="">
+        <div class="alliance">
+            <div class="allianceDiv">
+                <span class="leir">广告标题</span>
+                <div class="allianceDivInput">
+                    <img class="quan" src="img/img-quan.png" alt="">
+                    <input class="allianceDiv-input" type="text" id="title" name="title" placeholder="请输入广告标题">
+                </div>
+            </div>
+
+            <div class="allianceDiv">
+                <span class="leir">广告内容</span>
+                <div class="allianceDivInput">
+                    <img class="quan" src="img/img-quan.png" alt="">
+                    <input class="allianceDiv-input" type="text" id="adsContent" name="adsContent"
+                           placeholder="请输入广告内容">
+                </div>
+            </div>
+
+            <div class="allianceDiv">
+                <span class="leir">浏览量</span>
+                <div class="allianceDivInput">
+                    <img class="quan" src="img/img-quan.png" alt="">
+                    <input class="allianceDiv-input" type="text" id="hits" name="hits" placeholder="请输入浏览量">
+                </div>
+            </div>
+
+            <div class="allianceDiv">
+                <span class="leir">地址</span>
+                <div class="allianceDivInput">
+                    <img class="quan" src="img/img-quan.png" alt="">
+                    <input class="allianceDiv-input" type="text" id="contentPath" name="contentPath"
+                           placeholder="请输入内容地址">
+                </div>
+            </div>
+
+            <div class="allianceDiv">
+                <span class="leir">广告简介</span>
+                <div class="allianceDivInput">
+                    <img class="quan" src="img/img-quan.png" alt="">
+                    <input class="allianceDiv-input" type="text" id="introduce" name="introduce"
+                           placeholder="请输入广告简介">
+                </div>
+            </div>
+
+
+            <div class="allianceDiv">
+                <span class="leir">广告分类</span>
+                <div class="allianceDivInput">
+                    <img class="quan" src="img/img-quan.png" alt="">
+                    <select class="allianceDiv-input" id="adstype" name="adstype" placeholder="请选择广告分类">
+                        <option value="0">商城</option>
+                        <option value="1">企业</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="allianceDiv">
+                <span class="leir">广告性质</span>
+                <div class="allianceDivInput">
+                    <img class="quan" src="img/img-quan.png" alt="">
+                    <select class="allianceDiv-input" id="catagory" name="catagory" placeholder="请选择广告性质">
+                        <option value="0">广告</option>
+                        <option value="1">轮播</option>
+                    </select>
+                </div>
+            </div>
+            <div class="allianceDiv">
+                <span class="leir">板块</span>
+                <div class="allianceDivInput">
+                    <img class="quan" src="img/img-quan.png" alt="">
+                    <select class="allianceDiv-input" id="channel" name="channel" placeholder="板块">
+                        <option value="0">非首页</option>
+                        <option value="1">首页1</option>
+                        <option value="2">首页2</option>
+                        <option value="3">首页3</option>
+                        <option value="4">首页4</option>
+                        <option value="5">首页5</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="allianceDiv">
+                <span class="leir">显示顺序</span>
+                <div class="allianceDivInput">
+                    <img class="quan" src="img/img-quan.png" alt="">
+                    <input class="allianceDiv-input" type="text" id="sort" name="sort" placeholder="首页显示顺序">
+                </div>
+            </div>
+
+
+            <div class="allianceDiv">
+                <span class="leir">广告图片</span>
+                <div class="allianceDivInput">
+                    <img class="quan" src="img/img-quan.png" alt="">
+                    <select class="allianceDiv-input" id="contentType" name="contentType" placeholder="请选择广告内容">
+                        <option value="0">广告图片</option>
+                        <option value="1">文章</option>
+                        <option value="2">商品</option>
+                        <option value="3">视频</option>
+                        <option value="4">外链</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="allianceDiv">
+                <span class="leir">顶置</span>
+                <div class="allianceDivInput">
+                    <img class="quan" src="img/img-quan.png" alt="">
+                    <select class="allianceDiv-input" id="isTop" name="isTop" placeholder="是否置顶">
+                        <option value="0">置顶</option>
+                        <option value="1">不置顶</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="allianceDiv">
+                <span class="leir">发布状态</span>
+                <div class="allianceDivInput">
+                    <img class="quan" src="img/img-quan.png" alt="">
+                    <select class="allianceDiv-input" id="status" name="status" placeholder="广告状态">
+                        <option value="0">未发布</option>
+                        <option value="1">已发布</option>
+                        <option value="1">删除</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="allianceDiv">
+                <span class="leir">广告备注</span>
+                <div class="allianceDivInput">
+                    <img class="quan" src="img/img-quan.png" alt="">
+                    <input class="allianceDiv-input" type="text" id="remark" name="remark" placeholder="广告备注">
+                </div>
+            </div>
+
+            <div class="allianceDiv" style="height:2.5rem;">
+                <span class="leir">上传图片</span>
+                <section class="upload-section">
+                    <div class="upload-btn1">
+                    <input type="file" name="demo_input" id="demo_input" value="" accept="image/*"  onchange="uploadAdsImg()"/>
+                    <input type="hidden" class="adsImg" id="adsImg" name="adsImg" value="">
+                    </div>
+                </section>
+                <div class="img_area" id="ads_img_area">
+                    <img src="" alt=""   class="img_area_img">
+                </div>
+            </div>
+            <div class="upload-img">
+            </div>
+        </div>
+
+    </form>
+    <button class="queding" onclick="addAds()">保存</button>
+    <button class="quxiao">取消</button>
+    <div class="validate">
+        <img id="validate" src="img/btn-tijiao.png" alt="" onclick="addAds()">
+    </div>
+</div>
+</body>
+</html>

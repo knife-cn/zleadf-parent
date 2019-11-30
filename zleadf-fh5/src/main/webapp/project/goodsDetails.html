@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品详情</title>
+    <script src="../plugins/mui/mui.min.js"></script>
+    <link rel="stylesheet" href="../plugins/mui/mui.min.css">
+
+    <link rel="stylesheet" href="../css/init.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/goodsDetails.css">
+    <script src="../js/rem.js"></script>
+    <script src="../js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="goodsImgPart">
+        <a class="backBtn" href="javascript:;"><span></span></a>
+        <div class="mui-slider" id="goodsTurns">
+            <div class="mui-slider-group mui-slider-loop">
+                <!--支持循环，需要重复图片节点-->
+                <div class="mui-slider-item mui-slider-item-duplicate">
+                    <a href="#"><img src="../images/goods/4.jpg" /></a>
+                </div>
+                <div class="mui-slider-item">
+                    <a href="#"><img src="../images/goods/1.jpg" /></a>
+                </div>
+                <div class="mui-slider-item">
+                    <a href="#"><img src="../images/goods/2.jpg" /></a>
+                </div>
+                <div class="mui-slider-item">
+                    <a href="#"><img src="../images/goods/3.jpg" /></a>
+                </div>
+                <div class="mui-slider-item">
+                    <a href="#"><img src="../images/goods/4.jpg" /></a>
+                </div>
+                <!--支持循环，需要重复图片节点-->
+                <div class="mui-slider-item mui-slider-item-duplicate">
+                    <a href="#"><img src="../images/goods/1.jpg" /></a>
+                </div>
+            </div>
+            <div class="mui-slider-indicator">
+                <div class="mui-indicator mui-active"></div>
+                <div class="mui-indicator"></div>
+                <div class="mui-indicator"></div>
+                <div class="mui-indicator"></div>
+            </div>
+        </div>
+    </div>
+    <div class="goodsListPart">
+        <div class="baseIndoPart">
+            <h4 class="goodsName">柏奥斯全铜入墙式厨房水龙头4分单冷水槽龙</h4>
+            <div class="priceDv">
+                <span class="rmb">¥</span>500.00 <span class="storeNum">库存100</span>
+            </div>
+        </div>
+        <div class="shopPart marginTop">
+            <div>
+                <img src="../images/pic_profile_photo@2x.png" alt="">
+            </div>
+
+            <div>
+                <p class="shopName">STANLEY 史丹利</p>
+                <p class="totalGoodsNum">共76件产品</p>
+            </div>
+        </div>
+        <div class="chooseTypePart marginTop clearfix">
+            <!-- <h4><span>规格</span>选择规格参数</h4> -->
+            <h4>规格</h4>
+            <div class="typeInfoDv">
+                <h4>选择规格参数</h4>
+                <div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span class="typeNum">共6种颜色样式可选</span>
+                </div>
+            </div>
+            <a class="typeDesBtn" href="javascript:;"><span></span></a>
+        </div>
+        <div class="goodsInfoPart marginTop">
+            <div class="infoNavUlDv ">
+                <ul class="infoNavUl">
+                    <li class="active" data-type="1">商品详情</li>
+                    <li data-type="2">订购说明</li>
+                    <li data-type="3">物流说明</li>
+                    <li data-type="4">售后须知</li>
+                </ul>
+                <a class="backBtn" href="javascript:;">
+                    <span></span>
+                </a>
+            </div>
+
+            <ul class="infoContUl">
+                <li data-type="1">
+                    <h4 class="infoContTitle"><span class="titleIcon"></span>商品详情<span class="arrow"></span></h4>
+                    商品详情
+                    <div></div>
+                </li>
+                <li data-type="2">
+                    <h4 class="infoContTitle"><span class="titleIcon"></span>订购说明<span class="arrow"></span></h4>
+                    订购说明
+                    <div></div>
+                </li>
+                <li data-type="3">s
+                    <h4 class="infoContTitle"><span class="titleIcon"></span>物流说明<span class="arrow"></span></h4>
+                    物流说明
+                    <div></div>
+                </li>
+                <li data-type="4">
+                    <h4 class="infoContTitle"><span class="titleIcon"></span>售后须知<span class="arrow"></span></h4>
+                    售后须知
+                    <div></div>
+                </li>
+            </ul>
+        </div>
+        <div class="orderBtnPart">
+            <button>立即订货</button>
+        </div>
+        <div class="addShopCarPart active">
+            <a class="closeBtn" href="javascript:;"><span></span></a>
+            <div class="goodsInfoDv">
+                <div><img src="../images/pic_profile_photo@2x.png" alt=""></div>
+                <div>
+                    <p class="goodsName">4分单冷水槽龙</p>
+                    <p class="goodsStore">库存<span id="goodsStoreNum">100</span></p>
+                    <p class="goodsPrice">¥500.00</p>
+                </div>
+            </div>
+            <div class="goodParamDv">
+                <h4>参数</h4>
+                <ul class="clearfix">
+                    <li>4分单冷水槽龙105B</li>
+                    <li>16分单冷水槽龙105B</li>
+                    <li>2分水槽龙10B</li>
+                </ul>
+            </div>
+            <div class="orderNumPart clearfix">
+                <div>购买数量</div>
+                <div><span id="minusBtn">-</span><input type="text" value="1" id="orderNum"><span id="addBtn" class="active">+</span></div>
+            </div>
+            <button class="addShopCarBtn">加入购物车</button>
+        </div>
+    </div>
+    <script>
+        $(".infoNavUl li").click(function() {
+            $(this).addClass('active').siblings().removeClass('active');
+            var $type = $(this).data('type');
+            $('.infoContUl li').each(function() {
+                if ($(this).data('type') == $type) {
+                    $("html, body").animate({
+                        scrollTop: $(this).offset().top - 46 / 50 + "rem"
+                    }, 400);
+                }
+
+            })
+        })
+
+        $(window).scroll(function() {
+            if ($(window).scrollTop() >= $('.goodsInfoPart').offset().top) {
+                $('.infoNavUlDv').addClass('fixed')
+            } else {
+                $('.infoNavUlDv').removeClass('fixed')
+            }
+        });
+
+        //加入购物车面板显示隐藏
+        $('.chooseTypePart').click(function() {
+            $(".addShopCarPart").addClass("active")
+        })
+        $(".closeBtn").click(function() {
+            $(".addShopCarPart").removeClass("active")
+        })
+        $('#minusBtn').click(function() {
+            var val = Number($('#orderNum').val());
+            $('#addBtn').addClass('active')
+
+            if (val == 1) {
+                return false;
+            } else {
+                $('#orderNum').val(val - 1);
+                $(this).addClass('active');
+                if (Number($('#orderNum').val()) == 1) {
+                    $(this).removeClass('active');
+                }
+            }
+        })
+        $('#addBtn').click(function() {
+            var val = Number($('#orderNum').val());
+            var goodsStoreNum = Number($('#goodsStoreNum').text());
+            $('#minusBtn').addClass('active')
+            if (val == goodsStoreNum) {
+                return false;
+            } else {
+                $('#orderNum').val(val + 1);
+                $(this).addClass('active');
+
+                if (Number($('#orderNum').val()) == goodsStoreNum) {
+                    $(this).removeClass('active');
+
+                }
+            }
+        })
+    </script>
+
+</body>
+
+</html

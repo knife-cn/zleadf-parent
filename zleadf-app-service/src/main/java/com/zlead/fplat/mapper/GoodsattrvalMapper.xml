@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlead.fplat.dao.GoodsattrvalMapper">
+  <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.Goodsattrval">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="prod_id" jdbcType="INTEGER" property="prodId" />
+    <result column="attr_id" jdbcType="INTEGER" property="attrId" />
+    <result column="attr_name" jdbcType="VARCHAR" property="attrName" />
+    <result column="attr_value" jdbcType="VARCHAR" property="attrValue" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    id, goods_id, prod_id, attr_id, attr_name, attr_value, sort
+  </sql>
+  <select id="selectByExample" parameterType="com.zlead.fplat.entity.GoodsattrvalExample" resultMap="BaseResultMap">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from t_goods_attr_val
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from t_goods_attr_val
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    delete from t_goods_attr_val
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.fplat.entity.Goodsattrval">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into t_goods_attr_val (id, goods_id, prod_id, 
+      attr_id, attr_name, attr_value, 
+      sort)
+    values (#{id,jdbcType=BIGINT}, #{goodsId,jdbcType=INTEGER}, #{prodId,jdbcType=INTEGER}, 
+      #{attrId,jdbcType=INTEGER}, #{attrName,jdbcType=VARCHAR}, #{attrValue,jdbcType=VARCHAR}, 
+      #{sort,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlead.fplat.entity.Goodsattrval">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into t_goods_attr_val
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="prodId != null">
+        prod_id,
+      </if>
+      <if test="attrId != null">
+        attr_id,
+      </if>
+      <if test="attrName != null">
+        attr_name,
+      </if>
+      <if test="attrValue != null">
+        attr_value,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="prodId != null">
+        #{prodId,jdbcType=INTEGER},
+      </if>
+      <if test="attrId != null">
+        #{attrId,jdbcType=INTEGER},
+      </if>
+      <if test="attrName != null">
+        #{attrName,jdbcType=VARCHAR},
+      </if>
+      <if test="attrValue != null">
+        #{attrValue,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.Goodsattrval">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update t_goods_attr_val
+    <set>
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="prodId != null">
+        prod_id = #{prodId,jdbcType=INTEGER},
+      </if>
+      <if test="attrId != null">
+        attr_id = #{attrId,jdbcType=INTEGER},
+      </if>
+      <if test="attrName != null">
+        attr_name = #{attrName,jdbcType=VARCHAR},
+      </if>
+      <if test="attrValue != null">
+        attr_value = #{attrValue,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.Goodsattrval">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update t_goods_attr_val
+    set goods_id = #{goodsId,jdbcType=INTEGER},
+      prod_id = #{prodId,jdbcType=INTEGER},
+      attr_id = #{attrId,jdbcType=INTEGER},
+      attr_name = #{attrName,jdbcType=VARCHAR},
+      attr_value = #{attrValue,jdbcType=VARCHAR},
+      sort = #{sort,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+
+  <select id="getByGoodsId" resultType="string" parameterType="java.lang.Long" >
+    select <!--distinct 参数不需要去重-->
+    T.attr_value
+    from t_goods_attr_val as T
+    where T.goods_id = #{goodsId} GROUP BY T.attr_name ORDER BY attr_name
+  </select>
+</mapper>

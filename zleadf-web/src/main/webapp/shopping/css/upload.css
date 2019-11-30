@@ -1,0 +1,887 @@
+html,
+body p div {
+    margin: 0px;
+    padding: 0px;
+}
+
+.car_title {
+    width: 100%;
+    height: 46px;
+    background: linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+    margin-bottom: 30px;
+}
+
+.clear {
+    clear: both;
+}
+
+.uploadFile {
+    width: 100%;
+    z-index: 0;
+    display: none;
+}
+
+.goDetails {
+    border-bottom: 1px solid #1E9FFF;
+}
+
+.hidePage {
+    display: none;
+}
+
+.uploadFile .uplode_s {
+    width: 56px;
+    height: 20px;
+    font-size: 14px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(79, 83, 98, 1);
+    line-height: 20px;
+    border-bottom: 2px solid rgba(253, 87, 0, 1);
+    padding-bottom: 10px;
+}
+
+.uploadFile .list_sty {
+    margin-top: 18px;
+    width: 100%;
+    min-width: 928px;
+}
+
+.uploadFile .list_sty li {
+    position: relative;
+    cursor: pointer;
+    float: left;
+    height: 200px;
+    box-sizing: border-box;
+    width: 31%;
+    min-width: 286px;
+    min-width: 285px;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 6px 5px rgba(0, 0, 0, 0.04);
+    border-radius: 6px;
+    list-style: none;
+    margin-right: 2%;
+    margin-bottom: 20px;
+    padding: 18px 0px 18px 17px;
+    border: 2px solid transparent;
+}
+
+
+/*.active1 {*/
+
+
+/*position: relative;*/
+
+
+/*cursor: pointer;*/
+
+
+/*float: left;*/
+
+
+/*height: 200px;*/
+
+
+/*box-sizing: border-box;*/
+
+
+/*width: 32%;*/
+
+
+/*background: #FF7C44;*/
+
+
+/*box-shadow: 0px 0px 6px 5px rgba(0, 0, 0, 0.04);*/
+
+
+/*border-radius: 4px;*/
+
+
+/*border: 2px solid rgba(255, 124, 68, 1);*/
+
+
+/*list-style: none;*/
+
+
+/*margin-right: 2%;*/
+
+
+/*margin-bottom: 20px;*/
+
+
+/*padding: 18px 17px 11px 17px;*/
+
+
+/*}*/
+
+.uploadFile .list_sty .active1 {
+    border-color: rgba(255, 124, 68, 1);
+}
+
+.uploadFile .list_sty li .sty_img {
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+}
+
+.uploadFile .list_sty li .sty_img2 {
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    display: none;
+}
+
+.uploadFile .list_sty li:nth-child(3),
+.uploadFile .list_sty li:nth-child(6) {
+    margin-right: 0px;
+}
+
+.clear {
+    clear: both;
+}
+
+.uploadFile .list_sty li .orderid {
+    font-size: 14px;
+    font-family: PingFangSC-Semibold;
+    font-weight: 600;
+    color: rgba(98, 98, 98, 1);
+    line-height: 20px;
+    width: 100%;
+}
+
+.uploadFile .list_sty li .box_sty {
+    margin-top: 14px;
+    margin-right: 0px;
+    box-sizing: border-box;
+    width: 95%;
+    min-width: 239px;
+    height: 106px;
+    border-radius: 4px;
+    border: 1px dashed rgba(219, 219, 219, 1);
+    padding: 24px 28px 26px 17px;
+}
+
+.uploadFile .list_sty li .box_sty .money_s {
+    float: left;
+    font-size: 24px;
+    font-family: PingFangSC-Semibold;
+    font-weight: 600;
+    color: rgba(255, 122, 71, 1)
+}
+
+.uploadFile .list_sty li .box_sty .money_s i,
+.uploadFile .list_sty li .box_sty .type_pay i {
+    font-size: 14px;
+    font-family: PingFangSC-Semibold;
+    font-weight: 600;
+    color: rgba(79, 83, 98, 1);
+}
+
+.uploadFile .list_sty li .box_sty .type_pay {
+    float: right;
+    font-size: 20px;
+    font-family: PingFangSC-Semibold;
+    font-weight: 600;
+    color: rgba(201, 201, 201, 1);
+}
+
+.uploadFile .list_sty li .timeLine {
+    font-size: 14px;
+    font-family: PingFangSC-Semibold;
+    font-weight: 600;
+    color: rgba(79, 83, 98, 1);
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.uploadFile .list_sty li .timeLine img {
+    display: inline-block;
+    margin-right: 7px;
+}
+
+#lines {
+    border: 1px solid rgba(229, 229, 229, 1);
+    margin-top: 30px;
+    margin-bottom: 17px;
+}
+
+.uploadFile .allcheck {
+    width: 100%;
+    height: 43px;
+    position: relative;
+}
+
+.uploadFile .allcheck .number {
+    margin-top: 16px;
+    height: 100%;
+}
+
+.uploadFile .allcheck .number i {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 1px solid rgba(229, 229, 229, 1);
+    position: absolute;
+    top: 2px;
+    cursor: pointer;
+    margin-right: 20px;
+    /*display: none;*/
+}
+
+.uploadFile .allcheck .number .all {
+    position: relative;
+    left: 1px;
+    top: -1px;
+    cursor: pointer;
+}
+
+.alld {
+    font-size: 14px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(68, 68, 68, 1);
+}
+
+.uploadFile .allcheck .btn {
+    float: right;
+    width: 110px;
+    height: 43px;
+    background: rgba(253, 87, 0, 1);
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    line-height: 43px;
+    cursor: pointer;
+}
+
+.img_show {
+    display: none;
+    position: relative;
+    left: 1px;
+    top: 2px;
+}
+
+
+/* 弹窗 */
+
+#dialog8 .message_tit8 {
+    padding: 30px 30px 30px 30px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.message_tit8 .anniu_uplode8 {
+    width: 100%;
+    text-align: left;
+}
+
+.boxshaw1 {
+    box-shadow: 2px 2px 15px 2px #e3e3e3;
+    display: none;
+}
+
+.message_tit8 .anniu_uplode8 span {
+    display: inline-block;
+    width: 110px;
+    height: 43px;
+    border-radius: 4px;
+    border: 1px solid rgba(206, 208, 218, 1);
+    text-align: center;
+    line-height: 43px;
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(79, 83, 98, 1);
+    cursor: pointer;
+    position: relative;
+}
+
+.fileu {
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.date_up {
+    position: relative;
+    right: -227px;
+    top: -43px;
+}
+
+#schedule-box1 {
+    width: 478px;
+    padding: 35px 20px;
+    font-size: 13px;
+    position: absolute;
+    top: 320px;
+    background-color: #fff;
+    z-index: 2;
+}
+
+.message_tit8 .anniu_uplode8 p {
+    float: right;
+    font-size: 12px;
+    font-family: MicrosoftYaHei;
+    color: rgba(167, 167, 172, 1);
+    line-height: 20px;
+    margin-top: 10px;
+}
+
+#dialog8 .title8 {
+    height: 52px;
+    text-align: left;
+    /* line-height: 52px; */
+    box-sizing: border-box;
+    padding: 15px 30px;
+    background: rgba(244, 246, 247, 1);
+    border-radius: 6px 6px 0px 0px;
+    font-size: 16px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(68, 68, 68, 1);
+}
+
+
+/* 弹窗 */
+
+#dialog_upload8 {
+    display: none;
+}
+
+.meng8 {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+}
+
+.message_tit8 p {
+    text-align: left;
+    ;
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(167, 167, 172, 1);
+}
+
+.order_input8 {
+    width: 98%;
+    height: 43px;
+    outline: none;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 4px;
+    border: 1px solid rgba(229, 229, 229, 1);
+    padding-left: 2%;
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-family: MicrosoftYaHei;
+    color: rgba(153, 153, 153, 1);
+    cursor: pointer;
+}
+
+.tipsN {
+    color: #f00;
+    font-size: 14px;
+    padding-left: 30px;
+}
+
+.guanlian8 {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    box-sizing: border-box;
+    margin-left: -287px;
+    margin-top: -262.5px;
+    z-index: 2000;
+    width: 574px;
+    height: 655px;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.08);
+    border-radius: 6px;
+    position: relative;
+}
+
+.guanlian8 .img8 {
+    display: inline-block;
+    position: absolute;
+    right: 26px;
+    top: 21px;
+    cursor: pointer;
+}
+
+#imgBox {
+    width: 100%;
+    text-align: center;
+}
+
+#imgBox img {
+    display: inline-block;
+    width: 200px;
+    height: 137px;
+    visibility: hidden;
+    cursor: pointer;
+}
+
+.bottom8 {
+    width: 574px;
+    height: 74px;
+    text-align: center;
+    background: rgba(255, 255, 255, 1);
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+}
+
+.yiyan8 {
+    display: inline-block;
+    width: 110px;
+    height: 43px;
+    border-radius: 4px;
+    border: 1px solid rgba(206, 208, 218, 1);
+    margin-top: 16px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(79, 83, 98, 1);
+    text-align: center;
+    line-height: 43px;
+}
+
+.yiyan8:hover {
+    cursor: pointer;
+}
+
+
+/* .qu{
+    margin-left: 167px;
+    margin-right: 20px;	
+    } */
+
+.fo8 {
+    background: rgba(253, 87, 0, 1);
+    color: rgba(255, 255, 255, 1);
+    margin-left: 10px;
+}
+
+.zhong8 {
+    width: 1200px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.left8 {
+    float: left;
+    width: 130px;
+    height: 300px;
+}
+
+.onedaoli8 {
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(79, 83, 98, 1);
+}
+
+.tu8 {
+    float: left;
+    margin-top: 2px;
+    width: 15px;
+    height: 14px;
+    border-radius: 1px 1px 1px 2px;
+}
+
+.tu8 img {
+    width: 100%;
+    height: 100%;
+}
+
+.dao8 {
+    float: left;
+    margin-left: 17px;
+    width: 56px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.towdao8 {
+    float: left;
+    width: 100%;
+    margin-bottom: 30px;
+    color: rgba(167, 167, 172, 1);
+}
+
+.towdao8 li {
+    margin-left: 35px;
+    margin-top: 12px;
+    width: 52px;
+    height: 18px;
+    font-size: 13px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    line-height: 18px;
+    cursor: pointer;
+}
+
+.towdaoli8 {
+    color: rgba(167, 167, 172, 1);
+}
+
+.yan8 {
+    color: rgba(253, 87, 0, 1);
+}
+
+.moban1 {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+
+.moban_img1 {
+    width: 500px;
+    height: 500px;
+    position: relative;
+    left: 50%;
+    margin-left: -250px;
+    top: 50%;
+    margin-top: -250px;
+}
+
+.moban_img1 img {
+    width: 100%;
+    height: 100%;
+}
+
+
+/*吐司*/
+
+.tishi3 {
+    display: none;
+    width: 140px;
+    height: 60px;
+    line-height: 60px;
+    background: #62B951;
+    border-radius: 6px;
+    opacity: 0.4;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+}
+
+.moban2 {
+    min-height: 683px;
+    position: fixed;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+}
+
+.bottom {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    height: 90px;
+    background: rgba(0, 0, 0, 1);
+    border-radius: 4px 4px 0px 0px;
+    opacity: 0.39880000000000004;
+    box-sizing: border-box;
+}
+
+.bottom ul {
+    width: 520px;
+    height: 100%;
+    margin: 0 auto;
+    line-height: 90px;
+}
+
+.bottom ul li {
+    float: left;
+    margin-left: 62px;
+    cursor: pointer;
+}
+
+.closeImg {
+    display: inline-block;
+    position: absolute;
+    right: 44px;
+    top: 20px;
+    cursor: pointer;
+    z-index: 50;
+}
+
+.closeImg img {
+    display: inline-block;
+    width: 44px;
+    height: 44px;
+}
+
+.bottom ul li:nth-child(2) {
+    font-size: 28px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+}
+
+.moban_img2 {
+    width: 500px;
+    height: 500px;
+    background-color: #fff;
+    position: relative;
+    left: 50%;
+    margin-left: -250px;
+    top: 50%;
+    margin-top: -250px;
+    vertical-align: middle;
+}
+
+.moban_img2 img {
+    width: 100%;
+    height: 100%;
+}
+
+#huanyuan {
+    font-size: 28px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+}
+
+#suoxiao2 {
+    display: none;
+}
+
+#suoxiao3 {
+    display: none;
+}
+
+#suoxiao4 {
+    display: none;
+}
+
+#fangda2 {
+    display: none;
+}
+
+#fangda3 {
+    display: none;
+}
+
+#fangda4 {
+    display: none;
+}
+
+#xuanzhuan2 {
+    display: none;
+}
+
+#xuanzhuan3 {
+    display: none;
+}
+
+#xuanzhuan4 {
+    display: none;
+}
+
+.selected-style {
+    background-color: #C5C5C5;
+}
+
+.current-month>.dayStyle:hover {
+    background-color: #C5C5C5;
+}
+
+.today-flag {
+    background-color: #e9e9e9;
+}
+
+
+/* 修改-未选中订单时，按钮默认灰色不可点击 */
+
+#upload_btns {
+    background: rgba(201, 201, 201, 1);
+}
+
+
+/* 新增：无收藏品的时候样式 */
+
+.upload_no {
+    position: absolute;
+    height: 150px;
+    width: 400px;
+    top: 140px;
+    left: 380px;
+    display: none;
+}
+
+.upload_no img {
+    width: 150px;
+    height: 150px;
+    float: left;
+    margin-right: 40px;
+}
+
+.upload_no h5 {
+    width: 200px;
+    height: 28px;
+    font-size: 20px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(79, 83, 98, 1);
+    line-height: 28px;
+    margin-bottom: 9px;
+    margin-top: 47px;
+    float: left;
+}
+
+.upload_no p {
+    width: 200px;
+    height: 20px;
+    font-size: 14px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(79, 83, 98, 1);
+    line-height: 20px;
+    float: left;
+}
+
+.upload_no p a {
+    color: rgba(34, 114, 200, 1);
+}
+
+
+/* 新增：页面加载login效果 */
+
+.loading {
+    width: 100%;
+    /* height: 250px; */
+    margin-top: 20px;
+    display: none;
+    text-align: center
+}
+
+.loading img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.loading p {
+    width: 100%
+}
+
+
+/* 判断相同工厂弹窗 */
+
+.meng21 {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 900;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.popupMsg21 {
+    display: none;
+    width: 392px;
+    height: 348px;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1001;
+    border-radius: 5px;
+}
+
+.popupMsg21 .close {
+    float: right;
+    width: 21px;
+    height: 21px;
+    margin: 15px;
+    cursor: pointer;
+}
+
+.popupMsg21 .tips2 {
+    display: block;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+
+.popupMsg21 p {
+    display: block;
+    text-align: center;
+    width: 316px;
+    line-height: 28px;
+    color: #A7A7AC;
+    margin: 0 auto;
+    margin-top: 48px;
+}
+
+.popupMsg21 .know {
+    width: 110px;
+    height: 43px;
+    line-height: 43px;
+    text-align: center;
+    border: 1px solid rgba(206, 208, 218, 1);
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: 60px;
+    color: #4F5362;
+}
+
+.fileu2 {
+    width: 110px;
+    height: 45px;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+/* 日期样式修正 */
+
+
+/* #h3Ele2 {
+    background: url('../../shopping/img/lhpimg/Datepicker_nomal.png') no-repeat 480px 10px;
+}
+
+#layui-laydate1 {
+    width: 516px;
+}
+
+#layui-laydate1>div,
+#layui-laydate1 table {
+    width: 100%;
+} */

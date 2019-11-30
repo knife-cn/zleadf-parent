@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* 全局样式 */
+
+h5{margin-top: 1px;margin-bottom: 1px}
+
+
+/*弹出层 CSS*/
+.gb_resLay { background: #FFFFFF; height: 170px; width: 100%; max-width: 800px; margin: 0 auto; }
+.gb_res_t { line-height: 38px; height: 38px; position: relative; font-size: 18px; text-align: center; }
+.gb_res_t i { background: #FFEC94; height: 1px; overflow: hidden; left: 32px; top: 18px; right: 32px; position: absolute; }
+.gb_res_t span { background: #FFF; display: inline-block; padding: 0px 6px; position: relative; z-index: 2; }
+.gb_resItms { margin: 0px 4%; }
+.gb_resItms li { text-align: center; float: left; width: 16.66%; padding-bottom: 15px; }
+.gb_resA img { height: auto; width: 60px; margin-bottom: 10px; }
+
+@media only screen and (max-width: 500px) {
+    .gb_resA img { width: 45px; margin-top: 5px; }
+}
+
+@media only screen and (max-width: 470px) {
+    .gb_resItms li {
+        width: 20%;
+    }
+
+    .gb_resLay {
+        height: 100px;
+        width: 95%;
+    }
+
+    .gb_resA img {
+        width: 60px;
+        margin-top: 0
+    }
+}
+.fxicon{
+    width: 38px;
+    height: 38px;
+}

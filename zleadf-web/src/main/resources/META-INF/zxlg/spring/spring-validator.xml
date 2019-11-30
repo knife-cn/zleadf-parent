@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd" default-lazy-init="false">
+
+    <!-- 用于启用Hibernate Validator,并且使用spring MessageSource替换java ResourceBundle -->
+
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <property name="providerClass" value="org.hibernate.validator.HibernateValidator"/>
+        <!-- 如果不加默认到 使用classpath下的 ValidationMessages.properties -->
+        <property name="validationMessageSource" ref="messageSource"/>
+    </bean>
+
+    <!-- 国际化,并且可以批定文件编码,可以使用classpath: 或者WEB-INF/ 前缀 -->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>classpath:i18n/messages</value>
+                <value>classpath:hibernate/validator/ValidationMessages</value>
+            </list>
+        </property>
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="cacheSeconds" value="60"/>
+    </bean>
+
+
+    <!-- 用于持有Spring Validator,可以将 Validator当做静态方法调用,示例:SpringValidatorHolder.validate(blogBean) -->
+    <bean class="com.up72.framework.util.holder.SpringValidatorHolder">
+        <property name="validator" ref="validator"/>
+    </bean>
+
+    <!-- 用于持有JSR303 Validator(Hibernate Validator),可以将Validator当做静态方法调用,示例:BeanValidatorHolder.validate(blogBean) -->
+    <bean class="com.up72.framework.util.holder.BeanValidatorHolder">
+        <property name="validator" ref="validator"/>
+    </bean>
+
+
+</beans>

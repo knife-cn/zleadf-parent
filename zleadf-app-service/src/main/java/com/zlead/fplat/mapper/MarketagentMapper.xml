@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.MarketagentMapper" >
+
+    <resultMap id="actityGoodsVo" type="com.zlead.entity.vo.ActityGoodsVo" >
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+    <!--
+    <result column="id" property="prdId" />
+    <result column="full_name" property="prdName" />
+    <result column="item_no" property="itemNo"  />
+    <result column="supply_price" property="supplyPrice" />
+    <result column="stock" property="stock"  />
+    <result column="band_name" property="brandName"  />
+    <result column="model_name" property="modelName"  />
+    <result column="list_name" property="listName"  />
+    <result column="attr_value" property="params"  />
+    -->
+        <result column="goods_id" property="prdId" />
+        <result column="item_name" property="prdName" />
+        <result column="item_code" property="itemNo"  />
+        <result column="cost_price" property="supplyPrice" />
+        <result column="sale_price" property="price" />
+        <result column="sale_qty" property="stock"  />
+        <result column="band_name" property="brandName"  />
+        <result column="model_name" property="modelName"  />
+        <result column="list_name" property="listName"  />
+        <result column="attr_values" property="params"  />
+</resultMap>
+
+
+<!--分页查询活动商品 -->
+  <select id="findByPageAttrGoods" resultType="com.zlead.entity.dto.GoodsPageDto">
+    select distinct a.id,concat(a.full_name,' ',(select group_concat(attr_value order by sort separator ' ') from t_goods_attr_val where goods_id=a.id)) as 'goodsName',b.sale_price as price,a.first_img as 'image' from t_goods a
+    inner join oa_market_goods b on a.id=b.goods_id
+    inner join oa_market_agent ma on b.act_id=ma.act_id
+    <!--INNER JOIN oa_agent_band_lists lists ON a.list_id = lists.list_id AND a.brand_id = lists.band_id AND lists.agent_id = #{agentId}-->
+    where b.act_id=#{actId} and ma.agent_id=#{agentId}
+  </select>
+
+    <!--判断活动商品是否在有效期限之中 -->
+    <select id="queryVaildActivity" resultType="com.zlead.entity.dto.GoodsPageDto">
+        SELECT act.act_id as actId, mg.goods_id as goodsID,act.eff_date as effDate,act.exp_date as expDate FROM oa_market_act act
+        INNER JOIN oa_market_agent ma ON act.act_id = ma.act_id AND ma.agent_id = #{agentId}
+        INNER JOIN oa_market_goods mg ON mg.act_id = act.act_id AND mg.is_market = 1
+        WHERE act.eff_date &lt;= NOW() &lt;= act.exp_date  AND mg.goods_id = #{goodsId}
+        AND terminal in (2,3) AND cont_state = 2
+    </select>
+
+
+    <select id="findByPageGoods" resultMap="actityGoodsVo">
+    <!--
+    select a.id,a.full_name,c.item_no,a.supply_price,a.stock,d.band_name,e.model_name,f.list_name,g.attr_value,a.price
+    from t_goods as a
+	left join t_product as c on c.id=a.prod_id
+	left join oa_market_goods as b on a.id = b.goods_id
+	left join crm_cust_band as d on a.brand_id = d.band_id
+	left join crm_prd_model as e on e.model_id = c.model_id
+	left join crm_prd_list as f on f.list_id = c.list_id
+	left join t_goods_attr_val as g on g.goods_id = c.id
+	where b.act_id=#{actId} and a.shop_id =#{shopId}
+	-->
+        SELECT
+        `d`.`id`           AS `id`,
+        `d`.`act_id`       AS `act_id`,
+        `d`.`goods_id`     AS `goods_id`,
+        `t`.`prod_id`      AS `prod_id`,
+        `t`.`item_code`    AS `item_code`,
+        `p`.`product_name` AS `item_name`,
+        `d`.`sale_sort`    AS `sale_sort`,
+        `c`.`cost_price`   AS `cost_price`,
+        `d`.`sale_qty`     AS `sale_qty`,
+        `d`.`sale_price`   AS `sale_price`,
+        `p`.`band_id`      AS `band_id`,
+        `b`.`band_name`    AS `band_name`,
+        `p`.`list_id`      AS `list_id`,
+        `s`.`list_name`    AS `list_name`,
+        `p`.`model_id`     AS `model_id`,
+        `m`.`model_name`   AS `model_name`,
+        `p`.`cat_ids`      AS `cat_ids`,
+        `p`.`item_attrs`   AS `item_attrs`,
+        `t`.`attr_values`  AS `attr_values`
+        FROM ((((((`oa_market_goods` `d`
+        JOIN `prd_item_mas` `t`
+        ON ((`t`.`item_id` = `d`.`goods_id`)))
+        JOIN `t_product` `p`
+        ON ((`p`.`prod_id` = `t`.`prod_id`)))
+        LEFT JOIN `prd_cust_price` `c`
+        ON ((`c`.`item_id` = `d`.`goods_id`)))
+        LEFT JOIN `crm_cust_band` `b`
+        ON ((`b`.`band_id` = `p`.`band_id`)))
+        LEFT JOIN `crm_prd_list` `s`
+        ON ((`s`.`list_id` = `p`.`list_id`)))
+        LEFT JOIN `crm_prd_model` `m`
+        ON ((`m`.`model_id` = `p`.`model_id`)))
+        where d.act_id=#{actId}
+  </select>
+
+    <select id="findTotalCount_bak" resultType="java.lang.Integer">
+    select count(a.id) from t_goods a
+    inner join oa_market_goods b on a.id=b.goods_id
+    INNER JOIN oa_agent_band_lists lists ON a.list_id = lists.list_id AND a.brand_id = lists.band_id AND lists.agent_id = #{agentId}
+    where d.act_id=#{actId}
+    </select>
+    
+    <select id="findTotalCount" resultType="java.lang.Integer">
+    select count(DISTINCT a.id) from t_goods a
+    	inner join oa_market_goods b on a.id=b.goods_id
+    	inner join oa_market_agent ma on b.act_id=ma.act_id
+    	<!--INNER JOIN oa_agent_band_lists lists ON a.list_id = lists.list_id AND a.brand_id = lists.band_id AND lists.agent_id = #{agentId}-->
+    	where b.act_id=#{actId} and ma.agent_id=#{agentId}
+ 	</select>
+</mapper>

@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.CustbandMapper">
+    <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.Custband">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        <id column="band_id" property="bandId" jdbcType="INTEGER"/>
+        <result column="band_no" property="bandNo" jdbcType="VARCHAR"/>
+        <result column="band_name" property="bandName" jdbcType="VARCHAR"/>
+        <result column="bshort_name" property="bshortName" jdbcType="VARCHAR"/>
+        <result column="pinyin" property="pinyin" jdbcType="VARCHAR"/>
+        <result column="pinyin_sh" property="pinyinSh" jdbcType="VARCHAR"/>
+        <result column="pic_path" property="picPath" jdbcType="VARCHAR"/>
+        <result column="band_state" property="bandState" jdbcType="VARCHAR"/>
+        <result column="band_desc" property="bandDesc" jdbcType="VARCHAR"/>
+        <result column="shop_id" property="shopId" jdbcType="INTEGER"/>
+        <result column="creator" property="creator" jdbcType="INTEGER"/>
+        <result column="modifier" property="modifier" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        band_id, band_no, band_name, bshort_name, pinyin, pinyin_sh, pic_path, band_state,
+        band_desc, shop_id, creator, modifier, create_time, modify_time
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.CustbandExample">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from crm_cust_band
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        select
+        <include refid="Base_Column_List"/>
+        from crm_cust_band
+        where band_id = #{bandId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        delete from crm_cust_band
+        where band_id = #{bandId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.zlead.fplat.entity.Custband">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        insert into crm_cust_band (band_id, band_no, band_name,
+        bshort_name, pinyin, pinyin_sh,
+        pic_path, band_state, band_desc,
+        shop_id, creator, modifier,
+        create_time, modify_time)
+        values (#{bandId,jdbcType=INTEGER}, #{bandNo,jdbcType=VARCHAR}, #{bandName,jdbcType=VARCHAR},
+        #{bshortName,jdbcType=VARCHAR}, #{pinyin,jdbcType=VARCHAR}, #{pinyinSh,jdbcType=VARCHAR},
+        #{picPath,jdbcType=VARCHAR}, #{bandState,jdbcType=VARCHAR}, #{bandDesc,jdbcType=VARCHAR},
+        #{shopId,jdbcType=INTEGER}, #{creator,jdbcType=INTEGER}, #{modifier,jdbcType=INTEGER},
+        #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.zlead.fplat.entity.Custband">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        insert into crm_cust_band
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="bandId != null">
+                band_id,
+            </if>
+            <if test="bandNo != null">
+                band_no,
+            </if>
+            <if test="bandName != null">
+                band_name,
+            </if>
+            <if test="bshortName != null">
+                bshort_name,
+            </if>
+            <if test="pinyin != null">
+                pinyin,
+            </if>
+            <if test="pinyinSh != null">
+                pinyin_sh,
+            </if>
+            <if test="picPath != null">
+                pic_path,
+            </if>
+            <if test="bandState != null">
+                band_state,
+            </if>
+            <if test="bandDesc != null">
+                band_desc,
+            </if>
+            <if test="shopId != null">
+                shop_id,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="modifier != null">
+                modifier,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="bandId != null">
+                #{bandId,jdbcType=INTEGER},
+            </if>
+            <if test="bandNo != null">
+                #{bandNo,jdbcType=VARCHAR},
+            </if>
+            <if test="bandName != null">
+                #{bandName,jdbcType=VARCHAR},
+            </if>
+            <if test="bshortName != null">
+                #{bshortName,jdbcType=VARCHAR},
+            </if>
+            <if test="pinyin != null">
+                #{pinyin,jdbcType=VARCHAR},
+            </if>
+            <if test="pinyinSh != null">
+                #{pinyinSh,jdbcType=VARCHAR},
+            </if>
+            <if test="picPath != null">
+                #{picPath,jdbcType=VARCHAR},
+            </if>
+            <if test="bandState != null">
+                #{bandState,jdbcType=VARCHAR},
+            </if>
+            <if test="bandDesc != null">
+                #{bandDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="shopId != null">
+                #{shopId,jdbcType=INTEGER},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=INTEGER},
+            </if>
+            <if test="modifier != null">
+                #{modifier,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.Custband">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        update crm_cust_band
+        <set>
+            <if test="bandNo != null">
+                band_no = #{bandNo,jdbcType=VARCHAR},
+            </if>
+            <if test="bandName != null">
+                band_name = #{bandName,jdbcType=VARCHAR},
+            </if>
+            <if test="bshortName != null">
+                bshort_name = #{bshortName,jdbcType=VARCHAR},
+            </if>
+            <if test="pinyin != null">
+                pinyin = #{pinyin,jdbcType=VARCHAR},
+            </if>
+            <if test="pinyinSh != null">
+                pinyin_sh = #{pinyinSh,jdbcType=VARCHAR},
+            </if>
+            <if test="picPath != null">
+                pic_path = #{picPath,jdbcType=VARCHAR},
+            </if>
+            <if test="bandState != null">
+                band_state = #{bandState,jdbcType=VARCHAR},
+            </if>
+            <if test="bandDesc != null">
+                band_desc = #{bandDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="shopId != null">
+                shop_id = #{shopId,jdbcType=INTEGER},
+            </if>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=INTEGER},
+            </if>
+            <if test="modifier != null">
+                modifier = #{modifier,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where band_id = #{bandId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.Custband">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        update crm_cust_band
+        set band_no = #{bandNo,jdbcType=VARCHAR},
+        band_name = #{bandName,jdbcType=VARCHAR},
+        bshort_name = #{bshortName,jdbcType=VARCHAR},
+        pinyin = #{pinyin,jdbcType=VARCHAR},
+        pinyin_sh = #{pinyinSh,jdbcType=VARCHAR},
+        pic_path = #{picPath,jdbcType=VARCHAR},
+        band_state = #{bandState,jdbcType=VARCHAR},
+        band_desc = #{bandDesc,jdbcType=VARCHAR},
+        shop_id = #{shopId,jdbcType=INTEGER},
+        creator = #{creator,jdbcType=INTEGER},
+        modifier = #{modifier,jdbcType=INTEGER},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+        where band_id = #{bandId,jdbcType=INTEGER}
+    </update>
+
+    <select id="findAllNameList" resultType="java.util.LinkedHashMap">
+      select band_id,band_name from crm_cust_band order by create_time asc;
+    </select>
+
+    <select id="findAllBand" resultMap="BaseResultMap" parameterType="List">
+        select * from crm_cust_band where band_state=1 and shop_id IN
+        <foreach collection="list" item="l" open="(" close=")" separator=",">
+            #{l}
+        </foreach>
+    </select>
+
+    <select id="findByIds" resultType="java.util.HashMap">
+        select band_id as id,band_name as name,pic_path from crm_cust_band where band_state=1
+        <if test="ids!=null and ids.size>0">
+            and band_id IN
+            <foreach collection="ids" item="id" open="(" close=")" separator=",">
+                #{id}
+            </foreach>
+        </if>
+    </select>
+  <!--
+    <select id="findByShopId" resultType="java.util.HashMap">
+        select a.band_id,a.band_name,GROUP_CONCAT(b.list_id) as list_ids
+        from crm_cust_band as a,crm_prd_list as b
+        where a.band_id = b.band_id  and band_state=1 and a.shop_id=#{ownShopid}
+        group by a.band_id
+    </select>
+    -->
+
+    <select id="findByShopId" resultType="java.util.HashMap">
+       select a.band_id,a.band_name,GROUP_CONCAT(b.list_id) as list_ids
+         from crm_cust_band a
+    left join crm_prd_list b on a.band_id = b.band_id
+        where a.band_state=1
+          and a.shop_id=#{ownShopid}
+     group by a.band_id
+    </select>
+
+    <select id="findByName" resultType="java.util.HashMap">
+          SELECT t.`band_id` as id,t.`band_name` as name
+             FROM crm_cust_band t
+            WHERE t.`band_name` = #{brandName}
+              AND t.`shop_id` IN
+              (SELECT
+                af.`sys_id`
+              FROM
+                t_agent_fac af
+              WHERE af.`status` = 1
+              <if test="factoryId != null">
+                  AND af.`factory_id` = #{factoryId}
+              </if>
+              <if test="agentId != null">
+                  AND af.`agent_id` = #{agentId}
+              </if>
+                )
+    </select>
+
+    <select id="findNameByIds" resultType="java.util.HashMap">
+        select distinct t.band_id as id,t.band_name as name from crm_cust_band t
+        LEFT JOIN t_agent_fac f ON f.`sys_id`=t.`shop_id`
+        AND f.`status` = 1
+        AND f.`coop_state` = 1
+        AND f.`agent_id` = #{agentId}
+        <if test="ids!=null and ids.size>0">
+            where t.band_id IN
+            <foreach collection="ids" item="id" open="(" close=")" separator=",">
+                #{id}
+            </foreach>
+        </if>
+        ORDER BY f.`create_time` ASC,t.`band_id` ASC
+    </select>
+</mapper>

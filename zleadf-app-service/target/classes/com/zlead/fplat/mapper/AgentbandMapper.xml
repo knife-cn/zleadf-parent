@@ -1,0 +1,345 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.AgentbandMapper">
+    <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.Agentband">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="agent_id" property="agentId" jdbcType="INTEGER"/>
+        <result column="fact_id" property="factId" jdbcType="INTEGER"/>
+        <result column="band_id" property="bandId" jdbcType="INTEGER"/>
+        <result column="band_name" property="bandName" jdbcType="VARCHAR"/>
+        <result column="list_name" property="listName" jdbcType="VARCHAR"/>
+        <result column="list_ids" property="listIds" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        id, agent_id, fact_id, band_id, band_name, list_name
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.AgentbandExample">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from oa_agent_band
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        select
+        <include refid="Base_Column_List"/>
+        from oa_agent_band
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        delete from oa_agent_band
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.zlead.fplat.entity.Agentband">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        insert into oa_agent_band (id, agent_id, fact_id,
+        band_id, band_name, list_name,
+        list_ids)
+        values (#{id,jdbcType=INTEGER}, #{agentId,jdbcType=INTEGER}, #{factId,jdbcType=INTEGER},
+        #{bandId,jdbcType=INTEGER}, #{bandName,jdbcType=VARCHAR}, #{listName,jdbcType=VARCHAR},
+        #{listIds,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.zlead.fplat.entity.Agentband">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        insert into oa_agent_band
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="agentId != null">
+                agent_id,
+            </if>
+            <if test="factId != null">
+                fact_id,
+            </if>
+            <if test="bandId != null">
+                band_id,
+            </if>
+            <if test="bandName != null">
+                band_name,
+            </if>
+            <if test="listName != null">
+                list_name,
+            </if>
+            <if test="listIds != null">
+                list_ids,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="agentId != null">
+                #{agentId,jdbcType=INTEGER},
+            </if>
+            <if test="factId != null">
+                #{factId,jdbcType=INTEGER},
+            </if>
+            <if test="bandId != null">
+                #{bandId,jdbcType=INTEGER},
+            </if>
+            <if test="bandName != null">
+                #{bandName,jdbcType=VARCHAR},
+            </if>
+            <if test="listName != null">
+                #{listName,jdbcType=VARCHAR},
+            </if>
+            <if test="listIds != null">
+                #{listIds,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.Agentband">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        update oa_agent_band
+        <set>
+            <if test="agentId != null">
+                agent_id = #{agentId,jdbcType=INTEGER},
+            </if>
+            <if test="factId != null">
+                fact_id = #{factId,jdbcType=INTEGER},
+            </if>
+            <if test="bandId != null">
+                band_id = #{bandId,jdbcType=INTEGER},
+            </if>
+            <if test="bandName != null">
+                band_name = #{bandName,jdbcType=VARCHAR},
+            </if>
+            <if test="listName != null">
+                list_name = #{listName,jdbcType=VARCHAR},
+            </if>
+            <if test="listIds != null">
+                list_ids = #{listIds,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.Agentband">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        update oa_agent_band
+        set agent_id = #{agentId,jdbcType=INTEGER},
+        fact_id = #{factId,jdbcType=INTEGER},
+        band_id = #{bandId,jdbcType=INTEGER},
+        band_name = #{bandName,jdbcType=VARCHAR},
+        list_name = #{listName,jdbcType=VARCHAR},
+        list_ids = #{listIds,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+
+    <select id="findBandByAgentId" resultMap="BaseResultMap">
+        select * from oa_agent_band where agent_id=#{id}
+    </select>
+
+    <select id="findByAgentIdAndKey" resultType="java.util.LinkedHashMap">
+    select b.band_id,c.band_name,b.list_ids from oa_agent_band b
+    left join crm_cust_band c on b.band_id= c.band_id
+    where c.band_state=1
+    <if test="agentId != null and agentId != 0">
+        and b.agent_id=#{agentId}
+        and b.fact_id in (select factory_id from t_agent_fac where agent_id=#{agentId} and `status`=1
+        <if test="factoryId!=null and factoryId!=''">
+            and factory_id=#{factoryId}
+        </if>
+        )
+    </if>
+    <if test="key != null and key != ''">
+        <bind name="pattern" value="'%' + key + '%'"/>
+        and c.band_name like #{pattern}
+    </if>
+    order by b.id asc
+</select>
+
+
+    <select id="findByAgentIdAndKeyAPP" resultType="java.util.LinkedHashMap">
+        select distinct b.band_id,c.band_name,b.list_ids from oa_agent_band b
+        left join crm_cust_band c on b.band_id= c.band_id
+        where c.band_state=1
+            and b.fact_id in (select factory_id from t_agent_fac where `status`=1
+            <if test="factoryId!=null and factoryId!=''">
+                and factory_id=#{factoryId}
+            </if>
+            )
+        <if test="key != null and key != ''">
+            <bind name="pattern" value="'%' + key + '%'"/>
+            and c.band_name like #{pattern}
+        </if>
+        GROUP BY b.band_id
+        order by b.id asc
+    </select>
+    <select id="selectByAgentFacIds" parameterType="List" resultMap="BaseResultMap">
+        /*select * from oa_agent_band*/
+        SELECT  gd.id AS id,gd.agent_id AS agent_id,gd.fact_id AS fact_id,gd.band_name AS band_name,gd.list_name AS list_name,gd.list_ids AS list_ids,gd.agentfac_id AS agentfac_id
+                ,gd.org_id AS org_id,gd.creator AS creator,gd.create_time AS create_time,gd.modifier AS MODIFIER,gd.modify_time AS modify_time,gd.band_id,gd.list_ids as list_ids,
+        (
+        SELECT
+        concat(
+        group_concat(gd.band_id SEPARATOR ',')
+        )
+        ) AS bandIds
+        FROM
+        oa_agent_band gd inner join t_agent_fac  fac on fac.factory_id=gd.fact_id and gd.agent_id = #{agentId}
+        WHERE
+           gd.band_id IN (
+        SELECT
+        ds.brand_id from t_goods ds
+        INNER JOIN t_goods_level lev ON ds.id = lev.goods_id
+        INNER JOIN t_agent_fac fac ON fac.level_id = lev.level_id
+        INNER JOIN oa_agent_band_lists list on list.list_id= ds.list_id
+        WHERE
+        ds.is_market = 1
+        AND ds.terminal IN (2, 3)
+        AND ds.prod_type = 0
+        AND lev.STATUS = 1
+        AND fac.agent_id = #{agentId}
+        and list.agent_id= #{agentId}
+        AND fac.STATUS = 1
+        )
+       <!--  OR gd.band_id IN (
+            SELECT g.brand_id FROM oa_market_act oma INNER JOIN oa_factory_info ofi
+            ON oma.shop_id = ofi.shop_id INNER JOIN oa_market_agent omag
+            ON oma.act_id = omag.act_id INNER JOIN oa_market_goods omg
+            ON omg.act_id = omag.act_id INNER JOIN t_goods g
+            ON g.id = omg.goods_id
+               INNER JOIN t_agent_fac af
+      ON af.`factory_id` = ofi.`fact_id`
+      AND af.`agent_id` = omag.`agent_id`
+      AND af.`status` = 1
+      AND af.`coop_state` = 1
+            WHERE  omag.agent_id = #{agentId}  AND omg.is_market = 1 AND g.prod_type = 2
+              AND g.is_market = 1 AND g.terminal IN (2, 3) AND oma.eff_date &lt;= NOW()
+              AND oma.terminal IN (2, 3) AND oma.cont_state = 2
+        )  -->
+        GROUP BY
+        gd.band_name
+        ORDER BY
+        gd.id asc,
+        fac.create_time desc,
+        gd.create_time desc limit 0,6
+    </select>
+    
+    <!-- 根据 agentid和 factid获取品牌信息 -->
+     <select id="getBrandByFctIdAndAgentId" resultMap="BaseResultMap">
+          select  agoods.id as id,agoods.agent_id,  band.band_id,band.band_name,fac.fact_id,band.shop_id,agoods.market_time,af.create_time  from (
+
+-- 普通商品 --
+select band.id,band.agent_id,ds.brand_id,ds.shop_id,max(os.create_time) market_time from t_goods ds
+        INNER JOIN t_goods_level lev ON ds.id = lev.goods_id
+        INNER JOIN t_agent_fac fac ON fac.level_id = lev.level_id
+        INNER JOIN oa_agent_band band on band.band_id= ds.brand_id
+				LEFT   JOIN oa_item_state os on ds.id=os.item_id
+        WHERE
+        ds.is_market = 1
+        AND ds.terminal IN (2, 3)
+        AND ds.prod_type = 0
+        AND lev.STATUS = 1
+        AND fac.agent_id = #{agentId}
+        and band.agent_id= #{agentId}
+
+        AND fac.STATUS = 1
+
+				GROUP BY ds.brand_id
+
+
+) agoods  INNER JOIN   crm_cust_band band on agoods.brand_id=band.band_id INNER JOIN t_agent_fac af on af.agent_id=#{agentId}  and af.sys_id=band.shop_id INNER JOIN oa_factory_info fac on agoods.shop_id=fac.shop_id
+WHERE fac.fact_id = #{factId}
+GROUP BY band.shop_id,band.band_name,agoods.market_time
+ORDER BY    af.create_time asc,band.shop_id asc, agoods.market_time desc
+	limit 0,6
+    </select>
+
+
+    <select id="selectAgentBandByAgentId" parameterType="Long" resultMap="BaseResultMap">
+        select * from oa_agent_band where agent_id =#{agentId}
+    </select>
+
+    <select id="getAgentBrandList" resultType="com.zlead.entity.vo.AgentBrandListVO">
+        SELECT
+            b.band_id brandId,b.pic_path picUrl, b.band_name brandName
+        FROM
+            oa_agent_band a
+            LEFT JOIN crm_cust_band b ON a.band_id = b.band_id
+        WHERE
+            a.agent_id = #{agentId} and b.band_state=1
+            and b.shop_id = #{shopId}
+    </select>
+
+    <select id="selectBrandByAgentId" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select a.* from oa_agent_band a where a.agent_id=#{agentId} and a.fact_id = #{factoryId}
+    </select>
+    
+</mapper>

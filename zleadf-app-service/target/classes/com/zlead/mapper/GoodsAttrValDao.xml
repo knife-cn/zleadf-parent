@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlead.dao.GoodsAttrValDao">
+
+
+    <resultMap id="BaseResultMap" type="com.zlead.entity.GoodsAttrValEntity">
+        <result column="attr_id" property="attrId" />
+        <result column="attr_name" property="attrName" />
+        <result column="attr_value" property="attrValue" />
+    </resultMap>
+
+    <resultMap id="goodsAttrValueVo" type="com.zlead.entity.vo.GoodsAttrValueVo">
+        <result column="id" property="goodsId" />
+        <result column="show_price" property="showPrice" />
+        <result column="im_qty" property="stock" />
+        <result column="stock_type" property="stockType" />
+    </resultMap>
+
+    <!--产品参数 去掉了：d.is_market = 1 -->
+    <select id="queryByPid" parameterType="java.lang.Integer" resultType="com.zlead.entity.dto.GoodsAttrValDto">
+        SELECT DISTINCT attr_name  as 'name',attr_value as 'attrValue',goods_id as 'goodsId' from t_goods_attr_val
+        where prod_id = #{pid}
+            and goods_id in (select goods_id from t_goods_level where level_id in (select level_id from t_agent_fac where agent_id=#{agentId} and `status`=1))
+            and EXISTS (select d.id from t_goods as d where d.is_market = 1 and d.terminal in (2,3) and goods_id = d.id)
+        group by attr_name ,attr_value ORDER BY attr_name
+    </select>
+
+    <select id="queryByGdsId" parameterType="java.lang.Integer" resultType="com.zlead.entity.dto.GoodsAttrValDto">
+        SELECT DISTINCT attr_name as 'name', attr_value as 'attrValue', goods_id as 'goodsId' from t_goods_attr_val where goods_id = #{goodsId}
+    </select>
+
+    <select id="findByGdsId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        SELECT DISTINCT
+        attr_id,attr_name,GROUP_CONCAT(DISTINCT attr_value) as attrValue
+        from
+        t_goods_attr_val
+        where prod_id = #{prodId} GROUP BY attr_id;
+    </select>
+
+    <!--app用，根据产品查询可选参数（上架商品）-->
+    <select id="findGoodsAttrByProdId"  resultMap="BaseResultMap">
+        SELECT DISTINCT gav.attr_id,gav.attr_name,GROUP_CONCAT(DISTINCT gav.attr_value ORDER BY pav.`line_sort`) AS attrValue
+          FROM t_goods g
+    INNER JOIN t_goods_attr_val gav
+            ON gav.`goods_id` = g.`id`
+     LEFT JOIN t_prod_attr_val pav
+            ON pav.`prod_id` = gav.`prod_id`
+           AND pav.`attr_name` = gav.`attr_name`
+           AND pav.`value_name` = gav.`attr_value`
+         WHERE g.`is_market` = 1
+           AND g.`prod_id` = #{prodId}
+      GROUP BY gav.`attr_id`
+      ORDER BY gav.`attr_id`
+    </select>
+
+    <!--app用，根据产品ID和参数查询商品-->
+    <select id="selectGoods" resultMap="goodsAttrValueVo">
+             SELECT g.`id`,
+                    g.`show_price`,
+                    g.stock_type,
+                    CASE
+                        WHEN g.`stock_type` = '1' THEN pcp.`total_qty`
+                        ELSE g.`stock`
+                    END AS im_qty
+              FROM t_goods g
+         LEFT JOIN prd_cust_price pcp
+                ON pcp.`item_id` = g.`id`
+             WHERE g.`prod_id` = #{prdId}
+        <if test="list != null and list.size > 0">
+            <foreach collection="list" item="item">
+               AND EXISTS (SELECT 1 FROM t_goods_attr_val gav
+                                   WHERE gav.`goods_id` = g.`id`
+                                     AND gav.`attr_name` = #{item.key}
+                                     AND gav.`attr_value` = #{item.value})
+            </foreach>
+        </if>
+        limit 0,1
+    </select>
+
+    <select id="findGoodsAttrVal" resultType="java.util.Map">
+        select b.goods_id,
+          (select concat(a.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val where goods_id=a.id) full_name,
+          a.show_price,a.first_img,b.attr_val,a.stock,a.if_show_price,a.if_show_stock,a.market_price as marketPrice, a.price,a.supply_price as supplyPrice,
+          a.agent_price as agentPrice from t_goods a
+        inner join (
+            select goods_id,group_concat(attr_name,':',attr_value order by sort separator ' ') attr_val from t_goods_attr_val where prod_id=#{pid}
+              and goods_id in (select goods_id from t_goods_level where level_id in (select level_id from t_agent_fac where agent_id=#{agentId} and `status`=1))
+            group by goods_id order by attr_id
+            ) b
+        on a.id=b.goods_id
+        INNER JOIN oa_agent_band_lists lists ON a.list_id = lists.list_id and lists.band_id = a.brand_id AND lists.agent_id = #{agentId}
+        where a.is_market=1 and a.terminal in (2,3) <!--and a.stock > 0-->
+    </select>
+
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.zlead.entity.GoodsAttrValEntity" >
+        update t_goods_attr_val
+        <set >
+            <if test="attrValue != null" >
+                attr_value = #{attrValue,jdbcType=VARCHAR},
+            </if>
+            <if test="sort != null" >
+                sort = #{sort,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+        <if test="attrName != null" >
+            AND attr_name = #{attrName,jdbcType=VARCHAR}
+        </if>
+    </update>
+
+    <select id="findActGoodsAttrs" resultType="com.zlead.entity.dto.GoodsAttrValDto">
+        select DISTINCT attr_name  as 'name',attr_value as 'attrValue',goods_id as 'goodsId' from t_goods_attr_val
+        where goods_id in (select a.goods_id from oa_market_goods a
+        inner join (select id from t_goods where prod_id=#{prodId}) b on a.goods_id=b.id
+        where a.act_id=#{actId}) group by attr_name ,attr_value ORDER BY attr_name
+    </select>
+
+    <select id="findActGoodsAttrVal" resultType="java.util.Map">
+        select b.goods_id,(select concat(a.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val where goods_id=a.id) full_name,
+         a.agent_price as agentPrice,a.price,a.market_price as marketPrice,a.supply_price as supplyPrice, d.sale_price,a.show_price,a.first_img,b.attr_val,a.stock stock,1 if_show_price,1 if_show_stock from t_goods a
+        inner join (
+            select goods_id,group_concat(attr_name,':',attr_value order by sort separator ' ') attr_val from t_goods_attr_val where goods_id in
+                (select goods_id from oa_market_goods where act_id=#{actId})
+           group by goods_id order by attr_id
+        ) b on a.id=b.goods_id
+        left join oa_market_goods d on d.goods_id=b.goods_id where d.act_id=#{actId} and a.prod_id=#{prodId} and a.prod_type = 2<!--and a.stock > 0-->
+    </select>
+</mapper>

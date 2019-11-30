@@ -1,0 +1,874 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#shulian li .priceN {
+    text-align: center;
+}
+
+.dt_top {
+    width: 100%;
+    height: 46px;
+    background: linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+}
+
+.dt_topcon {
+    width: 1200px;
+    height: 46px;
+    margin: 0 auto;
+    background: linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+}
+
+.sp {
+    width: 100%;
+    height: 44px;
+}
+
+.sp_d {
+    width: 1200px;
+    height: 44px;
+    background: rgba(244, 246, 247, 1);
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.sp_d p {
+    font-size: 14px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(68, 68, 68, 1);
+    line-height: 20px;
+    padding: 12px 0 12px 30px;
+}
+
+.serp {
+    width: 100%;
+    display: none;
+}
+
+.serp_con {
+    width: 1200px;
+    margin: 0 auto;
+    margin-top: 40px;
+    border-radius: 4px;
+    border: 1px solid rgba(229, 229, 229, 1);
+    border-bottom: none;
+    overflow: auto;
+}
+
+.serch_a {
+    position: relative;
+    width: 1200px;
+    border-bottom: 1px solid #E5E5E5;
+    overflow: hidden;
+}
+
+.serch_pin {
+    padding: 21px 0 21px 30px;
+    float: left;
+}
+
+.serch_pin span {
+    width: 42px;
+    height: 20px;
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(167, 167, 172, 1);
+    line-height: 20px;
+}
+
+.serch_mc {
+    position: relative;
+    float: left;
+    margin-left: 60px;
+    width: 1024px;
+    height: 61px;
+    overflow: hidden;
+}
+
+.serch_mc li {
+    min-width: 128px;
+    float: left;
+}
+
+.serch_mcul {
+    width: 1024px;
+    font-size: 0;
+    max-height: 1000px;
+    margin-top: 22px;
+    clear: both;
+    overflow: hidden;
+}
+
+.serch_mcul li {
+    padding-bottom: 22px;
+    cursor: pointer;
+}
+
+.serch_mc li span {
+    font-size: 12px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    /*color: rgba(79, 83, 98, 1);*/
+    line-height: 17px;
+}
+
+.serp_gd {
+    padding: 22px 0;
+    float: left;
+}
+
+.btn span {
+    font-size: 12px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(79, 83, 98, 1);
+    line-height: 17px;
+}
+
+.btn1 span {
+    font-size: 12px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(253, 87, 0, 1);
+    line-height: 17px;
+}
+
+.btn {
+    cursor: pointer;
+}
+
+.btn1 {
+    display: none;
+    cursor: pointer;
+}
+
+.er {
+    display: none;
+}
+
+.er li {
+    padding-bottom: 22px;
+}
+
+.serProut {
+    width: 100%;
+}
+
+.serProut_con {
+    width: 1200px;
+    overflow: auto;
+    margin: 0 auto;
+    margin-top: 46px;
+}
+
+.serProut_con li {
+    width: 184px;
+    height: 252px;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid #FFFFFF;
+    border-bottom: 6px solid #FFFFFF;
+    margin-right: 64px;
+    cursor: pointer;
+    float: left;
+    margin-bottom: 30px;
+}
+
+.serProut_con li:hover {
+    border: 1px solid rgba(253, 87, 0, 1);
+    border-bottom: 6px solid rgba(253, 87, 0, 1);
+}
+
+.serProut_con li:hover .porut_mo {
+    display: block;
+}
+
+.serProut_con li:nth-child(5n) {
+    margin-right: 0;
+}
+
+.porut_img {
+    width: 184px;
+    height: 161px;
+    position: relative;
+}
+
+.porut_img img {
+    width: 70%;
+    height: 70%;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.porut_mo {
+    position: absolute;
+    width: 184px;
+    height: 161px;
+    background: rgba(0, 0, 0, 0.6);
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.porut_p {
+    text-align: center;
+    font-size: 16px;
+    font-family: PingFang-SC-Bold;
+    font-weight: bold;
+    color: rgba(253, 87, 0, 1);
+    line-height: 22px;
+    padding-top: 9px;
+}
+
+.porut_pa {
+    text-align: center;
+    width: 169px;
+    padding-left: 8px;
+    font-size: 13px;
+    font-family: PingFang-SC-Bold;
+    font-weight: bold;
+    color: rgba(79, 83, 98, 1);
+    line-height: 18px;
+}
+
+.porut_ku {
+    width: 186px;
+    height: 40px;
+    margin-top: 123px;
+}
+
+.porut_kua {
+    width: 40px;
+    height: 40px;
+    margin-left: 29px;
+    float: left;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+}
+
+.porut_kub {
+    width: 40px;
+    height: 40px;
+    margin-left: 29px;
+    float: left;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+}
+
+.porut_kua {
+    width: 40px;
+    height: 40px;
+    margin-left: 40px;
+    float: left;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+}
+
+.porut_kuaimg {
+    position: absolute;
+    top: -20px;
+    left: -10px;
+}
+
+.porut_hkuaimg {
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    display: none;
+}
+
+.porut_kub {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin-left: 16px;
+    float: left;
+    border-radius: 50%;
+    position: relative;
+}
+
+.xjt {
+    position: absolute;
+    top: -38px;
+    left: -8px;
+}
+
+.gmtk {
+    display: none;
+    margin-top: -20px;
+}
+
+.porut_kua:hover .gmtk {
+    display: block;
+}
+
+.porut_kua:hover .porut_hkuaimg {
+    display: block;
+}
+
+.porut_kua:hover .porut_kuaimg {
+    display: none;
+}
+
+.porut_kub:hover .gmtk {
+    display: block;
+}
+
+.porut_kub:hover .porut_hkuaimg {
+    display: block;
+}
+
+.porut_kub:hover .porut_kuaimg {
+    display: none;
+}
+
+.gma {
+    width: 66px;
+    height: 18px;
+    background: rgba(253, 87, 0, 1);
+    position: absolute;
+    top: -35px;
+    left: -10px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.gma span {
+    display: block;
+    font-size: 10px;
+    font-family: PingFang-SC-Bold;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 1);
+    line-height: 14px;
+    margin-top: 2px;
+}
+
+
+/*//分页*/
+
+.tbpager {
+    width: 100%;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.tbapager {
+    width: 1200px;
+    height: 30px;
+    margin: 0 auto;
+}
+
+a {
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(60, 61, 72, 1);
+    letter-spacing: 2px;
+}
+
+.page1 {
+    float: left;
+    line-height: 30px;
+}
+
+.page2 {
+    float: right;
+    margin-right: 20px;
+    height: auto;
+    line-height: 30px;
+}
+
+.current {
+    color: rgba(253, 87, 0, 1);
+}
+
+.pagination-panel {
+    float: right;
+    height: auto;
+}
+
+.pagination-panel a {
+    padding: 5px;
+    background-color: rgba(253, 87, 0, 1);
+    color: white;
+}
+
+
+/* .pagination li {
+    float: left;
+    height: 30px;
+    margin-left: 20px;
+} */
+
+#toPage {
+    width: 50px;
+    height: 30px;
+}
+
+.spwu {
+    width: 100%;
+    margin-bottom: 137px;
+    display: none;
+    min-height: 228px;
+}
+
+.spwuCon {
+    width: 1200px;
+    overflow: auto;
+    margin: 0 auto;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.spwu_top {
+    height: 44px;
+}
+
+.spwucon_a {
+    width: 326px;
+    overflow: auto;
+    margin: 0 auto;
+}
+
+.spwu_lv {
+    width: 44px;
+    height: 44px;
+    float: left;
+}
+
+.spwu_lz {
+    height: 44px;
+}
+
+#xinxi {
+    display: block;
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(79, 83, 98, 1);
+    line-height: 44px;
+    margin-left: 50px;
+    margin-top: 9px;
+    width: 276px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.spwu_bo {
+    height: 92px;
+    margin-left: 64px;
+    margin-top: 7px;
+}
+
+.spwu_bo p {
+    font-size: 12px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    line-height: 23px;
+}
+
+.spwu_bo p span {
+    color: #2272C8;
+}
+
+.spwu_btn {
+    width: 280px;
+    height: 35px;
+    margin-left: 44px;
+    margin-top: 20px;
+}
+
+.btnfan {
+    cursor: pointer;
+    width: 107px;
+    height: 27px;
+    border-radius: 4px;
+    border: 1px solid rgba(206, 208, 218, 1);
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(79, 83, 98, 1);
+    line-height: 20px;
+    text-align: center;
+    padding-top: 8px;
+    float: left;
+}
+
+.btnshou {
+    cursor: pointer;
+    width: 110px;
+    height: 28px;
+    background: rgba(253, 87, 0, 1);
+    border-radius: 4px;
+    float: left;
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 1);
+    line-height: 20px;
+    text-align: center;
+    padding-top: 8px;
+    margin-left: 23px;
+}
+
+
+/* 新增：页面加载login效果 */
+
+.loading {
+    width: 100%;
+    /* height: 250px; */
+    margin-top: 20px;
+    display: none;
+    text-align: center;
+    min-height: 355px;
+}
+
+.loading img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.loading p {
+    width: 100%
+}
+
+
+/* 立即购买和添加购物车弹窗 */
+
+.meng3 {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 900;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.popupMsg3 {
+    display: none;
+    width: 392px;
+    height: 348px;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1001;
+    border-radius: 6px;
+}
+
+.popupMsg3 .close {
+    float: right;
+    width: 21px;
+    height: 21px;
+    margin: 15px;
+    cursor: pointer;
+}
+
+.popupMsg3 .tips {
+    display: block;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+
+.popupMsg3 p {
+    display: block;
+    text-align: center;
+    width: 316px;
+    line-height: 28px;
+    color: #A7A7AC;
+    margin: 0 auto;
+    margin-top: 48px;
+}
+
+.popupMsg3 .know {
+    width: 110px;
+    height: 43px;
+    line-height: 43px;
+    text-align: center;
+    border: 1px solid rgba(206, 208, 218, 1);
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: 60px;
+    color: #4F5362;
+    cursor: pointer;
+}
+
+
+/*//分页*/
+
+.ta3 {
+    width: 1055px;
+    height: 70px;
+    margin: 0 auto;
+    font-size: 14px;
+    display: none;
+}
+
+.tbpager {
+    width: 100%;
+    height: 30px;
+}
+
+.tbapager {
+    width: 1200px;
+    height: 30px;
+    margin: 0 auto;
+}
+
+.pager {
+    float: right;
+    width: auto;
+    height: 30px;
+    margin-top: 25px;
+    margin-right: 10px;
+    /*border: 1px solid red;*/
+}
+
+.pagerbu {
+    margin-top: 25px;
+    float: right;
+    width: auto;
+    height: 30px;
+}
+
+#tiaozhuang {
+    width: 25px;
+    height: 20px;
+    outline: none;
+}
+
+.zeng {
+    width: auto;
+    height: 20px;
+}
+
+a {
+    color: #3C3D48;
+    text-decoration: none;
+}
+
+
+/*a:hover {*/
+
+
+/*color: #2B4A78;*/
+
+
+/*text-decoration: underline;*/
+
+
+/*}*/
+
+a:focus,
+input:focus {
+    outline-style: none;
+    outline-width: medium;
+}
+
+#tz {
+    width: 25px;
+    height: 24px;
+    border: none;
+    outline: none;
+    background-color: rgba(255, 125, 57, 1);
+    color: white;
+}
+
+
+/* custom css style: pageNum,cPageNum */
+
+.pageNum {
+    padding: 2px 8px;
+    display: inline-block;
+}
+
+.cPageNum {
+    color: rgba(255, 125, 57, 1);
+    ;
+    padding: 2px 8px;
+}
+
+#pageNav {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}
+
+.taNo {
+    width: 100%;
+    height: 350px;
+    position: relative;
+    display: none;
+}
+
+.cons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 310px;
+    height: 150px;
+}
+
+.cons img {
+    width: 150px;
+    height: 150px;
+    float: left;
+}
+
+.cons .rights {
+    float: left;
+    margin-left: 40px;
+}
+
+.cons .rights p:nth-child(1) {
+    margin-top: 45px;
+    color: #4F5362;
+    font-size: 20px;
+}
+
+.cons .rights p:nth-child(2) {
+    margin-top: 20px;
+    color: #4F5362;
+    font-size: 14px;
+}
+
+.cons .rights p:nth-child(2) .goIndex {
+    color: #2272C8;
+}
+
+.pageJump {
+    width: auto;
+}
+
+.pageJump input {
+    margin: 0 5px;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+}
+
+.pageJump .button {
+    background-color: rgba(253, 87, 0, 1);
+    color: white;
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 5px;
+}
+
+
+/* 分页新增：不要最左和最右 */
+
+
+/* .ta3 ul li:first-child,
+.ta3 ul li:last-child {
+    display: none;
+} */
+
+
+/*添加购物车成功*/
+
+.meng {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.guanlian {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -196px;
+    margin-top: -153px;
+    width: 392px;
+    height: 306px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 6px;
+}
+
+.toptan {
+    position: relative;
+    width: 392px;
+    height: 60px;
+}
+
+.toptan img {
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    top: 19px;
+    right: 19px;
+    cursor: pointer;
+}
+
+.tu {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+}
+
+.tu img {
+    width: 100%;
+    height: 100%;
+}
+
+.ren {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: auto;
+    height: 22px;
+    font-size: 16px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(79, 83, 98, 1);
+    line-height: 22px;
+    text-align: center;
+}
+
+.yiyan {
+    margin: 0 auto;
+    margin-top: 60px;
+    width: 110px;
+    height: 43px;
+    border-radius: 4px;
+    border: 1px solid rgba(206, 208, 218, 1);
+    text-align: center;
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(79, 83, 98, 1);
+    line-height: 43px;
+}
+
+.yiyan:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,445 @@
+body {
+  background-color: #E9EFF7;
+}
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none;
+  touch-action: none;
+}
+.marginTop {
+  border-top: 0.2rem solid #E9EFF7;
+}
+.clearfix::before,
+.clearfix::after {
+  display: table;
+  content: '';
+}
+.clearfix::after {
+  clear: both;
+}
+.container {
+  width: 84%;
+  margin: 0 auto;
+}
+.navBottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 1;
+}
+.navBottom ul {
+  display: flex;
+}
+.navBottom ul li {
+  flex: auto;
+  text-align: center;
+}
+.navBottom ul li a {
+  display: block;
+  padding-bottom: 0.1rem;
+}
+.navBottom ul li a div {
+  line-height: 0.64rem;
+}
+.navBottom ul li a div span {
+  display: inline-block;
+  width: 0.46rem;
+  height: 0.44rem;
+  background-color: #ddd;
+  vertical-align: middle;
+  margin-top: -2px;
+  background: url('../../images/customer_icon.png') no-repeat 0 -0.76rem;
+  background-size: 4.54rem auto;
+}
+.navBottom ul li a p {
+  font-size: 0.22rem;
+  line-height: 12px;
+  color: #999999;
+}
+.navBottom ul li:nth-of-type(2) a div span {
+  width: 0.52rem;
+  height: 0.42rem;
+  background: url('../images/customer_icon.png') no-repeat -1.52rem -0.76rem;
+  background-size: 4.54rem auto;
+}
+.navBottom ul li:nth-of-type(3) a div span {
+  width: 0.34rem;
+  height: 0.44rem;
+  background: url('../images/customer_icon.png') no-repeat -2.28rem -0.76rem;
+  background-size: 4.54rem auto;
+}
+.navBottom ul li:nth-of-type(4) a div span {
+  width: 0.34rem;
+  height: 0.42rem;
+  background: url('../images/customer_icon.png') no-repeat -3.04rem -0.76rem;
+  background-size: 4.54rem auto;
+}
+.navBottom ul li:nth-of-type(5) a div span {
+  width: 0.32rem;
+  height: 0.42rem;
+  background: url('../images/customer_icon.png') no-repeat -0.76rem -0.76rem;
+  background-size: 4.54rem auto;
+}
+.navBottom ul li.active a div span {
+  background: url('../images/customer_icon.png') no-repeat 0 -1.32rem;
+  background-size: 4.54rem auto;
+}
+.navBottom ul li.active p {
+  color: #4189FF;
+}
+.navBottom ul li:nth-of-type(2).active a div span {
+  background: url('../images/customer_icon.png') no-repeat -1.52rem -1.32rem;
+  background-size: 4.54rem auto;
+}
+.navBottom ul li:nth-of-type(2).active p {
+  color: #4189FF;
+}
+.navBottom ul li:nth-of-type(3).active a div span {
+  width: 0.32rem;
+  height: 0.42rem;
+  background: url('../images/customer_icon.png') no-repeat -2.28rem -1.32rem;
+  background-size: 4.54rem auto;
+}
+.navBottom ul li:nth-of-type(4).active a div span {
+  width: 0.34rem;
+  height: 0.42rem;
+  background: url('../images/customer_icon.png') no-repeat -3.04rem -1.32rem;
+  background-size: 4.54rem auto;
+}
+.navBottom ul li:nth-of-type(5).active a div span {
+  background: url('../images/customer_icon.png') no-repeat -0.76rem -1.32rem;
+  background-size: 4.54rem auto;
+}
+.navBottom ul li:nth-of-type(5).active p {
+  color: #4189FF;
+}
+.headerTop {
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  line-height: 0.88rem;
+  -webkit-background: linear-gradient(90deg, #3083FF, #1566DF);
+  background: linear-gradient(90deg, #3083FF, #1566DF);
+}
+.headerTop .backBtn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 0.6rem;
+  height: 0.88rem;
+  line-height: 0.88rem;
+  text-align: center;
+}
+.headerTop .backBtn span {
+  display: inline-block;
+  width: 0.24rem;
+  height: 0.36rem;
+  background: url('../images/customer_icon.png') no-repeat -3.8rem -1.32rem;
+  background-size: 4.54rem auto;
+  vertical-align: middle;
+}
+.shedulePart {
+  position: relative;
+  padding-top: 56%;
+  -webkit-background: linear-gradient(90deg, #3083FF, #1566DF);
+  background: linear-gradient(90deg, #3083FF, #1566DF);
+}
+.shedulePart > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.shedulePart .chooseUl {
+  text-align: center;
+  font-size: 0;
+  padding-top: 4.26666667%;
+}
+.shedulePart .chooseUl li {
+  display: inline-block;
+}
+.shedulePart .chooseUl li a {
+  display: inline-block;
+  width: 1.28rem;
+  color: #fff;
+  font-size: 0.28rem;
+  line-height: 0.48rem;
+  border-radius: 0.48rem;
+}
+.shedulePart .chooseUl li.active a {
+  color: #1259C4;
+  background-color: #fff;
+}
+.shedulePart .messageBtn {
+  position: absolute;
+  top: 9.04761905%;
+  right: 5.33333333%;
+  width: 0.52rem;
+  height: 0.52rem;
+  background: url('../images/home_ic_message@2x.png.png') no-repeat 0 0;
+  background-size: 0.52rem auto;
+}
+.shedulePart .messageBtn span {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0.16rem;
+  height: 0.16rem;
+  border-radius: 50%;
+  -webkit-background: linear-gradient(136deg, #ff4d46 0%, #fd5292 100%);
+  background: linear-gradient(136deg, #ff4d46 0%, #fd5292 100%);
+  border: 0.02rem solid #fff;
+}
+.shedulePart .messageBtn span.active {
+  display: block;
+}
+.shedulePart #circle {
+  position: relative;
+  width: 112px;
+  margin: 10.93333333% auto 0;
+}
+.shedulePart #circle .sheduleDv {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  -ms-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-align: center;
+}
+.shedulePart #circle .sheduleDv strong {
+  font-size: 0.76rem;
+  line-height: 1.12rem;
+}
+.shedulePart #circle .sheduleDv span {
+  font-size: 0.24rem;
+  line-height: 0.34rem;
+}
+.orderNumDv,
+.orderPart {
+  display: flex;
+  padding: 0 5.86666667%;
+  margin: 0 auto;
+  background-color: #fff;
+}
+.orderNumDv > div,
+.orderPart > div {
+  flex: auto;
+}
+.orderNumDv {
+  padding: 4.26666667% 0;
+}
+.orderNumDv > div p {
+  text-align: center;
+}
+.orderNumDv > div p:first-child {
+  font-size: 0.24rem;
+  color: #3E4A59;
+  line-height: 0.32rem;
+  margin-bottom: 0.53333333%;
+}
+.orderNumDv > div p:last-child {
+  font-size: 0.4rem;
+  color: #3E4A59;
+  line-height: 0.48rem;
+}
+.orderPart {
+  padding-top: 4.26666667%;
+  padding-bottom: 3.73333333%;
+}
+.orderPart > div a {
+  display: block;
+  text-align: center;
+}
+.orderPart > div img {
+  width: 21.75226586%;
+}
+.orderPart > div p {
+  font-size: 0.28rem;
+  line-height: 0.52rem;
+}
+.typeItemUl {
+  background-color: #fff;
+}
+.typeItemUl li a {
+  display: table;
+  width: 100%;
+}
+.typeItemUl li a > div {
+  display: table-cell;
+  height: 1.56rem;
+}
+.typeItemUl li a .imgDv {
+  width: 16%;
+  text-align: center;
+  vertical-align: middle;
+}
+.typeItemUl li a .imgDv span {
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  vertical-align: middle;
+  background: url('../images/customer_icon.png') no-repeat 0 0;
+  background-size: 4.54rem auto;
+}
+.typeItemUl li a .contDv {
+  position: relative;
+  width: 84%;
+  padding-right: 4.76190476%;
+}
+.typeItemUl li a .contDv::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid #D3DFEF;
+  -ms-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -webkit-transform: scale(0.5);
+  -o-transform: scale(0.5);
+  transform: scale(0.5);
+}
+.typeItemUl li a .contDv p {
+  font-size: 15px;
+  color: #24272B;
+  line-height: 1.56rem;
+}
+.typeItemUl li a .contDv p span {
+  float: right;
+  font-size: 24px;
+  line-height: 1.56rem;
+  color: #09C04C;
+}
+.typeItemUl li:last-child a .contDv::after {
+  display: none;
+}
+.typeItemUl li:nth-of-type(2) a .imgDv span {
+  background: url('../images/customer_icon.png') no-repeat -1.52rem 0;
+  background-size: 4.54rem auto;
+}
+.typeItemUl li:nth-of-type(2) a .contDv span {
+  color: #24272B;
+}
+.typeItemUl li:nth-of-type(3) a .imgDv span {
+  background: url('../images/customer_icon.png') no-repeat -0.76rem 0;
+  background-size: 4.54rem auto;
+}
+.typeItemUl li:nth-of-type(4) a .imgDv span {
+  background: url('../images/customer_icon.png') no-repeat -2.28rem 0;
+  background-size: 4.54rem auto;
+}
+.typeItemUl li:nth-of-type(5) a .imgDv span {
+  background: url('../images/customer_icon.png') no-repeat -3.04rem 0;
+  background-size: 4.54rem auto;
+}
+.todoListPart {
+  padding-bottom: 20%;
+}
+.todoListPart > div {
+  width: 93.33333333%;
+  margin: 0 auto;
+}
+.todoListPart h4 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 45px;
+  color: #4F5362;
+}
+.todoListPart .todoList li {
+  font-size: 0.24rem;
+  margin-bottom: 2.84900285%;
+  background-color: #fff;
+}
+.todoListPart .todoList li a {
+  display: block;
+  padding: 0 2.28571429% 2.85714286%;
+}
+.todoListPart .todoList li a > div {
+  padding: 0 3.59281437%;
+}
+.todoListPart .todoList li a .deliverStatusDv {
+  position: relative;
+  line-height: 0.88rem;
+}
+.todoListPart .todoList li a .deliverStatusDv::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid #F0F0F0;
+  -ms-transform: scale(-50%);
+  -moz-transform: scale(-50%);
+  -webkit-transform: scale(-50%);
+  -o-transform: scale(-50%);
+  transform: scale(-50%);
+}
+.todoListPart .todoList li a .deliverStatusDv img {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+.todoListPart .todoList li a .deliverStatusDv .deliverStatus {
+  float: right;
+  font-size: 0.28rem;
+  font-weight: 700;
+  color: #2F80F6;
+  line-height: 0.88rem;
+}
+.todoListPart .todoList li a .goodsImg {
+  padding-top: 2.99401198%;
+}
+.todoListPart .todoList li a .goodsImg > div {
+  float: left;
+}
+.todoListPart .todoList li a .goodsImg .imgListDV {
+  height: 1.12rem;
+}
+.todoListPart .todoList li a .goodsImg .imgListDV ul li {
+  float: left;
+  width: 1.08rem;
+  height: 1.12rem;
+  line-height: 1.12rem;
+  margin-right: 0.18rem;
+}
+.todoListPart .todoList li a .goodsImg .imgListDV ul li img {
+  max-width: 100%;
+  max-height: 100%;
+  vertical-align: middle;
+}
+.todoListPart .todoList li a .goodsImg .totalNum {
+  float: right;
+  color: #4F5362;
+  line-height: 1.12rem;
+}
+.todoListPart .todoList li a .priceDv {
+  font-size: 0;
+  text-align: right;
+}
+.todoListPart .todoList li a .priceDv span {
+  display: inline-block;
+  line-height: 0.8rem;
+}
+.todoListPart .todoList li a .priceDv span:first-child {
+  font-size: 0.24rem;
+  color: #929CA8;
+  margin-right: 0.14rem;
+}
+.todoListPart .todoList li a .priceDv span:last-child {
+  font-size: 0.28rem;
+  font-weight: 700;
+  color: #2F80F6;
+}
+/*# sourceMappingURL=wbIndex.css.map */

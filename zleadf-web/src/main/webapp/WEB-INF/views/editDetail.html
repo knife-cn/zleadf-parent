@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>直链商城</title>
+</head>
+<link rel="stylesheet" href="../../shopping/css/Receiving_address2.css" />
+
+
+<body>
+    <div class="complete">
+        <!--top-->
+
+        <!--渐变-->
+        <div class="top2">
+            <div class="top3" id="top3"></div>
+        </div>
+    </div>
+    <!--蒙版-->
+    <div class="meng" id="meng">
+        <div class="input_addr">
+            <img src="../../shopping/img/lhpimg/guanbi.png" class="img" />
+
+            <!--内容-->
+            <div style="  width: 510px;  margin-left: 30px;" class="scroll">
+                <div style="height:100%; width: 530px;" class="scroll-son">
+                    <div class="tu"><img src="../../shopping/img/lhpimg/pic_goods2.png" /></div>
+                    <div class="xinzheng">编辑收货地址</div>
+
+                    <div class="ren">
+                        <span>收货人</span>
+                        <input type="text" id="name" placeholder="请输入姓名" maxlength="10"/>
+                    </div>
+                    <div class="lianxi">
+                        <span>联系方式</span>
+                        <input type="text" id="phone" maxlength="11" placeholder="请输入联系方式" />
+                    </div>
+
+                    <div class="quyu">
+                        <span>所在区域</span>
+                        <select class="select" id="shengs">
+						  <!--<option class="option" id="sheng">选择省</option>-->
+						</select>
+                        <select class="select" id="shis">
+						  <!--<option class="option" id="shi">选择市</option>-->
+						</select>
+                        <select class="select" id="quyus" style='margin: 0'>
+						  <!--<option class="option" id="quyu">选择区</option>-->
+						</select>
+                        <input type="text" id="detail_add" placeholder="请输入详细地址" maxlength="20"></input>
+                    </div>
+                    <div class="moren">
+                        <div class="pandan"></div>
+                        <div>设为默认地址</div>
+                    </div>
+
+                </div>
+            </div>
+            <!--确定-->
+            <div class="tipsN"></div>
+
+            <div class="bottom">
+                <div id="qu" class="yiyan qu ">取消</div>
+                <div id="fo" class="yiyan fo">确定</div>
+            </div>
+
+
+        </div>
+
+        <!-- 二次确认 弹窗 -->
+        <div class="popupMsg5">
+            <img class="cancel img_close" src="../../shopping/img/car/close@2x.png" />
+            <img class="tips" src="../../shopping/img/car/Fill 1.png" />
+
+            <h6>是否放弃编辑？</h6>
+            <p>
+                <a href="javascript:;" class="close">确定</a>
+                <a href="javascript:;" class="cancel">取消</a>
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+<script type="text/javascript" src="../../shopping/js/jquery-2.1.0.js"></script>
+<script type="text/javascript" src="../../shopping/lib/artTemplate/artTemplate/template-web.js"></script>
+<script type="text/javascript" src="../../shopping/js/editDetail.js"></script>
+<script type="text/javascript" src="../../shopping/js/Placeholder.js"></script>
+<script type="text/javascript" src="../../shopping/js/jinzi.js"></script>
+<script>
+    $(function() {
+
+        if (navigator.appName == "Microsoft Internet Explorer" && parseInt(navigator.appVersion.split(";")[1].replace(/[ ]/g, "").replace("MSIE", "")) <= 9) {
+            $("select").removeClass("select").addClass("select2");
+        }
+    });
+</script>
+<script type="text/template" id="tel">
+    {{ each list v i }}
+    <option data-id="{{v.id}}" class="option" id="sheng">{{v.regionName}}</option>
+    {{ /each }}
+</script>
+<script type="text/template" id="tel2">
+    {{ each list2 v i }}
+    <option data-id2="{{v.id}}" class="option" id="shi">{{v.regionName}}</option>
+    {{ /each }}
+</script>
+<script type="text/template" id="tel3">
+    {{ each list3 v i }}
+    <option data-id3="{{v.id}}" class="option" id="quyu4">{{v.regionName || "区"}}</option>
+    {{ /each }}
+</script>
+
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.PayTypeDao">
+    <resultMap id="payMap" type="com.zlead.entity.vo.PayTypeVo" >
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        <result column="type_code" property="typeId" jdbcType="VARCHAR" />
+        <result column="type_name" property="typeName" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <!--查询支付方式，如果店铺有查询店铺的否则查询-->
+    <select id="findPayTypesByShopId" resultMap="payMap">
+        SELECT a.type_code, a.type_name FROM acct_pay_type a WHERE a.`sys_id` = #{shopId} AND a.`type_state` = 1 order by a.type_code
+    </select>
+
+    <select id="findPayTypes" resultMap="payMap">
+        SELECT a.type_code,a.type_name FROM acct_pay_type a WHERE a.`type_state` = 1 AND (a.`sys_id`=0 OR a.`sys_id` IS NULL) order by a.type_code
+    </select>
+
+
+</mapper>

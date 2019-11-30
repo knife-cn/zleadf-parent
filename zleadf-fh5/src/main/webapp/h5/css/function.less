@@ -1,0 +1,89 @@
+﻿.transition(@parameter: all 0.3s ease-in-out) {
+    -moz-transition: @parameter;
+    -webkit-transition: @parameter;
+    -o-transition: @parameter;
+    transition: @parameter;
+}
+
+.transition-delay(@parameter: 0s) {
+    -moz-transition-delay: @parameter;
+    -webkit-transition-delay: @parameter;
+    -o-transition-delay: @parameter;
+    transition-delay: @parameter;
+}
+
+.opacity(@alpha: 1) {
+    filter: e(%("alpha(opacity=%s)",(@alpha*100)));
+    -moz-opacity: @alpha;
+    -khtml-opacity: @alpha;
+    opacity: @alpha;
+}
+
+.transform(@parameter) {
+    -ms-transform: @parameter;
+    -moz-transform: @parameter;
+    -webkit-transform: @parameter;
+    -o-transform: @parameter;
+    transform: @parameter;
+}
+
+.transform-origin(@parameter) {
+    -webkit-transform-origin: @parameter;
+    -ms-transform-origin: @parameter;
+    transform-origin: @parameter;
+}
+
+.border-radius(@radius: 0px) {
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.box-shadow(@x,@y,@strength,@extendstrength: 0,@color,@alpha: 1) {
+    -webkit-box-shadow: @x @y @strength @extendstrength rgba( red(@color), green(@color), blue(@color), @alpha);
+    -moz-box-shadow: @x @y @strength @extendstrength rgba( red(@color), green(@color), blue(@color), @alpha);
+    box-shadow: @x @y @strength @extendstrength rgba( red(@color), green(@color), blue(@color), @alpha);
+    @direction: 0.5;
+    //filter: e(%("progid:DXImageTransform.Microsoft.Shadow(color='%s', Direction=%s, Strength=%s)",argb(rgba( red(@color), green(@color), blue(@color), @alpha)),@direction,@strength));
+}
+
+.outline-none() {
+    -moz-outline: none;
+    outline: none;
+    blr: e("expression(this.onFocus=this.blur())");
+}
+
+.user-select(@parameter: none) {
+    -moz-user-select: @parameter;
+    -webkit-user-select: @parameter;
+    -ms-user-select: @parameter;
+}
+
+.animation(@parameter) {
+    -webkit-animation: @parameter;
+    -moz-animation: @parameter;
+    -o-animation: @parameter;
+    -ms-animation: @parameter;
+    animation: @parameter;
+}
+.transparent-bgcolor(@color: #000,@alpha: 0.5) {
+    background: rgba( red(@color), green(@color), blue(@color), @alpha);
+    filter: e(%("progid:DXImageTransform.Microsoft.gradient(startcolorstr=%s,endcolorstr=%s)",argb(rgba( red(@color), green(@color), blue(@color), @alpha)),argb(rgba( red(@color), green(@color), blue(@color), @alpha))));
+}
+.background-cover(@url){
+    background-image: e(%("url('%s')",@url));
+    background-size: cover;
+    filter: e(%("progid:DXImageTransform.Microsoft.AlphaImageLoader(src='%s',sizingMethod='scale')",@url));
+}
+.single-overflow() {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.multi-overflow(@parameter) {
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: @parameter;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

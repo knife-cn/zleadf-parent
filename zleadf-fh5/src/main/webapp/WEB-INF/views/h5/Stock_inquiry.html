@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>库存查询</title>
+    <link rel="stylesheet" href="../../../h5/plugins/mui/mui.min.css">
+
+    <link rel="stylesheet" href="../../../h5/css/init.css">
+    <!--<link rel="stylesheet" href="../../../h5/css/order-list.css">-->
+    <link rel="stylesheet" href="../../../h5/css/Stock_inquiry.css">
+    <script src="../../../h5/js/rem.js"></script>
+    <script src="../../../h5/js/common.js"></script>
+
+</head>
+
+<body>
+
+<div class="order_list_header">
+    <div class="search">
+        <div class="search-items" id="search-items">
+            <img src="../../../h5/images/Shape@2x.png" alt="" class="goback">
+            <div class="search_box">
+                <img src="../../../h5/images/search88.png" alt="" class="icon_search">
+                <input type="text" placeholder="请输入商品名称/货号/条码/规格"  id="searchInput" class="search_content">
+            </div>
+            <!--<div >-->
+                <!--<img src="../../../h5/images/ic_screen@2x.png" alt="" class="icon_sx"/>-->
+                <!--<div class="sa">筛选</div>-->
+            <!--</div>-->
+        </div>
+        <a class="backBtn" href="javascript:history.go(-1);"></a>
+        <div class="tongji">
+           <span class="ziduan">库存商品总量统计：共</span><span class="shuliang" id="shuliang">120</span><span class="ziduanzi">种商品</span>
+            <div class="jinge" id="jinge">32928192.89</div>
+            <div class="zhiti">库存总成本(元)</div>
+        </div>
+    </div>
+
+</div>
+<!--懒加载-->
+<div class="orderNumDv" style="padding:0;">
+    <ul class="payment_list" id="order_list">
+        <!--<li>品牌：<span>惠象</span></li>-->
+        <!--<li>型号：<span>H-3312-0001</span></li>-->
+        <!--<li>系列：<span>多功能扳手</span></li>-->
+        <!--<li>规格：<span>9 ~ 32mm</span></li>-->
+        <!--<li>名称：<span>2件万能扳手套装</span></li>-->
+        <!--<li>数量：<span>20</span></li>-->
+        <!--<div style="width: 100%;height:30px;float: left"></div>-->
+
+        <!--<li>品牌：<span>惠象</span></li>-->
+        <!--<li>型号：<span>H-3312-0001</span></li>-->
+        <!--<li>系列：<span>多功能扳手</span></li>-->
+        <!--<li>规格：<span>9 ~ 32mm</span></li>-->
+        <!--<li>名称：<span>2件万能扳手套装</span></li>-->
+        <!--<li>数量：<span>20</span></li>-->
+        <!--<div style="width: 100%;height:30px;float: left"></div>-->
+
+        <!--<li>品牌：<span>惠象</span></li>-->
+        <!--<li>型号：<span>H-3312-0001</span></li>-->
+        <!--<li>系列：<span>多功能扳手</span></li>-->
+        <!--<li>规格：<span>9 ~ 32mm</span></li>-->
+        <!--<li>名称：<span>2件万能扳手套装</span></li>-->
+        <!--<li>数量：<span>20</span></li>-->
+        <!--<div style="width: 100%;height:30px;float: left"></div>-->
+
+        <!--<li>品牌：<span>惠象</span></li>-->
+        <!--<li>型号：<span>H-3312-0001</span></li>-->
+        <!--<li>系列：<span>多功能扳手</span></li>-->
+        <!--<li>规格：<span>9 ~ 32mm</span></li>-->
+        <!--<li>名称：<span>2件万能扳手套装</span></li>-->
+        <!--<li>数量：<span>20</span></li>-->
+        <!--<div style="width: 100%;height:30px;float: left"></div>-->
+
+        <!--<li>品牌：<span>惠象</span></li>-->
+        <!--<li>型号：<span>H-3312-0001</span></li>-->
+        <!--<li>系列：<span>多功能扳手</span></li>-->
+        <!--<li>规格：<span>9 ~ 32mm</span></li>-->
+        <!--<li>名称：<span>2件万能扳手套装</span></li>-->
+        <!--<li>数量：<span>20</span></li>-->
+        <!--<div style="width: 100%;height:30px;float: left"></div>-->
+    </ul>
+</div>
+
+<nav class="navBottom" style="z-index:10;">
+    <ul>
+        <li id="wbIndexNav" data-id="1">
+            <a href="wbIndex.html">
+                <div>
+                    <span></span>
+                </div>
+                <p>工作台</p>
+            </a>
+        </li>
+        <li id="customerNav" data-id="2">
+            <a href="user-list.html">
+                <div>
+                    <span></span>
+                </div>
+                <p>客户</p>
+            </a>
+        </li>
+        <li id="orderNav" class="active" data-id="3">
+            <a href="order-list.html">
+                <div>
+                    <span></span>
+                </div>
+                <p>订单</p>
+            </a>
+        </li>
+        <li id="goodsNav" data-id="4">
+            <a href="goodsList.html">
+                <div>
+                    <span></span>
+                </div>
+                <p>商品</p>
+            </a>
+        </li>
+        <li id="personNav" data-id="5">
+            <a href="my-info.html">
+                <div>
+                    <span></span>
+                </div>
+                <p>我的</p>
+            </a>
+        </li>
+    </ul>
+</nav>
+<!--<script src="../../../h5/js/jquery.min.js"></script>-->
+<script src="../../../h5/plugins/mui/mui.min.js"></script>
+
+<script src="../../../h5/js/template-web.js"></script>
+<script>
+    // 库存
+    mui.ajax("/zlead/shopmgr/stock", {
+        type: "get",
+        dataType: "json",
+        success: function (res) {
+            if ( res.code==1){
+
+                var tpl=res.data.shopStock;
+                document.getElementById("shuliang").innerHTML=tpl;
+
+            }
+            else
+            {
+                alert(res.message);
+            }
+        }
+
+    });
+    // 金额
+    mui.ajax("/zlead/shopmgr/goodsTotalPrice", {
+        type: "get",
+        dataType: "json",
+        success: function (res) {
+            if ( res.code==1){
+                var jine=res.data.goodsTotalPrice;
+                document.getElementById("jinge").innerHTML=jine;
+            }
+            else
+            {
+                alert(res.message);
+            }
+        }
+
+    });
+
+</script>
+</body>
+
+</html>

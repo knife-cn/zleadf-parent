@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>直链商城</title>
+	</head>
+	<link rel="stylesheet" href="../../shopping/css/left.css" />
+	<link rel="stylesheet" href="../../shopping/css/header.css"/>
+	<body>
+		<div class="complete">
+			<!--top-->
+			<div id="top">
+				
+			</div>
+			<div class="serch">
+			<div class="serch_con">
+			<!-- logo -->
+			<div class="logo">
+			<img src="../../shopping/img/index/logo.png" />
+			</div>
+			<div class="searcha">
+			<!-- 搜索框 -->
+			<div class="search">
+			<div class="search_frame">
+			<input type="text" />
+			</div>
+			<!-- 搜索按钮 -->
+			<div class="search_icon" id="search_icon">
+			<img src="../../shopping/img/index/ic_sousuo.png" />
+			</div>
+			</div>
+			<!-- 热搜词 -->
+			<div class="search_hot">
+			<ul class="search_hot_ul" id="search_hot_ul">
+			<!--<li>电气控制</li>-->
+			<!--<li>刀具磨具</li>-->
+			<!--<li>电气控制</li>-->
+			<!--<li>电气控制</li>-->
+			<!--<li>电气控制</li>-->
+			<!--<li>电气控制</li>-->
+			</ul>
+			</div>
+			</div>
+			</div>
+			</div>
+
+			<!--渐变-->
+			<div class="top2"></div>
+			<!--内容-->
+			<div class="content">
+				<!--左-->
+				<div class="left">
+					<ul >
+						<li class="onedaoli">
+							<div class="tu"><img src="../../shopping/img/lhpimg/juxin1.png" /></div>
+							<div class="dao">订单中心</div>
+							<ul class="towdao">
+								<li class="yan" id="User1">我的订单</li>
+							</ul>
+						</li>
+						<li class="onedaoli">
+							<div class="tu"><img src="../../shopping/img/lhpimg/juxin.png" /></div>
+							<div class="dao">基本信息</div>
+							<ul class="towdao">
+								<li	class="towdaoli" id="Personal">个人信息</li>
+								<li class="towdaoli" id="Receiving">收货地址</li>
+								<li class="towdaoli" id="collection1">收藏信息</li>
+								<li class="towdaoli" id="upload1">上传凭证</li>
+							</ul>
+						</li>
+						<li class="onedaoli">
+							<div class="tu"><img src="../../shopping/img/lhpimg/juxin2.png" /></div>
+							<div class="dao">安全信息</div>
+							<ul class="towdao">
+								<li class="towdaoli" id="Change">修改密码</li>
+							</ul>
+						</li>
+
+					</ul>
+				</div>
+				<!--右-->
+				<div class="rightda" id="User_center" style="display:block">
+				</div>
+				<div class="rightda" id="upload" style="display: none">
+				</div>
+				<div class="rightda" id="Change_Password1" style="display: none">
+				</div>
+				<div class="rightda" id="collection" style="display: none">
+				</div>
+				<div class="rightda" id="Personal_information" style="display: none">
+				</div>
+				<div class="rightda" id="Receiving_address" style="display: none">
+				</div>
+
+			</div>
+			<iframe src="footer.html" width="100%" height="590px" style="border: none;"></iframe>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../shopping/js/jquery-2.1.0.js" ></script>
+	<script type="text/javascript" src="../../shopping/js/User_center.js" ></script>
+	<script type="text/javascript" src="../../shopping/js/head.js"></script>
+
+	<script>
+		$(function(){
+			$("#top").load("head.html");
+			$("#User_center").load("User_center.html");
+			$("#Receiving_address").load("Receiving_address.html");
+			$("#Personal_information").load("Personal_information.html");
+			$("#collection").load("collection.html");
+			$("#Change_Password1").load("Change_Password1.html");
+			$("#upload").load("upload.html");
+			$.getScript("../../shopping/js/head.js");
+
+			$(".towdao li").click(function(){
+					$("li").removeClass("yan");
+					$(this).addClass("yan");
+
+				});
+			$("#User1").click(function(){
+					$("#upload").hide();
+					$("#Change_Password1").hide();
+					$("#collection").hide();
+					$("#Personal_information").hide();
+					$("#Receiving_address").hide();
+					$("#User_center").show();
+			});
+			$("#Personal").click(function(){
+				$("#upload").hide();
+				$("#collection").hide();
+				$("#Change_Password1").hide();
+				$("#Receiving_address").hide();
+				$("#User_center").hide();
+				$("#Personal_information").show();
+
+			});
+			$("#Receiving").click(function(){
+				$("#upload").hide();
+				$("#collection").hide();
+				$("#Personal_information").hide();
+				$("#Change_Password1").hide();
+				$("#User_center").hide();
+				$("#Receiving_address").show();
+
+			});
+			$("#collection1").click(function(){
+				$("#upload").hide();
+				$("#Receiving_address").hide();
+				$("#Personal_information").hide();
+				$("#Change_Password1").hide();
+				$("#User_center").hide();
+
+				$("#collection").show();
+			});
+			$("#upload1").click(function(){
+
+				$("#Receiving_address").hide();
+				$("#Personal_information").hide();
+				$("#Change_Password1").hide();
+				$("#User_center").hide();
+				$("#collection").hide();
+				$("#upload").show();
+			});
+			$("#Change").click(function(){
+
+				$("#Receiving_address").hide();
+				$("#Personal_information").hide();
+				$("#upload").hide();
+				$("#User_center").hide();
+				$("#collection").hide();
+				$("#Change_Password1").show();
+			});
+		 });
+	</script>
+	<script>
+			
+	</script>
+</html>

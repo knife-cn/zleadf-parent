@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.OaFactoryInfoMapper">
+    <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.OaFactoryInfo">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        <id column="fact_id" property="factId" jdbcType="INTEGER"/>
+        <result column="fact_no" property="factNo" jdbcType="VARCHAR"/>
+        <result column="fact_name" property="factName" jdbcType="VARCHAR"/>
+        <result column="fact_name2" property="factName2" jdbcType="VARCHAR"/>
+        <result column="fact_state" property="factState" jdbcType="VARCHAR"/>
+        <result column="contact_no" property="contactNo" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="contact_man1" property="contactMan1" jdbcType="VARCHAR"/>
+        <result column="contact_man2" property="contactMan2" jdbcType="VARCHAR"/>
+        <result column="fact_desc" property="factDesc" jdbcType="VARCHAR"/>
+        <result column="powerpic_path" property="powerpicPath" jdbcType="VARCHAR"/>
+        <result column="apapic_path" property="apapicPath" jdbcType="VARCHAR"/>
+        <result column="shop_id" property="shopId" jdbcType="INTEGER"/>
+        <result column="creator" property="creator" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="modifier" property="modifier" jdbcType="INTEGER"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <resultMap id="adsResultMap" type="com.zlead.entity.dto.AdsDto">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.id,title,ads_img,content_type,sn,sort
+        -->
+        <id column="id" property="id" />
+        <result column="title" property="title" />
+        <result column="ads_img" property="ads_img" />
+        <result column="content_type" property="content_type" />
+        <result column="sn" property="sn" />
+        <result column="sort" property="sort" />
+
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        fact_id, fact_no, fact_name, fact_state, contact_no, email, contact_man1, contact_man2,
+        fact_desc, powerpic_path, apapic_path, shop_id, creator, create_time, modifier, modify_time
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.OaFactoryInfoExample">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from oa_factory_info
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        select
+        <include refid="Base_Column_List"/>
+        from oa_factory_info
+        where fact_id = #{factId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        delete from oa_factory_info
+        where fact_id = #{factId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.zlead.fplat.entity.OaFactoryInfo">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        insert into oa_factory_info (fact_id, fact_no, fact_name,
+        fact_state, contact_no, email,
+        contact_man1, contact_man2, fact_desc,
+        powerpic_path, apapic_path, shop_id,
+        creator, create_time, modifier,
+        modify_time)
+        values (#{factId,jdbcType=INTEGER}, #{factNo,jdbcType=VARCHAR}, #{factName,jdbcType=VARCHAR},
+        #{factState,jdbcType=VARCHAR}, #{contactNo,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+        #{contactMan1,jdbcType=VARCHAR}, #{contactMan2,jdbcType=VARCHAR}, #{factDesc,jdbcType=VARCHAR},
+        #{powerpicPath,jdbcType=VARCHAR}, #{apapicPath,jdbcType=VARCHAR}, #{shopId,jdbcType=INTEGER},
+        #{creator,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=INTEGER},
+        #{modifyTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.zlead.fplat.entity.OaFactoryInfo" useGeneratedKeys="true"
+            keyProperty="id">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        insert into oa_factory_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="factId != null">
+                fact_id,
+            </if>
+            <if test="shopId != null">
+                shop_id,
+            </if>
+            <if test="factNo != null">
+                fact_no,
+            </if>
+            <if test="factName != null">
+                fact_name,
+            </if>
+            <if test="factState != null">
+                fact_state,
+            </if>
+            <if test="contactNo != null">
+                contact_no,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="contactMan1 != null">
+                contact_man1,
+            </if>
+            <if test="contactMan2 != null">
+                contact_man2,
+            </if>
+            <if test="factDesc != null">
+                fact_desc,
+            </if>
+            <if test="powerpicPath != null">
+                powerpic_path,
+            </if>
+            <if test="apapicPath != null">
+                apapic_path,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifier != null">
+                modifier,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="factId != null">
+                #{factId,jdbcType=INTEGER},
+            </if>
+            <if test="factNo != null">
+                #{factNo,jdbcType=VARCHAR},
+            </if>
+            <if test="shopId != null">
+                #{shopId,jdbcType=INTEGER},
+            </if>
+            <if test="factName != null">
+                #{factName,jdbcType=VARCHAR},
+            </if>
+            <if test="factState != null">
+                #{factState,jdbcType=VARCHAR},
+            </if>
+            <if test="contactNo != null">
+                #{contactNo,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="contactMan1 != null">
+                #{contactMan1,jdbcType=VARCHAR},
+            </if>
+            <if test="contactMan2 != null">
+                #{contactMan2,jdbcType=VARCHAR},
+            </if>
+            <if test="factDesc != null">
+                #{factDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="powerpicPath != null">
+                #{powerpicPath,jdbcType=VARCHAR},
+            </if>
+            <if test="apapicPath != null">
+                #{apapicPath,jdbcType=VARCHAR},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifier != null">
+                #{modifier,jdbcType=INTEGER},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.OaFactoryInfo">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        update oa_factory_info
+        <set>
+            <if test="factNo != null">
+                fact_no = #{factNo,jdbcType=VARCHAR},
+            </if>
+            <if test="factName != null">
+                fact_name = #{factName,jdbcType=VARCHAR},
+            </if>
+            <if test="factState != null">
+                fact_state = #{factState,jdbcType=VARCHAR},
+            </if>
+            <if test="contactNo != null">
+                contact_no = #{contactNo,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="contactMan1 != null">
+                contact_man1 = #{contactMan1,jdbcType=VARCHAR},
+            </if>
+            <if test="contactMan2 != null">
+                contact_man2 = #{contactMan2,jdbcType=VARCHAR},
+            </if>
+            <if test="factDesc != null">
+                fact_desc = #{factDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="powerpicPath != null">
+                powerpic_path = #{powerpicPath,jdbcType=VARCHAR},
+            </if>
+            <if test="apapicPath != null">
+                apapic_path = #{apapicPath,jdbcType=VARCHAR},
+            </if>
+            <if test="shopId != null">
+                shop_id = #{shopId,jdbcType=INTEGER},
+            </if>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifier != null">
+                modifier = #{modifier,jdbcType=INTEGER},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where fact_id = #{factId,jdbcType=INTEGER}
+    </update>
+
+    <update id="updateShopid" parameterType="com.zlead.fplat.entity.OaFactoryInfo">
+        update oa_factory_info set shop_id = #{shopId,jdbcType=INTEGER} WHERE fact_id=#{factId,jdbcType=INTEGER}
+
+
+    </update>
+
+
+    <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.OaFactoryInfo">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        update oa_factory_info
+        set fact_no = #{factNo,jdbcType=VARCHAR},
+        fact_name = #{factName,jdbcType=VARCHAR},
+        fact_state = #{factState,jdbcType=VARCHAR},
+        contact_no = #{contactNo,jdbcType=VARCHAR},
+        email = #{email,jdbcType=VARCHAR},
+        contact_man1 = #{contactMan1,jdbcType=VARCHAR},
+        contact_man2 = #{contactMan2,jdbcType=VARCHAR},
+        fact_desc = #{factDesc,jdbcType=VARCHAR},
+        powerpic_path = #{powerpicPath,jdbcType=VARCHAR},
+        apapic_path = #{apapicPath,jdbcType=VARCHAR},
+        shop_id = #{shopId,jdbcType=INTEGER},
+        creator = #{creator,jdbcType=INTEGER},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        modifier = #{modifier,jdbcType=INTEGER},
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+        where fact_id = #{factId,jdbcType=INTEGER}
+    </update>
+
+    <select id="unRelationFactoryListByAgentId" resultType="java.util.LinkedHashMap" parameterType="java.lang.Long">
+        select fact_id,fact_name from oa_factory_info
+        where fact_state=1 and fact_id not in (select factory_id from t_agent_fac where agent_id=#{agentId} and `status`=1)
+        <if test="key !=null and key!=''">
+            <bind name="pattern" value="'%' + key + '%'"/>
+            and fact_name like #{pattern}
+        </if>
+        order by create_time desc;
+    </select>
+
+    <select id="relationFactoryListByAgentId" resultType="java.util.Map" parameterType="java.lang.Long">
+        select fact_id,fact_name2 from oa_factory_info where fact_state=1 and
+        fact_id in (select factory_id from t_agent_fac where agent_id=#{agentid} and `status`=1)
+        order by create_time desc;
+    </select>
+
+    <!--获取正常状态下所有工厂Id-->
+    <select id="findAllIds" resultType="Integer">
+        select fact_id from oa_factory_info WHERE fact_state=1 order BY create_time ASC
+    </select>
+
+    <!--获取正常状态下工厂信息-->
+    <select id="findAllInfo" resultMap="BaseResultMap" parameterType="List">
+        select * from oa_factory_info WHERE fact_state=1 and shop_id IN
+        <foreach collection="list" item="list" open="(" close=")" separator=",">
+            #{list}
+        </foreach>
+    </select>
+
+    <select id="checkVcode" resultType="int">
+      select count(*) from oa_factory_info where vcode=#{vcode} and fact_id=#{factoryId} and fact_state=1;
+    </select>
+
+    <select id="findShopByFactoryId" resultType="java.util.Map" parameterType="java.lang.Long">
+        select b.fact_id,b.fact_no,b.fact_name,b.contact_no,b.email,b.fact_desc,b.powerpic_path,b.apapic_path,b.shop_id,a.sn,a.shop_name,a.shop_logo,a.shop_type,show_type from t_shop a
+        left join oa_factory_info b on a.id=b.shop_id
+        where b.fact_id=#{factoryId} and b.fact_state=1 and a.`status`=1
+
+    </select>
+
+    <select id="findShopAdsImgByFactoryId" resultMap="adsResultMap" parameterType="java.lang.Integer">
+        select id,title,ads_img,content_type,sn,sort from t_ads
+        where shop_id=#{shopId} and adstype in(2,3) and channel=1 and `status`=1 order by sort limit 0,6
+    </select>
+
+    <select id="findBrandsByFactoryIdAndAgentId" resultType="java.util.Map" parameterType="java.lang.Long">
+        select distinct b.band_id,c.band_name,b.list_ids from oa_agent_band b
+        left join crm_cust_band c on b.band_id= c.band_id
+        left join t_agent_fac d on d.factory_id=b.fact_id and d.agent_id=b.agent_id
+        where c.band_state=1 and d.`status`=1 and d.agent_id=#{agentId} and d.factory_id=#{factoryId} limit 0,6
+    </select>
+
+    <select id="findAllBrandsByFactoryIdAndAgentId" resultType="java.util.Map" parameterType="java.lang.Long">
+        select distinct b.band_id,c.band_name,b.create_time,b.list_ids from oa_agent_band b
+        left join crm_cust_band c on b.band_id= c.band_id
+        left join t_agent_fac d on d.factory_id=b.fact_id and d.agent_id=b.agent_id
+        where c.band_state=1 and d.`status`=1 and d.agent_id=#{agentId} and d.factory_id=#{factoryId} 
+        and b.band_id in (select  brand_id from t_goods where is_market='1' and terminal in(2,3) )   order by d.id asc,b.create_time asc;
+    </select>
+
+       <!-- <select id="newFindAllBrandsByFactoryIdAndAgentId" resultType="java.util.Map" parameterType="java.lang.Long">
+            SELECT DISTINCT ds.brand_id band_id,lists.band_name,lists.list_id,lists.list_id listIds,cpl.list_name,ds.id,ccb.pic_path,cpl.pic_path as listpicpath ,MAX(ois.create_time) as market_time FROM t_goods ds INNER JOIN t_goods_level lev
+            ON ds.id = lev.goods_id INNER JOIN t_agent_fac fac
+            ON fac.level_id = lev.level_id AND fac.status = 1 AND fac.agent_id = #{agentId} INNER JOIN oa_agent_band_lists lists
+            ON lists.list_id = ds.list_id AND ds.brand_id = lists.band_id AND lists.agent_id = #{agentId} AND prod_type = 0 AND lists.fact_id = #{factoryId} AND ds.is_market = 1 AND ds.terminal IN (2, 3)
+            INNER JOIN crm_cust_band ccb ON ccb.band_id = ds.brand_id
+            INNER JOIN crm_prd_list cpl ON lists.list_id = cpl.list_id
+            INNER JOIN oa_item_state ois ON ds.id = ois.item_id GROUP BY ds.list_id 
+			ORDER BY
+				fac.create_time asc,
+				market_time desc
+    </select>-->
+    <!--修改店铺页品牌、系列排序不正确问题-->
+    <select id="newFindAllBrandsByFactoryIdAndAgentId" resultType="java.util.Map" parameterType="java.lang.Long">
+            SELECT v.brand_id AS band_id,
+                   b.`band_name`,
+                   b.`pic_path`,
+                   v.brand_id AS bandIds,
+                   v.list_id,
+                   l.`list_name`,
+                   l.`pic_path` AS listpicpath,
+                   l.`list_id` AS listIds
+            FROM (SELECT g.`brand_id`,g.`list_id`,MIN(af.create_time) AS fac_time,MAX(ois.modify_time) AS market_time
+                    FROM t_goods g
+              INNER JOIN oa_agent_band_lists bl
+                      ON bl.`band_id` = g.`brand_id`
+                     AND bl.`list_id` = g.`list_id`
+                     AND bl.`agent_id` = #{agentId}
+                     AND bl.`fact_id` = #{factoryId}
+                     AND g.`terminal` IN (2, 3)
+                     AND g.`prod_type` = 0
+                     AND g.`is_market` = 1
+              INNER JOIN t_agent_fac af
+                      ON af.`agent_id` = bl.`agent_id`
+                     AND af.`factory_id` = bl.`fact_id`
+              INNER JOIN t_goods_level gl
+                      ON gl.`goods_id` = g.`id`
+                     AND gl.`level_id` = af.`level_id`
+               LEFT JOIN oa_item_state ois
+                      ON ois.`item_id` = g.`id`
+                GROUP BY g.`brand_id`,g.`list_id`) v
+              INNER JOIN crm_cust_band b ON b.band_id = v.brand_id
+              INNER JOIN crm_prd_list l ON l.list_id = v.list_id
+                ORDER BY v.fac_time ASC,v.market_time DESC,brand_id ASC,v.list_id ASC
+    </select>
+    
+    <select id="newFindAllBrandsByFactoryIdAndAgentId_bak" resultType="java.util.Map" parameterType="java.lang.Long">
+            SELECT goodsAll.brand_id as band_id,goodsAll.band_name,goodsAll.list_id,goodsAll.list_name,goodsAll.market_time,goodsAll.brand_id AS bandIds,goodsAll.pic_path,goodsAll.listpicpath,goodsAll.list_id as listIds FROM  
+            (SELECT DISTINCT ds.brand_id,lists.band_name,lists.list_id,cpl.list_name,ds.id,ccb.pic_path,cpl.pic_path as listpicpath ,MAX(ois.create_time) as market_time FROM t_goods ds INNER JOIN t_goods_level lev
+            ON ds.id = lev.goods_id INNER JOIN t_agent_fac fac
+            ON fac.level_id = lev.level_id AND fac.status = 1 AND fac.agent_id = #{agentId} INNER JOIN oa_agent_band_lists lists
+            ON lists.list_id = ds.list_id AND ds.brand_id = lists.band_id AND lists.agent_id = #{agentId} AND prod_type = 0 AND lists.fact_id = #{factoryId} AND ds.is_market = 1 AND ds.terminal IN (2, 3)
+            INNER JOIN crm_cust_band ccb ON ccb.band_id = ds.brand_id
+            INNER JOIN crm_prd_list cpl ON lists.list_id = cpl.list_id
+            INNER JOIN oa_item_state ois ON ds.id = ois.item_id GROUP BY ds.list_id ORDER BY ois.create_time  
+            ) goodsAll
+            INNER JOIN oa_agent_band_lists oab ON oab.list_id =goodsAll.list_id  AND goodsAll.brand_id = oab.band_id AND oab.agent_id = #{agentId} AND oab.fact_id = #{factoryId}
+            INNER JOIN t_agent_fac fac ON fac.factory_id = oab.fact_id  AND fac.`status` = 1 AND fac.agent_id = #{agentId}
+            GROUP BY goodsAll.list_id
+            ORDER BY fac.create_time ASC,goodsAll.market_time asc;
+    </select>
+
+
+    <select id="findAllBrandsByFactoryId" resultType="java.util.Map" parameterType="java.lang.Long">
+        select a.band_id as id,a.band_name as name from crm_cust_band as a,oa_factory_info as b
+        where a.band_state=1 and a.shop_id = b.shop_id and b.fact_id=#{factId} and b.fact_state=1 order by a.modify_time desc;
+    </select>
+
+    <select id="findAllListsByFactoryIdAndBids" resultType="java.util.Map">
+        select band_id,list_id as id,list_name as name from crm_prd_list as a,oa_factory_info as b
+        where a.list_state=1 and a.shop_id=b.shop_id and b.fact_id=#{factoryId} and b.fact_state=1
+        <if test="bids!=null and bids.size>0">
+            and band_id in
+            <foreach collection="bids" item="id" open="(" close=")" separator=",">
+                #{id}
+            </foreach>
+        </if>
+        order by a.modify_time desc;
+    </select>
+
+    <select id="findListsByFactoryId" resultType="java.util.Map" parameterType="java.lang.Long">
+        select * from (
+        select distinct cpl.list_id as id,cpl.list_name as name ,cpl.list_id as listIds, cpl.pic_path
+        from crm_prd_list cpl
+        where list_state=1
+        and (cpl.list_id in (
+        select ds.list_id from t_goods ds LEFT JOIN t_goods_level le
+        on ds.id = le.goods_id LEFT JOIN t_agent_fac fac
+        ON le.level_id = fac.level_id INNER JOIN oa_agent_band_lists lists
+        ON ds.list_id = lists.list_id AND lists.agent_id = #{agentId}  AND lists.fact_id =#{factoryId}  INNER JOIN oa_agent_band ban
+        ON ds.brand_id = ban.band_id AND ban.agent_id = #{agentId}  AND ban.fact_id =#{factoryId}
+        WHERE le.`status` = 1 AND ds.terminal in (2,3) AND ds.is_market = 1
+        AND fac.agent_id = #{agentId} AND fac.factory_id = #{factoryId} and fac.`status` = 1
+        ) 
+       <!--  or
+        cpl.list_id in (
+        SELECT g.list_id FROM oa_market_act oma INNER JOIN oa_factory_info ofi
+        ON oma.shop_id = ofi.shop_id INNER JOIN oa_market_agent omag
+        ON oma.act_id = omag.act_id INNER JOIN oa_market_goods omg
+        ON omg.act_id = omag.act_id INNER JOIN t_goods g
+        ON g.id = omg.goods_id INNER JOIN oa_agent_band_lists lists
+		ON g.list_id = lists.list_id AND g.brand_id = lists.band_id AND lists.agent_id = #{agentId} AND lists.fact_id = #{factoryId}
+        WHERE  omag.agent_id = #{agentId} AND ofi.fact_id = #{factoryId}  AND omg.is_market = 1 AND g.prod_type = 2
+        AND g.is_market = 1 AND g.terminal IN (2, 3) AND oma.eff_date &lt;= NOW()
+        AND omg.is_market = 1 AND oma.terminal IN (2, 3) AND oma.cont_state = 2 ) -->
+        ) ) v order by v.id asc limit 0,6
+    </select>
+
+    <select id="findCatsByFactoryId" resultType="java.util.Map" parameterType="java.lang.Long">
+        select cat_id as id,cat_name as name from crm_prd_cat
+        where cat_state=1 and shop_id=(select shop_id from oa_factory_info where fact_id=#{factoryId} and fact_state=1) and pcat_id=0
+        order by modify_time desc limit 0,9;
+    </select>
+
+    <select id="findAllCatsByFactoryId" resultType="java.util.Map" parameterType="java.lang.Long">
+        select cat_id as id,cat_name as name,cat_desc,pic_path from crm_prd_cat
+        where cat_state=1 and  shop_id=(select shop_id from oa_factory_info where fact_id=#{factoryId} and fact_state=1) and pcat_id=0
+        order by modify_time desc;
+    </select>
+
+    <select id="findChildCatsByPactId" resultType="java.util.Map">
+        select cat_id as id,cat_name as name,cat_desc,pic_path from crm_prd_cat
+        where cat_state=1 and shop_id=(select shop_id from oa_factory_info where fact_id=#{factoryId} and fact_state=1) and pcat_id = #{pcatId}
+        order by modify_time desc limit 0,6;
+    </select>
+
+    <select id="findAllChildCatsByPactId" resultType="java.util.Map">
+        select cat_id as id,cat_name as name,pic_path from crm_prd_cat
+        where cat_state=1 and shop_id=(select shop_id from oa_factory_info where fact_id=#{factoryId} and fact_state=1) and pcat_id = #{pcatId}
+        <if test="listIds!=null and listIds.size>0">
+            and cat_id in (select distinct cat_id from crm_prd_list_cats where shop_id=(select shop_id from oa_factory_info where fact_id=#{factoryId} and fact_state=1) and list_id in
+            <foreach collection="listIds" item="id" open="(" close=")" separator=",">
+                #{id}
+            </foreach>
+            )
+        </if>
+        order by modify_time desc;
+    </select>
+
+    <select id="findShopGoodsByCatIds" resultType="java.util.Map">
+        select a.id,a.prod_id,a.prod_type,a.brand_id,a.list_id,a.model_id,
+        (select concat(a.full_name,group_concat(attr_value)) from t_goods_attr_val where goods_id=a.id) full_name,
+        a.show_price,a.first_img,a.if_show_price from t_goods a
+        inner join (select band_id from crm_cust_band where band_state=1) b on a.brand_id=b.band_id
+        inner join (select list_id from crm_prd_list where list_state=1) c on c.list_id=a.list_id
+        inner join (select model_id from crm_prd_model where model_state=1) d on d.model_id=a.model_id
+        where a.is_market=1 and a.terminal in (2,3)  and a.shop_id = (select shop_id from oa_factory_info where fact_id=#{factoryId} and fact_state=1)
+        and a.id in (select distinct goods_id from t_goods_level where level_id in (select level_id from t_agent_fac where agent_id=#{agentId} and `status`=1))
+        <if test="brandIds!=null and brandIds.size>0">
+            and a.brand_id in
+            <foreach collection="brandIds" item="id" open="(" close=")" separator=",">
+                #{id}
+            </foreach>
+        </if>
+        <if test="listIds!=null and listIds.size>0">
+            and a.list_id in
+            <foreach collection="listIds" item="id" open="(" close=")" separator=",">
+                #{id}
+            </foreach>
+        </if>
+        <if test="catIds!=null and catIds.size>0">
+            and a.id in (
+            select m.goods_id from t_goods_cat m
+            inner join (select cat_id from crm_prd_cat where cat_state=1) n on m.cat_id=n.cat_id
+            where n.cat_id in
+            <foreach collection="catIds" item="id" open="(" close=")" separator=",">
+                #{id}
+            </foreach>
+            )
+        </if>
+        order by a.update_date desc limit 0,8;
+    </select>
+
+
+    <select id="findShopIdById" resultType="Integer" parameterType="List">
+        select shop_id from oa_factory_info WHERE fact_state=1 AND fact_id IN
+        <foreach collection="list" item="list" open="(" close=")" separator=",">
+            #{list}
+        </foreach>
+    </select>
+
+    <select id="findByShopId" resultType="int">
+        select distinct fact_id from oa_factory_info where shop_id = #{shopId}
+    </select>
+
+    <select id="findFacByShopId" resultMap="BaseResultMap">
+        select * from oa_factory_info where shop_id = #{shopId}
+    </select>
+
+    <select id="findFacByFactId" resultMap="BaseResultMap">
+        select * from oa_factory_info where fact_id = #{factId}
+    </select>
+    <select id="facRelevancy" resultType="java.lang.Integer">
+        select fact_id from oa_factory_info where vcode=#{vcode} and fact_name=#{factoryName} and fact_state=1;
+    </select>
+
+</mapper>

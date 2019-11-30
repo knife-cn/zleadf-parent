@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+       default-lazy-init="false">
+    
+    <!-- production环境 -->
+    <beans profile="production">
+        <context:property-placeholder ignore-unresolvable="true"
+                                      location="classpath*:/application.properties" />
+
+        <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+            <property name="url" value="${jdbc.url}" />
+            <property name="username" value="${jdbc.username}" />
+            <property name="password" value="${jdbc.password}" />
+
+            <property name="filters" value="${jdbc.filters}" />
+
+            <property name="maxActive" value="${jdbc.maxActive}" />
+            <property name="initialSize" value="${jdbc.initialSize}" />
+            <property name="maxWait" value="${jdbc.maxWait}" />
+            <property name="minIdle" value="${jdbc.minIdle}" />
+
+            <property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}" />
+            <property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}" />
+
+            <property name="validationQuery" value="${jdbc.validationQuery}" />
+            <property name="testWhileIdle" value="${jdbc.testWhileIdle}" />
+            <property name="testOnBorrow" value="${jdbc.testOnBorrow}" />
+            <property name="testOnReturn" value="${jdbc.testOnReturn}" />
+
+            <property name="poolPreparedStatements" value="${jdbc.poolPreparedStatements}" />
+            <property name="maxOpenPreparedStatements" value="${jdbc.maxOpenPreparedStatements}" />
+
+            <property name="removeAbandoned"  value="${jdbc.removeAbandoned}" />
+            <property name="removeAbandonedTimeout"  value="${jdbc.removeAbandonedTimeout}" />
+        </bean>
+
+        <!-- 数据源配置,使用应用服务器的数据库连接池 -->
+        <!--<jee:jndi-lookup id="dataSource" jndi-name="java:comp/env/jdbc/ExampleDB" />-->
+    </beans>
+
+    <!-- local development环境 -->
+    <beans profile="development">
+        <context:property-placeholder ignore-resource-not-found="true"
+                                      location="classpath*:/application.properties,
+          			  classpath*:/application.development.properties" />
+
+        <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+            <property name="url" value="${jdbc.url}" />
+            <property name="username" value="${jdbc.username}" />
+            <property name="password" value="${jdbc.password}" />
+
+            <property name="filters" value="${jdbc.filters}" />
+
+            <property name="maxActive" value="${jdbc.maxActive}" />
+            <property name="initialSize" value="${jdbc.initialSize}" />
+            <property name="maxWait" value="${jdbc.maxWait}" />
+            <property name="minIdle" value="${jdbc.minIdle}" />
+
+            <property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}" />
+            <property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}" />
+
+            <property name="validationQuery" value="${jdbc.validationQuery}" />
+            <property name="testWhileIdle" value="${jdbc.testWhileIdle}" />
+            <property name="testOnBorrow" value="${jdbc.testOnBorrow}" />
+            <property name="testOnReturn" value="${jdbc.testOnReturn}" />
+
+            <property name="poolPreparedStatements" value="${jdbc.poolPreparedStatements}" />
+            <property name="maxOpenPreparedStatements" value="${jdbc.maxOpenPreparedStatements}" />
+
+            <property name="removeAbandoned"  value="${jdbc.removeAbandoned}" />
+            <property name="removeAbandonedTimeout"  value="${jdbc.removeAbandonedTimeout}" />
+        </bean>
+    </beans>
+
+    <!-- functional test 环境 -->
+    <beans profile="functional">
+        <context:property-placeholder ignore-resource-not-found="true"
+                                      location="classpath*:/application.properties,
+          			  classpath*:/application.functional.properties,
+          			  classpath*:/application.functional-local.properties" />
+
+        <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+            <property name="url" value="${jdbc.url}" />
+            <property name="username" value="${jdbc.username}" />
+            <property name="password" value="${jdbc.password}" />
+
+            <property name="filters" value="${jdbc.filters}" />
+
+            <property name="maxActive" value="${jdbc.maxActive}" />
+            <property name="initialSize" value="${jdbc.initialSize}" />
+            <property name="maxWait" value="${jdbc.maxWait}" />
+            <property name="minIdle" value="${jdbc.minIdle}" />
+
+            <property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}" />
+            <property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}" />
+
+            <property name="validationQuery" value="${jdbc.validationQuery}" />
+            <property name="testWhileIdle" value="${jdbc.testWhileIdle}" />
+            <property name="testOnBorrow" value="${jdbc.testOnBorrow}" />
+            <property name="testOnReturn" value="${jdbc.testOnReturn}" />
+
+            <property name="poolPreparedStatements" value="${jdbc.poolPreparedStatements}" />
+            <property name="maxOpenPreparedStatements" value="${jdbc.maxOpenPreparedStatements}" />
+
+            <property name="removeAbandoned"  value="${jdbc.removeAbandoned}" />
+            <property name="removeAbandonedTimeout"  value="${jdbc.removeAbandonedTimeout}" />
+        </bean>
+
+        <!-- 初始化数据表结构 -->
+        <jdbc:initialize-database data-source="dataSource" ignore-failures="ALL">
+            <jdbc:script location="classpath:sql/${db.type}/schema.sql" />
+            <jdbc:script location="classpath:sql/${db.type}/import-data.sql" encoding="UTF-8"/>
+        </jdbc:initialize-database>
+    </beans>
+
+    <!-- unit test环境 -->
+    <beans profile="test">
+        <context:property-placeholder ignore-resource-not-found="true"
+                                      location="classpath*:/application.properties,
+          			  classpath*:/application.test.properties" />
+
+        <!-- Spring Simple连接池 -->
+        <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+            <property name="driverClass" value="${jdbc.driverClassName}" />
+            <property name="url" value="${jdbc.url}" />
+            <property name="username" value="${jdbc.username}" />
+            <property name="password" value="${jdbc.password}" />
+        </bean>
+
+        <!-- 初始化数据表结构 与默认数据-->
+        <jdbc:initialize-database data-source="dataSource" ignore-failures="ALL">
+            <jdbc:script location="classpath:sql/mysql/schema.sql" />
+            <jdbc:script location="classpath:sql/mysql/import-data.sql" encoding="UTF-8"/>
+        </jdbc:initialize-database>
+    </beans>
+</beans>

@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.AdsDao">
+
+  <resultMap id="adsMap" type="com.zlead.entity.AdsEntity" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="adstype" property="adstype" jdbcType="BIGINT" />
+    <result column="catagory" property="catagory" jdbcType="BIT" />
+    <result column="channel" property="channel" jdbcType="BIT" />
+    <result column="sort" property="sort" jdbcType="BIT" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="content_type" property="contentType" jdbcType="BIT" />
+    <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    <result column="thumbnail" property="thumbnail" jdbcType="VARCHAR" />
+    <result column="content_path" property="contentPath" jdbcType="VARCHAR" />
+    <result column="ads_img" property="adsImg" jdbcType="VARCHAR" />
+    <result column="introduce" property="introduce" jdbcType="VARCHAR" />
+    <result column="hits" property="hits" jdbcType="BIGINT" />
+    <result column="is_top" property="isTop" jdbcType="BIT" />
+    <result column="status" property="status" jdbcType="BIT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="modify_date" property="modifyDate" jdbcType="TIMESTAMP" />
+    <result column="adduser_id" property="adduserId" jdbcType="BIGINT" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zlead.entity.AdsEntity" extends="adsMap" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <result column="ads_content" property="adsContent" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.AdsEntity" id="adsMap2">
+            <result property="id" column="id"/>
+            <result property="adstype" column="adstype"/>
+            <result property="catagory" column="catagory"/>
+            <result property="channel" column="channel"/>
+            <result property="sort" column="sort"/>
+            <result property="title" column="title"/>
+            <result property="contentType" column="content_type"/>
+            <result property="thumbnail" column="thumbnail"/>
+            <result property="contentPath" column="content_path"/>
+            <result property="adsImg" column="ads_img"/>
+            <result property="introduce" column="introduce"/>
+            <result property="adsContent" column="ads_content"/>
+            <result property="hits" column="hits"/>
+            <result property="isTop" column="is_top"/>
+            <result property="status" column="status"/>
+            <result property="remark" column="remark"/>
+            <result property="createDate" column="create_date"/>
+            <result property="modifyDate" column="modify_date"/>
+            <result property="addUserId" column="adduser_id"/>
+        <result property="shopId" column="shop_id"/>
+        </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_ads ( 
+                adstype,
+                catagory,
+                channel,
+                sort,
+                title,
+                content_type,
+                thumbnail,
+                content_path,
+                ads_img,
+                introduce,
+                ads_content,
+                hits,
+                is_top,
+                status,
+                remark,
+                create_date,
+                modify_date,
+                adduser_id,
+                shop_id
+                ) VALUES ( 
+                #{adstype},
+                #{catagory},
+                #{channel},
+                #{sort},
+                #{title},
+                #{contentType},
+                #{thumbnail},
+                #{contentPath},
+                #{adsImg},
+                #{introduce},
+                #{adsContent},
+                #{hits},
+                #{isTop},
+                #{status},
+                #{remark},
+                #{createDate},
+                #{modifyDate},
+                #{addUserId},
+                 #{shopId}
+                )
+    </insert>
+    
+    <insert id="insertSelective" parameterType="com.zlead.entity.AdsEntity" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into t_ads
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="adstype != null" >
+        adstype,
+      </if>
+      <if test="catagory != null" >
+        catagory,
+      </if>
+      <if test="channel != null" >
+        channel,
+      </if>
+      <if test="sort != null" >
+        sort,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="contentType != null" >
+        content_type,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="thumbnail != null" >
+        thumbnail,
+      </if>
+      <if test="contentPath != null" >
+        content_path,
+      </if>
+      <if test="adsImg != null" >
+        ads_img,
+      </if>
+      <if test="introduce != null" >
+        introduce,
+      </if>
+      <if test="hits != null" >
+        hits,
+      </if>
+      <if test="isTop != null" >
+        is_top,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="modifyDate != null" >
+        modify_date,
+      </if>
+      <if test="adduserId != null" >
+        adduser_id,
+      </if>
+      <if test="adsContent != null" >
+        ads_content,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="adstype != null" >
+        #{adstype,jdbcType=BIGINT},
+      </if>
+      <if test="catagory != null" >
+        #{catagory,jdbcType=BIT},
+      </if>
+      <if test="channel != null" >
+        #{channel,jdbcType=BIT},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=BIT},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="contentType != null" >
+        #{contentType,jdbcType=BIT},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="thumbnail != null" >
+        #{thumbnail,jdbcType=VARCHAR},
+      </if>
+      <if test="contentPath != null" >
+        #{contentPath,jdbcType=VARCHAR},
+      </if>
+      <if test="adsImg != null" >
+        #{adsImg,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null" >
+        #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="hits != null" >
+        #{hits,jdbcType=BIGINT},
+      </if>
+      <if test="isTop != null" >
+        #{isTop,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null" >
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduserId != null" >
+        #{adduserId,jdbcType=BIGINT},
+      </if>
+      <if test="adsContent != null" >
+        #{adsContent,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.entity.AdsEntity" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update t_ads
+    <set >
+      <if test="adstype != null" >
+        adstype = #{adstype,jdbcType=BIGINT},
+      </if>
+      <if test="catagory != null" >
+        catagory = #{catagory,jdbcType=BIT},
+      </if>
+      <if test="channel != null" >
+        channel = #{channel,jdbcType=BIT},
+      </if>
+      <if test="sort != null" >
+        sort = #{sort,jdbcType=BIT},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="contentType != null" >
+        content_type = #{contentType,jdbcType=BIT},
+      </if>
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="thumbnail != null" >
+        thumbnail = #{thumbnail,jdbcType=VARCHAR},
+      </if>
+      <if test="contentPath != null" >
+        content_path = #{contentPath,jdbcType=VARCHAR},
+      </if>
+      <if test="adsImg != null" >
+        ads_img = #{adsImg,jdbcType=VARCHAR},
+      </if>
+      <if test="introduce != null" >
+        introduce = #{introduce,jdbcType=VARCHAR},
+      </if>
+      <if test="hits != null" >
+        hits = #{hits,jdbcType=BIGINT},
+      </if>
+      <if test="isTop != null" >
+        is_top = #{isTop,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null" >
+        modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="adduserId != null" >
+        adduser_id = #{adduserId,jdbcType=BIGINT},
+      </if>
+      <if test="adsContent != null" >
+        ads_content = #{adsContent,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zlead.entity.AdsEntity" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update t_ads
+    set adstype = #{adstype,jdbcType=BIGINT},
+      catagory = #{catagory,jdbcType=BIT},
+      channel = #{channel,jdbcType=BIT},
+      sort = #{sort,jdbcType=BIT},
+      title = #{title,jdbcType=VARCHAR},
+      content_type = #{contentType,jdbcType=BIT},
+      shop_id = #{shopId,jdbcType=BIGINT},
+      thumbnail = #{thumbnail,jdbcType=VARCHAR},
+      content_path = #{contentPath,jdbcType=VARCHAR},
+      ads_img = #{adsImg,jdbcType=VARCHAR},
+      introduce = #{introduce,jdbcType=VARCHAR},
+      hits = #{hits,jdbcType=BIGINT},
+      is_top = #{isTop,jdbcType=BIT},
+      status = #{status,jdbcType=BIT},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      adduser_id = #{adduserId,jdbcType=BIGINT},
+      ads_content = #{adsContent,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.entity.AdsEntity" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update t_ads
+    set adstype = #{adstype,jdbcType=BIGINT},
+      catagory = #{catagory,jdbcType=BIT},
+      channel = #{channel,jdbcType=BIT},
+      sort = #{sort,jdbcType=BIT},
+      title = #{title,jdbcType=VARCHAR},
+      content_type = #{contentType,jdbcType=BIT},
+      shop_id = #{shopId,jdbcType=BIGINT},
+      thumbnail = #{thumbnail,jdbcType=VARCHAR},
+      content_path = #{contentPath,jdbcType=VARCHAR},
+      ads_img = #{adsImg,jdbcType=VARCHAR},
+      introduce = #{introduce,jdbcType=VARCHAR},
+      hits = #{hits,jdbcType=BIGINT},
+      is_top = #{isTop,jdbcType=BIT},
+      status = #{status,jdbcType=BIT},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+      adduser_id = #{adduserId,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+    <update id="update">
+        UPDATE t_ads AS T SET
+                 T.id = #{id} ,
+                 <if test="adstype!=null and adstype!=''">
+                 T.adstype = #{adstype} ,
+                 </if>
+                 <if test="catagory!=null and catagory!=''">
+                 T.catagory = #{catagory} ,
+                 </if>
+                 T.channel = #{channel} ,
+                 T.sort = #{sort} ,
+                 T.title = #{title} ,
+                 T.content_type = #{contentType} ,
+                 T.thumbnail = #{thumbnail} ,
+                 T.content_path = #{contentPath} ,
+                 T.ads_img = #{adsImg} ,
+                 T.introduce = #{introduce} ,
+                 T.ads_content = #{adsContent} ,
+                 T.hits = #{hits} ,
+                 T.is_top = #{isTop} ,
+                 <if test="status!=null and status!=''">
+                 T.status = #{status} ,
+                 </if>
+                 T.remark = #{remark} ,
+                 T.create_date = #{createDate} ,
+                 T.modify_date = #{modifyDate}  
+                 <if test="shopId!=null and shopId!=''">
+                 	, T.shop_id = #{shopId}
+                 </if>
+                 <if test="addUserId!=null and addUserId!=''">
+                     , T.adduser_id = #{addUserId}
+                 </if>
+                WHERE T.ID = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM t_ads WHERE  ID = #{id}
+    </delete>
+
+    <select id="findPage" parameterType="map" resultMap="adsMap">
+        SELECT *  FROM t_ads AS T
+        <where>
+            <if test="@Ognl@isNotEmpty(id)"> AND T.id = #{id} </if>
+            <if test="@Ognl@isNotEmpty(adstype)"> AND T.adstype  = #{adstype} </if>
+            <if test="@Ognl@isNotEmpty(catagory)"> AND T.catagory = #{catagory} </if>
+            <if test="@Ognl@isNotEmpty(status)"> AND T.`status` = #{status} </if>
+            <if test="@Ognl@isNotEmpty(addUserId)"> AND T.adduser_id = #{addUserId} </if>
+            <if test="@Ognl@isNotEmpty(shopId)"> AND T.shop_id = #{shopId} </if>
+            <if test="@Ognl@isNotEmpty(showStatus)"> AND T.`status` in(0,1) </if>
+        </where>
+    </select>
+
+    <select id="findAllPage" parameterType="map" resultMap="adsMap">
+        SELECT *  FROM t_ads
+    </select>
+
+
+    <select id="findById" resultMap="adsMap" useCache="false">
+        SELECT * FROM t_ads AS T WHERE  T.ID = #{id}
+    </select>
+
+    <!-- 查询广告或轮播图信息 -->
+    <select id="getAdsList" parameterType="map" resultMap="adsMap">
+        SELECT *  FROM t_ads AS T
+        <where>
+            <if test="@Ognl@isNotEmpty(id)"> AND T.id = #{id} </if>
+            <if test="@Ognl@isNotEmpty(adstype)"> AND T.adstype  = #{adstype} </if>
+            <if test="@Ognl@isNotEmpty(catagory)"> AND T.catagory = #{catagory} </if>
+            <if test="@Ognl@isNotEmpty(status)"> AND T.`status` = #{status} </if>
+            <if test="@Ognl@isNotEmpty(shopId)"> AND T.`shop_id` = #{shopId} AND T.adstype in (2,3) AND T.channel=1 and exists (SELECT 1 FROM oa_shop_pics p WHERE p.`pic_id` = T.id) </if>
+        </where>
+    </select>
+
+    <select id="QueryAdsList" resultMap="adsMap" >
+        select * from t_ads where shop_id=#{shopId} limit 0,4
+    </select>
+
+    <select id="AdsList" resultMap="adsMap" >
+      select a.* from t_ads AS a where a.shop_id in
+        <foreach item="shopId" index="index" collection="List"
+                 open="(" separator="," close=")">
+        #{shopId}
+        </foreach>
+        and a.adstype =0 and a.catagory =1
+        LIMIT 0,${ids}
+    </select>
+
+
+</mapper>

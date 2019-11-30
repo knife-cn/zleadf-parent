@@ -1,0 +1,826 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.collection {
+    width: 1050px;
+}
+
+.collection_top {
+    width: 1050px;
+    height: 30px;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.ct_lt {
+    width: 100%;
+    height: 36px;
+    float: left;
+}
+
+.ct_lt span {
+    font-size: 18px;
+    font-family: PingFang-SC-Bold;
+    font-weight: bold;
+    color: rgba(68, 68, 68, 1);
+    line-height: 25px;
+}
+
+.ct_lt a {
+    float: right;
+    margin-left: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(34, 114, 200, 1);
+}
+
+.ct_lt a:hover {
+    color: rgba(0, 80, 176, 1);
+    text-decoration: none;
+}
+
+.ct_lt div {
+    float: right;
+    display: flex;
+    align-items: center;
+    display: none;
+}
+
+.ct_lt div span {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 1px solid rgba(229, 229, 229, 1);
+    margin-right: 12px;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.ct_lt div span.active {
+    border: none;
+    background: url("../img/car/Checked_default.png")
+}
+
+.ct_lt div b {
+    height: 20px;
+    font-size: 14px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(68, 68, 68, 1);
+    line-height: 20px;
+    margin-right: 20px;
+}
+
+.ct_lt div img {
+    width: 15px;
+    height: 16px;
+}
+
+.ct_rg {
+    width: 500px;
+    height: 34px;
+    float: left;
+    text-align: right;
+    margin-left: 50px;
+}
+
+.gl {
+    margin-top: 2px;
+    float: right;
+    width: 190px;
+    display: none;
+}
+
+.gpl {
+    cursor: pointer;
+    font-size: 14px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(34, 114, 200, 1);
+    line-height: 20px;
+}
+
+.collection_pro {
+    width: 1050px;
+}
+
+.serProut_con {
+    width: 1050px;
+    overflow: auto;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.serProut_con li {
+    width: 211px;
+    height: 310px;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid #FFFFFF;
+    margin-right: 65px;
+    float: left;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.serProut_conb {
+    display: none;
+    width: 1050px;
+    overflow: auto;
+    margin: 0 auto;
+    margin-top: 46px;
+}
+
+.serProut_conb li {
+    width: 213px;
+    height: 313px;
+    background: rgba(255, 255, 255, 1);
+    margin-right: 65px;
+    cursor: pointer;
+    float: left;
+    margin-bottom: 30px;
+    /*border: 1px solid #FFFFFF;*/
+}
+
+.com {
+    width: 211px;
+    height: 311px;
+}
+
+.hre {
+    width: 213px;
+    height: 6px;
+    background: rgba(253, 87, 0, 1);
+    /* margin-top: 35px; */
+    margin-left: -1px;
+    display: none;
+    position: absolute;
+    bottom: 0;
+}
+
+.com:hover {
+    border: 1px solid rgba(253, 87, 0, 1);
+}
+
+.serProut_con li:hover {
+    border: 1px solid rgba(253, 87, 0, 1);
+}
+
+.biank {
+    border: 1px solid rgba(253, 87, 0, 1);
+}
+
+.serProut_con li:hover .hre {
+    display: block;
+}
+
+.serProut_con li:hover .porut_mo {
+    display: block;
+}
+
+.serProut_con li:nth-child(4n) {
+    margin-right: 0;
+}
+
+.serProut_conb li:nth-child(4n) {
+    margin-right: 0;
+}
+
+.porut_img {
+    width: 211px;
+    height: 211px;
+    position: relative;
+}
+
+.porut_img img {
+    width: 85%;
+    height: 85%;
+    margin-top: 20px;
+    margin-left: 13px;
+}
+
+.porut_mo {
+    position: absolute;
+    width: 211px;
+    height: 211px;
+    background: rgba(0, 0, 0, 0.3);
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.porut_p {
+    text-align: center;
+    font-size: 20px;
+    font-family: PingFang-SC-Bold;
+    font-weight: bold;
+    color: rgba(253, 87, 0, 1);
+    line-height: 28px;
+    margin-top: 15px;
+}
+
+.porut_pa {
+    text-align: center;
+    width: 169px;
+    padding-left: 21px;
+    font-size: 14px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(79, 83, 98, 1);
+    line-height: 20px;
+}
+
+.porut_ku {
+    width: 100%;
+    height: 40px;
+    margin-top: 164px;
+}
+
+.porut_kua {
+    width: 40px;
+    height: 40px;
+    margin-left: 29px;
+    float: left;
+    border-radius: 50%;
+    position: relative;
+    cursor: pointer;
+}
+
+.porut_kuaimg {
+    position: absolute;
+    top: -20px;
+    left: -10px;
+}
+
+.porut_hkuaimg {
+    position: absolute;
+    top: -20px;
+    left: -10px;
+    display: none;
+}
+
+.porut_kub {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin-left: 16px;
+    float: left;
+    border-radius: 50%;
+    position: relative;
+}
+
+.porut_kuc {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    margin-right: 30px;
+    float: right;
+    border-radius: 50%;
+    position: relative;
+}
+
+.quxn {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    border: 1px solid rgba(229, 229, 229, 1);
+    float: left;
+    margin-top: 2px;
+}
+
+.quxn img {
+    width: 14px;
+    height: 14px;
+    position: relative;
+    top: -4px;
+    left: -1px;
+    display: none;
+}
+
+.quxaa {
+    cursor: pointer;
+}
+
+.quxaa span {
+    float: left;
+    display: block;
+    width: 28px;
+    height: 20px;
+    font-size: 14px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(68, 68, 68, 1);
+    line-height: 20px;
+    margin-left: 15px;
+}
+
+.delt {
+    float: left;
+    margin-left: 20px;
+}
+
+.xii {
+    width: 1px;
+    height: 17px;
+    background: #E5E5E5;
+    float: left;
+    margin-left: 20px;
+}
+
+.quo {
+    float: left;
+    font-size: 14px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(34, 114, 200, 1);
+    line-height: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.porut_mob {
+    position: absolute;
+    width: 211px;
+    height: 211px;
+    background: rgba(0, 0, 0, 0.3);
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.porut_mobimg {
+    position: absolute;
+    top: -20px;
+    right: 0;
+}
+
+.porut_mobgimg {
+    position: absolute;
+    top: -20px;
+    right: 0;
+    display: none;
+}
+
+.gma {
+    width: 66px;
+    height: 18px;
+    background: rgba(253, 87, 0, 1);
+    position: absolute;
+    top: -25px;
+    left: -13px;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.gma span {
+    display: block;
+    font-size: 10px;
+    font-family: PingFang-SC-Bold;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 1);
+    line-height: 14px;
+    margin-top: 2px;
+}
+
+.xjt {
+    position: absolute;
+    top: -38px;
+    left: -4px;
+}
+
+.gmtk {
+    display: none;
+}
+
+.porut_kua:hover .gmtk {
+    display: block;
+}
+
+.porut_kua:hover .porut_hkuaimg {
+    display: block;
+}
+
+.porut_kua:hover .porut_kuaimg {
+    display: none;
+}
+
+.porut_kub:hover .gmtk {
+    display: block;
+}
+
+.porut_kub:hover .porut_hkuaimg {
+    display: block;
+}
+
+.porut_kub:hover .porut_kuaimg {
+    display: none;
+}
+
+.porut_kuc:hover .gmtk {
+    display: block;
+}
+
+.porut_kuc:hover .porut_hkuaimg {
+    display: block;
+}
+
+.porut_kuc:hover .porut_kuaimg {
+    display: none;
+}
+
+.meng {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.guanlian {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -196px;
+    margin-top: -153px;
+    width: 392px;
+    height: 306px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 6px;
+}
+
+.toptan {
+    position: relative;
+    width: 392px;
+    height: 60px;
+}
+
+.toptan img {
+    width: 13px;
+    height: 13px;
+    position: absolute;
+    top: 19px;
+    right: 19px;
+}
+
+.icons {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+}
+
+.icons img {
+    width: 100%;
+    height: 100%;
+}
+
+.success_add {
+    margin: 0 auto;
+    margin-top: 20px;
+    width: auto;
+    height: 22px;
+    font-size: 16px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(79, 83, 98, 1);
+    line-height: 22px;
+    text-align: center;
+}
+
+.yiyan {
+    margin: 0 auto;
+    margin-top: 60px;
+    width: 110px;
+    height: 43px;
+    border-radius: 4px;
+    border: 1px solid rgba(206, 208, 218, 1);
+    text-align: center;
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(79, 83, 98, 1);
+    line-height: 43px;
+}
+
+.yiyan:hover {
+    cursor: pointer;
+}
+
+.block {
+    display: block;
+}
+
+
+/* 新增：无收藏品的时候样式 */
+
+.collection {
+    position: relative;
+}
+
+.collection_no {
+    position: absolute;
+    height: 150px;
+    width: 400px;
+    top: 140px;
+    left: 380px;
+    display: none
+}
+
+.collection_no img {
+    width: 150px;
+    height: 150px;
+    float: left;
+    margin-right: 40px;
+}
+
+.collection_no h5 {
+    width: 200px;
+    height: 28px;
+    font-size: 20px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(79, 83, 98, 1);
+    line-height: 28px;
+    margin-bottom: 9px;
+    margin-top: 47px;
+    float: left;
+}
+
+.collection_no p {
+    width: 200px;
+    height: 20px;
+    font-size: 14px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(79, 83, 98, 1);
+    line-height: 20px;
+    float: left;
+}
+
+.collection_no p a {
+    color: rgba(34, 114, 200, 1);
+}
+
+
+/* 新增：页面加载login效果 */
+
+.loading {
+    width: 100%;
+    /* height: 250px; */
+    margin-top: 20px;
+    display: none;
+    text-align: center
+}
+
+.loading img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.loading p {
+    width: 100%
+}
+
+
+/* 新增：删除收藏弹框效果 */
+
+.serProut_con li {
+    position: relative;
+}
+
+.popBox {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.popBox_content {
+    position: absolute;
+    width: 90%;
+    height: 30%;
+    border-radius: 4px;
+    background: #fff;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    margin: auto;
+}
+
+.popBox_content h6 {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 16px;
+}
+
+.popBox_content p {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    text-align: center;
+}
+
+.popBox_content p a {
+    display: inline-block;
+    width: 50px;
+    height: 20px;
+    line-height: 20px;
+    background: #eee;
+    border-radius: 4px;
+}
+
+.popBox_content p a:first-child {
+    margin-right: 20px;
+}
+
+
+/* 新增：批量删除收藏样式 */
+
+.det_all {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: none;
+}
+
+.det_all div {
+    width: 100%;
+    height: 211px;
+    background: rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.det_all div img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 19px;
+}
+
+.cp span {
+    cursor: pointer;
+}
+
+.cp b {
+    cursor: pointer;
+}
+
+.cp img {
+    cursor: pointer;
+}
+
+
+/* 立即购买和添加购物车弹窗 */
+
+.meng4 {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 900;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.popupMsg4 {
+    display: none;
+    width: 392px;
+    height: 348px;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1001;
+    border-radius: 5px;
+}
+
+.popupMsg4 .close {
+    float: right;
+    width: 21px;
+    height: 21px;
+    margin: 15px;
+    cursor: pointer;
+}
+
+.popupMsg4 .tips {
+    display: block;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+
+.popupMsg4 p {
+    display: block;
+    text-align: center;
+    width: 316px;
+    line-height: 28px;
+    color: #A7A7AC;
+    margin: 0 auto;
+    margin-top: 48px;
+}
+
+.popupMsg4 .know {
+    width: 110px;
+    height: 43px;
+    line-height: 43px;
+    text-align: center;
+    border: 1px solid rgba(206, 208, 218, 1);
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: 60px;
+    color: #4F5362;
+    cursor: pointer;
+}
+
+
+/* 取消收藏 */
+
+.popupMsg5 {
+    display: none;
+    width: 392px;
+    height: 348px;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1001;
+    border-radius: 6px;
+}
+
+.popupMsg5 .img_close {
+    float: right;
+    width: 21px;
+    height: 21px;
+    margin: 15px;
+    cursor: pointer;
+}
+
+.popupMsg5 .tips {
+    display: block;
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    margin-top: 60px;
+}
+
+.popupMsg5 h6 {
+    display: block;
+    text-align: center;
+    width: 316px;
+    line-height: 28px;
+    color: #A7A7AC;
+    margin: 0 auto;
+    margin-top: 48px;
+}
+
+.popupMsg5 p {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    text-align: center;
+}
+
+.popupMsg5 p a {
+    display: inline-block;
+    width: 110px;
+    height: 43px;
+    line-height: 43px;
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid rgba(206, 208, 218, 1);
+    color: rgba(79, 83, 98, 1);
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.popupMsg5 p a:first-child {
+    margin-right: 20px;
+    background: rgba(253, 87, 0, 1);
+    border: none;
+    color: rgba(255, 255, 255, 1);
+}

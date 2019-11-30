@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.AclModuleUserDao">
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.dto.AclModuUserDto" id="BaseResultMap">
+        <result property="userId" column="user_id"/>
+        <result property="moduCode" column="modu_code"/>
+    </resultMap>
+
+    <select id="findAclModuleByUserId" resultMap="BaseResultMap">
+        SELECT c.user_id,a.modu_code FROM acl_module as a
+        LEFT JOIN acl_modu_role as b on a.modu_id=b.modu_id
+        LEFT JOIN acl_user_role as c on c.role_id=b.role_id
+        WHERE c.user_id=#{userId}
+    </select>
+</mapper>

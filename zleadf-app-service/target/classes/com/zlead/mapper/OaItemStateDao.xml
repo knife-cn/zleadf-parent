@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.dao.OaItemStateDao" >
+  <resultMap id="BaseResultMap" type="com.zlead.entity.OaItemState" >
+    <id column="item_id" property="itemId" jdbcType="INTEGER" />
+    <result column="sale_price" property="salePrice" jdbcType="DOUBLE" />
+    <result column="show_price" property="showPrice" jdbcType="VARCHAR" />
+    <result column="cust_levels" property="custLevels" jdbcType="VARCHAR" />
+    <result column="terminal" property="terminal" jdbcType="VARCHAR" />
+    <result column="sale_qty" property="saleQty" jdbcType="INTEGER" />
+    <result column="show_qty" property="showQty" jdbcType="VARCHAR" />
+    <result column="auto_date" property="autoDate" jdbcType="TIMESTAMP" />
+    <result column="on_date" property="onDate" jdbcType="TIMESTAMP" />
+    <result column="off_date" property="offDate" jdbcType="TIMESTAMP" />
+    <result column="org_id" property="orgId" jdbcType="INTEGER" />
+    <result column="sys_id" property="sysId" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modifier" property="modifier" jdbcType="INTEGER" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="sale_state" property="saleState" jdbcType="VARCHAR" />
+    <result column="off_type" property="offType" jdbcType="VARCHAR" />
+    <result column="level_names" property="levelNames" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    item_id, sale_price, show_price, cust_levels, terminal, sale_qty, show_qty, auto_date, 
+    on_date, off_date, org_id, sys_id, creator, create_time, modifier, modify_time, sale_state, 
+    off_type, level_names
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from oa_item_state
+    where item_id = #{itemId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from oa_item_state
+    where item_id = #{itemId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.entity.OaItemState" >
+    insert into oa_item_state (item_id, sale_price, show_price, 
+      cust_levels, terminal, sale_qty, 
+      show_qty, auto_date, on_date, 
+      off_date, org_id, sys_id, 
+      creator, create_time, modifier, 
+      modify_time, sale_state, off_type, 
+      level_names)
+    values (#{itemId,jdbcType=INTEGER}, #{salePrice,jdbcType=DOUBLE}, #{showPrice,jdbcType=VARCHAR}, 
+      #{custLevels,jdbcType=VARCHAR}, #{terminal,jdbcType=VARCHAR}, #{saleQty,jdbcType=INTEGER}, 
+      #{showQty,jdbcType=VARCHAR}, #{autoDate,jdbcType=TIMESTAMP}, #{onDate,jdbcType=TIMESTAMP}, 
+      #{offDate,jdbcType=TIMESTAMP}, #{orgId,jdbcType=INTEGER}, #{sysId,jdbcType=INTEGER}, 
+      #{creator,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=INTEGER}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{saleState,jdbcType=VARCHAR}, #{offType,jdbcType=VARCHAR}, 
+      #{levelNames,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.entity.OaItemState" >
+    update oa_item_state
+    <set >
+      <if test="salePrice != null" >
+        sale_price = #{salePrice,jdbcType=DOUBLE},
+      </if>
+      <if test="showPrice != null" >
+        show_price = #{showPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="custLevels != null" >
+        cust_levels = #{custLevels,jdbcType=VARCHAR},
+      </if>
+      <if test="terminal != null" >
+        terminal = #{terminal,jdbcType=VARCHAR},
+      </if>
+      <if test="saleQty != null" >
+        sale_qty = #{saleQty,jdbcType=INTEGER},
+      </if>
+      <if test="showQty != null" >
+        show_qty = #{showQty,jdbcType=VARCHAR},
+      </if>
+      <if test="autoDate != null" >
+        auto_date = #{autoDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="onDate != null" >
+        on_date = #{onDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="offDate != null" >
+        off_date = #{offDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="sysId != null" >
+        sys_id = #{sysId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="saleState != null" >
+        sale_state = #{saleState,jdbcType=VARCHAR},
+      </if>
+      <if test="offType != null" >
+        off_type = #{offType,jdbcType=VARCHAR},
+      </if>
+      <if test="levelNames != null" >
+        level_names = #{levelNames,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where item_id = #{itemId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.entity.OaItemState" >
+    update oa_item_state
+    set sale_price = #{salePrice,jdbcType=DOUBLE},
+      show_price = #{showPrice,jdbcType=VARCHAR},
+      cust_levels = #{custLevels,jdbcType=VARCHAR},
+      terminal = #{terminal,jdbcType=VARCHAR},
+      sale_qty = #{saleQty,jdbcType=INTEGER},
+      show_qty = #{showQty,jdbcType=VARCHAR},
+      auto_date = #{autoDate,jdbcType=TIMESTAMP},
+      on_date = #{onDate,jdbcType=TIMESTAMP},
+      off_date = #{offDate,jdbcType=TIMESTAMP},
+      org_id = #{orgId,jdbcType=INTEGER},
+      sys_id = #{sysId,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modifier = #{modifier,jdbcType=INTEGER},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      sale_state = #{saleState,jdbcType=VARCHAR},
+      off_type = #{offType,jdbcType=VARCHAR},
+      level_names = #{levelNames,jdbcType=VARCHAR}
+    where item_id = #{itemId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+       default-lazy-init="false">
+   
+    <bean id="zxTaxRateService" class="com.up72.zx.service.impl.ZxTaxRateServiceImpl"/>
+    <bean id="zxAdsReserveService" class="com.up72.zx.service.impl.ZxAdsReserveServiceImpl"/>  
+	<bean id="zxAdsService" class="com.up72.zx.service.impl.ZxAdsServiceImpl"/>
+    <bean id="zxAdsGoodsService" class="com.up72.zx.service.impl.ZxAdsGoodsServiceImpl"/>
+    <bean id="zxAdsTypeService" class="com.up72.zx.service.impl.ZxAdsTypeServiceImpl"/>
+    <bean id="zxCardService" class="com.up72.zx.service.impl.ZxCardServiceImpl"/>
+    <bean id="zxCardCatService" class="com.up72.zx.service.impl.ZxCardCatServiceImpl"/>
+    <bean id="zxChargbackRequestService" class="com.up72.zx.service.impl.ZxChargbackRequestServiceImpl"/>
+    <bean id="zxChargbackRequestExpressService" class="com.up72.zx.service.impl.ZxChargbackRequestExpressServiceImpl"/>
+    <bean id="zxChargbackRequestLogService" class="com.up72.zx.service.impl.ZxChargbackRequestLogServiceImpl"/>
+    <bean id="zxCollectionService" class="com.up72.zx.service.impl.ZxCollectionServiceImpl"/>
+    <bean id="zxMemberService" class="com.up72.zx.service.impl.ZxMemberServiceImpl"/>
+    <bean id="zxMemberSignService" class="com.up72.zx.service.impl.ZxMemberSignServiceImpl"/>
+    <bean id="zxMemberAddressService" class="com.up72.zx.service.impl.ZxMemberAddressServiceImpl"/>
+    <bean id="zxMemberBrokerageService" class="com.up72.zx.service.impl.ZxMemberBrokerageServiceImpl"/>
+    <bean id="zxOrderService" class="com.up72.zx.service.impl.ZxOrderServiceImpl"/>
+    <bean id="zxOrderGoodsService" class="com.up72.zx.service.impl.ZxOrderGoodsServiceImpl"/>
+    <bean id="zxOrderLogService" class="com.up72.zx.service.impl.ZxOrderLogServiceImpl"/>
+    <bean id="zxShoppingCartService" class="com.up72.zx.service.impl.ZxShoppingCartServiceImpl"/>
+    <bean id="zxStoreService" class="com.up72.zx.service.impl.ZxStoreServiceImpl"/>
+    <bean id="zxStoreGoodsService" class="com.up72.zx.service.impl.ZxStoreGoodsServiceImpl"/>
+    <bean id="zxStoreLevelService" class="com.up72.zx.service.impl.ZxStoreLevelServiceImpl"/>
+    <bean id="zxStoreUserService" class="com.up72.zx.service.impl.ZxStoreUserServiceImpl"/>
+    <bean id="zxSysConfigService" class="com.up72.zx.service.impl.ZxSysConfigServiceImpl"/>
+    <bean id="zxWithdrawLogService" class="com.up72.zx.service.impl.ZxWithdrawLogServiceImpl"/>
+    <bean id="zxAttrService" class="com.up72.zx.service.impl.ZxAttrServiceImpl"    />
+    <bean id="zxAttrValueService" class="com.up72.zx.service.impl.ZxAttrValueServiceImpl" />
+    <bean id="zxCatService" class="com.up72.zx.service.impl.ZxCatServiceImpl" />
+    <bean id="zxGoodsService" class="com.up72.zx.service.impl.ZxGoodsServiceImpl" />
+    <bean id="zxParamService" class="com.up72.zx.service.impl.ZxParamServiceImpl" />
+    <bean id="zxParamValueService" class="com.up72.zx.service.impl.ZxParamValueServiceImpl" />
+    <bean id="zxProdService" class="com.up72.zx.service.impl.ZxProdServiceImpl" />
+    <bean id="zxProdAttrService" class="com.up72.zx.service.impl.ZxProdAttrServiceImpl" />
+    <bean id="zxProdParamService" class="com.up72.zx.service.impl.ZxProdParamServiceImpl" />
+    <bean id="zxProdSpecService" class="com.up72.zx.service.impl.ZxProdSpecServiceImpl" />
+    <bean id="zxSpecService" class="com.up72.zx.service.impl.ZxSpecServiceImpl" />
+    <bean id="zxSpecValueService" class="com.up72.zx.service.impl.ZxSpecValueServiceImpl" />
+    <bean id="zxTagService" class="com.up72.zx.service.impl.ZxTagServiceImpl" />
+    <bean id="zxProdImgService" class="com.up72.zx.service.impl.ZxProdImgServiceImpl"/>
+    <bean id="zxShopService" class="com.up72.zx.service.impl.ZxShopServiceImpl"/>
+    <bean id="zxShopNavService" class="com.up72.zx.service.impl.ZxShopNavServiceImpl"/>
+    <bean id="zxShopBondRecordService" class="com.up72.zx.service.impl.ZxShopBondRecordServiceImpl"/>
+    <bean id="zxAuditingInfoService" class="com.up72.zx.service.impl.ZxAuditingInfoServiceImpl"/>
+    <bean id="zxExpressCompanyService" class="com.up72.zx.service.impl.ZxExpressCompanyServiceImpl"/>
+    <bean id="zxExpressTmplService" class="com.up72.zx.service.impl.ZxExpressTmplServiceImpl"/>
+    <bean id="zxOrderShippingService" class="com.up72.zx.service.impl.ZxOrderShippingServiceImpl"/>
+    <bean id="zxLogisticsService" class="com.up72.zx.service.impl.ZxLogisticsServiceImpl"/>
+    <bean id="zxShopCatService" class="com.up72.zx.service.impl.ZxShopCatServiceImpl"/>
+    <bean id="zxStoreFacePayService" class="com.up72.zx.service.impl.ZxStoreFacePayServiceImpl"/>
+    <bean id="zxAgentFinanceService" class="com.up72.zx.service.impl.ZxAgentFinanceServiceImpl"/>
+    <bean id="zxPointPayLogService" class="com.up72.zx.service.impl.ZxPointPayLogServiceImpl"/>
+    <bean id="zxPresentService" class="com.up72.zx.service.impl.ZxPresentServiceImpl"/>
+    <bean id="zxMemberPresentService" class="com.up72.zx.service.impl.ZxMemberPresentServiceImpl"/>
+    <bean id="zxFansService" class="com.up72.zx.service.impl.ZxFansServiceImpl"/>
+    <bean id="zxDirectStoreSupplierService" class="com.up72.zx.service.impl.ZxDirectStoreSupplierServiceImpl"/>
+    <bean id="zxDirectStoreGoodsService" class="com.up72.zx.service.impl.ZxDirectStoreGoodsServiceImpl"/>
+    <bean id="zxDirectStoreOrderService" class="com.up72.zx.service.impl.ZxDirectStoreOrderServiceImpl"/>
+    <bean id="zxDirectStoreOrderGoodsService" class="com.up72.zx.service.impl.ZxDirectStoreOrderGoodsServiceImpl"/>
+    <bean id="zxSysUserExtendService" class="com.up72.zx.service.impl.ZxSysUserExtendServiceImpl"/>
+    <bean id="zxPointCardService" class="com.up72.zx.service.impl.ZxPointCardServiceImpl"/>
+    <bean id="zxStoreTreasureService" class="com.up72.zx.service.impl.ZxStoreTreasureServiceImpl"/>
+    <bean id="zxStoreTreasureMemberService" class="com.up72.zx.service.impl.ZxStoreTreasureMemberServiceImpl"/>
+    <bean id="zxStatisticsService" class="com.up72.zx.service.impl.ZxStatisticsServiceImpl"/>
+    <bean id="zxWithdrawalsService" class="com.up72.zx.service.impl.ZxWithdrawalsServiceImpl"/>
+    <!--以下是平台权限相关的bean-->
+    <bean id="sysLogUserLoginService" class="com.up72.sys.service.impl.SysLogUserLoginServiceImpl"/>
+    <bean id="sysLogUserOperatorService" class="com.up72.sys.service.impl.SysLogUserOperatorServiceImpl"/>
+    <bean id="sysUserService" class="com.up72.sys.service.impl.SysUserServiceImpl"/>
+    <bean id="sysMenuService" class="com.up72.sys.service.impl.SysMenuServiceImpl"/>
+    <bean id="zxBalancePayLogService" class="com.up72.zx.service.impl.ZxBalancePayLogServiceImpl"/>
+    <bean id="zxOrderPayLogService" class="com.up72.zx.service.impl.ZxOrderPayLogServiceImpl"/>
+    <bean id="sysRoleService" class="com.up72.sys.service.impl.SysRoleServiceImpl"/>
+    <bean id="sysRoleMenuService" class="com.up72.sys.service.impl.SysRoleMenuServiceImpl"/>
+    <bean id="sysManagerRoleService" class="com.up72.sys.service.impl.SysManagerRoleServiceImpl"/>
+    <bean id="sysPermRpcService" class="com.up72.sys.service.rpc.impl.SysPermRpcServiceImpl"/>
+    <bean id="setParamService" class="com.up72.zx.service.impl.SetParamServiceImpl"/>
+    <bean id="pqianAliPayService" class="com.puqian.aliPay.service.impl.PqianAliPayServiceImpl"/>
+
+    <!--  <bean id="aliPayService" class="com.ajeasy.payment.apipay.service.impl.AliPayServiceImpl"/> -->
+     
+    <!-- 以下是日志相关的Bean  
+    <bean id="eventService" class="com.up72.uplog.service.impl.EventServiceImpl"/>
+    <bean id="eventExceptionService" class="com.up72.uplog.service.impl.EventExceptionServiceImpl"/>
+    <bean id="eventPropertyService" class="com.up72.uplog.service.impl.EventPropertyServiceImpl"/>
+-->
+    <!-- 以下是版本更新相关的Bean  
+    <bean id="appVersionService" class="com.up72.appversion.service.impl.AppVersionServiceImpl"/>
+-->
+    <!-- 以下是调用交易盘系统的service -->
+    <bean id="tradeService" class="com.up72.zx.service.impl.TradeServiceImpl"/>
+    <!-- <bean id="RollBackService" class="com.ajeasy.payment.apipay.Exception.PayRollBackExceptionTwo"/> -->
+    <bean id="OrderService" class="com.ajeasy.service.impl.OrderServiceImpl"/>
+    <bean id="brandService" class="com.ajeasy.service.impl.BrandServiceImpl"/>
+    <bean id="agentBrandRelaService" class="com.ajeasy.service.impl.AgentBrandRelaServiceImpl"/>
+    <bean id="regionService" class="com.ajeasy.service.impl.RegionServiceImpl"/>
+</beans>

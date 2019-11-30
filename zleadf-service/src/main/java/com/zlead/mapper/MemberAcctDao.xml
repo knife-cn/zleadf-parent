@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.MemberAcctDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.MemberAcctEntity" id="memberAcctMap">
+            <result property="id" column="id"/>
+            <result property="memberid" column="memberid"/>
+            <result property="username" column="username"/>
+            <result property="accounttype" column="accounttype"/>
+            <result property="acctName" column="acct_name"/>
+            <result property="account" column="account"/>
+            <result property="blance" column="blance"/>
+            <result property="freezeBlance" column="freeze_blance"/>
+            <result property="membertype" column="membertype"/>
+            <result property="systemid" column="systemid"/>
+            <result property="createDate" column="create_date"/>
+            <result property="modifyDate" column="modify_date"/>
+            <result property="freezeDate" column="freeze_date"/>
+            <result property="remark" column="remark"/>
+        </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_member_acct (
+                id,
+                memberid,
+                username,
+                accounttype,
+                acct_name,
+                account,
+                blance,
+                freeze_blance,
+                membertype,
+                systemid,
+                create_date,
+                modify_date,
+                freeze_date,
+                remark
+                ) VALUES (
+                #{id},
+                #{memberid},
+                #{username},
+                #{accounttype},
+                #{acctName},
+                #{account},
+                #{blance},
+                #{freezeBlance},
+                #{membertype},
+                #{systemid},
+                #{createDate},
+                #{modifyDate},
+                #{freezeDate},
+                #{remark}
+                )
+    </insert>
+
+    <update id="update">
+        UPDATE t_member_acct AS T SET
+                  T.id = #{id} ,
+                 T.memberid = #{memberid} ,
+                 T.username = #{username} ,
+                 T.accounttype = #{accounttype} ,
+                 T.acct_name = #{acctName} ,
+                 T.account = #{account} ,
+                 T.blance = #{blance} ,
+                 T.freeze_blance = #{freezeBlance} ,
+                 T.membertype = #{membertype} ,
+                 T.systemid = #{systemid} ,
+                 T.create_date = #{createDate} ,
+                 T.modify_date = #{modifyDate} ,
+                 T.freeze_date = #{freezeDate} ,
+                 T.remark = #{remark}
+                WHERE T.ID = #{id}
+    </update>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.zlead.entity.MemberAcctEntity" >
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        update t_member_acct
+        <set >
+            <if test="username != null" >
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="accounttype != null" >
+                accounttype = #{accounttype,jdbcType=INTEGER},
+            </if>
+            <if test="acctName != null" >
+                acct_name = #{acctName,jdbcType=VARCHAR},
+            </if>
+            <if test="account != null" >
+                account = #{account,jdbcType=DECIMAL},
+            </if>
+            <if test="blance != null" >
+                blance = #{blance,jdbcType=DECIMAL},
+            </if>
+            <if test="freezeBlance != null" >
+                freeze_blance = #{freezeBlance,jdbcType=DECIMAL},
+            </if>
+            <if test="membertype != null" >
+                memberType = #{membertype,jdbcType=INTEGER},
+            </if>
+            <if test="memberid != null" >
+                memberid = #{memberid,jdbcType=BIGINT},
+            </if>
+            <if test="systemid != null" >
+                systemid = #{systemid,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null" >
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyDate != null" >
+                modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="freezeDate != null" >
+                freeze_date = #{freezeDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateDate != null" >
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="remark != null" >
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM t_member_acct WHERE  ID = #{id}
+    </delete>
+
+    <select id="findPage" parameterType="map" resultMap="memberAcctMap">
+        SELECT *  FROM t_member_acct AS T
+    </select>
+
+    <select id="findById" resultMap="memberAcctMap" useCache="false">
+        SELECT * FROM t_member_acct AS T WHERE  T.ID = #{id}
+    </select>
+    <select id="findByMemberid" parameterType="map"   resultMap="memberAcctMap">
+        SELECT * FROM t_member_acct WHERE   memberid = #{memberid}  AND accounttype = #{accounttype}
+          limit 0,1
+    </select>
+
+</mapper>

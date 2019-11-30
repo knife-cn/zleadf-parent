@@ -1,0 +1,512 @@
+html,
+body{
+	background:#fff;
+}
+.wrap{
+	width: 100%;
+	margin-top: 1.16rem;
+}
+
+/*登录页*/
+.back-img{
+	width:100%;
+	height:3.26rem;
+}
+.login-info{
+	width:5.82rem;
+	height:6.2rem;
+	margin:0 auto;
+	margin-top:1rem;
+	background:#FC1246;
+	border-radius:15px;
+	border-right:1px solid #EFEEEE;
+	border-left:1px solid #EFEEEE;
+}
+.login-info-img{
+	width:1.84rem;
+	height:1.84rem;
+	margin-top:-0.94rem;
+	margin-left:1.975rem;
+	position: absolute;
+}
+.info{
+	width:5.79rem;
+	height:auto;
+	position: absolute;
+	margin-top:0.3rem;
+	background:#fff;
+}
+.info-img{
+	width:100%;
+	height:0.7rem;
+	text-align:center;
+}
+.info-img-img{
+	width:0.36rem;
+	height:0.36rem;
+	margin-left:2.715rem;
+}
+.info-input{
+	width:100%;
+	height:0.7rem;
+	margin:0.27rem auto;
+}
+.info-input-img{
+	width:0.72rem;
+	height:0.72rem;
+	float:left;
+	margin-left:0.22rem;
+	margin-right:0.17rem;
+}
+.info-input-div{
+	width:4.5rem;
+	height:0.73rem;
+	border:1px solid #EFEEEE;
+	border-radius:30px;
+	float:left;
+}
+.info-fl{
+	margin-left:0.645rem;
+}
+.login-input{
+	height:100%;
+	line-height:0.73rem;
+	color:#000;
+	opacity: 0.6;
+	font-size:0.24rem;
+	text-indent: 0.13rem;
+}
+.info-input-div img{
+	width:0.13rem;
+	height:0.13rem;
+	float:left;
+	margin-top:0.3rem;
+	margin-left:0.21rem;
+}
+.foget-password{
+	width:5.79rem;
+	height:0.9rem;
+	position: absolute;
+	margin-top:5.3rem;
+	line-height:0.9rem;
+}
+.foget-password img{
+	width:0.51rem;
+	height:0.51rem;
+	margin:0.18rem 0.2rem 0.25rem 0.8rem;
+	float:left;
+}
+.bottom-btn{
+	width:3.25rem;
+	height:0.8rem;
+	margin:0.35rem auto;
+	background:url(../img/login.png);
+	background-size:3.25rem 0.8rem;
+}
+.bottom-btn-1{
+	width:3.25rem;
+	height:0.8rem;
+	margin:0.35rem auto;
+	background:url(../img/zhuce.png);
+	background-size:3.25rem 0.8rem;
+}
+.validate{
+	height:0.4rem;
+	width:1.35rem;
+	border-radius:30px;
+	background:#FE352E;
+	color:#fff;
+	font-size:0.2rem;
+}
+.browser{
+	width:3rem;
+	height:0.73rem;
+	float:left;
+	color:#666666;
+	font-size:0.26rem;
+	line-height:0.73rem;
+}
+.bottom-button-1{
+	width:2rem;
+	height:0.7rem;
+	margin:0.35rem 0.35rem 0 1rem;
+	float:left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.wrap .logo{
+	width: 1.73rem;
+	margin: auto;
+}
+.wrap .tel{
+	width: 3.95rem;
+	height: 0.96rem;
+	background: url(../img/login_03.png) no-repeat;
+	background-size: 100%;
+	margin: auto;
+	margin-top: 1.32rem;
+}
+.wrap .tel input{
+	width: 100%;
+	height: 0.36rem;
+	font-size: 0.22rem;
+	line-height: 0.36rem;
+	background: none;
+	text-indent: 1.1rem;
+	margin-top: 0.3rem;
+}
+
+.wrap .pswd{
+	width: 3.95rem;
+	height: 0.96rem;
+	background:url(../img/login_07.png) no-repeat;
+	background-size: 100%;
+	margin: auto;
+	margin-top: 0.44rem;
+}
+.wrap .pswd input{
+	width: 2.8rem;
+    height: 0.36rem;
+    font-size: 0.22rem;
+    line-height: 0.36rem;
+    background: none;
+    /* text-indent: 1.1rem; */
+    margin-top: 0.3rem;
+    margin-left: 1.1rem;
+}
+.wrap .login_btn{
+	width: 3.95rem;
+	height: 0.91rem;
+	line-height: 0.91rem;
+	background: #3dc5d3;
+	color: #FFFFFF;
+	font-size: 0.42rem;
+	text-align: center;
+	letter-spacing: 1px;
+	margin: auto;
+	margin-top: 0.48rem;
+	border-radius: 0.45rem;
+}
+.wrap .righter{
+	width: 3.95rem;
+	margin: auto;
+	margin-top: 0.6rem;
+}
+.wrap .righter>div{
+	float: left;
+	font-size: 0.28rem;
+	color: #3cc6d3;
+	padding-left: 0.48rem;
+}
+/*注册页*/
+.registration{
+	padding-top: 0.67rem;
+}
+.registration >div{
+	width: 5.23rem;
+	height: 1.08rem;
+	margin: auto;
+	margin-top: 0.67rem;
+}
+.registration div:first-child{
+	margin-top: 0;
+}
+.registration input{
+	width: 100%;
+	height: 0.36rem;
+	font-size: 0.28rem;
+	line-height: 0.36rem;
+	background: none;
+	text-indent: 1.1rem;
+	margin-top: 0.36rem;
+}
+.registration .rig_tel{
+		background: url(../img/risghter_03.png) no-repeat;
+		background-size: 100%;
+}
+.registration .rig_pswd{
+	background: url(../img/risghter_07.png) no-repeat;
+		background-size: 100%;
+}
+.registration .invitation_code{
+	background: url(../img/risghter_13.png) no-repeat;
+		background-size: 100%;
+}
+.registration .next{
+	width: 5.23rem;
+	height: 1.08rem;
+	line-height: 1.08rem;
+	background: #3dc5d3;
+	text-align: center;
+	letter-spacing: 2px;
+	font-size: 0.42rem;
+	margin: auto;
+	margin-top: 0.78rem;
+	border-radius: 0.54rem;
+	color: #FFFFFF;
+}
+.registration p{
+	width: 100%;
+	text-align: center;
+	letter-spacing: 2px;
+	margin-top: 0.25rem;
+	font-size: 0.22rem;
+	color: #40c9d3;
+	height: 0.24rem;
+	line-height: 0.24rem;
+}
+.registration p span{
+	color: #f26d68;
+}
+/*注册完成页*/
+.regfinish{
+	padding-top: 1.06rem;
+}
+.regfinish .regfinish_tel{
+	width: 5.23rem;
+	height: 1.08rem;	
+	line-height: 1.08rem;
+	background: url(../img/righter3_03.png) no-repeat;
+	background-size: 100%;
+	margin: auto;
+	font-size: 0.28rem;
+	color: #000000;
+	text-indent: 1.1rem;
+}
+.regfinish input{
+	width: 100%;
+	height: 0.36rem;
+	font-size: 0.28rem;
+	line-height: 0.36rem;
+	background: none;
+	text-indent: 1.1rem;
+	margin-top: 0.36rem;
+}
+.regfinish .regfinish_code{
+	width: 5.23rem;
+	height: 1.08rem;	
+	background: url(../img/righter3_04.png) no-repeat;
+	background-size: 100%;
+	margin: auto;
+	margin-top: 0.68rem;
+	position: relative;
+}
+.reg{
+		width: 5.23rem;
+	height: 1.08rem;
+	line-height: 1.08rem;
+	background: #3dc5d3;
+	text-align: center;
+	letter-spacing: 2px;
+	font-size: 0.42rem;
+	margin: auto;
+	margin-top: 0.78rem;
+	border-radius: 0.54rem;
+	color: #FFFFFF;
+}
+#getCode,#getCode2{
+	width: 1.5rem;
+	position: absolute;
+	top: 50%;
+	left: 3.5rem;
+	font-size: 0.24rem;
+	height: 0.3rem;
+	line-height: 0.3rem;
+	margin-top: -0.15rem;
+	color: #3DC5D3;
+	z-index: 9999;
+}
+/*忘记密码*/
+.forgetpswd{
+	padding-top: 1.06rem;
+}
+.forgetpswd_tel{
+	width: 5.4rem;
+	margin: auto;
+}
+.forgetpswd_tel .phone_ico{
+	width: 0.43rem;
+}
+.forgetpswd_tel li{
+	float: left;
+}
+.forgetpswd_tel .phone_input{
+	width: 4.7rem;
+	margin-left: 0.27rem;
+	height: 0.63rem;
+	line-height: 0.63rem;
+	font-size: 0.28rem;
+	border-bottom: 0.02rem solid #cccccc;
+}
+.forgetpswd_tel .phone_input input{
+	height: 0.5rem;
+	line-height: 0.5rem;
+	width: 100%;
+	margin-top: 0.2rem;
+	font-size: 0.3rem;
+	background: none;
+}
+.forgetpswd_code{
+	margin-top:0.76rem ;
+}
+.forgetpswd_code .phone_input{
+	position: relative;
+}
+.forgetpswd_code #getCode{
+	width: 1.6rem;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 3.1rem;
+	font-size: 0.24rem;
+	height: 0.4rem;
+	line-height: 0.4rem;
+	margin-top: -0.2rem;
+	color: #FFFFFF;
+	background: #fa708d;
+	z-index: 9999;
+	border-radius: 0.04rem;
+	letter-spacing: 1px;
+}
+.forgetpswd_code #getCode2{
+	width: 1.6rem;
+	text-align: center;
+	position: absolute;
+	top: 50%;
+	left: 3.1rem;
+	font-size: 0.24rem;
+	height: 0.4rem;
+	line-height: 0.4rem;
+	margin-top: -0.2rem;
+	color: #FFFFFF;
+	background: #fa708d;
+	z-index: 9999;
+	border-radius: 0.04rem;
+	letter-spacing: 1px;
+	display: none;
+}
+.forgetpswd .next{
+	width: 5.4rem;
+	height: 0.77rem;
+	line-height: 0.77rem;
+	background: #3DC5D3;
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 0.3rem;
+	margin: auto;
+	margin-top: 1.3rem;
+	border-radius: 0.04rem;
+	letter-spacing: 1px;
+}
+.imgCode-input{
+	width: 2.4rem;
+	height: 1rem;
+	border: 0.04rem solid #3CC6D3;
+	border-radius: 0.5rem;	
+}
+.imgCode-input input{
+	height: 0.3remn;
+	line-height: 0.3rem;
+	width: 100%;
+	text-indent: 0.4rem;
+	color: #333333;
+	font-size: 0.28rem;
+	margin-top: 0.35rem;
+}
+#imgCode{
+	width: 2.5rem;
+	height: 1.08rem;
+	border-radius: 0.504rem;
+	margin-left: 0.23rem;
+}
+.imgCode{
+	width: 5.23rem;
+	margin: auto;
+	margin-top: 0.68rem;
+}
+.forgetpswd_tel .phone_input2{
+ width: 4.5rem;
+    margin-left: 0.77rem;;
+}
+.incode img{
+   width: 1.6rem;
+	text-align: center;
+	position: absolute;
+	top: 0%;
+	left: 2.9rem;
+	font-size: 0.24rem;
+	margin-top: -0.2rem;
+	color: #FFFFFF;
+	background: #fa708d;
+	z-index: 100;
+	border-radius: 0.04rem;
+	letter-spacing: 1px;
+}
+.wrap .lianhe{
+	width: 3.98rem;
+	margin: auto;
+	margin-top: 1rem;
+}
+.wrap .weixin-login{
+	width: 0.61rem;
+	margin: auto;
+	margin-top: 0.39rem;
+}
+@charset "utf-8";
+/* 全局样式 */
+
+h5{margin-top: 1px;margin-bottom: 1px}
+
+
+.gb_resLay { background: #FFFFFF; height: 170px; width: 100%; max-width: 800px; margin: 0 auto; }
+.gb_res_t { line-height: 38px; height: 38px; position: relative; font-size: 18px; text-align: center; }
+.gb_res_t i { background: #FFEC94; height: 1px; overflow: hidden; left: 32px; top: 18px; right: 32px; position: absolute; }
+.gb_res_t span { background: #FFF; display: inline-block; padding: 0px 6px; position: relative; z-index: 2; }
+.gb_resItms { margin: 0px 4%; }
+.gb_resItms li {  float: left; width: 16.66%; padding-bottom: 15px; }
+.gb_resA img { height: auto; width: 60px; margin-bottom: 10px; }
+
+@media only screen and (max-width: 500px) {
+	.gb_resA img { width: 45px; margin-top: 5px; }
+}
+
+@media only screen and (max-width: 470px) {
+	.gb_resItms li {
+		width: 33.3%;
+	}
+
+	.gb_resLay {
+		height: 100px;
+		width: 95%;
+		text-align: center;
+	}
+
+	.gb_resA img {
+		width: 60px;
+		margin-top: 0
+	}
+}
+.fxicon{
+	display: inline-block;
+	width: 38px;
+	height: 38px;
+	margin: 0 auto;
+}
+
+.yanzhengma{
+	text-align: center;
+}
+
+

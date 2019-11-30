@@ -1,0 +1,344 @@
+
+/* 弹窗 */
+
+
+.under_box {
+margin: 71px auto;
+box-sizing: border-box;
+background-image: url(../img/order/bei.png);
+width:413px;
+height:443px;
+background:rgba(255,255,255,1);
+box-shadow:0px 0px 30px 0px rgba(0,0,0,0.07);  
+text-align: center;
+padding: 29px 32px  72px 30px;  
+position: relative;
+}
+.bottom_img {
+position: absolute;
+bottom: -15px;  
+left: 0px;
+}
+.under_box p {
+font-size:18px;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(68,68,68,1);
+}
+.under_box .lineD {
+margin-top: 10px;
+width: 355px;
+height: 4px;
+border-top:2px dashed #4F5362;   
+border-bottom:2px dashed #4F5362;   
+}
+.under_box .success_content {
+font-size:14px;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(79,83,98,1);
+}
+.under_box .success_content .left_c {
+float: left; 
+margin-top: 20px;
+}
+.under_box .success_content .left_c li,
+.under_box .success_content .right_c li {
+margin-bottom: 8px;
+}
+.under_box .success_content .right_c {
+float: right; 
+text-align: right;
+margin-top: 20px;
+}
+#remind {
+margin-top: 5px;
+width: 265px;
+text-align: left;
+font-size:12px;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(167,167,172,1);
+}
+.under_box .btn_submit {
+margin-top: 118px;  
+}
+.btn_submit .el-button {
+width:110px;
+height:42px;
+background:rgba(253,87,0,1);
+font-size:14px;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(255,255,255,1);
+border-radius:4px;
+border:1px solid rgba(206,208,218,1);
+font-size:14px;
+font-family:PingFangSC-Regular;
+font-weight:400;
+}
+.btn_submit .el-button:active {
+color: rgba(255,255,255,1);
+border-color: rgba(253,87,0,1);
+outline: 0;
+}
+.btn_submit .el-button:focus, .el-button:hover {
+color: rgba(255,255,255,1);
+border-color: rgba(253,87,0,1);
+background-color: rgba(253,87,0,1);
+}
+.btn_submit .el-button:active {
+color: rgba(255,255,255,1);    
+}
+.btn_submit .el-button:hover {
+color: rgba(255,255,255,1);
+border-color: rgba(253,87,0,1);
+background-color: rgba(253,87,0,1);   
+}
+
+
+.under_box .upload_under {
+margin-top: 118px;  
+}
+.upload_under .el-button  {
+width:110px;
+height:42px;
+background:#fff;
+font-size:14px;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(79,83,98,1);
+border-radius:4px;
+border:1px solid rgba(206,208,218,1);
+font-size:14px;
+font-family:PingFangSC-Regular;
+font-weight:400;
+}
+.upload_under .el-button:active {
+color: rgba(79,83,98,1);
+border-color: rgba(206,208,218,1);
+outline: 0;
+}
+.upload_under .el-button:focus, .el-button:hover {
+color: rgba(79,83,98,1);
+border-color: rgba(206,208,218,1);
+background-color: #fff;  
+}
+.upload_under .el-button:active {
+color: rgba(79,83,98,1);   
+}
+.upload_under .el-button:hover {
+color: rgba(79,83,98,1);
+border-color: rgba(206,208,218,1);
+background-color: #fff;  
+}
+
+#dialog .el-dialog__body {
+padding: 30px 30px 30px 40px;
+color: #606266;
+font-size: 14px;
+height: 326px;
+box-sizing: border-box;
+}
+.content_list ul {
+margin-bottom: 20px;    
+}
+.content_list ul li  {
+margin-bottom: 20px; 
+position: relative;
+margin-left: 20px;
+font-size:13px;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(79,83,98,1);
+}
+.content_list ul li i {
+position: absolute;
+left: -15px;
+top: 8px;
+display: inline-block;
+width: 6px;
+height: 6px;
+border-radius: 50%;
+background:rgba(252,123,28,1);
+}
+
+.avatar-uploader .el-upload {
+border: 1px dashed #d9d9d9;
+border-radius: 6px;
+cursor: pointer;
+position: relative;
+overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+border-color: rgba(253,87,0,1);
+}
+.avatar-uploader-icon {
+font-size: 28px;
+color: #8c939d;
+width: 332px;
+height: 145px;
+line-height: 145px;
+text-align: center;
+}
+.avatar2 {
+width:332px;
+height:145px;
+display: block;
+}
+.el-icon-plus:before {
+position: absolute;
+color: #DFDFE2;
+height: 30px;
+width: 30px;
+left:46%;
+top: 23%;
+}
+.el-icon-plus::after {
+content: '上传凭证' !important ;
+position: absolute;
+color: #DFDFE2;
+font-size:14px;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(167,167,172,1);
+left:43%;
+top: 51%;
+}
+
+#under_upl {
+display: inline-block;    
+width:110px;
+height:43px;
+border-radius:4px;
+border:1px solid rgba(206,208,218,1);
+text-align: center;
+line-height: 43px;
+font-size:14px;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(79,83,98,1);
+cursor: pointer;
+}
+
+/* 弹窗 */
+#dialog .message_tit {
+padding: 31px 31px 31px 30px;
+width: 100%;
+box-sizing: border-box;
+
+}
+#dialog .title {
+height: 52px;
+text-align: left;
+/* line-height: 52px; */
+box-sizing: border-box;
+padding: 15px 30px;
+background:rgba(244,246,247,1);
+border-radius:6px 6px 0px 0px;
+font-size:16px;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(68,68,68,1);
+}
+#dialogs {
+display: none;
+}
+.meng{
+width: 100%;
+height: 100%;
+position: fixed;
+top: 0px;
+left: 0px;
+z-index: 1000;
+background:rgba(0,0,0,0.3);
+box-shadow:0px 2px 4px 0px rgba(0,0,0,0.5);
+}
+
+.guanlian{
+position: absolute;
+top: 50%;
+left:50%;
+box-sizing: border-box;
+margin-left: -146px;
+margin-top: -231px;
+z-index: 2000;
+width:392px;
+height:462px;
+background:rgba(255,255,255,1);
+box-shadow:0px 0px 12px 0px rgba(0,0,0,0.08);
+border-radius:6px;
+position: relative;
+}
+.guanlian .img {
+display: inline-block;
+position: absolute;
+right: 26px;
+top: 21px;
+cursor: pointer;
+}
+.upkuang {
+width:332px;
+height:145px;
+border:1px dashed rgba(229,229,229,1);
+text-align: center;
+line-height: 145px;
+box-sizing: border-box;
+position: relative;
+}
+.upkuang .images3  {
+position: absolute;
+top: 40px;
+left: 50%;
+margin-left: -10px;
+}
+.upkuang .wenzis{
+position: absolute;
+top: 35px;
+left: 47%;
+margin-left: -10px;
+font-size:14px;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(167,167,172,1);
+}
+
+.bottom{
+width:392px;
+height:74px;
+text-align: center;
+background:rgba(255,255,255,1);
+position: absolute;
+bottom: 0px;
+left: 0px;
+
+}
+
+.yiyan{
+display: inline-block;
+width:110px;
+height:43px;
+border-radius:4px;
+border:1px solid rgba(206,208,218,1);
+margin-top:16px;
+margin-bottom: 15px;
+font-size:14px;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(79,83,98,1);
+text-align: center;
+line-height: 43px;
+
+}
+.yiyan:hover{
+cursor: pointer;
+}
+/* .qu{
+margin-left: 167px;
+margin-right: 20px;	
+} */
+.fo{
+background:rgba(253,87,0,1);
+color:rgba(255,255,255,1);
+
+}

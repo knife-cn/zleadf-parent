@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.MemberDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.MemberEntity" id="memberMap">
+            <result property="id" column="id"/>
+            <result property="memberId" column="member_id"/>
+            <result property="parentId" column="parent_id"/>
+            <result column="shop_id" property="shopId" jdbcType="BIGINT" />
+    		<result column="own_shopid" property="ownShopid" jdbcType="BIGINT" />
+            <result property="username" column="username"/>
+            <result property="password" column="password"/>
+        <result property="regionId" column="region_id"/>
+        <result property="birthday" column="birthday"/>
+        <result property="address" column="address"/>
+
+            <result property="openId" column="open_id"/>
+            <result property="nickName" column="nick_name"/>
+            <result property="gender" column="gender"/>
+            <result property="provinceId" column="province_id"/>
+            <result property="cityId" column="city_id"/>
+            <result property="headImg" column="head_img"/>
+            <result property="ifPhone" column="if_phone"/>
+            <result property="phone" column="phone"/>
+            <result property="ifRealName" column="If_real_name"/>
+            <result property="realName" column="real_name"/>
+            <result property="idCard" column="id_card"/>
+            <result property="bankname" column="bankname"/>
+            <result property="bankcode" column="bankcode"/>
+            <result property="openaddr" column="openaddr"/>
+            <result property="bankcard" column="bankcard"/>
+            <result property="account" column="account"/>
+            <result property="point" column="point"/>
+            <result property="userToken" column="user_token"/>
+            <result property="qrcode" column="qrcode"/>
+            <result property="payQrcode" column="pay_qrcode"/>
+            <result column="wxopenid" property="wxOpenId" jdbcType="VARCHAR" />
+    		<result column="wxnickname" property="wxNickName" jdbcType="VARCHAR" />
+    		<result column="wxunionid" property="wxUnionId" jdbcType="VARCHAR" />
+            <result property="starLevel" column="star_level"/>
+            <result property="memberType" column="member_type"/>
+            <result property="isVip" column="is_vip"/>
+            <result property="isStaff" column="is_staff"/>
+            <result property="isSalesmen" column="is_salesmen"/>
+            <result property="agentMemberId" column="agent_member_id"/>
+            <result property="systemId" column="system_id"/>
+            <result property="isDisable" column="is_disable"/>
+            <result property="isDelete" column="is_delete"/>
+            <result property="status" column="status"/>
+            <result property="createTime" column="create_time"/>
+            <result property="agentId" column="agent_id"/>
+        </resultMap>
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.vo.MemberInfoVo" id="memberInfoVo">
+        <result property="username" column="user_name"/>
+        <result property="headImg" column="head_img"/>
+        <result property="phone" column="mobile"/>
+        <result property="factoryOwner" column="fact_name"/>
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+
+        INSERT INTO t_member (
+                id,
+                member_id,
+                parent_id,
+                shop_id, 
+      			own_shopid,
+                username,
+                password,
+                open_id,
+                nick_name,
+                gender,
+                province_id,
+                city_id,
+                head_img,
+                if_phone,
+                phone,
+                If_real_name,
+                real_name,
+                id_card,
+                bankname,
+                bankcode,
+                openaddr,
+                bankcard,
+                account,
+                point,
+                user_token,
+                qrcode,
+                pay_qrcode,
+                wxopenid,
+                wxnickname,
+                wxunionid,
+                star_level,
+                member_type,
+                is_vip,
+                is_staff,
+                is_salesmen,
+                agent_member_id,
+                agent_id,
+                system_id,
+                is_disable,
+                is_delete,
+                status,
+                create_time
+                ) VALUES (
+                #{id},
+                #{memberId},
+                #{parentId},
+                #{shopId}, 
+      			#{ownShopid},
+                #{username},
+                #{password},
+                #{openId},
+                #{nickName},
+                #{gender},
+                #{provinceId},
+                #{cityId},
+                #{headImg},
+                #{ifPhone},
+                #{phone},
+                #{ifRealName},
+                #{realName},
+                #{idCard},
+                #{bankname},
+                #{bankcode},
+                #{openaddr},
+                #{bankcard},
+                #{account},
+                #{point},
+                #{userToken},
+                #{qrcode},
+                #{payQrcode},
+                #{openId},
+                #{wxNickName},
+                #{wxUnionId},
+                #{starLevel},
+                #{memberType},
+                #{isVip},
+                #{isStaff},
+                #{isSalesmen},
+                #{agentMemberId},
+                #{agentId},
+                #{systemId},
+                #{isDisable},
+                #{isDelete},
+                #{status},
+                #{createTime}
+                )
+    </insert>
+    
+    <insert id="insertSelective" parameterType="com.zlead.entity.MemberEntity" useGeneratedKeys="true" keyProperty="id">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into t_member
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="ownShopid != null" >
+        own_shopid,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="provinceId != null" >
+        province_id,
+      </if>
+      <if test="cityId != null" >
+        city_id,
+      </if>
+      <if test="headImg != null" >
+        head_img,
+      </if>
+      <if test="ifPhone != null" >
+        if_phone,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="ifRealName != null" >
+        If_real_name,
+      </if>
+      <if test="realName != null" >
+        real_name,
+      </if>
+      <if test="idCard != null" >
+        id_card,
+      </if>
+      <if test="bankname != null" >
+        bankname,
+      </if>
+      <if test="bankcode != null" >
+        bankcode,
+      </if>
+      <if test="openaddr != null" >
+        openaddr,
+      </if>
+      <if test="bankcard != null" >
+        bankcard,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="point != null" >
+        point,
+      </if>
+      <if test="userToken != null" >
+        user_token,
+      </if>
+      <if test="qrcode != null" >
+        qrcode,
+      </if>
+      <if test="payQrcode != null" >
+        pay_qrcode,
+      </if>
+      <if test="wxUnionId != null" >
+        wxopenid,
+      </if>
+      <if test="wxNickName != null" >
+        wxnickname,
+      </if>
+      <if test="wxUnionId != null" >
+        wxunionid,
+      </if>
+      <if test="starLevel != null" >
+        star_level,
+      </if>
+      <if test="memberType != null" >
+        member_type,
+      </if>
+      <if test="isVip != null" >
+        is_vip,
+      </if>
+      <if test="isStaff != null" >
+        is_staff,
+      </if>
+      <if test="isSalesmen != null" >
+        is_salesmen,
+      </if>
+      <if test="agentMemberId != null" >
+        agent_member_id,
+      </if>
+      <if test="agentId != null" >
+        agent_id,
+      </if>
+      <if test="systemId != null" >
+        system_id,
+      </if>
+      <if test="isDisable != null" >
+        is_disable,
+      </if>
+      <if test="isDelete != null" >
+        is_delete,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="memberId != null" >
+        #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="ownShopid != null" >
+        #{ownShopid,jdbcType=BIGINT},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=BIT},
+      </if>
+      <if test="provinceId != null" >
+        #{provinceId,jdbcType=BIGINT},
+      </if>
+      <if test="cityId != null" >
+        #{cityId,jdbcType=BIGINT},
+      </if>
+      <if test="headImg != null" >
+        #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="ifPhone != null" >
+        #{ifPhone,jdbcType=BIT},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="ifRealName != null" >
+        #{ifRealName,jdbcType=BIT},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null" >
+        #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null" >
+        #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankcode != null" >
+        #{bankcode,jdbcType=VARCHAR},
+      </if>
+      <if test="openaddr != null" >
+        #{openaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="bankcard != null" >
+        #{bankcard,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=DECIMAL},
+      </if>
+      <if test="point != null" >
+        #{point,jdbcType=BIGINT},
+      </if>
+      <if test="userToken != null" >
+        #{userToken,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null" >
+        #{qrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="payQrcode != null" >
+        #{payQrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="wxOpenId != null" >
+        #{wxOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="wxNickName != null" >
+        #{wxNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUnionId != null" >
+        #{wxUnionId,jdbcType=VARCHAR},
+      </if>
+      <if test="starLevel != null" >
+        #{starLevel,jdbcType=INTEGER},
+      </if>
+      <if test="memberType != null" >
+        #{memberType,jdbcType=INTEGER},
+      </if>
+      <if test="isVip != null" >
+        #{isVip,jdbcType=INTEGER},
+      </if>
+      <if test="isStaff != null" >
+        #{isStaff,jdbcType=BIT},
+      </if>
+      <if test="isSalesmen != null" >
+        #{isSalesmen,jdbcType=BIT},
+      </if>
+      <if test="agentMemberId != null" >
+        #{agentMemberId,jdbcType=BIGINT},
+      </if>
+      <if test="agentId != null" >
+        #{agentId,jdbcType=BIGINT},
+      </if>
+      <if test="systemId != null" >
+        #{systemId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDisable != null" >
+        #{isDisable,jdbcType=BIT},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+
+
+    <update id="updateByPrimaryKey" parameterType="com.zlead.entity.MemberEntity" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update t_member
+    set member_id = #{memberId,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=BIGINT},
+      own_shopid = #{ownShopid,jdbcType=BIGINT},
+      parent_id = #{parentId,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      open_id = #{openId,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=BIT},
+      province_id = #{provinceId,jdbcType=BIGINT},
+      city_id = #{cityId,jdbcType=BIGINT},
+      head_img = #{headImg,jdbcType=VARCHAR},
+      if_phone = #{ifPhone,jdbcType=BIT},
+      phone = #{phone,jdbcType=VARCHAR},
+      If_real_name = #{ifRealName,jdbcType=BIT},
+      real_name = #{realName,jdbcType=VARCHAR},
+      id_card = #{idCard,jdbcType=VARCHAR},
+      bankname = #{bankname,jdbcType=VARCHAR},
+      bankcode = #{bankcode,jdbcType=VARCHAR},
+      openaddr = #{openaddr,jdbcType=VARCHAR},
+      bankcard = #{bankcard,jdbcType=VARCHAR},
+      account = #{account,jdbcType=DECIMAL},
+      point = #{point,jdbcType=BIGINT},
+      user_token = #{userToken,jdbcType=VARCHAR},
+      qrcode = #{qrcode,jdbcType=VARCHAR},
+      pay_qrcode = #{payQrcode,jdbcType=VARCHAR},
+      wxopenid = #{wxOpenId,jdbcType=VARCHAR},
+      wxnickname = #{wxNickName,jdbcType=VARCHAR},
+      wxunionid = #{wxUnionId,jdbcType=VARCHAR},
+      star_level = #{starLevel,jdbcType=INTEGER},
+      member_type = #{memberType,jdbcType=INTEGER},
+      is_vip = #{isVip,jdbcType=INTEGER},
+      is_staff = #{isStaff,jdbcType=BIT},
+      is_salesmen = #{isSalesmen,jdbcType=BIT},
+      agent_member_id = #{agentMemberId,jdbcType=BIGINT},
+      agent_id = #{agentId,jdbcType=BIGINT},
+      system_id = #{systemId,jdbcType=VARCHAR},
+      is_disable = #{isDisable,jdbcType=BIT},
+      is_delete = #{isDelete,jdbcType=BIT},
+      status = #{status,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+ 
+     <update id="update">
+        UPDATE t_member AS T SET
+                 T.member_id = #{memberId} ,
+                 T.parent_id = #{parentId} ,
+                 T.shop_id = #{shopId},
+                 T.birthday = #{birthday},
+                 T.region_id = #{regionId},
+                 T.address = #{address},
+      			 T.own_shopid = #{ownShopid},
+                 T.username = #{username} ,
+                 T.password = #{password} ,
+                 T.open_id = #{openId} ,
+                 T.nick_name = #{nickName} ,
+                 T.gender = #{gender} ,
+                 T.province_id = #{provinceId} ,
+                 T.city_id = #{cityId} ,
+                 T.head_img = #{headImg} ,
+                 T.if_phone = #{ifPhone} ,
+                 T.phone = #{phone} ,
+                 T.If_real_name = #{ifRealName} ,
+                 T.real_name = #{realName} ,
+                 T.id_card = #{idCard} ,
+                 T.bankname = #{bankname} ,
+                 T.bankcode = #{bankcode} ,
+                 T.openaddr = #{openaddr} ,
+                 T.bankcard = #{bankcard} ,
+                 T.account = #{account} ,
+                 T.point = #{point} ,
+                 T.user_token = #{userToken} ,
+                 T.qrcode = #{qrcode} ,
+                 T.pay_qrcode = #{payQrcode} ,
+                 T.star_level = #{starLevel} ,
+                 T.member_type = #{memberType} ,
+                 T.is_vip = #{isVip} ,
+                 T.is_staff = #{isStaff} ,
+                 T.is_salesmen = #{isSalesmen} ,
+                 T.agent_member_id = #{agentMemberId} ,
+                 T.agent_id = #{agentId,jdbcType=BIGINT},
+                 T.system_id = #{systemId} ,
+                 T.is_disable = #{isDisable} ,
+                 T.is_delete = #{isDelete} ,
+                 T.status = #{status} ,
+                 T.create_time = #{createTime}
+                WHERE T.ID = #{id}
+    </update>
+    
+    
+    <update id="updateById" parameterType="com.zlead.entity.MemberEntity" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update t_member
+    <set >
+      <if test="memberId != null" >
+        member_id = #{memberId,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="ownShopid != null" >
+        own_shopid = #{ownShopid,jdbcType=BIGINT},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=BIT},
+      </if>
+      <if test="provinceId != null" >
+        province_id = #{provinceId,jdbcType=BIGINT},
+      </if>
+      <if test="cityId != null" >
+        city_id = #{cityId,jdbcType=BIGINT},
+      </if>
+      <if test="headImg != null" >
+        head_img = #{headImg,jdbcType=VARCHAR},
+      </if>
+      <if test="ifPhone != null" >
+        if_phone = #{ifPhone,jdbcType=BIT},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="ifRealName != null" >
+        If_real_name = #{ifRealName,jdbcType=BIT},
+      </if>
+      <if test="realName != null" >
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="idCard != null" >
+        id_card = #{idCard,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null" >
+        bankname = #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankcode != null" >
+        bankcode = #{bankcode,jdbcType=VARCHAR},
+      </if>
+      <if test="openaddr != null" >
+        openaddr = #{openaddr,jdbcType=VARCHAR},
+      </if>
+      <if test="bankcard != null" >
+        bankcard = #{bankcard,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        account = #{account,jdbcType=DECIMAL},
+      </if>
+      <if test="point != null" >
+        point = #{point,jdbcType=BIGINT},
+      </if>
+      <if test="userToken != null" >
+        user_token = #{userToken,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null" >
+        qrcode = #{qrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="payQrcode != null" >
+        pay_qrcode = #{payQrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="wxOpenId != null" >
+        wxopenid = #{wxOpenId,jdbcType=VARCHAR},
+      </if>
+      <if test="wxNickName != null" >
+        wxnickname = #{wxNickName,jdbcType=VARCHAR},
+      </if>
+      <if test="wxUnionId != null" >
+        wxunionid = #{wxUnionId,jdbcType=VARCHAR},
+      </if>
+      <if test="starLevel != null" >
+        star_level = #{starLevel,jdbcType=INTEGER},
+      </if>
+      <if test="memberType != null" >
+        member_type = #{memberType,jdbcType=INTEGER},
+      </if>
+      <if test="isVip != null" >
+        is_vip = #{isVip,jdbcType=INTEGER},
+      </if>
+      <if test="isStaff != null" >
+        is_staff = #{isStaff,jdbcType=BIT},
+      </if>
+      <if test="isSalesmen != null" >
+        is_salesmen = #{isSalesmen,jdbcType=BIT},
+      </if>
+      <if test="agentMemberId != null" >
+        agent_member_id = #{agentMemberId,jdbcType=BIGINT},
+      </if>
+      <if test="systemId != null" >
+        system_id = #{systemId,jdbcType=VARCHAR},
+      </if>
+      <if test="isDisable != null" >
+        is_disable = #{isDisable,jdbcType=BIT},
+      </if>
+      <if test="isDelete != null" >
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+
+        <if test="agentId != null" >
+            agent_id = #{agentId,jdbcType=INTEGER},
+        </if>
+
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+    <delete id="delete">
+        DELETE FROM t_member WHERE  ID = #{id}
+    </delete>
+
+    <select id="findPage" parameterType="map" resultMap="memberMap">
+        SELECT *  FROM t_member AS T
+    </select>
+
+    <select id="findById" resultMap="memberMap" useCache="false">
+        SELECT a.* FROM t_member AS a WHERE  a.id = #{id}
+    </select>
+
+    <select id="findByPhone" resultMap="memberMap">
+        SELECT * FROM t_member AS T WHERE  T.username = #{phone}
+    </select>
+
+    <select id="getByAccountList" resultMap="memberMap">
+        SELECT * FROM t_member AS T
+        WHERE  T.username = #{account} OR T.NICK_NAME = #{account} OR T.MEMBER_ID = #{account} OR T.PHONE = #{account} ORDER BY T.ID
+    </select>
+    
+    <select id="getByAccount" resultMap="memberMap">
+        SELECT * FROM t_member AS T
+        WHERE  T.username = #{account} OR T.NICK_NAME = #{account} OR T.MEMBER_ID = #{account} OR T.PHONE = #{account} ORDER BY T.ID
+        limit 0,1 
+    </select>
+
+    <select id="findByMemberId" resultMap="memberMap">
+        SELECT * FROM t_member AS T WHERE  T.member_id = #{memberId}
+    </select>
+
+    <select id="findByUnionId" resultMap="memberMap">
+        SELECT * FROM t_member AS T WHERE  T.wxunionid = #{unionId}
+    </select>
+    <select id="findByOpenId" resultMap="memberMap">
+        SELECT * FROM t_member AS T WHERE  T.wxopenid = #{openId}
+    </select>
+
+    <select id="findByUserName" resultMap="memberMap">
+        SELECT * FROM t_member AS T WHERE  T.username = #{username}
+    </select>
+
+    <update id="updatepwd" parameterType="com.zlead.entity.MemberEntity">
+      UPDATE t_member as a SET a.`password` = #{password} WHERE a.id = #{id}
+    </update>
+    <update id="updatevipe" parameterType="com.zlead.entity.MemberEntity">
+          UPDATE t_member AS a SET
+                 a.birthday = #{birthday},
+                 a.region_id = #{regionId},
+                 a.address = #{address},
+                 a.nick_name = #{nickName} ,
+                 a.gender = #{gender} ,
+                 a.province_id = #{provinceId} ,
+                 a.city_id = #{cityId}
+                WHERE a.id = #{id}
+    </update>
+
+    <select id="fininfoid" resultMap="memberMap">
+    SELECT a.* FROM t_member AS a WHERE a.id=#{id}
+    </select>
+
+    <select id="getByAgentId" resultType="long" parameterType="int">
+    SELECT a.id FROM t_member AS a WHERE a.agent_id=#{agentId}
+    </select>
+
+
+    <select id="getSysIdByAgentId" resultType="long" >
+        SELECT a.own_shopid FROM t_member AS a WHERE
+         a.id = #{memberId}
+    </select>
+
+    <select id="findByAgentId" parameterType="int" resultType="com.zlead.entity.MemberEntity">
+    SELECT * FROM t_member AS a WHERE a.agent_id=#{agentId}
+    </select>
+
+    <select id="getAppMemberInfo" resultMap="memberInfoVo">
+        select user.user_name,c.head_img,user.mobile,b.fact_name from t_member as c
+        LEFT JOIN acl_user user ON  c.member_id=user.login_name
+        left join oa_factory_info as b on c.own_shopid= b.shop_id
+        where c.id =#{memberId};
+    </select>
+
+    <select id="findMembersByAgentId" resultMap="memberMap">
+        select * from t_member where agent_id=#{agentId}
+    </select>
+
+    <select id="findMemberByUserId" resultMap="memberMap">
+        select * from t_member as a,acl_user as b where a.username = b.login_name and b.user_id=#{userId}
+    </select>
+
+    <update id="saveMemberHeadImg">
+        UPDATE t_member AS a SET
+        a.head_img=#{headImg}
+        WHERE a.id = #{memberId}
+    </update>
+
+    <select id="findMemberByOwnshopId" resultMap="memberMap">
+        SELECT * FROM t_member where own_shopid=#{ownShopId}
+        order by id limit 1
+    </select>
+
+</mapper>

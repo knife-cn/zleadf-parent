@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.OaAgentMasMapper">
+    <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.OaAgentMas">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        <id column="agent_id" property="agentId" jdbcType="INTEGER"/>
+        <result column="agent_no" property="agentNo" jdbcType="VARCHAR"/>
+        <result column="agent_name" property="agentName" jdbcType="VARCHAR"/>
+        <result column="agent_state" property="agentState" jdbcType="VARCHAR"/>
+        <result column="agent_level" property="agentLevel" jdbcType="VARCHAR"/>
+        <result column="agent_discount_type" property="agentDiscountType" jdbcType="VARCHAR"/>
+        <result column="agent_discount" property="agentDiscount" jdbcType="INTEGER"/>
+        <result column="agent_payments" property="agentPayments" jdbcType="VARCHAR"/>
+        <result column="agent_return" property="agentReturn" jdbcType="VARCHAR"/>
+        <result column="agent_returnvalue" property="agentReturnvalue" jdbcType="INTEGER"/>
+        <result column="agent_fmdate" property="agentFmdate" jdbcType="TIMESTAMP"/>
+        <result column="agent_todate" property="agentTodate" jdbcType="TIMESTAMP"/>
+        <result column="agent_contract" property="agentContract" jdbcType="VARCHAR"/>
+        <result column="agent_certify" property="agentCertify" jdbcType="VARCHAR"/>
+        <result column="link_name" property="linkName" jdbcType="VARCHAR"/>
+        <result column="link_tel" property="linkTel" jdbcType="VARCHAR"/>
+        <result column="rev_province" property="revProvince" jdbcType="VARCHAR"/>
+        <result column="agent_desc" property="agentDesc" jdbcType="VARCHAR"/>
+        <result column="org_id" property="orgId" jdbcType="INTEGER"/>
+        <result column="shop_id" property="shopId" jdbcType="INTEGER"/>
+        <result column="creator" property="creator" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="modifier" property="modifier" jdbcType="INTEGER"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+        <result column="agent_brand" property="agentBrand" jdbcType="VARCHAR"/>
+        <result column="order_date" property="orderDate" jdbcType="TIMESTAMP"/>
+        <result column="coop_state" property="coopState" jdbcType="VARCHAR"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="agenet_returnvalue" property="agenetReturnvalue" jdbcType="INTEGER"/>
+        <result column="agent_addr" property="agentAddr" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="activityAgentVo" type="com.zlead.entity.vo.ActivityAgentVo">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        <result column="agent_id" property="agentId" jdbcType="VARCHAR"/>
+        <result column="agent_name" property="agentName" jdbcType="VARCHAR"/>
+        <result column="agent_no" property="agentNo" jdbcType="VARCHAR"/>
+        <result column="agent_level" property="agentLevel" jdbcType="VARCHAR"/>
+        <result column="agent_discount" property="agentDiscount" jdbcType="INTEGER"/>
+        <result column="agent_returnvalue" property="agentReturnValue" jdbcType="INTEGER"/>
+        <result column="link_tel" property="lintTel" jdbcType="VARCHAR"/>
+        <result column="link_name" property="linkName" jdbcType="VARCHAR"/>
+        <result column="rev_province" property="revProvince" jdbcType="VARCHAR"/>
+        <result column="agent_brand" property="agentBrand" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <resultMap id="AgentResultMap" type="com.zlead.entity.vo.OrderAgentMas">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        <id column="agent_id" property="agentId" jdbcType="INTEGER"/>
+        <result column="agent_name" property="agentName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Example_Where_Clause">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        agent_id, agent_no, agent_name, agent_state, agent_level, agent_discount_type, agent_discount,
+        agent_payments, agent_return, agent_returnvalue, agent_fmdate, agent_todate, agent_contract,
+        agent_certify, link_name, link_tel, rev_province, agent_desc, org_id, shop_id, creator,
+        create_time, modifier, modify_time, agent_brand, order_date, coop_state, user_id,
+        agenet_returnvalue, agent_addr
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.OaAgentMasExample">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from oa_agent_mas
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        select
+        <include refid="Base_Column_List"/>
+        from oa_agent_mas
+        where agent_id = #{agentId,jdbcType=INTEGER}
+    </select>
+    <select id="selectByPhone" resultMap="BaseResultMap" parameterType="java.lang.String">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        select
+        <include refid="Base_Column_List"/>
+        from oa_agent_mas
+        where link_tel = #{phone,jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        delete from oa_agent_mas
+        where agent_id = #{agentId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.zlead.fplat.entity.OaAgentMas" useGeneratedKeys="true" keyProperty="agentId">
+
+        insert into oa_agent_mas (agent_no, agent_name,
+        agent_state, agent_level, agent_discount_type,
+        agent_discount, agent_payments, agent_return,
+        agent_returnvalue, agent_fmdate, agent_todate,
+        agent_contract, agent_certify, link_name,
+        link_tel, rev_province, agent_desc,
+        org_id, shop_id, creator,
+        create_time, modifier, modify_time,
+        agent_brand, order_date, coop_state,
+        user_id, agenet_returnvalue, agent_addr
+        )
+        values (#{agentNo,jdbcType=VARCHAR}, #{agentName,jdbcType=VARCHAR},
+        #{agentState,jdbcType=VARCHAR}, #{agentLevel,jdbcType=VARCHAR}, #{agentDiscountType,jdbcType=VARCHAR},
+        #{agentDiscount,jdbcType=INTEGER}, #{agentPayments,jdbcType=VARCHAR}, #{agentReturn,jdbcType=VARCHAR},
+        #{agentReturnvalue,jdbcType=INTEGER}, #{agentFmdate,jdbcType=TIMESTAMP}, #{agentTodate,jdbcType=TIMESTAMP},
+        #{agentContract,jdbcType=VARCHAR}, #{agentCertify,jdbcType=VARCHAR}, #{linkName,jdbcType=VARCHAR},
+        #{linkTel,jdbcType=VARCHAR}, #{revProvince,jdbcType=VARCHAR}, #{agentDesc,jdbcType=VARCHAR},
+        #{orgId,jdbcType=INTEGER}, #{shopId,jdbcType=INTEGER}, #{creator,jdbcType=INTEGER},
+        #{createTime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=INTEGER}, #{modifyTime,jdbcType=TIMESTAMP},
+        #{agentBrand,jdbcType=VARCHAR}, #{orderDate,jdbcType=TIMESTAMP}, #{coopState,jdbcType=VARCHAR},
+        #{userId,jdbcType=INTEGER}, #{agenetReturnvalue,jdbcType=INTEGER}, #{agentAddr,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.zlead.fplat.entity.OaAgentMas">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        insert into oa_agent_mas
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="agentId != null">
+                agent_id,
+            </if>
+            <if test="agentNo != null">
+                agent_no,
+            </if>
+            <if test="agentName != null">
+                agent_name,
+            </if>
+            <if test="agentState != null">
+                agent_state,
+            </if>
+            <if test="agentLevel != null">
+                agent_level,
+            </if>
+            <if test="agentDiscountType != null">
+                agent_discount_type,
+            </if>
+            <if test="agentDiscount != null">
+                agent_discount,
+            </if>
+            <if test="agentPayments != null">
+                agent_payments,
+            </if>
+            <if test="agentReturn != null">
+                agent_return,
+            </if>
+            <if test="agentReturnvalue != null">
+                agent_returnvalue,
+            </if>
+            <if test="agentFmdate != null">
+                agent_fmdate,
+            </if>
+            <if test="agentTodate != null">
+                agent_todate,
+            </if>
+            <if test="agentContract != null">
+                agent_contract,
+            </if>
+            <if test="agentCertify != null">
+                agent_certify,
+            </if>
+            <if test="linkName != null">
+                link_name,
+            </if>
+            <if test="linkTel != null">
+                link_tel,
+            </if>
+            <if test="revProvince != null">
+                rev_province,
+            </if>
+            <if test="agentDesc != null">
+                agent_desc,
+            </if>
+            <if test="orgId != null">
+                org_id,
+            </if>
+            <if test="shopId != null">
+                shop_id,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifier != null">
+                modifier,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+            <if test="agentBrand != null">
+                agent_brand,
+            </if>
+            <if test="orderDate != null">
+                order_date,
+            </if>
+            <if test="coopState != null">
+                coop_state,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="agenetReturnvalue != null">
+                agenet_returnvalue,
+            </if>
+            <if test="agentAddr != null">
+                agent_addr,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="agentId != null">
+                #{agentId,jdbcType=INTEGER},
+            </if>
+            <if test="agentNo != null">
+                #{agentNo,jdbcType=VARCHAR},
+            </if>
+            <if test="agentName != null">
+                #{agentName,jdbcType=VARCHAR},
+            </if>
+            <if test="agentState != null">
+                #{agentState,jdbcType=VARCHAR},
+            </if>
+            <if test="agentLevel != null">
+                #{agentLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="agentDiscountType != null">
+                #{agentDiscountType,jdbcType=VARCHAR},
+            </if>
+            <if test="agentDiscount != null">
+                #{agentDiscount,jdbcType=INTEGER},
+            </if>
+            <if test="agentPayments != null">
+                #{agentPayments,jdbcType=VARCHAR},
+            </if>
+            <if test="agentReturn != null">
+                #{agentReturn,jdbcType=VARCHAR},
+            </if>
+            <if test="agentReturnvalue != null">
+                #{agentReturnvalue,jdbcType=INTEGER},
+            </if>
+            <if test="agentFmdate != null">
+                #{agentFmdate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="agentTodate != null">
+                #{agentTodate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="agentContract != null">
+                #{agentContract,jdbcType=VARCHAR},
+            </if>
+            <if test="agentCertify != null">
+                #{agentCertify,jdbcType=VARCHAR},
+            </if>
+            <if test="linkName != null">
+                #{linkName,jdbcType=VARCHAR},
+            </if>
+            <if test="linkTel != null">
+                #{linkTel,jdbcType=VARCHAR},
+            </if>
+            <if test="revProvince != null">
+                #{revProvince,jdbcType=VARCHAR},
+            </if>
+            <if test="agentDesc != null">
+                #{agentDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="orgId != null">
+                #{orgId,jdbcType=INTEGER},
+            </if>
+            <if test="shopId != null">
+                #{shopId,jdbcType=INTEGER},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifier != null">
+                #{modifier,jdbcType=INTEGER},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="agentBrand != null">
+                #{agentBrand,jdbcType=VARCHAR},
+            </if>
+            <if test="orderDate != null">
+                #{orderDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="coopState != null">
+                #{coopState,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="agenetReturnvalue != null">
+                #{agenetReturnvalue,jdbcType=INTEGER},
+            </if>
+            <if test="agentAddr != null">
+                #{agentAddr,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.OaAgentMas">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        update oa_agent_mas
+        <set>
+            <if test="agentNo != null">
+                agent_no = #{agentNo,jdbcType=VARCHAR},
+            </if>
+            <if test="agentName != null">
+                agent_name = #{agentName,jdbcType=VARCHAR},
+            </if>
+            <if test="agentState != null">
+                agent_state = #{agentState,jdbcType=VARCHAR},
+            </if>
+            <if test="agentLevel != null">
+                agent_level = #{agentLevel,jdbcType=VARCHAR},
+            </if>
+            <if test="agentDiscountType != null">
+                agent_discount_type = #{agentDiscountType,jdbcType=VARCHAR},
+            </if>
+            <if test="agentDiscount != null">
+                agent_discount = #{agentDiscount,jdbcType=INTEGER},
+            </if>
+            <if test="agentPayments != null">
+                agent_payments = #{agentPayments,jdbcType=VARCHAR},
+            </if>
+            <if test="agentReturn != null">
+                agent_return = #{agentReturn,jdbcType=VARCHAR},
+            </if>
+            <if test="agentReturnvalue != null">
+                agent_returnvalue = #{agentReturnvalue,jdbcType=INTEGER},
+            </if>
+            <if test="agentFmdate != null">
+                agent_fmdate = #{agentFmdate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="agentTodate != null">
+                agent_todate = #{agentTodate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="agentContract != null">
+                agent_contract = #{agentContract,jdbcType=VARCHAR},
+            </if>
+            <if test="agentCertify != null">
+                agent_certify = #{agentCertify,jdbcType=VARCHAR},
+            </if>
+            <if test="linkName != null">
+                link_name = #{linkName,jdbcType=VARCHAR},
+            </if>
+            <if test="linkTel != null">
+                link_tel = #{linkTel,jdbcType=VARCHAR},
+            </if>
+            <if test="revProvince != null">
+                rev_province = #{revProvince,jdbcType=VARCHAR},
+            </if>
+            <if test="agentDesc != null">
+                agent_desc = #{agentDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="orgId != null">
+                org_id = #{orgId,jdbcType=INTEGER},
+            </if>
+            <if test="shopId != null">
+                shop_id = #{shopId,jdbcType=INTEGER},
+            </if>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifier != null">
+                modifier = #{modifier,jdbcType=INTEGER},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="agentBrand != null">
+                agent_brand = #{agentBrand,jdbcType=VARCHAR},
+            </if>
+            <if test="orderDate != null">
+                order_date = #{orderDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="coopState != null">
+                coop_state = #{coopState,jdbcType=VARCHAR},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="agenetReturnvalue != null">
+                agenet_returnvalue = #{agenetReturnvalue,jdbcType=INTEGER},
+            </if>
+            <if test="agentAddr != null">
+                agent_addr = #{agentAddr,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where agent_id = #{agentId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.OaAgentMas">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        update oa_agent_mas
+        set agent_no = #{agentNo,jdbcType=VARCHAR},
+        agent_name = #{agentName,jdbcType=VARCHAR},
+        agent_state = #{agentState,jdbcType=VARCHAR},
+        agent_level = #{agentLevel,jdbcType=VARCHAR},
+        agent_discount_type = #{agentDiscountType,jdbcType=VARCHAR},
+        agent_discount = #{agentDiscount,jdbcType=INTEGER},
+        agent_payments = #{agentPayments,jdbcType=VARCHAR},
+        agent_return = #{agentReturn,jdbcType=VARCHAR},
+        agent_returnvalue = #{agentReturnvalue,jdbcType=INTEGER},
+        agent_fmdate = #{agentFmdate,jdbcType=TIMESTAMP},
+        agent_todate = #{agentTodate,jdbcType=TIMESTAMP},
+        agent_contract = #{agentContract,jdbcType=VARCHAR},
+        agent_certify = #{agentCertify,jdbcType=VARCHAR},
+        link_name = #{linkName,jdbcType=VARCHAR},
+        link_tel = #{linkTel,jdbcType=VARCHAR},
+        rev_province = #{revProvince,jdbcType=VARCHAR},
+        agent_desc = #{agentDesc,jdbcType=VARCHAR},
+        org_id = #{orgId,jdbcType=INTEGER},
+        shop_id = #{shopId,jdbcType=INTEGER},
+        creator = #{creator,jdbcType=INTEGER},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        modifier = #{modifier,jdbcType=INTEGER},
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+        agent_brand = #{agentBrand,jdbcType=VARCHAR},
+        order_date = #{orderDate,jdbcType=TIMESTAMP},
+        coop_state = #{coopState,jdbcType=VARCHAR},
+        user_id = #{userId,jdbcType=INTEGER},
+        agenet_returnvalue = #{agenetReturnvalue,jdbcType=INTEGER},
+        agent_addr = #{agentAddr,jdbcType=VARCHAR}
+        where agent_id = #{agentId,jdbcType=INTEGER}
+    </update>
+
+    <select id="selectAgentByFacId" resultMap="BaseResultMap">
+        SELECT A.* FROM oa_agent_mas AS A,t_agent_fac AS B WHERE A.agent_id=B.agent_id AND B.factory_id=#{factoryId}
+    </select>
+
+    <select id="selectAgentByMemberId" resultMap="BaseResultMap">
+       select * from oa_agent_mas
+          where agent_id
+          in
+          (select agent_id from t_agent_fac where factory_id
+          in
+          (select fact_id from oa_factory_info where shop_id
+          in
+          (select id from t_shop where member_id=#{memberId})))
+    </select>
+
+
+    <select id="findAgentByMemberId" resultMap="AgentResultMap">
+      select a.agent_id,a.agent_name from oa_agent_mas as a
+	  left join t_agent_fac as b on a.agent_id = b.agent_id
+	  left join t_member as mem on mem.own_shopid=b.sys_id
+	  where mem.id=#{memberId} and b.status=1
+    </select>
+
+    <select id="selectAgentByMemberId2" resultType="java.util.Map">
+    SELECT oa_agent_mas.agent_no, oa_agent_mas.agent_name, oa_agent_mas.agent_state,t_agent_fac.`status`,t_agent_fac.factory_id,oa_agent_mas.agent_contract,oa_agent_mas.link_name,
+	oa_agent_mas.link_tel, oa_agent_mas.rev_province, oa_agent_mas.agent_desc FROM oa_agent_mas
+	left JOIN t_agent_fac ON t_agent_fac.agent_id = oa_agent_mas.agent_id  where t_agent_fac.factory_id in  (select fact_id from oa_factory_info where shop_id in (select id from t_shop where member_id=#{memberId})) 
+	order by t_agent_fac.`status` ,t_agent_fac.create_time desc  
+	</select>
+
+    <select id="updateAgentByAgentId">
+       update t_agent_fac set `status`=#{status} where factory_id in (select fact_id from oa_factory_info where shop_id in (select id from t_shop where member_id=#{memberId})) and agent_id=#{agentId}
+    </select>
+
+    <select id="findAgentStatus" resultType="java.util.Map">
+        select a.*,b.`status`
+        from oa_agent_mas as a,t_agent_fac as b
+        where a.agent_id
+        in
+        (select agent_id from t_agent_fac where factory_id
+        in
+        (select fact_id from oa_factory_info where shop_id
+        in
+        (select id from t_shop where member_id=#{memberId})))
+        and a.agent_id=b.agent_id
+    </select>
+    <!--APP客户列表 -->
+    <select id="queryAgentList" parameterType="com.zlead.fplat.entity.OaAgentMasRequest" resultType="com.zlead.entity.vo.OaAgentMasListVo">
+        SELECT oam.`agent_id` AS agentId,
+                CASE
+                  WHEN cl.level_name IS NULL THEN ''
+                  ELSE cl.level_name
+                END AS agentLevel,
+                oam.agent_name AS agentName,
+                oam.link_name AS linkName,
+                oam.link_tel AS linkTel,
+                oam.agent_addr AS agentAddr,
+                af.sys_id AS shopId,
+                af.factory_id AS factoryId
+             FROM oa_agent_mas oam
+       INNER JOIN t_agent_fac af
+               ON af.`agent_id` = oam.`agent_id`
+              AND af.`status` = 1
+       INNER JOIN t_member m
+               ON m.`own_shopid` = af.`sys_id`
+              AND m.`id` = #{memberId}
+        LEFT JOIN crm_cust_level cl
+               ON cl.`level_id` = af.`level_id`
+            WHERE 1 = 1
+          <if test="levelId != null">
+              AND cl.level_id = #{levelId}
+          </if>
+          <if test="linkName != null and linkName != ''">
+              <bind name="namePattern" value="'%' + key + '%'"/>
+              AND oam.agent_name like #{namePattern}
+          </if>
+          <if test="linkTel != null and linkTel != ''">
+            <bind name="telPattern" value="'%' + key + '%'"/>
+            AND oam.link_tel like #{telPattern}
+          </if>
+          ORDER BY af.agent_no DESC
+    </select>
+
+    <select id="selectAgentBaseInfoByAgentId" resultType="com.zlead.entity.vo.OaAgentMasBaseInfoVo">
+        SELECT
+            m.agent_id agentId,
+            u.user_name linkName,
+            m.contract_name agentContract,
+            f.agent_contract contractUrl,
+            f.agent_fmdate agentFmdate,
+            f.agent_todate agentTodate,
+            u.link_tel linkTel,
+            f.agent_name agentName,
+            m.agent_addr agentAddr,
+            i.rev_addr receiveAddr,
+            f.agent_discount_type agentDiscountType,
+            f.agent_discount agentDiscount
+        FROM
+            v_oa_agent_mas m
+        LEFT JOIN t_agent_fac f on m.agent_id = f.agent_id
+        LEFT JOIN oa_agent_revinfo i on m.agent_id = i.agent_id and f.sys_id = i.sys_id
+        LEFT JOIN oa_agent_userinfo u on m.agent_id = u.agent_id and f.sys_id = u.sys_id
+        WHERE
+            m.agent_id = #{agentId}
+            and f.factory_id = #{factoryId}
+        ORDER BY u.main_user DESC,i.rev_default DESC
+        LIMIT 1
+    </select>
+
+    <select id="getAgentPictureList" resultType = "com.zlead.entity.vo.AgentPictureListVO">
+        SELECT pic_id picId, pic_path picUrl FROM oa_agent_certify WHERE agent_id = #{agentId} and sys_id = #{shopId}
+    </select>
+
+
+    <select id="findActivityAgent" resultMap="activityAgentVo">
+		select a.* from oa_agent_mas as a
+        left join oa_market_agent as b on a.agent_id=b.agent_id
+        left join oa_market_act as c on b.act_id = c.act_id
+		left join t_agent_fac as e on e.sys_id = c.shop_id
+        where e.sys_id in (select own_shopid from t_member as t where t.id=#{memberId})
+        and c.act_id=#{actId} GROUP BY agent_id
+	</select>
+
+    <resultMap id="AgentBlmcVO" type="com.zlead.fplat.entity.vo.AgentBlmcVO">
+        <result column="factory_id" property="factoryId"/>
+        <result column="band_id" property="bandId"/>
+        <result column="band_name" property="bandName"/>
+        <result column="band_pic_path" property="bandPicPath"/>
+        <result column="list_id" property="listId"/>
+        <result column="list_name" property="listName"/>
+        <result column="list_pic_path" property="listPicPath"/>
+        <result column="model_id" property="modelId"/>
+        <result column="model_name" property="modelName"/>
+        <result column="cat_id" property="catId"/>
+        <result column="cat_name" property="catName"/>
+        <result column="cat_desc" property="catDesc"/>
+        <result column="cat_pic_path" property="catPicPath"/>
+        <result column="pcat_id" property="pcatId"/>
+        <result column="is_fac" property="isFac"/>
+    </resultMap>
+
+    <select id="findBLMC" resultMap="AgentBlmcVO">
+        select f.factory_id,c.band_id,c.band_name,c.pic_path band_pic_path,d.list_id,d.list_name,d.pic_path list_pic_path,m.model_id,m.model_name,e.cat_id,e.cat_name,IFNULL(e.cat_desc,e.cat_name) cat_desc ,e.pic_path cat_pic_path,e.pcat_id,e.is_fac from oa_agent_band_lists a
+        left join crm_prd_list_cats b on a.list_id=b.list_id
+        join crm_cust_band c on a.band_id=c.band_id
+        join crm_prd_list d on a.band_id=d.band_id and a.list_id=d.list_id
+        join crm_prd_model m on d.list_id=m.list_id
+        left join crm_prd_cat e on b.cat_id=e.cat_id and e.cat_state=1
+        join t_agent_fac f on a.agent_id=f.agent_id and a.fact_id=f.factory_id
+        where c.band_state=1 and d.list_state=1 and m.model_state=1
+        and a.agent_id=#{agentId}
+        <if test="factoryId!=null and factoryId!=''">
+            and f.factory_id=#{factoryId}
+        </if>
+        and f.`status`=1
+        <if test="bKey!=null and bKey!=''">
+            <bind name="pbKey" value="'%' + bKey + '%'"/>
+            and c.band_name like #{pbKey} and c.band_id in (select  brand_id from t_goods where is_market='1' and terminal in(2,3) )
+        </if>
+        <if test="lKey!=null and lKey!=''">
+            <bind name="plKey" value="'%' + lKey + '%'"/>
+            and d.list_name like #{plKey} and d.list_id in ( select  list_id from t_goods where is_market='1' and terminal in(2,3) )
+        </if>
+        <if test="mKey!=null and mKey!=''">
+            <bind name="pmKey" value="'%' + mKey + '%'"/>
+            and m.model_name like #{pmKey}
+        </if>
+        <if test="cKey!=null and cKey!=''">
+            <bind name="pcKey" value="'%' + cKey + '%'"/>
+            and e.cat_name like #{pcKey} and e.cat_id in ( select DISTINCT cat_id from t_goods_cat where goods_id
+            in(select id from t_goods where is_market='1' and terminal in('2','3')
+            /*and stock>0  当库存为0的时候可以存在，只有当下架状态为0的时候才是真正的查询不到*/
+            and shop_id in(select
+            shop_id from oa_factory_info
+            <if test="factoryId!=null and factoryId!=''">where fact_id=#{factoryId}
+            </if>
+            )))
+        </if>
+        and a.band_id in (
+        select ds.brand_id from t_goods ds LEFT JOIN t_goods_level le
+        on ds.id = le.goods_id LEFT JOIN t_agent_fac fac
+        on fac.level_id = le.level_id
+        where le.status = 1 and fac.status = 1 and ds.is_market = 1 and ds.terminal in (2,3) AND fac.agent_id = #{agentId}
+        <if test="factoryId!=null and factoryId!=''">
+            and fac.factory_id=#{factoryId}
+        </if>
+        )
+        AND d.list_id in (
+        select ds.list_id from t_goods ds LEFT JOIN t_goods_level le
+        on ds.id = le.goods_id LEFT JOIN t_agent_fac fac
+        on fac.level_id = le.level_id
+        where le.status = 1 and fac.status = 1 and ds.is_market = 1 and ds.terminal in (2,3)
+        AND fac.agent_id = #{agentId}
+        <if test="factoryId!=null and factoryId!=''">
+            and fac.factory_id=#{factoryId}
+        </if>
+        )
+        group by a.band_id,a.list_id,m.model_id,e.cat_id;
+    </select>
+    <select id="findNewBLMC" resultMap="AgentBlmcVO">
+        SELECT * FROM
+        (SELECT
+        a.`agent_id`,
+        af.`factory_id`,
+        af.`level_id`,
+        b.`band_id`,
+        b.`band_name`,
+        l.`list_id`,
+        l.`list_name`,
+        m.`model_id`,
+        m.`model_name`,
+        c.`cat_id`,
+        c.`cat_name`,
+        c.`cat_desc`
+        FROM
+        oa_agent_band_lists a
+        JOIN crm_cust_band b
+        ON b.`band_id` = a.`band_id`
+        JOIN crm_prd_list l
+        ON l.`band_id` = b.`band_id`
+        JOIN crm_prd_model m
+        ON m.`band_id` = l.`band_id`
+        AND m.`list_id` = l.`list_id`
+        JOIN crm_prd_list_cats lc
+        ON lc.`list_id` = l.`list_id`
+        JOIN crm_prd_cat c
+        ON c.`cat_id` = lc.`cat_id`
+        LEFT JOIN t_agent_fac af
+        ON af.agent_id = a.`agent_id`
+        and af.status = 1
+        and af.coop_state = 1
+        WHERE a.agent_id=#{agentId}
+        <if test="factoryId!=null and factoryId!=''">
+            and a.fact_id=#{factoryId}
+        </if>
+        <if test="bKey!=null and bKey!=''">
+            <bind name="pbKey" value="'%' + bKey + '%'"/>
+            and b.band_name like #{pbKey}
+        </if>
+        <if test="lKey!=null and lKey!=''">
+            <bind name="plKey" value="'%' + lKey + '%'"/>
+            and l.list_name like #{plKey}
+        </if>
+        <if test="mKey!=null and mKey!=''">
+            <bind name="pmKey" value="'%' + mKey + '%'"/>
+            and m.model_name like #{pmKey}
+        </if>
+        <if test="cKey!=null and cKey!=''">
+            <!--从工厂进去根据备注搜-->
+            <choose>
+                <when test="factoryId!=null and factoryId!=''">
+                    <bind name="pcKey" value="'%' + cKey + '%'"/>
+                    and ((c.cat_desc like #{pcKey} and c.is_fac = 1 ) or (c.cat_name like #{pcKey} and c.is_fac = 0))
+                </when>
+                <otherwise>
+                    <bind name="pcKey" value="'%' + cKey + '%'"/>
+                    and c.cat_name like #{pcKey}
+                </otherwise>
+            </choose>
+        </if>
+        GROUP BY af.`factory_id`,
+        af.`level_id`,
+        b.`band_id`,
+        l.`list_id`,
+        m.`model_id`,
+        c.`cat_id`) v
+        WHERE EXISTS
+        (SELECT
+        1
+        FROM
+        t_goods g
+        <if test="cKey!=null and cKey!=''">
+            JOIN t_goods_cat gc
+            ON gc.goods_id = g.id
+        </if>
+        JOIN t_goods_level gl
+        ON gl.goods_id = g.id
+        WHERE g.is_market = 1 and g.terminal in (2,3)
+        and g.`brand_id` = v.band_id
+        AND g.`list_id` = v.list_id
+        AND g.`model_id` = v.model_id
+        <if test="cKey!=null and cKey!=''">
+            AND gc.`cat_id` = v.cat_id
+        </if>
+        AND gl.`level_id` = v.level_id)
+    </select>
+
+    <select id="findActivityBLMC" resultMap="AgentBlmcVO">
+        SELECT b.band_id,
+        b.band_name,
+        b.pic_path band_pic_path,
+        c.list_id,
+        c.list_name,
+        c.pic_path list_pic_path,
+        d.model_id,
+        d.model_name,
+        f.cat_id,
+        f.cat_name,
+        f.pic_path cat_pic_path,
+        f.pcat_id,
+        f.is_fac
+        FROM t_goods g
+        LEFT JOIN crm_cust_band b
+        ON b.band_id=g.brand_id
+        LEFT JOIN crm_prd_list c
+        ON c.band_id=g.brand_id
+        AND c.list_id=g.list_id
+        LEFT JOIN crm_prd_model d
+        ON d.band_id=c.band_id
+        AND d.list_id = c.list_id
+        LEFT JOIN t_goods_cat e
+        ON e.goods_id=g.id
+        LEFT JOIN crm_prd_cat f
+        ON f.cat_id=e.cat_id
+        WHERE g.is_market='1' and g.terminal in('2','3')
+        AND g.id in
+        (SELECT
+        mg.goods_id
+        FROM
+        t_agent_fac af
+        INNER JOIN oa_factory_info fi
+        ON af.factory_id = fi.fact_id
+        AND fi.fact_state = 1
+        INNER JOIN oa_market_act ma
+        ON ma.shop_id = fi.shop_id
+        AND ma.cont_state = 2
+        AND ma.terminal IN (2, 3)
+        INNER JOIN oa_market_agent ag
+        ON ag.agent_id = af.agent_id
+        AND ag.act_id = ma.act_id
+        INNER JOIN oa_market_goods mg
+        ON mg.act_id = ma.act_id
+        WHERE af.status = 1
+        AND af.agent_id = #{agentId}
+        <if test="factoryIds!=null and factoryIds.size>0">
+            and af.factory_id in
+            <foreach collection="factoryIds" item="lid" separator="," open="(" close=")">
+                #{lid}
+            </foreach>
+        </if>)
+        <if test="bKey!=null and bKey!=''">
+            <bind name="pbKey" value="'%' + bKey + '%'"/>
+            and b.band_name like #{pbKey}
+        </if>
+        <if test="lKey!=null and lKey!=''">
+            <bind name="plKey" value="'%' + lKey + '%'"/>
+            and c.list_name like #{plKey}
+        </if>
+        <if test="mKey!=null and mKey!=''">
+            <bind name="pmKey" value="'%' + mKey + '%'"/>
+            and d.model_name like #{pmKey}
+        </if>
+        <if test="cKey!=null and cKey!=''">
+            <!--从工厂进去根据备注搜-->
+            <choose>
+                <when test="factoryIds!=null and factoryIds.size>0">
+                    <bind name="pcKey" value="'%' + cKey + '%'"/>
+                    and ((f.cat_desc like #{pcKey} and f.is_fac = 1 ) or (f.cat_name like #{pcKey} and f.is_fac = 0))
+                </when>
+                <otherwise>
+                    <bind name="pcKey" value="'%' + cKey + '%'"/>
+                    and f.cat_name like #{pcKey}
+                </otherwise>
+            </choose>
+        </if>
+        group by g.brand_id,g.list_id,g.model_id,g.catagory_id;
+    </select>
+</mapper>

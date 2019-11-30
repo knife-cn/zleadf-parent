@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlead.dao.ExpressSubscriptionDao">
+  <resultMap id="BaseResultMap" type="com.zlead.entity.ExpressSubscription">
+    <constructor>
+      <idArg column="express_subscription_ID" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="ORDER_SN" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="REQUEST_DATA" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="EXPRESS_NU" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RESULT" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="RETURN_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="MESSAGE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DATA" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DATA_TYPE" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="CREATE_DATE" javaType="java.util.Date" jdbcType="DATE" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    express_subscription_ID, ORDER_SN, REQUEST_DATA, EXPRESS_NU, RESULT, RETURN_CODE, 
+    MESSAGE, DATA, DATA_TYPE, CREATE_DATE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from express_subscription
+    where express_subscription_ID = #{expressSubscriptionId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from express_subscription
+    where express_subscription_ID = #{expressSubscriptionId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.entity.ExpressSubscription">
+    insert into express_subscription (express_subscription_ID, ORDER_SN, REQUEST_DATA, 
+      EXPRESS_NU, RESULT, RETURN_CODE, 
+      MESSAGE, DATA, DATA_TYPE, 
+      CREATE_DATE)
+    values (#{expressSubscriptionId,jdbcType=BIGINT}, #{orderSn,jdbcType=VARCHAR}, #{requestData,jdbcType=VARCHAR}, 
+      #{expressNu,jdbcType=VARCHAR}, #{result,jdbcType=VARCHAR}, #{returnCode,jdbcType=VARCHAR}, 
+      #{message,jdbcType=VARCHAR}, #{data,jdbcType=VARCHAR}, #{dataType,jdbcType=INTEGER}, 
+      #{createDate,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlead.entity.ExpressSubscription">
+    insert into express_subscription
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="expressSubscriptionId != null">
+        express_subscription_ID,
+      </if>
+      <if test="orderSn != null">
+        ORDER_SN,
+      </if>
+      <if test="requestData != null">
+        REQUEST_DATA,
+      </if>
+      <if test="expressNu != null">
+        EXPRESS_NU,
+      </if>
+      <if test="result != null">
+        RESULT,
+      </if>
+      <if test="returnCode != null">
+        RETURN_CODE,
+      </if>
+      <if test="message != null">
+        MESSAGE,
+      </if>
+      <if test="data != null">
+        DATA,
+      </if>
+      <if test="dataType != null">
+        DATA_TYPE,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="expressSubscriptionId != null">
+        #{expressSubscriptionId,jdbcType=BIGINT},
+      </if>
+      <if test="orderSn != null">
+        #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="requestData != null">
+        #{requestData,jdbcType=VARCHAR},
+      </if>
+      <if test="expressNu != null">
+        #{expressNu,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null">
+        #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="returnCode != null">
+        #{returnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="data != null">
+        #{data,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null">
+        #{dataType,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.entity.ExpressSubscription">
+    update express_subscription
+    <set>
+      <if test="orderSn != null">
+        ORDER_SN = #{orderSn,jdbcType=VARCHAR},
+      </if>
+      <if test="requestData != null">
+        REQUEST_DATA = #{requestData,jdbcType=VARCHAR},
+      </if>
+      <if test="expressNu != null">
+        EXPRESS_NU = #{expressNu,jdbcType=VARCHAR},
+      </if>
+      <if test="result != null">
+        RESULT = #{result,jdbcType=VARCHAR},
+      </if>
+      <if test="returnCode != null">
+        RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        MESSAGE = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="data != null">
+        DATA = #{data,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null">
+        DATA_TYPE = #{dataType,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=DATE},
+      </if>
+    </set>
+    where express_subscription_ID = #{expressSubscriptionId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.entity.ExpressSubscription">
+    update express_subscription
+    set ORDER_SN = #{orderSn,jdbcType=VARCHAR},
+      REQUEST_DATA = #{requestData,jdbcType=VARCHAR},
+      EXPRESS_NU = #{expressNu,jdbcType=VARCHAR},
+      RESULT = #{result,jdbcType=VARCHAR},
+      RETURN_CODE = #{returnCode,jdbcType=VARCHAR},
+      MESSAGE = #{message,jdbcType=VARCHAR},
+      DATA = #{data,jdbcType=VARCHAR},
+      DATA_TYPE = #{dataType,jdbcType=INTEGER},
+      CREATE_DATE = #{createDate,jdbcType=DATE}
+    where express_subscription_ID = #{expressSubscriptionId,jdbcType=BIGINT}
+  </update>
+</mapper>

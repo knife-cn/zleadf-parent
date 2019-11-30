@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.PrdlistcatsMapper" >
+  <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.Prdlistcats" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="list_id" property="listId" jdbcType="INTEGER" />
+    <result column="cat_id" property="catId" jdbcType="INTEGER" />
+    <result column="shop_id" property="shopId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    id, list_id, cat_id, shop_id, status
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from crm_prd_list_cats
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  <select id="findAlllistcats" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from crm_prd_list_cats
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    delete from crm_prd_list_cats
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.fplat.entity.Prdlistcats" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into crm_prd_list_cats (id, list_id, cat_id, 
+      shop_id, status)
+    values (#{id,jdbcType=BIGINT}, #{listId,jdbcType=INTEGER}, #{catId,jdbcType=INTEGER}, 
+      #{shopId,jdbcType=INTEGER}, #{status,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlead.fplat.entity.Prdlistcats" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into crm_prd_list_cats
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="listId != null" >
+        list_id,
+      </if>
+      <if test="catId != null" >
+        cat_id,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="listId != null" >
+        #{listId,jdbcType=INTEGER},
+      </if>
+      <if test="catId != null" >
+        #{catId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.Prdlistcats" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update crm_prd_list_cats
+    <set >
+      <if test="listId != null" >
+        list_id = #{listId,jdbcType=INTEGER},
+      </if>
+      <if test="catId != null" >
+        cat_id = #{catId,jdbcType=INTEGER},
+      </if>
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.Prdlistcats" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update crm_prd_list_cats
+    set list_id = #{listId,jdbcType=INTEGER},
+      cat_id = #{catId,jdbcType=INTEGER},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      status = #{status,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+      <select id="selectCatsByListIds" resultMap="BaseResultMap" parameterType="List">
+        select * from crm_prd_list_cats where status=1 AND list_id in
+        (SELECT DISTINCT a.list_id FROM t_goods a, t_goods_level gd WHERE a.id = gd.goods_id AND gd.level_id IN(SELECT level_id FROM t_agent_fac WHERE agent_id = #{agentId})
+        AND a.is_market = 1
+        AND a.shop_id IN
+        (SELECT shop_id FROM oa_factory_info WHERE 1=1
+        AND fact_id IN
+        (
+          SELECT fact_id FROM oa_factory_info WHERE SHOP_ID IN (
+          SELECT shop_id FROM t_agent_fac WHERE agent_id = #{agentId} AND STATUS = 3)
+        )
+        AND fact_state = 1)
+        )
+        <if test="listIds != null and listIds.size>0" >
+         and list_id IN
+        <foreach collection="listIds" item="list" open="(" close=")" separator=",">
+            #{list}
+        </foreach>
+        </if>
+    </select>
+</mapper>

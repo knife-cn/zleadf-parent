@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlead.dao.RegionDao">
+  <resultMap id="BaseResultMap" type="com.zlead.entity.Region">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="t_region_CODE" jdbcType="VARCHAR" property="regionCode" />
+    <result column="t_region_NAME" jdbcType="VARCHAR" property="regionName" />
+    <result column="PARENT_ID" jdbcType="BIGINT" property="parentId" />
+    <result column="t_region_LEVEL" jdbcType="DOUBLE" property="regionLevel" />
+    <result column="t_region_ORDER" jdbcType="DOUBLE" property="regionOrder" />
+    <result column="t_region_NAME_EN" jdbcType="VARCHAR" property="regionNameEn" />
+    <result column="t_region_SHORTNAME_EN" jdbcType="VARCHAR" property="regionShortnameEn" />
+    <result column="Remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    ID, t_region_CODE, t_region_NAME, PARENT_ID, t_region_LEVEL, t_region_ORDER, t_region_NAME_EN,
+      t_region_SHORTNAME_EN, Remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from t_region
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    delete from t_region
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.entity.Region">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into t_region (<include refid="Base_Column_List" />
+      )
+    values (#{id,jdbcType=BIGINT}, #{regionCode,jdbcType=VARCHAR}, #{regionName,jdbcType=VARCHAR}, 
+      #{parentId,jdbcType=BIGINT}, #{regionLevel,jdbcType=DOUBLE}, #{regionOrder,jdbcType=DOUBLE}, 
+      #{regionNameEn,jdbcType=VARCHAR}, #{regionShortnameEn,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+	
+ <select id="getReginByparentIdAndregionName"  resultMap="BaseResultMap">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from t_region
+    where PARENT_ID = #{parentId} and t_region_NAME = #{regionName}
+  </select>
+<!--会员个人信息-->
+ <select id="getReginByCode"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_region
+    where t_region_CODE = #{regionCode} limit 0,1 
+  </select>
+  
+  <select id="getByName"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_region
+    where t_region_NAME = #{name}
+  </select>
+  
+  
+  
+  <select id="findAll"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_region
+  </select>
+
+    <select id="findprovince"  resultMap="BaseResultMap">
+         SELECT a.* FROM t_region as a where a.PARENT_ID =1
+    </select>
+
+    <select id="findid"  resultMap="BaseResultMap">
+      SELECT a.* FROM t_region as a where a.PARENT_ID =#{parentId}
+    </select>
+
+</mapper>

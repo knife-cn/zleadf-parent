@@ -1,0 +1,130 @@
+.s_containner {
+  height: 100%; 
+  padding-left: 0.3rem; 
+
+  .search {
+    position: relative;    
+  
+    .search_container {
+      width: 5.3rem;
+      height: 0.64rem;
+      background:rgba(233,239,247,1);
+      border-radius:16px;
+      padding-left: 0.74rem;
+      font-size:13px;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(32,32,32,1);
+margin-right: 0.3rem;
+margin: 0.18rem 0.3rem 0.4rem 0;
+    }
+
+    .icon_search,.icon_search_cancel {
+      width: 0.3rem;
+      height: 0.3rem;
+      position: absolute;
+    }
+    .icon_search {
+      top: 0.35rem;
+      left: 0.28rem;
+    }
+    .icon_search_cancel {
+      top: 0.35rem;
+      right: 1.38rem;
+    }
+  }
+
+  .no_good {
+    width: 100%;
+    display: none;
+
+    img {
+      width: 3.2rem;
+      height: 2.76rem;
+      margin: 2.1rem 0 0 1.86rem;
+    }
+
+    .tips {
+      font-size:16px;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(146,156,168,1);
+text-align: center;
+margin: 0.32rem 0 0.2rem 0;
+    }
+
+    .change_word {
+      font-size:12px;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(146,156,168,1);
+text-align: center;
+
+    }
+  }
+
+  .search_title {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.2rem;
+
+    img {
+      width: 0.4rem;
+      height: 0.4rem;
+      margin-right: 0.28rem;
+    }
+
+    p {
+      font-size:0.28rem;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(102,102,102,1);
+
+    }
+  }
+
+  .search_history {
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      li {
+        background:rgba(246,246,246,1);
+        border-radius:8px;
+        padding: 0.12rem 0.36rem;
+        margin-right: 0.3rem;
+        margin-bottom: 0.3rem;
+        font-size:0.26rem;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(102,102,102,1);
+      }
+    }
+  }
+
+  .show_search_items{
+    width: 100%;
+    
+    ul {
+      width: 100%;
+      li {
+        width: 100%;
+        border-bottom: 1px solid #E5E5E5;
+        padding: 0.2rem 0;
+        font-size: 0.26rem;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(32,32,32,1);
+      }
+    }
+  }
+
+  .show {
+    display: block;
+  }
+
+  .hide {
+    display: none;
+  }
+} 

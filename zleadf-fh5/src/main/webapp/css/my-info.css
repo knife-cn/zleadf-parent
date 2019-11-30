@@ -1,0 +1,131 @@
+html,
+body {
+  background-color: #f2f5fb;
+}
+.z_container {
+  width: 100%;
+  height: 100%;
+}
+.z_container .top_header_bg_info {
+  width: 100%;
+  position: relative;
+}
+.z_container .bg_pic {
+  width: 100%;
+  height: 2.76rem;
+  display: block;
+}
+.z_container .z_img_name_info,
+.z_container .no_al_load {
+  width: 92%;
+  height: 1.08rem;
+  position: absolute;
+  left: 0;
+  bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 0.3rem;
+}
+.z_container .z_img_name_info .header_img_info,
+.z_container .no_al_load .header_img_info {
+  display: flex;
+  align-items: center;
+}
+.z_container .z_img_name_info .header_img_info .name_and_company,
+.z_container .no_al_load .header_img_info .name_and_company {
+  margin-left: 0.3rem;
+}
+.z_container .z_img_name_info .header_img_info .name_and_company .name,
+.z_container .no_al_load .header_img_info .name_and_company .name {
+  font-size: 0.32rem;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: #ffffff;
+}
+.z_container .z_img_name_info .header_img_info .name_and_company .company,
+.z_container .no_al_load .header_img_info .name_and_company .company {
+  font-size: 0.26rem;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #ffffff;
+  opacity: 0.5;
+  margin-top: 0.14rem;
+}
+.z_container .z_img_name_info .header_pic,
+.z_container .no_al_load .header_pic {
+  height: 1.08rem;
+  width: 1.08rem;
+  border-radius: 50%;
+}
+.z_container .r_arrow {
+  width: 0.32rem;
+  height: 0.32rem;
+}
+.z_container .z_info_list {
+  width: 100%;
+}
+.z_container .z_info_list .info_list {
+  margin: 0.2rem 0.3rem;
+  background-color: #fff;
+  border-radius: 8px;
+}
+.z_container .z_info_list .info_list li {
+  height: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.z_container .z_info_list .info_list li .kc_incon {
+  width: 0.36rem;
+  height: 0.36rem;
+  display: block;
+  margin-left: 0.32rem;
+}
+.z_container .z_info_list .info_list li .l_name {
+  font-size: 0.28rem;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: #333333;
+  margin-left: 0.3rem;
+}
+.z_container .z_info_list .info_list li .l_icon_name {
+  display: flex;
+}
+.z_container .z_info_list .info_list li .m_r {
+  margin-right: 0.3rem;
+}
+.z_container .bottom_nav {
+  width: 100%;
+  height: 1rem;
+  background-color: #fff;
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.z_container .bottom_nav li {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.z_container .bottom_nav li img {
+  width: 0.48rem;
+  height: 0.48rem;
+  display: block;
+  margin-top: 0.12rem;
+}
+.z_container .bottom_nav li p {
+  font-size: 0.22rem;
+  font-family: PingFangSC-Medium;
+  font-weight: 500;
+  color: #999999;
+}
+.z_container .show {
+  display: block;
+}
+.z_container .hide {
+  display: none;
+}

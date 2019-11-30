@@ -1,0 +1,250 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.dt_top {
+    width: 100%;
+    height: 46px;
+    background: linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+}
+
+.dt_topcon {
+    width: 1200px;
+    height: 46px;
+    margin: 0 auto;
+    background: linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+}
+
+.sp {
+    width: 100%;
+    height: 44px;
+}
+
+.sp_d {
+    width: 1200px;
+    height: 44px;
+    background: rgba(244, 246, 247, 1);
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.sp_d p {
+    font-size: 14px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(68, 68, 68, 1);
+    line-height: 20px;
+    padding: 12px 0 12px 30px;
+}
+
+.houd {
+    width: 100%;
+    height: auto;
+}
+
+.houd_con {
+    width: 1200px;
+    min-height: 500px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.houd_con li {
+    cursor: pointer;
+    height: 270px;
+    width: 380px;
+    border: 1px solid #c0c0c0;
+    margin-right: 20px;
+    float: left;
+    margin-bottom: 50px;
+}
+
+.houd_con li:nth-child(3n) {
+    margin-right: 0px;
+}
+
+.houd_con li .houd_conimg {
+    width: 380px;
+    height: 180px;
+    background: rgba(216, 216, 216, 1);
+}
+
+.houd_con li .houd_conimg img {
+    width: 380px;
+    height: 180px;
+}
+
+.shuom {
+    font-size: 18px;
+    font-family: PingFang-SC-Bold;
+    font-weight: bold;
+    color: rgba(68, 68, 68, 1);
+    line-height: 25px;
+    text-align: center;
+    margin: 10px 0;
+}
+
+.shouspan {
+    display: block;
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(102, 102, 102, 1);
+    line-height: 20px;
+    padding: 0px 16px;
+    word-break: break-word;
+}
+
+.tbpager {
+    width: 100%;
+    height: 30px;
+}
+
+.tbapager {
+    width: 1200px;
+    height: 30px;
+    margin: 0 auto;
+}
+
+.pager {
+    float: right;
+    width: 420px;
+    ;
+    height: 30px;
+    margin-top: 25px;
+    /*border: 1px solid red;*/
+}
+
+.pager span {
+    float: left;
+    width: 51px;
+    height: 20px;
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(60, 61, 72, 1);
+    line-height: 20px;
+    letter-spacing: 2px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.pager ul {
+    margin: 5px 10px 5px 30px;
+    float: left;
+    width: 227px;
+    height: 20px;
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(60, 61, 72, 1);
+    line-height: 20px;
+    letter-spacing: 2px;
+}
+
+.pager ul li {
+    float: left;
+    width: 32px;
+    height: 20px;
+    /*border: 1px solid red;*/
+}
+
+.pager span:nth-of-type(3) {
+    margin-left: 20px;
+}
+
+a {
+    width: auto;
+    height: 23px;
+    text-align: center;
+    margin: 0 8px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0px 5px;
+    line-height: 23px;
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(60, 61, 72, 1);
+}
+
+.current {
+    background-color: rgba(255, 125, 57, 1);
+}
+
+.text_class {
+    width: 40px;
+    height: 25px;
+    border: 1px solid silver;
+    text-align: center;
+}
+
+.tz_tiao {
+    width: 25px;
+    height: 26px;
+    background-color: rgba(255, 125, 57, 1);
+    color: white;
+    margin: 0 4px;
+}
+
+
+/* 新增：活动为空样式 */
+
+.sp_pop {
+    position: relative;
+    min-height: 450px;
+    width: 1200px;
+    margin: 0 auto;
+    display: none;
+}
+
+.sp_zero {
+    position: absolute;
+    height: 150px;
+    width: 400px;
+    top: 140px;
+    left: 380px;
+}
+
+.sp_zero img {
+    width: 150px;
+    height: 150px;
+    float: left;
+    margin-right: 40px;
+}
+
+.sp_zero h5 {
+    width: 200px;
+    height: 28px;
+    font-size: 20px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(79, 83, 98, 1);
+    line-height: 28px;
+    margin-bottom: 9px;
+    margin-top: 47px;
+    float: left;
+}
+
+.sp_zero p {
+    width: 200px;
+    height: 20px;
+    font-size: 14px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(79, 83, 98, 1);
+    line-height: 20px;
+    float: left;
+}
+
+.sp_zero p a {
+    color: rgba(34, 114, 200, 1);
+}

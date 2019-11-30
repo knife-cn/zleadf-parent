@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>直链商城</title>
+
+    <!-- CSS文件 -->
+    <link rel="stylesheet" href="../../shopping/css/speedHead.css" />
+    <link rel="stylesheet" href="../../shopping/css/header.css" />
+    <link rel="stylesheet" href="../../shopping/css/upload.css">
+    <link rel="stylesheet" href="../../shopping/css/order.css" />
+
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div id="head">
+
+    </div>
+    <div class="serch">
+        <div class="serch_con">
+            <!-- logo -->
+            <div class="logo">
+                <img src="../../shopping/img/index/logo.png" />
+            </div>
+            <div class="speed">
+                <ul>
+                    <li><i style="margin-right: 10px;display: inline-block;float: left;"><img src="../../shopping/img/success/ic_finish.png" alt=""></i><span style="float: left;">我的购物车</span></li>
+                    <li><span class="check">2</span>核对订单信息</li>
+                    <li><span class="success">3</span>成功提交订单</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- 订单 -->
+    <div class="car_title"></div>
+
+    <div class="msg_box">
+        <div class="order_title">
+            <span class="msg_order">收货人信息</span>
+            <span class="add_price2">新增地址</span>
+        </div>
+        <div class="order_content">
+            <ul class="address_list little" id="address_list">
+                <!--挖坑-->
+                <!--<li>-->
+                <!--<div class="tel_msg">-->
+                <!--<span class="names_order">肖先生</span>  -->
+                <!--<span class="num_order">187*****543</span>-->
+                <!--&lt;!&ndash; <span class="icon_mo">-->
+                <!--<i><img src="../../shopping/img/order/mo.png" alt=""></i>-->
+                <!--<i style="margin-left:10px;display:inline-block;"><img src="../../shopping/img/order/Edit.png" alt=""></i>-->
+                <!--</span> &ndash;&gt;-->
+                <!--</div>-->
+                <!--<div style="border:1px dashed #E5E5E5;position: relative;top:10px;"></div>-->
+                <!--<div class="address_msg">-->
+                <!--<span class="ad_ord">上海市 上海市 闸北区</span>  -->
+                <!--</div>-->
+                <!--<div class="address_msg">-->
+                <!--<span class="detail_ad"> 泛太平洋大厦12层</span>-->
+                <!--</div>-->
+                <!--</li>-->
+
+
+                <div class="clear"></div>
+            </ul>
+            <div class="more_ad ">更多地址 <img src="../../shopping/img/order/合并形状.png" alt=""> </div>
+            <div class="more_ad1" style="color:#FD5700">收起 <img src="../../shopping/img/searchPage/s.png" alt=""> </div>
+
+
+        </div>
+
+        <div classs="pay_type">
+            <div class="order_title">
+                <span class="msg_order">支付方式</span>
+            </div>
+            <div class="payinfo pay_info">
+                <div id="box">
+                    <ul>
+                        <!-- <li  @mouseenter="enter(index)" @click="checkType(index)" :class="aaa== index ?'check':''" v-for="(item , index) in payList"  click="">{{item.name}}</li> -->
+                        <!--<li><i class="imgp"><img src="../../shopping/img/order/zhiwei_ic_choose.png" alt=""></i> 支付宝</li>-->
+                        <!--<li>微信</li>-->
+                        <!--<li id="saoma">扫码支付</li>-->
+                        <li id="enterLi">线下付款</li>
+                        <!--<li>支付宝</li>-->
+                        <!--<li>他人代付</li>-->
+                        <!-- <span v-if="flag" @click="showType" class="more_ad more_bottom">更多 <img src="../../shopping/img/order/right.png" alt=""></span>   -->
+                        <!--<span  id="more_type" class="more_bottom">更多 <img src="../../shopping/img/order/right.png" alt=""></span>-->
+                        <!--<span  id="more_type1"  style="color:#FD5700" class="more_bottom">收起 <img style=" transform: rotate(270deg);" src="../../shopping/img/searchPage/s.png" alt=""></span>-->
+                        <!--<div class="clear"></div>-->
+                    </ul>
+                </div>
+                <div class="msg_show">
+                    <p id="pShow">线下付款，你可以把钱汇至公司的银行账户中，付款成功后联系公司的客服人员，确认汇款是否成功，汇款成功后请到 用户中心——我的订单中——待确认付款页面 上传付款成功凭证，公司会立即安排发货，因网路等原因，可能会出现到账延迟的情况，</p>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div classs="product_msg">
+            <div class="order_title severce">
+                <span class="msg_order">商品及服务信息</span>
+            </div>
+            <div class="order_list">
+                <ul>
+                    <li>商品信息</li>
+                    <li>数量</li>
+                    <li>单价</li>
+                    <li>金额</li>
+                </ul>
+                <div id="order_pay">
+                    <!-- 挖坑 -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="make_order">
+        <div class="center_msg">
+            <div class="left_msg" style="visibility: hidden">
+                <!--挖坑-->
+            </div>
+            <div class="right_msg">
+                <div>合计</div>
+                <div id="price">
+                    <!--挖坑-->
+                    <span style="visibility: hidden;display: none;">原价:￥<span class="qian_order oldPrice">0</span> </span>
+                    <span style="visibility: hidden;display: none;">优惠:￥<span class="qian_order discount">0</span> </span>
+                    <span style="visibility: hidden;display: none;">运费:￥<span class="qian_order goFare">0</span> </span>
+                    <span style='font-size: 22px;color: #FD5904;'>￥<span class="all_order">0</span></span>
+                </div>
+                <div class="sub_btn" id="sub_btn">
+                    提交订单
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--弹窗--没有收货人信息/选择支付方式-->
+    <div class="meng2"></div>
+    <div class="popupMsg">
+        <img class="close" src="../../shopping/img/car/close@2x.png" />
+        <img class="tips" src="../../shopping/img/car/Fill 1.png" />
+        <p class="msg2">提示信息</p>
+        <div class="know">知道了</div>
+    </div>
+
+    <!-- 弹窗 -->
+    <div id="dialogs">
+        <!--蒙版-->
+        <div class="meng" id="meng">
+            <!--扫码支付-->
+            <div class="guanlian" id="dialog" style="display:none;">
+                <!-- 头 -->
+                <img src="../../shopping/img/lhpimg/guanbi.png" id="qu2" class="img" />
+                <div class="scroll">
+                    <div class="title">
+                        <span>扫码支付</span>
+                    </div>
+                    <!--内容-->
+                    <div class="message_tit">
+                        <p>订单将在4分钟后关闭，请及时付款</p>
+                        <span>
+                            <img src="../../shopping/img/order/677da23a958a0f7335ba20ab06b6d919 copy.png" alt="">
+                        </span>
+                        <p class="biao">使用手机支付宝扫码完成付款</p>
+                    </div>
+                </div>
+                <!--尾-->
+                <div class="bottom">
+                    <span id="qu" class="yiyan qu ">取消</span>
+                    <span id="fo" class="yiyan fo">确定</span>
+                </div>
+            </div>
+
+            <!--新增地址-->
+            <div class="input_addr" style="display:none;">
+                <img src="../../shopping/img/lhpimg/guanbi.png" id="qu2" class="img" />
+                <!--内容-->
+                <div class="scroll">
+                    <div style="height:100%; width: 530px;" class="scroll-son">
+                        <div class="tu"><img src="../../shopping/img/lhpimg/pic_goods2.png" /></div>
+                        <div class="xinzheng">新增/编辑收货地址</div>
+
+                        <div class="ren">
+                            <span>收货人</span>
+                            <input id="name" type="text" placeholder="请输入姓名" maxlength="10" />
+                        </div>
+                        <div class="lianxi">
+                            <span>联系方式</span>
+                            <input id="phone" maxlength="11" type="text" placeholder="请输入联系方式" />
+                        </div>
+
+                        <div class="quyu">
+                            <span>所在区域</span>
+                            <select id="shengs" class="select">
+                                  <!--挖坑-->
+                                </select>
+                            <select id="shis" class="select">
+                                   <!--挖坑-->
+                                </select>
+                            <select id="quyus" class="select" style='margin: 0'>
+                                    <!--挖坑-->
+                                </select>
+                            <input id="detail_add" type="text" placeholder="请输入详细地址" maxlength="20" />
+                        </div>
+                        <div class="moren">
+                            <div class="pandan nomr"></div>
+                            <div>设为默认地址</div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tipsN2"></div>
+                <!--确定-->
+                <div class="bottom_b">
+                    <div id="qu" class="yiyan qu">取消</div>
+                    <div id="fo" class="yiyan fo makeSure">确定</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JS文件 -->
+
+    <script src="../../shopping/lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../../shopping/lib/artTemplate/artTemplate/template-web.js"></script>
+    <script src="../../shopping/js/order.js"></script>
+    <script src="../../shopping/js/head.js"></script>
+    <script type="text/javascript" src="../../shopping/js/jinzi.js"></script>
+
+    <!--地址-->
+    <script type="text/template" id="tel">
+        {{ if data !==""}} {{ each data v i}}
+        <li class="sAddress">
+            {{if v.isDefault==1}}
+            <i class="active_line" id="active_line"><img src="../../shopping/img/order/tiao.png" alt=""></i> {{ /if }}
+            <div class="tel_msg" data-id={{v.id}}>
+                {{if v.memberName.length > 6}}
+                <span class="names_order" title="{{v.memberName}}">{{v.memberName.substr(0,6)}}...</span> {{else}}
+                <span class="names_order" title="{{v.memberName}}">{{v.memberName}}</span> {{/if}}
+                <span class="num_order">{{v.phone}}</span>
+                <span class="icon_mo">
+                  {{if v.isDefault==1 }}
+                    <i><img src="../../shopping/img/order/mo.png" alt=""></i>
+                  {{ /if }}
+                    <i style="margin-left:10px;display:inline-block;"><img id="edit" data-default= {{v.isDefault}} data-id={{v.id}} class="editNew" data-datas="{{v}}" src="../../shopping/img/order/Edit.png" alt=""></i>
+                    <!--<i style="margin-left:10px;display:inline-block;"></i>-->
+                </span>
+            </div>
+            <div style="border:1px dashed #E5E5E5;position: relative;top:10px;"></div>
+            <div class="address_msg">
+                <span class="ad_ord" title="{{v.provinceName}} {{v.cityName}} {{v.countyName}}">{{v.provinceName}} {{v.cityName}} {{v.countyName}}</span>
+            </div>
+            <div class="address_msg">
+                <span class="detail_ad"> {{v.detailAddress}}</span>
+            </div>
+        </li>
+        {{ /each }} {{ /if }}
+        <li class="last add_price1">
+            <div><img src="../../shopping/img/order/Fill 103.png" alt=""></div>
+            <p>添加新地址</p>
+        </li>
+    </script>
+
+    <!--商品-->
+    <!--//购物车页面进入本页面-->
+    <script type="text/template" id="tel22">
+        {{each objA obj10 j}}
+        <div class="oneShop">
+            <div class="names">{{obj10.shopName}}</div>
+            {{each obj10.goodsList v i}}
+            <ul class="det_pro">
+                <li>
+                    <span class="pro_images">
+                        <a href="{{'details?id='+v.goodsId}}">
+                            {{ if v.goodsImg}}
+                            <img src="{{v.goodsImg}}" title="商品图片">
+                            {{else}}
+                            <img src="../../shopping/img/index/sl3.png" title="商品图片">
+                            {{/if}}
+                        </a>
+                    </span>
+                    <div class="pro_content">
+                        <p>
+                            <a href="{{'details?id='+v.goodsId}}" style='color: rgba(167, 167, 172, 1);'> {{v.goodsName}}</a>
+                        </p>
+                    </div>
+                    <span class="type_or">
+                       {{v.goodsAttr}}
+                    </span>
+                </li>
+                <li>{{v.count}}</li>
+                <li>￥{{v.goodsPrice.toFixed(2)}}</li>
+                <li>￥<span class='my_allPrice'>{{(v.goodsPrice.toFixed(2) * v.count).toFixed(2)}}</span></li>
+            </ul>
+            {{/each}}
+        </div>
+        {{/each}}
+    </script>
+    <!--//商品详情页面进入本页面-->
+    <script type="text/template" id="tel23">
+        <ul class="det_pro">
+            <li>
+                <span class="pro_images">
+                    <a href="{{'details?id='+goods.id}}">
+                        {{ if goods.firstImg}}
+                        <img src="{{goods.firstImg}}" title="商品图片">
+                        {{else}}
+                        <img src="../../shopping/img/index/sl3.png" title="商品图片">
+                        {{/if}}
+                    </a>
+                </span>
+                <div class="pro_content">
+                    <p>
+                        <a href="{{'details?id='+goods.id}}" style='color: rgba(167, 167, 172, 1);'>
+                             {{goods.fullName}}
+                        </a>
+                    </p>
+                </div>
+                <span class="type_or">{{thisGoodsAttrs}}</span>
+            </li>
+            <li>{{goods.count}}</li>
+            <li>￥{{goods.price.toFixed(2)}}</li>
+            <li>￥ <span class='my_allPrice'>{{(goods.price.toFixed(2) * goods.count).toFixed(2) }}</span></li>
+        </ul>
+
+    </script>
+
+    <script type="text/template" id="tel3">
+        {{if datas !== ''}}
+        <div style="margin-bottom: 7px;"><span style="display: inline-block;margin-right: 5px;">{{memberName}}</span><span>{{phone}}</span></div><br>
+        <div><img src="../../shopping/img/order/Pin.png" alt=""> <span class="aaa">{{address}}…</span> </div>
+        {{ /if }}
+    </script>
+
+    <!--总价-->
+    <!--<script type="text/template" id="tel4">-->
+    <!--<span>原价<span class="qian_order oldPrice">￥464</span> </span>-->
+    <!--<span>优惠<span class="qian_order discount">￥4</span> </span>-->
+    <!--<span>运费<span class="qian_order goFare">￥10</span> </span>-->
+    <!--<span class="all_order">￥{{totalPrice}}</span>-->
+    <!--</script>-->
+
+    <!--省市区-->
+    <!--<script type="text/template" id="tel11">-->
+    <!--{{ each list v i }}-->
+    <!--<option data-id="{{v.id}}" class="option" id="sheng">{{i}}{{v.regionName}}</option>-->
+    <!--{{ /each }}-->
+    <!--</script>-->
+    <script type="text/template" id="tel12">
+        {{ each list2 v i }}
+        <option data-id2="{{v.id}}" class="option" id="shi">{{v.regionName}}</option>
+        {{ /each }}
+    </script>
+    <script type="text/template" id="tel13">
+        {{ each list3 v i }}
+        <option data-id3="{{v.id}}" class="option" id="quyu4">{{v.regionName}}</option>
+        {{ /each }}
+    </script>
+
+    <script>
+        $("#head").load("head.html");
+    </script>
+
+</body>
+
+</html>

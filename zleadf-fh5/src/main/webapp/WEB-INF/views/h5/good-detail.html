@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../../h5/css/init.css">
+    <link rel="stylesheet" href="../../../h5/css/good-detail.css">
+    <script src="../../../h5/js/rem.js"></script>
+    <script src="../../../h5/js/common.js"></script>
+
+    <title>商品详情</title>
+</head>
+
+<body>
+<header class="headerTop">
+    <a class="backBtn" href="javascript:history.go(-1);"><span></span></a>
+    订单详情
+</header>
+<div id="goodDetail"></div>
+<script type="text/html" id="modelGoodDetail">
+    <ul class="good_list">
+        <div class="pic_name">
+            <img src="../../../h5/images/4.png" alt="">
+            <span>{{shopName}}</span>
+        </div>
+        {{each orderGoodsList v}}
+        <li>
+            <img src="{{'http://116.62.124.171/group1/' + v.goodsImg}}" alt="">
+            <div class="r_content">
+                <p class="title">{{v.goodsName}}</p>
+                <p class="type">褐色 不锈钢 5m</p>
+                <p class="price"><span>¥{{v.price}}</span><i>×{{v.count}}</i></p>
+            </div>
+        </li>
+        {{/each}}
+    </ul>
+</script>
+<script src="../../../h5/js/jquery.min.js"></script>
+<script src="../../../h5/js/template-web.js"></script>
+<script src="../../../h5/js/page/good-detail.js"></script>
+</body>
+<script>
+
+</script>
+</html>

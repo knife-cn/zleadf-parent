@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.OaAgentMasMapper" >
+  <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.OaAgentMas" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <id column="agent_id" property="agentId" jdbcType="INTEGER" />
+    <result column="agent_no" property="agentNo" jdbcType="VARCHAR" />
+    <result column="agent_name" property="agentName" jdbcType="VARCHAR" />
+    <result column="agent_state" property="agentState" jdbcType="VARCHAR" />
+    <result column="agent_level" property="agentLevel" jdbcType="VARCHAR" />
+    <result column="agent_discount_type" property="agentDiscountType" jdbcType="VARCHAR" />
+    <result column="agent_discount" property="agentDiscount" jdbcType="INTEGER" />
+    <result column="agent_payments" property="agentPayments" jdbcType="VARCHAR" />
+    <result column="agent_return" property="agentReturn" jdbcType="VARCHAR" />
+    <result column="agent_returnvalue" property="agentReturnvalue" jdbcType="INTEGER" />
+    <result column="agent_fmdate" property="agentFmdate" jdbcType="TIMESTAMP" />
+    <result column="agent_todate" property="agentTodate" jdbcType="TIMESTAMP" />
+    <result column="agent_contract" property="agentContract" jdbcType="VARCHAR" />
+    <result column="agent_certify" property="agentCertify" jdbcType="VARCHAR" />
+    <result column="link_name" property="linkName" jdbcType="VARCHAR" />
+    <result column="link_tel" property="linkTel" jdbcType="VARCHAR" />
+    <result column="rev_province" property="revProvince" jdbcType="VARCHAR" />
+    <result column="agent_desc" property="agentDesc" jdbcType="VARCHAR" />
+    <result column="org_id" property="orgId" jdbcType="INTEGER" />
+    <result column="sys_id" property="sysId" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modifier" property="modifier" jdbcType="INTEGER" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="agent_brand" property="agentBrand" jdbcType="VARCHAR" />
+    <result column="order_date" property="orderDate" jdbcType="TIMESTAMP" />
+    <result column="coop_state" property="coopState" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="agenet_returnvalue" property="agenetReturnvalue" jdbcType="INTEGER" />
+    <result column="agent_addr" property="agentAddr" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    agent_id, agent_no, agent_name, agent_state, agent_level, agent_discount_type, agent_discount, 
+    agent_payments, agent_return, agent_returnvalue, agent_fmdate, agent_todate, agent_contract, 
+    agent_certify, link_name, link_tel, rev_province, agent_desc, org_id, sys_id, creator, 
+    create_time, modifier, modify_time, agent_brand, order_date, coop_state, user_id, 
+    agenet_returnvalue, agent_addr
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.OaAgentMasExample" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from oa_agent_mas
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from oa_agent_mas
+    where agent_id = #{agentId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    delete from oa_agent_mas
+    where agent_id = #{agentId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.fplat.entity.OaAgentMas" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into oa_agent_mas (agent_id, agent_no, agent_name, 
+      agent_state, agent_level, agent_discount_type, 
+      agent_discount, agent_payments, agent_return, 
+      agent_returnvalue, agent_fmdate, agent_todate, 
+      agent_contract, agent_certify, link_name, 
+      link_tel, rev_province, agent_desc, 
+      org_id, sys_id, creator, 
+      create_time, modifier, modify_time, 
+      agent_brand, order_date, coop_state, 
+      user_id, agenet_returnvalue, agent_addr
+      )
+    values (#{agentId,jdbcType=INTEGER}, #{agentNo,jdbcType=VARCHAR}, #{agentName,jdbcType=VARCHAR}, 
+      #{agentState,jdbcType=VARCHAR}, #{agentLevel,jdbcType=VARCHAR}, #{agentDiscountType,jdbcType=VARCHAR}, 
+      #{agentDiscount,jdbcType=INTEGER}, #{agentPayments,jdbcType=VARCHAR}, #{agentReturn,jdbcType=VARCHAR}, 
+      #{agentReturnvalue,jdbcType=INTEGER}, #{agentFmdate,jdbcType=TIMESTAMP}, #{agentTodate,jdbcType=TIMESTAMP}, 
+      #{agentContract,jdbcType=VARCHAR}, #{agentCertify,jdbcType=VARCHAR}, #{linkName,jdbcType=VARCHAR}, 
+      #{linkTel,jdbcType=VARCHAR}, #{revProvince,jdbcType=VARCHAR}, #{agentDesc,jdbcType=VARCHAR}, 
+      #{orgId,jdbcType=INTEGER}, #{sysId,jdbcType=INTEGER}, #{creator,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=INTEGER}, #{modifyTime,jdbcType=TIMESTAMP}, 
+      #{agentBrand,jdbcType=VARCHAR}, #{orderDate,jdbcType=TIMESTAMP}, #{coopState,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=INTEGER}, #{agenetReturnvalue,jdbcType=INTEGER}, #{agentAddr,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlead.fplat.entity.OaAgentMas" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into oa_agent_mas
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="agentId != null" >
+        agent_id,
+      </if>
+      <if test="agentNo != null" >
+        agent_no,
+      </if>
+      <if test="agentName != null" >
+        agent_name,
+      </if>
+      <if test="agentState != null" >
+        agent_state,
+      </if>
+      <if test="agentLevel != null" >
+        agent_level,
+      </if>
+      <if test="agentDiscountType != null" >
+        agent_discount_type,
+      </if>
+      <if test="agentDiscount != null" >
+        agent_discount,
+      </if>
+      <if test="agentPayments != null" >
+        agent_payments,
+      </if>
+      <if test="agentReturn != null" >
+        agent_return,
+      </if>
+      <if test="agentReturnvalue != null" >
+        agent_returnvalue,
+      </if>
+      <if test="agentFmdate != null" >
+        agent_fmdate,
+      </if>
+      <if test="agentTodate != null" >
+        agent_todate,
+      </if>
+      <if test="agentContract != null" >
+        agent_contract,
+      </if>
+      <if test="agentCertify != null" >
+        agent_certify,
+      </if>
+      <if test="linkName != null" >
+        link_name,
+      </if>
+      <if test="linkTel != null" >
+        link_tel,
+      </if>
+      <if test="revProvince != null" >
+        rev_province,
+      </if>
+      <if test="agentDesc != null" >
+        agent_desc,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="sysId != null" >
+        sys_id,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="agentBrand != null" >
+        agent_brand,
+      </if>
+      <if test="orderDate != null" >
+        order_date,
+      </if>
+      <if test="coopState != null" >
+        coop_state,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="agenetReturnvalue != null" >
+        agenet_returnvalue,
+      </if>
+      <if test="agentAddr != null" >
+        agent_addr,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="agentId != null" >
+        #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="agentNo != null" >
+        #{agentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="agentName != null" >
+        #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="agentState != null" >
+        #{agentState,jdbcType=VARCHAR},
+      </if>
+      <if test="agentLevel != null" >
+        #{agentLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="agentDiscountType != null" >
+        #{agentDiscountType,jdbcType=VARCHAR},
+      </if>
+      <if test="agentDiscount != null" >
+        #{agentDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="agentPayments != null" >
+        #{agentPayments,jdbcType=VARCHAR},
+      </if>
+      <if test="agentReturn != null" >
+        #{agentReturn,jdbcType=VARCHAR},
+      </if>
+      <if test="agentReturnvalue != null" >
+        #{agentReturnvalue,jdbcType=INTEGER},
+      </if>
+      <if test="agentFmdate != null" >
+        #{agentFmdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agentTodate != null" >
+        #{agentTodate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agentContract != null" >
+        #{agentContract,jdbcType=VARCHAR},
+      </if>
+      <if test="agentCertify != null" >
+        #{agentCertify,jdbcType=VARCHAR},
+      </if>
+      <if test="linkName != null" >
+        #{linkName,jdbcType=VARCHAR},
+      </if>
+      <if test="linkTel != null" >
+        #{linkTel,jdbcType=VARCHAR},
+      </if>
+      <if test="revProvince != null" >
+        #{revProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="agentDesc != null" >
+        #{agentDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="sysId != null" >
+        #{sysId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agentBrand != null" >
+        #{agentBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null" >
+        #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coopState != null" >
+        #{coopState,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="agenetReturnvalue != null" >
+        #{agenetReturnvalue,jdbcType=INTEGER},
+      </if>
+      <if test="agentAddr != null" >
+        #{agentAddr,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.OaAgentMas" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update oa_agent_mas
+    <set >
+      <if test="agentNo != null" >
+        agent_no = #{agentNo,jdbcType=VARCHAR},
+      </if>
+      <if test="agentName != null" >
+        agent_name = #{agentName,jdbcType=VARCHAR},
+      </if>
+      <if test="agentState != null" >
+        agent_state = #{agentState,jdbcType=VARCHAR},
+      </if>
+      <if test="agentLevel != null" >
+        agent_level = #{agentLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="agentDiscountType != null" >
+        agent_discount_type = #{agentDiscountType,jdbcType=VARCHAR},
+      </if>
+      <if test="agentDiscount != null" >
+        agent_discount = #{agentDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="agentPayments != null" >
+        agent_payments = #{agentPayments,jdbcType=VARCHAR},
+      </if>
+      <if test="agentReturn != null" >
+        agent_return = #{agentReturn,jdbcType=VARCHAR},
+      </if>
+      <if test="agentReturnvalue != null" >
+        agent_returnvalue = #{agentReturnvalue,jdbcType=INTEGER},
+      </if>
+      <if test="agentFmdate != null" >
+        agent_fmdate = #{agentFmdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agentTodate != null" >
+        agent_todate = #{agentTodate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agentContract != null" >
+        agent_contract = #{agentContract,jdbcType=VARCHAR},
+      </if>
+      <if test="agentCertify != null" >
+        agent_certify = #{agentCertify,jdbcType=VARCHAR},
+      </if>
+      <if test="linkName != null" >
+        link_name = #{linkName,jdbcType=VARCHAR},
+      </if>
+      <if test="linkTel != null" >
+        link_tel = #{linkTel,jdbcType=VARCHAR},
+      </if>
+      <if test="revProvince != null" >
+        rev_province = #{revProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="agentDesc != null" >
+        agent_desc = #{agentDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="sysId != null" >
+        sys_id = #{sysId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="agentBrand != null" >
+        agent_brand = #{agentBrand,jdbcType=VARCHAR},
+      </if>
+      <if test="orderDate != null" >
+        order_date = #{orderDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="coopState != null" >
+        coop_state = #{coopState,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="agenetReturnvalue != null" >
+        agenet_returnvalue = #{agenetReturnvalue,jdbcType=INTEGER},
+      </if>
+      <if test="agentAddr != null" >
+        agent_addr = #{agentAddr,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where agent_id = #{agentId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.OaAgentMas" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update oa_agent_mas
+    set agent_no = #{agentNo,jdbcType=VARCHAR},
+      agent_name = #{agentName,jdbcType=VARCHAR},
+      agent_state = #{agentState,jdbcType=VARCHAR},
+      agent_level = #{agentLevel,jdbcType=VARCHAR},
+      agent_discount_type = #{agentDiscountType,jdbcType=VARCHAR},
+      agent_discount = #{agentDiscount,jdbcType=INTEGER},
+      agent_payments = #{agentPayments,jdbcType=VARCHAR},
+      agent_return = #{agentReturn,jdbcType=VARCHAR},
+      agent_returnvalue = #{agentReturnvalue,jdbcType=INTEGER},
+      agent_fmdate = #{agentFmdate,jdbcType=TIMESTAMP},
+      agent_todate = #{agentTodate,jdbcType=TIMESTAMP},
+      agent_contract = #{agentContract,jdbcType=VARCHAR},
+      agent_certify = #{agentCertify,jdbcType=VARCHAR},
+      link_name = #{linkName,jdbcType=VARCHAR},
+      link_tel = #{linkTel,jdbcType=VARCHAR},
+      rev_province = #{revProvince,jdbcType=VARCHAR},
+      agent_desc = #{agentDesc,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=INTEGER},
+      sys_id = #{sysId,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modifier = #{modifier,jdbcType=INTEGER},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      agent_brand = #{agentBrand,jdbcType=VARCHAR},
+      order_date = #{orderDate,jdbcType=TIMESTAMP},
+      coop_state = #{coopState,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      agenet_returnvalue = #{agenetReturnvalue,jdbcType=INTEGER},
+      agent_addr = #{agentAddr,jdbcType=VARCHAR}
+    where agent_id = #{agentId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-4.0.xsd
+	http://www.springframework.org/schema/mvc
+	http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
+
+    <!-- 注解扫描包 -->
+    <!--
+        <context:component-scan>标签的作用:扫描base-package目录下带有注解的类将其纳入spring容器中，由spring管理.
+        如:@Service @Controller @Component
+    -->
+    <context:component-scan base-package="com.puqian.controller"/>
+    <context:component-scan base-package="com.puqian.front"/>
+    <context:component-scan base-package="com.puqian.service.impl"/>
+    <context:component-scan base-package="com.puqian.reception.controller"/>
+    <context:component-scan base-package="com.puqian.reception.service"/>
+    <context:component-scan base-package="com.puqian.reception.service.impl"/>
+    <context:component-scan base-package="com.puqian.aliPay.service.impl"/>
+    <context:component-scan base-package="com.puqian.aliPay.controller"/>
+    <context:component-scan base-package="com.puqian.enterprise.controller"/>
+    <context:component-scan base-package="com.puqian.enterprise.service.impl"/>
+    <context:component-scan base-package="com.puqian.util"/>
+    <context:component-scan base-package="com.puqian.utils"/>
+    <context:component-scan base-package="com.puqian.task"/>
+
+    <context:component-scan base-package="com.zlead.controller"/>
+    <context:component-scan base-package="com.zlead.fplat.controller"/>
+    <context:component-scan base-package="com.zlead.fplat.portal.controller"/>
+    <context:component-scan base-package="com.zlead.front"/>
+    <context:component-scan base-package="com.zlead.service.impl"/>
+    <context:component-scan base-package="com.zlead.shop.service"/>
+
+    <context:component-scan base-package="com.zlead.reception.controller"/>
+    <context:component-scan base-package="com.zlead.reception.service"/>
+    <context:component-scan base-package="com.zlead.reception.service.impl"/>
+    <context:component-scan base-package="com.zlead.aliPay.service.impl"/>
+    <context:component-scan base-package="com.zlead.aliPay.controller"/>
+    <context:component-scan base-package="com.zlead.enterprise.service.impl"/>
+    <context:component-scan base-package="com.zlead.enterprise.controller"/>
+    <context:component-scan base-package="com.zlead.member.controller"/>
+    <context:component-scan base-package="com.zlead.shop.controller"/>
+    <context:component-scan base-package="com.zlead.shopmgr.controller"/>
+    <context:component-scan base-package="com.zlead.task.controller"/>
+    <context:component-scan base-package="com.zlead.shopmgr.api"/>
+    <context:component-scan base-package="com.zlead.shopmgr.service"/>
+    <context:component-scan base-package="com.zlead.util"/>
+    <context:component-scan base-package="com.zlead.utils"/>
+    <context:component-scan base-package="com.zlead.task"/>
+    <context:component-scan base-package="com.zlead.fplat"/>
+    <!-- 开启注解 -->
+    <!--
+        <mvc:annotation-driven />作用:注入带有@Autowired或者@Resource的Bean
+    -->
+    <mvc:annotation-driven>
+
+
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>application/json; charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+
+
+        </mvc:message-converters>
+
+    </mvc:annotation-driven>
+
+
+    <mvc:default-servlet-handler/>
+
+
+    <!-- AOP -->
+    <aop:aspectj-autoproxy/>
+
+    <!--<mvc:cors>-->
+        <!--<mvc:mapping path="/**" allowed-origins="*" allow-credentials="true" max-age="1800" allowed-methods="GET,POST,OPTIONS"/>-->
+    <!--</mvc:cors>-->
+
+
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 最大值4M -->
+        <property name="maxUploadSize" value="209715200"/>
+        <property name="resolveLazily" value="true"/>
+    </bean>
+
+    <!--
+        配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理，3.04新增功能，需要重新设置spring-mvc-3.0.xsd
+
+    <mvc:resources mapping="/img/**" location="/img/" />
+    <mvc:resources mapping="/html/**" location="/html/" />
+     <mvc:resources mapping="/css/**" location="/css/" />
+    <mvc:resources mapping="/images/**" location="/images/" />
+    <mvc:resources mapping="/js/**" location="/js/" />
+     -->
+
+    <!-- 定义跳转的文件的前后缀 ，视图模式配置-->
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!-- 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->
+        <property name="prefix" value="/WEB-INF/"/>
+        <property name="suffix" value=".html"/>
+    </bean>
+    <!--<bean id="tokem"-->
+            <!--class="org.aspectj.lang.annotation.Aspect">-->
+        <!--<mvc:interceptors>-->
+            <!--&lt;!&ndash; 多个拦截器，顺序执行 说明： 1 mvc:mapping 拦截器路径配置 ; 2 mvc:exclude-mapping 拦截器不需要拦截的路径&ndash;&gt;-->
+            <!--<mvc:interceptor>-->
+                <!--<mvc:mapping path="/api/*"/>-->
+                <!--&lt;!&ndash; <mvc:exclude-mapping path="/account/**" />-->
+                <!--<mvc:exclude-mapping path="/message/**" />-->
+                <!--<mvc:exclude-mapping path="/find/**" /> &ndash;&gt;-->
+                <!--<bean class="com.zlead.util.aop.LoginInterceptor"></bean>-->
+            <!--</mvc:interceptor>-->
+        <!--</mvc:interceptors>-->
+    <!--</bean>-->
+
+
+</beans>

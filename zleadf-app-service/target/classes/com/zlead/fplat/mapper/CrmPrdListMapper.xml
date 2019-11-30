@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.CrmPrdListMapper">
+    <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.CrmPrdList">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        <id column="list_id" property="listId" jdbcType="INTEGER"/>
+        <result column="list_no" property="listNo" jdbcType="VARCHAR"/>
+        <result column="list_name" property="listName" jdbcType="VARCHAR"/>
+        <result column="band_id" property="bandId" jdbcType="INTEGER"/>
+        <result column="cat_ids" property="catIds" jdbcType="VARCHAR"/>
+        <result column="cat_names" property="catNames" jdbcType="VARCHAR"/>
+        <result column="pinyin" property="pinyin" jdbcType="VARCHAR"/>
+        <result column="pinyin_sh" property="pinyinSh" jdbcType="VARCHAR"/>
+        <result column="pic_path" property="picPath" jdbcType="VARCHAR"/>
+        <result column="list_state" property="listState" jdbcType="VARCHAR"/>
+        <result column="list_desc" property="listDesc" jdbcType="VARCHAR"/>
+        <result column="shop_id" property="shopId" jdbcType="INTEGER"/>
+        <result column="creator" property="creator" jdbcType="INTEGER"/>
+        <result column="modifier" property="modifier" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        list_id, list_no, list_name, band_id, cat_ids, cat_names, pinyin, pinyin_sh, pic_path,
+        list_state, list_desc, shop_id, creator, modifier, create_time, modify_time
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.CrmPrdListExample">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from crm_prd_list
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        select
+        <include refid="Base_Column_List"/>
+        from crm_prd_list
+        where list_id = #{listId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        delete from crm_prd_list
+        where list_id = #{listId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.zlead.fplat.entity.CrmPrdList">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        insert into crm_prd_list (list_id, list_no, list_name,
+        band_id, cat_ids, cat_names,
+        pinyin, pinyin_sh, pic_path,
+        list_state, list_desc, shop_id,
+        creator, modifier, create_time,
+        modify_time)
+        values (#{listId,jdbcType=INTEGER}, #{listNo,jdbcType=VARCHAR}, #{listName,jdbcType=VARCHAR},
+        #{bandId,jdbcType=INTEGER}, #{catIds,jdbcType=VARCHAR}, #{catNames,jdbcType=VARCHAR},
+        #{pinyin,jdbcType=VARCHAR}, #{pinyinSh,jdbcType=VARCHAR}, #{picPath,jdbcType=VARCHAR},
+        #{listState,jdbcType=VARCHAR}, #{listDesc,jdbcType=VARCHAR}, #{shopId,jdbcType=INTEGER},
+        #{creator,jdbcType=INTEGER}, #{modifier,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP},
+        #{modifyTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.zlead.fplat.entity.CrmPrdList">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        insert into crm_prd_list
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="listId != null">
+                list_id,
+            </if>
+            <if test="listNo != null">
+                list_no,
+            </if>
+            <if test="listName != null">
+                list_name,
+            </if>
+            <if test="bandId != null">
+                band_id,
+            </if>
+            <if test="catIds != null">
+                cat_ids,
+            </if>
+            <if test="catNames != null">
+                cat_names,
+            </if>
+            <if test="pinyin != null">
+                pinyin,
+            </if>
+            <if test="pinyinSh != null">
+                pinyin_sh,
+            </if>
+            <if test="picPath != null">
+                pic_path,
+            </if>
+            <if test="listState != null">
+                list_state,
+            </if>
+            <if test="listDesc != null">
+                list_desc,
+            </if>
+            <if test="shopId != null">
+                shop_id,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="modifier != null">
+                modifier,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="listId != null">
+                #{listId,jdbcType=INTEGER},
+            </if>
+            <if test="listNo != null">
+                #{listNo,jdbcType=VARCHAR},
+            </if>
+            <if test="listName != null">
+                #{listName,jdbcType=VARCHAR},
+            </if>
+            <if test="bandId != null">
+                #{bandId,jdbcType=INTEGER},
+            </if>
+            <if test="catIds != null">
+                #{catIds,jdbcType=VARCHAR},
+            </if>
+            <if test="catNames != null">
+                #{catNames,jdbcType=VARCHAR},
+            </if>
+            <if test="pinyin != null">
+                #{pinyin,jdbcType=VARCHAR},
+            </if>
+            <if test="pinyinSh != null">
+                #{pinyinSh,jdbcType=VARCHAR},
+            </if>
+            <if test="picPath != null">
+                #{picPath,jdbcType=VARCHAR},
+            </if>
+            <if test="listState != null">
+                #{listState,jdbcType=VARCHAR},
+            </if>
+            <if test="listDesc != null">
+                #{listDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="shopId != null">
+                #{shopId,jdbcType=INTEGER},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=INTEGER},
+            </if>
+            <if test="modifier != null">
+                #{modifier,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.CrmPrdList">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        update crm_prd_list
+        <set>
+            <if test="listNo != null">
+                list_no = #{listNo,jdbcType=VARCHAR},
+            </if>
+            <if test="listName != null">
+                list_name = #{listName,jdbcType=VARCHAR},
+            </if>
+            <if test="bandId != null">
+                band_id = #{bandId,jdbcType=INTEGER},
+            </if>
+            <if test="catIds != null">
+                cat_ids = #{catIds,jdbcType=VARCHAR},
+            </if>
+            <if test="catNames != null">
+                cat_names = #{catNames,jdbcType=VARCHAR},
+            </if>
+            <if test="pinyin != null">
+                pinyin = #{pinyin,jdbcType=VARCHAR},
+            </if>
+            <if test="pinyinSh != null">
+                pinyin_sh = #{pinyinSh,jdbcType=VARCHAR},
+            </if>
+            <if test="picPath != null">
+                pic_path = #{picPath,jdbcType=VARCHAR},
+            </if>
+            <if test="listState != null">
+                list_state = #{listState,jdbcType=VARCHAR},
+            </if>
+            <if test="listDesc != null">
+                list_desc = #{listDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="shopId != null">
+                shop_id = #{shopId,jdbcType=INTEGER},
+            </if>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=INTEGER},
+            </if>
+            <if test="modifier != null">
+                modifier = #{modifier,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where list_id = #{listId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.CrmPrdList">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        update crm_prd_list
+        set list_no = #{listNo,jdbcType=VARCHAR},
+        list_name = #{listName,jdbcType=VARCHAR},
+        band_id = #{bandId,jdbcType=INTEGER},
+        cat_ids = #{catIds,jdbcType=VARCHAR},
+        cat_names = #{catNames,jdbcType=VARCHAR},
+        pinyin = #{pinyin,jdbcType=VARCHAR},
+        pinyin_sh = #{pinyinSh,jdbcType=VARCHAR},
+        pic_path = #{picPath,jdbcType=VARCHAR},
+        list_state = #{listState,jdbcType=VARCHAR},
+        list_desc = #{listDesc,jdbcType=VARCHAR},
+        shop_id = #{shopId,jdbcType=INTEGER},
+        creator = #{creator,jdbcType=INTEGER},
+        modifier = #{modifier,jdbcType=INTEGER},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+        where list_id = #{listId,jdbcType=INTEGER}
+    </update>
+
+    <select id="findAllNameList" resultType="java.util.Map">
+        select list_id as id,list_name as `name` from crm_prd_list order by list_id asc;
+    </select>
+
+    <select id="findNameListByIdsAndKey" resultType="java.util.LinkedHashMap">
+        select band_id,list_id as id,list_name as `name` from crm_prd_list
+        where list_state=1
+        <if test="ids!=null and ids.size>0">
+            <foreach collection="ids" item="id" separator="," open="and list_id in (" close=")">
+                #{id}
+            </foreach>
+        </if>
+        <if test="key != null and key != ''">
+            <bind name="pattern" value="'%' + key + '%'"/>
+            and list_name like #{pattern}
+        </if>
+        order by list_id asc;
+    </select>
+
+    <select id="findNameListByIdsAndKeyAPP" resultType="java.util.LinkedHashMap">
+        select band_id,list_id as id,list_name as `name` from crm_prd_list
+        where list_state=1
+        <if test="ids!=null and ids.size>0">
+            <foreach collection="ids" item="id" separator="," open="and list_id in (" close=")">
+                #{id}
+            </foreach>
+        </if>
+        <if test="key != null and key != ''">
+            <bind name="pattern" value="'%' + key + '%'"/>
+            and list_name like #{pattern}
+        </if>
+        order by list_id asc;
+    </select>
+
+
+    <select id="findListByshopIds" resultMap="BaseResultMap" parameterType="List">
+        select * from crm_prd_list where list_state=1 and shop_id IN
+        <foreach collection="list" item="list" open="(" close=")" separator=",">
+            #{list}
+        </foreach>
+    </select>
+
+    <select id="findListByBands" resultMap="BaseResultMap" parameterType="List">
+        select * from crm_prd_list where list_state=1 and band_id IN
+        <foreach collection="list" item="list" open="(" close=")" separator=",">
+            #{list}
+        </foreach>
+    </select>
+
+
+    <select id="findByIds" resultType="java.util.HashMap">
+        select list_id as id,list_name as name,pic_path from crm_prd_list where list_state=1
+        <if test="ids!=null and ids.size>0">
+            and list_id IN
+            <foreach collection="ids" item="id" open="(" close=")" separator=",">
+                #{id}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="selectByListIds" resultMap="BaseResultMap" parameterType="List">
+        /* select * from crm_prd_list where*/
+        SELECT DISTINCT
+	lists.*, (
+		SELECT
+			concat(
+				group_concat(lists.list_id SEPARATOR ',')
+			)
+	) AS listIds
+        FROM
+	crm_prd_list lists
+		WHERE
+	  lists.list_state = 1
+        <if test="list!=null and list.size>0">
+            and lists.list_id IN
+            <foreach collection="list" item="l" open="(" close=")" separator=",">
+                #{l}
+            </foreach>
+        </if>
+        AND (
+        lists.list_id IN (
+		SELECT DISTINCT
+			a.list_id
+		FROM
+			t_goods a,
+			t_goods_level gd,
+      		oa_agent_band_lists blist
+		WHERE
+      		blist.list_id=a.list_id and blist.agent_id=#{agentId} and
+			a.id = gd.goods_id
+		AND gd.level_id IN (
+			SELECT
+				level_id
+			FROM
+				t_agent_fac
+			WHERE
+				agent_id =#{agentId}
+		)
+		AND a.is_market = 1 AND a.shop_id IN(SELECT fi.shop_id FROM oa_factory_info fi INNER JOIN t_agent_fac af ON af.`factory_id`=fi.`fact_id` AND af.`status`=1 AND af.`agent_id`=#{agentId} WHERE 1=1
+        <if test="facIds != null and facIds.size>0">
+            AND fi.fact_id IN
+            <foreach collection="facIds" item="facId" open="(" close=")" separator=",">
+                #{facId}
+            </foreach>
+        </if>
+        AND fi.fact_state = 1))
+        <!--  or  lists.list_id in (
+        SELECT g.list_id FROM oa_market_act oma INNER JOIN oa_factory_info ofi
+        ON oma.shop_id = ofi.shop_id INNER JOIN oa_market_agent omag
+        ON oma.act_id = omag.act_id INNER JOIN oa_market_goods omg
+        ON omg.act_id = omag.act_id INNER JOIN t_goods g
+        ON g.id = omg.goods_id
+        INNER JOIN t_agent_fac af
+        ON af.`factory_id` = ofi.`fact_id`
+        AND af.`agent_id` = omag.`agent_id`
+        AND af.`status` = 1
+        WHERE  omag.agent_id = #{agentId}  AND omg.is_market = 1 AND g.prod_type = 2
+        AND g.is_market = 1 AND g.terminal IN (2, 3) AND oma.eff_date &lt; NOW()
+        AND omg.is_market = 1 AND oma.terminal IN (2, 3) AND oma.cont_state = 2
+          ) -->
+        )GROUP BY lists.list_name
+        order by lists.create_time desc
+    </select>
+    
+    <select id="oldselectByListIds" resultMap="BaseResultMap" parameterType="List">
+        /* select * from crm_prd_list where*/
+        SELECT DISTINCT lists.*,(select concat(group_concat(lists.list_id separator ','))) as listIds FROM (
+        SELECT band.*,fac.id AS facId,fac.create_time AS facCreate_time FROM oa_agent_band AS band,(SELECT * FROM t_agent_fac WHERE STATUS = 1) AS fac
+        ORDER BY fac.create_time) band2,crm_prd_list lists WHERE band2.band_id= lists.band_id AND
+        lists.list_state=1
+        <if test="list!=null and list.size>0">
+            and lists.list_id IN
+            <foreach collection="list" item="l" open="(" close=")" separator=",">
+                #{l}
+            </foreach>
+        </if>
+        AND (lists.list_id in(SELECT DISTINCT a.list_id FROM t_goods a, t_goods_level gd WHERE a.id = gd.goods_id AND gd.level_id IN(SELECT level_id FROM t_agent_fac WHERE agent_id =#{agentId})
+        AND a.is_market = 1 AND a.shop_id IN(SELECT shop_id FROM oa_factory_info WHERE 1=1
+        <if test="facIds != null and facIds.size>0">
+            AND fact_id IN
+            <foreach collection="facIds" item="facId" open="(" close=")" separator=",">
+                #{facId}
+            </foreach>
+        </if>
+        AND fact_state = 1))
+         or  lists.list_id in (SELECT
+                g.list_id
+            FROM
+                t_goods g
+                    LEFT JOIN oa_market_goods actg ON g.id = actg.goods_id
+                    LEFT JOIN t_goods_cat gcat ON gcat.cat_id = actg.act_id
+            WHERE
+                g.prod_type = 2
+              AND g.is_market = 1
+              AND g.terminal IN (2, 3)
+              AND actg.act_id IN (
+                SELECT
+                    act_id
+                FROM
+                    oa_market_agent
+                WHERE
+                    agent_id = #{agentId}
+            )
+              AND actg.act_id IN ( select act_id from oa_market_act where cont_state = 2 AND   terminal in(2,3))
+              AND actg.is_market = 1
+          )
+        )GROUP BY lists.list_name
+        order by band2.create_time
+    </select>
+
+    <select id="findById" resultType="java.util.HashMap" >
+        select band_id,list_id as id,list_name as name from crm_prd_list where list_state=1 and shop_id=#{ownShopid}
+    </select>
+
+    <select id="findByName" resultType="java.util.HashMap">
+        SELECT t.`list_id` as id,t.`list_name` as name FROM crm_prd_list t
+        WHERE t.`list_name` = #{listName}
+        AND t.`shop_id` IN
+        (SELECT
+        af.`sys_id`
+        FROM
+        t_agent_fac af
+        WHERE af.`status` = 1
+        <if test="factoryId != null">
+            AND af.`factory_id` = #{factoryId}
+        </if>
+        <if test="agentId != null">
+            AND af.`agent_id` = #{agentId}
+        </if>
+        )
+    </select>
+
+    <select id="findNameByIds" resultType="java.util.HashMap">
+        SELECT distinct t.`list_id` as id,t.`list_name` as name FROM crm_prd_list t
+        LEFT JOIN t_agent_fac f ON f.`sys_id`=t.`shop_id`
+        AND f.`status` = 1
+        AND f.`coop_state` = 1
+        AND f.`agent_id` = #{agentId}
+        <if test="ids!=null and ids.size>0">
+            where t.list_id IN
+            <foreach collection="ids" item="id" open="(" close=")" separator=",">
+                #{id}
+            </foreach>
+        </if>
+        ORDER BY f.`create_time` ASC,t.`band_id` ASC,t.`list_id` ASC
+    </select>
+</mapper>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商品详情</title>
+    <!--<script src="../../../h5/plugins/mui/mui.min.js"></script>-->
+    <!--<link rel="stylesheet" href="../../../h5/plugins/mui/mui.min.css">-->
+
+    <link rel="stylesheet" href="../../../h5/css/init.css">
+    <link rel="stylesheet" href="../../../h5/css/common.css">
+    <link rel="stylesheet" href="../../../h5/css/goodsDetails.css">
+
+    <link rel="stylesheet" href="../../../h5/plugins/swiper/swiper-3.4.2.min.css">
+    <script src="../../../h5/js/rem.js"></script>
+    <script src="../../../h5/js/jquery.min.js"></script>
+    <script src="../../../h5/js/template-web.js"></script>
+
+    <script src="../../../h5/plugins/swiper/swiper-3.4.2.min.js"></script>
+
+</head>
+
+<body>
+<div id="goodsDetails"></div>
+<script type="text/html" id="modelGoodsDetails">
+    <div class="goodsImgPart">
+        <a class="backBtn" href="javascript:history.go(-1);"><span></span></a>
+        {{if imgArr&&imgArr.length == 1}}
+        <a href="javascript:;" class="onlyOneGoodImg">
+            <img src="{{imgArr[0]}}" alt="">
+        </a>
+        {{else}}
+        <div class="swiper-container" id="goodDetailSwiper">
+            <div class="swiper-wrapper">
+                {{each imgArr}}
+                <div class="swiper-slide">
+                    <a href="javascript:;">
+                        <img src="{{$value}}" alt="">
+                    </a>
+                </div>
+                {{/each}}
+                <!-- <div class="swiper-slide">
+                    <a href="javascript:;">
+                        <img src="../images/goods/1.jpg" alt="">
+                    </a>
+                </div>-->
+            </div>
+            <!-- 如果需要分页器 -->
+            <div class="swiper-pagination goodDetail-pagination"></div>
+        </div>
+        {{/if}}
+    </div>
+    <div class="goodsListPart">
+        <div class="baseIndoPart">
+            <h4 class="goodsName">{{fullName}}</h4>
+            <div class="priceDv">
+                <span class="rmb">¥</span>{{price}} <span class="storeNum">库存{{stock}}</span>
+            </div>
+        </div>
+        <div class="shopPart marginTop">
+            <div>
+                <img src="../images/pic_profile_photo@2x.png" alt="">
+            </div>
+
+            <div>
+                <p class="shopName">STANLEY 史丹利</p>
+                <p class="totalGoodsNum">共{{stock}}件产品</p>
+            </div>
+        </div>
+        <div class="chooseTypePart marginTop clearfix">
+            <!-- <h4><span>规格</span>选择规格参数</h4> -->
+            <h4>规格</h4>
+            <div class="typeInfoDv">
+                <h4>选择规格参数</h4>
+                <div>
+                    {{each imgArr}}}
+                    <span></span>
+                    {{/each}}}
+                    <span class="typeNum">共{{spec}}可选</span>
+                </div>
+            </div>
+            <a class="typeDesBtn" href="javascript:;"><span></span></a>
+        </div>
+        <div class="goodsInfoPart marginTop">
+            <div class="infoNavUlDv ">
+                <ul class="infoNavUl">
+                    <li class="active" data-type="1">商品详情</li>
+                    <li data-type="2">订购说明</li>
+                    <li data-type="3">物流说明</li>
+                    <li data-type="4">售后须知</li>
+                </ul>
+                <a class="backBtn" href="javascript:history.go(-1);">
+                    <span></span>
+                </a>
+            </div>
+            <ul class="infoContUl">
+                <li data-type="1">
+                    <!--<h4 class="infoContTitle"><span class="titleIcon"></span>商品详情<span class="arrow"></span></h4>-->
+                    <div>
+                        {{intro?intro:'暂无'}}
+                    </div>
+                </li>
+                <li data-type="2">
+                    <h4 class="infoContTitle"><span class="titleIcon"></span>订购说明<span class="arrow"></span></h4>
+                    <div>                    {{intro?intro:'暂无'}}
+                    </div>
+                </li>
+                <li data-type="3">
+                    <h4 class="infoContTitle"><span class="titleIcon"></span>物流说明<span class="arrow"></span></h4>
+                    <div>                    {{intro?intro:'暂无'}}
+                    </div>
+                </li>
+                <li data-type="4">
+                    <h4 class="infoContTitle"><span class="titleIcon"></span>售后须知<span class="arrow"></span></h4>
+                    <div>                    {{intro?intro:'暂无'}}
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="orderBtnPart">
+            {{if isMarket==0}}
+            <button id="btnshang">立即上架</button>
+            {{else}}
+            <button id="btnxia">立即下架</button>
+{{/if}}
+        </div>
+        <!-- 加入购物车弹窗 -->
+        <!--<div class="addShopCarPart">-->
+            <!--<a class="closeBtn" href="javascript:;"><span></span></a>-->
+            <!--<div class="addShopCar">-->
+                <!--<div class="goodsInfoDv">-->
+                    <!--<div><img src="../../../h5/images/pic_profile_photo@2x.png" alt=""></div>-->
+                    <!--<div>-->
+                        <!--<p class="goodsName">{{goodsName}}</p>-->
+                        <!--<p class="goodsStore">库存<span id="goodsStoreNum">{{stock}}</span></p>-->
+                        <!--<p class="goodsPrice">¥{{price}}</p>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="goodParamDv">-->
+                    <!--{{each prodAttr}}-->
+                    <!--<h4>{{$value.key}}</h4>-->
+                    <!--<ul class="clearfix">-->
+                        <!--<li>4分单冷水槽龙105B</li>-->
+                        <!--<li>16分单冷水槽龙105B</li>-->
+                        <!--<li>2分水槽龙10B</li>-->
+                    <!--</ul>-->
+                    <!--{{/each}}-->
+                <!--</div>-->
+                <!--<div class="orderNumPart clearfix">-->
+                    <!--<div>购买数量</div>-->
+                    <!--<div><span id="minusBtn">-</span><input type="text" value="1" id="orderNum"><span id="addBtn" class="active">+</span></div>-->
+                <!--</div>-->
+                <!--<button class="addShopCarBtn">加入购物车</button>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+
+</script>
+<script src="../../../h5/js/page/goodsDetails.js"></script>
+
+</body>
+
+</html>

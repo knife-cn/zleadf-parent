@@ -1,0 +1,94 @@
+.orderInfo {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	background: #eeeeee;
+}
+.orderTitle{
+	width:100%;
+	height:0.9rem;
+	background:#3083FF;
+	overflow:hidden;
+	color:#fff;
+	line-height:0.9rem;
+	font-size:0.3rem;
+}
+.fanhui{
+	width: 0.26rem;
+	height: 0.36rem;
+	margin-top: 0.28rem;
+}
+.orderTitle span{
+	margin-left:2.4rem;
+}
+.allianceBtn{
+	float:right;
+	width:0.9rem;
+	height:0.5rem;
+	margin:0rem 0.24rem;
+}
+.goodsBtn{
+	float:right;
+	width:1.3rem;
+	height:0.5rem;
+	margin:0.2rem 0.24rem;
+}
+.list-1{
+	width:100%;
+	height:1rem;
+	background:#fff;
+	line-height:1rem;
+}
+.list-1 ul{
+	list-style:none;
+}
+.list-1 ul li{
+	float:left;
+	font-size:0.26rem;
+	color:#585858;
+	text-align:center;
+}
+.list-2{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+}
+.list-2 ul{
+	list-style:none;
+	background:#fff;
+	margin-top:0.12rem;
+	height:0.95rem;
+	line-height:0.95rem;
+}
+.list-2 ul li{
+	float:left;
+	font-size:0.24rem;
+	color:#8D8D8D;
+	text-align:center;
+}
+.liAdit{
+	margin-left:0.3rem;
+	float:left;
+}
+.liClose{
+	margin-right:0.3rem;
+	float:right;
+}
+.liAdit-1{
+	margin-left:0.22rem;
+	float:left;
+}
+.liDet{
+	margin-right:0.22rem;
+	float:right;
+}
+.newsTitle {
+	width: 100%;
+	height: 0.9rem;
+	background: #3c3f41;
+	overflow: hidden;
+	color: #fff;
+	text-align: center;
+	line-height: 0.9rem;
+	font-size: 0.3rem;
+}

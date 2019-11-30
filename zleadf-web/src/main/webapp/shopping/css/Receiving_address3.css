@@ -1,0 +1,123 @@
+* {
+			margin: 0;
+			padding: 0;
+		}
+		
+		ul li {
+			list-style: none;
+		}
+		
+		
+		.complete {
+			float: left;
+			width: 100%;
+			height: auto;
+			/*height:1717px;*/
+			background: rgba(255, 255, 255, 1);
+		}
+		
+		.top2 {
+			width: 100%;
+			height: 46px;
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FF6961', endColorstr='#FF8D29',GradientType=0 );
+			background: -ms-linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+			background: -webkit-linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+			background: -moz-linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+			background: -o-linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+			background: linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+		}
+		.top3 {
+			width: 1200px;
+			height: 46px;
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#FF6961', endColorstr='#FF8D29',GradientType=0 );
+			background: -ms-linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+			background: -webkit-linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+			background: -moz-linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+			background: -o-linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+			background: linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+		}
+		.meng{
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			
+			background:rgba(0,0,0,0.3);
+			box-shadow:0px 2px 4px 0px rgba(0,0,0,0.5);
+			
+		}
+		
+		.guanlian{
+			position: absolute;
+			top: 50%;
+			left:50%;
+			margin-left: -197px;
+			margin-top: -153px;
+			width:392px;
+			height:306px;
+			background:rgba(255,255,255,1);
+			border-radius:6px;
+			
+		}
+
+		.tu{
+			width:70px;
+			height:70px;
+			margin:0 auto;
+			
+		}
+		.tu img{
+			width: 100%;
+			height: 100%;
+			
+		}
+		.ren{
+			margin: 0 auto;
+			margin-top: 20px;
+			width:144px;
+			height:22px;
+			font-size:16px;
+			font-family:PingFangSC-Regular;
+			font-weight:400;
+			color:rgba(79,83,98,1);
+			line-height:22px;
+			
+		}
+		.yiyan{
+			margin-top: 60px;
+			float: left;
+			width:110px;
+			height:43px;
+			border-radius:4px;
+			border:1px solid rgba(206,208,218,1);
+			line-height: 43px;
+			text-align: center;
+			font-size:14px;
+			font-family:PingFangSC-Regular;
+			font-weight:400;
+			color:rgba(79,83,98,1);
+		}
+		.yiyan{
+			cursor: pointer;
+		}
+		.qu{
+			margin-left:76px;
+			margin-right: 20px;
+		}
+		.bian{
+			background:rgba(253,87,0,1);
+			color:rgba(255,255,255,1);
+		}
+		.quxiaoimg{
+			position: relative;
+			width: 392px;
+			height: 60px;
+
+		}
+.quxiaoimg img{
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	top: 19px;
+	right: 19px;
+	cursor: pointer;
+}

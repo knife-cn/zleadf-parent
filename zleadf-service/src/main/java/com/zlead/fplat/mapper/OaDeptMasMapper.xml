@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.OaDeptMasMapper" >
+  <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.OaDeptMas" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <id column="dept_id" property="deptId" jdbcType="INTEGER" />
+    <result column="dept_no" property="deptNo" jdbcType="VARCHAR" />
+    <result column="dept_name" property="deptName" jdbcType="VARCHAR" />
+    <result column="pdept_id" property="pdeptId" jdbcType="INTEGER" />
+    <result column="pinyin" property="pinyin" jdbcType="VARCHAR" />
+    <result column="pinyin_sh" property="pinyinSh" jdbcType="VARCHAR" />
+    <result column="dept_type" property="deptType" jdbcType="VARCHAR" />
+    <result column="dept_state" property="deptState" jdbcType="VARCHAR" />
+    <result column="dept_desc" property="deptDesc" jdbcType="VARCHAR" />
+    <result column="org_id" property="orgId" jdbcType="INTEGER" />
+    <result column="sys_id" property="sysId" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="modifier" property="modifier" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    dept_id, dept_no, dept_name, pdept_id, pinyin, pinyin_sh, dept_type, dept_state, 
+    dept_desc, org_id, sys_id, creator, modifier, create_time, modify_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.OaDeptMasExample" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from oa_dept_mas
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from oa_dept_mas
+    where dept_id = #{deptId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    delete from oa_dept_mas
+    where dept_id = #{deptId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.fplat.entity.OaDeptMas" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into oa_dept_mas (dept_id, dept_no, dept_name, 
+      pdept_id, pinyin, pinyin_sh, 
+      dept_type, dept_state, dept_desc, 
+      org_id, sys_id, creator, 
+      modifier, create_time, modify_time
+      )
+    values (#{deptId,jdbcType=INTEGER}, #{deptNo,jdbcType=VARCHAR}, #{deptName,jdbcType=VARCHAR}, 
+      #{pdeptId,jdbcType=INTEGER}, #{pinyin,jdbcType=VARCHAR}, #{pinyinSh,jdbcType=VARCHAR}, 
+      #{deptType,jdbcType=VARCHAR}, #{deptState,jdbcType=VARCHAR}, #{deptDesc,jdbcType=VARCHAR}, 
+      #{orgId,jdbcType=INTEGER}, #{sysId,jdbcType=INTEGER}, #{creator,jdbcType=INTEGER}, 
+      #{modifier,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlead.fplat.entity.OaDeptMas" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into oa_dept_mas
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+        dept_id,
+      </if>
+      <if test="deptNo != null" >
+        dept_no,
+      </if>
+      <if test="deptName != null" >
+        dept_name,
+      </if>
+      <if test="pdeptId != null" >
+        pdept_id,
+      </if>
+      <if test="pinyin != null" >
+        pinyin,
+      </if>
+      <if test="pinyinSh != null" >
+        pinyin_sh,
+      </if>
+      <if test="deptType != null" >
+        dept_type,
+      </if>
+      <if test="deptState != null" >
+        dept_state,
+      </if>
+      <if test="deptDesc != null" >
+        dept_desc,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="sysId != null" >
+        sys_id,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="deptId != null" >
+        #{deptId,jdbcType=INTEGER},
+      </if>
+      <if test="deptNo != null" >
+        #{deptNo,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="pdeptId != null" >
+        #{pdeptId,jdbcType=INTEGER},
+      </if>
+      <if test="pinyin != null" >
+        #{pinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyinSh != null" >
+        #{pinyinSh,jdbcType=VARCHAR},
+      </if>
+      <if test="deptType != null" >
+        #{deptType,jdbcType=VARCHAR},
+      </if>
+      <if test="deptState != null" >
+        #{deptState,jdbcType=VARCHAR},
+      </if>
+      <if test="deptDesc != null" >
+        #{deptDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="sysId != null" >
+        #{sysId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.OaDeptMas" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update oa_dept_mas
+    <set >
+      <if test="deptNo != null" >
+        dept_no = #{deptNo,jdbcType=VARCHAR},
+      </if>
+      <if test="deptName != null" >
+        dept_name = #{deptName,jdbcType=VARCHAR},
+      </if>
+      <if test="pdeptId != null" >
+        pdept_id = #{pdeptId,jdbcType=INTEGER},
+      </if>
+      <if test="pinyin != null" >
+        pinyin = #{pinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyinSh != null" >
+        pinyin_sh = #{pinyinSh,jdbcType=VARCHAR},
+      </if>
+      <if test="deptType != null" >
+        dept_type = #{deptType,jdbcType=VARCHAR},
+      </if>
+      <if test="deptState != null" >
+        dept_state = #{deptState,jdbcType=VARCHAR},
+      </if>
+      <if test="deptDesc != null" >
+        dept_desc = #{deptDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="sysId != null" >
+        sys_id = #{sysId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where dept_id = #{deptId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.OaDeptMas" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update oa_dept_mas
+    set dept_no = #{deptNo,jdbcType=VARCHAR},
+      dept_name = #{deptName,jdbcType=VARCHAR},
+      pdept_id = #{pdeptId,jdbcType=INTEGER},
+      pinyin = #{pinyin,jdbcType=VARCHAR},
+      pinyin_sh = #{pinyinSh,jdbcType=VARCHAR},
+      dept_type = #{deptType,jdbcType=VARCHAR},
+      dept_state = #{deptState,jdbcType=VARCHAR},
+      dept_desc = #{deptDesc,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=INTEGER},
+      sys_id = #{sysId,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=INTEGER},
+      modifier = #{modifier,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where dept_id = #{deptId,jdbcType=INTEGER}
+  </update>
+</mapper>

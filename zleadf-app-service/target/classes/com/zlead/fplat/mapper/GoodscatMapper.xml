@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.GoodscatMapper">
+    <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.Goodscat">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="prod_id" property="prodId" jdbcType="INTEGER"/>
+        <result column="goods_id" property="goodsId" jdbcType="INTEGER"/>
+        <result column="cat_id" property="catId" jdbcType="INTEGER"/>
+        <result column="cat_name" property="catName" jdbcType="VARCHAR"/>
+        <result column="sort" property="sort" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="INTEGER"/>
+    </resultMap>
+    <insert id="insert" parameterType="com.zlead.fplat.entity.Goodscat">
+        insert into t_goods_cat (id, prod_id, goods_id, cat_id, cat_name, sort, status)
+        values (#{id,jdbcType=BIGINT}, #{prodId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER},#{catId,jdbcType=INTEGER}, #{catName,jdbcType=VARCHAR}, #{sort,jdbcType=INTEGER}, #{status,jdbcType=INTEGER})
+    </insert>
+</mapper>

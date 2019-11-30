@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlead.dao.LogisticsInformationDao">
+  <resultMap id="BaseResultMap" type="com.zlead.entity.LogisticsInformation">
+    <constructor>
+      <idArg column="logistics_information_ID" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="ORDER_ID" javaType="java.lang.Long" jdbcType="BIGINT" />
+      <arg column="CREATE_DATE" javaType="java.util.Date" jdbcType="DATE" />
+      <arg column="EXPRESS_NU" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="COM_Old" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="COM_NEW" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="COM_CODE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="MESSAGE" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="STATE" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="STATE_CONDITION" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="IS_CHECK" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="EXPRESS_DATA" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="DATA_TYPE" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="CURRENT_STATE" javaType="java.lang.String" jdbcType="VARCHAR" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    logistics_information_ID, ORDER_ID, CREATE_DATE, EXPRESS_NU, COM_Old, COM_NEW, COM_CODE, 
+    MESSAGE, STATE, STATE_CONDITION, IS_CHECK, EXPRESS_DATA, DATA_TYPE, CURRENT_STATE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from logistics_information
+    where logistics_information_ID = #{logisticsInformationId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from logistics_information
+    where logistics_information_ID = #{logisticsInformationId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.entity.LogisticsInformation">
+    insert into logistics_information (logistics_information_ID, ORDER_ID, CREATE_DATE,
+      EXPRESS_NU, COM_Old, COM_NEW, 
+      COM_CODE, MESSAGE, STATE, 
+      STATE_CONDITION, IS_CHECK, EXPRESS_DATA,
+      DATA_TYPE,CURRENT_STATE)
+    values (#{logisticsInformationId,jdbcType=BIGINT}, #{orderId,jdbcType=BIGINT}, #{createDate,jdbcType=DATE},
+      #{expressNu,jdbcType=VARCHAR}, #{comOld,jdbcType=VARCHAR}, #{comNew,jdbcType=CHAR}, 
+      #{comCode,jdbcType=VARCHAR}, #{message,jdbcType=VARCHAR}, #{state,jdbcType=CHAR}, 
+      #{stateCondition,jdbcType=CHAR}, #{isCheck,jdbcType=CHAR}, #{expressData,jdbcType=VARCHAR},
+      #{dataType,jdbcType=CHAR},#{currentState,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlead.entity.LogisticsInformation">
+    insert into logistics_information
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="logisticsInformationId != null">
+        logistics_information_ID,
+      </if>
+      <if test="orderId != null">
+        ORDER_ID,
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE,
+      </if>
+      <if test="expressNu != null">
+        EXPRESS_NU,
+      </if>
+      <if test="comOld != null">
+        COM_Old,
+      </if>
+      <if test="comNew != null">
+        COM_NEW,
+      </if>
+      <if test="comCode != null">
+        COM_CODE,
+      </if>
+      <if test="message != null">
+        MESSAGE,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="stateCondition != null">
+        STATE_CONDITION,
+      </if>
+      <if test="isCheck != null">
+        IS_CHECK,
+      </if>
+      <if test="expressData != null">
+        EXPRESS_DATA,
+      </if>
+      <if test="dataType != null">
+        DATA_TYPE,
+      </if>
+      <if test="currentState != null">
+        CURRENT_STATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="logisticsInformationId != null">
+        #{logisticsInformationId,jdbcType=BIGINT},
+      </if>
+      <if test="orderId != null">
+        #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=DATE},
+      </if>
+      <if test="expressNu != null">
+        #{expressNu,jdbcType=VARCHAR},
+      </if>
+      <if test="comOld != null">
+        #{comOld,jdbcType=VARCHAR},
+      </if>
+      <if test="comNew != null">
+        #{comNew,jdbcType=CHAR},
+      </if>
+      <if test="comCode != null">
+        #{comCode,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="stateCondition != null">
+        #{stateCondition,jdbcType=CHAR},
+      </if>
+      <if test="isCheck != null">
+        #{isCheck,jdbcType=CHAR},
+      </if>
+      <if test="expressData != null">
+        #{expressData,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null">
+        #{dataType,jdbcType=CHAR},
+      </if>
+      <if test="currentState != null">
+        #{currentState,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.entity.LogisticsInformation">
+    update logistics_information
+    <set>
+      <if test="orderId != null">
+        ORDER_ID = #{orderId,jdbcType=BIGINT},
+      </if>
+      <if test="createDate != null">
+        CREATE_DATE = #{createDate,jdbcType=DATE},
+      </if>
+      <if test="expressNu != null">
+        EXPRESS_NU = #{expressNu,jdbcType=VARCHAR},
+      </if>
+      <if test="comOld != null">
+        COM_Old = #{comOld,jdbcType=VARCHAR},
+      </if>
+      <if test="comNew != null">
+        COM_NEW = #{comNew,jdbcType=CHAR},
+      </if>
+      <if test="comCode != null">
+        COM_CODE = #{comCode,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        MESSAGE = #{message,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=CHAR},
+      </if>
+      <if test="stateCondition != null">
+        STATE_CONDITION = #{stateCondition,jdbcType=CHAR},
+      </if>
+      <if test="isCheck != null">
+        IS_CHECK = #{isCheck,jdbcType=CHAR},
+      </if>
+      <if test="expressData != null">
+        EXPRESS_DATA = #{expressData,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null">
+        DATA_TYPE = #{dataType,jdbcType=CHAR},
+      </if>
+      <if test="currentState != null">
+        CURRENT_STATE = #{currentState,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where logistics_information_ID = #{logisticsInformationId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.entity.LogisticsInformation">
+    update logistics_information
+    set ORDER_ID = #{orderId,jdbcType=BIGINT},
+      CREATE_DATE = #{createDate,jdbcType=DATE},
+      EXPRESS_NU = #{expressNu,jdbcType=VARCHAR},
+      COM_Old = #{comOld,jdbcType=VARCHAR},
+      COM_NEW = #{comNew,jdbcType=CHAR},
+      COM_CODE = #{comCode,jdbcType=VARCHAR},
+      MESSAGE = #{message,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=CHAR},
+      STATE_CONDITION = #{stateCondition,jdbcType=CHAR},
+      IS_CHECK = #{isCheck,jdbcType=CHAR},
+      EXPRESS_DATA = #{expressData,jdbcType=VARCHAR},
+      DATA_TYPE = #{dataType,jdbcType=CHAR},
+      CURRENT_STATE = #{currentState,jdbcType=VARCHAR}
+    where logistics_information_ID = #{logisticsInformationId,jdbcType=BIGINT}
+  </update>
+
+  <!-- 通过订单ID查询物流的信息-->
+  <select id="selectByOrderId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from logistics_information
+    where ORDER_ID = #{orderId,jdbcType=BIGINT} order by CREATE_DATE desc LIMIT 1
+  </select>
+</mapper>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>直链商城</title>
+	</head>
+	<link rel="stylesheet" href="../../shopping/css/Identity_verification2.css" />
+
+	<body>
+		<div class="complete">
+			<!--top-->
+			<div id="top"></div>
+			<!--渐变-->
+			<div class="top2">
+				<div class="top3"></div>
+			</div>
+			<div class="tu">
+				<img src="../../shopping/img/lhpimg/pic_lock.png"/>
+			</div>
+			<div class="tiao">
+				<div class="tiao2"><img src="../../shopping/img/lhpimg/step_complete1.png"/></div>
+				<span class="tiao11">身份验证</span>
+				<div class="tiao111"></div>
+				
+				<div class="tiao1 yan">2</div>
+				<span class="tiao11">重置密码</span>
+				<div class="tiao111"></div>
+				
+				<div class="tiao1">3</div>
+				<span class="tiao11">重置成功</span>
+			</div>
+			<div class="hao">
+				<span>新密码</span>
+				<input type="password" id="xinpwdd" placeholder="请输入新密码" onblur="mima(this.value);"/>
+				<span id="as"></span>
+			</div>
+			<div class="yanzhen ">
+				<span>确认密码</span>
+				<input type="password" id="qdxinpwdd" placeholder="请确认密码"/>
+			</div>
+			<div class="xia" id="next_step2">下一步</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../shopping/js/jquery-2.1.0.js" ></script>
+	<script type="text/javascript" src="../../shopping/js/Identity_verification2.js" ></script>
+	<script type="text/javascript" src="../../shopping/js/Placeholder.js" ></script>
+	 
+	<script>
+		$("#top").load("head.html");
+		var phoneto=window.sessionStorage.getItem("phone");
+		if(phoneto==null || phoneto==""){
+			window.location.href="Identity_verification1.html"
+		}
+		$("#xinpwdd").focus(function () {
+			$("#xinpwdd").css({
+				"border-radius":"4px",
+				"border":"1px solid #FD5700"
+			})
+			$("#as").text("6-20个字符，由字母数字，和符号两种以上组合")
+		})
+		function mima(mim) {
+			var aa=/^(?![\d]+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$).{6,20}$/;
+			var  falg=mim.search(aa);
+			if (falg==-1){
+				if ($("#xinpwdd").val()!=""){
+					this.focus();
+					$("#xinpwdd").css({
+						"border-radius":"4px",
+						"border":"1px solid red"
+					})
+					$("#as").text("6-20个字符，由字母数字，和符号两种以上组合")
+				}
+			}
+			else{
+				this.focus();
+				$("#xinpwdd").css({
+					"border-radius":"4px",
+					"border":"1px solid rgba(229,229,229,1)"
+				})
+				$("#as").text("")
+			}
+		}
+
+	</script>
+</html>

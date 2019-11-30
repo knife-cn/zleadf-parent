@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="zleadf-web:war">
+    <output-path>$PROJECT_DIR$/zleadf-web/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>zleadf-web</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="zleadf-web.war">
+      <element id="artifact" artifact-name="zleadf-web:war exploded" />
+    </root>
+  </artifact>
+</component>

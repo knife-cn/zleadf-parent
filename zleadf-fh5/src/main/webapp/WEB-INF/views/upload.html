@@ -1,0 +1,97 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>直链商城</title>
+    <link rel="stylesheet" href="../../shopping/css/reset.css">
+    <link rel="stylesheet" href="../../shopping/css/header.css" />
+    <link rel="stylesheet" href="../../shopping/css/footer.css" />
+    <link rel="stylesheet" href="../../shopping/css/upload.css">
+    <link rel="stylesheet" href="../../shopping/lib/layui-v2.4.5/layui/css/layui.css">
+
+</head>
+<body>
+                <div class="uploadFile">
+                    <p class="uplode_s">上传凭证</p>
+                    <ul class="list_sty">
+                        <!--<li>-->
+                            <!--<span class="orderid">订单编号：<span>12542378432473</span> </span>-->
+                            <!--<div class="box_sty">-->
+                                <!--<span class="money_s">12300.00<br> <i>金额(元)</i></span>-->
+                                <!--<span class="type_pay">线下支付<br> <i>支付方式</i></span>-->
+                            <!--</div>-->
+                            <!--<span class="timeLine"><i><img src="../../shopping/img/footer/time.png" alt=""></i>支付时间：<span>2019-12-12 12：23：21</span></span>-->
+                            <!--<i class="sty_img"><img src="../../shopping/img/footer/upload (1).png" alt=""></i>-->
+                            <!--<i class="sty_img2"><img src="../../shopping/img/footer/upload (2).png" alt=""></i>-->
+
+                        <!--</li>-->
+                        <!--<div class="clear"></div>-->
+                    </ul>
+                    <hr id="lines">
+                    <div class="allcheck">
+                    <span class="number"><img class="all" src="../../shopping/img/car/home／ic_home_tab.png" alt=""> <img  class="img_show" src="../../shopping/img/footer/Checked_default.png" alt=""> <span class="alld">全部(共<span style="color:#FF7A47;font-weight: 700">3</span>件 )</span></span>
+                    <span id="upload_btns"  class="btn">上传付款凭证</span>
+                    </div>
+                </div> 
+
+
+                   <!-- 弹窗 -->
+            <div id="dialog_upload8">
+                <!--蒙版-->
+                <div class="meng8" id="meng8">
+                    <div class="guanlian8" id="dialog8" >
+                         <!-- 头 -->
+                        <img src="../../shopping/img/lhpimg/guanbi.png" id="qu2" class="img8"/>
+                        <div  class="scroll8">
+                            <div class="title8">
+                                <span>上传凭证</span>
+                            </div>
+                              <!--内容-->
+                            <div class="message_tit8">
+                                <p>付款金额</p>
+                                <input  placeholder="" id="inputs" class="order_input8" type="text">
+                                <p>付款方式</p>
+                                <input placeholder="" class="order_input8" type="text">
+                                <p>付款时间</p>
+                                <input placeholder="" id="inputs1" class="order_input8" type="text">
+
+                                <div class="anniu_uplode8">
+                                    <span>上传图片  <input  type="file" id='fileu '  accept="image/bmp,image/jpg,image/png,image/jpeg" action=""/></span>
+                                    <p >图片不大于2M，格式支持JPG/PNG/JPEG/BMP。上传图片后，点击可放大</p>
+                                </div>
+                             </div>
+                        </div>
+                        <!--尾-->
+                        <div class="bottom8">
+                            <span id="qu8" class="yiyan8 qu8 ">取消</span>
+                            <span id="fo8" class="yiyan8 fo8">确定</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+   <script src="../../shopping/lib/jquery/jquery.min.js"></script>
+    <script src="../../shopping/lib/layui-v2.4.5/layui/layui.js"></script>
+    <script type="text/javascript" src="../../shopping/lib/artTemplate/artTemplate/template-web.js" ></script>
+   <script src="../../shopping/js/upload.js"></script>
+
+                <script type="text/template" id="tel">
+                  {{ each list v i }}
+                      <li>
+                          <span class="orderid">订单编号：<span>{{v.sn}}</span> </span>
+                          <div class="box_sty">
+                              <span class="money_s">{{v.orderGoods.price}}<br> <i>金额(元)</i></span>
+                              <span class="type_pay">{{v.payType=='0'?'支付寶':'線下'}}<br> <i>支付方式</i></span>
+                          </div>
+                          <span class="timeLine"><i><img src="../../shopping/img/footer/time.png" alt=""></i>支付时间：<span>2019-12-12 12：23：21</span></span>
+                          <i class="sty_img"><img src="../../shopping/img/footer/upload (1).png" alt=""></i>
+                          <i class="sty_img2"><img src="../../shopping/img/footer/upload (2).png" alt=""></i>
+
+                      </li>
+
+                   {{ /each }}
+                  <div class="clear"></div>
+                </script>
+</body>
+</html>

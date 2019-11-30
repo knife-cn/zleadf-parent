@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.ProductDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.ProductEntity" id="productMap">
+        <result property="id" column="id"/>
+        <result property="catagoryId" column="catagory_id"/>
+        <result property="productName" column="product_name"/>
+        <result property="itemNo" column="item_no"/>
+        <result property="bandId" column="band_id"/>
+        <result property="listId" column="list_id"/>
+        <result property="modelId" column="model_id"/>
+        <result property="intro" column="intro"/>
+        <result property="sort" column="sort"/>
+        <result property="shopId" column="shop_id"/>
+        <result property="supplierShopId" column="supplier_shop_id"/>
+        <result property="agentPrice" column="agent_price"/>
+        <result property="supplyPrice" column="supply_price"/>
+        <result property="marketPrice" column="market_price"/>
+        <result property="discount" column="discount"/>
+        <result property="isMarket" column="is_market"/>
+        <result property="isSpec" column="is_spec"/>
+        <result property="isHome" column="is_home"/>
+        <result property="userId" column="user_id"/>
+        <result property="createDate" column="create_date"/>
+        <result property="updateDate" column="update_date"/>
+        <result property="remark" column="remark"/>
+        <result property="isAudit" column="is_audit"/>
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_product (
+                id,
+                catagory_id,
+                product_name,
+                item_no,
+                band_id,
+                list_id,
+                model_id,
+                intro,
+                sort,
+                shop_id,
+                supplier_shop_id,
+                agent_price,
+                supply_price,
+                market_price,
+                discount,
+                is_market,
+                is_spec,
+                is_home,
+                user_id,
+                create_date,
+                update_date,
+                remark,
+                is_audit
+                ) VALUES (
+                #{id},
+                #{catagoryId},
+                #{productName},
+                #{itemNo},
+                #{bandId},
+                #{listId},
+                #{modelId},
+                #{intro},
+                #{sort},
+                #{shopId},
+                #{supplierShopId},
+                #{agentPrice},
+                #{supplyPrice},
+                #{marketPrice},
+                #{discount},
+                #{isMarket},
+                #{isSpec},
+                #{isHome},
+                #{userId},
+                #{createDate},
+                #{updateDate},
+                #{remark},
+                #{isAudit}
+                )
+    </insert>
+
+    <update id="update">
+        UPDATE t_product AS T SET
+                  T.id = #{id} ,
+                 T.catagory_id = #{catagoryId} ,
+                 T.product_name = #{productName} ,
+                 T.item_no = #{itemNo} ,
+                 T.band_id = #{bandId} ,
+                 T.list_id = #{listId} ,
+                 T.model_id = #{modelId} ,
+                 T.intro = #{intro} ,
+                 T.sort = #{sort} ,
+                 T.shop_id = #{shopId} ,
+                 T.supplier_shop_id = #{supplierShopId} ,
+                 T.agent_price = #{agentPrice} ,
+                 T.supply_price = #{supplyPrice} ,
+                 T.market_price = #{marketPrice} ,
+                 T.discount = #{discount} ,
+                 T.is_market = #{isMarket} ,
+                 T.is_spec = #{isSpec} ,
+                 T.is_home = #{isHome} ,
+                 T.user_id = #{userId} ,
+                 T.create_date = #{createDate} ,
+                 T.update_date = #{updateDate} ,
+                 T.remark = #{remark},
+                 T.is_audit = #{isAudit}
+                WHERE T.ID = #{id}
+    </update>
+
+
+    <select id="queryAttrByPrdId">
+        select param_name , text  from t_prod_attr where prod_id = #{prodId}
+    </select>
+
+    <delete id="delete">
+        DELETE FROM t_product WHERE  ID = #{id}
+    </delete>
+
+    <select id="findPage" parameterType="map" resultMap="productMap">
+        SELECT * FROM t_product AS T where 1=1
+        <if test="@Ognl@isNotEmpty(supplierShopId)">AND T.supplier_shop_id = #{supplierShopId}</if>
+    </select>
+
+    <select id="findById" resultMap="productMap" useCache="false">
+        SELECT * FROM t_product AS T WHERE  T.ID = #{id}
+    </select>
+</mapper>

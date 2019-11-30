@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>商品列表</title>
+
+    <script src="../../../h5/plugins/mui/mui.min.js"></script>
+    <link rel="stylesheet" href="../../../h5/plugins/mui/mui.min.css">
+
+    <link rel="stylesheet" href="../../../h5/css/init.css">
+    <link rel="stylesheet" href="../../../h5/css/common.css">
+    <link rel="stylesheet" href="../../../h5/css/goodsList.css">
+    <script src="../../../h5/js/rem.js"></script>
+    <script src="../../../h5/js/common.js"></script> 
+    <script src="../../../js/jquery.min.js"></script>
+    <script src="../../../h5/js/template-web.js"></script>
+</head>
+
+<body>
+<!-- 侧滑导航根容器 -->
+<div class="mui-off-canvas-wrap mui-draggable mui-slide-in">
+    <!-- 主页面容器 -->
+    <div class="mui-inner-wrap">
+        <!-- 菜单容器 -->
+        <aside id="asideNav" class="mui-off-canvas-right">
+            <div id="offCanvasSideScroll" class="mui-scroll-wrapper">
+                <div class="mui-scroll" id="chooseTerm">
+                    <!--<ul class="mui-table-view">-->
+                        <!--<li class="mui-table-view-cell mui-collapse mui-active">-->
+                            <!--<a class="mui-navigate-right" href="#">品牌</a>-->
+                            <!--<div class="mui-collapse-content">-->
+                                <!--<ul class="clearfix">-->
+                                    <!--<li class="active"><a href="javascript:;">博世1</a></li>-->
+                                    <!--<li><a href="javascript:;">博世2</a></li>-->
+                                    <!--<li><a href="javascript:;">世达3</a></li>-->
+                                    <!--<li><a href="javascript:;">博世4</a></li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</li>-->
+                    <!--</ul>-->
+
+                </div>
+                <!--//渲染侧边导航-->
+                <script type="text/html" id="modelChooseTerm">
+                    {{each data v k}}
+                    {{if v&&v.length >0}}
+                    <ul class="mui-table-view">
+                        <li class="mui-table-view-cell mui-collapse mui-active">
+                            <a class="mui-navigate-right" href="#">{{k}}</a>
+                            <div class="mui-collapse-content">
+                                <ul class="itemUl clearfix">
+                                    {{each v v1 k1}}
+                                    <li data-item="{{k}}"><a href="javascript:;">{{v1.name}}</a></li>
+                                    {{/each}}
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                    {{/if}}
+                    {{/each}}
+                </script>
+                <div class="confirmWrap"></div>
+                <div class="confirmBtnDv">
+                    <a href="javascript:;" id="cancleBtn">取消</a>
+                    <a id="comfirmBtn" href="javascript:;">确定</a>
+                </div>
+            </div>
+        </aside>
+        <!-- 主页面标题 -->
+        <header class="mui-bar mui-bar-nav">
+            <a class="backBtn" href="javascript:history.go(-1);"><span></span></a>
+            <div class="inputPart">
+                <input type="text" placeholder="请输入商品名称/货号/条码、规格" id="searchInput" >
+                <span></span>
+            </div>
+            <a href="javascript:;" class="classifyBtn">
+                <div>
+                    <span></span>
+                    <p>分类</p>
+                </div>
+            </a>
+        </header>
+        <!-- 主页面内容容器 -->
+        <div id="offCanvasContentScroll" class="mui-content mui-scroll-wrapper">
+            <div class="mui-scroll">
+                <ul class="goodsList clearfix" id="goodsList">
+                    <!--<li>
+                           <a href="javascript:;">
+                               <div class="imgDv">
+                                   <img src="../images/nav_ic_goods_unsel@2x.png" alt="">
+                               </div>
+                               <h4>大力钳C型尖嘴圆嘴 圆大力钳 C型尖嘴圆嘴圆 大力钳C型</h4>
+                               <div class="priceDv">
+                                   <span class="rmb">¥</span>500.00 <span class="storeNum">库存100</span>
+                               </divpriceDv>
+                           </a>
+                       </li>-->
+                   </ul>
+                <!--<div id="goodsList">-->
+                <!--</div>-->
+                <script type="text/html" id="modelGoodsListAll">
+                        {{each data.result v i}}
+                        <li data-id="{{v.id}}">
+                            <a href="goodsDetails.html?shopId={{v.id}}" target="_blank">
+                                <div class="imgDv">
+                                    <img src="{{v.firstImg}}" alt="这是一张图片">
+                                </div>
+                                <h4>{{v.fullName}}</h4>
+                                <div class="priceDv">
+                                    <span class="rmb">¥</span>{{v.price}}<span class="storeNum">库存{{v.stock}}</span>
+                                </div>
+                            </a>
+                        </li>
+                        {{/each}}
+                </script>
+                <script type="text/html" id="modelGoodsList">
+                        {{each result.data.result}}
+                        <li data-id="{{$value.id}}">
+                            <a href="goodsDetails.html" target="_blank">
+                                <div class="imgDv">
+                                    <img src="{{$value.firstImg}}" alt="这是一张图片">
+                                </div>
+                                <h4>{{$value.full_name}}</h4>
+                                <div class="priceDv">
+                                    <span class="rmb">¥</span>{{$value.price?$value.price:"暂无"}}<span class="storeNum">库存&nbsp;{{$value.stock?value.stock:"暂无"}}</span>
+                                </div>
+                            </a>
+                        </li>
+                        {{/each}}
+                </script>
+            </div>
+            <nav class="navBottom">
+                <ul>
+                    <li id="wbIndexNav" data-id="1">
+                        <a href="wbIndex.html">
+                            <div>
+                                <span></span>
+                            </div>
+                            <p>工作台</p>
+                        </a>
+                    </li>
+                    <li id="customerNav" data-id="2">
+                        <a href="javascript:;">
+                            <div>
+                                <span></span>
+                            </div>
+                            <p>客户</p>
+                        </a>
+                    </li>
+                    <li id="orderNav" data-id="3">
+                        <a href="order-list.html">
+                            <div>
+                                <span></span>
+                            </div>
+                            <p>订单</p>
+                        </a>
+                    </li>
+                    <li id="goodsNav" class="active" data-id="4">
+                        <a href="javascript:;">
+                            <div>
+                                <span></span>
+                            </div>
+                            <p>商品</p>
+                        </a>
+                    </li>
+                    <li id="personNav" data-id="5">
+                        <a href="my-info.html">
+                            <div>
+                                <span></span>
+                            </div>
+                            <p>我的</p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+    <script src="../../../h5/js/page/goodsList.js"></script>
+<script>
+
+  // mui.init();
+  mui('body').on('tap','a',function(){
+      window.top.location.href=this.href;
+  });
+  mui('.navBottom').on('tap', 'li', function () {
+    var id = +this.getAttribute('data-id');
+    console.log(id)
+    switch(id){
+      case 1:
+        mui.openWindow({
+          url:'wbIndex.html'
+        });
+        break;
+      case 2:
+        mui.openWindow({
+          url:'user-list.html'
+        });
+        break;
+      case 3:
+        mui.openWindow({
+          url:'order-list.html'
+        });
+        break;
+      case 4:
+        mui.openWindow({
+          url:'goodsList.html'
+        });
+        break;
+      case 5:
+        mui.openWindow({
+          url:'my-info.html'
+        });
+        break;
+    }
+
+  });
+
+
+</script>
+</body>
+
+</html>

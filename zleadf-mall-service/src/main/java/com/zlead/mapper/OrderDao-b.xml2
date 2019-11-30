@@ -1,0 +1,834 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.OrderDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.OrderEntity" id="orderMap">
+        <result property="id" column="id"/>
+        <result property="sn" column="sn"/>
+        <result property="orderType" column="order_type"/>
+        <result property="buyType" column="buy_type"/>
+        <result property="shopId" column="shop_id"/>
+        <result property="shippingType" column="shipping_type"/>
+        <result property="shopName" column="shop_name"/>
+        <result property="payType" column="pay_type"/>
+        <result property="goodsAmount" column="goods_amount"/>
+        <result property="shippingCost" column="shipping_cost"/>
+        <result property="payableAmount" column="payable_amount"/>
+        <result property="payPoint" column="pay_point"/>
+        <result property="actualPayments" column="actual_payments"/>
+        <result property="memberId" column="member_id"/>
+        <result property="memberName" column="member_name"/>
+        <result property="shippingCorpno" column="shipping_corpno"/>
+        <result property="shippingCorpname" column="shipping_corpname"/>
+        <result property="deliveryNo" column="delivery_no"/>
+        <result property="consignee" column="consignee"/>
+        <result property="address" column="address"/>
+        <result property="postCode" column="post_code"/>
+        <result property="phone" column="phone"/>
+        <result property="telephone" column="telephone"/>
+        <result property="email" column="email"/>
+        <result property="needInvoide" column="need_invoide"/>
+        <result property="createDate" column="create_date"/>
+        <result property="expireDate" column="expire_date"/>
+        <result property="isExpire" column="is_expire"/>
+        <result property="paySn" column="pay_sn"/>
+        <result property="paymentDate" column="payment_date"/>
+        <result property="modifyDate" column="modify_date"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="discount" column="discount"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+        <result property="rebateAmount" column="rebate_amount"/>
+         
+        <collection property="OrderGoods"    column="OrderGoods" select="selectGoods"/>
+  <!--       <result property="OrderGoods"  column="{orderId=id}"   select="selectGoods" />
+         
+        <association property="OrderGoods" column="id" select="queryGoodsList">
+        
+        <collection property="problemModelList" column="id" select="queryGoodsList"/> 
+     	<collection property="OrderGoods" ofType="com.zlead.entity.OrderGoodsEntity"> 
+            <result property="id" column="id"/>
+            <result property="orderId" column="order_id"/>
+            <result property="goodsId" column="goods_id"/>
+            <result property="goodsSn" column="goods_sn"/>
+            <result property="goodsName" column="goods_name"/>
+            <result property="goodsImg" column="goods_img"/>
+            <result property="price" column="price"/>
+            <result property="point" column="point"/>
+            <result property="goodsPoint" column="goods_point"/>
+            <result property="discount" column="discount"/>
+            <result property="count" column="count"/>
+            <result property="commentStatus" column="comment_status"/>
+            <result property="status" column="status"/>
+            <result property="createDate" column="create_date"/>
+            <result property="updateDate" column="update_date"/>
+            <result property="remark" column="remark"/>
+            <result property="marketPrice" column="market_price"/>
+         </collection> -->
+
+    </resultMap>
+    
+    <resultMap type="com.zlead.entity.OrderGoodsEntity" id="orderGoodsMap">
+            <result property="id" column="id"/>
+            <result property="orderId" column="order_id"/>
+            <result property="goodsId" column="goods_id"/>
+            <result property="goodsSn" column="goods_sn"/>
+            <result property="goodsName" column="goods_name"/>
+            <result property="goodsImg" column="goods_img"/>
+            <result property="price" column="price"/>
+            <result property="point" column="point"/>
+            <result property="goodsPoint" column="goods_point"/>
+            <result property="discount" column="discount"/>
+            <result property="count" column="count"/>
+            <result property="commentStatus" column="comment_status"/>
+            <result property="status" column="status"/>
+            <result property="createDate" column="create_date"/>
+            <result property="updateDate" column="update_date"/>
+            <result property="remark" column="remark"/>
+            <result property="marketPrice" column="market_price"/>
+        </resultMap>
+    
+
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.OrderEntity" id="orderimp">
+        <result property="id" column="id"/>
+        <result property="sn" column="sn"/>
+        <result property="orderType" column="order_type"/>
+        <result property="buyType" column="buy_type"/>
+        <result property="shopId" column="shop_id"/>
+        <result property="shippingType" column="shipping_type"/>
+        <result property="shopName" column="shop_name"/>
+        <result property="payType" column="pay_type"/>
+        <result property="goodsAmount" column="goods_amount"/>
+        <result property="shippingCost" column="shipping_cost"/>
+        <result property="payableAmount" column="payable_amount"/>
+        <result property="payPoint" column="pay_point"/>
+        <result property="actualPayments" column="actual_payments"/>
+        <result property="memberId" column="member_id"/>
+        <result property="memberName" column="member_name"/>
+        <result property="shippingCorpno" column="shipping_corpno"/>
+        <result property="shippingCorpname" column="shipping_corpname"/>
+        <result property="deliveryNo" column="delivery_no"/>
+        <result property="consignee" column="consignee"/>
+        <result property="address" column="address"/>
+        <result property="postCode" column="post_code"/>
+        <result property="phone" column="phone"/>
+        <result property="telephone" column="telephone"/>
+        <result property="email" column="email"/>
+        <result property="needInvoide" column="need_invoide"/>
+        <result property="createDate" column="create_date"/>
+        <result property="expireDate" column="expire_date"/>
+        <result property="isExpire" column="is_expire"/>
+        <result property="paySn" column="pay_sn"/>
+        <result property="paymentDate" column="payment_date"/>
+        <result property="modifyDate" column="modify_date"/>
+        <result property="isDelete" column="is_delete"/>
+        <result property="discount" column="discount"/>
+        <result property="status" column="status"/>
+        <result property="remark" column="remark"/>
+        <result property="rebateAmount" column="rebate_amount"/>
+        <collection property="OrderGoods" ofType="com.zlead.entity.OrderGoodsEntity">
+            <result property="id" column="id"/>
+            <result property="orderId" column="order_id"/>
+            <result property="goodsId" column="goods_id"/>
+            <result property="goodsSn" column="goods_sn"/>
+            <result property="goodsName" column="goods_name"/>
+            <result property="goodsImg" column="goods_img"/>
+            <result property="price" column="price"/>
+            <result property="point" column="point"/>
+            <result property="goodsPoint" column="goods_point"/>
+            <result property="discount" column="discount"/>
+            <result property="count" column="count"/>
+            <result property="commentStatus" column="comment_status"/>
+            <result property="status" column="status"/>
+            <result property="createDate" column="create_date"/>
+            <result property="updateDate" column="update_date"/>
+            <result property="remark" column="remark"/>
+            <result property="marketPrice" column="market_price"/>
+        </collection>
+
+    </resultMap>
+
+    <resultMap id="orderVo" type="com.zlead.entity.vo.OrderVo" extends="orderMap">
+        <collection property="orderGoodsList" column="ID" javaType="java.util.ArrayList"
+                    ofType="com.zlead.entity.OrderGoodsEntity"
+                    select="com.zlead.dao.OrderGoodsDao.findListByOrderId"/>
+    </resultMap>
+    
+    <select id="selectGoods" resultMap="orderGoodsMap">    
+        SELECT a.*  FROM t_order_goods AS a WHERE a.order_id = #{orderId}
+        ORDER BY a.id ASC 
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyColumn="id" keyProperty="id"
+            parameterType="com.zlead.entity.OrderEntity">
+        INSERT INTO t_order (
+        		id,
+                sn,
+                order_type,
+                buy_type,
+                shop_id,
+                shipping_type,
+                shop_name,
+                pay_type,
+                goods_amount,
+                shipping_cost,
+                payable_amount,
+                pay_point,
+                actual_payments,
+                member_id,
+                member_name,
+                shipping_corpno,
+                shipping_corpname,
+                delivery_no,
+                consignee,
+                address,
+                post_code,
+                phone,
+                telephone,
+                email,
+                need_invoide,
+                create_date,
+                expire_date,
+                is_expire,
+                pay_sn,
+                payment_date,
+                modify_date,
+                is_delete,
+                discount,
+                status,
+                remark,
+                rebate_amount
+                ) VALUES (
+                #{id},
+                #{sn},
+                #{orderType},
+                #{buyType},
+                #{shopId},
+                #{shippingType},
+                #{shopName},
+                #{payType},
+                #{goodsAmount},
+                #{shippingCost},
+                #{payableAmount},
+                #{payPoint},
+                #{actualPayments},
+                #{memberId},
+                #{memberName},
+                #{shippingCorpno},
+                #{shippingCorpname},
+                #{deliveryNo},
+                #{consignee},
+                #{address},
+                #{postCode},
+                #{phone},
+                #{telephone},
+                #{email},
+                #{needInvoide},
+                #{createDate},
+                #{expireDate},
+                #{isExpire},
+                #{paySn},
+                #{paymentDate},
+                #{modifyDate},
+                #{isDelete},
+                #{discount},
+                #{status},
+                #{remark},
+                #{rebateAmount}
+                )
+    </insert>
+
+    <insert id="insertSelective" parameterType="com.zlead.entity.OrderEntity">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        insert into t_order
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="sn != null">
+                sn,
+            </if>
+            <if test="orderType != null">
+                order_type,
+            </if>
+            <if test="buyType != null">
+                buy_type,
+            </if>
+            <if test="shopId != null">
+                shop_id,
+            </if>
+            <if test="shippingType != null">
+                shipping_type,
+            </if>
+            <if test="shopName != null">
+                shop_name,
+            </if>
+            <if test="payType != null">
+                pay_type,
+            </if>
+            <if test="goodsAmount != null">
+                goods_amount,
+            </if>
+            <if test="shippingCost != null">
+                shipping_cost,
+            </if>
+            <if test="payableAmount != null">
+                payable_amount,
+            </if>
+            <if test="payPoint != null">
+                pay_point,
+            </if>
+            <if test="actualPayments != null">
+                actual_payments,
+            </if>
+            <if test="memberId != null">
+                member_id,
+            </if>
+            <if test="memberName != null">
+                member_name,
+            </if>
+            <if test="shippingCorpno != null">
+                shipping_corpno,
+            </if>
+            <if test="shippingCorpname != null">
+                shipping_corpname,
+            </if>
+            <if test="deliveryNo != null">
+                delivery_no,
+            </if>
+            <if test="consignee != null">
+                consignee,
+            </if>
+            <if test="address != null">
+                address,
+            </if>
+            <if test="postCode != null">
+                post_code,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="telephone != null">
+                telephone,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="needInvoide != null">
+                need_invoide,
+            </if>
+            <if test="createDate != null">
+                create_date,
+            </if>
+            <if test="expireDate != null">
+                expire_date,
+            </if>
+            <if test="isExpire != null">
+                is_expire,
+            </if>
+            <if test="paySn != null">
+                pay_sn,
+            </if>
+            <if test="paymentDate != null">
+                payment_date,
+            </if>
+            <if test="modifyDate != null">
+                modify_date,
+            </if>
+            <if test="isDelete != null">
+                is_delete,
+            </if>
+            <if test="discount != null">
+                discount,
+            </if>
+            <if test="rebateAmount != null">
+                rebate_amount,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="sn != null">
+                #{sn,jdbcType=VARCHAR},
+            </if>
+            <if test="orderType != null">
+                #{orderType,jdbcType=BIT},
+            </if>
+            <if test="buyType != null">
+                #{buyType,jdbcType=BIT},
+            </if>
+            <if test="shopId != null">
+                #{shopId,jdbcType=BIGINT},
+            </if>
+            <if test="shippingType != null">
+                #{shippingType,jdbcType=BIT},
+            </if>
+            <if test="shopName != null">
+                #{shopName,jdbcType=VARCHAR},
+            </if>
+            <if test="payType != null">
+                #{payType,jdbcType=BIT},
+            </if>
+            <if test="goodsAmount != null">
+                #{goodsAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="shippingCost != null">
+                #{shippingCost,jdbcType=DECIMAL},
+            </if>
+            <if test="payableAmount != null">
+                #{payableAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="payPoint != null">
+                #{payPoint,jdbcType=BIGINT},
+            </if>
+            <if test="actualPayments != null">
+                #{actualPayments,jdbcType=DECIMAL},
+            </if>
+            <if test="memberId != null">
+                #{memberId,jdbcType=BIGINT},
+            </if>
+            <if test="memberName != null">
+                #{memberName,jdbcType=VARCHAR},
+            </if>
+            <if test="shippingCorpno != null">
+                #{shippingCorpno,jdbcType=VARCHAR},
+            </if>
+            <if test="shippingCorpname != null">
+                #{shippingCorpname,jdbcType=VARCHAR},
+            </if>
+            <if test="deliveryNo != null">
+                #{deliveryNo,jdbcType=VARCHAR},
+            </if>
+            <if test="consignee != null">
+                #{consignee,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="postCode != null">
+                #{postCode,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="telephone != null">
+                #{telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="needInvoide != null">
+                #{needInvoide,jdbcType=BIT},
+            </if>
+            <if test="createDate != null">
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="expireDate != null">
+                #{expireDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isExpire != null">
+                #{isExpire,jdbcType=BIT},
+            </if>
+            <if test="paySn != null">
+                #{paySn,jdbcType=VARCHAR},
+            </if>
+            <if test="paymentDate != null">
+                #{paymentDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyDate != null">
+                #{modifyDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDelete != null">
+                #{isDelete,jdbcType=TINYINT},
+            </if>
+            <if test="discount != null">
+                #{discount,jdbcType=REAL},
+            </if>
+            <if test="rebateAmount != null">
+                #{rebateAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=BIT},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByKey" parameterType="com.zlead.entity.OrderEntity">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        update t_order
+        <set>
+            <if test="sn != null">
+                sn = #{sn,jdbcType=VARCHAR},
+            </if>
+            <if test="orderType != null">
+                order_type = #{orderType,jdbcType=BIT},
+            </if>
+            <if test="buyType != null">
+                buy_type = #{buyType,jdbcType=BIT},
+            </if>
+            <if test="shopId != null">
+                shop_id = #{shopId,jdbcType=BIGINT},
+            </if>
+            <if test="shippingType != null">
+                shipping_type = #{shippingType,jdbcType=BIT},
+            </if>
+            <if test="shopName != null">
+                shop_name = #{shopName,jdbcType=VARCHAR},
+            </if>
+            <if test="payType != null">
+                pay_type = #{payType,jdbcType=BIT},
+            </if>
+            <if test="goodsAmount != null">
+                goods_amount = #{goodsAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="shippingCost != null">
+                shipping_cost = #{shippingCost,jdbcType=DECIMAL},
+            </if>
+            <if test="payableAmount != null">
+                payable_amount = #{payableAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="payPoint != null">
+                pay_point = #{payPoint,jdbcType=BIGINT},
+            </if>
+            <if test="actualPayments != null">
+                actual_payments = #{actualPayments,jdbcType=DECIMAL},
+            </if>
+            <if test="memberId != null">
+                member_id = #{memberId,jdbcType=BIGINT},
+            </if>
+            <if test="memberName != null">
+                member_name = #{memberName,jdbcType=VARCHAR},
+            </if>
+            <if test="shippingCorpno != null">
+                shipping_corpno = #{shippingCorpno,jdbcType=VARCHAR},
+            </if>
+            <if test="shippingCorpname != null">
+                shipping_corpname = #{shippingCorpname,jdbcType=VARCHAR},
+            </if>
+            <if test="deliveryNo != null">
+                delivery_no = #{deliveryNo,jdbcType=VARCHAR},
+            </if>
+            <if test="consignee != null">
+                consignee = #{consignee,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="postCode != null">
+                post_code = #{postCode,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="telephone != null">
+                telephone = #{telephone,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="needInvoide != null">
+                need_invoide = #{needInvoide,jdbcType=BIT},
+            </if>
+            <if test="createDate != null">
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="expireDate != null">
+                expire_date = #{expireDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isExpire != null">
+                is_expire = #{isExpire,jdbcType=BIT},
+            </if>
+            <if test="paySn != null">
+                pay_sn = #{paySn,jdbcType=VARCHAR},
+            </if>
+            <if test="paymentDate != null">
+                payment_date = #{paymentDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyDate != null">
+                modify_date = #{modifyDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isDelete != null">
+                is_delete = #{isDelete,jdbcType=TINYINT},
+            </if>
+            <if test="discount != null">
+                discount = #{discount,jdbcType=REAL},
+            </if>
+            <if test="rebateAmount != null">
+                rebate_amount = #{rebateAmount,jdbcType=DECIMAL},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=BIT},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <update id="update">
+        UPDATE t_order AS T SET
+                  T.id = #{id} ,
+                 T.sn = #{sn} ,
+                 T.order_type = #{orderType} ,
+                 T.buy_type = #{buyType} ,
+                 T.shop_id = #{shopId} ,
+                 T.shipping_type = #{shippingType} ,
+                 T.shop_name = #{shopName} ,
+                 T.pay_type = #{payType} ,
+                 T.goods_amount = #{goodsAmount} ,
+                 T.shipping_cost = #{shippingCost} ,
+                 T.payable_amount = #{payableAmount} ,
+                 T.pay_point = #{payPoint} ,
+                 T.actual_payments = #{actualPayments} ,
+                 T.member_id = #{memberId} ,
+                 T.member_name = #{memberName} ,
+                 T.shipping_corpno = #{shippingCorpno} ,
+                 T.shipping_corpname = #{shippingCorpname} ,
+                 T.delivery_no = #{deliveryNo} ,
+                 T.consignee = #{consignee} ,
+                 T.address = #{address} ,
+                 T.post_code = #{postCode} ,
+                 T.phone = #{phone} ,
+                 T.telephone = #{telephone} ,
+                 T.email = #{email} ,
+                 T.need_invoide = #{needInvoide} ,
+                 T.create_date = #{createDate} ,
+                 T.expire_date = #{expireDate} ,
+                 T.is_expire = #{isExpire} ,
+                 T.pay_sn = #{paySn} ,
+                 T.payment_date = #{paymentDate} ,
+                 T.modify_date = #{modifyDate} ,
+                 T.is_delete = #{isDelete} ,
+                 T.discount = #{discount} ,
+                 T.status = #{status} ,
+                 T.remark = #{remark},
+                 T.rebate_amount = #{rebateAmount}
+                WHERE T.ID = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM t_order WHERE  ID = #{id}
+    </delete>
+
+    <select id="findPage" parameterType="map" resultMap="orderMap">
+        SELECT
+        a.*,
+        b.*
+        FROM
+        t_order_goods AS a
+        LEFT JOIN t_order AS b ON a.order_id=b.id
+        LEFT JOIN t_goods AS c ON a.goods_id = c.id
+        <where>
+            1>0
+            AND b.member_id=#{memberId}
+            ORDER BY b.id DESC
+        </where>
+    </select>
+
+    <select id="findSize" resultType="Integer">
+        SELECT
+       count(b.id)
+        FROM
+        t_order_goods AS a
+        LEFT JOIN t_order AS b ON a.order_id=b.id
+        LEFT JOIN t_goods AS c ON a.goods_id = c.id
+        <where>
+            1>0
+            AND b.member_id=#{memberId}
+        </where>
+    </select>
+
+    <select id="getPage" parameterType="map" resultMap="orderMap">
+        SELECT
+        a.*,
+        b.*
+        FROM
+        t_order_goods AS a
+        LEFT JOIN t_order AS b ON a.order_id=b.id
+        LEFT JOIN t_goods AS c ON a.goods_id = c.id
+        <where>
+            1>0
+            <if test="@Ognl@isNotEmpty(orderType)">AND b.order_type = #{orderType}</if>
+            <if test="@Ognl@isNotEmpty(memberId)">AND b.member_id = #{memberId}</if>
+            <if test="@Ognl@isNotEmpty(isDelete)">AND b.is_delete = #{isDelete}</if>
+            <if test="@Ognl@isNotEmpty(status)">AND b.status = #{status}</if>
+            <if test="@Ognl@isNotEmpty(shopId)">AND b.shop_id = #{shopId}</if>
+        </where>
+    </select>
+
+    <select id="findNoVoucherOrder" parameterType="map" resultMap="orderMap">
+        SELECT *  FROM t_order AS T
+        WHERE
+        T.member_id = #{memberId} and T.voucher_id is null
+    </select>
+
+    <select id="getAllnoVoucherOrderList" parameterType="map" resultMap="orderMap">
+        SELECT *  FROM t_order AS T
+        WHERE
+        T.member_id in (#{memberIds}) and T.voucher_id is null
+    </select>
+
+
+    <select id="findById" resultMap="orderMap" useCache="false">
+        SELECT * FROM t_order AS T WHERE  T.ID = #{id}
+    </select>
+
+    <select id="findBySn" resultMap="orderMap" useCache="false">
+        SELECT * FROM t_order AS T WHERE  T.sn = #{sn}
+    </select>
+
+    <select id="findPageOrderVo" parameterType="map" resultMap="orderVo" useCache="false">
+        SELECT
+        a.*
+        FROM
+        t_order AS b
+        LEFT JOIN t_order_goods AS a ON a.order_id = b.id
+        LEFT JOIN t_goods AS c ON a.goods_id = c.id
+        <where>
+            <if test="@Ognl@isNotEmpty(orderType)">AND T.order_type = #{orderType}</if>
+            <if test="@Ognl@isNotEmpty(memberId)">AND T.member_id = #{memberId}</if>
+            <if test="@Ognl@isNotEmpty(isDelete)">AND T.is_delete = #{isDelete}</if>
+            <if test="@Ognl@isNotEmpty(status)">AND T.status = #{status}</if>
+            <if test="@Ognl@isNotEmpty(shopId)">AND T.shop_id = #{shopId}</if>
+        </where>
+    </select>
+
+    <select id="findOrderSeven" resultMap="orderMap">
+        SELECT * FROM t_order T WHERE DATE_SUB(CURDATE(), INTERVAL 7 DAY) &gt;= FROM_UNIXTIME(T.payment_date)
+         AND T.status = 1 AND T.order_type IN (0,10)
+    </select>
+
+    <select id="findOrderList" resultMap="orderMap">
+        SELECT * FROM t_order T
+        <where>
+            <if test="@Ognl@isNotEmpty(orderType)">AND T.order_type = #{orderType}</if>
+            <if test="@Ognl@isNotEmpty(memberId)">AND T.member_id = #{memberId}</if>
+            <if test="@Ognl@isNotEmpty(isDelete)">AND T.is_delete = #{isDelete}</if>
+            <if test="@Ognl@isNotEmpty(status)">AND T.status = #{status}</if>
+            <if test="@Ognl@isNotEmpty(shopId)">AND T.shop_id = #{shopId}</if>
+        </where>
+    </select>
+
+    <select id="findSellOrderList" resultMap="orderMap" useCache="false">
+        SELECT
+        *
+        FROM
+        t_order
+        WHERE
+        (
+        t_order.shop_id IN
+        (
+        SELECT
+        t_shop.id
+        FROM
+        t_shop
+        WHERE
+        t_shop.member_id = #{memberId}
+        )
+        )
+
+        AND
+        ( t_order. STATUS = #{status})
+
+    </select>
+
+    <select id="findSellOrderListByPage" resultMap="orderMap" useCache="false">
+        SELECT
+        *
+        FROM
+        t_order
+        WHERE
+        (
+        t_order.shop_id IN
+        (
+        SELECT
+        t_shop.id
+        FROM
+        t_shop
+        WHERE
+        t_shop.member_id = #{memberId}
+        )
+        )
+        <if test="@Ognl@isNotEmpty(status)">AND t_order.STATUS = #{status}</if>
+        <if test="@Ognl@isNotEmpty(sn)">AND t_order.SN = #{sn}</if>
+    </select>
+
+    <select id="getOrderInfoCus" resultType="com.zlead.entity.OrderEntity">
+    SELECT
+	a.*
+    FROM
+	t_order AS b
+	LEFT JOIN t_order_goods AS a ON a.order_id = b.id
+	LEFT JOIN t_goods AS c ON a.goods_id = c.id
+	 WHERE b.member_id =#{memberId} and a.is_delete =0
+    </select>
+    <update id="updateorder">
+        UPDATE t_order AS a SET
+                a.is_delete = #{isDelete}
+                WHERE a.id = #{id}
+    </update>
+
+    <select id="getOrderInfoId" resultMap="orderimp">
+    SELECT a.* FROM t_order AS a WHERE a.id = #{id}
+    </select>
+
+    <select id="getOrderInfoSta" resultMap="orderMap">
+    SELECT a.* FROM t_order AS a WHERE a.member_id = #{memberId} and  a.status=#{status} and a.is_delete =0
+    </select>
+
+    <update id="updateVoucher">
+        UPDATE t_order AS T SET
+        T.voucher_id = #{voucherId}
+        WHERE T.id in
+        <foreach collection="orderIds" item="id" index="index" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </update>
+
+    <select id="findPageSt2" parameterType="map" resultMap="orderMap">
+         SELECT
+        b.*,
+        a.*
+        FROM t_order AS b        
+        LEFT JOIN  t_order_goods AS a ON a.order_id=b.id
+        <where>
+            1>0
+            AND b.`status`= #{status}
+            AND b.member_id=#{memberId}
+        </where>
+    </select>
+    
+     <select id="findPageSt" parameterType="map" resultMap="orderMap">
+        SELECT
+        *
+        FROM
+        t_order  
+        where 1=1 
+        <if test="@Ognl@isNotEmpty(status)">AND status = #{status}</if>
+        <if test="@Ognl@isNotEmpty(status)">AND member_id=#{memberId}</if>
+         
+    </select>
+    
+
+
+</mapper>

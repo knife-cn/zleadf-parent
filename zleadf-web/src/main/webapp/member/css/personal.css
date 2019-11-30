@@ -1,0 +1,19 @@
+#head-div {
+    width: 100%;
+    height: 4.72rem;
+    background: url(../img/img-touxiangbeijing.png) no-repeat;
+    background-size: 100%;
+    overflow: hidden;
+}
+
+#loginOut {
+    width: 0.55rem;
+    height: 0.45rem;
+    float: right
+}
+
+.share {
+    width: 80px;
+    margin-left: -70px;
+    display: inline-block
+}

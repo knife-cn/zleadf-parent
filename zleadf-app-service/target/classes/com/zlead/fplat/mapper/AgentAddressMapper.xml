@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.AgentAddressMapper" >
+  <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.AgentAddress" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <id column="rev_id" property="revId" jdbcType="INTEGER" />
+    <result column="agent_id" property="agentId" jdbcType="INTEGER" />
+    <result column="rev_name" property="revName" jdbcType="VARCHAR" />
+    <result column="rev_tel" property="revTel" jdbcType="VARCHAR" />
+    <result column="rev_province" property="revProvince" jdbcType="VARCHAR" />
+    <result column="rev_city" property="revCity" jdbcType="VARCHAR" />
+    <result column="rev_county" property="revCounty" jdbcType="VARCHAR" />
+    <result column="rev_addr" property="revAddr" jdbcType="VARCHAR" />
+    <result column="rev_default" property="revDefault" jdbcType="VARCHAR" />
+    <result column="sys_id" property="sysId" jdbcType="VARCHAR" />
+    <result column="is_fact" property="isFact" jdbcType="VARCHAR" />
+    <result column="member_addr_id" property="memberAddrId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    rev_id, agent_id, rev_name, rev_tel, rev_province, rev_city, rev_county, rev_addr,
+    rev_default,sys_id,is_fact,member_addr_id
+  </sql>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select
+    <include refid="Base_Column_List" />
+    from oa_agent_revinfo
+    where member_addr_id = #{memberAddrId,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByPrimaryKeyList" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select
+    <include refid="Base_Column_List" />
+    from oa_agent_revinfo
+    where member_addr_id = #{memberAddrId,jdbcType=INTEGER}
+  </select>
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    delete from oa_agent_revinfo
+    where member_addr_id = #{memberAddrId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.fplat.entity.AgentAddress" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into oa_agent_revinfo (rev_id, agent_id, rev_name,
+      rev_tel, rev_province, rev_city,
+      rev_county, rev_addr, rev_default,sys_id,is_fact,member_addr_id
+      )
+    values (#{revId,jdbcType=INTEGER}, #{agentId,jdbcType=INTEGER}, #{revName,jdbcType=VARCHAR},
+      #{revTel,jdbcType=VARCHAR}, #{revProvince,jdbcType=VARCHAR}, #{revCity,jdbcType=VARCHAR},
+      #{revCounty,jdbcType=VARCHAR}, #{revAddr,jdbcType=VARCHAR}, #{revDefault,jdbcType=VARCHAR},
+      #{sysId,jdbcType=INTEGER},#{isFact,jdbcType=VARCHAR},#{memberAddrId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlead.fplat.entity.AgentAddress" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into oa_agent_revinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="revId != null" >
+        rev_id,
+      </if>
+      <if test="agentId != null" >
+        agent_id,
+      </if>
+      <if test="revName != null" >
+        rev_name,
+      </if>
+      <if test="revTel != null" >
+        rev_tel,
+      </if>
+      <if test="revProvince != null" >
+        rev_province,
+      </if>
+      <if test="revCity != null" >
+        rev_city,
+      </if>
+      <if test="revCounty != null" >
+        rev_county,
+      </if>
+      <if test="revAddr != null" >
+        rev_addr,
+      </if>
+      <if test="revDefault != null" >
+        rev_default,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="revId != null" >
+        #{revId,jdbcType=INTEGER},
+      </if>
+      <if test="agentId != null" >
+        #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="revName != null" >
+        #{revName,jdbcType=VARCHAR},
+      </if>
+      <if test="revTel != null" >
+        #{revTel,jdbcType=VARCHAR},
+      </if>
+      <if test="revProvince != null" >
+        #{revProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="revCity != null" >
+        #{revCity,jdbcType=VARCHAR},
+      </if>
+      <if test="revCounty != null" >
+        #{revCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="revAddr != null" >
+        #{revAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="revDefault != null" >
+        #{revDefault,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.AgentAddress" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update oa_agent_revinfo
+    <set >
+      <if test="agentId != null" >
+        agent_id = #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="revName != null" >
+        rev_name = #{revName,jdbcType=VARCHAR},
+      </if>
+      <if test="revTel != null" >
+        rev_tel = #{revTel,jdbcType=VARCHAR},
+      </if>
+      <if test="revProvince != null" >
+        rev_province = #{revProvince,jdbcType=VARCHAR},
+      </if>
+      <if test="revCity != null" >
+        rev_city = #{revCity,jdbcType=VARCHAR},
+      </if>
+      <if test="revCounty != null" >
+        rev_county = #{revCounty,jdbcType=VARCHAR},
+      </if>
+      <if test="revAddr != null" >
+        rev_addr = #{revAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="revDefault != null" >
+        rev_default = #{revDefault,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rev_id = #{revId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.AgentAddress" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update oa_agent_revinfo
+    set agent_id = #{agentId,jdbcType=INTEGER},
+      rev_name = #{revName,jdbcType=VARCHAR},
+      rev_tel = #{revTel,jdbcType=VARCHAR},
+      rev_province = #{revProvince,jdbcType=VARCHAR},
+      rev_city = #{revCity,jdbcType=VARCHAR},
+      rev_county = #{revCounty,jdbcType=VARCHAR},
+      rev_addr = #{revAddr,jdbcType=VARCHAR},
+      rev_default = #{revDefault,jdbcType=VARCHAR}
+    where member_addr_id = #{memberAddrId,jdbcType=INTEGER}
+  </update>
+  <update id="updateAgentAddressOtherIsDefault" parameterType="com.zlead.fplat.entity.AgentAddress">
+    UPDATE oa_agent_revinfo SET rev_default=0 WHERE member_addr_id!=#{memberAddrId,jdbcType=INTEGER} AND agent_id = #{agentId,jdbcType=INTEGER}
+  </update>
+</mapper>

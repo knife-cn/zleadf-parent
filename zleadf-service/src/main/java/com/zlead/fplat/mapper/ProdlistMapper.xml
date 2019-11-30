@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.ProdlistMapper" >
+  <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.Prodlist" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <id column="list_id" property="listId" jdbcType="INTEGER" />
+    <result column="list_no" property="listNo" jdbcType="VARCHAR" />
+    <result column="list_name" property="listName" jdbcType="VARCHAR" />
+    <result column="band_id" property="bandId" jdbcType="INTEGER" />
+    <result column="cat_ids" property="catIds" jdbcType="VARCHAR" />
+    <result column="cat_names" property="catNames" jdbcType="VARCHAR" />
+    <result column="pinyin" property="pinyin" jdbcType="VARCHAR" />
+    <result column="pinyin_sh" property="pinyinSh" jdbcType="VARCHAR" />
+    <result column="pic_path" property="picPath" jdbcType="VARCHAR" />
+    <result column="list_state" property="listState" jdbcType="VARCHAR" />
+    <result column="list_desc" property="listDesc" jdbcType="VARCHAR" />
+    <result column="shop_id" property="shopId" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="modifier" property="modifier" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    list_id, list_no, list_name, band_id, cat_ids, cat_names, pinyin, pinyin_sh, pic_path, 
+    list_state, list_desc, shop_id, creator, modifier, create_time, modify_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.ProdlistExample" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from crm_prd_list
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from crm_prd_list
+    where list_id = #{listId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    delete from crm_prd_list
+    where list_id = #{listId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.fplat.entity.Prodlist" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into crm_prd_list (list_id, list_no, list_name, 
+      band_id, cat_ids, cat_names, 
+      pinyin, pinyin_sh, pic_path, 
+      list_state, list_desc, shop_id, 
+      creator, modifier, create_time, 
+      modify_time)
+    values (#{listId,jdbcType=INTEGER}, #{listNo,jdbcType=VARCHAR}, #{listName,jdbcType=VARCHAR}, 
+      #{bandId,jdbcType=INTEGER}, #{catIds,jdbcType=VARCHAR}, #{catNames,jdbcType=VARCHAR}, 
+      #{pinyin,jdbcType=VARCHAR}, #{pinyinSh,jdbcType=VARCHAR}, #{picPath,jdbcType=VARCHAR}, 
+      #{listState,jdbcType=VARCHAR}, #{listDesc,jdbcType=VARCHAR}, #{shopId,jdbcType=INTEGER}, 
+      #{creator,jdbcType=INTEGER}, #{modifier,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlead.fplat.entity.Prodlist" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into crm_prd_list
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="listId != null" >
+        list_id,
+      </if>
+      <if test="listNo != null" >
+        list_no,
+      </if>
+      <if test="listName != null" >
+        list_name,
+      </if>
+      <if test="bandId != null" >
+        band_id,
+      </if>
+      <if test="catIds != null" >
+        cat_ids,
+      </if>
+      <if test="catNames != null" >
+        cat_names,
+      </if>
+      <if test="pinyin != null" >
+        pinyin,
+      </if>
+      <if test="pinyinSh != null" >
+        pinyin_sh,
+      </if>
+      <if test="picPath != null" >
+        pic_path,
+      </if>
+      <if test="listState != null" >
+        list_state,
+      </if>
+      <if test="listDesc != null" >
+        list_desc,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="listId != null" >
+        #{listId,jdbcType=INTEGER},
+      </if>
+      <if test="listNo != null" >
+        #{listNo,jdbcType=VARCHAR},
+      </if>
+      <if test="listName != null" >
+        #{listName,jdbcType=VARCHAR},
+      </if>
+      <if test="bandId != null" >
+        #{bandId,jdbcType=INTEGER},
+      </if>
+      <if test="catIds != null" >
+        #{catIds,jdbcType=VARCHAR},
+      </if>
+      <if test="catNames != null" >
+        #{catNames,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyin != null" >
+        #{pinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyinSh != null" >
+        #{pinyinSh,jdbcType=VARCHAR},
+      </if>
+      <if test="picPath != null" >
+        #{picPath,jdbcType=VARCHAR},
+      </if>
+      <if test="listState != null" >
+        #{listState,jdbcType=VARCHAR},
+      </if>
+      <if test="listDesc != null" >
+        #{listDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.Prodlist" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update crm_prd_list
+    <set >
+      <if test="listNo != null" >
+        list_no = #{listNo,jdbcType=VARCHAR},
+      </if>
+      <if test="listName != null" >
+        list_name = #{listName,jdbcType=VARCHAR},
+      </if>
+      <if test="bandId != null" >
+        band_id = #{bandId,jdbcType=INTEGER},
+      </if>
+      <if test="catIds != null" >
+        cat_ids = #{catIds,jdbcType=VARCHAR},
+      </if>
+      <if test="catNames != null" >
+        cat_names = #{catNames,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyin != null" >
+        pinyin = #{pinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyinSh != null" >
+        pinyin_sh = #{pinyinSh,jdbcType=VARCHAR},
+      </if>
+      <if test="picPath != null" >
+        pic_path = #{picPath,jdbcType=VARCHAR},
+      </if>
+      <if test="listState != null" >
+        list_state = #{listState,jdbcType=VARCHAR},
+      </if>
+      <if test="listDesc != null" >
+        list_desc = #{listDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where list_id = #{listId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.Prodlist" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update crm_prd_list
+    set list_no = #{listNo,jdbcType=VARCHAR},
+      list_name = #{listName,jdbcType=VARCHAR},
+      band_id = #{bandId,jdbcType=INTEGER},
+      cat_ids = #{catIds,jdbcType=VARCHAR},
+      cat_names = #{catNames,jdbcType=VARCHAR},
+      pinyin = #{pinyin,jdbcType=VARCHAR},
+      pinyin_sh = #{pinyinSh,jdbcType=VARCHAR},
+      pic_path = #{picPath,jdbcType=VARCHAR},
+      list_state = #{listState,jdbcType=VARCHAR},
+      list_desc = #{listDesc,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=INTEGER},
+      modifier = #{modifier,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where list_id = #{listId,jdbcType=INTEGER}
+  </update>
+</mapper>

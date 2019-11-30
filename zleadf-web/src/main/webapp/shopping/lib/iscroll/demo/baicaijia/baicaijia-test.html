@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src='lib/flexible/flexible.js'></script>
+    <script src='lib/flexible/flexible_css.js'></script>
+    <link rel="stylesheet" href="css/static.css">
+    <link rel="stylesheet" href="css/baicaijia.css"/>
+    <title>白菜价</title>
+</head>
+<body>
+    <!-- mtop 顶部栏和搜索框 -->
+    <div class="mtop">
+        <!-- mheader 顶部栏 -->
+        <header class="mheader">
+            <a href="index.html" class='f-left mh-back'><img src="images/icback.svg" alt=""></a>
+            <a href="javascript:;" class='f-right mh-app'><img src="images/header_app.png" alt=""></a>
+            <h1 class='mh-title'>白菜价-淘宝内部券</h1>
+        </header>
+    </div>
+
+    <!-- mheadnav 导航可拖拽菜单栏 -->
+    <nav class="mheadnav">
+        <div class="nav-titles">
+            <!-- ul的外部容器 -->
+            <div class="ul-wapper" id="wapper">
+                <ul class="clearfix">
+                    <li class="active"><a href="#">热销</a></li>
+                    <li><a href="#">热销1</a></li>
+                    <li><a href="#">热销2</a></li>
+                    <li><a href="#">热销3</a></li>
+                    <li><a href="#">热销4</a></li>
+                    <li><a href="#">热销5</a></li>
+                    <li><a href="#">热销6</a></li>
+                    <li><a href="#">热销7</a></li>
+                    <li><a href="#">热销8</a></li>
+                    <li><a href="#">热销9</a></li>
+                    <li><a href="#">热销10</a></li>
+                    <li><a href="#">热销11</a></li>
+                    <li><a href="#">热销12</a></li>
+                    <li><a href="#">热销13</a></li>
+                    <li><a href="#">热销14</a></li>
+                    <li><a href="#">热销15</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="nav-searchbtn"></div>
+    </nav>
+
+    <script src='lib/art/template.js'></script>
+    <script src='lib/jquery/jquery-1.12.0.min.js'></script>
+    <script src="lib/iscroll/iscroll.js"></script>
+    <script>
+        (function() {
+            var myScroll;
+
+            function loaded () {
+                myScroll = new IScroll('#wapper', { 
+                    scrollX: true, 
+                    scrollY: false
+                });
+            }
+
+
+            var width = 0;
+            $('#wapper>ul>li').each(function( index, item ){
+                width += $( item ).innerWidth();
+            })
+
+            // 右侧搜索框 盖住了 部分内容，所以需要加上对应的宽度
+            width += $('.nav-searchbtn').width();
+            console.log( width );
+            $('#wapper>ul').width( width );
+
+            // loaded 一定要在你的父容器及 子容器宽度完全设置完成后才能调用，才有效
+            loaded();
+
+        })();
+
+
+        // (function() {
+        //     var myScroll;
+        //     function loaded () {
+        //         myScroll = new IScroll('#wapper', { 
+        //             scrollX: true,  
+        //             scrollY: false  
+        //         });
+        //     }
+        //     var width = 0;
+        //     $('#wapper>ul>li').each(function( index, item ) {
+        //         width += $( item ).innerWidth(); 
+        //     });
+        //     width += $('.nav-searchbtn').innerWidth();
+        //     $('#wapper>ul').width(width);
+        //     loaded();
+        // })();
+
+    </script>
+</body>
+</html>

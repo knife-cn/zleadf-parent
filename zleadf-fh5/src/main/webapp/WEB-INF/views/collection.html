@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>直链商城</title>
+	</head>
+	<link rel="stylesheet" href="../../shopping/css/collection.css" />
+
+	<body>
+
+		<div class="collection">
+			<div class="collection_top">
+				<div class="ct_lt">
+					<span>收藏信息</span>
+				</div>
+				<div class="ct_rg">
+					<div class="gl">
+						<div class="quxaa">
+							<div class="quxn">
+								<img src="../../shopping/img/searchPage/Checked_default.png" />
+							</div>
+							<span>全选</span>
+						</div>
+						<div class="delt">
+							<img src="../../shopping/img/head/File add (2).png" />
+						</div>
+						<div class="xii"></div>
+						<div class="quo"><span>取消管理</span></div>
+					</div>
+					<span class="gpl" id="gpl">批量管理</span>
+
+				</div>
+			</div>
+			<div class="collection_pro">
+				<div class="serProut_con">
+					<ul id="allProduct">
+						
+					</ul>
+				</div>
+				<!-- <div class="serProut_conb">
+					<ul>
+						<li>
+							<div class="com">
+							<div class="porut_img">
+								<img src="../../shopping/img/index/Bitmap.png" />
+
+								<div class="porut_mob">
+									<img class="porut_mobimg" style="width: 24px;height: 19px;" src="../../shopping/img/searchPage/weis.png" />
+									<img class="porut_mobgimg" style="width: 24px;height: 19px;" src="../../shopping/img/searchPage/gx.png" />
+								</div>
+							</div>
+							<p class="porut_p" >¥197.00</p>
+							<p class="porut_pa">STANLEY 史丹利冲击电钻锂电手电钻电动</p>
+							<div class="hre">
+
+							</div>
+						</div>
+						</li>
+					</ul>
+				</div> -->
+
+			</div>
+		</div>
+
+
+	</body>
+	<script type="text/javascript" src="../../shopping/js/jquery-2.1.0.js"></script>
+	<script src="../../shopping/lib/artTemplate/artTemplate/template-web.js"></script>
+	<script type="text/javascript" src="../../shopping/js/collection.js" ></script>
+	<script type="text/html" id="collections">
+		{{each data v i}}
+		<li>
+				<div class="porut_img">
+					<img src="{{v.image}}" />
+					<div class="porut_mo">
+						<div class="porut_ku">
+							<div class="porut_kua">
+								<img class="porut_kuaimg" src="../../shopping/img/searchPage/gmai.png" />
+								<img class="porut_hkuaimg" src="../../shopping/img/searchPage/hgmai.png" />
+								<div class="gmtk">
+									<div class="gma">
+									<span>立即购买</span>
+								</div>
+								<div class="xjt">
+									<img src="../../shopping/img/searchPage/xjt.png" />
+								</div>
+								</div>
+							</div>
+							<div class="porut_kub">
+								<img class="porut_kuaimg" src="../../shopping/img/searchPage/gwc.png" />
+								<img class="porut_hkuaimg" src="../../shopping/img/searchPage/hgwc.png" />
+								<div class="gmtk">
+									<div class="gma">
+									<span>加入购物车</span>
+								</div>
+								<div class="xjt">
+									<img src="../../shopping/img/searchPage/xjt.png" />
+								</div>
+								</div>
+							</div>
+							<div class="porut_kuc">
+								<img class="porut_kuaimg" src="../../shopping/img/searchPage/scde.png" />
+								<img class="porut_hkuaimg" src="../../shopping/img/searchPage/hscdel.png" />
+								<div class="gmtk">
+									<div class="gma">
+									<span>删除商品</span>
+								</div>
+								<div class="xjt">
+									<img src="{{v.image}}" />
+								</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					 
+				</div>
+				<p class="porut_p">{{v.price}}</p>
+				<p class="porut_pa">{{v.goodsName}}</p>
+				<div class="hre">
+				</div>
+			</li>
+	   {{/each}}
+	</script>
+	
+</html>

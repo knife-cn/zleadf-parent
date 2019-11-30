@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.SysMessageMapper" >
+
+    <sql id="BaseResult"> id,content,agent_id,msgtype,status,create_time,update_time,member_id, read_time</sql>
+
+    <select id="findByPageList" parameterType="java.lang.Integer" resultType="com.zlead.fplat.entity.dto.SysMessagePageDto">
+      select
+        id,
+        content ,
+        status ,
+        date_format(create_time,'%Y-%m-%d') as 'createTime'
+      from
+      t_sys_message
+      where
+      agent_id = #{agentId}
+      <if test="status != '-1' ">
+         and status = ${status}
+      </if>
+      order by create_time desc,status asc
+    </select>
+
+     <select id="findCntByPageList" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+      select count(id) as cnt
+      from
+      t_sys_message
+      where
+      agent_id = #{agentId}
+      <if test="status != '-1' ">
+         and status = ${status}
+      </if>
+    </select>
+
+    <select id="hasNotReadSysMsg" resultType="java.lang.Integer">
+        SELECT
+            count(1)
+        FROM
+            t_sys_message
+        WHERE
+        shop_id in (select own_shopid from t_member where id=#{memberId}) and status = 0
+        and read_time is null
+        and (title in ('关联工厂','创建订单','发货','确认收货') or (title='上传凭证' and fact_id is null))
+        <choose>
+            <when test="agentIds != null and agentIds.size>0">
+                and agent_id in
+                <foreach item="item" collection="agentIds" separator="," open="(" close=")" index="">
+                    #{item, jdbcType=NUMERIC}
+                </foreach>
+            </when>
+            <otherwise>
+                and 1=2
+            </otherwise>
+        </choose>
+    </select>
+
+    <select id="notReadSysMsgList" resultType="com.zlead.entity.vo.SysMsgListVO">
+        SELECT distinct
+            id msgId,
+            content,
+            title,
+            sn_type snType,
+            msgType,
+            sn,
+            member_id,
+            agent_id agentId,
+            shop_id shopId,
+            create_time createTime
+        FROM
+            t_sys_message
+        WHERE
+        shop_id in (select own_shopid from t_member where id=#{memberId})
+        and (title in ('关联工厂','创建订单','发货','确认收货') or (title='上传凭证' and fact_id is null))
+        <choose>
+            <when test="agentIds != null and agentIds.size>0">
+                and agent_id in
+                <foreach item="item" collection="agentIds" separator="," open="(" close=")" index="">
+                    #{item, jdbcType=NUMERIC}
+                </foreach>
+            </when>
+            <otherwise>
+                and 1=2
+            </otherwise>
+        </choose>
+        order by create_time desc
+    </select>
+
+    <update id="updateMessage"  parameterType="java.lang.Integer" >
+        update t_sys_message set status =1 , read_time = now() where id = #{id} and agent_id = #{agentId}
+    </update>
+
+    <update id="tagSysMsg">
+        UPDATE t_sys_message SET status =1 ,update_time = NOW(),read_time = NOW() WHERE
+        shop_id in (select own_shopid from t_member where id=#{memberId})
+        AND id = #{msgId} AND read_time is null and
+        (title in ('关联工厂','创建订单','发货','确认收货') or (title='上传凭证' and fact_id is null))
+    </update>
+
+    <update id="tagSysMsgAll">
+        UPDATE t_sys_message SET status =1 ,update_time = NOW(),read_time = NOW() WHERE
+        shop_id in (select own_shopid from t_member where id=#{memberId})
+        AND read_time is null and
+        (title in ('关联工厂','创建订单','发货','确认收货','上传凭证') or (title='上传凭证' and shop_id=0))
+    </update>
+
+    <insert id="saveMessage" parameterType="com.zlead.fplat.entity.SysMessage">
+        INSERT INTO
+        t_sys_message(content,agent_id,msgtype,status,create_time,update_time,member_id)
+        VALUES (
+        ${content},
+        ${agentId},
+        ${msgtype},
+        ${status},
+        now(),
+        now(),
+        ${memberId}
+        )
+    </insert>
+
+    <insert id="insertSelective">
+        insert into t_sys_message
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="content != null and content != ''" >
+                content,
+            </if>
+            <if test="agentId != -1" >
+                agent_id,
+            </if>
+            <if test="msgtype != -1" >
+                msgtype,
+            </if>
+            <if test="status != -1" >
+                status,
+            </if>
+            <if test="createTime != null" >
+                create_time,
+            </if>
+            <if test="updateTime != null" >
+                update_time,
+            </if>
+            <if test="memberId != -1" >
+                member_id,
+            </if>
+            <if test="readTime != null" >
+                read_time,
+            </if>
+            <if test="sysId != null" >
+                shop_id,
+            </if>
+            <if test="title != null and title != ''" >
+                title,
+            </if>
+            <if test="snType != null" >
+                sn_type,
+            </if>
+            <if test="sn != null and sn != ''" >
+                sn,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="content != null and content != ''" >
+                #{content},
+            </if>
+            <if test="agentId != -1" >
+                #{agentId},
+            </if>
+            <if test="msgtype != -1" >
+                #{msgtype},
+            </if>
+            <if test="status != -1" >
+                #{status},
+            </if>
+            <if test="createTime != null" >
+                #{createTime},
+            </if>
+            <if test="updateTime != null" >
+                #{updateTime},
+            </if>
+            <if test="memberId != -1" >
+                #{memberId},
+            </if>
+            <if test="readTime != null" >
+                #{readTime},
+            </if>
+            <if test="sysId != null" >
+                #{sysId},
+            </if>
+            <if test="title != null and title != ''" >
+                #{title},
+            </if>
+            <if test="snType != null" >
+                #{snType},
+            </if>
+            <if test="sn != null and sn != ''" >
+                #{sn},
+            </if>
+        </trim>
+    </insert>
+
+</mapper>

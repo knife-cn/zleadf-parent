@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.CollectDao">
+
+    <!--添加收藏商品 -->
+    <insert id="saveCollect" parameterType="com.zlead.entity.CollectEntity">
+        insert into
+        t_collect
+        (goods_id,member_id,agent_id,create_time,update_time)
+        VALUES(#{goodsId},#{memberId},#{agentId},now(),now())
+    </insert>
+
+    <!--查询同一同一代理商数量 -->
+    <select id="countByGidAndAid" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+
+        select count(1) FROM  t_collect where goods_id = #{goodsId} and agent_id = #{agentId}
+
+    </select>
+
+    <delete id="deleteByGoodsId">
+
+        delete FROM t_collect where goods_id = #{goodsId} and agent_id = #{agentId}
+
+    </delete>
+
+    <!--批量删除收藏商品-->
+    <delete id="batchDeleteCollectByGoodsId">
+        delete FROM t_collect where
+        goods_id IN
+        <foreach collection="goodsIds" item="goodsId" open="(" close=")" separator=",">
+            #{goodsId}
+        </foreach>
+        and agent_id = #{agentId}
+    </delete>
+</mapper>

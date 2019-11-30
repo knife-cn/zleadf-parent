@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.InvInMasMapper" >
+  <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.InvInMas" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <id column="bill_id" property="billId" jdbcType="INTEGER" />
+    <result column="bill_no" property="billNo" jdbcType="VARCHAR" />
+    <result column="link_id" property="linkId" jdbcType="INTEGER" />
+    <result column="link_no" property="linkNo" jdbcType="VARCHAR" />
+    <result column="cust_id" property="custId" jdbcType="INTEGER" />
+    <result column="bill_type" property="billType" jdbcType="VARCHAR" />
+    <result column="wh_id" property="whId" jdbcType="INTEGER" />
+    <result column="agent_id" property="agentId" jdbcType="INTEGER" />
+    <result column="bill_date" property="billDate" jdbcType="TIMESTAMP" />
+    <result column="bill_state" property="billState" jdbcType="VARCHAR" />
+    <result column="mas_amt" property="masAmt" jdbcType="DECIMAL" />
+    <result column="bill_desc" property="billDesc" jdbcType="VARCHAR" />
+    <result column="org_id" property="orgId" jdbcType="INTEGER" />
+    <result column="sys_id" property="sysId" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="modifier" property="modifier" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    bill_id, bill_no, link_id, link_no, cust_id, bill_type, wh_id, agent_id, bill_date, 
+    bill_state, mas_amt, bill_desc, org_id, sys_id, creator, modifier, create_time, modify_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.InvInMasExample" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from inv_in_mas
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from inv_in_mas
+    where bill_id = #{billId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    delete from inv_in_mas
+    where bill_id = #{billId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.fplat.entity.InvInMas" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into inv_in_mas (bill_id, bill_no, link_id, 
+      link_no, cust_id, bill_type, 
+      wh_id, agent_id, bill_date, 
+      bill_state, mas_amt, bill_desc, 
+      org_id, sys_id, creator, 
+      modifier, create_time, modify_time
+      )
+    values (#{billId,jdbcType=INTEGER}, #{billNo,jdbcType=VARCHAR}, #{linkId,jdbcType=INTEGER}, 
+      #{linkNo,jdbcType=VARCHAR}, #{custId,jdbcType=INTEGER}, #{billType,jdbcType=VARCHAR}, 
+      #{whId,jdbcType=INTEGER}, #{agentId,jdbcType=INTEGER}, #{billDate,jdbcType=TIMESTAMP}, 
+      #{billState,jdbcType=VARCHAR}, #{masAmt,jdbcType=DECIMAL}, #{billDesc,jdbcType=VARCHAR}, 
+      #{orgId,jdbcType=INTEGER}, #{sysId,jdbcType=INTEGER}, #{creator,jdbcType=INTEGER}, 
+      #{modifier,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlead.fplat.entity.InvInMas" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into inv_in_mas
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="billId != null" >
+        bill_id,
+      </if>
+      <if test="billNo != null" >
+        bill_no,
+      </if>
+      <if test="linkId != null" >
+        link_id,
+      </if>
+      <if test="linkNo != null" >
+        link_no,
+      </if>
+      <if test="custId != null" >
+        cust_id,
+      </if>
+      <if test="billType != null" >
+        bill_type,
+      </if>
+      <if test="whId != null" >
+        wh_id,
+      </if>
+      <if test="agentId != null" >
+        agent_id,
+      </if>
+      <if test="billDate != null" >
+        bill_date,
+      </if>
+      <if test="billState != null" >
+        bill_state,
+      </if>
+      <if test="masAmt != null" >
+        mas_amt,
+      </if>
+      <if test="billDesc != null" >
+        bill_desc,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="sysId != null" >
+        sys_id,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="billId != null" >
+        #{billId,jdbcType=INTEGER},
+      </if>
+      <if test="billNo != null" >
+        #{billNo,jdbcType=VARCHAR},
+      </if>
+      <if test="linkId != null" >
+        #{linkId,jdbcType=INTEGER},
+      </if>
+      <if test="linkNo != null" >
+        #{linkNo,jdbcType=VARCHAR},
+      </if>
+      <if test="custId != null" >
+        #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="billType != null" >
+        #{billType,jdbcType=VARCHAR},
+      </if>
+      <if test="whId != null" >
+        #{whId,jdbcType=INTEGER},
+      </if>
+      <if test="agentId != null" >
+        #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="billDate != null" >
+        #{billDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billState != null" >
+        #{billState,jdbcType=VARCHAR},
+      </if>
+      <if test="masAmt != null" >
+        #{masAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="billDesc != null" >
+        #{billDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="sysId != null" >
+        #{sysId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.InvInMas" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update inv_in_mas
+    <set >
+      <if test="billNo != null" >
+        bill_no = #{billNo,jdbcType=VARCHAR},
+      </if>
+      <if test="linkId != null" >
+        link_id = #{linkId,jdbcType=INTEGER},
+      </if>
+      <if test="linkNo != null" >
+        link_no = #{linkNo,jdbcType=VARCHAR},
+      </if>
+      <if test="custId != null" >
+        cust_id = #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="billType != null" >
+        bill_type = #{billType,jdbcType=VARCHAR},
+      </if>
+      <if test="whId != null" >
+        wh_id = #{whId,jdbcType=INTEGER},
+      </if>
+      <if test="agentId != null" >
+        agent_id = #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="billDate != null" >
+        bill_date = #{billDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="billState != null" >
+        bill_state = #{billState,jdbcType=VARCHAR},
+      </if>
+      <if test="masAmt != null" >
+        mas_amt = #{masAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="billDesc != null" >
+        bill_desc = #{billDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="sysId != null" >
+        sys_id = #{sysId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where bill_id = #{billId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.InvInMas" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update inv_in_mas
+    set bill_no = #{billNo,jdbcType=VARCHAR},
+      link_id = #{linkId,jdbcType=INTEGER},
+      link_no = #{linkNo,jdbcType=VARCHAR},
+      cust_id = #{custId,jdbcType=INTEGER},
+      bill_type = #{billType,jdbcType=VARCHAR},
+      wh_id = #{whId,jdbcType=INTEGER},
+      agent_id = #{agentId,jdbcType=INTEGER},
+      bill_date = #{billDate,jdbcType=TIMESTAMP},
+      bill_state = #{billState,jdbcType=VARCHAR},
+      mas_amt = #{masAmt,jdbcType=DECIMAL},
+      bill_desc = #{billDesc,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=INTEGER},
+      sys_id = #{sysId,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=INTEGER},
+      modifier = #{modifier,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where bill_id = #{billId,jdbcType=INTEGER}
+  </update>
+</mapper>

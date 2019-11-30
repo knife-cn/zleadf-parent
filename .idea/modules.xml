@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/zleadf-fh5/zleadf-fh5.iml" filepath="$PROJECT_DIR$/zleadf-fh5/zleadf-fh5.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zleadf-mall-service/zleadf-mall-service.iml" filepath="$PROJECT_DIR$/zleadf-mall-service/zleadf-mall-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zleadf-parent.iml" filepath="$PROJECT_DIR$/zleadf-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zleadf-util/zleadf-util.iml" filepath="$PROJECT_DIR$/zleadf-util/zleadf-util.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zleadf-web/zleadf-web.iml" filepath="$PROJECT_DIR$/zleadf-web/zleadf-web.iml" />
+    </modules>
+  </component>
+</project>

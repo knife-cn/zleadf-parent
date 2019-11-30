@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>客户账单</title>
+    <link rel="stylesheet" href="../../../h5/plugins/mui/mui.min.css">
+    <link rel="stylesheet" href="../../../h5/css/init.css">
+    <link rel="stylesheet" href="../../../h5/css/common.css">
+
+    <link rel="stylesheet" href="../../../h5/css/wbIndex.css">
+    <script src="../../../h5/js/rem.js"></script>
+    <script src="../../../h5/js/jquery.min.js"></script>
+    <script src="../../../h5/plugins/circle-progress.min.js"></script>
+    <script src="../../../h5/plugins/mui/mui.min.js"></script>
+    <script src="../../../h5/plugins/mui/mui.pullToRefresh.js"></script>
+    <script src="../../../h5/plugins/mui/mui.pullToRefresh.material.js"></script>
+</head>
+<body>
+<div class="shedulePart" style="padding-top:40%;">
+    <div>
+        <ul class="chooseUl clearfix">
+            <li class="active"><a href="javascript:;">本月</a></li>
+            <li><a href="javascript:;">本季</a></li>
+            <li><a href="javascript:;">本周</a></li>
+        </ul>
+        <a href="javascript:;" class="messageBtn">
+            <!-- 有新消息  红色远点显示 active  -->
+            <span class="active"></span>
+        </a>
+        <ul class="payment_count clearfix">
+            <li>
+                <dl>
+                    <dt>90</dt>
+                    <dd>账单总数</dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>80</dt>
+                    <dd>已完成账单数</dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>10</dt>
+                    <dd>未完成账单</dd>
+                </dl>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="orderNumDv" style="padding:0;">
+    <ul class="payment_list" id="order_list"></ul>
+</div>
+<!--<nav class="navBottom" style="z-index:10;">-->
+    <!--<ul>-->
+        <!--<li id="wbIndexNav" data-id="1">-->
+            <!--<a href="wbIndex.html">-->
+                <!--<div>-->
+                    <!--<span></span>-->
+                <!--</div>-->
+                <!--<p>工作台</p>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li id="customerNav" class="active" data-id="2">-->
+            <!--<a href="customer-payment.html">-->
+                <!--<div>-->
+                    <!--<span></span>-->
+                <!--</div>-->
+                <!--<p>客户</p>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li id="orderNav" data-id="3">-->
+            <!--<a href="order-list.html">-->
+                <!--<div>-->
+                    <!--<span></span>-->
+                <!--</div>-->
+                <!--<p>订单</p>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li id="goodsNav" data-id="4">-->
+            <!--<a href="goodsList.html">-->
+                <!--<div>-->
+                    <!--<span></span>-->
+                <!--</div>-->
+                <!--<p>商品</p>-->
+            <!--</a>-->
+        <!--</li>-->
+        <!--<li id="personNav" data-id="5">-->
+            <!--<a href="my-info.html">-->
+                <!--<div>-->
+                    <!--<span></span>-->
+                <!--</div>-->
+                <!--<p>我的</p>-->
+            <!--</a>-->
+        <!--</li>-->
+    <!--</ul>-->
+<!--</nav>-->
+<script>
+    var scroller = mui.init({
+        pullRefresh: {
+            container: "#order_list",//待刷新区域标识，querySelector能定位的css选择器均可，比如：id、.class等
+            up: {
+                height: 50,//可选.默认50.触发上拉加载拖动距离
+                auto: true,//可选,默认false.自动上拉加载一次
+                contentrefresh: "正在加载...",//可选，正在加载状态时，上拉加载控件上显示的标题内容
+                contentnomore: '没有更多数据了',//可选，请求完毕若没有更多数据时显示的提醒内容；
+                callback: pullfresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+            }
+        }
+    });
+
+    function pullfresh() {
+        mui.ajax({
+            type: "GET",
+            url: "/zlead/order/getOrderInfoCus",
+            data: {
+                pageNum: 1
+            },
+            cache: false,
+            dataType: "json",
+            contentType: "application/json",
+            success: function (res) {
+                if (res.success) {
+                    var html = "";
+                    for (var i = 0; i < res.data.length; i++) {
+                        html += "<li>";
+                        html += "<span>王思聪<i id=\"paied\">" + statusdesc(res.data[i].status) + "</i></span>";
+                        html += "<dl><dt>订单编号</dt><dd>" + res.data[i].sn + "</dd></dl>";
+                        html += "<dl><dt>总价</dt><dd>¥" + convertAmount(res.data[i].payable_amount) + "</dd></dl>";
+                        html += "<dl><dt>交易时间</dt><dd>" + convertTime(res.data[i].payment_date, "yyyy-MM-dd") + "</dd></dl>";
+                        html += "</li>";
+                    }
+                    $("#order_list").html(html);
+                    this.endPullupToRefresh(true);
+                } else {
+                    alert(res.message)
+                }
+            }
+        });
+    };
+
+    function statusdesc(status) {
+        return status === 0 ? "待付款" : status === 1 ? "代发货" : status === 2 ? "待收货" : status === 3 ? "已完成" : status === 4 ? "已取消" : status === 5 ? "已退货" : "未知";
+    }
+
+    function convertTime(nS, format) {
+        if (!nS) return "";
+        if (!format) format = "yyyy-MM-dd";
+        var dt = new Date(nS);
+        return dt.format(format);
+    }
+
+    function convertAmount(num) {
+        num = num.toString().replace(/\$|\,/g, '');
+        if (isNaN(num))
+            num = "0";
+        sign = (num == (num = Math.abs(num)));
+        num = Math.floor(num * 10 + 0.50000000001);
+        //cents = num%10;
+        num = Math.floor(num / 10).toString();
+        for (var i = 0; i < Math.floor((num.length - (1 + i)) / 3); i++)
+            num = num.substring(0, num.length - (4 * i + 3)) + ',' +
+                num.substring(num.length - (4 * i + 3));
+        return (((sign) ? '' : '-') + num);
+    }
+</script>
+</body>
+
+</html>

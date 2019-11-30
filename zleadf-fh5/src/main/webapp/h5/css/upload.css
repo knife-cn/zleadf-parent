@@ -1,0 +1,91 @@
+
+/* 内容 */
+
+html,body {
+  width: 100%;
+  height: 100%;
+  background:rgba(233,239,247,1);
+}
+
+.uplaod_contaner {
+  background-color: #fff;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.top_img_icon {
+  width: 1.36rem;
+  height: 1.36rem;
+  background: #3083FF;
+  margin: 0.6rem auto;
+  border-radius: 50%;
+  text-align: center;
+line-height: 1.56rem;
+}
+
+.top_img_icon img {
+    width: 0.38rem;
+    height: 0.44rem;
+}
+
+ul li {
+    height: 1.42rem;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(211,223,239,1);
+    margin: 0 0.3rem;
+    margin-bottom: 0.24rem;
+}
+
+ul li label {
+    font-size:0.26rem;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(75,84,97,1);
+}
+
+ul li input,select {
+    height: 70%;
+    font-size:0.32rem;
+font-family:PingFang-SC-Medium;
+font-weight:500;
+color:rgba(36,39,43,1);
+}
+
+/* ul li.add_border::after {
+    content: "";
+    border-left: 4px solid #FF4D46;
+} */
+
+ul li label {
+    display: flex;
+    font-size:0.26rem;
+    font-family:PingFangSC-Regular;
+    font-weight:400;
+    color:rgba(75,84,97,1);
+    justify-content: space-between;
+}
+
+ul li label img {
+    width: 0.4rem;
+    height: 0.4rem;
+}
+
+
+button {
+display: block;
+width: 6.92rem;
+height:0.92rem;
+background:rgba(48,131,255,1);
+border-radius:24px;
+margin: 0.3rem auto;
+font-size:0.32rem;
+font-family:PingFangSC-Medium;
+font-weight:500;
+color:rgba(255,255,255,1);
+line-height:0.92rem;
+}
+
+.opcity {
+    opacity: 0.6;
+}

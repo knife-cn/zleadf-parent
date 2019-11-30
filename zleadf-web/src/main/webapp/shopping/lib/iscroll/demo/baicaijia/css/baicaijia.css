@@ -1,0 +1,219 @@
+/*------------- 头部样式重定制 -------------*/
+.mtop .mheader {
+  background: #f4483e;
+}
+/*------------- S  头部导航菜单栏 -------------*/
+.mheadnav {
+  position: relative;
+  background-color: white;
+}
+.mheadnav .nav-titles .ul-wapper {
+  height: 1.013308rem;
+  overflow: hidden;
+}
+.mheadnav .nav-titles ul {
+  height: 1.013308rem;
+  width: 13.333rem;
+}
+.mheadnav .nav-titles ul li {
+  height: 1.013308rem;
+  line-height: 0.959976rem;
+  float: left;
+  padding: 0 0.13333rem;
+}
+.mheadnav .nav-titles ul li.active > a {
+  color: #e4393c;
+  border-bottom: 2px solid #e4393c;
+}
+.mheadnav .nav-titles ul li a {
+  width: 100%;
+  padding: 0 0.13333rem;
+  display: block;
+  text-align: center;
+  font-size: 14px;
+}
+[data-dpr='2'] .mheadnav .nav-titles ul li a {
+  font-size: 28px;
+}
+[data-dpr="3"] .mheadnav .nav-titles ul li a {
+  font-size: 42px;
+}
+.mheadnav .nav-searchbtn {
+  height: 1.013308rem;
+  width: 1.013308rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-left: 2px solid #e6e6e6;
+  background: #fbfbfb url("../images/search.svg") no-repeat center;
+  background-size: 0.599985rem 0.599985rem;
+}
+/*------------- E  头部导航菜单栏 -------------*/
+/*------------- S  白菜价产品列表  -------------*/
+.bcproducts-list {
+  background: #f7f7f7;
+  padding-bottom: 0.53332rem;
+}
+.bc-products-item {
+  margin-top: 0.13333rem;
+  background-color: white;
+}
+.bc-products-item .item-left {
+  float: left;
+  width: 3.59991rem;
+  height: 3.46658rem;
+  padding: 0.26666rem 0.39999rem;
+}
+.bc-products-item .item-left img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.bc-products-item .item-right {
+  overflow: hidden;
+  height: 3.46658rem;
+}
+.bc-products-item .item-right .info > .title {
+  padding-top: 0.26666rem;
+  min-height: 0.746648rem;
+  max-height: 1.06664rem;
+  line-height: 1.5;
+  color: #000;
+  font-size: 14px;
+}
+[data-dpr='2'] .bc-products-item .item-right .info > .title {
+  font-size: 28px;
+}
+[data-dpr="3"] .bc-products-item .item-right .info > .title {
+  font-size: 42px;
+}
+.bc-products-item .item-right .info > .price {
+  color: #fc353a;
+  font-size: 24px;
+  padding-top: 0.053332rem;
+  position: relative;
+}
+[data-dpr='2'] .bc-products-item .item-right .info > .price {
+  font-size: 48px;
+}
+[data-dpr="3"] .bc-products-item .item-right .info > .price {
+  font-size: 72px;
+}
+.bc-products-item .item-right .info > .price > i {
+  font-style: normal;
+  margin-right: 0.053332rem;
+  font-size: 14px;
+}
+[data-dpr='2'] .bc-products-item .item-right .info > .price > i {
+  font-size: 28px;
+}
+[data-dpr="3"] .bc-products-item .item-right .info > .price > i {
+  font-size: 42px;
+}
+.bc-products-item .item-right .info > .price > em {
+  font-size: 12px;
+}
+[data-dpr='2'] .bc-products-item .item-right .info > .price > em {
+  font-size: 24px;
+}
+[data-dpr="3"] .bc-products-item .item-right .info > .price > em {
+  font-size: 36px;
+}
+.bc-products-item .item-right .info > .price > del {
+  color: #a8a8a8;
+  margin-left: 0.319992rem;
+  font-size: 14px;
+}
+[data-dpr='2'] .bc-products-item .item-right .info > .price > del {
+  font-size: 28px;
+}
+[data-dpr="3"] .bc-products-item .item-right .info > .price > del {
+  font-size: 42px;
+}
+.bc-products-item .item-right .bottom {
+  padding-top: 0.13333rem;
+  position: relative;
+}
+.bc-products-item .item-right .bottom .bar i {
+  height: 0.373324rem;
+  width: 2.186612rem;
+  border: 1px solid #fc353a;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: 900;
+  background: #ffb7b7;
+  text-align: center;
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+}
+.bc-products-item .item-right .bottom .bar i em {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 5px;
+  background: #fc353a;
+  display: block;
+  transition: all 0.3s cubic-bezier(0.39, 0.58, 0.57, 1);
+}
+.bc-products-item .item-right .bottom .bar i span {
+  font-size: 12px;
+  line-height: 0.373324rem;
+  display: block;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  position: absolute;
+  font-style: normal;
+  top: 0;
+  left: 0;
+}
+[data-dpr='2'] .bc-products-item .item-right .bottom .bar i span {
+  font-size: 24px;
+}
+[data-dpr="3"] .bc-products-item .item-right .bottom .bar i span {
+  font-size: 36px;
+}
+.bc-products-item .item-right .bottom .bar b {
+  font-weight: normal;
+  font-size: 12px;
+  margin-left: 0.13333rem;
+  color: #fc353a;
+}
+[data-dpr='2'] .bc-products-item .item-right .bottom .bar b {
+  font-size: 24px;
+}
+[data-dpr="3"] .bc-products-item .item-right .bottom .bar b {
+  font-size: 36px;
+}
+.bc-products-item .item-right .bottom .getcount {
+  padding-top: 0.26666rem;
+}
+.bc-products-item .item-right .bottom .getcount a {
+  width: 2.93326rem;
+  height: 0.693316rem;
+  line-height: 0.693316rem;
+  text-align: center;
+  color: #e4393c;
+  display: block;
+  border: 1px dotted #e4393c;
+}
+.bc-products-item .item-right .bottom .buyproduct {
+  position: absolute;
+  right: 0.26666rem;
+  bottom: 0;
+  width: 1.46663rem;
+  height: 0.733315rem;
+  line-height: 0.733315rem;
+  text-align: center;
+}
+.bc-products-item .item-right .bottom .buyproduct a {
+  color: #fff;
+  display: block;
+  background: #ff5e5d;
+  height: 100%;
+  width: 100%;
+  border-radius: 0.066665rem;
+}
+/*------------- E  头部导航菜单栏 -------------*/

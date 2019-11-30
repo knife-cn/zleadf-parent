@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache updateCheck="true" name="cache_zxlg">
+    <diskStore path="java.io.tmpdir/zxlg"/>
+
+    <cacheManagerPeerProviderFactory
+        class="net.sf.ehcache.distribution.jgroups.JGroupsCacheManagerPeerProviderFactory"
+        properties="connect=TCP(bind_addr=127.0.0.1;bind_port=50061;max_bundle_size=1000000):
+                        TCPPING(initial_hosts=127.0.0.1[50061];
+                        port_range=1;timeout=5000;num_initial_members=2):MERGE2(min_interval=3000;max_interval=5000):
+                        FD_ALL(interval=5000;timeout=20000):FD(timeout=5000;max_tries=48;):VERIFY_SUSPECT(timeout=1500):
+                        pbcast.NAKACK(use_mcast_xmit=false,retransmit_timeout=100,200,300,600,1200,2400,4800;discard_delivered_msgs=true):
+                        pbcast.STABLE(stability_delay=1000;desired_avg_gossip=20000;max_bytes=100000):pbcast.GMS(print_local_addr=true;join_timeout=5000)"
+        propertySeparator="::"/>
+
+    <defaultCache maxEntriesLocalHeap="10000"  overflowToDisk="false"
+                  eternal="false" memoryStoreEvictionPolicy="LRU"
+                  timeToIdleSeconds="120" timeToLiveSeconds="120"
+                  diskPersistent="false">
+        <cacheEventListenerFactory
+                class="net.sf.ehcache.distribution.jgroups.JGroupsCacheReplicatorFactory"
+                properties="replicateAsynchronously=true, replicatePuts=true,replicateUpdates=true,
+            replicateUpdatesViaCopy=true,replicateRemovals=true "/>
+    </defaultCache>
+
+    <cache name="shiro-activeSessionCache"
+           maxElementsInMemory="10000"
+           overflowToDisk="true"
+           timeToLiveSeconds="0"
+           timeToIdleSeconds="0"
+           diskPersistent="true"
+           diskExpiryThreadIntervalSeconds="600">
+        <cacheEventListenerFactory
+                class="net.sf.ehcache.distribution.jgroups.JGroupsCacheReplicatorFactory"
+                properties="replicateAsynchronously=true, replicatePuts=true,replicateUpdates=true,
+                replicateUpdatesViaCopy=true,replicateRemovals=true "/>
+    </cache>
+
+    <cache name="org.apache.shiro.realm.text.PropertiesRealm-0-accounts"
+           maxElementsInMemory="10000"
+           overflowToDisk="true"
+           timeToLiveSeconds="0"
+           timeToIdleSeconds="0"
+           diskPersistent="true"
+           diskExpiryThreadIntervalSeconds="600">
+        <cacheEventListenerFactory
+                class="net.sf.ehcache.distribution.jgroups.JGroupsCacheReplicatorFactory"
+                properties="replicateAsynchronously=true, replicatePuts=true,replicateUpdates=true,
+                replicateUpdatesViaCopy=true,replicateRemovals=true "/>
+    </cache>
+</ehcache>

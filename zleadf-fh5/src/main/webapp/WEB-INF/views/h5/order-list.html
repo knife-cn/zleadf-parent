@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单列表</title>
+    <link rel="stylesheet" href="../../../h5/plugins/mui/mui.min.css">
+
+    <link rel="stylesheet" href="../../../h5/css/init.css">
+    <link rel="stylesheet" href="../../../h5/css/order-list.css">
+    <script src="../../../h5/js/rem.js"></script>
+
+</head>
+
+<body>
+
+<div class="order_list_header">
+    <div class="search">
+        <div class="search-items">
+            <img src="../../../h5/images/Shape@2x.png" alt="" class="goback">
+            <div class="search_box">
+                <img src="../../../h5/images/search88.png" alt="" class="icon_search">
+                <input type="text" placeholder="请输入订单编号"  id="searchInput" class="search_content">
+            </div>
+        </div>
+        <a class="backBtn" href="javascript:history.go(-1);"></a>
+    </div>
+    <!--<ul class="order_nav">-->
+    <!--<li>-->
+    <!--全部 <span>(99+)</span>-->
+    <!--<div class="im_line"></div>-->
+    <!--</li>-->
+    <!--<li>-->
+    <!--待支付 <span>(10)</span>-->
+    <!--<div class="im_line hide"></div>-->
+
+    <!--</li>-->
+    <!--<li>-->
+    <!--待发货 <span>(12)</span>-->
+    <!--<div class="im_line hide"></div>-->
+
+    <!--</li>-->
+    <!--<li>-->
+    <!--待收货 <span>(9)</span>-->
+    <!--<div class="im_line hide"></div>-->
+    <!--</li>-->
+    <!--</ul>-->
+</div>
+<!--下拉刷新容器-->
+    <div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+
+        <div class="mui-scroll">
+
+            <!--数据列表-->
+            <!--<ul class="mui-table-view mui-table-view-chevron order-list-box" id="orderListBox">-->
+
+            <!--</ul>-->
+
+            <!--数据列表-->
+            <ul class="mui-table-view mui-table-view-chevron order-list-box" id="orderListBox">
+
+            </ul>
+        </div>
+    </div>
+<nav class="navBottom" style="z-index:10;">
+    <ul>
+        <li id="wbIndexNav" data-id="1">
+            <a href="wbIndex.html">
+                <div>
+                    <span></span>
+                </div>
+                <p>工作台</p>
+            </a>
+        </li>
+        <li id="customerNav" data-id="2">
+            <a href="user-list.html">
+                <div>
+                    <span></span>
+                </div>
+                <p>客户</p>
+            </a>
+        </li>
+        <li id="orderNav" class="active" data-id="3">
+            <a href="order-list.html">
+                <div>
+                    <span></span>
+                </div>
+                <p>订单</p>
+            </a>
+        </li>
+        <li id="goodsNav" data-id="4">
+            <a href="goodsList.html">
+                <div>
+                    <span></span>
+                </div>
+                <p>商品</p>
+            </a>
+        </li>
+        <li id="personNav" data-id="5">
+            <a href="my-info.html">
+                <div>
+                    <span></span>
+                </div>
+                <p>我的</p>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+    <!--<ul class="order-list-box" id="orderListBox"></ul>-->
+    <script type="text/html" id="modelOrderList">
+        {{each result v}}
+        <li class="order_list_item" data-id="{{v.sn}}">
+            <!--<a href="order-detail.html?orderId={{v.id}}&sn={{v.sn}}">-->
+            <div  class="listItem">
+
+                <p class="title_pic_name">
+                        <span>
+                            <img src="../../../h5/images/4.png" alt="">
+                            <i>{{v.consignee}}</i>
+                        </span>
+                    <!--<i class="status">货到付款-待发货</i>-->
+
+                    <i class="status">
+                        {{if v.status==0}}
+                        待付款
+                        {{else if v.status==1}}
+                        待发货
+                        {{else if v.status==2}}
+                        待收货
+                        {{else if v.status==3}}
+                        已完成
+                        {{else if v.status==4}}
+                        已取消
+                        {{else if v.status==5}}
+                        拒收
+                        {{else if v.status==6}}
+                        已退货
+                        {{else if v.status==7}}
+                        申请退货
+                        {{else if v.status==8}}
+                        订单异常
+                        {{/if}}
+                    </i>
+                </p>
+                <div class="select_good">
+                    <div>
+                        <!--{{each v.OrderGoods o}}-->
+                            <!--<img src="{{o.goodsImg}}" alt="">-->
+                            <!--&lt;!&ndash;<img src="../../../h5/images/4.png" alt="">&ndash;&gt;-->
+                        <!--{{/each}}-->
+                        {{if v.OrderGoods.length ==1}}
+                        <img src="{{v.OrderGoods[0].goodsImg}}" alt="这是一张图片">
+                        {{else if v.OrderGoods.length>=2}}
+                        <img src="{{v.OrderGoods[0].goodsImg}}" alt="">
+                        <img src="{{v.OrderGoods[1].goodsImg}}" alt="">
+                        <p>
+                            <img src="../../../h5/images/ic_shenglue@2x.png" alt="">
+                        </p>
+                        {{/if}}
+
+                    </div>
+                    <p>共<span>{{v.OrderGoods.length}}</span>件商品</p>
+                </div>
+                <div class="yunfei">
+                    <div></div>
+                    <span>不含运费<i>总计 {{v.goodsAmount}}元</i></span>
+                </div>
+            </div>
+            {{if v.status ==1}}
+            <div class="fahuoDv">
+                <i class="fahuoBtn">发货</i>
+            </div>
+            {{/if}}
+        </li>
+        {{/each}}
+    </script>
+
+
+<!--<script src="../../../h5/js/jquery.min.js"></script>-->
+<script src="../../../h5/js/common.js"></script>
+
+<script src="../../../h5/plugins/mui/mui.min.js"></script>
+
+<script src="../../../h5/js/template-web.js"></script>
+<script src="../../../h5/js/page/order-list.js"></script>
+</body>
+<script>
+    mui('body').on('tap','a',function(){
+        window.top.location.href=this.href;
+    });
+</script>
+</html>

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlead.fplat.dao.PrdCustPriceMapper">
+  <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.PrdCustPrice">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <id column="item_id" jdbcType="INTEGER" property="itemId" />
+    <result column="min_qty" jdbcType="INTEGER" property="minQty" />
+    <result column="cost_price" jdbcType="DOUBLE" property="costPrice" />
+    <result column="batch_price" jdbcType="DOUBLE" property="batchPrice" />
+    <result column="item_price" jdbcType="DOUBLE" property="itemPrice" />
+    <result column="retail_price" jdbcType="DOUBLE" property="retailPrice" />
+    <result column="total_qty" jdbcType="INTEGER" property="totalQty" />
+    <result column="line_sort" jdbcType="INTEGER" property="lineSort" />
+    <result column="eff_date" jdbcType="TIMESTAMP" property="effDate" />
+    <result column="price_state" jdbcType="VARCHAR" property="priceState" />
+    <result column="price_desc" jdbcType="VARCHAR" property="priceDesc" />
+    <result column="org_id" jdbcType="INTEGER" property="orgId" />
+    <result column="sys_id" jdbcType="INTEGER" property="sysId" />
+    <result column="creator" jdbcType="INTEGER" property="creator" />
+    <result column="modifier" jdbcType="INTEGER" property="modifier" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="spare_qty" jdbcType="INTEGER" property="spareQty" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    item_id, min_qty, cost_price, batch_price, item_price, retail_price, total_qty, line_sort, 
+    eff_date, price_state, price_desc, org_id, sys_id, creator, modifier, create_time, 
+    modify_time, spare_qty
+  </sql>
+   
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from prd_cust_price
+    where item_id = #{itemId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    delete from prd_cust_price
+    where item_id = #{itemId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.fplat.entity.PrdCustPrice">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into prd_cust_price (item_id, min_qty, cost_price, 
+      batch_price, item_price, retail_price, 
+      total_qty, line_sort, eff_date, 
+      price_state, price_desc, org_id, 
+      sys_id, creator, modifier, 
+      create_time, modify_time, spare_qty
+      )
+    values (#{itemId,jdbcType=INTEGER}, #{minQty,jdbcType=INTEGER}, #{costPrice,jdbcType=DOUBLE}, 
+      #{batchPrice,jdbcType=DOUBLE}, #{itemPrice,jdbcType=DOUBLE}, #{retailPrice,jdbcType=DOUBLE}, 
+      #{totalQty,jdbcType=INTEGER}, #{lineSort,jdbcType=INTEGER}, #{effDate,jdbcType=TIMESTAMP}, 
+      #{priceState,jdbcType=VARCHAR}, #{priceDesc,jdbcType=VARCHAR}, #{orgId,jdbcType=INTEGER}, 
+      #{sysId,jdbcType=INTEGER}, #{creator,jdbcType=INTEGER}, #{modifier,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{spareQty,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlead.fplat.entity.PrdCustPrice">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into prd_cust_price
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        item_id,
+      </if>
+      <if test="minQty != null">
+        min_qty,
+      </if>
+      <if test="costPrice != null">
+        cost_price,
+      </if>
+      <if test="batchPrice != null">
+        batch_price,
+      </if>
+      <if test="itemPrice != null">
+        item_price,
+      </if>
+      <if test="retailPrice != null">
+        retail_price,
+      </if>
+      <if test="totalQty != null">
+        total_qty,
+      </if>
+      <if test="lineSort != null">
+        line_sort,
+      </if>
+      <if test="effDate != null">
+        eff_date,
+      </if>
+      <if test="priceState != null">
+        price_state,
+      </if>
+      <if test="priceDesc != null">
+        price_desc,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="sysId != null">
+        sys_id,
+      </if>
+      <if test="creator != null">
+        creator,
+      </if>
+      <if test="modifier != null">
+        modifier,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="spareQty != null">
+        spare_qty,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemId != null">
+        #{itemId,jdbcType=INTEGER},
+      </if>
+      <if test="minQty != null">
+        #{minQty,jdbcType=INTEGER},
+      </if>
+      <if test="costPrice != null">
+        #{costPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="batchPrice != null">
+        #{batchPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="itemPrice != null">
+        #{itemPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="retailPrice != null">
+        #{retailPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="totalQty != null">
+        #{totalQty,jdbcType=INTEGER},
+      </if>
+      <if test="lineSort != null">
+        #{lineSort,jdbcType=INTEGER},
+      </if>
+      <if test="effDate != null">
+        #{effDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="priceState != null">
+        #{priceState,jdbcType=VARCHAR},
+      </if>
+      <if test="priceDesc != null">
+        #{priceDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="sysId != null">
+        #{sysId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null">
+        #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spareQty != null">
+        #{spareQty,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.PrdCustPrice">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update prd_cust_price
+    <set>
+      <if test="minQty != null">
+        min_qty = #{minQty,jdbcType=INTEGER},
+      </if>
+      <if test="costPrice != null">
+        cost_price = #{costPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="batchPrice != null">
+        batch_price = #{batchPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="itemPrice != null">
+        item_price = #{itemPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="retailPrice != null">
+        retail_price = #{retailPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="totalQty != null">
+        total_qty = #{totalQty,jdbcType=INTEGER},
+      </if>
+      <if test="lineSort != null">
+        line_sort = #{lineSort,jdbcType=INTEGER},
+      </if>
+      <if test="effDate != null">
+        eff_date = #{effDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="priceState != null">
+        price_state = #{priceState,jdbcType=VARCHAR},
+      </if>
+      <if test="priceDesc != null">
+        price_desc = #{priceDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        org_id = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="sysId != null">
+        sys_id = #{sysId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null">
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null">
+        modifier = #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null">
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="spareQty != null">
+        spare_qty = #{spareQty,jdbcType=INTEGER},
+      </if>
+    </set>
+    where item_id = #{itemId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.PrdCustPrice">
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update prd_cust_price
+    set min_qty = #{minQty,jdbcType=INTEGER},
+      cost_price = #{costPrice,jdbcType=DOUBLE},
+      batch_price = #{batchPrice,jdbcType=DOUBLE},
+      item_price = #{itemPrice,jdbcType=DOUBLE},
+      retail_price = #{retailPrice,jdbcType=DOUBLE},
+      total_qty = #{totalQty,jdbcType=INTEGER},
+      line_sort = #{lineSort,jdbcType=INTEGER},
+      eff_date = #{effDate,jdbcType=TIMESTAMP},
+      price_state = #{priceState,jdbcType=VARCHAR},
+      price_desc = #{priceDesc,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=INTEGER},
+      sys_id = #{sysId,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=INTEGER},
+      modifier = #{modifier,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      spare_qty = #{spareQty,jdbcType=INTEGER}
+    where item_id = #{itemId,jdbcType=INTEGER}
+  </update>
+</mapper>

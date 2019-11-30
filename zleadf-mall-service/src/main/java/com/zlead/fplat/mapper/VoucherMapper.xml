@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.VoucherMapper">
+    <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.Voucher">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="payer" jdbcType="VARCHAR" property="payer"/>
+        <result column="payer_phone" jdbcType="INTEGER" property="payerPhone"/>
+        <result column="amount" jdbcType="DOUBLE" property="amount"/>
+        <result column="img" jdbcType="VARCHAR" property="img"/>
+        <result column="pay_type" jdbcType="INTEGER" property="payType"/>
+        <result column="pay_time" jdbcType="TIMESTAMP" property="payTime"/>
+        <result column="shop_id" jdbcType="INTEGER" property="shopId"/>
+        <result column="member_id" jdbcType="BIGINT" property="memberId"/>
+        <result column="agent_name" jdbcType="VARCHAR" property="agentName"/>
+        <result column="upload_time" jdbcType="TIMESTAMP" property="uploadTime"/>
+        <result column="upload_member" jdbcType="INTEGER" property="uploadMember"/>
+        <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
+        <result column="modify_member" jdbcType="INTEGER" property="modifyMember"/>
+        <result column="remark" jdbcType="VARCHAR" property="remark"/>
+    </resultMap>
+
+
+    <resultMap id="voucherVo" type="com.zlead.entity.vo.VoucherVo">
+        <result property="voucherId" column="id"/>
+        <result property="amount" column="amount"/>
+        <result property="payType" column="pay_type"/>
+        <result property="payTime" column="pay_time"/>
+        <result property="img" column="img"/>
+        <result property="payer" column="payer"/>
+        <result property="payerPhone" column="payer_phone"/>
+        <result property="headImg" column="head_img"/>
+    </resultMap>
+    <!--添加 -->
+    <insert id="save" parameterType="com.zlead.fplat.entity.Voucher" useGeneratedKeys="true" keyColumn="id"
+            keyProperty="id">
+
+        INSERT INTO
+        t_voucher(id,amount,img,pay_type,pay_time,upload_time,upload_member,modify_time,modify_member,payer,payer_phone,shop_id,member_id,buyer_corpid,sale_user,is_fact,pay_remark)
+        VALUES
+        (#{id},#{amount},#{img},#{payType},#{payTime},now(),#{uploadMember},now(),#{modifyMember},#{payer},#{payerPhone},#{shopId},#{memberId},#{buyerCorpId},#{saleUser},#{isFact},#{payRemark})
+    </insert>
+
+    <sql id="Base_Column_List">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        id, payer, payer_phone, amount, img, pay_type, pay_time, shop_id, member_id, buyer_corpid, upload_time,
+        upload_member, modify_time, modify_member, remark
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        select
+        <include refid="Base_Column_List"/>
+        from t_voucher
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        delete from t_voucher
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.zlead.fplat.entity.Voucher">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        insert into t_voucher (id, payer, payer_phone,
+        amount, img, pay_type,
+        pay_time, shop_id, member_id, buyer_corpid,
+        upload_time, upload_member, modify_time,
+        modify_member, remark)
+        values (#{id,jdbcType=INTEGER}, #{payer,jdbcType=VARCHAR}, #{payerPhone,jdbcType=INTEGER},
+        #{amount,jdbcType=DOUBLE}, #{img,jdbcType=VARCHAR}, #{payType,jdbcType=INTEGER},
+        #{payTime,jdbcType=TIMESTAMP}, #{shopId,jdbcType=INTEGER}, #{memberId,jdbcType=BIGINT},
+        #{buyerCorpId,jdbcType=BIGINT},
+        #{uploadTime,jdbcType=TIMESTAMP}, #{uploadMember,jdbcType=INTEGER}, #{modifyTime,jdbcType=TIMESTAMP},
+        #{modifyMember,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="com.zlead.fplat.entity.Voucher">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        insert into t_voucher
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="payer != null">
+                payer,
+            </if>
+            <if test="payerPhone != null">
+                payer_phone,
+            </if>
+            <if test="amount != null">
+                amount,
+            </if>
+            <if test="img != null">
+                img,
+            </if>
+            <if test="payType != null">
+                pay_type,
+            </if>
+            <if test="payTime != null">
+                pay_time,
+            </if>
+            <if test="shopId != null">
+                shop_id,
+            </if>
+            <if test="memberId != null">
+                member_id,
+            </if>
+            <if test="buyerCorpId != null">
+                buyer_corpid,
+            </if>
+            <if test="uploadTime != null">
+                upload_time,
+            </if>
+            <if test="uploadMember != null">
+                upload_member,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+            <if test="modifyMember != null">
+                modify_member,
+            </if>
+            <if test="remark != null">
+                remark,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="payer != null">
+                #{payer,jdbcType=VARCHAR},
+            </if>
+            <if test="payerPhone != null">
+                #{payerPhone,jdbcType=INTEGER},
+            </if>
+            <if test="amount != null">
+                #{amount,jdbcType=DOUBLE},
+            </if>
+            <if test="img != null">
+                #{img,jdbcType=VARCHAR},
+            </if>
+            <if test="payType != null">
+                #{payType,jdbcType=INTEGER},
+            </if>
+            <if test="payTime != null">
+                #{payTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="shopId != null">
+                #{shopId,jdbcType=INTEGER},
+            </if>
+            <if test="memberId != null">
+                #{memberId,jdbcType=BIGINT},
+            </if>
+            <if test="buyerCorpId != null">
+                #{buyerCorpId,jdbcType=BIGINT},
+            </if>
+            <if test="uploadTime != null">
+                #{uploadTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="uploadMember != null">
+                #{uploadMember,jdbcType=INTEGER},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyMember != null">
+                #{modifyMember,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                #{remark,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.Voucher">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        update t_voucher
+        <set>
+            <if test="payer != null">
+                payer = #{payer,jdbcType=VARCHAR},
+            </if>
+            <if test="payerPhone != null">
+                payer_phone = #{payerPhone,jdbcType=INTEGER},
+            </if>
+            <if test="amount != null">
+                amount = #{amount,jdbcType=DOUBLE},
+            </if>
+            <if test="img != null">
+                img = #{img,jdbcType=VARCHAR},
+            </if>
+            <if test="payType != null">
+                pay_type = #{payType,jdbcType=INTEGER},
+            </if>
+            <if test="payTime != null">
+                pay_time = #{payTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="shopId != null">
+                shop_id = #{shopId,jdbcType=INTEGER},
+            </if>
+            <if test="memberId != null">
+                member_id = #{memberId,jdbcType=BIGINT},
+            </if>
+            <if test="buyerCorpId != null">
+                buyer_corpid =#{buyerCorpId,jdbcType=BIGINT},
+            </if>
+            <if test="uploadTime != null">
+                upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="uploadMember != null">
+                upload_member = #{uploadMember,jdbcType=INTEGER},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyMember != null">
+                modify_member = #{modifyMember,jdbcType=INTEGER},
+            </if>
+            <if test="remark != null">
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.Voucher">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        update t_voucher
+        set payer = #{payer,jdbcType=VARCHAR},
+        payer_phone = #{payerPhone,jdbcType=INTEGER},
+        amount = #{amount,jdbcType=DOUBLE},
+        img = #{img,jdbcType=VARCHAR},
+        pay_type = #{payType,jdbcType=INTEGER},
+        pay_time = #{payTime,jdbcType=TIMESTAMP},
+        shop_id = #{shopId,jdbcType=INTEGER},
+        member_id = #{memberId,jdbcType=BIGINT},
+        buyer_corpid =#{buyerCorpId,jdbcType=BIGINT},
+        upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+        upload_member = #{uploadMember,jdbcType=INTEGER},
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+        modify_member = #{modifyMember,jdbcType=INTEGER},
+        remark = #{remark,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateSaleNameById">
+        update v_t_voucher set sale_name=#{saleName} where id=#{voucherId}
+    </update>
+
+
+    <select id="selectByOrder" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.Voucher">
+    SELECT a.* FROM t_voucher AS a WHERE a.shop_id =#{shopId}
+  </select>
+
+    <select id="getAllVoucher" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.Voucher">
+    SELECT a.* FROM t_voucher AS a WHERE a.member_id in (#{memberIds})
+  </select>
+
+    <select id="getVouchers" resultMap="voucherVo" parameterType="long">
+    SELECT
+    a.id,a.amount,a.pay_type,a.pay_time,a.img,a.agent_name as payer,v.payer_phone,
+    b.head_img
+    FROM v_t_voucher AS a
+    left join t_voucher as v on a.id=v.id
+    left join t_member as b on (a.shop_id=b.own_shopid and b.id=a.buyer_corpid)
+    WHERE a.shop_id in (select own_shopid from t_member where id=#{memberId}) and a.is_fact=1
+    order by v.upload_time desc
+  </select>
+
+    <select id="findById" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.Voucher">
+    SELECT a.* FROM t_voucher AS a WHERE a.id in (#{id})
+  </select>
+  
+   <select id="findByOrderId" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.Voucher">
+    SELECT a.* FROM t_voucher AS a WHERE a.id in (select voucher_id from t_order where id=#{orderId} ) limit 0,1 
+  </select>
+
+    <insert id="insertVoucher" parameterType="com.zlead.fplat.entity.Voucher">
+        insert into t_voucher (payer, payer_phone,
+        amount, img, pay_type,
+        pay_time, member_id,upload_member,upload_time,shop_id,modify_time,buyer_corpid,modify_member,sale_user,agent_name,is_fact)
+        values (#{payer,jdbcType=VARCHAR}, #{payerPhone,jdbcType=INTEGER},
+        #{amount,jdbcType=DOUBLE}, #{img,jdbcType=VARCHAR}, #{payType,jdbcType=INTEGER},
+        #{payTime,jdbcType=TIMESTAMP}, #{memberId,jdbcType=BIGINT},#{uploadMember,jdbcType=BIGINT},
+        #{uploadTime,jdbcType=TIMESTAMP},#{shopId,jdbcType=INTEGER},
+        #{modifyTime,jdbcType=TIMESTAMP},#{buyerCorpId,jdbcType=INTEGER},
+        #{modifyMember,jdbcType=INTEGER},
+        #{saleUser,jdbcType=INTEGER},
+        #{agentName,jdbcType=VARCHAR},
+        #{isFact,jdbcType=VARCHAR})
+    </insert>
+</mapper>

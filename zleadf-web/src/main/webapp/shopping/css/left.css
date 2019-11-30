@@ -1,0 +1,223 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul li {
+    list-style: none;
+}
+
+.complete {
+    width: 100%;
+    height: auto;
+    /*height:1717px;*/
+    background: rgba(255, 255, 255, 1);
+}
+
+.top2 {
+    width: 100%;
+    height: 46px;
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#FF6961', endColorstr='#FF8D29', GradientType=0);
+    background: -ms-linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+    background: -webkit-linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+    background: -moz-linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+    background: -o-linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+    background: linear-gradient(78deg, rgba(255, 105, 97, 1) 0%, rgba(255, 141, 41, 1) 100%);
+}
+
+.content {
+    width: 1200px;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+.left {
+    float: left;
+    width: 130px;
+    height: 300px;
+}
+
+.onedaoli {
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(79, 83, 98, 1);
+}
+
+.tu {
+    float: left;
+    width: 16px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 1px 1px 1px 2px;
+}
+
+.tu img {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-top: -2px;
+}
+
+.dao {
+    float: left;
+    margin-left: 17px;
+    width: 56px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.towdao {
+    float: left;
+    width: 100%;
+    margin-bottom: 30px;
+    color: rgba(167, 167, 172, 1);
+}
+
+.towdao li {
+    margin-left: 35px;
+    margin-top: 12px;
+    width: 52px;
+    height: 18px;
+    font-size: 13px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    line-height: 18px;
+    cursor: pointer;
+}
+
+.towdao li:hover {
+    /*color: #FD5700;*/
+    color: #FF9901;
+}
+
+.towdaoli {
+    color: rgba(167, 167, 172, 1);
+}
+
+.yan {
+    color: rgba(253, 87, 0, 1);
+}
+
+.rightda {
+    float: left;
+    width: 1055px;
+    min-height: 450px;
+    position: relative;
+}
+
+
+/* 新增弹窗：收藏信息全部删除弹框 */
+
+.collection_popbox {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.collection_popbox_content {
+    width: 392px;
+    height: 306px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 6px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+}
+
+.collection_popbox_content img:nth-of-type(1) {
+    width: 70px;
+    height: 70px;
+    margin-top: 60px;
+    margin-bottom: 20px;
+}
+
+.collection_close {
+    position: absolute;
+    width: 13px;
+    height: 13px;
+    right: 19px;
+    top: 19px;
+    cursor: pointer;
+}
+
+.collection_popbox_content p {
+    width: 100%;
+    height: 22px;
+    font-size: 16px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(79, 83, 98, 1);
+    line-height: 22px;
+}
+
+.collection_popbox_content div {
+    position: absolute;
+    width: 240px;
+    height: 43px;
+    bottom: 31px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.collection_popbox_content div a {
+    float: left;
+    width: 110px;
+    height: 43px;
+    line-height: 43px;
+    border-radius: 4px;
+    border: 1px solid rgba(206, 208, 218, 1);
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(79, 83, 98, 1);
+    background: #fff;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+.collection_popbox_content div a:first-child {
+    margin-right: 20px;
+    border: none;
+    color: rgba(255, 255, 255, 1);
+    background: rgba(253, 87, 0, 1);
+}
+
+
+/* 日期样式 */
+
+#h3Ele2,
+#h3Ele22 {
+    background: url('../../shopping/img/lhpimg/Datepicker_nomal.png') no-repeat 480px 10px;
+}
+
+
+/* #layui-laydate1 {
+    width: 516px;
+}
+
+#layui-laydate1>div,
+#layui-laydate1 table {
+    width: 100%;
+} */

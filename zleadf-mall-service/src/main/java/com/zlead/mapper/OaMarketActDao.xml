@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.OaMarketActDao" >
+  <resultMap id="BaseResultMap" type="com.zlead.entity.OaMarketAct" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="act_id" property="actId" jdbcType="INTEGER" />
+    <result column="cont_code" property="contCode" jdbcType="VARCHAR" />
+    <result column="cont_name" property="contName" jdbcType="VARCHAR" />
+    <result column="cont_type" property="contType" jdbcType="INTEGER" />
+    <result column="eff_date" property="effDate" jdbcType="TIMESTAMP" />
+    <result column="exp_date" property="expDate" jdbcType="TIMESTAMP" />
+    <result column="terminal" property="terminal" jdbcType="VARCHAR" />
+    <result column="cont_title" property="contTitle" jdbcType="VARCHAR" />
+    <result column="act_pic" property="actPic" jdbcType="VARCHAR" />
+    <result column="cont_url" property="contUrl" jdbcType="VARCHAR" />
+    <result column="push_time" property="pushTime" jdbcType="TIMESTAMP" />
+    <result column="push_user" property="pushUser" jdbcType="INTEGER" />
+    <result column="cont_state" property="contState" jdbcType="VARCHAR" />
+    <result column="shop_id" property="shopId" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="modifier" property="modifier" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zlead.entity.OaMarketAct" extends="BaseResultMap" >
+    <result column="static_cont" property="staticCont" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, act_id, cont_code, cont_name, cont_type, eff_date, exp_date, terminal, cont_title, 
+    act_pic, cont_url, push_time, push_user, cont_state, shop_id, creator, modifier, 
+    create_time, modify_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    static_cont
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from "oa_market_act"
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from "oa_market_act"
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.entity.OaMarketAct" >
+    insert into "oa_market_act" (id, act_id, cont_code, 
+      cont_name, cont_type, eff_date, 
+      exp_date, terminal, cont_title, 
+      act_pic, cont_url, push_time, 
+      push_user, cont_state, shop_id, 
+      creator, modifier, create_time, 
+      modify_time, static_cont)
+    values (#{id,jdbcType=INTEGER}, #{actId,jdbcType=INTEGER}, #{contCode,jdbcType=VARCHAR}, 
+      #{contName,jdbcType=VARCHAR}, #{contType,jdbcType=INTEGER}, #{effDate,jdbcType=TIMESTAMP}, 
+      #{expDate,jdbcType=TIMESTAMP}, #{terminal,jdbcType=VARCHAR}, #{contTitle,jdbcType=VARCHAR}, 
+      #{actPic,jdbcType=VARCHAR}, #{contUrl,jdbcType=VARCHAR}, #{pushTime,jdbcType=TIMESTAMP}, 
+      #{pushUser,jdbcType=INTEGER}, #{contState,jdbcType=VARCHAR}, #{shopId,jdbcType=INTEGER}, 
+      #{creator,jdbcType=INTEGER}, #{modifier,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP}, #{staticCont,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlead.entity.OaMarketAct" >
+    insert into "oa_market_act"
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="actId != null" >
+        act_id,
+      </if>
+      <if test="contCode != null" >
+        cont_code,
+      </if>
+      <if test="contName != null" >
+        cont_name,
+      </if>
+      <if test="contType != null" >
+        cont_type,
+      </if>
+      <if test="effDate != null" >
+        eff_date,
+      </if>
+      <if test="expDate != null" >
+        exp_date,
+      </if>
+      <if test="terminal != null" >
+        terminal,
+      </if>
+      <if test="contTitle != null" >
+        cont_title,
+      </if>
+      <if test="actPic != null" >
+        act_pic,
+      </if>
+      <if test="contUrl != null" >
+        cont_url,
+      </if>
+      <if test="pushTime != null" >
+        push_time,
+      </if>
+      <if test="pushUser != null" >
+        push_user,
+      </if>
+      <if test="contState != null" >
+        cont_state,
+      </if>
+      <if test="shopId != null" >
+        shop_id,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="staticCont != null" >
+        static_cont,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="actId != null" >
+        #{actId,jdbcType=INTEGER},
+      </if>
+      <if test="contCode != null" >
+        #{contCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contName != null" >
+        #{contName,jdbcType=VARCHAR},
+      </if>
+      <if test="contType != null" >
+        #{contType,jdbcType=INTEGER},
+      </if>
+      <if test="effDate != null" >
+        #{effDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expDate != null" >
+        #{expDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="terminal != null" >
+        #{terminal,jdbcType=VARCHAR},
+      </if>
+      <if test="contTitle != null" >
+        #{contTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="actPic != null" >
+        #{actPic,jdbcType=VARCHAR},
+      </if>
+      <if test="contUrl != null" >
+        #{contUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="pushTime != null" >
+        #{pushTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pushUser != null" >
+        #{pushUser,jdbcType=INTEGER},
+      </if>
+      <if test="contState != null" >
+        #{contState,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="staticCont != null" >
+        #{staticCont,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.entity.OaMarketAct" >
+    update "oa_market_act"
+    <set >
+      <if test="actId != null" >
+        act_id = #{actId,jdbcType=INTEGER},
+      </if>
+      <if test="contCode != null" >
+        cont_code = #{contCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contName != null" >
+        cont_name = #{contName,jdbcType=VARCHAR},
+      </if>
+      <if test="contType != null" >
+        cont_type = #{contType,jdbcType=INTEGER},
+      </if>
+      <if test="effDate != null" >
+        eff_date = #{effDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expDate != null" >
+        exp_date = #{expDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="terminal != null" >
+        terminal = #{terminal,jdbcType=VARCHAR},
+      </if>
+      <if test="contTitle != null" >
+        cont_title = #{contTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="actPic != null" >
+        act_pic = #{actPic,jdbcType=VARCHAR},
+      </if>
+      <if test="contUrl != null" >
+        cont_url = #{contUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="pushTime != null" >
+        push_time = #{pushTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pushUser != null" >
+        push_user = #{pushUser,jdbcType=INTEGER},
+      </if>
+      <if test="contState != null" >
+        cont_state = #{contState,jdbcType=VARCHAR},
+      </if>
+      <if test="shopId != null" >
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="staticCont != null" >
+        static_cont = #{staticCont,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zlead.entity.OaMarketAct" >
+    update "oa_market_act"
+    set act_id = #{actId,jdbcType=INTEGER},
+      cont_code = #{contCode,jdbcType=VARCHAR},
+      cont_name = #{contName,jdbcType=VARCHAR},
+      cont_type = #{contType,jdbcType=INTEGER},
+      eff_date = #{effDate,jdbcType=TIMESTAMP},
+      exp_date = #{expDate,jdbcType=TIMESTAMP},
+      terminal = #{terminal,jdbcType=VARCHAR},
+      cont_title = #{contTitle,jdbcType=VARCHAR},
+      act_pic = #{actPic,jdbcType=VARCHAR},
+      cont_url = #{contUrl,jdbcType=VARCHAR},
+      push_time = #{pushTime,jdbcType=TIMESTAMP},
+      push_user = #{pushUser,jdbcType=INTEGER},
+      cont_state = #{contState,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=INTEGER},
+      modifier = #{modifier,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      static_cont = #{staticCont,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.entity.OaMarketAct" >
+    update "oa_market_act"
+    set act_id = #{actId,jdbcType=INTEGER},
+      cont_code = #{contCode,jdbcType=VARCHAR},
+      cont_name = #{contName,jdbcType=VARCHAR},
+      cont_type = #{contType,jdbcType=INTEGER},
+      eff_date = #{effDate,jdbcType=TIMESTAMP},
+      exp_date = #{expDate,jdbcType=TIMESTAMP},
+      terminal = #{terminal,jdbcType=VARCHAR},
+      cont_title = #{contTitle,jdbcType=VARCHAR},
+      act_pic = #{actPic,jdbcType=VARCHAR},
+      cont_url = #{contUrl,jdbcType=VARCHAR},
+      push_time = #{pushTime,jdbcType=TIMESTAMP},
+      push_user = #{pushUser,jdbcType=INTEGER},
+      cont_state = #{contState,jdbcType=VARCHAR},
+      shop_id = #{shopId,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=INTEGER},
+      modifier = #{modifier,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <update id="updateExpiredActConState">
+      UPDATE oa_market_act set cont_state ='3' WHERE cont_state &lt;&gt; 3 and exp_date &lt;(SELECT NOW())
+    </update>
+
+    <select id="queryNoActiveActivity" resultMap="BaseResultMap">
+    select
+      <include refid="Base_Column_List" />
+    FROM oa_market_act as a WHERE a.cont_state &lt;&gt; 3 and a.exp_date &lt;(SELECT NOW())
+  </select>
+  
+  <select id="queryNoActiveActivity1" resultMap="ResultMapWithBLOBs">
+    SELECT a.id FROM oa_market_act as a WHERE a.cont_state &lt;&gt; 3 and a.exp_date &lt;(SELECT NOW())
+  </select>
+
+  <select id="queryNoActiveActId" resultType="java.lang.Integer">
+    select
+      act_id
+    FROM oa_market_act as a WHERE a.cont_state &lt;&gt; 3 and a.exp_date &lt;(SELECT NOW())
+  </select>
+
+
+</mapper>

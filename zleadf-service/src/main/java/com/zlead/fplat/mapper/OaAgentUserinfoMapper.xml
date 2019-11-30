@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.OaAgentUserinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.OaAgentUserinfo" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <id column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="agent_id" property="agentId" jdbcType="INTEGER" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="link_tel" property="linkTel" jdbcType="VARCHAR" />
+    <result column="main_user" property="mainUser" jdbcType="VARCHAR" />
+    <result column="sys_id" property="sysId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    user_id, agent_id, user_name, link_tel, main_user,sys_id
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.OaAgentUserinfoExample" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from oa_agent_userinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from oa_agent_userinfo
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    delete from oa_agent_userinfo
+    where user_id = #{userId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.fplat.entity.OaAgentUserinfo" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into oa_agent_userinfo (user_id, agent_id, user_name, 
+      link_tel, main_user)
+    values (#{userId,jdbcType=INTEGER}, #{agentId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, 
+      #{linkTel,jdbcType=VARCHAR}, #{mainUser,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlead.fplat.entity.OaAgentUserinfo" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into oa_agent_userinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="agentId != null" >
+        agent_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="linkTel != null" >
+        link_tel,
+      </if>
+      <if test="mainUser != null" >
+        main_user,
+      </if>
+      <if test="sysId != null" >
+        sys_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="agentId != null" >
+        #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="linkTel != null" >
+        #{linkTel,jdbcType=VARCHAR},
+      </if>
+      <if test="mainUser != null" >
+        #{mainUser,jdbcType=VARCHAR},
+      </if>
+      <if test="sysId != null" >
+        #{sysId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.OaAgentUserinfo" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update oa_agent_userinfo
+    <set >
+      <if test="agentId != null" >
+        agent_id = #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="linkTel != null" >
+        link_tel = #{linkTel,jdbcType=VARCHAR},
+      </if>
+      <if test="mainUser != null" >
+        main_user = #{mainUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.OaAgentUserinfo" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update oa_agent_userinfo
+    set agent_id = #{agentId,jdbcType=INTEGER},
+      user_name = #{userName,jdbcType=VARCHAR},
+      link_tel = #{linkTel,jdbcType=VARCHAR},
+      main_user = #{mainUser,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByAgentIdAndPhone" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from oa_agent_userinfo
+    where agent_id = #{agentId,jdbcType=INTEGER} and link_tel = #{phone, jdbcType=VARCHAR}
+    LIMIT 1
+  </select>
+
+  <select id="selectUserInfosByAgentId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from oa_agent_userinfo
+    where agent_id = #{agentId,jdbcType=INTEGER}
+  </select>
+  <select id="getUserInfoByAgentIdAndSysId_bak" resultMap="BaseResultMap">
+    SELECT a.* FROM oa_agent_userinfo a WHERE a.sys_id = #{sysId} AND a.agent_id = #{agentId} AND a.main_user = 1
+UNION ALL (SELECT v.* FROM (SELECT a.* FROM oa_agent_userinfo a WHERE a.sys_id = #{sysId} AND a.agent_id = #{agentId} ORDER BY user_id DESC LIMIT 1 )v)
+  </select>
+  
+  <!-- mall 下单时候,获取工厂的代理商联系人信息 根据agentid和shopid查询联系人和电话  -->
+  <select id="getUserInfoByAgentIdAndSysId" resultMap="BaseResultMap">
+    SELECT a.* FROM oa_agent_userinfo a WHERE a.sys_id = #{sysId} AND a.agent_id = #{agentId}  ORDER BY main_user desc,user_id DESC LIMIT 1 
+  </select>
+
+  <select id="findOaAgentUser" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from oa_agent_userinfo
+    where agent_id=#{agentId} and sys_id=#{sysId}
+    order by user_id desc
+    limit 1
+  </select>
+
+  <!--APP用根据代理人ID和店铺ID查询联系人信息-->
+  <select id="findUserInfoByAgentIdAndShopId" resultMap="BaseResultMap">
+     select * from oa_agent_userinfo t where t.agent_id=#{agentId} and  t.sys_id=#{shopId} ORDER BY t.user_id DESC
+  </select>
+</mapper>

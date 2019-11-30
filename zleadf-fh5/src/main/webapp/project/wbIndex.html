@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>工作台</title>
+    <!-- <link rel="stylesheet" href="plugins/mui/mui.min.css"> -->
+    <link rel="stylesheet" href="../css/init.css">
+    <link rel="stylesheet" href="../css/common.css">
+
+    <link rel="stylesheet" href="../css/wbIndex.css">
+    <script src="../js/rem.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <script src="../plugins/circle-progress.min.js"></script>
+    <!-- <script src="plugins/mui/mui.min.js"></script> -->
+    <!-- <script src="plugins/mui/mui.pullToRefresh.js"></script>
+    <script src="plugins/mui/mui.pullToRefresh.material.js"></script> -->
+
+
+</head>
+
+<body>
+    <div class="shedulePart">
+        <div>
+            <ul class="chooseUl clearfix">
+                <li class="active"><a href="javascript:;">本月</a> </li>
+                <li><a href="javascript:;">本季</a></li>
+                <li><a href="javascript:;">本周</a></li>
+            </ul>
+            <a href="javascript:;" class="messageBtn">
+                <!-- 有新消息  红色远点显示 active  -->
+                <span class="active"></span>
+            </a>
+            <div id="circle">
+                <div class="sheduleDv">
+                    <strong></strong><br>
+                    <span>月目标完成率</span>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div class="orderNumDv">
+        <div>
+            <p>订单金额</p>
+            <p><span>￥</span>3200.00</p>
+        </div>
+        <div>
+            <p>订单数</p>
+            <p>23</p>
+        </div>
+    </div>
+    <div class="orderPart marginTop">
+        <div>
+            <a href="javascript:;">
+                <img src="../images/home_ic_new_order@2x.png" alt="">
+                <p>新建订单</p>
+            </a>
+        </div>
+        <div>
+            <a href="javascript:;">
+                <img src="../images/home_ic_uploading_certificate@2x.png" alt="">
+                <p>上传凭证</p>
+            </a>
+        </div>
+    </div>
+    <ul class="typeItemUl">
+        <li>
+            <a href="javascript:;">
+                <div class="imgDv">
+                    <span></span>
+                </div>
+                <div class="contDv">
+                    <p>我的账户<span>+120</span></p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <div class="imgDv">
+                    <span></span>
+                </div>
+                <div class="contDv">
+                    <p>客户订单<span>+120</span></p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <div class="imgDv">
+                    <span></span>
+                </div>
+                <div class="contDv">
+                    <p>客户账单</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <div class="imgDv">
+                    <span></span>
+                </div>
+                <div class="contDv">
+                    <p>库存查询</p>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="javascript:;">
+                <div class="imgDv">
+                    <span></span>
+                </div>
+                <div class="contDv">
+                    <p>统计报表</p>
+                </div>
+            </a>
+        </li>
+    </ul>
+    <div class="todoListPart">
+        <div>
+            <h4>待办事项</h4>
+            <ul class="todoList">
+                <li>
+                    <a href="javascript:;">
+                        <div class="deliverStatusDv">
+                            <img src="../images/pic_profile_photo@2x.png" alt="">肖生克 <span class="deliverStatus">待发货</span>
+                        </div>
+                        <div class="goodsImg clearfix">
+                            <div class="imgListDV">
+                                <ul class="clearfix">
+                                    <li>
+                                        <img src="../images/home_ic_more_goods@2x.png" alt="">
+                                    </li>
+                                    <li>
+                                        <img src="../images/home_ic_more_goods@2x.png" alt="">
+                                    </li>
+                                    <li>
+                                        <img src="../images/home_ic_more_goods@2x.png" alt="">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="totalNum">
+                                共<span>11</span>件商品
+                            </div>
+
+                        </div>
+                        <div class="priceDv">
+                            <span>不含运费</span>
+                            <span>总计 1.200.00元</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <div class="deliverStatusDv">
+                            <img src="../images/pic_profile_photo@2x.png" alt="">肖生克 <span class="deliverStatus">待发货</span>
+                        </div>
+                        <div class="goodsImg clearfix">
+                            <div class="imgListDV">
+                                <ul class="clearfix">
+                                    <li>
+                                        <img src="../images/home_ic_more_goods@2x.png" alt="">
+                                    </li>
+                                    <li>
+                                        <img src="../images/home_ic_more_goods@2x.png" alt="">
+                                    </li>
+                                    <li>
+                                        <img src="../images/home_ic_more_goods@2x.png" alt="">
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="totalNum">
+                                共<span>11</span>件商品
+                            </div>
+
+                        </div>
+                        <div class="priceDv">
+                            <span>不含运费</span>
+                            <span>总计 1.200.00元</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <nav class="navBottom">
+            <ul>
+                <li class="active">
+                    <a href="javascript:;">
+                        <div>
+                            <span></span>
+                        </div>
+                        <p>工作台</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <div>
+                            <span></span>
+                        </div>
+                        <p>客户</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <div>
+                            <span></span>
+                        </div>
+                        <p>订单</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <div>
+                            <span></span>
+                        </div>
+                        <p>商品</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <div>
+                            <span></span>
+                        </div>
+                        <p>我的</p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <script>
+        $('#circle').circleProgress({
+            value: 0.6,
+            size: 112,
+            startAngle: Math.PI * 0.9,
+            emptyFill: "rgba(0, 0, 0, 0)",
+            lineCap: "round",
+            fill: {
+                gradient: ["#fff"],
+                color: "#f00"
+            }
+        }).on('circle-animation-progress', function(event, progress) {
+            $(this).find('strong').html(parseInt(100 * progress));
+            // $(this).find('strong').html(parseInt(100 * progress) + '<i>%</i>');
+        });;
+        // $('.second.circle').circleProgress({
+        //     value: 0.6
+        // }).on('circle-animation-progress', function(event, progress) {
+        //     $(this).find('strong').html(parseInt(100 * progress) + '<i>%</i>');
+        // });
+    </script>
+</body>
+
+</html>

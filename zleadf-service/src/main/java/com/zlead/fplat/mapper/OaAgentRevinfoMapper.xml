@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlead.fplat.dao.OaAgentRevinfoMapper">
+  <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.OaAgentRevinfo">
+    <result column="rev_id" jdbcType="INTEGER" property="revId" />
+    <result column="agent_id" jdbcType="INTEGER" property="agentId" />
+    <result column="rev_name" jdbcType="VARCHAR" property="revName" />
+    <result column="rev_tel" jdbcType="VARCHAR" property="revTel" />
+    <result column="rev_province" jdbcType="VARCHAR" property="revProvince" />
+    <result column="rev_city" jdbcType="VARCHAR" property="revCity" />
+    <result column="rev_county" jdbcType="VARCHAR" property="revCounty" />
+    <result column="rev_addr" jdbcType="VARCHAR" property="revAddr" />
+    <result column="rev_default" jdbcType="VARCHAR" property="revDefault" />
+    <result column="sys_id" jdbcType="INTEGER" property="sysId" />
+    <result column="is_fact" jdbcType="INTEGER" property="isFact" />
+    <result column="member_addr_id" jdbcType="BIGINT" property="memberAddrId" />
+  </resultMap>
+
+  <!--根据条件查询地址信息-->
+  <select id="findRevinfo" parameterType="com.zlead.fplat.entity.OaAgentRevinfo" resultMap="BaseResultMap">
+   SELECT *
+     FROM oa_agent_revinfo t
+    WHERE 1=1
+    <if test="agentId != null">AND t.`agent_id`=#{agentId}</if>
+    <if test="sysId != null">AND t.`sys_id`=#{sysId}</if>
+    <if test="isFact != null">AND t.`is_fact`=#{isFact}</if>
+    <if test="revDefault != null">AND t.`rev_default`=#{revDefault}</if>
+    ORDER BY t.`rev_id` DESC
+  </select>
+
+</mapper>

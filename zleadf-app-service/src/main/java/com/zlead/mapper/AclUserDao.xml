@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.AclUserDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.AclUserEntity" id="BaseResultMap">
+        <result property="userId" column="user_id"/>
+        <result property="username" column="login_name"/>
+        <result property="password" column="user_pwd"/>
+        <result property="adminFlag" column="admin_flag"/>
+        <result property="uint1" column="uint1"/>
+        <result property="sysId" column="sys_id"/>
+    </resultMap>
+    <update id="updatePwd">
+        update acl_user set user_pwd = #{password} where user_id = #{userId}
+    </update>
+
+
+    <select id="findUserById" resultMap="BaseResultMap">
+        select * from acl_user where user_id = #{userId}
+    </select>
+
+    <select id="findLoginName" resultMap="BaseResultMap">
+        select * from acl_user where login_name = #{login_name}
+    </select>
+
+    <select id="queryByName" resultType="java.lang.String">
+        select user_name from acl_user where login_name = #{login_name}
+    </select>
+
+
+    <select id="findUserByMemberId" resultMap="BaseResultMap">
+        select a.* from acl_user as a
+        left join t_member as b
+        on a.login_name=b.username
+        where b.id=#{memberId}
+    </select>
+
+
+    <select id="findAllUsers" resultMap="BaseResultMap">
+        select * from acl_user
+    </select>
+
+    <select id="findUnitsById" resultMap="BaseResultMap">
+        select a.* from acl_user a where a.uint1 = #{userId}
+    </select>
+
+    <select id="findUserOffOrNot" resultMap="BaseResultMap">
+        select a.* from acl_user a
+        where (a.role_id is null or a.user_state=0)
+        and user_id=#{userId}
+    </select>
+</mapper>

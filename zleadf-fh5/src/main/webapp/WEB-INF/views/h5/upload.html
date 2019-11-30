@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../../../h5/css/init.css">
+  <link rel="stylesheet" href="../../../h5/css/upload.css">
+	<link rel="stylesheet" href="../../../h5/plugins/layui/laydate.css">
+	<script src="../../../h5/js/rem.js"></script>
+  <script src="../../../h5/js/jquery.min.js"></script>
+	<script src="../../../h5/plugins/layui/laydate.js"></script>
+	<title>Document</title>
+</head>
+<body>
+  <div class="uplaod_contaner">
+    <div class="top_img_icon">
+      <img src="../../../h5/images/caterity.png" alt="">
+		</div>
+		
+		<ul>
+			<li>
+    		<label for="">付款人姓名</label>
+				<input type="text" placeholder="请输入付款人姓名" class="name">
+			</li>
+			<li>
+    		<label for="">付款金额</label>
+				<input type="text" placeholder="请输入金额" class="cash">
+			</li>
+			<li class="">
+    		<label for="" class="vaildate_phone">付款手机号</label>
+				<input type="text"  placeholder="请输入付款手机号" class="phone">
+			</li>
+			<li class="add_border">
+				<label for="">支付方式</label>
+				<select name="" id="">
+					<option value="0">全部</option>
+					<option value="1">支付宝</option>
+					<option value="2">微信</option>
+					
+				</select>
+			</li>
+			<li>
+				<label for="">支付日期</label>
+				<input type="text" id="select_time">
+			</li>
+			<li style="border-bottom:none;height: auto;;">
+				<label for="uploading">上传凭证图片<span><img src="../../../h5/images/uploading_camera.png" alt="" class="upload_icon"></span></label>
+				<input type="file" id="uploading" style="display:none;">
+				<div class="imgBox" style="position: relative;display: none">
+					<img src="" alt="" style="width: 3.16rem;height: 3.16rem;border-radius:6px;" id="img">
+					<div style="width: 0.48rem;height: 0.48rem;border-radius:50%;background: #000;line-height: 0.52rem;text-align: center;position: absolute; top: 0.2rem;left: 2.5rem">
+						<img src="../../../h5/images/ic_close@2x.png" alt="" style="width: 0.28rem;height: 0.28rem;" class="del_img">
+					</div>
+				</div>
+			</li>
+		</ul>		
+	</div>
+	
+	<button class="">提交</button>
+
+
+  <script>
+
+    var r = window.location.search.split("=")[1];
+    if(r) {
+      $.ajax({
+        type:'POST',
+        url:'/zlead/voucher/findById?voucherId=' + r,
+        dataType:'json',
+        success:function (res) {
+          console.log(res)
+          var data = res.data;
+          if(res.code == 1){
+            $('.name').val(data.payer);
+            $('.cash').val(data.amount);
+            $('.phone').val(data.payerPhone);
+            $('#select_time').val(data.payTime);
+            if(data.img){
+              $('.imgBox').show();
+              var imgSrc ="http://116.62.124.171/group1/"+ data.img
+              $('.imgBox #img').attr('src',imgSrc)
+            }
+
+            var s = data.payType;
+            var all = [];
+            $("select option").each(function () {
+              all.push($(this).attr("value"));
+            });
+
+            for(var i = 0 ;i<all.length;i++){
+              if(s == all[i]){
+                var options = $("select").find("option");
+                options[i].selected =true;
+
+              }
+            }
+
+          }
+        }
+      })
+    }
+
+
+
+
+	  var name,cash,phone,payType,time
+
+	  $('.name').on('blur',function(){
+	  	name = $(this).val()
+	  })
+
+	  $('.cash').on('blur',function(){
+		  cash = $(this).val()
+	  })
+	  $('.phone').on('blur',function(){
+		  phone = $(this).val()
+		  if(!(/^1[34578]\d{9}$/.test(phone))){
+			  $('.vaildate_phone').text('请输入正确的手机号').css('color','#FE4F68')
+			  return false;
+		  }else {
+			  $('.vaildate_phone').css('color','#4B5461')
+		  }
+	  })
+	  $('select').on('change',function(){
+		  payType = $(this).find("option:selected").val()
+	  })
+
+	  laydate.render({
+		  elem: '#select_time',
+		  type: 'datetime',
+		  format: 'yyyy/MM/dd HH:mm:ss',
+		  // range: true,
+		  done: function(value){
+			  time = value
+		  }
+	  });
+
+
+	  var xhr;
+	  var fmt1
+	  var images
+	  var formData;
+	  var uploadcallback;
+	  //上传图片
+	  function bo_upload_complete(data) {
+		  uploadcallback(data);
+	  }
+	  function bo_upload(file, callback) {
+		  //时间格式处理
+		  Date.prototype.Format = function (fmt) {
+			  var o = {
+				  "M+": this.getMonth() + 1, //月份
+				  "d+": this.getDate(), //日
+				  "H+": this.getHours(), //小时
+				  "m+": this.getMinutes(), //分
+				  "s+": this.getSeconds(), //秒
+				  "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+				  "S": this.getMilliseconds() //毫秒
+			  };
+			  if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+			  for (var k in o)
+				  if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+			  return fmt;
+		  }
+		  fmt1 =(file.lastModifiedDate).Format("yyyy/MM/dd HH:mm:ss")
+
+		  //限制图片大小
+		  var num = file.size/ 1024 /1024
+		  if(num > 2) {
+			  alert("上传图片不能大于2M!")
+			  return
+		  }
+		  if (!window.FormData || !window.FileList) {
+			  throw ('您的浏览器不支持ajax upload');
+		  }
+		  uploadcallback = callback;
+		  if (xhr == null) {
+			  xhr = new XMLHttpRequest();
+			  xhr.upload.addEventListener("progress", function (evt) {
+				  console.log(123);
+			  }, false);
+			  xhr.addEventListener("load", function (evt) {
+				  console.log(evt.target.responseText);
+				  var ret = eval('(' + evt.target.responseText + ')');
+				  bo_upload_complete(ret);
+			  }, false);
+			  xhr.addEventListener("error", function (evt) {
+				  console.log(12345);
+				  alert("上传出错" + evt.toString());
+			  }, false);
+			  xhr.addEventListener("abort", function (evt) {
+				  console.log(123456);
+				  alert("用户取消上传");
+			  }, false);
+		  }
+
+
+		  if (formData == null) {
+			  formData = new FormData();
+		  }
+		  formData.append('demo_input', file);
+		  // console.log(file)
+		  xhr.open('POST', '/ajeasy/fdfs/uploading');
+		  xhr.send(formData);
+	  }
+
+
+	  $('#uploading').change(function () {
+		  bo_upload(this.files[0], function (data) {
+			  if (data.err) {
+				  return
+			  } else {
+			  	  $('.imgBox').show();
+				  images=data.data
+				  var src ="http://116.62.124.171/group1/"+ images
+				  $('.imgBox #img').attr('src',src)
+			  }
+		  })
+	  })
+
+	  $('.del_img').on('click',function () {
+		  $('.imgBox').hide();
+		  $('.imgBox #img').removeAttr('src')
+	  })
+
+	  $('button').click(function () {
+		  console.log(typeof phone)
+
+		  $.ajax({
+			  type:'POST',
+			  url:'/zlead/voucher/addVoucher',
+			  data:{
+				  amount:cash,
+				  payTime:time,
+				  payType:payType,
+				  img:images,
+				  payer: name,
+				  payerPhone:phone
+			  },
+			  dataType:'json',
+			  success:function (res) {
+				  console.log(res)
+				  if(res.code == 1){
+				  	window.location.href = 'list.html'
+				  }
+			  }
+		  })
+	  })
+
+
+  </script>
+</body>
+</html>

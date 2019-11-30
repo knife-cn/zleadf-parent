@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>直链商城</title>
+</head>
+<link rel="stylesheet" href="../../shopping/css/pager.css" />
+<link rel="stylesheet" href="../../shopping/css/acDetails.css" />
+<link rel="stylesheet" href="../../shopping/css/header.css" />
+
+
+<body>
+    <div id="head"></div>
+    <div class="serch">
+        <div class="serch_con">
+            <!-- logo -->
+            <div class="logo">
+                <img src="../../shopping/../../shopping/img/index/logo.png" />
+            </div>
+            <div class="searcha">
+                <!-- 搜索框 -->
+                <div class="search">
+                    <!-- <div class="search_frame">
+                        <input type="text" id="resou" maxlength="50" />
+                    </div> -->
+                    <form autocomplete="off" class="search_frame" onsubmit="return false">
+                        <input type="text" id="resou" maxlength="50" />
+                    </form>
+                    <!-- 搜索按钮 -->
+                    <div class="search_icon" id="search_icon">
+                        <img src="../../shopping/../../shopping/img/index/ic_sousuo.png" />
+                    </div>
+                </div>
+                <!-- 热搜词 -->
+                <div class="search_hot">
+                    <ul class="search_hot_ul" id="search_hot_ul">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dt_top">
+        <div class="dt_topcon"></div>
+    </div>
+    <div class="sp">
+        <div class="sp_d">
+            <p>
+                活动详情
+            </p>
+        </div>
+    </div>
+    <div class="houd">
+        <div class="houd_con" id="houd_con">
+
+        </div>
+    </div>
+    <div class="serProut">
+        <div class="serProut_con">
+            <ul id="conaaaul">
+
+            </ul>
+        </div>
+    </div>
+
+    <!--分页-->
+    <div class="ta3">
+        <div class="pageJump" class="fright">
+            <span>跳转到</span>
+            <input type="text" />
+            <span>页</span>
+            <button type="button" class="button">确定</button>
+        </div>
+        <ul class="pagination" class="fright" id="page1">
+        </ul>
+    </div>
+
+    <div class="tbpager">
+        <div class="tbapager">
+            <div class="pager" id="page4">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="meng" id="megou">
+        <div class="guanlian">
+            <div class="toptan" id="tuicart"><img src="../../shopping/img/lhpimg/guanbi.png" class="img" /></div>
+            <div class="icons"><img src="../../shopping/img/lhpimg/Fill_2.png" /></div>
+            <div class="success_add">成功加入购物车</div>
+            <div id="fo" class="yiyan">去购物车结算</div>
+        </div>
+    </div>
+
+    <!--库存不足弹窗-->
+    <div class="meng5"></div>
+    <div class="popupMsg5">
+        <img class="close" src="../../shopping/img/car/close@2x.png" />
+        <img class="tips" src="../../shopping/img/car/Fill 1.png" />
+        <p class="msg5">提示信息</p>
+        <div class="know">知道了</div>
+    </div>
+    <!-- 活动不存在或者权限不足 -->
+    <div class="popupMsg6">
+        <img class="close6" src="../../shopping/img/car/close@2x.png" />
+        <img class="tips" src="../../shopping/img/car/Fill 1.png" />
+        <p class="msg6">提示信息</p>
+        <div class="know6">知道了</div>
+    </div>
+
+
+    <iframe src="footer.html" width="100%" height="292px" style="border:none"></iframe>
+</body>
+<script type="text/javascript" src="../../shopping/js/jquery-2.1.0.js"></script>
+<script src="../../shopping/js/pager.js"></script>
+<!-- <script type="text/javascript" src="../../shopping/js/head.js"></script> -->
+
+<script type="text/javascript" src="../../shopping/js/urlcs.js"></script>
+<script type="text/javascript" src="../../shopping/js/jinzi.js"></script>
+<script type="text/javascript" src="../../shopping/js/paging.js"></script>
+<script>
+    //弹窗关闭按钮
+    $(".know").click(function() {
+        $(".meng5").hide();
+        $(".popupMsg5").hide();
+    });
+    //弹窗关闭按钮--X
+    $(".close").click(function() {
+        $(".meng5").hide();
+        $(".popupMsg5").hide();
+    });
+
+    $("#head").load("head.html");
+    var actId = getParam("actId");
+    // alert(actId);
+
+
+    // 设置全局参数
+    // var pageNum = 1;
+    // var maxCount = 0;
+    // queryGoods(pageNum, actId);
+
+    // function queryGoods(page, actId) {
+    //     $.ajax({
+    //         type: "post", //提交请求的方式
+    //         cache: true, //是否有缓存
+    //         url: "/zlead/attr/findList/" + page + "/10/" + actId + "", //访问servlet的路径
+    //         dataType: "json", //没有这个，将把后台放会的json解析成字符串
+    //         data: {}, //把内容序列化
+    //         async: false, //是否异步
+    //         error: function(request) { //请求出错
+    //         },
+    //         success: function(res) { //获得返回值
+    //             if (res.code == 1) {
+    //                 $('.ta3').show() // 分页
+    //                 maxCount = res.data.count;
+    //                 Page({
+    //                     num: Math.ceil(maxCount / 10), //页码数
+    //                     startnum: page, //指定页码
+    //                     elem: $('#page1'), //指定的元素
+    //                     callback: function(n) { //回调函数,n是当前页码
+    //                         pageNum = n;
+    //                         queryGoods(pageNum, actId)
+    //                     }
+    //                 });
+
+    //                 // 跳转指定页码：
+
+    //                 $('.button').click(function() {
+    //                     pageNum = parseInt($(this).siblings('input').val());
+    //                     if (pageNum < 1) {
+    //                         pageNum = 1;
+    //                         $(this).siblings('input').val(pageNum);
+    //                     }
+    //                     if (pageNum > Math.ceil(maxCount / 10)) {
+    //                         pageNum = Math.ceil(maxCount / 10);
+    //                         $(this).siblings('input').val(pageNum);
+    //                     }
+    //                     queryGoods(pageNum, actId)
+
+    //                 })
+
+    //             }
+    //         }
+    //     });
+    // }
+
+    // 设置全局参数
+    var page = 1;
+    var maxCount = 0;
+
+    function jiazaip(pageCurrent, pageSize, actId) {
+        $.ajax({
+            type: "post", //提交请求的方式
+            cache: true, //是否有缓存
+            url: "/zlead/attr/findList/" + pageCurrent + "/" + pageSize + "/" + actId + "?_time=" + new Date().getTime(), //访问servlet的路径
+            dataType: "json", //没有这个，将把后台放会的json解析成字符串
+            data: {}, //把内容序列化
+            async: true, //是否异步
+            error: function(request) { //请求出错
+            },
+            success: function(res) { //获得返回值
+                if (res.code == 1) {
+                    var stra = "";
+                    if (res.data) {
+                        for (var i = 0; i < res.data.goodsPageDtoList.length; i++) {
+                            stra += '<li class="goDetailsn" data-id="' + res.data.goodsPageDtoList[i].id + '">';
+                            // stra += '<a id="asad" class="asad2" href="details?id=' + res.data.goodsPageDtoList[i].id + '&actId=' + actId + '">';
+                            stra += '<div class="porut_img">';
+                            stra += '<img src="' + res.data.goodsPageDtoList[i].image + '" />';
+                            stra += '<div class="porut_mo">';
+                            stra += '<div class="porut_ku">';
+                            stra += '<div class="porut_kua" data-id="' + res.data.goodsPageDtoList[i].id + '">';
+                            stra += '<img class="porut_kuaimg" src="../../shopping/img/searchPage/gmai.png" />';
+                            stra += '<img class="porut_hkuaimg" src="../../shopping/img/searchPage/hgmai.png" />';
+                            stra += '<div class="gmtk">';
+                            stra += '<div class="gma">';
+                            stra += '<span>立即购买</span>';
+                            stra += '</div>';
+                            stra += '<div class="xjt">';
+                            stra += '<img src="../../shopping/img/searchPage/xjt.png" />';
+                            stra += '</div>';
+                            stra += '</div>';
+                            stra += '</div>';
+                            stra += '<div class="porut_kub" data-id="' + res.data.goodsPageDtoList[i].id + '">';
+                            stra += '<img class="porut_kuaimg" src="../../shopping/img/searchPage/gwc.png" />';
+                            stra += '<img class="porut_hkuaimg" src="../../shopping/img/searchPage/hgwc.png"/>';
+                            stra += '<div class="gmtk">';
+                            stra += '<div class="gma">';
+                            stra += '<span>加入购物车</span>';
+                            stra += '</div>';
+                            stra += '<div class="xjt">';
+                            stra += '<img src="../../shopping/img/searchPage/xjt.png" />';
+                            stra += '</div>';
+                            stra += '</div>';
+                            stra += '</div>';
+                            stra += '</div>';
+                            stra += '</div>';
+                            stra += '</div>';
+                            stra += '<p class="porut_p">¥' + res.data.goodsPageDtoList[i].price.toFixed(2) + '</p>';
+                            stra += '<p class="porut_pa">' + res.data.goodsPageDtoList[i].goodsName + '</p>';
+                            stra += '<div class="ache"></div>';
+                            // stra += '</a>';
+                            stra += '</li>';
+                        }
+                    }
+                    $("#conaaaul").html(stra);
+
+                    $(".goDetailsn").click(function() {
+                        var goodsId = $(this).attr("data-id");
+                        $.ajax({
+                            type: "get", //提交请求的方式
+                            cache: true, //是否有缓存
+                            url: "/query/goodsIsMarket", //访问servlet的路径
+                            dataType: "json", //没有这个，将把后台放会的json解析成字符串
+                            async: true, //是否异步
+                            data: {
+                                goodsId: goodsId,
+                                t_: Math.random()
+                            },
+                            success: function(res) {
+                                if (res.code == 1) {
+                                    window.location.href = "details.html?id=" + goodsId + "";
+                                } else {
+                                    $(".msg5").html(res.message);
+                                    $(".meng5").show();
+                                    $(".popupMsg5").show();
+                                }
+                            }
+                        });
+                    });
+
+                    //立即支付按钮
+                    $(".porut_kua").click(function() {
+                        var goodsId = $(this).attr("data-id");
+                        // 添加判断是否跳转详情页
+                        $.ajax({
+                            type: "get", //提交请求的方式
+                            cache: true, //是否有缓存
+                            url: "/query/goodsIsMarket", //访问servlet的路径
+                            dataType: "json", //没有这个，将把后台放会的json解析成字符串
+                            async: true, //是否异步
+                            data: {
+                                goodsId: goodsId,
+                                t_: Math.random()
+                            },
+                            success: function(res) {
+                                if (res.code == 1) {
+                                    window.location.href = "details.html?id=" + goodsId + "&actId=" + actId;
+                                } else {
+                                    $(".msg5").html(res.message);
+                                    $(".meng5").show();
+                                    $(".popupMsg5").show();
+                                }
+                            }
+                        });
+                        return false;
+                    });
+
+                    //加入购物车
+                    $(".porut_kub").click(function() {
+                        var goodsId = $(this).attr("data-id");
+                        // 添加判断是否跳转详情页
+                        $.ajax({
+                            type: "get", //提交请求的方式
+                            cache: true, //是否有缓存
+                            url: "/query/goodsIsMarket", //访问servlet的路径
+                            dataType: "json", //没有这个，将把后台放会的json解析成字符串
+                            async: true, //是否异步
+                            data: {
+                                goodsId: goodsId,
+                                t_: Math.random()
+                            },
+                            success: function(res) {
+                                if (res.code == 1) {
+                                    $.ajax({
+                                        type: "post", //提交请求的方式
+                                        cache: true, //是否有缓存
+                                        url: "/zlead/shopcart/addShoppingCart", //访问servlet的路径
+                                        dataType: "json", //没有这个，将把后台放会的json解析成字符串
+                                        async: true, //是否异步
+                                        data: {
+                                            goodsId: goodsId,
+                                            count: '1',
+                                            buyType: '0'
+                                        },
+                                        success: function(res) {
+                                            if (res.code == 1) {
+                                                $("#megou").show();
+                                                shopCar(); //顶部购物车的接口
+                                            } else {
+                                                //    库存不足等错误信息
+                                                $(".msg5").html(res.message);
+                                                $(".meng5").show();
+                                                $(".popupMsg5").show();
+                                            }
+                                        }
+                                    });
+                                } else {
+                                    $(".msg5").html(res.message);
+                                    $(".meng5").show();
+                                    $(".popupMsg5").show();
+                                }
+                            }
+                        });
+
+
+
+                        return false;
+                    })
+
+                    $('.ta3').show() // 分页
+                    maxCount = res.data.count;
+                    Page({
+                        num: Math.ceil(maxCount / 10), //页码数
+                        startnum: pageCurrent, //指定页码
+                        elem: $('#page1'), //指定的元素
+                        callback: function(n) { //回调函数,n是当前页码
+                            page = n;
+                            jiazaip(page, pageSize, actId)
+                        }
+                    });
+
+                    // 跳转指定页码：
+                    $('.button').unbind();
+                    $('.button').click(function() {
+                        pageNum = parseInt($(this).siblings('input').val());
+                        if (pageNum < 1) {
+                            pageNum = 1;
+                            $(this).siblings('input').val(pageNum);
+                        }
+                        if (pageNum > parseInt((maxCount + 10 - 1) / 10)) {
+                            pageNum = parseInt((maxCount + 10 - 1) / 10);
+                            $(this).siblings('input').val(pageNum);
+                        }
+                        jiazaip(pageNum, pageSize, actId);
+
+                    })
+                    if ($('.button').siblings('input').val() == '') {
+                        $('.button').siblings('input').val(1);
+                    }
+                    $('.button').siblings('input').on('blur', function() {
+                        if ($(this).val() == '') {
+                            $(this).val(1);
+                        }
+                        if (isNaN(Number($(this).val()))) {
+                            $(this).val(1);
+                        }
+                    })
+
+                }
+
+            }
+        })
+    }
+
+    // jiazaip(page, 10, actId);
+
+    $("#tuicart").click(function() {
+        $("#megou").hide();
+        $("body").css('overflow-y', '');
+        $(".meng").hide()
+    });
+    $("#fo").click(function() {
+        window.location.href = "buyCar";
+    })
+</script>
+<script type="text/javascript" src="../../shopping/js/acDetails.js"></script>
+
+</html>

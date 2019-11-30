@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- 
+	namespace：必须与对应的接口全类名一致
+	id:必须与对应接口的某个对应的方法名一致
+ -->
+<mapper namespace="com.xhs.mapper.UserMapper">
+	
+	<insert id="save" parameterType="User">
+		insert into tb_user(username,password,status,createtime,role_id) values(#{username},#{password},#{status},now(),#{roleId})
+	</insert>
+	
+	<update id="update" parameterType="User">
+		update tb_user set username=#{username},password=#{password},status=#{status},role_id=#{roleId} where id=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="int">
+		delete from tb_user where id=#{id}
+	</delete>
+	
+	<!-- mybsits_config中配置的alias类别名,也可直接配置resultType为类路径  --> 
+	<select id="findById" parameterType="int" resultType="User">
+		select id,username,password,status,role_id roleId from tb_user where id=#{id}
+	</select>
+	
+	<select id="findAll" resultType="User">
+		select id,username,password,status,createtime,role_id roleId from tb_user
+	</select>
+	
+	<select id="getUserByUsername" parameterType="String"  resultMap="user">
+		select * from tb_user where username=#{username}
+	</select>
+	
+	<!-- 分页查+模糊查询 -->
+	<select id="getAllUserByPage" resultMap="user" parameterType="String">
+		select * from tb_user 
+		<where>
+			<if test="username != null and username != ''">
+				and username like '%${username}%'
+			</if>
+			<if test="password != null and password != ''">
+				and password like '%${password}%'
+			</if>
+		</where>
+		limit #{startRecord},#{pageSize}
+	</select>
+	
+	<select id="userCount" resultType="int" parameterType="String">
+		select count(*) from tb_user
+		<where>
+			<if test="username != null and username != ''">
+				and username like '%${username}%'
+			</if>
+			<if test="password != null and password != ''">
+				and password like '%${password}%'
+			</if>
+		</where>
+	</select>
+	
+	<resultMap type="com.xhs.entity.User" id="user">
+		<id column="id" property="id"/>
+		<result column="username" property="username"/>	<!-- 表  >:>  类 -->
+		<result column="password" property="password"/>
+		<result column="status" property="status"/>
+		<result column="createtime" property="createtime"/>
+		<result column="role_id" property="roleId"/>
+	</resultMap>
+	
+</mapper>

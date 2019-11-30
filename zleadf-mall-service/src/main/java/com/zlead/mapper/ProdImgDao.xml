@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.ProdImgDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.ProdImgEntity" id="prodImgMap">
+            <result property="id" column="id"/>
+            <result property="prodId" column="prod_id"/>
+            <result property="specId" column="spec_id"/>
+            <result property="specValueId" column="spec_value_id"/>
+            <result property="imgs" column="imgs"/>
+            <result property="firstImg" column="first_img"/>
+        </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_prod_img (
+                id,
+                prod_id,
+                spec_id,
+                spec_value_id,
+                imgs,
+                first_img
+                ) VALUES (
+                #{id},
+                #{prodId},
+                #{specId},
+                #{specValueId},
+                #{imgs},
+                #{firstImg}
+                )
+    </insert>
+
+    <update id="update">
+        UPDATE t_prod_img AS T SET
+                  T.id = #{id} ,
+                 T.prod_id = #{prodId} ,
+                 T.spec_id = #{specId} ,
+                 T.spec_value_id = #{specValueId} ,
+                 T.imgs = #{imgs} ,
+                 T.first_img = #{firstImg}
+                WHERE T.ID = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM t_prod_img WHERE  ID = #{id}
+    </delete>
+
+    <select id="findPage" parameterType="map" resultMap="prodImgMap">
+        SELECT *  FROM t_prod_img AS T
+    </select>
+
+    <select id="findById" resultMap="prodImgMap" useCache="false">
+        SELECT * FROM t_prod_img AS T WHERE  T.ID = #{id}
+    </select>
+
+    <select id="findByProdId" resultMap="prodImgMap" useCache="false">
+        SELECT * FROM t_prod_img AS T WHERE  T.prod_id = #{prodId}
+    </select>
+</mapper>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.SysUserBgDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.SysUserEntity" id="sysUserMap">
+            <result property="id" column="ID"/>
+            <result property="roleId" column="ROLE_ID"/>
+            <result property="userName" column="USER_NAME"/>
+            <result property="password" column="PASSWORD"/>
+            <result property="realName" column="REAL_NAME"/>
+            <result property="gender" column="GENDER"/>
+            <result property="imgPath" column="IMG_PATH"/>
+            <result property="email" column="EMAIL"/>
+            <result property="mobile" column="MOBILE"/>
+            <result property="enabled" column="ENABLED"/>
+            <result property="disableReason" column="DISABLE_REASON"/>
+            <result property="lastIp" column="LAST_IP"/>
+            <result property="lastVisiTime" column="LAST_VISI_TIME"/>
+            <result property="isDel" column="IS_DEL"/>
+            <result property="addTime" column="ADD_TIME"/>
+            <result property="addUserName" column="ADD_USER_NAME"/>
+            <result property="addUserId" column="ADD_USER_ID"/>
+            <result property="vipType" column="VIP_TYPE"/>
+            <result property="integral" column="INTEGRAL"/>
+            <result property="userType" column="USER_TYPE"/>
+        </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO sys_user (
+                ID,
+                ROLE_ID,
+                USER_NAME,
+                PASSWORD,
+                REAL_NAME,
+                GENDER,
+                IMG_PATH,
+                EMAIL,
+                MOBILE,
+                ENABLED,
+                DISABLE_REASON,
+                LAST_IP,
+                LAST_VISI_TIME,
+                IS_DEL,
+                ADD_TIME,
+                ADD_USER_NAME,
+                ADD_USER_ID,
+                VIP_TYPE,
+                INTEGRAL,
+                USER_TYPE
+                ) VALUES (
+                #{id},
+                #{roleId},
+                #{userName},
+                #{password},
+                #{realName},
+                #{gender},
+                #{imgPath},
+                #{email},
+                #{mobile},
+                #{enabled},
+                #{disableReason},
+                #{lastIp},
+                #{lastVisiTime},
+                #{isDel},
+                #{addTime},
+                #{addUserName},
+                #{addUserId},
+                #{vipType},
+                #{integral},
+                #{userType}
+                )
+    </insert>
+
+    <update id="update">
+        UPDATE sys_user AS T SET
+                  T.ID = #{id} ,
+                 T.ROLE_ID = #{roleId} ,
+                 T.USER_NAME = #{userName} ,
+                 T.PASSWORD = #{password} ,
+                 T.REAL_NAME = #{realName} ,
+                 T.GENDER = #{gender} ,
+                 T.IMG_PATH = #{imgPath} ,
+                 T.EMAIL = #{email} ,
+                 T.MOBILE = #{mobile} ,
+                 T.ENABLED = #{enabled} ,
+                 T.DISABLE_REASON = #{disableReason} ,
+                 T.LAST_IP = #{lastIp} ,
+                 T.LAST_VISI_TIME = #{lastVisiTime} ,
+                 T.IS_DEL = #{isDel} ,
+                 T.ADD_TIME = #{addTime} ,
+                 T.ADD_USER_NAME = #{addUserName} ,
+                 T.ADD_USER_ID = #{addUserId} ,
+                 T.VIP_TYPE = #{vipType} ,
+                 T.INTEGRAL = #{integral} ,
+                 T.USER_TYPE = #{userType}
+                WHERE T.ID = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM sys_user WHERE  ID = #{id}
+    </delete>
+
+    <select id="findPage" parameterType="map" resultMap="sysUserMap">
+        SELECT *  FROM sys_user AS T
+    </select>
+
+    <select id="findById" resultMap="sysUserMap" useCache="false">
+        SELECT * FROM sys_user AS T WHERE  T.ID = #{id}
+    </select>
+
+    <select id="findByUserName" resultMap="sysUserMap" parameterType="java.lang.String">
+        SELECT * FROM sys_user AS T where T.USER_NAME =#{userName}
+    </select>
+</mapper>

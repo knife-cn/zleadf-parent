@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="31px" viewBox="0 0 20 31" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>ic_zhiding</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M9.67297905,1.981419 C9.2156889,1.524491 8.47481124,1.524267 8.01749885,1.981595 C7.56018646,2.438747 7.56018646,3.179931 8.01749885,3.637259 L12.2095625,7.829355 L0.722534561,7.829355 C0.0758153413,7.829355 -0.448184268,8.353531 -0.448184268,9.000107 C-0.448184268,9.646635 0.0758153413,10.170811 0.722534561,10.170811 L12.2095625,10.170811 L8.01749885,14.362891 C7.56018646,14.819819 7.56018646,15.561067 8.01749885,16.018395 C8.24616617,16.247019 8.5457248,16.361339 8.84521671,16.361339 C9.14477534,16.361339 9.44433398,16.247019 9.67297905,16.018395 L16.6920647,9.000107 L9.67297905,1.981419 Z" id="path-1"></path>
+        <filter x="0.0%" y="-0.0%" width="100.0%" height="100.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.13 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="店铺首页" transform="translate(-1895.000000, -849.000000)">
+            <g id="ic_zhiding" transform="translate(1895.000000, 849.000000)">
+                <g id="ic_arrow" transform="translate(2.000000, 0.000000)">
+                    <g transform="translate(8.121940, 9.000000) rotate(-90.000000) translate(-8.121940, -9.000000) ">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#626262" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        <use fill="#FF9834" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                </g>
+                <text id="TOP" font-family="PingFangSC-Medium, PingFang SC" font-size="10" font-weight="400" letter-spacing="-0.3333334" fill="#FF9834">
+                    <tspan x="0" y="30">TOP</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

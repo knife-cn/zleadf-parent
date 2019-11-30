@@ -1,0 +1,302 @@
+html,body{
+	background: #eeeeee;
+}
+unslider-dots.indexInfo {
+	width: 100%;
+	height: 100%;
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
+	background: #eeeeee;
+}
+.indexInfo form {
+	width: 100%;
+	height: 1.5rem;
+	background:#C7021D;
+}
+.indexInfo .search {
+	width: 4.61rem;
+	height: 0.6rem;
+	/* background: url(../img/search.png) no-repeat; */
+	background-size: 100%;
+	margin-left: 1.45rem;
+	border:1px solid #fff;
+	border-radius:50px;
+	background:#fff;
+	margin-top:0.45rem;
+}
+.indexInfo form img{
+	width: 0.6rem;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+}
+.indexInfo .search input {
+	height: 0.3rem;
+	line-height: 0.3rem;
+	background: none;
+	color: #000;
+	width: 90%;
+	text-indent: 0.86rem;
+	margin-top: 0.14rem;
+	font-size: 0.26rem;
+}
+
+.indexInfo form input:-ms-input-placeholder {
+	color: #000;
+	opacity:0.6;
+}
+
+.indexInfo form input::-webkit-input-placeholder {
+	color: #000;
+	opacity:0.6;
+}
+
+.indexInfo form input:-moz-placeholder {
+	color: #000;
+	opacity:0.6;
+}
+
+.indexInfo form input::-moz-placeholder {
+	color: #000;
+	opacity:0.6;
+}
+/*banner样式*/
+
+
+/*父容器样式*/
+
+.carousel {
+	position: relative;
+	margin: 0 auto;
+}
+
+
+/*子元素样式*/
+
+
+/*.slider-main-img img{*/
+
+
+/*/!*手动设定图片的宽高度*!/*/
+
+
+/*}*/
+
+.slider-main-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.slider-ctrl {
+	position: absolute;
+	bottom: 0.05rem;
+	/*圆圈位置*/
+	left: 50%;
+	transform: translate(-50%);
+}
+
+.slider-ctrl-con {
+	display: inline-block;
+	width: 0.2rem;
+	/*圆圈大小*/
+	height: 0.2rem;
+	border-radius: 50%;
+	background-color: #878888;
+	/*圆圈开始颜色*/
+	margin-right: 0.1rem;
+	/*圆圈间距*/
+	cursor: pointer;
+	/*圆圈手势*/
+}
+
+.slider-ctrl .slider-ctrl-con-active {
+	background-color: #3cc6d0;
+	/*圆圈变更颜色*/
+}
+.indexList{
+	width:7.2rem;
+	float:left;
+	margin-left:0.14rem;
+}
+.indexList-title{
+	width:100%;
+	margin:0.23rem auto;
+	text-align: center;
+}
+.indexList-title img{
+	width:3.13rem;
+	height:0.486rem;
+	margin-left:2rem;
+}
+.list{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	float:left;
+	margin-bottom:1rem;
+}
+.listUl{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+.listUl li{
+	width:3.4rem;
+	height:4.09rem;
+	background:#fff;
+	border-radius:10px;
+	float:left;
+	margin-left:0.1rem;
+	margin-right:0.1rem;
+	margin-bottom:0.24rem;
+}
+.list-info{
+	width:2.98rem;
+	height:100%;
+	margin:0 auto;
+}
+.list-info-img{
+	width:100%;
+	height:2.3rem;
+	border-bottom:3px dashed #D3D3D3;
+}
+.list-info-img img{
+	height:2.2rem;
+	width:2.98rem;
+}
+.list-info-title{
+	width:100%;
+	height:auto;
+}
+.list-info-title p{
+	padding:0;
+	margin:0.1rem auto;
+	font-size:0.24rem;
+	color:#000;
+	opacity:0.7;
+}
+.list-info-peole{
+	width:100%;
+	height:0.4rem;
+	font-size:0.2rem;
+	color:#000;
+	opacity:0.7;
+}
+.list-info-peole img{
+	width:0.15rem;
+	height:0.15rem;
+	float:left;
+	margin-top:0.1rem;
+}
+.list-info-price{
+	width:100%;
+}
+.list-info-price p{
+	margin:0;
+	padding:0;
+}
+.list-price{
+	color:#FFDCC0;
+	font-size:0.24rem;
+}
+.list-price label{
+	color:#FF9030;
+	font-size:0.41rem;
+	margin-left:0.11rem;
+}
+.list-price-img{
+	width:0.3rem;
+	height:0.3rem;
+	float:left;
+	margin-top:0.15rem;
+	margin-right:0.11rem;
+}
+.list-integral{
+	float:right;
+	line-height:0.6rem;
+}
+.integral{
+	color:#B3B3B3;
+	font-size:0.24rem;
+}
+.join-in{
+	width:7.01rem;
+	height:3.45rem;
+	background:#fff;
+	border-radius:0.15rem;
+	margin:0 auto 0.24rem;
+}
+.dailySpecial{
+	width:7.2rem;
+	height:4.28rem;
+	margin:0.5rem auto;
+}
+.dailySpecial-1{
+	width:2.42rem;
+	height:100%;
+	float:left;
+	background:#fff;
+	border-radius:0.15rem;
+}
+.dailySpecial-2{
+	width:4.68rem;
+	height:100%;
+	float:left;
+	margin-left:0.1rem;
+}
+.dailySpecial-2-1{
+	width:100%;
+	height:2.08rem;
+	background:#fff;
+	border-radius:0.15rem;
+}
+.dailySpecial-2-2{
+	width:100%;
+	height:2.1rem;
+	margin-top:0.1rem;
+}
+.dailySpecial-2-2-div{
+	width:2.29rem;
+	height:100%;
+	float:left;
+	background:#fff;
+	border-radius:0.15rem;
+}
+.join-in-1{
+	width:100%;
+	height:2.39rem;
+	float:left;
+}
+.join-in-2{
+	width:100%;
+	height:1.05rem;
+	float:left;
+}
+.join-in-2-p1{
+	font-size:0.3rem;
+	color:#000;
+	opacity:0.7;
+	text-indent:0.24rem;
+}
+.join-in-2-p2{
+	font-size:0.24rem;
+	color:#000;
+	opacity:0.6;
+	text-indent:0.24rem;
+}
+.dailySpecial-1-img{
+	width:1.94rem;
+	height:3rem;
+	margin:0.64rem auto;
+}
+.dailySpecial-2-1-img{
+	width:3rem;
+	height:1.8rem;
+	padding-top:0.14rem;
+	padding-left:0.84rem;
+}
+.dailySpecial-2-2-div-img{
+	width:1.5rem;
+	height:1.5rem;
+	padding:0.3rem 0.395rem;
+}

@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.OaMacketContMapper" >
+  <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.OaMacketCont" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <id column="cont_id" property="contId" jdbcType="INTEGER" />
+    <result column="cont_code" property="contCode" jdbcType="VARCHAR" />
+    <result column="cont_name" property="contName" jdbcType="VARCHAR" />
+    <result column="cont_type" property="contType" jdbcType="VARCHAR" />
+    <result column="eff_date" property="effDate" jdbcType="TIMESTAMP" />
+    <result column="exp_date" property="expDate" jdbcType="TIMESTAMP" />
+    <result column="terminal" property="terminal" jdbcType="VARCHAR" />
+    <result column="cont_title" property="contTitle" jdbcType="VARCHAR" />
+    <result column="cont_url" property="contUrl" jdbcType="VARCHAR" />
+    <result column="push_time" property="pushTime" jdbcType="TIMESTAMP" />
+    <result column="push_user" property="pushUser" jdbcType="INTEGER" />
+    <result column="cont_state" property="contState" jdbcType="VARCHAR" />
+    <result column="sys_id" property="sysId" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="modifier" property="modifier" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.zlead.fplat.entity.OaMacketCont" extends="BaseResultMap" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <result column="static_cont" property="staticCont" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    cont_id, cont_code, cont_name, cont_type, eff_date, exp_date, terminal, cont_title, 
+    cont_url, push_time, push_user, cont_state, sys_id, creator, modifier, create_time, 
+    modify_time
+  </sql>
+  <sql id="Blob_Column_List" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    static_cont
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.zlead.fplat.entity.OaMacketContExample" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from oa_macket_cont
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.OaMacketContExample" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from oa_macket_cont
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from oa_macket_cont
+    where cont_id = #{contId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    delete from oa_macket_cont
+    where cont_id = #{contId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.fplat.entity.OaMacketCont" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into oa_macket_cont (cont_id, cont_code, cont_name, 
+      cont_type, eff_date, exp_date, 
+      terminal, cont_title, cont_url, 
+      push_time, push_user, cont_state, 
+      sys_id, creator, modifier, 
+      create_time, modify_time, static_cont
+      )
+    values (#{contId,jdbcType=INTEGER}, #{contCode,jdbcType=VARCHAR}, #{contName,jdbcType=VARCHAR}, 
+      #{contType,jdbcType=VARCHAR}, #{effDate,jdbcType=TIMESTAMP}, #{expDate,jdbcType=TIMESTAMP}, 
+      #{terminal,jdbcType=VARCHAR}, #{contTitle,jdbcType=VARCHAR}, #{contUrl,jdbcType=VARCHAR}, 
+      #{pushTime,jdbcType=TIMESTAMP}, #{pushUser,jdbcType=INTEGER}, #{contState,jdbcType=VARCHAR}, 
+      #{sysId,jdbcType=INTEGER}, #{creator,jdbcType=INTEGER}, #{modifier,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{staticCont,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlead.fplat.entity.OaMacketCont" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into oa_macket_cont
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="contId != null" >
+        cont_id,
+      </if>
+      <if test="contCode != null" >
+        cont_code,
+      </if>
+      <if test="contName != null" >
+        cont_name,
+      </if>
+      <if test="contType != null" >
+        cont_type,
+      </if>
+      <if test="effDate != null" >
+        eff_date,
+      </if>
+      <if test="expDate != null" >
+        exp_date,
+      </if>
+      <if test="terminal != null" >
+        terminal,
+      </if>
+      <if test="contTitle != null" >
+        cont_title,
+      </if>
+      <if test="contUrl != null" >
+        cont_url,
+      </if>
+      <if test="pushTime != null" >
+        push_time,
+      </if>
+      <if test="pushUser != null" >
+        push_user,
+      </if>
+      <if test="contState != null" >
+        cont_state,
+      </if>
+      <if test="sysId != null" >
+        sys_id,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+      <if test="staticCont != null" >
+        static_cont,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="contId != null" >
+        #{contId,jdbcType=INTEGER},
+      </if>
+      <if test="contCode != null" >
+        #{contCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contName != null" >
+        #{contName,jdbcType=VARCHAR},
+      </if>
+      <if test="contType != null" >
+        #{contType,jdbcType=VARCHAR},
+      </if>
+      <if test="effDate != null" >
+        #{effDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expDate != null" >
+        #{expDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="terminal != null" >
+        #{terminal,jdbcType=VARCHAR},
+      </if>
+      <if test="contTitle != null" >
+        #{contTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="contUrl != null" >
+        #{contUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="pushTime != null" >
+        #{pushTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pushUser != null" >
+        #{pushUser,jdbcType=INTEGER},
+      </if>
+      <if test="contState != null" >
+        #{contState,jdbcType=VARCHAR},
+      </if>
+      <if test="sysId != null" >
+        #{sysId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="staticCont != null" >
+        #{staticCont,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.OaMacketCont" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update oa_macket_cont
+    <set >
+      <if test="contCode != null" >
+        cont_code = #{contCode,jdbcType=VARCHAR},
+      </if>
+      <if test="contName != null" >
+        cont_name = #{contName,jdbcType=VARCHAR},
+      </if>
+      <if test="contType != null" >
+        cont_type = #{contType,jdbcType=VARCHAR},
+      </if>
+      <if test="effDate != null" >
+        eff_date = #{effDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expDate != null" >
+        exp_date = #{expDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="terminal != null" >
+        terminal = #{terminal,jdbcType=VARCHAR},
+      </if>
+      <if test="contTitle != null" >
+        cont_title = #{contTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="contUrl != null" >
+        cont_url = #{contUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="pushTime != null" >
+        push_time = #{pushTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="pushUser != null" >
+        push_user = #{pushUser,jdbcType=INTEGER},
+      </if>
+      <if test="contState != null" >
+        cont_state = #{contState,jdbcType=VARCHAR},
+      </if>
+      <if test="sysId != null" >
+        sys_id = #{sysId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="staticCont != null" >
+        static_cont = #{staticCont,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where cont_id = #{contId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zlead.fplat.entity.OaMacketCont" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update oa_macket_cont
+    set cont_code = #{contCode,jdbcType=VARCHAR},
+      cont_name = #{contName,jdbcType=VARCHAR},
+      cont_type = #{contType,jdbcType=VARCHAR},
+      eff_date = #{effDate,jdbcType=TIMESTAMP},
+      exp_date = #{expDate,jdbcType=TIMESTAMP},
+      terminal = #{terminal,jdbcType=VARCHAR},
+      cont_title = #{contTitle,jdbcType=VARCHAR},
+      cont_url = #{contUrl,jdbcType=VARCHAR},
+      push_time = #{pushTime,jdbcType=TIMESTAMP},
+      push_user = #{pushUser,jdbcType=INTEGER},
+      cont_state = #{contState,jdbcType=VARCHAR},
+      sys_id = #{sysId,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=INTEGER},
+      modifier = #{modifier,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      static_cont = #{staticCont,jdbcType=LONGVARCHAR}
+    where cont_id = #{contId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.OaMacketCont" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update oa_macket_cont
+    set cont_code = #{contCode,jdbcType=VARCHAR},
+      cont_name = #{contName,jdbcType=VARCHAR},
+      cont_type = #{contType,jdbcType=VARCHAR},
+      eff_date = #{effDate,jdbcType=TIMESTAMP},
+      exp_date = #{expDate,jdbcType=TIMESTAMP},
+      terminal = #{terminal,jdbcType=VARCHAR},
+      cont_title = #{contTitle,jdbcType=VARCHAR},
+      cont_url = #{contUrl,jdbcType=VARCHAR},
+      push_time = #{pushTime,jdbcType=TIMESTAMP},
+      push_user = #{pushUser,jdbcType=INTEGER},
+      cont_state = #{contState,jdbcType=VARCHAR},
+      sys_id = #{sysId,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=INTEGER},
+      modifier = #{modifier,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where cont_id = #{contId,jdbcType=INTEGER}
+  </update>
+</mapper>

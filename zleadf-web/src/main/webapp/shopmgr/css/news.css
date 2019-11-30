@@ -1,0 +1,90 @@
+.recommend{
+	width:7.01rem;
+	height:auto;
+	margin:0 auto;
+}
+.recommend ul{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+.recommend ul li{
+	width:100%;
+	height:1.9rem;
+	background:#fff;
+	border-radius:10px;
+	margin:0.24rem auto 0;
+}
+.recommend-1{
+	width:1.88rem;
+	height:100%;
+	float:left;
+}
+.recommend-2{
+	width:5.11rem;
+	height:1.42rem;
+	float:left;
+	margin:0.24rem auto;
+	border-left:0.01rem dashed #d3d3d3;
+}
+.recommend-1 img{
+	width:1.5rem;
+	height:1.5rem;
+	margin:0.2rem auto;
+}
+.recommend-2 p{
+	margin:0.1rem auto;
+	font-size:0.24rem;
+	color:#000;
+	opacity:0.7;
+	text-indent:0.27rem;
+}
+.recommend-2-2 img{
+	width:0.15rem;
+	height:0.15rem;
+	float:left;
+	margin-top:0.085rem;
+	margin-left:0.27rem;
+}
+.newsList{
+	width:7.01rem;
+	height:auto;
+	margin:0 auto;
+}
+.newsList ul{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+.newsList ul li{
+	width:100%;
+	height:5rem;
+	background:#fff;
+	border-radius:10px;
+	margin:0.24rem auto 0;
+}
+.newsList-1{
+	width:100%;
+	height:2.8rem;
+	float:left;
+}
+.newsList-2{
+	width:100%;
+	height:2.2rem;
+	float:left;
+	line-height:0.5rem;
+	text-indent:0.24rem;
+}
+.newsListTltle{
+	width:100%;
+	height:0.9rem;
+	background:#3c3f41;
+	overflow:hidden;
+	color:#fff;
+	line-height:0.9rem;
+	font-size:0.3rem;
+	margin-bottom: 0.1rem;
+}
+.newsListTltle span{
+	margin-left:2.5rem;
+}

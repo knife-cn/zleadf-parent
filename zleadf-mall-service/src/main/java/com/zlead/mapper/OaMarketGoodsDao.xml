@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.dao.OaMarketGoodsDao" >
+  <resultMap id="BaseResultMap" type="com.zlead.entity.OaMarketGoods" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="act_id" property="actId" jdbcType="INTEGER" />
+    <result column="goods_id" property="goodsId" jdbcType="INTEGER" />
+    <result column="sale_sort" property="saleSort" jdbcType="INTEGER" />
+    <result column="sale_qty" property="saleQty" jdbcType="INTEGER" />
+    <result column="sale_price" property="salePrice" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, act_id, goods_id, sale_sort, sale_qty, sale_price
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.zlead.entity.OaMarketGoods" >
+    select 
+    <include refid="Base_Column_List" />
+    from  oa_market_goods
+    where 1=1
+    <if test="id != null">
+      and id = #{id,jdbcType=INTEGER}
+    </if>
+    <if test="actId != null">
+      and act_id = #{actId,jdbcType=INTEGER}
+    </if>
+    <if test="goodsId != null">
+      and goods_id = #{goodsId,jdbcType=INTEGER}
+    </if>
+    limit 1
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from oa_market_goods
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.entity.OaMarketGoods" >
+    insert into oa_market_goods (id, act_id, goods_id,
+      sale_sort, sale_qty, sale_price
+      )
+    values (#{id,jdbcType=INTEGER}, #{actId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, 
+      #{saleSort,jdbcType=INTEGER}, #{saleQty,jdbcType=INTEGER}, #{salePrice,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlead.entity.OaMarketGoods" >
+    insert into oa_market_goods
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="actId != null" >
+        act_id,
+      </if>
+      <if test="goodsId != null" >
+        goods_id,
+      </if>
+      <if test="saleSort != null" >
+        sale_sort,
+      </if>
+      <if test="saleQty != null" >
+        sale_qty,
+      </if>
+      <if test="salePrice != null" >
+        sale_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="actId != null" >
+        #{actId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null" >
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="saleSort != null" >
+        #{saleSort,jdbcType=INTEGER},
+      </if>
+      <if test="saleQty != null" >
+        #{saleQty,jdbcType=INTEGER},
+      </if>
+      <if test="salePrice != null" >
+        #{salePrice,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.entity.OaMarketGoods" >
+    update oa_market_goods
+    <set >
+      <if test="saleSort != null" >
+        sale_sort = #{saleSort,jdbcType=INTEGER},
+      </if>
+      <if test="saleQty != null" >
+        sale_qty = #{saleQty,jdbcType=INTEGER},
+      </if>
+      <if test="salePrice != null" >
+        sale_price = #{salePrice,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where 1=1
+    <if test="id != null">
+      and id = #{id,jdbcType=INTEGER}
+    </if>
+    <if test="actId != null">
+      and act_id = #{actId,jdbcType=INTEGER}
+    </if>
+    <if test="goodsId != null">
+      and goods_id = #{goodsId,jdbcType=INTEGER}
+    </if>
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.entity.OaMarketGoods" >
+    update oa_market_goods
+    set act_id = #{actId,jdbcType=INTEGER},
+      goods_id = #{goodsId,jdbcType=INTEGER},
+      sale_sort = #{saleSort,jdbcType=INTEGER},
+      sale_qty = #{saleQty,jdbcType=INTEGER},
+      sale_price = #{salePrice,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateIsMarketByActIds" parameterType="list">
+    UPDATE oa_market_goods set is_market = 0 WHERE act_id in
+    <foreach collection="actIds" item="actIds" open="(" close=")" separator=",">
+      #{actIds}
+    </foreach>
+
+  </update>
+
+
+    <select id="selectByaActId" resultMap="BaseResultMap" parameterType="com.zlead.entity.OaMarketGoods" >
+    select
+    <include refid="Base_Column_List" />
+    from  oa_market_goods a
+    where a.act_id=#{actId}
+
+  </select>
+
+</mapper>

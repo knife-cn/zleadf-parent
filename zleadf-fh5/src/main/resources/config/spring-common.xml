@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-4.0.xsd" default-lazy-init="false">
+
+    <context:annotation-config/>
+
+    <!-- 读取资源文件 -->
+    <!-- 引入外部properties配置文件 -->
+    <bean id="configProperties"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:config/jdbc.properties"/>
+    </bean>
+    <!--
+    <context:component-scan base-package="com.tgb.mysqlConnectionInfo">
+    </context:component-scan>
+    <bean id="configProperties"
+        class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="location" value="classpath:config/jdbc.properties" />
+    </bean>
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name="properties" ref="configProperties" />
+    </bean>
+    -->
+
+    <!-- 1. 数据源 : dataSource -->
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <bean id="fdfs" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+    <property name="locations">
+        <list>
+            <value>classpath:fdfs_client.properties</value>
+        </list>
+    </property>
+
+    </bean>
+    <!--
+        2. mybatis的SqlSession的工厂: SqlSessionFactoryBean dataSource:引用数据源
+        MyBatis定义数据源,同意加载配置
+    -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:config/mybatis-config.xml"/>
+        <property name="mapperLocations">
+            <list>
+                <value>classpath*:com/zlead/mapper/*Dao.xml</value>
+                <value>classpath*:com/zlead/fplat/mapper/*Mapper.xml</value>
+                <!--<value>classpath*:com/puqian/payment/apipay/mappers/*Mapper.xml</value>-->
+                <value>classpath*:com/xhs/mapper/*Mapper.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--
+        3. mybatis自动扫描加载Sql映射文件/接口 : MapperScannerConfigurer sqlSessionFactory
+        basePackage:指定sql映射文件/接口所在的包（自动扫描）
+    -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.xhs.mapper,com.zlead.dao,com.puqian.dao,com.puqian.payment.apipay.dao,com.zlead.fplat.dao"/>
+        <!--<property name="sqlSessionTemplateBeanName" value="sqlSessionTemplateBatch"/>-->
+        <!-- <property name="sqlSessionFactory" ref="sqlSessionFactory"></property> -->
+    </bean>
+
+    <!--
+        4. 事务管理 : DataSourceTransactionManager dataSource:引用上面定义的数据源
+    -->
+    <bean id="txManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 5. 使用声明式事务
+         transaction-manager：引用上面定义的事务管理器
+     -->
+    <tx:annotation-driven transaction-manager="txManager"/>
+
+</beans>

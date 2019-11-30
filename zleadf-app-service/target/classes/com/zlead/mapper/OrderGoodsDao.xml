@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.OrderGoodsDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.OrderGoodsEntity" id="orderGoodsMap">
+            <result property="id" column="id"/>
+            <result property="orderId" column="order_id"/>
+            <result property="goodsId" column="goods_id"/>
+            <result property="goodsSn" column="goods_sn"/>
+            <result property="goodsName" column="goods_name"/>
+            <result property="goodsImg" column="goods_img"/>
+            <result property="price" column="price"/>
+            <result property="point" column="point"/>
+            <result property="goodsPoint" column="goods_point"/>
+            <result property="discount" column="discount"/>
+            <result property="count" column="count"/>
+            <result property="commentStatus" column="comment_status"/>
+            <result property="status" column="status"/>
+            <result property="createDate" column="create_date"/>
+            <result property="updateDate" column="update_date"/>
+            <result property="remark" column="remark"/>
+            <result property="marketPrice" column="market_price"/>
+            <result property="spareQty" column="spare_qty"/>
+            <result property="goodsTotalPrice" column="goods_total_price"/>
+        </resultMap>
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.vo.OrderGoodsDetailVo" id="orderGoodsDetailVo">
+        <result property="goodsId" column="goods_id"/>
+        <result property="goodsName" column="goods_name"/>
+        <result property="goodsImg" column="goods_img"/>
+        <result property="price" column="price"/>
+        <result property="count" column="count"/>
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_order_goods (
+                id,
+                order_id,
+                goods_id,
+                goods_sn,
+                goods_name,
+                goods_img,
+                price,
+                point,
+                goods_point,
+                discount,
+                count,
+                line_amt,
+                comment_status,
+                status,
+                create_date,
+                update_date,
+                remark,
+                market_price,
+                spare_qty,
+                goods_total_price
+                ) VALUES (
+                #{id},
+                #{orderId},
+                #{goodsId},
+                #{goodsSn},
+                #{goodsName},
+                #{goodsImg},
+                #{price},
+                #{point},
+                #{goodsPoint},
+                #{discount},
+                #{count},
+                #{count},
+                #{commentStatus},
+                #{status},
+                #{createDate},
+                #{updateDate},
+                #{remark},
+                #{marketPrice},
+                #{spareQty},
+                #{goodsTotalPrice}
+                )
+    </insert>
+
+    <update id="update">
+        UPDATE t_order_goods AS T SET
+                  T.id = #{id} ,
+                 T.order_id = #{orderId} ,
+                 T.goods_id = #{goodsId} ,
+                 T.goods_sn = #{goodsSn} ,
+                 T.goods_name = #{goodsName} ,
+                 T.goods_img = #{goodsImg} ,
+                 T.price = #{price} ,
+                 T.point = #{point} ,
+                 T.goods_point = #{goodsPoint} ,
+                 T.discount = #{discount} ,
+                 T.count = #{count} ,
+                 T.comment_status = #{commentStatus} ,
+                 T.status = #{status} ,
+                 T.create_date = #{createDate} ,
+                 T.update_date = #{updateDate} ,
+                 T.remark = #{remark},
+                 T.market_price = #{marketPrice},
+                 T.goods_total_price = #{goodsTotalPrice}
+                WHERE T.ID = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM t_order_goods WHERE  ID = #{id}
+    </delete>
+
+    <select id="findPage" parameterType="map" resultMap="orderGoodsMap">
+        SELECT *  FROM t_order_goods AS T
+    </select>
+
+    <select id="findById" resultMap="orderGoodsMap" useCache="false">
+        SELECT * FROM t_order_goods AS T WHERE  T.ID = #{id}
+    </select>
+
+    <select id="findListByOrderId" parameterType="long" resultMap="orderGoodsMap">
+        SELECT distinct a.*  FROM t_order_goods AS a WHERE a.order_id = #{orderId}
+        ORDER BY a.id ASC
+    </select>
+
+    <select id="findOrderDetailsBySn"  resultMap="orderGoodsMap">
+        SELECT a.*  FROM t_order_goods AS a WHERE a.order_id = (SELECT b.id from t_order AS b WHERE sn=#{sn} AND b.shop_id=#{shopId})
+        ORDER BY a.id ASC
+    </select>
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.vo.OrderGoodsListVo" id="orderGoodsListVo">
+        <result property="goodsId" column="goods_id"/>
+        <result property="goodsImg" column="goods_img"/>
+        <result property="count" column="goodscnt"/>
+    </resultMap>
+
+    <select id="findAppOrderGoodsListByPage" resultMap="orderGoodsListVo">
+        select a.goods_id,a.goods_img,SUM(a.count) as `count` from t_order_goods as a where a.order_id = #{orderId}
+        GROUP BY a.goods_id
+    </select>
+
+
+    <select id="findAppOrderGoodsDetail" resultMap="orderGoodsDetailVo">
+        select g.goods_id,g.goods_name,g.goods_img,g.price,sum(g.count) as `count` from t_order_goods as g
+        where g.order_id = #{orderId} GROUP BY g.goods_id
+        order by g.create_date desc
+    </select>
+
+</mapper>

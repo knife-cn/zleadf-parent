@@ -1,0 +1,165 @@
+.orderInfo {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	background: #eeeeee;
+}
+.orderTitle{
+	width:100%;
+	height:0.9rem;
+	background:#CB091E;
+	overflow:hidden;
+	color:#fff;
+	line-height:0.9rem;
+	font-size:0.3rem;
+}
+.orderTitle span{
+	margin-left:2.5rem;
+}
+#orderList{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+}
+.chooseType{
+	width:100%;
+	height:1rem;
+	background:#fff;
+}
+.chooseType ul{
+	list-style:none;
+}
+.chooseType ul li{
+	width:20%;
+	height:100%;
+	float:left;
+	text-align:center;
+	color:#737373;
+	font-size:0.28rem;
+	line-height:1rem;
+}
+.chooseType ul li.active{
+	color:#D51623;
+}
+.orderList{
+	width:7.01rem;
+	height:auto;
+	overflow:hidden;
+	margin:0 auto;
+}
+.list{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+	background:#fff;
+	border-radius:0.15rem;
+	margin:0.24rem auto 0;
+}
+.listName{
+	width:6.55rem;
+	height:0.65rem;
+	margin:0 auto;
+	line-height:0.65rem;
+}
+.listINfo{
+	width:6.55rem;
+	height:2.13rem;
+	margin:0 auto 0.24rem;
+	border-top:0.02rem dashed #E3E3E3;
+	border-bottom:0.02rem dashed #E3E3E3;
+}
+.listBtn{
+	width:6.55rem;
+	height:1.2rem;
+	margin:0 auto;
+}
+.listName img{
+	width:0.15rem;
+	height:0.15rem;
+	padding-top:0.25rem;
+}
+.listNameImg1{
+	margin-right:0.12rem;
+	float:left;
+}
+.listNameImg2{
+	float:right;
+}
+.listName span{
+	font-size:0.26rem;
+	color:#000;
+	opacity:0.7;
+}
+.listName label{
+	font-size:0.26rem;
+	color:#000;
+	opacity:0.7;
+	float:right;
+	margin-left:0.12rem;
+}
+.listINfo-1{
+	width:1.4rem;
+	height:100%;
+	float:left;
+}
+.listINfo-1 img{
+	width:1rem;
+	height:1.53rem;
+	margin:0.3rem auto;
+}
+.listINfo-2{
+	width:5.15rem;
+	height:1.85rem;
+	float:left;
+	margin:0.15rem auto;
+}
+.listINfo-2 img{
+	width:0.15rem;
+	height:0.15rem;
+	float:left;
+	margin-right:0.12rem;
+	padding-top:0.06rem;
+}
+.mt{
+	margin-bottom:0.18rem;
+	margin-top:0.36rem;
+}
+.listINfo-2-p{
+	font-size:0.26rem;
+	color:#000;
+	opacity:0.7;
+}
+.listINfo-2-span{
+	font-size:0.24rem;
+	color:#000;
+	opacity:0.7;
+}
+.listINfo-2-price{
+	float:right;
+	font-size:0.24rem;
+	color:#000;
+	opacity:0.6;
+	line-height:0.2rem;
+}
+.listINfo-2-price label{
+	font-size:0.50rem;
+	color:#fa264f;
+	margin-left:0.12rem;
+}
+.listBtn-btn{
+	width:1.85rem;
+	height:0.8rem;
+	float:right;
+	margin-left:0.25rem;
+	margin-top:0.25rem;
+}
+.listBtn-btn img{
+	width:1.85rem;
+	height:0.8rem;
+}
+.orderInfoList{
+	width:7.02rem;
+	height:auto;
+	overflow:hidden;
+	margin:0 auto;
+}

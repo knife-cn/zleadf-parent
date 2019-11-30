@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../../../h5/css/init.css">
+  <link rel="stylesheet" href="../../../h5/css/forgetpass.css">
+  <script src="../../../h5/js/rem.js"></script>
+  <title>修改密码</title>
+</head>
+
+<body>
+<div class="p_container">
+  <ul>
+    <li class="old">
+      <p>旧密码</p>
+      <div>
+        <input type="password" value="" placeholder="请输入旧密码" class="old_pass">
+      </div>
+    </li>
+
+    <li class="new">
+      <p>新密码</p>
+      <div>
+        <input type="password" value="" placeholder="请设置6-20位密码" class="new_pass">
+      </div>
+    </li>
+
+    <li class="re_new">
+      <p>确认密码</p>
+      <div>
+        <input type="password" placeholder="再次确认新的登录密码" class="renew_pass">
+      </div>
+    </li>
+  </ul>
+
+  <a href="javascript:void(0)" class="forgetpass">忘记密码？</a>
+
+  <button class="z_lond opacity" disabled="disabled">确认</button>
+</div>
+
+<script src="../js/jquery.min.js"></script>
+<script>
+
+  var oldPass,newPass,renewPass
+
+  $('.old_pass').on('blur',function () {
+    var value = $(this).val().replace(/\s+/g,"");
+    oldPass = value;
+    if($(this).val() == '') {
+      $('.old').addClass('err')
+      $('.old p').text('密码不能为空，请重新输入').css('color','#FE4F62');
+    }else if(value.length < 6 || value.length > 20){
+      $('.old').addClass('err')
+      $('.old p').text('密码位6到20位不可以有空格，请重新输入').css('color','#FE4F62');
+      $(this).val('');
+    }else {
+      $('.old').addClass('corrent').removeClass('err')
+      $('.old p').text('旧密码').css('color','#3E4A59')
+    }
+
+    if(!$('.old').hasClass('corrent') || !$('.new').hasClass('corrent') || !$('.re_new').hasClass('corrent')){
+      $('.z_lond').attr('disabled','disabled');
+      $('.z_lond').addClass('opacity');
+    }else {
+      $('.z_lond').removeClass('opacity');
+      $('.z_lond').removeAttr('disabled');
+    }
+
+})
+
+  $('.new_pass').on('blur',function () {
+    var value2 = $(this).val().replace(/\s+/g,"");
+    $('.renew_pass').val('');
+    $('.re_new').removeClass('err').removeClass('corrent')
+    newPass = value2;
+
+    if($(this).val() == '') {
+      $('.new').addClass('err')
+      $('.new p').text('密码不能为空，请重新输入').css('color','#FE4F62');
+      return;
+    }else if(value2.length < 6 || value2.length > 20){
+      $('.new').addClass('err')
+      $('.new p').text('密码位6到20位不可以有空格，请重新输入').css('color','#FE4F62');
+      $(this).val('');
+
+    }else {
+      $('.new').addClass('corrent')
+      $('.new p').text('新密码').css('color','#3E4A59')
+    }
+    if(!$('.old').hasClass('corrent') || !$('.new').hasClass('corrent') || !$('.re_new').hasClass('corrent')){
+      $('.z_lond').attr('disabled','disabled');
+      $('.z_lond').addClass('opacity');
+    }else {
+      $('.z_lond').removeClass('opacity');
+      $('.z_lond').removeAttr('disabled');
+    }
+  })
+
+  $('.renew_pass').on('blur',function () {
+    var value3 = $(this).val().replace(/\s+/g,"");
+    renewPass = value3
+    if(value3 == ''){
+      $('.re_new').addClass('err').removeClass('corrent')
+      $('.re_new p').text('密码不不能为空，请重新输入').css('color','#FE4F62');
+    }else if(value3 != newPass) {
+      $('.re_new').addClass('err').removeClass('corrent')
+      $('.re_new p').text('两次密码不一致，请重新输入').css('color','#FE4F62');
+      $(this).val('');
+    }else {
+      $('.re_new').addClass('corrent').removeClass('err')
+      $('.re_new p').text('确认密码').css('color','#3E4A59');
+    }
+    if(!$('.old').hasClass('corrent') || !$('.new').hasClass('corrent') || !$('.re_new').hasClass('corrent')){
+      $('.z_lond').attr('disabled','disabled');
+      $('.z_lond').addClass('opacity');
+    }else {
+      $('.z_lond').removeClass('opacity');
+      $('.z_lond').removeAttr('disabled');
+    }
+  })
+
+
+  $('.z_lond').click(function () {
+    $.ajax({
+      type:'POST',
+      url:'/zlead/member/updatepaw?npassword='+oldPass+'&password='+newPass,
+      dataType:'json',
+      success:function (res) {
+        console.log(res)
+        if(res.code == 1){
+          window.location.href = 'login.html'
+        }
+      }
+    })
+  })
+
+</script>
+</body>
+
+
+</html>

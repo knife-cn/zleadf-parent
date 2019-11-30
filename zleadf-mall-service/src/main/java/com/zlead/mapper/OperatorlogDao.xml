@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.OperatorlogDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+
+
+        <resultMap id="BaseResultMap" type="com.zlead.entity.OperatorLog" >
+                <!--
+                      common class -  @ET
+                  model 属性定义, do not modify.
+                -->
+                <id column="id" property="id" jdbcType="INTEGER" />
+                <result column="memberid" property="memberId" jdbcType="INTEGER" />
+                <result column="username" property="userName" jdbcType="VARCHAR" />
+                <result column="title" property="title" jdbcType="VARCHAR" />
+                <result column="remark" property="remark" jdbcType="VARCHAR" />
+                <result column="category" property="category" jdbcType="INTEGER" />
+                <result column="module" property="module" jdbcType="VARCHAR" />
+                <result column="sn" property="sn" jdbcType="VARCHAR" />
+                <result column="link_url" property="linkUrl" jdbcType="VARCHAR" />
+                <result column="operator_status" property="operatorStatus" jdbcType="INTEGER" />
+                <result column="systemid" property="systemId" jdbcType="VARCHAR" />
+                <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+                <result column="addip" property="addIp" jdbcType="VARCHAR" />
+        </resultMap>
+
+        <resultMap id="ResultMapWithBLOBs" type="com.zlead.entity.OperatorLog" extends="BaseResultMap" >
+                <!--
+                      common class -  @ET
+                  model 属性定义, do not modify.
+                -->
+                <result column="operator_params" property="operatorParams" jdbcType="LONGVARCHAR" />
+        </resultMap>
+        <sql id="Example_Where_Clause" >
+                <!--
+                      common class -  @ET
+                  model 属性定义, do not modify.
+                -->
+                <where >
+                        <foreach collection="oredCriteria" item="criteria" separator="or" >
+                                <if test="criteria.valid" >
+                                        <trim prefix="(" suffix=")" prefixOverrides="and" >
+                                                <foreach collection="criteria.criteria" item="criterion" >
+                                                        <choose >
+                                                                <when test="criterion.noValue" >
+                                                                        and ${criterion.condition}
+                                                                </when>
+                                                                <when test="criterion.singleValue" >
+                                                                        and ${criterion.condition} #{criterion.value}
+                                                                </when>
+                                                                <when test="criterion.betweenValue" >
+                                                                        and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                                                </when>
+                                                                <when test="criterion.listValue" >
+                                                                        and ${criterion.condition}
+                                                                        <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                                                                                #{listItem}
+                                                                        </foreach>
+                                                                </when>
+                                                        </choose>
+                                                </foreach>
+                                        </trim>
+                                </if>
+                        </foreach>
+                </where>
+        </sql>
+        <insert id="insert" parameterType="com.zlead.entity.OperatorLog" >
+            insert into "t_operator_log" (id, memberid, username,
+              title, category,module,sn,operator_status, systemid, create_date)
+            values (#{id,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR},
+              #{title,jdbcType=VARCHAR}, #{category,jdbcType=INTEGER},
+              #{module,jdbcType=VARCHAR}, #{sn,jdbcType=VARCHAR},
+              #{operatorStatus,jdbcType=INTEGER}, #{systemId,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP})
+        </insert>
+
+
+
+
+
+        <insert id="insertSelectiveOne" parameterType="com.zlead.entity.OperatorLog" >
+                insert into t_operator_log
+                <trim prefix="(" suffix=")" suffixOverrides="," >
+                        <if test="id != null" >
+                                id,
+                        </if>
+                        <if test="memberId != null" >
+                                memberid,
+                        </if>
+                        <if test="userName != null" >
+                                username,
+                        </if>
+                        <if test="title != null" >
+                                title,
+                        </if>
+                        <if test="remark != null" >
+                                remark,
+                        </if>
+                        <if test="category != null" >
+                                category,
+                        </if>
+                        <if test="module != null" >
+                                module,
+                        </if>
+                        <if test="sn != null" >
+                                sn,
+                        </if>
+                        <if test="linkUrl != null" >
+                                link_url,
+                        </if>
+                        <if test="operatorStatus != null" >
+                                operator_status,
+                        </if>
+                        <if test="systemId != null" >
+                                systemid,
+                        </if>
+                        <if test="createDate != null" >
+                                create_date,
+                        </if>
+                        <if test="addIp != null" >
+                                addip,
+                        </if>
+                        <if test="operatorParams != null" >
+                                operator_params,
+                        </if>
+                </trim>
+                <trim prefix="values (" suffix=")" suffixOverrides="," >
+                        <if test="id != null" >
+                                #{id,jdbcType=INTEGER},
+                        </if>
+                        <if test="memberId != null" >
+                                #{memberId,jdbcType=INTEGER},
+                        </if>
+                        <if test="userName != null" >
+                                #{userName,jdbcType=VARCHAR},
+                        </if>
+                        <if test="title != null" >
+                                #{title,jdbcType=VARCHAR},
+                        </if>
+                        <if test="remark != null" >
+                                #{remark,jdbcType=VARCHAR},
+                        </if>
+                        <if test="category != null" >
+                                #{category,jdbcType=INTEGER},
+                        </if>
+                        <if test="module != null" >
+                                #{module,jdbcType=VARCHAR},
+                        </if>
+                        <if test="sn != null" >
+                                #{sn,jdbcType=VARCHAR},
+                        </if>
+                        <if test="linkUrl != null" >
+                                #{linkUrl,jdbcType=VARCHAR},
+                        </if>
+                        <if test="operatorStatus != null" >
+                                #{operatorStatus,jdbcType=INTEGER},
+                        </if>
+                        <if test="systemId != null" >
+                                #{systemId,jdbcType=VARCHAR},
+                        </if>
+                        <if test="createDate != null" >
+                                #{createDate,jdbcType=TIMESTAMP},
+                        </if>
+                        <if test="addIp != null" >
+                                #{addIp,jdbcType=VARCHAR},
+                        </if>
+                        <if test="operatorParams != null" >
+                                #{operatorParams,jdbcType=LONGVARCHAR},
+                        </if>
+                </trim>
+        </insert>
+
+
+
+
+
+
+
+
+        <sql id="Base_Column_List" >
+                <!--
+                      common class -  @ET
+                  model 属性定义, do not modify.
+                -->
+                id, memberid, username, title, remark, category, module, sn, link_url, operator_status,
+                systemid, create_date, addip
+        </sql>
+        <sql id="Blob_Column_List" >
+                <!--
+                      common class -  @ET
+                  model 属性定义, do not modify.
+                -->
+                operator_params
+        </sql>
+
+        <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+                <!--
+                      common class -  @ET
+                  model 属性定义, do not modify.
+                -->
+                select
+                <include refid="Base_Column_List" />
+                ,
+                <include refid="Blob_Column_List" />
+                from t_operator_log
+                where id = #{id,jdbcType=INTEGER}
+        </select>
+    <select id="getListOpLogs" resultMap="BaseResultMap">
+            select * from t_operator_log where module ='order' and sn=#{sn} order by create_date;
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+                <!--
+                      common class -  @ET
+                  model 属性定义, do not modify.
+                -->
+                delete from t_operator_log
+                where id = #{id,jdbcType=INTEGER}
+        </delete>
+
+        <insert id="insertSelective" parameterType="com.zlead.entity.OperatorLog" >
+                <!--
+                      common class -  @ET
+                  model 属性定义, do not modify.
+                -->
+                insert into t_operator_log
+                <trim prefix="(" suffix=")" suffixOverrides="," >
+                        <if test="id != null" >
+                                id,
+                        </if>
+                        <if test="memberid != null" >
+                                memberid,
+                        </if>
+                        <if test="username != null" >
+                                username,
+                        </if>
+                        <if test="title != null" >
+                                title,
+                        </if>
+                        <if test="remark != null" >
+                                remark,
+                        </if>
+                        <if test="category != null" >
+                                category,
+                        </if>
+                        <if test="module != null" >
+                                module,
+                        </if>
+                        <if test="sn != null" >
+                                sn,
+                        </if>
+                        <if test="linkUrl != null" >
+                                link_url,
+                        </if>
+                        <if test="operatorStatus != null" >
+                                operator_status,
+                        </if>
+                        <if test="systemid != null" >
+                                systemid,
+                        </if>
+                        <if test="createDate != null" >
+                                create_date,
+                        </if>
+                        <if test="addip != null" >
+                                addip,
+                        </if>
+                        <if test="operatorParams != null" >
+                                operator_params,
+                        </if>
+                </trim>
+                <trim prefix="values (" suffix=")" suffixOverrides="," >
+                        <if test="id != null" >
+                                #{id,jdbcType=INTEGER},
+                        </if>
+                        <if test="memberid != null" >
+                                #{memberid,jdbcType=INTEGER},
+                        </if>
+                        <if test="username != null" >
+                                #{username,jdbcType=VARCHAR},
+                        </if>
+                        <if test="title != null" >
+                                #{title,jdbcType=VARCHAR},
+                        </if>
+                        <if test="remark != null" >
+                                #{remark,jdbcType=VARCHAR},
+                        </if>
+                        <if test="category != null" >
+                                #{category,jdbcType=INTEGER},
+                        </if>
+                        <if test="module != null" >
+                                #{module,jdbcType=VARCHAR},
+                        </if>
+                        <if test="sn != null" >
+                                #{sn,jdbcType=VARCHAR},
+                        </if>
+                        <if test="linkUrl != null" >
+                                #{linkUrl,jdbcType=VARCHAR},
+                        </if>
+                        <if test="operatorStatus != null" >
+                                #{operatorStatus,jdbcType=INTEGER},
+                        </if>
+                        <if test="systemid != null" >
+                                #{systemid,jdbcType=VARCHAR},
+                        </if>
+                        <if test="createDate != null" >
+                                #{createDate,jdbcType=TIMESTAMP},
+                        </if>
+                        <if test="addip != null" >
+                                #{addip,jdbcType=VARCHAR},
+                        </if>
+                        <if test="operatorParams != null" >
+                                #{operatorParams,jdbcType=LONGVARCHAR},
+                        </if>
+                </trim>
+        </insert>
+        <update id="updateByPrimaryKeySelective" parameterType="com.zlead.entity.OperatorLog" >
+                <!--
+                      common class -  @ET
+                  model 属性定义, do not modify.
+                -->
+                update t_operator_log
+                <set >
+                        <if test="memberid != null" >
+                                memberid = #{memberid,jdbcType=INTEGER},
+                        </if>
+                        <if test="username != null" >
+                                username = #{username,jdbcType=VARCHAR},
+                        </if>
+                        <if test="title != null" >
+                                title = #{title,jdbcType=VARCHAR},
+                        </if>
+                        <if test="remark != null" >
+                                remark = #{remark,jdbcType=VARCHAR},
+                        </if>
+                        <if test="category != null" >
+                                category = #{category,jdbcType=INTEGER},
+                        </if>
+                        <if test="module != null" >
+                                module = #{module,jdbcType=VARCHAR},
+                        </if>
+                        <if test="sn != null" >
+                                sn = #{sn,jdbcType=VARCHAR},
+                        </if>
+                        <if test="linkUrl != null" >
+                                link_url = #{linkUrl,jdbcType=VARCHAR},
+                        </if>
+                        <if test="operatorStatus != null" >
+                                operator_status = #{operatorStatus,jdbcType=INTEGER},
+                        </if>
+                        <if test="systemid != null" >
+                                systemid = #{systemid,jdbcType=VARCHAR},
+                        </if>
+                        <if test="createDate != null" >
+                                create_date = #{createDate,jdbcType=TIMESTAMP},
+                        </if>
+                        <if test="addip != null" >
+                                addip = #{addip,jdbcType=VARCHAR},
+                        </if>
+                        <if test="operatorParams != null" >
+                                operator_params = #{operatorParams,jdbcType=LONGVARCHAR},
+                        </if>
+                </set>
+                where id = #{id,jdbcType=INTEGER}
+        </update>
+        <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.zlead.entity.OperatorLog" >
+                <!--
+                      common class -  @ET
+                  model 属性定义, do not modify.
+                -->
+                update t_operator_log
+                set memberid = #{memberid,jdbcType=INTEGER},
+                username = #{username,jdbcType=VARCHAR},
+                title = #{title,jdbcType=VARCHAR},
+                remark = #{remark,jdbcType=VARCHAR},
+                category = #{category,jdbcType=INTEGER},
+                module = #{module,jdbcType=VARCHAR},
+                sn = #{sn,jdbcType=VARCHAR},
+                link_url = #{linkUrl,jdbcType=VARCHAR},
+                operator_status = #{operatorStatus,jdbcType=INTEGER},
+                systemid = #{systemid,jdbcType=VARCHAR},
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+                addip = #{addip,jdbcType=VARCHAR},
+                operator_params = #{operatorParams,jdbcType=LONGVARCHAR}
+                where id = #{id,jdbcType=INTEGER}
+        </update>
+        <update id="updateByPrimaryKey" parameterType="com.zlead.entity.OperatorLog" >
+                <!--
+                      common class -  @ET
+                  model 属性定义, do not modify.
+                -->
+                update t_operator_log
+                set memberid = #{memberid,jdbcType=INTEGER},
+                username = #{username,jdbcType=VARCHAR},
+                title = #{title,jdbcType=VARCHAR},
+                remark = #{remark,jdbcType=VARCHAR},
+                category = #{category,jdbcType=INTEGER},
+                module = #{module,jdbcType=VARCHAR},
+                sn = #{sn,jdbcType=VARCHAR},
+                link_url = #{linkUrl,jdbcType=VARCHAR},
+                operator_status = #{operatorStatus,jdbcType=INTEGER},
+                systemid = #{systemid,jdbcType=VARCHAR},
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+                addip = #{addip,jdbcType=VARCHAR}
+                where id = #{id,jdbcType=INTEGER}
+        </update>
+
+
+
+
+</mapper>

@@ -1,0 +1,163 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>直链商城</title>
+    <link rel="stylesheet" href="../../shopping/css/reset.css">
+    <link rel="stylesheet" href="../../shopping/css/header.css" />
+    <link rel="stylesheet" href="../../shopping/css/footer.css" />
+    <link rel="stylesheet" href="../../shopping/css/upload.css">
+    <link rel="stylesheet" href="../../shopping/css/laydate.css">
+    <link rel="stylesheet" href="../../shopping/lib/layui-v2.4.5/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_234130_nem7eskcrkpdgqfr.css">
+</head>
+
+<body>
+    <div class="uploadFile">
+        <p class="uplode_s">上传凭证</p>
+        <ul class="list_sty">
+
+        </ul>
+        <hr id="lines">
+        <div class="allcheck">
+            <span class="number"><img class="all" src="../../shopping/img/car/home／ic_home_tab.png" alt=""> <img  class="img_show" src="../../shopping/img/footer/Checked_default.png" alt=""> <span class="alld">全部(共<span id="allNum" style="color:#FF7A47;font-weight: 700">0</span>件
+            )
+            </span>
+            </span>
+            <span id="upload_btns" class="btn">上传付款凭证</span>
+        </div>
+    </div>
+
+    <!-- 无收藏商品的时候提示 -->
+    <div class='upload_no'>
+        <img src="../../shopping/img/index/upload.png" />
+        <h5>暂无凭证哦~</h5>
+        <p>您可以<a href="index.html">去逛逛></a></p>
+    </div>
+
+    <!-- 加载效果 -->
+    <div class='loading'>
+        <img src="../../shopping/img/upload/login.gif" alt="">
+        <p>正在急速加载中...</p>
+    </div>
+
+    <!--弹窗--没有选择相同工厂-->
+    <div class="meng21"></div>
+    <div class="popupMsg21">
+        <img class="close" src="../../shopping/img/car/close@2x.png" />
+        <img class="tips2" src="../../shopping/img/car/Fill 1.png" />
+        <p class="msg2">请选择相同工厂的订单</p>
+        <div class="know" style='cursor: pointer;'>知道了</div>
+    </div>
+
+    <!-- 弹窗 -->
+    <div id="dialog_upload8">
+        <!--蒙版-->
+        <div class="meng8" id="meng8">
+            <div class="guanlian8" id="dialog8">
+                <!-- 头 -->
+                <img src="../../shopping/img/lhpimg/guanbi.png" id="qu2" class="img8" />
+                <div class="scroll8">
+                    <div class="title8">
+                        <span>上传凭证</span>
+                    </div>
+                    <!--内容-->
+                    <div class="message_tit8">
+                        <p>付款金额</p>
+                        <input placeholder="" name="names" id="inputs" class="order_input8" type="text">
+                        <p>付款方式</p>
+                        <input placeholder="" id="payWay" class="order_input8" type="text">
+                        <p>付款时间</p>
+                        <!-- <input placeholder="" name="time" readOnly="true" id="h3Ele2" class="order_input8" type="text">
+                        <img class="date_up" src="../../shopping/img/lhpimg/Datepicker_nomal.png">
+                       
+                        <div id='schedule-box1' class="boxshaw1">
+
+                        </div> -->
+                        <input type="text" class="order_input8" id='h3Ele2' readonly="true">
+                        <div class="anniu_uplode8">
+                            <span>上传图片  <input  type="file" style="width: 110px;height: 45px;" name="demo_input" class='fileu2'   accept="image/bmp,image/jpg,image/png,image/jpeg"/></span>
+                            <p>图片不大于2M，格式支持JPG/PNG/JPEG/BMP。上传图片后，点击可放大</p>
+                        </div>
+                        <div id="imgBox">
+                            <img id="imgsrc2" src="" alt="">
+                        </div>
+                    </div>
+                    <div class="tipsN">
+                        <!--提示信息-->
+                    </div>
+                </div>
+                <!--尾-->
+                <div class="bottom8">
+                    <span id="qu8" class="yiyan8 qu8 ">取消</span>
+                    <span id="fo8" class="yiyan8 fo8">确定</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
+
+    <!--提示-->
+    <div class="tishi3">
+        上传凭证成功 !
+    </div>
+
+    <!--放大图片-->
+    <div class="moban2" id="dialog-bg2">
+        <span class="closeImg"><img   src="../../shopping/img/upload/关闭.png" alt=""></span>
+        <div class="moban_img2" id="img-box2">
+            <img src="" />
+        </div>
+        <div class="bottom">
+            <ul>
+                <li><img id="suoxiao" src="../../shopping/img/upload/narrow.png" alt=""></li>
+                <li><img id="suoxiao2" src="../../shopping/img/upload/narrow.png" alt=""></li>
+                <li><img id="suoxiao3" src="../../shopping/img/upload/narrow.png" alt=""></li>
+                <li><img id="suoxiao4" src="../../shopping/img/upload/narrow.png" alt=""></li>
+
+                <li id="huanyuan">100%</li>
+
+                <li><img id="fangda" src="../../shopping/img/upload/enlarge.png" alt=""></li>
+                <li><img id="fangda2" src="../../shopping/img/upload/enlarge.png" alt=""></li>
+                <li><img id="fangda3" src="../../shopping/img/upload/enlarge.png" alt=""></li>
+                <li><img id="fangda4" src="../../shopping/img/upload/enlarge.png" alt=""></li>
+
+                <li><img id="xuanzhuan" src="../../shopping/img/upload/rotate.png" alt=""></li>
+                <li><img id="xuanzhuan2" src="../../shopping/img/upload/rotate.png" alt=""></li>
+                <li><img id="xuanzhuan3" src="../../shopping/img/upload/rotate.png" alt=""></li>
+                <li><img id="xuanzhuan4" src="../../shopping/img/upload/rotate.png" alt=""></li>
+
+                <!--<li><img src="../../shopping/img/upload/narrow.png" alt=""></li>-->
+            </ul>
+        </div>
+    </div>
+
+
+    <script src="../../shopping/lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../../shopping/lib/artTemplate/artTemplate/template-web.js"></script>
+    <script src="../../shopping/js/laydate.js"></script>
+    <script src="../../shopping/js/upload.js"></script>
+    <script type="text/javascript" src="../../shopping/js/checkDate.js"></script>
+
+    <script type="text/template" id="tel_upload">
+        {{ each list v i }}
+        <li data-id="{{v.id}}" data-shopId="{{v.shopId}}">
+            <span class="orderid">订单编号：<span class="goDetails" data-id="{{v.id}}"  data-status="{{v.status}}">{{v.sn}}</span> </span>
+            <div class="box_sty">
+                <span class="money_s">{{v.goodsAmount?v.goodsAmount.toFixed(2):"0"}}<br> <i>金额(元)</i></span>
+                <span class="type_pay">{{v.payType=='0'?'支付宝':'线下支付'}}<br> <i>支付方式</i></span>
+            </div>
+            {{if v.paymentDate}}
+            <!--<span class="timeLine"><i><img src="../../shopping/img/footer/time.png" alt=""></i>支付时间：{{dateFormat(v.createDate,'yyyy/MM/dd hh:mm:ss')}} </span>-->
+            <span class="timeLine"><i><img src="../../shopping/img/footer/time.png" alt=""></i>支付时间：{{dateFormat(v.paymentDate)}} </span> {{/if}}
+            <i class="sty_img"><img src="../../shopping/img/footer/upload (1).png" alt=""></i>
+            <i class="sty_img2"><img src="../../shopping/img/footer/upload (2).png" alt=""></i>
+        </li>
+
+        {{ /each }}
+        <div class="clear"></div>
+    </script>
+
+</body>
+
+</html>

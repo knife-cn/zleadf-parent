@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.dao.FinorderDao">
+
+    <resultMap id="Finorder" type="com.zlead.entity.FinorderEntity">
+        <result property="id" column="id" />
+        <result property="memberid" column="memberid" />
+        <result property="membername" column="membername" />
+        <result property="dealtype" column="accounttype" />
+        <result property="dealtype" column="dealtype" />
+        <result property="requesttime" column="requesttime" />
+        <result property="amount" column="amount" />
+        <result property="responsemsg" column="responsemsg" />
+        <result property="requestmsg" column="requestmsg" />
+        <result property="out_trade_no" column="out_trade_no" />
+        <result property="paytype" column="paytype" />
+        <result property="responsetime" column="responsetime" />
+        <result property="payeeAccount" column="payee_account" />
+        <result property="payerShowName" column="payer_name" />
+        <result property="auditStatus" column="audit_status" />
+        <result property="status" column="STATUS" />
+        <result property="remark" column="REMARK" />
+    </resultMap>
+
+
+    <sql id="Finorder_columns">
+       T.id,T.memberid,T.membername,T.accountType,T.dealtype,T.requesttime,T.amount,T.responsemsg,T.requestmsg,T.out_trade_no,T.paytype,T.responsetime,T.payee_account,
+		    T.payer_name,T.audit_status,T.status,T.remark
+    </sql>
+
+
+    <insert id="insertFinorder" parameterType="com.zlead.entity.FinorderEntity" >
+        INSERT INTO t_finorder (
+		    memberid,membername,accountType,dealtype,requesttime,amount,responsemsg,requestmsg, out_trade_no,paytype,responsetime,payee_account,
+		    payer_name,audit_status,status,remark)
+		VALUES (#{memberid},#{membername},#{accountType},#{dealtype},#{requesttime},#{amount},#{responsemsg},#{requestmsg},#{out_trade_no},#{paytype}
+		    ,#{responsetime},#{payeeAccount},#{payerShowName},#{auditStatus},#{status},#{remark}
+	      )
+  </insert>
+
+    <select id="findByOutTradeNo"  resultMap="Finorder">
+        SELECT <include refid="Finorder_columns" /> FROM t_finorder AS T WHERE  T.OUT_TRADE_NO = #{outTradeNo}
+    </select>
+
+    <select id="findById"  resultMap="Finorder">
+        SELECT <include refid="Finorder_columns" /> FROM t_finorder AS T WHERE  T.ID = #{id}
+    </select>
+    <select id="findFinorderByMemberid" parameterType="com.zlead.entity.MemberEntity" resultMap="Finorder">
+
+    select * from t_finorder WHERE memberid =(SELECT id FROM t_member where own_shopid=#{id})
+
+    </select>
+    <update id="updateFinorder" >
+        UPDATE t_finorder AS T SET T.memberid = #{memberid}, T.membername = #{membername},T.accountType = #{accountType},T.dealtype = #{dealtype} ,T.requesttime = #{requesttime} ,
+	       T.amount = #{amount},T.responsemsg = #{responsemsg} ,T.requestmsg = #{requestmsg} ,T.out_trade_no = #{out_trade_no} ,T.paytype = #{paytype}, T.responsetime = #{responsetime},T.payee_account = #{payeeAccount},T.payer_name = #{payerShowName},T.audit_status = #{auditStatus} ,
+	       T.status = #{status} ,T.remark = #{remark}
+           WHERE T.ID = #{id}
+	</update>
+
+  
+   
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

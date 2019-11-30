@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>直链商城</title>
+</head>
+<link rel="stylesheet" href="../../shopping/css/details.css" />
+<link rel="stylesheet" href="../../shopping/css/header.css" />
+
+
+<style>
+
+</style>
+
+<body>
+
+    <div id="head"></div>
+    <div class="serch">
+        <div class="serch_con">
+            <!-- logo -->
+            <div class="logo">
+                <img src="../../shopping/img/index/logo.png" />
+            </div>
+            <div class="searcha">
+                <!-- 搜索框 -->
+                <div class="search">
+                    <!-- <div class="search_frame">
+                        <input type="text" id="resou"  maxlength="50"/>
+                    </div> -->
+                    <form autocomplete="off" class="search_frame" onsubmit="return false">
+                        <input type="text" id="resou" maxlength="50" />
+                    </form>
+                    <!-- 搜索按钮 -->
+                    <div class="search_icon" id="search_icon">
+                        <img src="../../shopping/img/index/ic_sousuo.png" />
+                    </div>
+                </div>
+                <!-- 热搜词 -->
+                <div class="search_hot">
+                    <ul class="search_hot_ul" id="search_hot_ul">
+                        <!--<li>电气控制</li>-->
+                        <!--<li>刀具磨具</li>-->
+                        <!--<li>电气控制</li>-->
+                        <!--<li>电气控制</li>-->
+                        <!--<li>电气控制</li>-->
+                        <!--<li>电气控制</li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dt_top">
+        <div class="dt_topcon"></div>
+    </div>
+    <div class="wz">
+        <div class="wz_con">
+            <div class="wz_biao">
+                <img class="wz_conimg" src="../../shopping/img/details/xz.png" />
+            </div>
+            <div class="wz_dz">
+                <!-- <img src="../../shopping/img/details/arrow-scopy 2.png" />
+                <span>首页</span>
+                <img src="../../shopping/img/details/arrow-scopy 2.png" />
+                <a href='javascript:;' class='my_name'></a> -->
+            </div>
+
+        </div>
+    </div>
+    <div class="dt_con">
+        <div class="dt_le">
+            <div class="dt_cp">
+                <div class="small_box">
+
+                    <div class="small_list">
+                        <div class="aaaa">
+                            <img src="../../shopping/img/details/Shape Copy2.png" id="left_btn" />
+                        </div>
+                        <ul class="large_boxul" id="large_boxul">
+                            <!--<li class="on">
+									<img src="../../shopping/img/details/01.jpg" width="70" height="70">
+
+								</li>
+								<li class="">
+									<img src="../../shopping/img/details/02.jpg" width="70" height="70">
+
+								</li>
+								<li class="">
+									<img src="../../shopping/img/details/03.jpg" width="70" height="70">
+
+								</li>
+
+								<li class="">
+									<img src="../../shopping/img/details/04.jpg" width="70" height="70">
+
+								</li>
+								<li class="">
+									<img src="../../shopping/img/details/03.jpg" width="70" height="70">
+
+								</li>-->
+
+                        </ul>
+
+                        <div class="aaaa">
+                            <img src="../../shopping/img/details/Shape2.png" id="right_btn" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="large_box">
+
+                    <ul class="qul" id="qul">
+                        <!--<li>
+								<img src="../../shopping/img/details/zoom-in.png" class="fada" />
+								<img src="../../shopping/img/details/01.jpg" width="360" height="360">
+							</li>
+							<li>
+								<img src="../../shopping/img/details/zoom-in.png" class="fada" />
+								<img src="../../shopping/img/details/02.jpg" width="360" height="360">
+							</li>
+							<li>
+								<img src="../../shopping/img/details/zoom-in.png" class="fada" />
+								<img src="../../shopping/img/details/03.jpg" width="360" height="360">
+							</li>
+							<li>
+								<img src="../../shopping/img/details/zoom-in.png" class="fada" />
+								<img src="../../shopping/img/details/04.jpg" width="360" height="360">
+							</li>
+							<li>
+								<img src="../../shopping/img/details/zoom-in.png" class="fada" />
+								<img src="../../shopping/img/details/03.jpg" width="360" height="360">
+							</li>-->
+
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="dt_rp">
+                <div id="dect_titile">
+
+                </div>
+                <span id="shoppid_de"></span>
+                <div class="dt_pb">
+                    <span>品牌</span>
+                    <span id="dt_pbping"></span><br>
+                </div>
+                <div class="dt_pb">
+                    <span>商品型号</span>
+                    <span id="dt_pbxin"></span><br>
+                </div>
+                <div id="dt_yans">
+                    <!--<div class="dt_g">-->
+                    <!--<div class="dt_gle">
+							<span class="dt_glesp">颜色</span>
+						</div>
+						<div class="dt_gri">
+							<ul class="dt_yul">
+
+								<li class="a dt_ulyli">
+
+									<div class="dt_liyz">
+										<p>黑色</p>
+									</div>
+									<div class="gocy">
+										<div class="gou none">
+											<img src="../../shopping/img/details/goucon.png" />
+										</div>
+									</div>
+
+								</li>
+
+							</ul>
+						</div>-->
+                    <!--</div>-->
+                </div>
+
+                <div class="dt_shu">
+                    <div class="dt_gle">
+                        <span class="dt_glesp">数量</span>
+                    </div>
+                    <div class="jja">
+                        <div class="jja_le">
+                            <input id="quantity" maxlength="9" onkeyup="value=value.replace(/[^\d]/g,'')" name="" type="text" value="1" />
+                        </div>
+                        <div class="jja_rg">
+                            <div class="jja_rgt" id="add">
+                                <!--<img src="../../shopping/img/details/ic_add.png" />-->
+                                +
+                            </div>
+                            <div class="jja_rgt" id="min">
+                                <!--<img src="../../shopping/img/details/ic_add (1).png" />-->
+                                -
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dt_gleaa">
+                        <span class="dt_glespa">库存<span id="dt_glespas"></span>件</span>
+                    </div>
+                </div>
+
+                <div class="dt_an">
+                    <div class="dt_anz" id="payfor2">
+                        <span>立即支付</span>
+                    </div>
+                    <div class="dt_anj" id="dtgocart">
+                        <span>加入购物车</span>
+                    </div>
+                    <div class="dt_sc">
+                        <div class="dt_scimg" id="dt_scimg">
+                            <!--<img class="star" src="../../shopping/img/details/Star.png" />-->
+                            <!--<img class="scx" src="../../shopping/img/details/scx.png" />-->
+                        </div>
+                        <span>收藏商品</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="cp">
+        <div class="cp_a">
+            <div class="cp_at">
+                <ul class="cp_aul">
+                    <li id="btv1" class="ave">
+                        <a href="#bc1" class="ave">商品介绍</a>
+                    </li>
+
+                    <li id="btv2">
+                        <a href="#bc2">包装参数</a>
+                    </li>
+                </ul>
+                <div class="ggw" id="ggw">
+                    <span class="ggwspan">加入购物车</span>
+                </div>
+            </div>
+        </div>
+        <div class="cp_b">
+            <div class="cp_mi" id="bc1">
+                <!--<ul>
+						<li><span>品牌</span><span>威克士（WORX）</span></li>
+						<li><span>商品毛重</span><span>3.93kg</span></li>
+						<li><span>商品名称</span><span>威克士WX372.1</span></li>
+						<li><span>商品产地</span><span>中国苏州</span></li>
+					</ul>-->
+                <div class="cp_tu" id="cp_tu">
+                    <!--<img src="../../shopping/img/details/1547276590(1).jpg" />
+						<img src="../../shopping/img/details/1547276590(1).jpg" />
+						<img src="../../shopping/img/details/1547276590(1).jpg" />-->
+                </div>
+            </div>
+
+            <!--<div class="canshu" id="bc2">
+					<div class="cs_shu">
+						<span>
+							规格参数
+						</span>
+					</div>
+					<div class="cs_shuc">
+						<ul>
+							<li><span>品牌</span><span>威克士（WORX）</span></li>
+							<li><span>商品毛重</span><span>3.93kg</span></li>
+							<li><span>商品名称</span><span>威克士WX372.1</span></li>
+							<li><span>商品产地</span><span>中国苏州</span></li>
+						</ul>
+
+					</div>
+				</div>-->
+            <div class="baocan" id="bc2">
+                <div class="cs_shu">
+                    <span>
+							包装参数
+						</span>
+                </div>
+                <div class="cs_shuc">
+
+                    <ul id="cs_bz">
+                        <!--<li><span>威克士（WORX）</span></li>-->
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="moban" id="dialog-bg">
+        <div class="moban_img" id="img-box">
+            <img src="" />
+        </div>
+    </div>
+
+    <div class="meng" id="meng">
+        <div class="guanlian">
+            <div class="toptan" id="catop"><img src="../../shopping/img/lhpimg/guanbi.png" class="img" /></div>
+            <div class="tu"><img src="../../shopping/img/lhpimg/Fill_2.png" /></div>
+            <div class="ren">收藏成功</div>
+            <div id="Collection" class="yiyan">查看我的收藏</div>
+        </div>
+        <div class="guanlian1">
+            <div class="toptan" id="catop1"><img src="../../shopping/img/lhpimg/guanbi.png" class="img" /></div>
+            <div class="tu"><img src="../../shopping/img/lhpimg/Fill_2.png" /></div>
+            <div class="ren">取消成功</div>
+        </div>
+    </div>
+
+    <div class="meng" id="megou">
+        <div class="guanlian">
+            <div class="toptan" id="tuicart"><img src="../../shopping/img/lhpimg/guanbi.png" class="img" /></div>
+            <div class="tu"><img src="../../shopping/img/lhpimg/Fill_2.png" /></div>
+            <div class="ren faultMsg">成功加入购物车</div>
+            <div id="fo" class="yiyan">去购物车结算</div>
+        </div>
+    </div>
+
+    <!-- 加入购物车弹窗 -->
+
+    <!--去登录页面-->
+    <div class="meng" id="goLogin">
+        <div class="guanlian1">
+            <div class="toptan" id="tuLogin"><img src="../../shopping/img/lhpimg/guanbi.png" class="img" /></div>
+            <div class="tu6"><img src="../../shopping/img/lhpimg/Fill_1.png" /></div>
+            <div class="ren6">还没登录哦!</div>
+
+            <div id="logins" class="gologin">去登录</div>
+        </div>
+    </div>
+
+    <!--库存不足弹窗-->
+    <div class="meng2"></div>
+    <div class="popupMsg">
+        <img class="close" src="../../shopping/img/car/close@2x.png" />
+        <img class="tips" src="../../shopping/img/car/Fill 1.png" />
+        <p class="msg2">提示信息</p>
+        <div class="know">知道了</div>
+    </div>
+
+    <iframe src="footer.html" width="100%" height="290px" style="border:none"></iframe>
+</body>
+<script type="text/javascript" src="../../shopping/js/jquery-2.1.0.js"></script>
+<script type="text/javascript" src="../../shopping/js/details.js"></script>
+<!-- <script type="text/javascript" src="../../shopping/js/head.js"></script> -->
+<script type="text/javascript" src="../../shopping/js/urlcs.js"></script>
+<script type="text/javascript" src="../../shopping/js/jinzi.js"></script>
+<script>
+</script>
+
+</html>

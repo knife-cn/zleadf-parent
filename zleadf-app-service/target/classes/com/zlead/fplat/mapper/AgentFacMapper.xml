@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.AgentFacMapper">
+	<resultMap id="BaseResultMap" type="com.zlead.fplat.entity.AgentFac" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="agent_id" property="agentId" jdbcType="INTEGER" />
+    <result column="member_id" property="memberId" jdbcType="VARCHAR" />
+    <result column="apply_date" property="applyDate" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="VARCHAR" />
+    <result column="level_id" property="levelId" jdbcType="INTEGER" />
+    <result column="agent_brand" property="agentBrand" jdbcType="VARCHAR" />
+    <result column="agent_discount_type" property="agentDiscountType" jdbcType="VARCHAR" />
+    <result column="agent_discount" property="agentDiscount" jdbcType="DOUBLE" />
+    <result column="agent_payments" property="agentPayments" jdbcType="VARCHAR" />
+    <result column="agent_return" property="agentReturn" jdbcType="VARCHAR" />
+    <result column="agent_returnvalue" property="agentReturnvalue" jdbcType="DOUBLE" />
+    <result column="agent_fmdate" property="agentFmdate" jdbcType="TIMESTAMP" />
+    <result column="agent_todate" property="agentTodate" jdbcType="TIMESTAMP" />
+    <result column="agent_contract" property="agentContract" jdbcType="VARCHAR" />
+    <result column="order_date" property="orderDate" jdbcType="TIMESTAMP" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="vcode" property="vcode" jdbcType="VARCHAR" />
+    <result column="coop_state" property="coopState" jdbcType="VARCHAR" />
+    <result column="task_amt" property="taskAmt" jdbcType="DOUBLE" />
+    <result column="factory_id" property="factoryId" jdbcType="INTEGER" />
+    <result column="ogr_id" property="ogrId" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modifier" property="modifier" jdbcType="INTEGER" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+    <result column="agent_name" property="agentName" jdbcType="VARCHAR" />
+    <result column="sys_id" property="sysId" jdbcType="INTEGER" />
+
+  </resultMap>
+  <!--  
+    <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.AgentFac">
+
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="agent_discount" property="agentDiscount" jdbcType="INTEGER"/>
+        <result column="agent_discount_type" property="agentDiscountType" jdbcType="VARCHAR"/>
+    </resultMap>
+ -->
+
+    <insert id="insert" parameterType="com.zlead.fplat.entity.AgentFac" useGeneratedKeys="true" keyProperty="id">
+        insert into
+        t_agent_fac (id, member_id, agent_id, factory_id,vcode, status, create_time, apply_date,creator,modifier,modify_time,agent_brand,sys_id)
+        values
+        (#{id,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{agentId,jdbcType=INTEGER},
+         #{factoryId,jdbcType=INTEGER}, #{vcode,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
+         #{createTime,jdbcType=TIMESTAMP}, #{applyDate,jdbcType=TIMESTAMP}, #{creator,jdbcType=INTEGER},
+          #{modifier,jdbcType=INTEGER},#{modifyTime,jdbcType=TIMESTAMP},#{agentBrand,jdbcType=VARCHAR},#{sysId,jdbcType=INTEGER})
+    </insert>
+
+    <select id="queryCountByAgentIdAndFactoryIdAndStatus" resultType="int">
+        select count(*) from t_agent_fac where agent_id=#{agentId} and factory_id=#{factoryId} and status=#{status};
+    </select>
+
+    <select id="findFactoryIdListByAgentId" resultType="java.util.Map" parameterType="java.lang.Long">
+        select factory_id from t_agent_fac where agent_id=#{agentId} and status=1
+        <if test="factoryId!=null and factoryId!=''">
+            and factory_id=#{factoryId}
+        </if>
+    </select>
+
+    <!--APP-->
+    <select id="findFactoryIdListByAgentAPP" resultType="java.util.Map" parameterType="java.lang.Long">
+        select factory_id from t_agent_fac where agent_id=#{agentId} and status=1
+        <if test="factoryId!=null and factoryId!=''">
+            and factory_id=#{factoryId}
+        </if>
+    </select>
+
+
+    <select id="queryByShopIdAll" resultType="Integer" parameterType="java.lang.Long">
+        SELECT shop_id FROM oa_factory_info WHERE fact_id  IN (
+            SELECT factory_id FROM t_agent_fac WHERE agent_id=#{agentId}  AND STATUS = 1)
+    </select>
+    
+    <select id="findFacByagentId" resultType="Integer" parameterType="Long">
+        select factory_id from t_agent_fac WHERE agent_id=#{agentId} and status=1
+    </select>
+
+    <select id="findShopByFactId" resultType="Integer" parameterType="Integer">
+        select DISTINCT shop_id from t_agent_fac AS a,oa_factory_info AS b WHERE a.factory_id=b.fact_id and a.factory_id=#{factId} and a.status=1;
+    </select>
+
+    <select id="findByAgentId" resultMap="BaseResultMap" parameterType="integer">
+        select * from t_agent_fac WHERE agent_id=#{id} and status=1;
+    </select>
+    <!-- 当为活动商品的时候我没有设置代理价也可以发布活动 -->
+    <select id="findFacListByAgentId" resultMap="BaseResultMap" parameterType="integer">
+        select * from t_agent_fac WHERE agent_id=#{id} and status=1 <!--and not ISNULL(agent_discount_type);-->
+    </select>
+    
+    <select id="findByAgentIdAndGoodsId" resultMap="BaseResultMap" parameterType="integer">
+              SELECT
+            	*
+            FROM
+            	t_agent_fac
+            WHERE
+            	agent_id = #{id}
+            AND factory_id = (SELECT
+            	fi.fact_id
+            FROM
+            	t_goods tg
+            LEFT JOIN oa_factory_info fi ON fi.shop_id = tg.shop_id
+            WHERE
+            	tg.id = #{goodsId} )
+            AND STATUS = 1 limit 1 ;
+    </select>
+    
+    <select id="findByAgentIdAndShopId" resultMap="BaseResultMap" parameterType="integer">
+            select * from t_agent_fac where agent_id=#{agentId} and factory_id =(select fact_id from oa_factory_info where shop_id=#{shopId} LIMIT 0,1)
+             AND STATUS = 1 LIMIT 0,1;
+    </select>
+    
+     
+
+
+    <select id="findIdByFacIds" resultType="Integer" parameterType="List">
+        select id  from t_agent_fac WHERE status=1 and factory_id IN
+        <foreach collection="list" item="list" open="(" close=")" separator=",">
+            #{list}
+        </foreach>
+    </select>
+
+    <select id="findIdByAgentId" resultType="Integer" parameterType="Long">
+        select id from t_agent_fac WHERE agent_id=#{agentId} and status=1;
+    </select>
+    <select id="findAgentFac" resultMap="BaseResultMap">
+        SELECT * FROM t_agent_fac WHERE agent_id=#{agentId}
+    </select>
+    <select id="findFacByMemberId" resultType="Integer">
+        select distinct factory_id from t_agent_fac where sys_id in (select own_shopid from t_member where id=#{memberId})
+    </select>
+
+    <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.AgentFac" >
+        update t_agent_fac
+        <set >
+            <if test="orderDate != null" >
+                order_date = #{orderDate,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where agent_id = #{agentId,jdbcType=INTEGER} AND STATUS = 1 AND factory_id = #{factoryId}
+    </update>
+
+    <update id="updateAgentFacAtter" parameterType="com.zlead.fplat.entity.AgentFac" >
+        update t_agent_fac
+        <set >
+            <if test="agentName != null" >
+                agent_name = #{agentName,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where agent_id = #{agentId} AND STATUS = 0
+    </update>
+
+</mapper>

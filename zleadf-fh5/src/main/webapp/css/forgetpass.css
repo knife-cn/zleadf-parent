@@ -1,0 +1,66 @@
+html,
+body {
+  background: #fff;
+}
+.p_container {
+  background-color: #fff;
+  margin-left: 0.3rem;
+
+}
+
+.p_container ul li {
+  height: 1.32rem;
+  border-bottom: 1px solid #e5e5e5;
+
+}
+.p_container ul li p {
+  font-size:0.26rem;
+  font-family:PingFangSC-Regular;
+  font-weight:400;
+  color:rgba(62,74,89,1);
+  padding: 0.18rem 0;
+}
+.p_container ul li div {
+  margin-top: 0.12rem;
+}
+
+input {
+  width: 80%;
+}
+
+.forgetpass {
+  font-size:0.26rem;
+font-family:PingFangSC-Regular;
+font-weight:400;
+color:rgba(19,110,241,1);
+float: right;
+margin: 0.3rem;
+}
+
+.z_lond {
+  width: 6.24rem;
+  height: 1rem;
+  background:linear-gradient(135deg,rgba(48,131,255,1) 0%,rgba(21,102,223,1) 100%);
+border-radius:25px;
+text-align: center;
+line-height: 1rem;
+color: #fff;
+margin-top: 1.46rem;
+margin-left: 0.34rem;
+}
+.opacity{
+  opacity:0.6;
+} 
+.err {
+  border-bottom: 2px solid #FE5067 !important;
+  background: url(../images/err.png) no-repeat;
+  background-position: 6.6rem 0.8rem;
+  background-size: 0.3rem	0.3rem;
+}
+.corrent {
+  border-bottom: 2px solid #30DA51 !important;
+  background: url(../images/corrent.png) no-repeat;
+  background-position: 6.6rem 0.8rem;
+  background-size: 0.3rem	0.3rem;
+
+}

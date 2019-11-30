@@ -1,0 +1,158 @@
+.detailsInfo {
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+	-webkit-overflow-scrolling: touch;
+	background: #EFEFEF;
+	color:#000;
+}
+.detailsTltle{
+	width:100%;
+	height:0.9rem;
+	background:#3c3f41;
+	overflow:hidden;
+	color:#fff;
+	line-height:0.9rem;
+	font-size:0.3rem;
+}
+.detailsTltle span{
+	margin-left:2.5rem;
+}
+.detailsInfo-img{
+	width:7.03rem;
+	height:3.45rem;
+	margin:0.24rem auto;
+	margin-bottom:0.5rem;
+}
+.detailsInfo-img img{
+	width:7.03rem;
+	height:3.45rem;
+}
+.details-info{
+	width:7.03rem;
+	height:auto;
+	margin:0 auto;
+}
+.details-info-1{
+	color:#000;
+	font-size:0.3rem;
+	margin-bottom:0.2rem;
+}
+.details-info-2{
+	height:0.35rem;
+	width:1.72rem;
+}
+.details-info-3{
+	margin-bottom:0.31rem;
+	color:#000;
+	font-size:0.24rem;
+	opacity:0.7;
+}
+.details-info-3 img{
+	width:0.18rem;
+	height:0.18rem;
+	float:left;
+	margin-top:0.06rem;
+	margin-right:0.26rem;
+}
+.shopList-title{
+	width:100%;
+	height:1.15rem;
+}
+.shopList-title img{
+	width:3.34rem;
+	height:0.69rem;
+	margin:0.7rem auto 0.25rem;
+}
+.list{
+	width:100%;
+	height:100%;
+	float:left;
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
+}
+.listUl{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+.listUl li{
+	width:3.4rem;
+	height:4.09rem;
+	background:#fff;
+	border-radius:10px;
+	float:left;
+	margin-left:0.1rem;
+	margin-right:0.1rem;
+	margin-bottom:0.24rem;
+}
+.list-info{
+	width:2.98rem;
+	height:100%;
+	margin:0 auto;
+}
+.list-info-img{
+	width:100%;
+	height:2.3rem;
+	border-bottom:3px dashed #D3D3D3;
+}
+.list-info-img img{
+	height:2.2rem;
+	width:2.98rem;
+}
+.list-info-title{
+	width:100%;
+	height:auto;
+}
+.list-info-title p{
+	padding:0;
+	margin:0.1rem auto;
+	font-size:0.24rem;
+	color:#000;
+	opacity:0.7;
+}
+.list-info-peole{
+	width:100%;
+	height:0.2rem;
+	line-height:0.2rem;
+	font-size:0.2rem;
+	color:#000;
+	opacity:0.7;
+}
+.list-info-peole img{
+	width:0.15rem;
+	height:0.15rem;
+	float:left;
+	margin-top:0.025rem;
+}
+.list-info-price{
+	width:100%;
+}
+.list-info-price p{
+	margin:0;
+	padding:0;
+}
+.list-price{
+	color:#FFDCC0;
+	font-size:0.24rem;
+}
+.list-price label{
+	color:#FF9030;
+	font-size:0.41rem;
+	margin-left:0.11rem;
+}
+.list-price-img{
+	width:0.3rem;
+	height:0.3rem;
+	float:left;
+	margin-top:0.15rem;
+	margin-right:0.11rem;
+}
+.list-integral{
+	float:right;
+	line-height:0.6rem;
+}
+.integral{
+	color:#B3B3B3;
+	font-size:0.24rem;
+}

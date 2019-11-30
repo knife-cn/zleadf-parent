@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.OaFactoryInfoMapper">
+    <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.OaFactoryInfo">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        <id column="fact_id" property="factId" jdbcType="INTEGER"/>
+        <result column="fact_no" property="factNo" jdbcType="VARCHAR"/>
+        <result column="fact_name" property="factName" jdbcType="VARCHAR"/>
+        <result column="fact_name2" property="factName2" jdbcType="VARCHAR"/>
+        <result column="fact_state" property="factState" jdbcType="VARCHAR"/>
+        <result column="contact_no" property="contactNo" jdbcType="VARCHAR"/>
+        <result column="email" property="email" jdbcType="VARCHAR"/>
+        <result column="contact_man1" property="contactMan1" jdbcType="VARCHAR"/>
+        <result column="contact_man2" property="contactMan2" jdbcType="VARCHAR"/>
+        <result column="fact_desc" property="factDesc" jdbcType="VARCHAR"/>
+        <result column="powerpic_path" property="powerpicPath" jdbcType="VARCHAR"/>
+        <result column="apapic_path" property="apapicPath" jdbcType="VARCHAR"/>
+        <result column="sys_id" property="sysId" jdbcType="INTEGER"/>
+        <result column="creator" property="creator" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="modifier" property="modifier" jdbcType="INTEGER"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        fact_id, fact_no, fact_name, fact_state, contact_no, email, contact_man1, contact_man2,
+        fact_desc, powerpic_path, apapic_path, sys_id, creator, create_time, modifier, modify_time
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.OaFactoryInfoExample">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        'true' as QUERYID,
+        <include refid="Base_Column_List"/>
+        from oa_factory_info
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        select
+        <include refid="Base_Column_List"/>
+        from oa_factory_info
+        where fact_id = #{factId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        delete from oa_factory_info
+        where fact_id = #{factId,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" parameterType="com.zlead.fplat.entity.OaFactoryInfo">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        insert into oa_factory_info (fact_id, fact_no, fact_name,
+        fact_state, contact_no, email,
+        contact_man1, contact_man2, fact_desc,
+        powerpic_path, apapic_path, sys_id,
+        creator, create_time, modifier,
+        modify_time)
+        values (#{factId,jdbcType=INTEGER}, #{factNo,jdbcType=VARCHAR}, #{factName,jdbcType=VARCHAR},
+        #{factState,jdbcType=VARCHAR}, #{contactNo,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR},
+        #{contactMan1,jdbcType=VARCHAR}, #{contactMan2,jdbcType=VARCHAR}, #{factDesc,jdbcType=VARCHAR},
+        #{powerpicPath,jdbcType=VARCHAR}, #{apapicPath,jdbcType=VARCHAR}, #{sysId,jdbcType=INTEGER},
+        #{creator,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{modifier,jdbcType=INTEGER},
+        #{modifyTime,jdbcType=TIMESTAMP})
+    </insert>
+    <insert id="insertSelective" parameterType="com.zlead.fplat.entity.OaFactoryInfo">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        insert into oa_factory_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="factId != null">
+                fact_id,
+            </if>
+            <if test="factNo != null">
+                fact_no,
+            </if>
+            <if test="factName != null">
+                fact_name,
+            </if>
+            <if test="factState != null">
+                fact_state,
+            </if>
+            <if test="contactNo != null">
+                contact_no,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="contactMan1 != null">
+                contact_man1,
+            </if>
+            <if test="contactMan2 != null">
+                contact_man2,
+            </if>
+            <if test="factDesc != null">
+                fact_desc,
+            </if>
+            <if test="powerpicPath != null">
+                powerpic_path,
+            </if>
+            <if test="apapicPath != null">
+                apapic_path,
+            </if>
+            <if test="sysId != null">
+                sys_id,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifier != null">
+                modifier,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="factId != null">
+                #{factId,jdbcType=INTEGER},
+            </if>
+            <if test="factNo != null">
+                #{factNo,jdbcType=VARCHAR},
+            </if>
+            <if test="factName != null">
+                #{factName,jdbcType=VARCHAR},
+            </if>
+            <if test="factState != null">
+                #{factState,jdbcType=VARCHAR},
+            </if>
+            <if test="contactNo != null">
+                #{contactNo,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="contactMan1 != null">
+                #{contactMan1,jdbcType=VARCHAR},
+            </if>
+            <if test="contactMan2 != null">
+                #{contactMan2,jdbcType=VARCHAR},
+            </if>
+            <if test="factDesc != null">
+                #{factDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="powerpicPath != null">
+                #{powerpicPath,jdbcType=VARCHAR},
+            </if>
+            <if test="apapicPath != null">
+                #{apapicPath,jdbcType=VARCHAR},
+            </if>
+            <if test="sysId != null">
+                #{sysId,jdbcType=INTEGER},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifier != null">
+                #{modifier,jdbcType=INTEGER},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.OaFactoryInfo">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        update oa_factory_info
+        <set>
+            <if test="factNo != null">
+                fact_no = #{factNo,jdbcType=VARCHAR},
+            </if>
+            <if test="factName != null">
+                fact_name = #{factName,jdbcType=VARCHAR},
+            </if>
+            <if test="factState != null">
+                fact_state = #{factState,jdbcType=VARCHAR},
+            </if>
+            <if test="contactNo != null">
+                contact_no = #{contactNo,jdbcType=VARCHAR},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="contactMan1 != null">
+                contact_man1 = #{contactMan1,jdbcType=VARCHAR},
+            </if>
+            <if test="contactMan2 != null">
+                contact_man2 = #{contactMan2,jdbcType=VARCHAR},
+            </if>
+            <if test="factDesc != null">
+                fact_desc = #{factDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="powerpicPath != null">
+                powerpic_path = #{powerpicPath,jdbcType=VARCHAR},
+            </if>
+            <if test="apapicPath != null">
+                apapic_path = #{apapicPath,jdbcType=VARCHAR},
+            </if>
+            <if test="sysId != null">
+                sys_id = #{sysId,jdbcType=INTEGER},
+            </if>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifier != null">
+                modifier = #{modifier,jdbcType=INTEGER},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where fact_id = #{factId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.OaFactoryInfo">
+        <!--
+              common class -  @ET
+          model 属性定义, do not modify.
+        -->
+        update oa_factory_info
+        set fact_no = #{factNo,jdbcType=VARCHAR},
+        fact_name = #{factName,jdbcType=VARCHAR},
+        fact_state = #{factState,jdbcType=VARCHAR},
+        contact_no = #{contactNo,jdbcType=VARCHAR},
+        email = #{email,jdbcType=VARCHAR},
+        contact_man1 = #{contactMan1,jdbcType=VARCHAR},
+        contact_man2 = #{contactMan2,jdbcType=VARCHAR},
+        fact_desc = #{factDesc,jdbcType=VARCHAR},
+        powerpic_path = #{powerpicPath,jdbcType=VARCHAR},
+        apapic_path = #{apapicPath,jdbcType=VARCHAR},
+        sys_id = #{sysId,jdbcType=INTEGER},
+        creator = #{creator,jdbcType=INTEGER},
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+        modifier = #{modifier,jdbcType=INTEGER},
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+        where fact_id = #{factId,jdbcType=INTEGER}
+    </update>
+
+    <select id="unRelationFactoryListByAgentId" resultType="java.util.LinkedHashMap" parameterType="java.lang.Long">
+        select fact_id,fact_name from oa_factory_info where
+        fact_id not in (select factory_id from t_agent_fac where agent_id=#{agentid} and `status`=1)
+        order by create_time desc;
+  </select>
+</mapper>

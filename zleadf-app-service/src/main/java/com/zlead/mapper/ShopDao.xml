@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.ShopDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.ShopEntity" id="shopMap">
+        <result property="id" column="id"/>
+        <result property="sn" column="sn"/>
+        <result property="shopName" column="shop_name"/>
+        <result property="catatoryId" column="catatory_id"/>
+        <result property="shopType" column="shop_type"/>
+        <result property="shopLogo" column="shop_logo"/>
+        <result property="template" column="template"/>
+        <result property="bannerImg" column="banner_img"/>
+        <result property="bond" column="bond"/>
+        <result property="bondStatus" column="bond_status"/>
+        <result property="businessScope" column="business_scope"/>
+        <result property="companyName" column="company_name"/>
+        <result property="provinceId" column="province_id"/>
+        <result property="cityId" column="city_id"/>
+        <result property="regionId" column="region_id"/>
+        <result property="companyAddress" column="company_address"/>
+        <result property="legalName" column="legal_name"/>
+        <result property="legalIdcard" column="legal_idcard"/>
+        <result property="companyCapital" column="company_capital"/>
+        <result property="companyPhone" column="company_phone"/>
+        <result property="contactName" column="contact_name"/>
+        <result property="contactWeixin" column="contact_weixin"/>
+        <result property="contactPhone" column="contact_phone"/>
+        <result property="contactEmail" column="contact_email"/>
+        <result property="idcardImg" column="idcard_img"/>
+        <result property="idcardBackimg" column="idcard_backimg"/>
+        <result property="businessSn" column="business_sn"/>
+        <result property="businessImg" column="business_img"/>
+        <result property="bankAccount" column="bank_account"/>
+        <result property="bankOpenName" column="bank_open_name"/>
+        <result property="bankName" column="bank_name"/>
+        <result property="bankAddress" column="bank_address"/>
+        <result property="bankSn" column="bank_sn"/>
+        <result property="commissionRate" column="commission_rate"/>
+        <result property="settlementDate" column="settlement_date"/>
+        <result property="isPlatform" column="is_platform"/>
+        <result property="agentLevel" column="agent_level"/>
+        <result property="agentShopId" column="agent_shop_id"/>
+        <result property="buyernum" column="buyernum"/>
+        <result property="discount" column="discount"/>
+        <result property="storetype" column="storetype"/>
+        <result property="auditSchedule" column="audit_schedule"/>
+        <result property="auditTime" column="audit_time"/>
+        <result property="auditUserId" column="audit_user_id"/>
+        <result property="mgrUserId" column="mgr_user_id"/>
+        <result property="disable" column="disable"/>
+        <result property="status" column="status"/>
+        <result property="showType" column="show_type"/>
+        <result property="createDate" column="create_date"/>
+        <result property="updateDate" column="update_date"/>
+        <result property="remark" column="remark"/>
+        <result property="memberid" column="member_id"/>
+        <result property="position" column="position"/>
+        <result property="contactQQ" column="contact_qq"/>
+        <result property="qrCode" column="qr_code"/>
+        <result property="introduce" column="introduce"/>
+        <result property="service" column="service"/>
+        <result property="mien" column="mien"/>
+    </resultMap>
+
+    <insert id="insert" parameterType="com.zlead.entity.ShopEntity" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_shop (
+                sn,
+                shop_name,
+                catatory_id,
+                shop_type,
+                shop_logo,
+                banner_img,
+                template,
+                bond,
+                bond_status,
+                business_scope,
+                company_name,
+                province_id,
+                city_id,
+                region_id,
+                company_address,
+                legal_name,
+                legal_idcard,
+                company_capital,
+                company_phone,
+                contact_name,
+                contact_weixin,
+                qr_code,
+                contact_phone,
+                contact_email,
+                idcard_img,
+                idcard_backimg,
+                business_sn,
+                business_img,
+                bank_account,
+                bank_open_name,
+                bank_name,
+                bank_address,
+                bank_sn,
+                commission_rate,
+                settlement_date,
+                is_platform,
+                agent_level,
+                agent_shop_id,
+                buyernum,
+                discount,
+                storetype,
+                audit_schedule,
+                audit_time,
+                audit_user_id,
+                mgr_user_id,
+                disable,
+                status,
+                show_type,
+                create_date,
+                update_date,
+                remark,
+                member_id,
+                position,
+                contact_qq,
+                introduce,
+                service,
+                mien
+                ) VALUES (
+                #{sn},
+                #{shopName},
+                #{catatoryId},
+                #{shopType},
+                #{shopLogo},
+                #{bannerImg},
+                #{template},
+                #{bond},
+                #{bondStatus},
+                #{businessScope},
+                #{companyName},
+                #{provinceId},
+                #{cityId},
+                #{regionId},
+                #{companyAddress},
+                #{legalName},
+                #{legalIdcard},
+                #{companyCapital},
+                #{companyPhone},
+                #{contactName},
+                #{contactWeixin},
+                #{qrCode},
+                #{contactPhone},
+                #{contactEmail},
+                #{idcardImg},
+                #{idcardBackimg},
+                #{businessSn},
+                #{businessImg},
+                #{bankAccount},
+                #{bankOpenName},
+                #{bankName},
+                #{bankAddress},
+                #{bankSn},
+                #{commissionRate},
+                #{settlementDate},
+                #{isPlatform},
+                #{agentLevel},
+                #{agentShopId},
+                #{buyernum},
+                #{discount},
+                #{storetype},
+                #{auditSchedule},
+                #{auditTime},
+                #{auditUserId},
+                #{mgrUserId},
+                #{disable},
+                #{status},
+                #{showType},
+                #{createDate},
+                #{updateDate},
+                #{remark},
+                #{memberid},
+                #{position},
+                #{contactQQ},
+                #{introduce},
+                #{service},
+                #{mien}
+                )
+    </insert>
+
+    <update id="update">
+        UPDATE t_shop AS T SET
+                  T.id = #{id} ,
+                 T.sn = #{sn} ,
+                 T.shop_name = #{shopName} ,
+                 T.catatory_id = #{catatoryId} ,
+                 T.shop_type = #{shopType} ,
+                 T.shop_logo = #{shopLogo} ,
+                 T.banner_img = #{bannerImg} ,
+                 T.template = #{template} ,
+                 T.bond = #{bond} ,
+                 T.bond_status = #{bondStatus} ,
+                 T.business_scope = #{businessScope} ,
+                 T.company_name = #{companyName} ,
+                 T.province_id = #{provinceId} ,
+                 T.city_id = #{cityId} ,
+                 T.region_id = #{regionId} ,
+                 T.company_address = #{companyAddress} ,
+                 T.legal_name = #{legalName} ,
+                 T.legal_idcard = #{legalIdcard} ,
+                 T.company_capital = #{companyCapital} ,
+                 T.company_phone = #{companyPhone} ,
+                 T.contact_name = #{contactName} ,
+                 T.contact_weixin = #{contactWeixin} ,
+                 T.contact_phone = #{contactPhone} ,
+                 T.contact_email = #{contactEmail} ,
+                 T.idcard_img = #{idcardImg} ,
+                 T.idcard_backimg = #{idcardBackimg} ,
+                 T.business_sn = #{businessSn} ,
+                 T.business_img = #{businessImg} ,
+                 T.bank_account = #{bankAccount} ,
+                 T.bank_open_name = #{bankOpenName} ,
+                 T.bank_name = #{bankName} ,
+                 T.bank_address = #{bankAddress} ,
+                 T.bank_sn = #{bankSn} ,
+                 T.commission_rate = #{commissionRate} ,
+                 T.settlement_date = #{settlementDate} ,
+                 T.is_platform = #{isPlatform} ,
+                 T.agent_level = #{agentLevel} ,
+                 T.agent_shop_id = #{agentShopId} ,
+                 T.buyernum = #{buyernum} ,
+                 T.discount = #{discount} ,
+                 T.storetype = #{storetype} ,
+                 T.audit_schedule = #{auditSchedule} ,
+                 T.audit_time = #{auditTime} ,
+                 T.audit_user_id = #{auditUserId} ,
+                 T.mgr_user_id = #{mgrUserId} ,
+                 T.disable = #{disable} ,
+                 T.status = #{status} ,
+                 T.show_type = #{showType} ,
+                 T.create_date = #{createDate} ,
+                 T.update_date = #{updateDate} ,
+                 T.remark = #{remark},
+                 T.member_id = #{memberid},
+                 T.position = #{position},
+                 T.contact_qq = #{contactQQ},
+                 T.qr_code = #{qrCode} ,
+                 T.introduce = #{introduce},
+                 T.service = #{service},
+                 T.mien = #{mien}
+                WHERE T.ID = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM t_shop WHERE  ID = #{id}
+    </delete>
+
+    <select id="findPage" parameterType="map" resultMap="shopMap">
+        SELECT * FROM t_shop AS T
+        <where>
+            <if test=" null != shopType">
+                AND T.shop_type = #{shopType}
+            </if>
+            <if test=" null != status">
+                AND T.status = #{status}
+            </if>
+            <if test=" null != shopTypeall">
+                AND T.shop_type in (1,8)
+            </if>
+        </where>
+        <choose>
+            <when test="orderByField != null and orderByField !=''">
+                <choose>
+                    <when test="isAsc == true">
+                        order by ${orderByField} ASC
+                    </when>
+                    <otherwise>
+                        order by ${orderByField} DESC
+                    </otherwise>
+                </choose>
+            </when>
+            <otherwise>
+                order by id DESC
+            </otherwise>
+        </choose>
+    </select>
+
+
+    <select id="findById" resultMap="shopMap" useCache="false">
+        SELECT * FROM t_shop AS T WHERE  T.ID = #{id}
+    </select>
+
+    <select id="findByWxUnionid" resultMap="shopMap" useCache="false">
+        SELECT T.* FROM t_shop AS T,t_member member WHERE T.member_id=member.id and member.WxUnionid = #{WxUnionid}
+    </select>
+
+    <select id="findByMgrUserId" resultMap="shopMap" useCache="false">
+        SELECT * FROM t_shop AS T WHERE  T.mgr_user_id = #{mgrUserId} AND T.status=3
+    </select>
+
+    <select id="findByMemeberId" resultMap="shopMap" useCache="false">
+        SELECT * FROM t_shop AS T WHERE  T.member_id = #{memberId} AND T.status=3
+    </select>
+
+    <select id="findEnterprise" resultMap="shopMap" useCache="false">
+        SELECT * FROM t_shop AS T WHERE T.ID = #{id}
+    </select>
+
+    <update id="updateEnterprise">
+        UPDATE t_shop AS T
+        <set>
+
+            <if test="sn!=null">
+                T.sn = #{sn} ,
+            </if>
+            <if test="shopName!=null">
+                T.shop_name = #{shopName} ,
+            </if>
+            <if test="catatoryId!=null">
+                T.catatory_id = #{catatoryId} ,
+            </if>
+            <if test="shopType!=null">
+                T.shop_type = #{shopType} ,
+            </if>
+            <if test="shopLogo!=null">
+                T.shop_logo = #{shopLogo} ,
+            </if>
+            <if test="bannerImg!=null">
+                T.banner_img = #{bannerImg} ,
+            </if>
+            <if test="template!=null">
+                T.template = #{template} ,
+            </if>
+            <if test="bond!=null">
+                T.bond = #{bond} ,
+            </if>
+            <if test="bondStatus!=null">
+                T.bond_status = #{bondStatus} ,
+            </if>
+            <if test="businessScope!=null">
+                T.business_scope = #{businessScope} ,
+            </if>
+            <if test="companyName!=null">
+                T.company_name = #{companyName} ,
+            </if>
+            <if test="provinceId!=null">
+                T.province_id = #{provinceId} ,
+            </if>
+            <if test="cityId!=null">
+                T.city_id = #{cityId} ,
+            </if>
+            <if test="regionId!=null">
+                T.region_id = #{regionId} ,
+            </if>
+            <if test="companyAddress!=null">
+                T.company_address = #{companyAddress} ,
+            </if>
+            <if test="legalName!=null">
+                T.legal_name = #{legalName} ,
+            </if>
+            <if test="legalIdcard!=null">
+                T.legal_idcard = #{legalIdcard} ,
+            </if>
+            <if test="companyCapital!=null">
+                T.company_capital = #{companyCapital} ,
+            </if>
+            <if test="companyPhone!=null">
+                T.company_phone = #{companyPhone} ,
+            </if>
+            <if test="contactName!=null">
+                T.contact_name = #{contactName} ,
+            </if>
+            <if test="contactWeixin!=null">
+                T.contact_weixin = #{contactWeixin} ,
+            </if>
+            <if test="contactPhone!=null">
+                T.contact_phone = #{contactPhone} ,
+            </if>
+            <if test="contactEmail!=null">
+                T.contact_email = #{contactEmail} ,
+            </if>
+            <if test="idcardImg!=null">
+                T.idcard_img = #{idcardImg} ,
+            </if>
+            <if test="idcardBackimg!=null">
+                T.idcard_backimg = #{idcardBackimg} ,
+            </if>
+            <if test="businessSn!=null">
+                T.business_sn = #{businessSn} ,
+            </if>
+            <if test="businessImg!=null">
+                T.business_img = #{businessImg} ,
+            </if>
+            <if test="bankAccount!=null">
+                T.bank_account = #{bankAccount} ,
+            </if>
+            <if test="bankOpenName!=null">
+                T.bank_open_name = #{bankOpenName} ,
+            </if>
+            <if test="bankName!=null">
+                T.bank_name = #{bankName} ,
+            </if>
+            <if test="bankAddress!=null">
+                T.bank_address = #{bankAddress} ,
+            </if>
+            <if test="bankSn!=null">
+                T.bank_sn = #{bankSn} ,
+            </if>
+            <if test="commissionRate!=null">
+                T.commission_rate = #{commissionRate} ,
+            </if>
+            <if test="settlementDate!=null">
+                T.settlement_date = #{settlementDate} ,
+            </if>
+            <if test="isPlatform!=null">
+                T.is_platform = #{isPlatform} ,
+            </if>
+            <if test="agentLevel!=null">
+                T.agent_level = #{agentLevel} ,
+            </if>
+            <if test="agentShopId!=null">
+                T.agent_shop_id = #{agentShopId} ,
+            </if>
+            <if test="buyernum!=null">
+                T.buyernum = #{buyernum} ,
+            </if>
+            <if test="discount!=null">
+                T.discount = #{discount} ,
+            </if>
+            <if test="storetype!=null">
+                T.storetype = #{storetype} ,
+            </if>
+            <if test="auditSchedule!=null">
+                T.audit_schedule = #{auditSchedule} ,
+            </if>
+            <if test="auditTime!=null">
+                T.audit_time = #{auditTime} ,
+            </if>
+            <if test="auditUserId!=null">
+                T.audit_user_id = #{auditUserId} ,
+            </if>
+            <if test="mgrUserId!=null">
+                T.mgr_user_id = #{mgrUserId} ,
+            </if>
+            <if test="disable!=null">
+                T.disable = #{disable} ,
+            </if>
+            <if test="status!=null">
+                T.status = #{status} ,
+            </if>
+            <if test="showType!=null">
+                T.show_type = #{showType} ,
+            </if>
+            <if test="createDate!=null">
+                T.create_date = #{createDate} ,
+            </if>
+            <if test="updateDate!=null">
+                T.update_date = #{updateDate} ,
+            </if>
+            <if test="remark!=null">
+                T.remark = #{remark},
+            </if>
+            <if test="memberid!=null">
+                T.member_id = #{memberid},
+            </if>
+            <if test="position!=null">
+
+                T.position = #{position},
+            </if>
+            <if test="contactQQ!=null">
+                T.contact_qq = #{contactQQ},
+            </if>
+            <if test="qr!=null">
+                T.contact_qq = #{qrCode},
+            </if>
+            <if test="introduce!=null">
+                T.introduce = #{introduce},
+            </if>
+            <if test="service!=null">
+                T.service = #{service},
+            </if>
+            <if test="mien!=null">
+                T.mien = #{mien}
+            </if>
+
+
+        </set>
+        WHERE T.id = #{id}
+    </update>
+
+    <select id="shopdsLists" resultMap="shopMap">
+        SELECT DISTINCT
+        d.*
+        FROM
+        t_member AS a
+        INNER JOIN t_agent_fac AS b ON a.id = b.member_id
+        INNER JOIN oa_factory_info AS c ON b.factory_id = c.fact_id
+        INNER JOIN t_shop AS d ON d.id = c.shop_id
+        WHERE
+        a.id = #{id}
+        ORDER BY
+        d.id DESC
+    </select>
+
+    <select id="shopdsListSize" resultMap="shopMap">
+        SELECT DISTINCT
+         COUNT(a.*)
+        FROM
+        t_member AS a
+        INNER JOIN t_agent_fac AS b ON a.id = b.member_id
+        INNER JOIN oa_factory_info AS c ON b.factory_id = c.fact_id
+        INNER JOIN t_shop AS d ON d.id = c.shop_id
+        WHERE
+        a.id = #{id}
+        ORDER BY
+        d.id DESC
+    </select>
+
+    <select id="shopdstop" resultMap="shopMap">
+        SELECT
+	    b.*
+        FROM
+	    oa_factory_info AS a
+	    INNER JOIN t_shop AS b ON b.id = a.shop_id
+        ORDER BY
+	    a.fact_id DESC
+	    LIMIT 0,5
+    </select>
+
+
+</mapper>

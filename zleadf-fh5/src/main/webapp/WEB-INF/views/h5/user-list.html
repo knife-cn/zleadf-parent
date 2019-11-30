@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>订单列表</title>
+    <link rel="stylesheet" href="../../../h5/plugins/mui/mui.min.css">
+
+    <link rel="stylesheet" href="../../../h5/css/init.css">
+    <link rel="stylesheet" href="../../../h5/css/user-list.css">
+    <script src="../../../h5/js/rem.js"></script>
+    <script src="../../../h5/js/common.js"></script>
+
+</head>
+
+<body>
+
+    <div class="user_list_header">
+        <!-- 搜索框 -->
+        <div class="search">
+            <div class="search-items">
+                <div class="search_box">
+                    <img src="../../../h5/images/search88.png" alt="" class="icon_search">
+                    <input type="text" placeholder="输入客户名称或电话（共200位客户）" id="searchInput" class="search_content">
+                </div>
+            </div>
+        </div>
+        <!-- 添加客户 -->
+        <!-- <div class="add_user">
+            <img src="../../../images/ic_customer_add@2x.png" alt="">
+            <p>添加客户</p>
+    </div> -->
+        <!-- 按客户查询 -->
+        <!-- <div class="search_base">
+            <div>
+                <select class="mui-h5" >
+                    <option value="">按客户级别查询</option>
+                </select>
+                <img src="../../../images/ic_pull_down@2x.png" alt="" srcset="">
+            </div>
+            <p>(共<span>35</span>个客户)</p>
+    </div> -->
+
+    </div>
+    <!--下拉刷新容器-->
+    <div class="mui-content mui-scroll-wrapper">
+        <div class='mui-scroll'>
+            <ul class='content_ul'>
+                <!-- <li>
+            <span>W</span>
+            <div>
+                <h5>
+                    <b>王思聪</b>
+                    <span>B级</span>
+                    <a href="javascript:;" class="my_active">审核中</a>
+                </h5>
+                <p>
+                    <img src="../../../images/ic_address@2x.png" alt="">
+                    <span>上海市普陀区金沙江路长风二村17号306室</span>
+                </p>
+                <p>
+                    <img src="../../../images/ic_shop@2x.png" alt="">
+                    <span>华师大五金店</span>
+                </p>
+            </div>
+        </li>
+         -->
+
+
+
+            </ul>
+            <!-- 右侧固定栏 -->
+            <!-- <div class="fixed">
+        ABCDEFGHI&nbsp;JKLMNOPQRSTUVWXYZ
+    </div> -->
+        </div>
+    </div>
+    <nav class="navBottom" style="z-index:10;">
+        <ul>
+            <li id="wbIndexNav" data-id="1">
+                <a href="wbIndex.html">
+                    <div>
+                        <span></span>
+                    </div>
+                    <p>工作台</p>
+                </a>
+            </li>
+            <li id="customerNav" class="active" data-id="2">
+                <a href=user-list.html ">
+                <div>
+                    <span></span>
+                </div>
+                <p>客户</p>
+            </a>
+        </li>
+        <li id="orderNav "  data-id="3 ">
+            <a href="order-list.html ">
+                <div>
+                    <span></span>
+                </div>
+                <p>订单</p>
+            </a>
+        </li>
+        <li id="goodsNav " data-id="4 ">
+            <a href="goodsList.html ">
+                <div>
+                    <span></span>
+                </div>
+                <p>商品</p>
+            </a>
+        </li>
+        <li id="personNav " data-id="5 ">
+            <a href="my-info.html ">
+                <div>
+                    <span></span>
+                </div>
+                <p>我的</p>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+ <script id='userList' type="text/html ">
+ {{ each list}}
+            <li>
+                <span>W</span>
+                <div>
+                    <h5>
+                        <b>{{$value.agent_name}}</b>
+                        <span>B级</span>
+                        <a href="javascript:; " class="my_active ">
+                            {{if $value.status==0}}
+                            审核中
+                            {{else}}
+                            通过
+                            {{/if}}
+
+                        </a>
+                        {{if $value.status==0 }}
+                        <strong class="accessButton " onclick="accessApply({{$value.agent_id}},{{$index}}) ">通过</strong>
+                        {{/if}}
+                    </h5>
+                    <p>
+                        <img src="../../../images/ic_address@2x.png " alt=" ">
+                        <span>{{$value.agent_addr}}</span>
+                    </p>
+                    <p>
+                        <img src="../../../images/ic_shop@2x.png " alt=" ">
+                        <span>{{$value.link_name}}</span>
+                    </p>
+                </div>
+            </li>
+    {{/each}}
+ 
+ </script>
+
+
+<script src="../../../h5/js/jquery.min.js "></script>
+<script src="../../../h5/plugins/mui/mui.min.js "></script>
+
+<script src="../../../h5/js/template-web.js "></script>
+<script src="../../../h5/js/page/user-list.js "></script>
+</body>
+
+</html>

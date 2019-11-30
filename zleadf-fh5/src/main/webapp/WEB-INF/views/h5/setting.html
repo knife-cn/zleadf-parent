@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../../../h5/css/init.css">
+  <link rel="stylesheet" href="../../../h5/css/setting.css">
+  <script src="../../../h5/js/rem.js"></script>
+  <title>个人设置</title>
+</head>
+
+<body>
+  <div class="p_container">
+    <ul>
+
+      <li>
+          <p>修改密码</p>
+          <div>
+            <img src="../../../h5/images/right_arrow.png" alt="" class="r_arrow">
+          </div>
+        </li>
+    </ul>
+
+    <div class="login_out">退出登陆</div>
+  </div>
+
+  <script src="../js/jquery.min.js"></script>
+
+  <script>
+
+    $('ul li').click(function () {
+      window.location.href = 'mod-Pass.html'
+    })
+
+    var r = window.location.search.split("=")[1];
+
+    $('.login_out').click(function () {
+          $.ajax({
+            type:'GET',
+            url:'/zlead/member/logout?account=' + r,
+
+            dataType:'json',
+            success:function (res) {
+              console.log(res)
+              if(res.success){
+                window.location.href = 'login.html'
+              }
+            }
+        })
+    })
+  </script>
+</body>
+
+</html>

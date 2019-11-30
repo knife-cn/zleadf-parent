@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+		<title>直链商城</title>
+		<link rel="stylesheet" href="https://at.alicdn.com/t/font_234130_nem7eskcrkpdgqfr.css">
+		<link rel="stylesheet" href="../../shopping/css/Personal_information1.css" />
+	</head>
+
+	<body>
+				<!--右-->
+				<div class="right5" >
+					<!--内容右边头部导航-->
+					<div class="rdao5">
+						<ul>
+							<li>
+								<span id="span">个人信息</span>
+								<div></div>
+							</li>
+						</ul>
+					</div>
+					<!--姓名-->
+					<div class="xin5">
+						<span>姓名</span>
+						<input type="text" placeholder="请输入姓名" id="xin"/>
+					</div>
+					<!--性别-->
+					<div class="bei5">
+						<span class="xinbie5">性别</span>
+						<div class="kuai5">
+							<div class="dian5 huay5"></div><span>男</span>
+							<div class="dian5 huaw5"></div><span>女</span>
+						</div>
+					</div>
+					<!--出生年/月/日-->
+					<div class="chushen5">
+						<span>出生年/月/日</span>
+						<div class="riqi5" >
+							<input type="text" placeholder="开始时间" id="h3Ele" readOnly="true"/><img src="../../shopping/img/lhpimg/Datepicker_nomal.png">
+						</div>
+
+					</div>
+                    <div id='schedule-box' class="boxshaw">
+
+                    </div>
+
+					<!--手机号-->
+					<div class="hao5">
+						<span>手机号</span>
+						<span id="hao"></span>
+						<!--<input type="text" disabled placeholder="请输入手机号" id="hao"/>-->
+					</div>
+					<!--所在城市-->
+					<div class="chen5" id="area">
+						<span>所在城市</span>
+						<select id="shengs" class="select">
+							<!--挖坑-->
+						</select>
+						<select id="shis" class="select">
+							<!--挖坑-->
+						</select>
+						<select id="quyus" class="select">
+							<!--挖坑-->
+						</select>
+					</div>
+					<!--详细地址-->
+					<div class="dizhi5">
+						<span>详细地址</span>
+						<input type="text" placeholder="请输入详细地址"  id="dizhi"/>
+					</div>
+					<!--保存-->
+					<input class="bao5" type="button" value="保存" />
+
+				</div>
+
+				<!--提示-->
+				<div class="tishi2">
+					修改成功!
+				</div>
+
+				<div class="tishi3">
+					修改失败!
+				</div>
+
+	</body>
+	<script type="text/javascript" src="../../shopping/js/jquery-2.1.0.js"></script>
+	<script type="text/javascript" src="../../shopping/lib/artTemplate/artTemplate/template-web.js" ></script>
+	<script type="text/javascript" src="../../shopping/js/Personal_information1.js"></script>
+	<script type="text/javascript" src="../../shopping/js/Placeholder.js"></script>
+
+	<script type="text/javascript" src="../../shopping/js/schedule.js"></script>
+	<!--<script type="text/javascript" src="../../shopping/js/jinzi.js" ></script>-->
+	<script>
+		 $(function(){
+             $(".chushen5").on("click",function () {
+				 $(".boxshaw").show();
+             })
+
+
+			 var mySchedule = new Schedule({
+				 el: '#schedule-box',
+				 //date: '2018-9-20',
+				 clickCb: function (y,m,d) {
+					 $("#h3Ele").val(y+'-'+m+'-'+d);
+					 $(".boxshaw").hide();
+				 },
+				 nextMonthCb: function (y,m,d) {
+					 $("#h3Ele").val(y+'-'+m+'-'+d);
+					 $(".boxshaw").hide();
+				 },
+				 nextYeayCb: function (y,m,d) {
+					 $("#h3Ele").val(y+'-'+m+'-'+d);
+					 $(".boxshaw").hide();
+				 },
+				 prevMonthCb: function (y,m,d) {
+					 $("#h3Ele").val(y+'-'+m+'-'+d);
+					 $(".boxshaw").hide();
+				 },
+				 prevYearCb: function (y,m,d) {
+					 $("#h3Ele").val(y+'-'+m+'-'+d);
+					 $(".boxshaw").hide();
+				 }
+			 });
+
+			 if(navigator.appName == "Microsoft Internet Explorer" && parseInt(navigator.appVersion.split(";")[1].replace(/[ ]/g, "").replace("MSIE", "")) <= 9) {
+				$("select").removeClass("select5").addClass("select2");
+			}
+
+		 });
+
+	</script>
+
+	<!--省市区-->
+	<script type="text/template" id="tel11">
+		{{ each list v i }}
+		<option data-id="{{v.id}}" data-code="{{v.regionCode}}" class="option" id="sheng">{{v.regionName}}</option>
+		{{ /each }}
+	</script>
+	<script type="text/template" id="tel12">
+		{{ each list2 v i }}
+		<option data-id2="{{v.id}}"  data-code="{{v.regionCode}}" class="option" id="shi">{{v.regionName}}</option>
+		{{ /each }}
+	</script>
+	<script type="text/template" id="tel13">
+		{{ each list3 v i }}
+		<option  data-id3="{{v.id}}"  data-code="{{v.regionCode}}" class="option" id="quyu4">{{v.regionName }}</option>
+		{{ /each }}
+
+
+	</script>
+
+
+</html>

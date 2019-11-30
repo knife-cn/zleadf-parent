@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.MarketactMapper">
+
+    <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.Marketact">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="act_id" property="actId" jdbcType="INTEGER"/>
+        <result column="cont_code" property="contCode" jdbcType="VARCHAR"/>
+        <result column="cont_name" property="contName" jdbcType="VARCHAR"/>
+        <result column="cont_type" property="contType" jdbcType="INTEGER"/>
+        <result column="eff_date" property="effDate" jdbcType="TIMESTAMP"/>
+        <result column="exp_date" property="expDate" jdbcType="TIMESTAMP"/>
+        <result column="terminal" property="terminal" jdbcType="VARCHAR"/>
+        <result column="cont_title" property="contTitle" jdbcType="VARCHAR"/>
+        <result column="cont_url" property="contUrl" jdbcType="VARCHAR"/>
+        <result column="push_time" property="pushTime" jdbcType="TIMESTAMP"/>
+        <result column="push_user" property="pushUser" jdbcType="INTEGER"/>
+        <result column="cont_state" property="contState" jdbcType="VARCHAR"/>
+        <result column="shop_id" property="shopId" jdbcType="INTEGER"/>
+        <result column="creator" property="creator" jdbcType="INTEGER"/>
+        <result column="modifier" property="modifier" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+
+    <sql id="BaseResult">
+      ma.act_id as 'actId',
+      ma.cont_code as 'contCode' ,
+      ma.cont_name as 'contName' ,
+      ma.cont_type as 'contType' ,
+      ma.eff_date  as ' effDate',
+      ma.cont_url as 'contUrl',
+      ma.exp_date as 'expDate',
+      ma.terminal as 'terminal',
+      ma.cont_title as 'contTitle',
+      ma.cont_url as 'contUrl',
+      ma.push_time as 'pushTime',
+      ma.push_user as 'pushUser',
+      ma.cont_state as 'contState',
+      ma.creator as 'creator',
+      ma.modifier as 'modifier',
+      ma.create_time as 'createTime',
+      ma.modify_time as 'modifyTime',
+      ma.static_cont as 'staticCont',
+      ma.act_pic as 'actPic',
+      ma.shop_id as 'shopId'
+  </sql>
+
+
+    <sql id="NewBaseResult">
+        ma.act_id as 'actId',
+        ma.cont_code as 'contCode' ,
+        ma.cont_name as 'contName' ,
+        ma.cont_type as 'contType' ,
+        ma.eff_date  as ' effDate',
+        ma.cont_url as 'contUrl',
+        ma.exp_date as 'expDate',
+        ma.terminal as 'terminal',
+        ma.cont_title as 'contTitle',
+        ma.cont_url as 'contUrl',
+        ma.push_time as 'pushTime',
+        ma.push_user as 'pushUser',
+        ma.cont_state as 'contState',
+        ma.creator as 'creator',
+        ma.modifier as 'modifier',
+        ma.create_time as 'createTime',
+        ma.modify_time as 'modifyTime',
+        ma.static_cont as 'staticCont',
+        ma.act_pic as 'actPic',
+        ma.shop_id as 'shopId',
+        ast.type_name as 'actTypeName'
+    </sql>
+
+    <!--活动详情查询 -->
+    <select id="queryByActId" resultType="com.zlead.fplat.entity.Marketact">
+        select <include refid="BaseResult"/>
+        FROM
+        oa_market_act AS ma
+        LEFT  join oa_market_agent AS mm
+        on ma.act_id = mm.act_id
+        WHERE
+        ma.act_Id = #{actId} and mm.agent_id=#{agentId} and cont_state = "2";
+    </select>
+    
+    <!--活动详情查询 
+    App端调用  -->
+    <select id="queryByActIdForApp" resultType="com.zlead.fplat.entity.Marketact">
+        select <include refid="NewBaseResult"/>
+        FROM
+        oa_market_act AS ma
+        INNER JOIN acct_sale_type AS ast
+        ON ma.cont_type=ast.type_id
+        WHERE
+        ma.act_Id = #{actId}
+    </select>
+
+    <select id="findConByType" parameterType="List" resultMap="BaseResultMap">
+        select * from oa_market_act where cont_state=1 AND terminal=2 AND now()>eff_date and exp_date>now() and
+        cont_type IN
+        <foreach collection="list" item="list" open="(" close=")" separator=",">
+            #{list}
+        </foreach>
+        ORDER BY create_time DESC
+    </select>
+
+    <select id="findByAgentIdPage" resultType="com.zlead.fplat.entity.Marketact">
+        select DISTINCT <include refid="BaseResult"/>
+        FROM
+        oa_market_act ma
+        inner join oa_market_agent mm on ma.act_id = mm.act_id
+        WHERE
+        mm.agent_id = #{agentId} and ma.cont_state = 2  AND ma.shop_id IN (SELECT shop_id FROM oa_factory_info fac WHERE
+        fac.fact_id IN
+        <foreach collection="factIds" item="list" open="(" close=")" separator=",">
+            #{list}
+        </foreach>
+        )
+        and ma.shop_id IN (SELECT ofi.shop_id FROM t_agent_fac taf inner JOIN  oa_factory_info ofi on taf.factory_id = ofi.fact_id  WHERE agent_id = #{agentId} and taf.status = 1)
+        and ma.create_time &lt;= NOW()
+        order by ma.create_time desc
+    </select>
+    
+    <select id="findByAgentIdPage_bak" resultType="com.zlead.fplat.entity.Marketact">
+        select DISTINCT <include refid="BaseResult"/>
+        FROM
+        oa_market_act ma
+        inner join oa_market_agent mm on ma.act_id = mm.act_id
+        INNER JOIN oa_market_goods omg ON omg.act_id = ma.act_id
+        INNER JOIN t_goods go ON omg.goods_id = go.id AND go.prod_type = 2 AND go.is_market = 1 AND go.terminal IN (2, 3)
+        <!--INNER JOIN oa_agent_band_lists lists ON go.list_id = lists.list_id AND go.brand_id = lists.band_id AND lists.agent_id = #{agentId} AND lists.fact_id in
+        <foreach collection="factIds" item="list" open="(" close=")" separator=",">
+            #{list}
+        </foreach>-->
+        WHERE
+        mm.agent_id = #{agentId} and cont_state = 2  AND ma.shop_id IN (SELECT shop_id FROM oa_factory_info fac WHERE
+        fac.fact_id IN
+        <foreach collection="factIds" item="list" open="(" close=")" separator=",">
+            #{list}
+        </foreach>
+        )
+        and ma.shop_id IN (SELECT ofi.shop_id FROM t_agent_fac taf inner JOIN  oa_factory_info ofi on taf.factory_id = ofi.fact_id  WHERE agent_id = #{agentId} and taf.status = 1)
+        and ma.eff_date &lt;= NOW()
+        order by ma.create_time desc
+    </select>
+    
+    
+    <select id="findAllByPage" resultType="com.zlead.fplat.entity.Marketact">
+        select DISTINCT <include refid="BaseResult"/>
+        FROM
+        oa_market_act ma
+        WHERE  ma.cont_state = 2 order by ma.create_time desc
+    </select>
+
+    <select id="findShopActivies" resultType="com.zlead.fplat.entity.Marketact">
+        select
+          <include refid="BaseResult"/>
+        FROM
+          oa_market_act ma
+        WHERE
+            ma.shop_id = #{ownShopid}
+            <if test="contType != null and contType > 0">
+                and ma.cont_type = #{contType}
+            </if>
+            <if  test="contState != null and contState!=''">
+                and ma.cont_state = #{contState}
+            </if>
+        <if test="effDate != null and  effDate != ''">
+            <![CDATA[ and ma.push_time >= #{effDate,jdbcType=DATE}]]>
+        </if>
+        <if test="expDate != null and  expDate != ''">
+            <![CDATA[ and ma.push_time <= #{expDate,jdbcType=DATE}]]>
+        </if>
+            order by ma.push_time desc
+    </select>
+
+</mapper>

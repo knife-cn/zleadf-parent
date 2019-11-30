@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>订单详情</title>
+    <link rel="stylesheet" href="../../../h5/plugins/mui/mui.min.css">
+    <link rel="stylesheet" href="../../../h5/css/init.css">
+    <link rel="stylesheet" href="../../../h5/css/common.css">
+    <link rel="stylesheet" href="../../../h5/css/good-detail.css">
+    <link rel="stylesheet" href="../../../h5/css/wbIndex.css">
+    <script src="../../../h5/js/rem.js"></script>
+    <script src="../../../h5/js/jquery.min.js"></script>
+    <script src="../../../h5/plugins/circle-progress.min.js"></script>
+    <script src="../../../h5/plugins/mui/mui.min.js"></script>
+    <script src="../../../h5/plugins/mui/mui.pullToRefresh.js"></script>
+    <script src="../../../h5/plugins/mui/mui.pullToRefresh.material.js"></script>
+</head>
+
+<body>
+    <div class="shedulePart" style="padding-top:0">
+        <ul class="payment_detail">
+            <li id="payment_detail_checked" data-id="1">订单详情</li>
+            <li  data-id="2">商品详情</li>
+            <li  data-id="3">付款详情</li>
+        </ul>
+    </div>
+    <div class="payment_detail_list order" id="payment_detail_checked">
+        <ul>
+            <li>订单编号<span>264346370343</span></li>
+            <li>下单时间<span>264346370343</span></li>
+            <li>商品总额<span>264346370343</span></li>
+            <li>运费<span>264346370343</span></li>
+            <li>合计<span>264346370343</span></li>
+            <li>配送方式<span>264346370343</span></li>
+            <li>支付方式<span>264346370343</span></li>
+        </ul>
+    </div>
+    <div class="payment_detail_goodlist goods" id="">
+        <ul class="good_list" style="width:100%;margin-top: 0;">
+            <li>
+                <img src="../../../h5/images/4.png" alt="">
+                <div class="r_content">
+                <p class="title">柏奥斯全铜入墙式厨房水龙头4分单冷水槽龙</p>
+                <p class="type">褐色 不锈钢 5m</p>
+                <p class="price"><span>¥500.00</span><i>×1</i></p>
+                </div>
+            </li>
+            <li>
+                <img src="../../../h5/images/4.png" alt="">
+                <div class="r_content">
+                    <p class="title">柏奥斯全铜入墙式厨房水龙头4分单冷水槽龙</p>
+                    <p class="type">褐色 不锈钢 5m</p>
+                    <p class="price"><span>¥500.00</span><i>×1</i></p>
+                </div>
+            </li>
+            <li>
+                <img src="../../../h5/images/4.png" alt="">
+                <div class="r_content">
+                <p class="title">柏奥斯全铜入墙式厨房水龙头4分单冷水槽龙</p>
+                <p class="type">褐色 不锈钢 5m</p>
+                <p class="price"><span>¥500.00</span><i>×1</i></p>
+                </div>
+            </li>
+
+            <li>
+                <img src="../../../h5/images/4.png" alt="">
+                <div class="r_content">
+                    <p class="title">柏奥斯全铜入墙式厨房水龙头4分单冷水槽龙</p>
+                    <p class="type">褐色 不锈钢 5m</p>
+                    <p class="price"><span>¥500.00</span><i>×1</i></p>
+                </div>
+            </li>
+            <li>
+                <img src="../../../h5/images/4.png" alt="">
+                <div class="r_content">
+                <p class="title">柏奥斯全铜入墙式厨房水龙头4分单冷水槽龙</p>
+                <p class="type">褐色 不锈钢 5m</p>
+                <p class="price"><span>¥500.00</span><i>×1</i></p>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="payment_detail_bill pay" id="">
+        <ul>
+            <li>支付方式<span>264346370343</span></li>
+            <li>付款时间<span>264346370343</span></li>
+        </ul>
+    </div>
+
+    <script src="../../../h5/js/template-web.js"></script>
+
+    <script type="text/template" id="order_details">
+
+
+    </script>
+    <script>
+
+
+      $.ajax({
+        type:'POST',
+        url:'/zlead/shopmgr/shopOrderList?pageNum=1&size=10',
+        dataType:'json',
+        success:function (res) {
+          console.log(res)
+        }
+      })
+
+
+        $('#circle').circleProgress({
+            value: 0.6,
+            size: 112,
+            startAngle: Math.PI * 0.9,
+            emptyFill: "rgba(0, 0, 0, 0)",
+            lineCap: "round",
+            fill: {
+                gradient: ["#fff"],
+                color: "#f00"
+            }
+        }).on('circle-animation-progress', function(event, progress) {
+            $(this).find('strong').html(parseInt(100 * progress));
+            // $(this).find('strong').html(parseInt(100 * progress) + '<i>%</i>');
+        });;
+        // $('.second.circle').circleProgress({
+        //     value: 0.6
+        // }).on('circle-animation-progress', function(event, progress) {
+        //     $(this).find('strong').html(parseInt(100 * progress) + '<i>%</i>');
+        // });
+
+        $('.payment_detail > li').click(function () {
+            var id = +$(this).attr('data-id')
+            console.log(id);
+            $(this).attr('id','payment_detail_checked').siblings().removeAttr('id');
+            switch(id){
+                case 1:
+                   $('.order').attr('id','payment_detail_checked')
+                    $('.goods').removeAttr('id')
+                    $('.pay').removeAttr('id')
+
+                    break;
+                case 2:
+                    $('.goods').attr('id','payment_detail_checked')
+                    $('.order').removeAttr('id')
+                    $('.pay').removeAttr('id')
+
+                    break;
+                case 3:
+                    $('.pay').attr('id','payment_detail_checked')
+                    $('.goods').removeAttr('id')
+                    $('.order').removeAttr('id')
+
+                    break;
+            }
+        })
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

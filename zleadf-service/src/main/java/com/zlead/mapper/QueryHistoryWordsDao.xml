@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.dao.QueryHistoryWordsDao" >
+  <resultMap id="BaseResultMap" type="com.zlead.entity.QueryHistoryWords" >
+    <result column="member_id" property="memberId" jdbcType="INTEGER" />
+    <result column="t_word_name" property="tWordName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="t_num" property="tNum" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insertSelective" parameterType="com.zlead.entity.QueryHistoryWords" >
+    insert into t_query_history_words
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="memberId != null" >
+        member_id,
+      </if>
+      <if test="tWordName != null" >
+        t_word_name,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+        t_num = 0,
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="memberId != null" >
+        #{memberId,jdbcType=INTEGER},
+      </if>
+      <if test="tWordName != null" >
+        #{tWordName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tNum != null" >
+        #{tNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+
+  <select id="queryWords" resultMap="BaseResultMap" >
+    SELECT * FROM t_query_history_words AS T WHERE  T.member_id = #{memberId}  order by T.update_time desc limit #{start},#{end}
+  </select>
+
+  <delete id="delete" >
+    DELETE FROM t_query_history_words  WHERE  member_id = #{memberId}
+  </delete>
+
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.entity.QueryHistoryWords" >
+    update t_query_history_words
+    <set >
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+        t_num = t_num+1,
+    </set>
+    where member_id = #{memberId,jdbcType=INTEGER} and  t_word_name = #{tWordName,jdbcType=INTEGER}
+  </update>
+
+
+
+</mapper>

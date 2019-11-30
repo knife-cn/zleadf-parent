@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.CustlevelMapper" >
+  <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.Custlevel" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <id column="level_id" property="levelId" jdbcType="INTEGER" />
+    <result column="level_no" property="levelNo" jdbcType="VARCHAR" />
+    <result column="level_name" property="levelName" jdbcType="VARCHAR" />
+    <result column="show_sort" property="showSort" jdbcType="INTEGER" />
+    <result column="min_dis" property="minDis" jdbcType="DOUBLE" />
+    <result column="max_dis" property="maxDis" jdbcType="DOUBLE" />
+    <result column="back_flag" property="backFlag" jdbcType="VARCHAR" />
+    <result column="min_back" property="minBack" jdbcType="DOUBLE" />
+    <result column="max_back" property="maxBack" jdbcType="DOUBLE" />
+    <result column="level_state" property="levelState" jdbcType="VARCHAR" />
+    <result column="level_desc" property="levelDesc" jdbcType="VARCHAR" />
+    <result column="org_id" property="orgId" jdbcType="INTEGER" />
+    <result column="sys_id" property="sysId" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="modifier" property="modifier" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    level_id, level_no, level_name, show_sort, min_dis, max_dis, back_flag, min_back, 
+    max_back, level_state, level_desc, org_id, sys_id, creator, modifier, create_time, 
+    modify_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.CustlevelExample" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from crm_cust_level
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from crm_cust_level
+    where level_id = #{levelId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    delete from crm_cust_level
+    where level_id = #{levelId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.fplat.entity.Custlevel" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into crm_cust_level (level_id, level_no, level_name, 
+      show_sort, min_dis, max_dis, 
+      back_flag, min_back, max_back, 
+      level_state, level_desc, org_id, 
+      sys_id, creator, modifier, 
+      create_time, modify_time)
+    values (#{levelId,jdbcType=INTEGER}, #{levelNo,jdbcType=VARCHAR}, #{levelName,jdbcType=VARCHAR}, 
+      #{showSort,jdbcType=INTEGER}, #{minDis,jdbcType=DOUBLE}, #{maxDis,jdbcType=DOUBLE}, 
+      #{backFlag,jdbcType=VARCHAR}, #{minBack,jdbcType=DOUBLE}, #{maxBack,jdbcType=DOUBLE}, 
+      #{levelState,jdbcType=VARCHAR}, #{levelDesc,jdbcType=VARCHAR}, #{orgId,jdbcType=INTEGER}, 
+      #{sysId,jdbcType=INTEGER}, #{creator,jdbcType=INTEGER}, #{modifier,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlead.fplat.entity.Custlevel" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into crm_cust_level
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="levelId != null" >
+        level_id,
+      </if>
+      <if test="levelNo != null" >
+        level_no,
+      </if>
+      <if test="levelName != null" >
+        level_name,
+      </if>
+      <if test="showSort != null" >
+        show_sort,
+      </if>
+      <if test="minDis != null" >
+        min_dis,
+      </if>
+      <if test="maxDis != null" >
+        max_dis,
+      </if>
+      <if test="backFlag != null" >
+        back_flag,
+      </if>
+      <if test="minBack != null" >
+        min_back,
+      </if>
+      <if test="maxBack != null" >
+        max_back,
+      </if>
+      <if test="levelState != null" >
+        level_state,
+      </if>
+      <if test="levelDesc != null" >
+        level_desc,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="sysId != null" >
+        sys_id,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="levelId != null" >
+        #{levelId,jdbcType=INTEGER},
+      </if>
+      <if test="levelNo != null" >
+        #{levelNo,jdbcType=VARCHAR},
+      </if>
+      <if test="levelName != null" >
+        #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="showSort != null" >
+        #{showSort,jdbcType=INTEGER},
+      </if>
+      <if test="minDis != null" >
+        #{minDis,jdbcType=DOUBLE},
+      </if>
+      <if test="maxDis != null" >
+        #{maxDis,jdbcType=DOUBLE},
+      </if>
+      <if test="backFlag != null" >
+        #{backFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="minBack != null" >
+        #{minBack,jdbcType=DOUBLE},
+      </if>
+      <if test="maxBack != null" >
+        #{maxBack,jdbcType=DOUBLE},
+      </if>
+      <if test="levelState != null" >
+        #{levelState,jdbcType=VARCHAR},
+      </if>
+      <if test="levelDesc != null" >
+        #{levelDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="sysId != null" >
+        #{sysId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.Custlevel" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update crm_cust_level
+    <set >
+      <if test="levelNo != null" >
+        level_no = #{levelNo,jdbcType=VARCHAR},
+      </if>
+      <if test="levelName != null" >
+        level_name = #{levelName,jdbcType=VARCHAR},
+      </if>
+      <if test="showSort != null" >
+        show_sort = #{showSort,jdbcType=INTEGER},
+      </if>
+      <if test="minDis != null" >
+        min_dis = #{minDis,jdbcType=DOUBLE},
+      </if>
+      <if test="maxDis != null" >
+        max_dis = #{maxDis,jdbcType=DOUBLE},
+      </if>
+      <if test="backFlag != null" >
+        back_flag = #{backFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="minBack != null" >
+        min_back = #{minBack,jdbcType=DOUBLE},
+      </if>
+      <if test="maxBack != null" >
+        max_back = #{maxBack,jdbcType=DOUBLE},
+      </if>
+      <if test="levelState != null" >
+        level_state = #{levelState,jdbcType=VARCHAR},
+      </if>
+      <if test="levelDesc != null" >
+        level_desc = #{levelDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="sysId != null" >
+        sys_id = #{sysId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where level_id = #{levelId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.Custlevel" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update crm_cust_level
+    set level_no = #{levelNo,jdbcType=VARCHAR},
+      level_name = #{levelName,jdbcType=VARCHAR},
+      show_sort = #{showSort,jdbcType=INTEGER},
+      min_dis = #{minDis,jdbcType=DOUBLE},
+      max_dis = #{maxDis,jdbcType=DOUBLE},
+      back_flag = #{backFlag,jdbcType=VARCHAR},
+      min_back = #{minBack,jdbcType=DOUBLE},
+      max_back = #{maxBack,jdbcType=DOUBLE},
+      level_state = #{levelState,jdbcType=VARCHAR},
+      level_desc = #{levelDesc,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=INTEGER},
+      sys_id = #{sysId,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=INTEGER},
+      modifier = #{modifier,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where level_id = #{levelId,jdbcType=INTEGER}
+  </update>
+</mapper>

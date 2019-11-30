@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+    <cache:annotation-driven cache-manager="cacheManager"  />
+
+    <!--&lt;!&ndash; Jedis ConnectionFactory &ndash;&gt;-->
+    <!--<bean id="jedisConnectionFactory"-->
+          <!--class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">-->
+        <!--<property name="hostName" value="${redis.ip}" />-->
+        <!--<property name="port" value="${redis.port}" />-->
+        <!--<property name="usePool" value="true" />-->
+    <!--</bean>-->
+
+    <!--<bean id="stringRedisSerializer"-->
+          <!--class="org.springframework.data.redis.serializer.StringRedisSerializer" />-->
+
+    <!--&lt;!&ndash; redis template definition, refer to http://java.dzone.com/articles/spring-data-redis &ndash;&gt;-->
+    <!--<bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">-->
+        <!--<property name="connectionFactory" ref="jedisConnectionFactory" />-->
+        <!--&lt;!&ndash; One important thing to mention is that you should use stringSerializers-->
+            <!--for keys, otherwise you will have problems from other clients, because default-->
+            <!--serialization(JdkSerializationRedisSerializer) adds class information(all-->
+            <!--cached class must implements java.io.Serializable. &ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="keySerializer" ref="stringRedisSerializer" />&ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="hashKeySerializer" ref="stringRedisSerializer" />&ndash;&gt;-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash; declare Redis Cache Manager &ndash;&gt;-->
+    <!--<bean id="cacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">-->
+        <!--<constructor-arg ref="redisTemplate" />-->
+        <!--&lt;!&ndash;<property name="usePrefix" value="true" />&ndash;&gt;-->
+    <!--</bean>-->
+
+
+    <cache:annotation-driven cache-manager="cacheManager"  />
+
+    <bean id="ehcacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:ehcache_cache.xml"/>
+    </bean>
+
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+        <property name="cacheManager" ref="ehcacheManager"/>
+        <property name="transactionAware" value="true"/>
+    </bean>
+</beans>

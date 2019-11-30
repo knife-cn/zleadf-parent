@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.SearchConditionMapper">
+
+    <select id="getWarehouseList" resultType="com.zlead.entity.vo.SearchConditionListVO">
+    <!--
+        SELECT
+            DISTINCT wh.wh_id id,
+            wh.wh_name name
+        FROM
+            base_warehouse wh
+        LEFT JOIN prd_invent_mas mas ON wh.wh_id = mas.wh_id
+        LEFT JOIN t_goods goods ON goods.id = mas.item_id
+        LEFT JOIN t_member member ON goods.shop_id = member.own_shopid
+        WHERE
+            member.id = #{memberId}
+        AND wh.wh_state = 1
+    -->
+        SELECT wh_id AS id, wh_name AS name FROM base_warehouse WHERE  sys_id IN (SELECT own_shopid FROM t_member WHERE id = #{memberId}) AND wh_state = 1
+    </select>
+
+    <select id="getCrmCustBrandList" resultType="com.zlead.entity.vo.SearchConditionListVO">
+        <!--
+        SELECT
+            DISTINCT brand.band_id id,
+            brand.band_name name
+        FROM
+            crm_cust_band brand
+        LEFT JOIN t_goods goods ON goods.brand_id = brand.band_id
+        LEFT JOIN t_member member ON goods.shop_id = member.own_shopid
+        WHERE
+            member.id = #{memberId}
+        AND brand.band_state = 1
+         -->
+        SELECT band_id id, band_name name FROM crm_cust_band WHERE  shop_id IN (SELECT own_shopid FROM t_member WHERE id = #{memberId}) AND band_state = 1
+    </select>
+
+    <select id="getCrmPrdLists" resultType="com.zlead.entity.vo.SearchConditionListVO">
+              <!--
+                SELECT
+                    DISTINCT list.list_id id,
+                    list.list_name name
+                FROM
+                    crm_prd_list list
+                LEFT JOIN t_goods goods ON goods.list_id = list.list_id
+                LEFT JOIN t_member member ON goods.shop_id = member.own_shopid
+                WHERE
+                    member.id = #{memberId}
+                AND list.list_state = 1
+                 -->
+        SELECT list_id id, list_name name FROM crm_prd_list WHERE  shop_id IN (SELECT own_shopid FROM t_member WHERE id = #{memberId}) AND list_state = 1
+    </select>
+
+            <select id="getCrmPrdModelList" resultType="com.zlead.entity.vo.SearchConditionListVO">
+                <!--
+                                SELECT
+                                    DISTINCT model.model_id id,
+                                    model.model_name name
+                                FROM
+                                    crm_prd_model model
+                                LEFT JOIN t_goods goods ON goods.model_id = model.model_id
+                                LEFT JOIN t_member member ON goods.shop_id = member.own_shopid
+                                WHERE
+                                    member.id = #{memberId}
+                                AND model.model_state = 1
+              -->
+                SELECT model_id id, model_name name FROM crm_prd_model WHERE  shop_id IN (SELECT own_shopid FROM t_member WHERE id = #{memberId}) AND model_state = 1
+             </select>
+
+            <select id="getCrmPrdCatList" resultType="com.zlead.entity.vo.SearchConditionListVO">
+                <!--
+                SELECT
+                    DISTINCT cat.cat_id id,
+                    cat.cat_name name
+                FROM
+                    crm_prd_cat cat
+                LEFT JOIN t_goods_cat gcat ON cat.cat_id = gcat.cat_id
+                LEFT JOIN t_goods goods ON goods.id = gcat.goods_id
+                LEFT JOIN t_member member ON goods.shop_id = member.own_shopid
+                WHERE
+                    member.id = #{memberId}
+                AND cat.cat_state = 1
+                -->
+                SELECT cat_id id, cat_name name FROM crm_prd_cat WHERE  shop_id IN (SELECT own_shopid FROM t_member WHERE id = #{memberId}) AND cat_state = 1
+           </select>
+
+            <select id="getCrmCustLevelList" resultType="com.zlead.entity.vo.CrmCustLevelListVO">
+                <!--
+                SELECT
+                    DISTINCT level.level_id levelId,
+                    level.level_name agentLevel
+                FROM
+                    crm_cust_level level
+                LEFT JOIN t_agent_fac fac ON level.level_id = fac.level_id
+                LEFT JOIN t_member member ON fac.sys_id = member.own_shopid
+                WHERE
+                      level.sys_id in (select own_shopid from t_member where id=#{memberId})
+                AND level.level_state = 1
+                -->
+                 SELECT level_id levelId, level_name agentLevel FROM crm_cust_level WHERE  sys_id IN (SELECT own_shopid FROM t_member WHERE id = #{memberId}) AND level_state = 1
+            </select>
+
+     </mapper>

@@ -1,0 +1,138 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>购物车</title>
+
+    <!-- CSS文件 -->
+    <link rel="stylesheet" href="../../shopping/css/header.css" />
+    <link rel="stylesheet" href="../../shopping/css/car.css" />
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+</head>
+<body>
+    <div id="app1">
+            <!-- 头部 -->
+          <div id="head">
+
+          </div>
+            <!-- 购物车 -->
+            <div class="car_title"></div>
+
+            <div class="car_box">
+                <ul class="car_th">
+                   <li> <i class="checkbox"><img src="../../shopping/img/car/home／ic_home_tab.png" alt=""></i> 全选</li> 
+                   <li>商品信息</li> 
+                   <li>型号</li> 
+                   <li>单价</li> 
+                   <li>数量</li> 
+                   <li>金额</li> 
+                   <li></li> 
+                </ul>
+                <ul class="content">
+                    <li>
+                            <div class="car_tit">
+                                <span ><img src="../../shopping/img//car/home／ic_home_tab.png" alt=""></span>  
+                                <span><img src="../../shopping/img//car/home1.png" alt=""></span>
+                                <span class="conpany">上海五金机电有限公司</span>
+                            </div>  
+
+                            <div   class="car_content">
+                                <span  v-if="have" class="product_car">
+                                    <i class="check_png" v-if="live"><img src="../../shopping/img/car/Checked_default.png" alt=""></i>
+                                    <i class="check_png" v-else ><img src="../../shopping/img//car/home／ic_home_tab.png" alt=""></i>
+
+                                    <i class="img_cars"><img src="../../shopping/img/car/1547285288(1).png" alt=""></i>
+                                    <div class="clear"></div>
+                                </span> 
+                                <!-- 无效 -->
+                                <span v-else class="product_car">
+                                        <i class="check_png" v-if="live"><img src="../../shopping/img/car/label_shixiao.png" alt=""></i>
+            
+                                        <i class="img_cars"><img src="../../shopping/img/car/1547285288(1).png" alt=""></i>
+                                        <div class="clear"></div>
+                                </span>   
+                                <!-- 商品信息 -->
+                                <span class="product_p">
+                                <p>手电转家用充电式电动螺丝刀手枪电钻迷你工具2V小锂电手钻电转</p>  
+                                </span>
+                                <!-- 型号 -->
+                                <span class="type_car">
+                                    GSR 120-Li 单电版 
+                                </span>
+                                <!-- 单价 -->
+                                <span class="monet_car">
+                                ￥197.50
+                                </span>
+                                <!-- 数量 -->
+                                <span class="number_car">
+                                    <!-- <span class="num">{{number}}</span> -->
+                                    <div class="inputk">
+                                        <el-input  class="num" type="text" v-model="number">
+                                    </div>
+                                    <div class="btn_car">
+                                        <i @click="addNum" class="add" >+</i> 
+                                        <i @click="reduce" class="down" :class="{andiao: !disabled}">-</i>
+                                    </div>  
+                                </span>
+                                <!-- 金额 -->
+                                <span class="jine">
+                                  ￥200.20     
+                                </span>
+                                <!-- 删除 -->
+                                <span  @click="deleteProduct" class="tsash_car">
+                                    <img src="../../shopping/img//car//Trash.png" alt="">
+                                </span>
+                            </div>   
+
+                            <div class="line_car"></div>
+                    </li>                  
+                 </ul>
+                 <div class="footer_car">
+                        <span class="number">
+                            <i @click="all" >
+                                <img v-if="hides"  src="../../shopping/img/car/Checked_default.png" alt="">
+                                <img v-else  src="../../shopping/img/car/home／ic_home_tab.png" alt="">
+                            </i>
+                            <span class="all">全部(共<span style="color:#FF7A47;font-weight: 700">3</span>件 )</span>
+                            <span class="del_car">批量删除</span>
+                        </span>
+                      
+                        <span @click="pay" class="btn_car">立即支付</span>
+                        <span class="alls">
+                                合计：<span class="money_car">￥464  </span>  <i @click="iconClick" class="yuanjia"><img v-if="showIcon" src="../../shopping/img/car/down.png" alt=""> <img v-else  src="../../shopping/img/car/up.png" alt=""></i>
+                        </span>
+                        <div v-if="showIcon" class="dialogs_car">
+                           <i>原价：<span style="font-size:16px;">￥500</span></i>
+                           <i>运费：<span style="font-size:16px;">￥30</span></i> 
+                        </div>
+                 </div>
+            </div>
+            <!--删除弹窗 -->
+                <el-dialog title="" :visible.sync="centerDialogVisible"  width="392px" height="312px" id="dialog"  center>
+                    <span class="error_img"><img src="../../shopping/img/car/Fill 1.png" alt=""></span>
+                     <p>确定要删除该商品？</p>
+                    <span slot="footer" class="dialog-footer">
+                        <el-button type="primary" @click="centerDialogVisible = false">确 定</el-button>
+                        <el-button @click="centerDialogVisible = false">取 消</el-button>
+                    </span>
+                </el-dialog>
+
+    </div>
+       <!-- JS文件 -->
+    <script src="../../shopping/lib/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="../../shopping/lib/jquery/jquery.min.js"></script>
+    <script src="../../shopping/js/carBuy.js"></script>
+ 
+
+<script>
+        $("#head").load("head.html");
+        
+</script>
+
+
+
+</body>
+</html>

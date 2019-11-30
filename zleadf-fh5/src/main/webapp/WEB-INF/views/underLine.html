@@ -1,0 +1,130 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>直链商城</title>
+
+    <!-- CSS文件 -->
+    <link rel="stylesheet" href="../../shopping/css/header.css" />
+    <link rel="stylesheet" href="../../shopping/css/footer.css" />
+    <link rel="stylesheet" href="../../shopping/css/under.css" />
+    <link rel="stylesheet" href="../../shopping/css/upload.css" />
+
+</head>
+<body>
+    <div id="app1">
+            <!-- 头部 -->
+           <div id="head">
+
+           </div>
+            <!-- 订单 -->
+            <div class="car_title"></div>
+            <div class="under_box">
+                <p>线下支付</p>  
+                <div class="lineD"></div>
+                <div class="success_content">
+                   <ul class="left_c">
+                       <li>收款账户</li>
+                       <li>银行账户</li>
+                       <li>账户名称</li>
+                   </ul> 
+                   <ul class="right_c">
+                    <li>公司账户</li>
+                    <li>1235 2531 1271 123</li>
+                    <li>直链网</li>
+                </ul> 
+                <div>*******************************************************</div>
+                <p id="remind">
+                    特别提示：付款账户名称请与发票抬头(xxx公司)保持一致，否则无法开具发票
+                </p>
+
+                <!-- <div class="btn_submit">
+                    <el-button>上传凭证</el-button>
+                </div> -->
+                <div class="upload_under">
+                   <span id="under_upl">上传凭证</span>
+                </div> 
+                </div>
+                <div class="bottom_img"><img src="../../shopping/img/order/Rectangle.png" alt=""></div>
+            </div>
+
+                  <!-- 尾部 -->
+               <div id="footer">
+
+               </div>
+
+                <!-- 弹窗 -->
+                <!-- <el-dialog title="上传凭证" id="dialog" :visible.sync="dialogVisible" width="392px" height="462px"  :before-close="handleClose">
+                        <div class="content_list">
+                            <ul>
+                                <li> <i></i> 如果是手机汇款，请手机截图并上传</li>
+                                <li> <i></i>如果是电脑汇款则请直接截图并上传</li>
+                                <li> <i></i>如果是银行柜台或ATM机转账则请拍摄照片，并上传</li>
+                            </ul>
+                        </div>
+                        <el-upload
+                            class="avatar-uploader"
+                            action="https://jsonplaceholder.typicode.com/posts/"
+                            :show-file-list="false"
+                            :on-success="handleSuccess"
+                            :before-upload="beforeUpload">
+                            <img id="show_img" v-if="imageUrl" :src="imageUrl" class="avatar2">
+                            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                        </el-upload>
+                        <span slot="footer" class="dialog-footer">
+                            <el-button @click="dialogVisible = false">取 消</el-button>
+                            <el-button id="makesure" type="primary" @click="dialogVisible = false">确 定</el-button>
+                        </span>
+                </el-dialog> -->
+                   <!-- 弹窗 -->
+            <div id="dialogs">
+                    <!--蒙版-->
+                    <div class="meng" id="meng">
+                        <div class="guanlian" id="dialog" >
+                             <!-- 头 -->
+                            <img src="../../shopping/img/lhpimg/guanbi.png" id="qu2" class="img"/>
+                            <div  class="scroll"> 
+                                <div class="title">
+                                    <span>上传凭证</span>
+                                </div>   
+                                  <!--内容-->
+                                <div class="message_tit">
+                                        <div class="content_list">
+                                            <ul>
+                                                <li> <i></i> 如果是手机汇款，请手机截图并上传</li>
+                                                <li> <i></i>如果是电脑汇款则请直接截图并上传</li>
+                                                <li> <i></i>如果是银行柜台或ATM机转账则请拍摄照片，并上传</li>
+                                            </ul>
+                                        </div>
+                                        <div class="upkuang">
+                                               <div class="images3"><img src="../../shopping/img/order/Fill 103.png" alt=""></div>
+                                               <div class="wenzis">上传凭证</div>
+                                        </div>
+                                 </div>
+                            </div>
+                            <!--尾-->
+                            <div class="bottom">
+                                <span id="qu" class="yiyan qu ">取消</span>
+                                <span id="fo" class="yiyan fo">确定</span>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            
+    </div>
+       <!-- JS文件 -->
+    <script src="../../shopping/lib/vue.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script src="../../shopping/lib/jquery/jquery.min.js"></script>
+    <script src="../../shopping/js/under.js"></script>
+    
+<script>
+    $("#head").load("head.html");
+    $("#footer").load("footer.html")
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+.agentInfo {
+	width: 100%;
+	height: 100%;
+	overflow: scroll;
+	-webkit-overflow-scrolling: touch;
+	background: #eeeeee;
+}
+.agentTitle{
+	width:100%;
+	height:0.9rem;
+	background:#3c3f41;
+	overflow:hidden;
+	color:#fff;
+	text-align:center;
+	line-height:0.9rem;
+	font-size:0.3rem;
+}
+.agent{
+	width:7.03rem;
+	height:auto;
+	margin:0.34rem auto;
+}
+.agentDiv{
+	width:100%;
+	height:0.73rem;
+	margin-bottom:0.16rem;
+}
+.agentDivImg{
+	width:0.76rem;
+	height:0.76rem;
+	padding-top:0.03rem;
+	float:left;
+}
+.agentDivInput{
+	width:5.9rem;
+	height:100%;
+	border:0.01rem solid #F6F6F6;
+	border-radius:1rem;
+	float:left;
+	margin-left:0.29rem;
+	background:#fff;
+}
+.quan{
+	width:0.15rem;
+	height:0.15rem;
+	margin:0.3rem 0.2rem;
+	float:left;
+}
+.agentDiv-input{
+	width:4.65rem;
+	height:100%;
+	float:left;
+	color:#A6A6A6;
+	font-size:0.26rem;
+}
+.browser{
+	width:4.3rem;
+	height:100%;
+	float:left;
+	color:#666666;
+	font-size:0.24rem;
+	line-height:0.73rem;
+}
+.payChoose{
+	width:100%;
+	height:auto;
+	overflow:hidden;
+}
+.payChoose p{
+	text-indent:0.29rem;
+	font-size:0.3rem;
+}
+.choose{
+	width:100%;
+	height:auto;
+}
+.chooseDiv{
+	width:3.13rem;
+	height:0.76rem;
+	background:#fff;
+	border-radius:0.5rem;
+	float:left;
+	margin:0.24rem 0.3rem;
+}
+.chooseDiv input{
+	margin:0.25rem 0.24rem;
+	float:left;
+}
+.chooseDiv span{
+	font-size:0.26rem;
+	line-height:0.76rem;
+}
+.validate{
+	width:100%;
+	height:auto;
+	margin:0.3rem auto 1rem;
+}
+.validate img{
+	width:3.25rem;
+	height:0.9rem;
+	margin:0 auto;
+}

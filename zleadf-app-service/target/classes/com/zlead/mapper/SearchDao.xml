@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.SearchDao">
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.GoodsEntity" id="goodsMap">
+        <result property="id" column="id"/>
+        <result property="prodId" column="prod_id"/>
+        <result property="prodType" column="prod_type"/>
+        <result property="catagoryId" column="catagory_id"/>
+        <result property="brandId" column="brand_id"/>
+        <result property="listId" column="list_id"/>
+        <result property="modelId" column="model_id"/>
+        <result property="fullName" column="full_name"/>
+        <result property="channel" column="channel"/>
+        <result property="spec" column="spec"/>
+        <result property="supplyPrice" column="supply_price"/>
+        <result property="agentPrice" column="agent_price"/>
+        <result property="marketPrice" column="market_price"/>
+        <result property="showPrice" column="show_price"/>
+        <result property="ifShowPrice" column="if_show_price"/>
+        <result property="ifShowStock" column="if_show_stock"/>
+        <result property="marketConfig" column="market_config"/>
+        <result property="terminal" column="terminal"/>
+        <result property="discount" column="discount"/>
+        <result property="pointPrice" column="point_price"/>
+        <result property="point" column="point"/>
+        <result property="price" column="price"/>
+        <result property="stock" column="stock"/>
+        <result property="freezeStock" column="freeze_stock"/>
+        <result property="salesNum" column="sales_num"/>
+        <result property="clickNum" column="click_num"/>
+        <result property="isMarket" column="is_market"/>
+        <result property="firstImg" column="first_img"/>
+        <result property="imgs" column="imgs"/>
+        <result property="tags" column="tags"/>
+        <result property="solrName" column="solr_name"/>
+        <result property="isAudit" column="is_audit"/>
+        <result property="auditUserId" column="audit_user_id"/>
+        <result property="auditTime" column="audit_time"/>
+        <result property="isHome" column="is_home"/>
+        <result property="shopId" column="shop_id"/>
+        <result property="supplierShopId" column="supplier_shop_id"/>
+        <result property="integral" column="integral"/>
+        <result property="version" column="version"/>
+        <result property="updateDate" column="update_date"/>
+        <result property="remark" column="remark"/>
+        <result property="intro" column="intro"/>
+        <result property="stockType" column="stock_type"/>
+        <result property="prodAttrId" column="prod_attr_id"/>
+        <result property="createDate" column="create_date"/>
+        <result property="isMarket" column="is_market"/>
+    </resultMap>
+
+    <!--根据代理人ID查询代理人关联的工厂信息-->
+    <select id="findFactoryInfoByAgent" resultType="java.util.HashMap">
+            SELECT
+              fi.`fact_id`,
+              fi.`shop_id`,
+              af.`level_id`
+            FROM t_agent_fac af
+      INNER JOIN oa_factory_info fi
+              ON fi.`fact_id` = af.`factory_id`
+             AND af.`status` = 1
+             AND af.`coop_state` = 1
+             AND fi.`fact_state` = 1
+        <if test="factoryId!=null">
+             AND af.`factory_id`=#{factoryId}
+        </if>
+           WHERE af.`agent_id` = #{agentId}
+        ORDER BY af.`create_time` ASC
+    </select>
+
+    <!--根据代理人ID查询代理人参与的有效活动信息-->
+    <select id="findActivityInfoByAgent" resultType="java.util.HashMap">
+         SELECT ma.`act_id`,
+                act.`cont_name`
+           FROM oa_market_agent ma
+     INNER JOIN oa_market_act act
+             ON act.`act_id` = ma.`act_id`
+            AND act.`cont_state` = 2
+            AND act.`terminal` IN (2, 3)
+            AND act.`eff_date` &lt;= NOW()
+            AND act.`exp_date` &gt;= NOW()
+        <if test="shopIds!=null and shopIds.size>0">
+            AND act.`shop_id` IN
+            <foreach collection="shopIds" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+        </if>
+          WHERE ma.`agent_id` = #{agentId}
+    </select>
+
+    <!--代理商代理了品牌系列的查询条件-->
+    <sql id="agentWhereSql">
+        AND g.`list_id` IN (
+                SELECT DISTINCT bl.`list_id`
+                 FROM oa_agent_band_lists bl
+           INNER JOIN t_agent_fac t
+                   ON t.`agent_id` = bl.`agent_id`
+                  AND t.`status` = 1
+                  AND t.`coop_state` = 1
+           INNER JOIN oa_factory_info fi
+                   ON fi.`fact_id` = t.`factory_id`
+                  AND fi.`fact_state` = 1
+                WHERE bl.`agent_id` = #{agentId}
+            <if test="factoryId!=null">
+                 AND bl.`fact_id`=#{factoryId}
+            </if>
+        )
+    </sql>
+
+    <!--查询代理的普通商品数据限制条件-->
+    <sql id="commonGoodsWhereSql">
+        AND g.`prod_type` = 0
+        AND g.id IN (
+            SELECT
+            gl.`goods_id`
+            FROM
+            t_goods_level gl
+            WHERE gl.`level_id` IN
+            <foreach collection="levelIds" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+        )
+    </sql>
+
+    <!--查询代理人参与的活动的商品的限制条件-->
+    <sql id="actGoodsWhereSql">
+        AND g.`prod_type` = 2
+        AND g.`id` IN (
+            SELECT mg.`goods_id` FROM oa_market_goods mg
+            WHERE mg.`is_market` = 1
+            AND mg.`act_id` IN
+            <foreach collection="actIds" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+        )
+    </sql>
+
+
+    <!--根据代理人ID查询代理人关联的工厂信息-->
+    <sql id="agentFacTable">
+        SELECT fi.`shop_id`, af.`create_time`
+        FROM t_agent_fac af
+        INNER JOIN oa_factory_info fi
+        ON fi.`fact_id` = af.`factory_id`
+        AND af.`status` = 1
+        AND af.`coop_state` = 1
+        AND fi.`fact_state` = 1
+        <if test="factoryId!=null">
+            AND af.`factory_id`=#{factoryId}
+        </if>
+        WHERE af.`agent_id` = #{agentId}
+    </sql>
+
+
+    <!--根据条件查询品牌信息并排序-->
+    <select id="findSortBrandByCondition" resultType="java.util.HashMap">
+        SELECT distinct v.shop_id as shopId,v.brand_id as id,b.`band_name` as name
+        FROM (
+                SELECT g.`shop_id`,g.`brand_id`,MAX(ois.`modify_time`) AS market_time
+                  FROM t_goods g
+             LEFT JOIN oa_item_state ois ON ois.`item_id` = g.`id`
+                 WHERE g.`is_market` = 1
+                   AND g.`terminal` IN (2, 3)
+                <include refid="agentWhereSql" />
+                <include refid="commonGoodsWhereSql" />
+                  GROUP BY g.`shop_id`,g.`brand_id`
+            <!-- <if test="actIds!=null and actIds.size>0">
+             UNION
+              SELECT g.`shop_id`,g.`brand_id`,MAX(ma.`eff_date`) AS market_time
+               FROM t_goods g
+         INNER JOIN oa_market_goods mg ON mg.`goods_id` = g.`id`
+         INNER JOIN oa_market_act ma ON ma.`act_id` = mg.`act_id`
+              WHERE g.`is_market` = 1
+                AND g.`terminal` IN (2, 3)
+                AND g.`prod_type` = 2
+                <include refid="agentWhereSql" />
+                AND mg.`act_id` IN
+                <foreach collection="actIds" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+                GROUP BY g.`shop_id`,g.`brand_id`
+            </if>-->
+            ) v
+          INNER JOIN (<include refid="agentFacTable" />) t
+            ON t.shop_id = v.`shop_id`
+          INNER JOIN crm_cust_band b
+            ON b.`band_id` = v.`brand_id`
+        ORDER BY t.`create_time` ASC,v.market_time DESC
+    </select>
+
+    <!--根据条件查询系列信息并排序-->
+    <select id="findSortListByCondition" resultType="java.util.HashMap">
+        SELECT distinct v.shop_id as shopId,v.list_id as id,l.`list_name` as name
+        FROM (
+            SELECT g.`shop_id`,g.`list_id`,MAX(ois.`modify_time`) AS market_time
+            FROM t_goods g
+       LEFT JOIN oa_item_state ois ON ois.`item_id` = g.`id`
+           WHERE g.`is_market` = 1
+             AND g.`terminal` IN (2, 3)
+            <include refid="agentWhereSql" />
+            <include refid="commonGoodsWhereSql" />
+            GROUP BY g.`shop_id`,g.`list_id`
+       <!-- <if test="actIds!=null and actIds.size>0">
+            UNION
+            SELECT g.`shop_id`,g.`list_id`,MAX(ma.`eff_date`) AS market_time
+            FROM t_goods g
+      INNER JOIN oa_market_goods mg ON mg.`goods_id` = g.`id`
+      INNER JOIN oa_market_act ma ON ma.`act_id` = mg.`act_id`
+           WHERE g.`is_market` = 1
+             AND g.`terminal` IN (2, 3)
+             AND g.`prod_type` = 2
+            <include refid="agentWhereSql" />
+            AND mg.`act_id` IN
+            <foreach collection="actIds" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+            GROUP BY g.`shop_id`,g.`list_id`
+        </if>-->
+        ) v
+        INNER JOIN (<include refid="agentFacTable" />) t
+        ON t.shop_id = v.`shop_id`
+        INNER JOIN crm_prd_list l
+        ON l.`list_id` = v.`list_id`
+        ORDER BY t.`create_time` ASC,
+        v.market_time DESC
+    </select>
+
+    <!--根据条件查询分类信息并排序-->
+    <select id="findSortCatByCondition" resultType="java.util.HashMap">
+        SELECT distinct v.shop_id as shopId,v.cat_id as id,c.`cat_name` as name
+        FROM (
+           SELECT g.`shop_id`,gc.`cat_id`,MAX(ois.`modify_time`) AS market_time
+             FROM t_goods g
+        LEFT JOIN t_goods_cat gc ON gc.`goods_id`=g.`id`
+        LEFT JOIN oa_item_state ois ON ois.`item_id` = g.`id`
+            WHERE g.`is_market` = 1
+              AND g.`terminal` IN (2, 3)
+            <include refid="agentWhereSql" />
+            <include refid="commonGoodsWhereSql" />
+        GROUP BY g.`shop_id`,gc.`cat_id`
+        <!--<if test="actIds!=null and actIds.size>0">
+        UNION
+         SELECT g.`shop_id`,gc.`cat_id`,MAX(ma.`eff_date`) AS market_time
+                FROM t_goods g
+          INNER JOIN oa_market_goods mg ON mg.`goods_id` = g.`id`
+          INNER JOIN oa_market_act ma ON ma.`act_id` = mg.`act_id`
+           LEFT JOIN t_goods_cat gc ON gc.`goods_id`=g.`id`
+               WHERE g.`is_market` = 1
+                 AND g.`terminal` IN (2, 3)
+                 AND g.`prod_type` = 2
+                 <include refid="agentWhereSql" />
+                 AND mg.`act_id` IN
+                <foreach collection="actIds" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+            GROUP BY g.`shop_id`,gc.`cat_id`
+        </if>-->
+        ) v
+        INNER JOIN (<include refid="agentFacTable" />) t ON t.shop_id = v.`shop_id`
+        INNER JOIN crm_prd_cat c ON c.`cat_id` = v.`cat_id`
+        ORDER BY t.`create_time` ASC,v.market_time DESC
+    </select>
+
+
+    <!--根据条件查询品牌、系列、分类并排序-->
+    <select id="findSortKindByCondition" resultType="java.util.HashMap">
+        SELECT  aa.`shop_id`,aa.`brand_id`,aa.`band_name`,aa.`list_id`,aa.`list_name`,aa.`cat_id`,MIN(aa.create_time) as create_time,MAX(aa.market_time) as market_time FROM (
+          SELECT v.`shop_id`,v.`brand_id`,b.`band_name`,v.`list_id`,l.`list_name`,v.`cat_id`,t.`create_time`,v.market_time FROM (
+                SELECT g.`shop_id`,g.`brand_id`,g.`list_id`,gc.`cat_id`,MAX(ois.`modify_time`) AS market_time
+                  FROM t_goods g
+             LEFT JOIN t_goods_cat gc ON gc.`goods_id` = g.`id`
+             LEFT JOIN oa_item_state ois ON ois.`item_id` = g.`id`
+                 WHERE g.`is_market` = 1
+                   AND g.`terminal` IN (2, 3)
+                <include refid="agentWhereSql" />
+                <include refid="commonGoodsWhereSql" />
+                GROUP BY g.`shop_id`,g.`brand_id`,g.`list_id`,gc.`cat_id`
+           <!-- <if test="actIds!=null and actIds.size>0">
+                UNION
+                SELECT g.`shop_id`,g.`brand_id`,g.`list_id`,gc.`cat_id`,MAX(ma.`eff_date`) AS market_time
+                  FROM t_goods g
+            INNER JOIN oa_market_goods mg ON mg.`goods_id` = g.`id`
+            INNER JOIN oa_market_act ma ON ma.`act_id` = mg.`act_id`
+             LEFT JOIN t_goods_cat gc ON gc.`goods_id`=g.`id`
+                 WHERE g.`is_market` = 1
+                   AND g.`terminal` IN (2, 3)
+                   AND g.`prod_type` = 2
+                <include refid="agentWhereSql" />
+                   AND mg.`act_id` IN
+                <foreach collection="actIds" item="item" separator="," open="(" close=")">
+                    #{item}
+                </foreach>
+                GROUP BY g.`shop_id`,g.`brand_id`,g.`list_id`,gc.`cat_id`
+            </if>-->
+            ) v
+      INNER JOIN (<include refid="agentFacTable" />) t ON t.shop_id = v.`shop_id`
+      INNER JOIN crm_cust_band b ON b.`band_id` = v.`brand_id`
+      INNER JOIN crm_prd_list l ON l.`list_id` = v.`list_id`
+      ) aa GROUP BY aa.`shop_id`,aa.`brand_id`,aa.`band_name`,aa.`list_id`,aa.`list_name`,aa.`cat_id`
+      ORDER BY aa.`create_time` ASC,aa.market_time DESC
+    </select>
+</mapper>

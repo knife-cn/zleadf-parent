@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.dao.CatDao" >
+  <resultMap id="BaseResultMap" type="com.zlead.entity.CatEntity" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="id_path" property="idPath" jdbcType="VARCHAR" />
+    <result column="root_id" property="rootId" jdbcType="BIGINT" />
+    <result column="parent_id" property="parentId" jdbcType="BIGINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="sort_id" property="sortId" jdbcType="BIGINT" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="is_leaf" property="isLeaf" jdbcType="INTEGER" />
+    <result column="img_path" property="imgPath" jdbcType="VARCHAR" />
+    <result column="if_home" property="ifHome" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    id, id_path, root_id, parent_id, name, sort_id, level, is_leaf, img_path, if_home
+  </sql>
+  <select id="findPage" parameterType="map" resultMap="BaseResultMap">
+        SELECT *  FROM t_cat AS T
+        <where>
+            <if test="@Ognl@isNotEmpty(id)"> AND T.id = #{id} </if>
+        </where>
+    </select>
+    
+    <select id="getList" parameterType="map" resultMap="BaseResultMap">
+        SELECT *  FROM t_cat AS T
+    </select>
+    
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from t_cat
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    delete from t_cat
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.entity.CatEntity" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into t_cat (id, id_path, root_id, 
+      parent_id, name, sort_id, 
+      level, is_leaf, img_path, 
+      if_home)
+    values (#{id,jdbcType=BIGINT}, #{idPath,jdbcType=VARCHAR}, #{rootId,jdbcType=BIGINT}, 
+      #{parentId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{sortId,jdbcType=BIGINT}, 
+      #{level,jdbcType=INTEGER}, #{isLeaf,jdbcType=INTEGER}, #{imgPath,jdbcType=VARCHAR}, 
+      #{ifHome,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlead.entity.CatEntity" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into t_cat
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="idPath != null" >
+        id_path,
+      </if>
+      <if test="rootId != null" >
+        root_id,
+      </if>
+      <if test="parentId != null" >
+        parent_id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="sortId != null" >
+        sort_id,
+      </if>
+      <if test="level != null" >
+        level,
+      </if>
+      <if test="isLeaf != null" >
+        is_leaf,
+      </if>
+      <if test="imgPath != null" >
+        img_path,
+      </if>
+      <if test="ifHome != null" >
+        if_home,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="idPath != null" >
+        #{idPath,jdbcType=VARCHAR},
+      </if>
+      <if test="rootId != null" >
+        #{rootId,jdbcType=BIGINT},
+      </if>
+      <if test="parentId != null" >
+        #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sortId != null" >
+        #{sortId,jdbcType=BIGINT},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="isLeaf != null" >
+        #{isLeaf,jdbcType=INTEGER},
+      </if>
+      <if test="imgPath != null" >
+        #{imgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="ifHome != null" >
+        #{ifHome,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.entity.CatEntity" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update t_cat
+    <set >
+      <if test="idPath != null" >
+        id_path = #{idPath,jdbcType=VARCHAR},
+      </if>
+      <if test="rootId != null" >
+        root_id = #{rootId,jdbcType=BIGINT},
+      </if>
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=BIGINT},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sortId != null" >
+        sort_id = #{sortId,jdbcType=BIGINT},
+      </if>
+      <if test="level != null" >
+        level = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="isLeaf != null" >
+        is_leaf = #{isLeaf,jdbcType=INTEGER},
+      </if>
+      <if test="imgPath != null" >
+        img_path = #{imgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="ifHome != null" >
+        if_home = #{ifHome,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.entity.CatEntity" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update t_cat
+    set id_path = #{idPath,jdbcType=VARCHAR},
+      root_id = #{rootId,jdbcType=BIGINT},
+      parent_id = #{parentId,jdbcType=BIGINT},
+      name = #{name,jdbcType=VARCHAR},
+      sort_id = #{sortId,jdbcType=BIGINT},
+      level = #{level,jdbcType=INTEGER},
+      is_leaf = #{isLeaf,jdbcType=INTEGER},
+      img_path = #{imgPath,jdbcType=VARCHAR},
+      if_home = #{ifHome,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

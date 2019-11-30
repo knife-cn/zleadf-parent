@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>直链商城</title>
+</head>
+<link rel="stylesheet" href="../../shopping/css/Receiving_address.css" />
+
+
+<body>
+    <!--右-->
+    <div class="right123">
+        <!--内容右边头部导航-->
+        <div class="rdao1">
+            <span id="span">收货地址</span>
+        </div>
+        <div class="dizhi" id="addressList">
+            <!--挖坑-->
+
+        </div>
+    </div>
+
+</body>
+<script type="text/javascript" src="../../shopping/js/jquery-2.1.0.js"></script>
+<script type="text/javascript" src="../../shopping/lib/artTemplate/artTemplate/template-web.js"></script>
+<script type="text/javascript" src="../../shopping/js/Receiving_address.js"></script>
+<!--<script type="text/javascript" src="../../shopping/js/jinzi.js" ></script>-->
+<script type="text/template" id="tel_address5">
+    {{ each data v i }}
+    <div class="zhi">
+        <div class="tiao1"></div>
+        {{if v.isDefault==0}}
+        <div class="mo">
+            <span style="display: inline-block;width:86px;height: 32px;"></span>
+            <img data-id="{{v.id}}" id="delete_address" src="../../shopping/img/lhpimg/Edit_Copy1.png">
+            <img data-id="{{v.id}}" data-list="{{v}}" class="edit_address" src="../../shopping/img/lhpimg/Edit.png">
+            <img data-id="{{v.id}}" data-list="{{v}}" src="../../shopping/img/lhpimg/Edit_Copy.png" class='set_address'>
+        </div>
+        {{ /if }} {{if v.isDefault==1}}
+        <div class="mo1">
+            <img data-id="{{v.id}}" src="../../shopping/img/lhpimg/label_moren1.png">
+            <img data-id="{{v.id}}" id="delete_address" src="../../shopping/img/lhpimg/Edit_Copy1.png">
+            <img data-id="{{v.id}}" data-list="{{v}}" class="edit_address" src="../../shopping/img/lhpimg/Edit.png">
+            <img data-id="{{v.id}}" src="../../shopping/img/lhpimg/Edit_Copy.png">
+        </div>
+        {{ /if }}
+        <div class="ming">
+            <span title="{{v.memberName}}">{{ v.memberName.substr(0,9) }}</span>&nbsp;&nbsp;&nbsp;<span>{{v.phone.substr(0,3)}}******{{v.phone.substr(9,11)}}</span>
+        </div>
+        <div class="qu">
+            <span>{{ v.provinceName }} {{ v.cityName}} {{v.countyName}}</span>
+            <span>{{v.detailAddress}}</span>
+        </div>
+        <img src="../../shopping/img/lhpimg/zhedan.png" class="xiushi" />
+    </div>
+    {{ /each }}
+    <!--添加-->
+    <div class="tian">
+        <img src="../../shopping/img/lhpimg/Fill_103.png" />
+        <div>添加新地址</div>
+    </div>
+
+</script>
+
+<script type="text/template" id="my_add1">
+    <div class="rdao1">
+        <span id="span">收货地址</span>
+    </div>
+    <div class="dizhi" id="addressList">
+        {{ each data v i }}
+        <div class="zhi">
+            <div class="tiao1"></div>
+            {{if v.isDefault==0}}
+            <div class="mo">
+                <span style="display: inline-block;width:86px;height: 32px;"></span>
+                <img data-id="{{v.id}}" id="delete_address" class="delete_address" src="../../shopping/img/lhpimg/Edit_Copy1.png">
+                <img data-id="{{v.id}}" data-list="{{v}}" class="edit_address" src="../../shopping/img/lhpimg/Edit.png">
+                <img data-id="{{v.id}}" data-list="{{v}}" src="../../shopping/img/lhpimg/Edit_Copy.png" class='set_address'>
+            </div>
+            {{ /if }} {{if v.isDefault==1}}
+            <div class="mo1">
+                <img data-id="{{v.id}}" src="../../shopping/img/lhpimg/label_moren1.png">
+                <img data-id="{{v.id}}" id="delete_address" class="delete_address" src="../../shopping/img/lhpimg/Edit_Copy1.png">
+                <img data-id="{{v.id}}" data-list="{{v}}" class="edit_address" src="../../shopping/img/lhpimg/Edit.png">
+                <img data-id="{{v.id}}" src="../../shopping/img/lhpimg/Edit_Copy.png">
+            </div>
+            {{ /if }}
+            <div class="ming">
+                {{if v.memberName.length>6}}
+                <span title="{{v.memberName}}">{{v.memberName.substr(0,6)}}...</span>&nbsp;&nbsp;&nbsp;<span>{{v.phone.substr(0,3)}}******{{v.phone.substr(9,11)}}</span> {{else}}
+                <span title="{{v.memberName}}">{{v.memberName}}</span>&nbsp;&nbsp;&nbsp;<span>{{v.phone.substr(0,3)}}******{{v.phone.substr(9,11)}}</span> {{/if}}
+            </div>
+            <div class="qu">
+                <span>{{ v.provinceName }} {{ v.cityName}} {{v.regionName}}</span> {{ if v.address.length>40}}
+                <span>{{v.address.substr(0,40)}}...</span> {{else}}
+                <span>{{v.address}}</span> {{/if}}
+            </div>
+            <img src="../../shopping/img/lhpimg/zhedan.png" class="xiushi" />
+        </div>
+        {{ /each }}
+        <!--添加-->
+        <div class="tian">
+            <img src="../../shopping/img/lhpimg/Fill_103.png" />
+            <div>添加新地址</div>
+        </div>
+    </div>
+</script>
+
+<script type="text/template" id="my_add2">
+    {{ each data v i }}
+    <div class="rdao1">
+        <span id="span">{{v[0].factName}}</span>
+    </div>
+    <div class="dizhi">
+        {{each v j k}}
+        <div class="zhi">
+            <div class="tiao2"></div>
+            <div class="mo">
+            </div>
+            <div class="ming">
+                {{if j.memberName.length>6}}
+                <span title="{{j.memberName}}">{{j.memberName.substr(0,6)}}...</span>&nbsp;&nbsp;&nbsp;<span>{{j.phone.substr(0,3)}}******{{j.phone.substr(9,11)}}</span> {{else}}
+                <span title="{{j.memberName}}">{{j.memberName}}</span>&nbsp;&nbsp;&nbsp;<span>{{j.phone.substr(0,3)}}******{{j.phone.substr(9,11)}}</span> {{/if}}
+            </div>
+            <div class="qu">
+                <span>{{ j.provinceName }} {{ j.cityName}} {{j.regionName}}</span> {{ if j.address.length>40}}
+                <span>{{j.address.substr(0,40)}}...</span> {{else}}
+                <span>{{j.address}}</span> {{/if}}
+            </div>
+            <img src="../../shopping/img/lhpimg/zhedan.png" class="xiushi" />
+        </div>
+        {{ /each }}
+    </div>
+    {{ /each }}
+</script>
+
+</html>

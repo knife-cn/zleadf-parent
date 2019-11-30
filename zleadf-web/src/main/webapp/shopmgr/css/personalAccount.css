@@ -1,0 +1,107 @@
+
+.headImg > img {
+    width: 1.53rem;
+    height: 1.53rem;
+    border-radius: 1.53rem;
+}
+
+.head-img {
+    margin: 0.48rem auto 0;
+    margin-top: -3px;
+    background: none;
+    float: left;
+}
+
+.headImg {
+    width: 1.53rem;
+    height: 1.53rem;
+    margin: 0.25rem 0.2rem 0.1rem 0.5rem;
+    border-radius: 100px;
+}
+
+.infos {
+    margin-top: 13px;
+    margin-right: -18px;
+    width: 2.5rem;
+    height: 1.5rem;
+    color: #fff;
+    text-align: center;
+    float: right;
+}
+
+.acId {
+    margin-top: 30px;
+    margin-right: 0px;
+    margin-left: -90px;
+    color: #fff;
+    text-align: center;
+    float: contour;
+}
+
+.head-div {
+    width: 100%;
+    height: 4.72rem;
+    background-size: 100%;
+    overflow: hidden;
+}
+
+.accountInfo {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    background: white;
+}
+
+.accountList-2 {
+    font-size: 14px;
+    font-family:STXihei;
+    color: #3d4d5d;
+    width: 78px;
+    text-indent: 0.2rem;
+    margin-left: 14px;
+}
+
+.person{
+    font-size: 12px;
+    font-family:STXihei;
+    color: #3d4d5d;
+    width: 48px;
+    text-indent: 0.2rem;
+    margin-left: 14px;
+}
+
+
+#img1 {
+    width: 15px;
+    display: inline-block;
+    margin-left: 35px;
+    margin-top: 10px
+}
+
+#img2 {
+    width: 25px;
+    display: inline-block;
+    margin-left: 35px;
+    margin-top: 10px
+}
+
+#img3 {
+    font-size: 14px;
+    font-family:STXihei;
+    color: #3d4d5d;
+    width: 88px;
+    margin-left: 7px;
+}
+
+#img4{
+    margin-top: -1px;
+    height: 4px;
+    display: inline-block;
+}
+
+#tat {
+    color: black;
+    margin-left: 12px;
+    font-size: 16px;
+}

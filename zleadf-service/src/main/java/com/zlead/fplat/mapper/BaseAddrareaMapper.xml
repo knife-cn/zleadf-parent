@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zlead.fplat.dao.BaseAddrareaMapper">
+  <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.BaseAddrarea">
+    <result column="area_id" jdbcType="INTEGER" property="areaId" />
+    <result column="area_code" jdbcType="VARCHAR" property="areaCode" />
+    <result column="area_name" jdbcType="VARCHAR" property="areaName" />
+    <result column="area_type" jdbcType="VARCHAR" property="areaType" />
+    <result column="short_name" jdbcType="VARCHAR" property="shortName" />
+    <result column="english_name" jdbcType="VARCHAR" property="englishName" />
+    <result column="area_level" jdbcType="VARCHAR" property="areaLevel" />
+    <result column="parea_id" jdbcType="INTEGER" property="pareaId" />
+    <result column="parea_code" jdbcType="VARCHAR" property="pareaCode" />
+    <result column="area_state" jdbcType="VARCHAR" property="areaState" />
+    <result column="pinyin" jdbcType="VARCHAR" property="pinyin" />
+    <result column="pinyin_sh" jdbcType="VARCHAR" property="pinyinSh" />
+    <result column="tel_head" jdbcType="VARCHAR" property="telHead" />
+    <result column="zip_code" jdbcType="VARCHAR" property="zipCode" />
+    <result column="area_desc" jdbcType="VARCHAR" property="areaDesc" />
+    <result column="creator" jdbcType="INTEGER" property="creator" />
+    <result column="modifier" jdbcType="INTEGER" property="modifier" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+
+  <!--根据地址代码查询名称-->
+  <select id="findAddressNameByCodes" resultMap="BaseResultMap">
+      SELECT t.`area_code`,t.`area_name`
+        FROM base_addrarea t
+    <if test="areaCodes != null and areaCodes.size >0">
+       WHERE t.`area_code` IN
+      <foreach collection="areaCodes" item="areaCode" separator="," open="(" close=")">
+        #{areaCode}
+      </foreach>
+    </if>
+  </select>
+
+  <!--查询所有的地址-->
+  <select id="findAllAddress" resultType="java.util.HashMap">
+    SELECT t.`area_code` AS code,t.`area_name` AS name FROM base_addrarea t
+  </select>
+
+  <!--根据代码查询名称-->
+  <select id="findAddressNameByCode" resultType="java.lang.String">
+    SELECT t.`area_name` AS name FROM base_addrarea t where t.`area_code`=#{code} limit 1
+  </select>
+</mapper>

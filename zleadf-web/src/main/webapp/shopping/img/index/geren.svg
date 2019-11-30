@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="15px" viewBox="0 0 14 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>个人中心</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="店铺首页" transform="translate(-1898.000000, -299.000000)" fill="#FF9834">
+            <g id="分组-16" transform="translate(1890.000000, 0.000000)">
+                <g id="分组-19" transform="translate(0.000000, 279.000000)">
+                    <path d="M15,20.5 C11.136,20.5 8,23.636 8,27.5 C8,31.364 11.136,34.5 15,34.5 C18.864,34.5 22,31.364 22,27.5 C22,23.636 18.864,20.5 15,20.5 L15,20.5 Z M15,22.6 C16.162,22.6 17.1,23.538 17.1,24.7 C17.1,25.862 16.162,26.8 15,26.8 C13.838,26.8 12.9,25.862 12.9,24.7 C12.9,23.538 13.838,22.6 15,22.6 L15,22.6 Z M15,32.54 C13.25,32.54 11.703,31.644 10.8,30.286 C10.821,28.893 13.6,28.13 15,28.13 C16.393,28.13 19.179,28.893 19.2,30.286 C18.297,31.644 16.75,32.54 15,32.54 L15,32.54 Z" id="个人中心"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

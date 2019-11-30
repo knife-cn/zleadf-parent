@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../../../h5/css/init.css">
+  <link rel="stylesheet" href="../../../h5/css/person.css">
+  <script src="../../../h5/js/rem.js"></script>
+  <title>个人信息</title>
+</head>
+
+<body>
+  <div class="p_container">
+    <ul>
+      <li>
+        <p>头像</p>
+        <div>
+          <img src="../../../h5/images/user_ic_heard_portrait@2x.png" alt="" class="header_pic">
+
+        </div>
+      </li>
+
+      <li>
+        <p>姓名</p>
+        <div>
+          <input type="text" value="" class="name" disabled>
+        </div>
+      </li>
+
+      <li>
+        <p>手机号</p>
+        <div>
+            <input type="text" class="mobile" disabled>
+        </div>
+      </li>
+
+      <li>
+        <p>所属工厂</p>
+        <div>
+            <input type="text" class="factory" disabled>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <script src="../js/jquery.min.js"></script>
+
+  <script>
+
+    $(function(){
+      $.ajax({
+        type:'POST',
+        url:'/zlead/login/memberInfo',
+        data:{
+
+        },
+        dataType:'json',
+        success:function (res) {
+          console.log(res)
+          var data = res.data.member;
+          console.log(data.username)
+          if(res.code == 1){
+            $('.name').attr('value',data.nickName);
+            $('.header_pic').attr('src','http://116.62.124.171/group1/'+ data.headImg);
+            $('.mobile').attr('value',data.phone);
+            $('.factory').attr('value',res.data.shopName);
+
+          }
+        }
+      })
+
+
+
+    })
+  </script>
+</body>
+
+</html>

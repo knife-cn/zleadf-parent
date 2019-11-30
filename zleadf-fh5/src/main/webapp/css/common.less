@@ -1,0 +1,202 @@
+@import url("function.less");
+@themeColor: #136EF1;
+@r: 50rem;
+body {
+    background-color: #E9EFF7;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    outline: none
+}
+
+.marginTop {
+    border-top: 10/@r solid #E9EFF7;
+}
+
+.clearfix::before,
+.clearfix::after {
+    display: table;
+    content: ''
+}
+
+.clearfix::after {
+    clear: both
+}
+
+.container {
+    width: 315/375*100%;
+    margin: 0 auto;
+}
+
+.navBottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 1;
+    // padding-bottom: 5%;
+    ul {
+        display: flex;
+        li {
+            flex: auto;
+            text-align: center;
+            a {
+                display: block;
+                padding-bottom: 5/@r;
+                div {
+                    line-height: 32/@r;
+                    span {
+                        display: inline-block;
+                        width: 23/@r;
+                        height: 22/@r;
+                        background-color: #ddd;
+                        vertical-align: middle;
+                        margin-top: -2px;
+                        background: url('../../images/customer_icon.png') no-repeat 0 -76/2/@r;
+                        background-size: 454/2/@r auto;
+                    }
+                }
+                p {
+                    font-size: 11/@r;
+                    line-height: 12px;
+                    color: #999999;
+                }
+            }
+            &:nth-of-type(2) {
+                a {
+                    div {
+                        span {
+                            width: 26/@r;
+                            height: 21/@r;
+                            background: url('../../images/customer_icon.png') no-repeat -152/2/@r -76/2/@r;
+                            background-size: 454/2/@r auto;
+                        }
+                    }
+                }
+            }
+            &:nth-of-type(3) {
+                a {
+                    div {
+                        span {
+                            width: 17/@r;
+                            height: 22/@r;
+                            background: url('../../images/customer_icon.png') no-repeat -228/2/@r -76/2/@r;
+                            background-size: 454/2/@r auto;
+                        }
+                    }
+                }
+            }
+            &:nth-of-type(4) {
+                a {
+                    div {
+                        span {
+                            width: 17/@r;
+                            height: 21/@r;
+                            background: url('../../images/customer_icon.png') no-repeat -304/2/@r -76/2/@r;
+                            background-size: 454/2/@r auto;
+                        }
+                    }
+                }
+            }
+            &:nth-of-type(5) {
+                a {
+                    div {
+                        span {
+                            width: 16/@r;
+                            height: 21/@r;
+                            background: url('../../images/customer_icon.png') no-repeat -76/2/@r -76/2/@r;
+                            background-size: 454/2/@r auto;
+                        }
+                    }
+                }
+            }
+            &.active {
+                a {
+                    div {
+                        span {
+                            background: url('../../images/customer_icon.png') no-repeat 0 -132/2/@r;
+                            background-size: 454/2/@r auto;
+                        }
+                    }
+                }
+                p {
+                    color: #4189FF;
+                }
+            }
+            &:nth-of-type(2).active {
+                a {
+                    div {
+                        span {
+                            background: url('../../images/customer_icon.png') no-repeat -152/2/@r -132/2/@r;
+                            background-size: 454/2/@r auto;
+                        }
+                    }
+                }
+                p {
+                    color: #4189FF;
+                }
+            }
+            &:nth-of-type(3).active  {
+                a {
+                    div {
+                        span {
+                            width: 16/@r;
+                            height: 21/@r;
+                            background: url('../../images/customer_icon.png') no-repeat -228/2/@r -132/2/@r;
+                            background-size: 454/2/@r auto;
+                        }
+                    }
+                }
+            }
+            &:nth-of-type(4).active  {
+                a {
+                    div {
+                        span {
+                            width: 17/@r;
+                            height: 21/@r;
+                            background: url('../../images/customer_icon.png') no-repeat -304/2/@r -132/2/@r;
+                            background-size: 454/2/@r auto;
+                        }
+                    }
+                }
+            }
+            &:nth-of-type(5).active {
+                a {
+                    div {
+                        span {
+                            background: url('../../images/customer_icon.png') no-repeat -76/2/@r -132/2/@r;
+                            background-size: 454/2/@r auto;
+                        }
+                    }
+                }
+                p {
+                    color: #4189FF;
+                }
+            }
+        }
+    }
+}
+//iphoneX、iphoneXs
+// @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+//     .navBottom {
+//         padding-bottom: 5%;
+//     }
+// }
+//iphone Xs Max
+// @media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio:3) {
+//     .navBottom {
+//         padding-bottom: 5%;
+//     }
+// }
+
+
+ 
+
+//iphone XR
+// @media only screen and (device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio:2) {
+//     .navBottom {
+//         padding-bottom: 5%;
+//     }
+// }

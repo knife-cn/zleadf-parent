@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../shopping/css/header.css" />
+    <link rel="stylesheet" href="../../shopping/css/xiaoxi.css" />
+</head>
+
+<body>
+    <div id="head"></div>
+
+    <!--搜索-->
+    <div class="serch">
+        <div class="serch_con">
+            <!-- logo -->
+            <div class="logo">
+                <img src="../../shopping/img/index/logo.png" />
+            </div>
+            <div class="searcha">
+                <!-- 搜索框 -->
+                <div class="search">
+                    <!-- <div class="search_frame">
+                        <input type="text" id="resou" maxlength="50" />
+                    </div> -->
+                    <form autocomplete="off" class="search_frame" onsubmit="return false">
+                        <input type="text" id="resou" maxlength="50" />
+                    </form>
+                    <!-- 搜索按钮 -->
+                    <div class="search_icon" id="search_icon">
+                        <img src="../../shopping/img/index/ic_sousuo.png" />
+                    </div>
+                    <!--简单查询-->
+                    <div class="pro">
+                        <ul class="proCon">
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- 热搜词 -->
+                <div class="search_hot">
+                    <ul class="search_hot_ul" id="search_hot_ul">
+                        <!--<li>电气控制</li>-->
+                        <!--<li>刀具磨具</li>-->
+                        <!--<li>电气控制</li>-->
+                        <!--<li>电气控制</li>-->
+                        <!--<li>电气控制</li>-->
+                        <!--<li>电气控制</li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--渐变-->
+    <div class="top2">
+        <div class="top3" id="top3"></div>
+    </div>
+    <!--内容-->
+
+    <div class="neirou">
+        <div class="neirou_top">
+            <span id="quanx" class='active'>全部消息</span><span id="yix">已读</span><span id="weix">未读</span>
+        </div>
+        <div class="xiaoxi" id="xiaoxi">
+            <div class='xiaoxi_left'>
+                <!-- 静态页面结构：不要删 -->
+                <!--<h5>商城消息列表</h5>-->
+                <!--<ul>-->
+                <!--<li>-->
+                <!--<p>2018-12-23</p>-->
+                <!--<div>商城系统提醒您，您购买的商品已经发货</div>-->
+                <!--<img src="../../shopping/img/index/xiaoxi_left.png" />-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<p>2018-12-23</p>-->
+                <!--<div>商城系统提醒您，您购买的商品已经发货</div>-->
+                <!--<img src="../../shopping/img/index/xiaoxi_left.png" />-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<p>2018-12-23</p>-->
+                <!--<div>商城系统提醒您，您购买的商品已经发货</div>-->
+                <!--<img src="../../shopping/img/index/xiaoxi_left.png" />-->
+                <!--</li>-->
+                <!--</ul>-->
+                <h5>商城消息列表</h5>
+                <ul></ul>
+                <div>加载更多...</div>
+            </div>
+            <div class='xiaoxi_right'>
+                <h5>2018-12-23</h5>
+                <!-- <p>商城系统提醒您，您购买的商品已经发货</p> -->
+                <p>本模块功能本期不做，已经与产品讨论过了。</p>
+                <div class='xiaoxi_list'>
+                    <div>
+                        <p>
+                            <img src="../../shopping/img/index/xiaoxi_date.png" />
+                            <b>2019/01/01</b>
+                            <span>订单号：259954695663626096</span>
+                        </p>
+                        <ul>
+                            <li>
+                                <img src="../../shopping/img/index/Bitmap.png" />
+                                <div>
+                                    <span>手电转家用充电式电动螺丝刀手枪电钻迷你工具2V小锂电手钻电转</span>
+                                    <i>GSR 120-Li 单电板</i>
+                                </div>
+                                <b>1</b>
+                                <span>￥200.00</span>
+                                <a href="javascript:;">已发货</a>
+                            </li>
+                            <li>
+                                <img src="../../shopping/img/index/Bitmapa.png" />
+                                <div>
+                                    <span>手电转家用充电式电动螺丝刀手枪电钻迷你工具2V小锂电手钻电转</span>
+                                    <i>GSR 120-Li 单电板</i>
+                                </div>
+                                <b>1</b>
+                                <span>￥200.00</span>
+                                <a href="javascript:;">待支付</a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- 消息为空提示 -->
+        <div class="xiaoxi_zero">
+            <img src="../../shopping/img/index/msg.png" />
+            <h5>暂无消息哦~</h5>
+            <p>您可以<a href="index.html">去逛逛></a></p>
+        </div>
+    </div>
+    <div class="tbpager">
+        <div class="tbapager">
+            <div class="pager" id="page2">
+                <!--<span>上一页</span>-->
+                <!--<ul>-->
+                <!--<li>1</li>-->
+                <!--<li class="yan">2</li>-->
+                <!--<li>3</li>-->
+                <!--<li>4</li>-->
+                <!--<li>5</li>-->
+                <!--<li>...</li>-->
+                <!--<li>56</li>-->
+                <!--</ul>-->
+                <!--<span>下一页</span>-->
+
+                <!--<span>跳转</span>-->
+                <!--<div class="xuanye">-->
+                <!--<input class="text_class" value="1" type="text"/>-->
+                <!--<div class="tz_tiao">-->
+                <!--<img src="../../shopping/img/searchPage/rij.png"/>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--<span>页</span>-->
+            </div>
+        </div>
+    </div>
+    <iframe src="footer.html" width="100%" height="292px" style="border: none;"></iframe>
+</body>
+<script type="text/javascript" src="../../shopping/js/jquery-2.1.0.js"></script>
+<script type="text/javascript" src="../../shopping/lib/artTemplate/artTemplate/template-web.js"></script>
+<script type="text/javascript" src="../../shopping/js/paging.js"></script>
+<script type="text/template" id="xiaoxi_left">
+    {{if type==-1}} {{each list v i}}
+    <li myid={{v.id}}>
+        <p>{{v.createTime}}</p>
+        {{if v.content.length>40}}
+        <div>{{v.content.substr(0,40)}}...</div>
+        {{else}}
+        <div>{{v.content}}</div>
+        {{/if}}
+        <img src="../../shopping/img/index/xiaoxi_left.png" />
+    </li>
+    {{/each}} {{else}} {{each list v i}} {{if v.status == type}}
+    <li myid={{v.id}} myclick=1>
+        <p>{{v.createTime}}</p>
+        {{if v.content.length>40}}
+        <div>{{v.content.substr(0,40)}}...</div>
+        {{else}}
+        <div>{{v.content}}</div>
+        {{/if}}
+        <img src="../../shopping/img/index/xiaoxi_left.png" />
+    </li>
+    {{/if}} {{/each}} {{/if}}
+
+
+
+</script>
+<script src="../../shopping/js/xiaoxi.js"></script>
+<script>
+    if (location.href.indexOf('left.html#dd') > -1 || location.href.indexOf('left.html') > -1) {
+
+    } else {
+        if (window.localStorage.getItem("active5")) {
+            window.localStorage.removeItem("active5")
+        }
+    }
+</script>
+
+</html>
+
+</html>

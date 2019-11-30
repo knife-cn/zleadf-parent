@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd"   >
+
+       <!-- 指定自己定义的validator -->
+       <!--<mvc:annotation-driven validator="validator"/>-->
+
+       <mvc:annotation-driven validator="validator">
+              <mvc:message-converters register-defaults="true">
+                     <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                     <constructor-arg value="UTF-8" />
+                     </bean>
+                     <ref bean="mappingJackson2HttpMessageConverter" />
+              </mvc:message-converters>
+       </mvc:annotation-driven>
+
+ <!--      
+<context:component-scan base-package="com.puqian.aop,com.puqian.service,com.puqian.controller,com.puqian.util,com.puqian,reception.service," />
+<context:component-scan base-package="com.**.service,com.puqian.**.controller" />
+-->
+	<!-- 开启注解 -->
+	<!--  
+		<mvc:annotation-driven />作用:注入带有@Autowired或者@Resource的Bean 
+	-->
+	<mvc:annotation-driven />
+	
+	<!-- AOP -->
+	<aop:aspectj-autoproxy/>
+
+       <mvc:default-servlet-handler /> 
+        
+        <bean id="mappingJackson2HttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        </bean>
+
+
+       <bean id="multipartResolver"
+             class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+              <!-- 最大值4M -->
+              <property name="maxUploadSize" value="209715200" />
+              <property name="resolveLazily" value="true" />
+       </bean>
+
+
+
+
+
+       <!-- 定义JSP文件的位置 -->
+       <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+              <!--<property name="prefix" value="/WEB-INF/views/" />-->
+              <property name="prefix" value="/" />
+              <property name="suffix" value=".jsp" />
+       </bean>
+
+       <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+              <property name="exceptionMappings">
+                     <props>
+                            <prop key="org.springframework.validation.BindException">/error/500</prop>
+                     </props>
+              </property>
+       </bean>
+       <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">-->
+              <!--<property name="messageConverters">-->
+                     <!--<list>-->
+                            <!--<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />-->
+                     <!--</list>-->
+              <!--</property>-->
+       <!--</bean>-->
+       <!--RestTemplate-->
+       <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+              <constructor-arg>
+                     <bean class="org.springframework.http.client.SimpleClientHttpRequestFactory"/>
+              </constructor-arg>
+       </bean>
+
+</beans>

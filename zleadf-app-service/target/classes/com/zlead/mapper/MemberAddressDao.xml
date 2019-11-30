@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.MemberAddressDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.MemberAddressEntity" id="memberAddressMap">
+            <result property="id" column="id"/>
+            <result property="memberId" column="member_id"/>
+            <result property="memberName" column="member_name"/>
+            <result property="phone" column="phone"/>
+            <result property="provinceId" column="province_id"/>
+            <result property="cityId" column="city_id"/>
+            <result property="regionId" column="region_id"/>
+            <result property="address" column="address"/>
+            <result property="postcode" column="postcode"/>
+            <result property="email" column="email"/>
+            <result property="isDefault" column="is_default"/>
+            <result property="revId" column="rev_id"/>
+            <result property="isFact" column="is_fact"/>
+            <result property="factId" column="fact_id"/>
+
+        </resultMap>
+
+    <resultMap type="com.zlead.entity.vo.MemberAddrVo" id="memberAddrVo">
+        <result property="addrId" column="addrId"/>
+        <result property="memberName" column="memberName"/>
+        <result property="phone" column="phone"/>
+        <result property="address" column="address"/>
+        <result property="isDefault" column="isDefault"/>
+        <result property="provinceId" column="provinceId"/>
+        <result property="cityId" column="cityId"/>
+        <result property="areaId" column="areaId"/>
+        <result property="agentId" column="agentId"/>
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_member_address (
+                id,
+                member_id,
+                member_name,
+                phone,
+                province_id,
+                city_id,
+                region_id,
+                address,
+                postcode,
+                email,
+                is_default,
+                rev_id,
+                is_fact,
+                fact_id
+                ) VALUES (
+                #{id},
+                #{memberId},
+                #{memberName},
+                #{phone},
+                #{provinceId},
+                #{cityId},
+                #{regionId},
+                #{address},
+                #{postcode},
+                #{email},
+                #{isDefault},
+                #{revId},
+                #{isFact},
+                #{factId}
+                )
+    </insert>
+
+    <update id="update">
+        UPDATE t_member_address AS T SET
+                  T.id = #{id} ,
+                 T.member_id = #{memberId} ,
+                 T.member_name = #{memberName} ,
+                 T.phone = #{phone} ,
+                 T.province_id = #{provinceId} ,
+                 T.city_id = #{cityId} ,
+                 T.region_id = #{regionId} ,
+                 T.address = #{address} ,
+                 T.postcode = #{postcode} ,
+                 T.email = #{email} ,
+                 T.is_default = #{isDefault},
+                 T.rev_id = #{revId}
+                WHERE T.ID = #{id}
+    </update>
+
+    <update id="updateOtherIsNotDefault" >
+        UPDATE t_member_address AS T SET T.is_default = 0 WHERE T.member_id=#{memberId} AND T.id != #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM t_member_address WHERE  ID = #{id}
+    </delete>
+
+    <select id="findPage" parameterType="map" resultMap="memberAddressMap">
+        SELECT *  FROM t_member_address AS T
+    </select>
+
+    <select id="findById" resultMap="memberAddressMap" useCache="false">
+        SELECT * FROM t_member_address AS T WHERE  T.ID = #{id}
+</select>
+
+    <!-- 获取所有的地址信息 -->
+    <select id="getAllAddress" parameterType="map" resultMap="memberAddressMap">
+        SELECT *  FROM t_member_address AS T
+        <where>
+            1=1
+            <if test="@Ognl@isNotEmpty(id)"> AND T.ID = #{id} </if>
+            <if test="@Ognl@isNotEmpty(memberId)"> AND T.member_id = #{memberId} </if>
+        </where> and is_fact=0 ORDER BY T.is_default desc,T.id asc
+    </select>
+
+    <select id="findFirstOfMember" resultMap="memberAddressMap">
+        SELECT * FROM t_member_address
+        WHERE member_id = #{memberId} AND is_default=1 AND is_fact=0 LIMIT 1
+    </select>
+
+    <select id="findAddrById" resultMap="memberAddrVo">
+        select a.id,a.member_name,a.phone,a.address,a.is_default,a.province_id,a.city_id,a.region_id from t_member as b  left join t_member_address as a
+		on a.member_id=b.id where b.id=#{memberId}
+    </select>
+
+    <select id="findRegionName" resultType="string">
+        select t_region_NAME from t_region where t_region_CODE=#{regionId}
+    </select>
+
+    <!-- app 应用 -->
+    <select id="findAddrByAgentId" resultType="com.zlead.entity.vo.MemberAddrVo">
+        select a.id as addrId,
+        a.member_name as memberName,
+        a.phone,a.address,
+        a.is_default as isDefault,
+        a.province_id as provinceId,
+        a.city_id as cityId,
+        a.region_id as areaId,
+        b.agent_id as agentId
+        from t_member as b  left join t_member_address as a
+		on a.member_id=b.id where b.agent_id = #{agentId}
+		and a.fact_id in (select factory_id from t_agent_fac where sys_id in (select own_shopid from t_member where id=#{memberId}))
+		and a.is_fact =1 union
+		select a.id as addrId,
+        a.member_name as memberName,
+        a.phone,a.address,
+        a.is_default as isDefault,
+        a.province_id as provinceId,
+        a.city_id as cityId,
+        a.region_id as areaId,
+        b.agent_id as agentId
+        from t_member as b  left join t_member_address as a
+		on a.member_id=b.id where b.agent_id = #{agentId}
+		and a.fact_id =0;
+    </select>
+    <select id="getListById" resultType="string">
+        SELECT T.phone FROM t_member_address AS T
+        <where>
+            1=1
+            <if test="@Ognl@isNotEmpty(memberId)"> AND T.member_id = #{memberId} </if>
+        </where>
+
+    </select>
+    <select id="getAllAgentAddress" resultMap="memberAddressMap">
+        SELECT *  FROM t_member_address AS T
+        <where>
+            1=1
+            <if test="@Ognl@isNotEmpty(id)"> AND T.ID = #{id} </if>
+            <if test="@Ognl@isNotEmpty(memberId)"> AND T.member_id = #{memberId} </if>
+        </where> ORDER BY T.is_default desc,T.id asc
+    </select>
+    <select id="getAllAddressByMId" resultMap="memberAddressMap">
+        SELECT *  FROM t_member_address AS T
+        where T.member_id = #{id}
+        and is_fact=0 ORDER BY T.is_default desc,T.id asc
+    </select>
+
+</mapper>

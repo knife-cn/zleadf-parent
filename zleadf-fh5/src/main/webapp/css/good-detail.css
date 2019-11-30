@@ -1,0 +1,70 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: #e9eff7;
+}
+.good_list {
+  width: 6.9rem;
+  border-radius: 8px;
+  background-color: #fff;
+  margin: 0 auto;
+  margin-top: 0.2rem;
+}
+.good_list .pic_name {
+  display: flex;
+  align-items: center;
+}
+.good_list .pic_name img {
+  width: 0.48rem;
+  height: 0.48rem;
+  display: block;
+  border-radius: 50%;
+  margin: 0.2rem;
+}
+.good_list .pic_name span {
+  font-size: 0.24rem;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: #4f5362;
+}
+.good_list li {
+  display: flex;
+  padding: 0.2rem;
+  padding-bottom: 0;
+}
+.good_list li:last-child {
+  padding-bottom: 0.2rem;
+}
+.good_list li img {
+  width: 1.74rem;
+  height: 1.74rem;
+}
+.good_list li .r_content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 0.22rem;
+}
+.good_list li .r_content .title {
+  font-size: 0.28rem;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #131314;
+  margin: 0;
+  text-align: left;
+}
+.good_list li .r_content .type {
+  font-size: 0.24rem;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #4b5461;
+}
+.good_list li .r_content .price {
+  font-size: 0.28rem;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #4b5461;
+  display: flex;
+  justify-content: space-between;
+}

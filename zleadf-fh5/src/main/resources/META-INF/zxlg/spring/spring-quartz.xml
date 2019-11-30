@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+    xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:util="http://www.springframework.org/schema/util" xmlns:task="http://www.springframework.org/schema/task" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.0.xsd
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.0.xsd" default-lazy-init="false">
+
+
+    <!-- 启动自动扫描，自动装配 -->
+    <context:component-scan base-package="com.quartz"></context:component-scan>
+
+    <!--定义定时执行studentService 这个bean中的updateStudentStatus()方法 -->
+    <bean id="doJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <!--你要执行的那个方法对应的bean -->
+        <property name="targetObject">
+            <ref bean="testQuartTimer" />
+        </property>
+        <!--你要执行那个方法，注意方法不能有返回值，参数好像也不能有 -->
+        <property name="targetMethod">
+            <value>testQuartTimerMethod</value>
+        </property>
+    </bean>
+
+    <!-- 调度触发器 -->
+    <!--触发器的bean的设置，在这里我们设置了我们要触发的jobDetail是哪个。
+    这里我们定义了要触发的jobDetail是searchEngerneTask，即触发器去触发哪个bean。
+    并且我们还定义了触发的时间。
+    spring版本<3.1，quartz版本为1.x，class使用CronTriggerBean；
+    spring版本>3.1，quartz版本为2.x，class使用CronTriggerFactoryBean；尽量按这两种方式使用-->
+    <bean id="cronTrigger" class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="doJob" />
+        </property>
+        <property name="cronExpression">
+            <!-- 执行周期的表达式；每小时：[0 0 * * * ?]； 每五钟：[0 0/5 * * * ?]-->
+<!--             <value>0/10 * * * * ?</value>10秒执行一次 -->
+        </property>
+    </bean>
+
+    <!-- 调度工厂 -->
+    <!--管理触发器的总设置,管理我们的触发器列表,可以在bean的list中放置多个触发器。 -->
+    <bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="cronTrigger" />
+            </list>
+        </property>
+    </bean>
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

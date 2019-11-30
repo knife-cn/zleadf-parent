@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.ShoppingCartDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.ShoppingCartEntity" id="shoppingCartMap">
+            <result property="id" column="id"/>
+            <result property="memberId" column="member_id"/>
+            <result property="shopId" column="shop_id"/>
+            <result property="goodsId" column="goods_id"/>
+            <result property="price" column="price"/>
+            <result property="count" column="count"/>
+            <result property="channelType" column="channel_type"/>
+            <result property="adsId" column="ads_id"/>
+            <result property="buyType" column="buy_type"/>
+            <result property="createDate" column="create_date"/>
+            <result property="remark" column="remark"/>
+            <result property="isBuy" column="is_buy"/>
+        </resultMap>
+
+    <resultMap id="shoppingCartVo" type="com.zlead.entity.vo.ShoppingCartVo" extends="shoppingCartMap">
+        <result property="isMarketable" column="is_marketable" />
+        <result property="goodsPrice" column="goodsPrice" />
+        <result property="pointPrice" column="point_price" />
+        <result property="stock" column="stock" />
+        <result property="point" column="point" />
+        <result property="goodsImg" column="goods_img" />
+        <result property="goodsName" column="goods_name" />
+        <result property="specNames" column="spec_names" />
+        <result property="shopName" column="shop_name" />
+    </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_shopping_cart (
+                id,
+                member_id,
+                shop_id,
+                goods_id,
+                price,
+                count,
+                channel_type,
+                ads_id,
+                buy_type,
+                create_date,
+                remark,
+                is_buy
+                ) VALUES (
+                #{id},
+                #{memberId},
+                #{shopId},
+                #{goodsId},
+                #{price},
+                #{count},
+                #{channelType},
+                #{adsId},
+                #{buyType},
+                #{createDate},
+                #{remark},
+                #{isBuy}
+                )
+    </insert>
+
+    <update id="update">
+        UPDATE t_shopping_cart AS T SET
+                  T.id = #{id} ,
+                 T.member_id = #{memberId} ,
+                 T.shop_id = #{shopId} ,
+                 T.goods_id = #{goodsId} ,
+                 T.price = #{price} ,
+                 T.count = #{count} ,
+                 T.channel_type = #{channelType} ,
+                 T.ads_id = #{adsId} ,
+                 T.buy_type = #{buyType} ,
+                 T.create_date = #{createDate} ,
+                 T.remark = #{remark},
+                 T.is_buy = #{isBuy}
+                WHERE T.ID = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM t_shopping_cart WHERE  ID = #{id}
+    </delete>
+
+    <select id="findPage" parameterType="map" resultMap="shoppingCartMap">
+        SELECT *  FROM t_shopping_cart AS T
+    </select>
+
+    <select id="findById" resultMap="shoppingCartMap" useCache="false">
+        SELECT * FROM t_shopping_cart AS T WHERE  T.ID = #{id}
+    </select>
+
+    <select id="shopList" resultMap="shoppingCartMap">
+        SELECT distinct T.shop_id
+        FROM t_shopping_cart AS T INNER JOIN t_goods G ON T.goods_id = G.id
+        WHERE T.is_buy = 0
+        <if test="@Ognl@isNotEmpty(memberId)"> AND T.member_id = #{memberId} </if>
+        <if test="@Ognl@isNotEmpty(type)"> AND T.buy_type = #{type} </if>
+        <if test="@Ognl@isNotEmpty(prodType)">AND G.prod_type = #{prodType} </if>
+        <if test="@Ognl@isNotEmpty(shopId)">AND T.shop_id = #{shopId} </if>
+        <if test="@Ognl@isNotEmpty(channelType)">AND T.channel_type = #{channelType} </if>
+    </select>
+
+    <select id="shopCartIdList" resultType="long">
+        SELECT T.id
+        FROM t_shopping_cart as T
+        WHERE T.shop_id = #{shopId}
+        And T.member_id = #{memberId}
+        AND T.goods_id &lt;&gt; #{goodsId}
+        AND is_buy = 0
+    </select>
+
+    <!-- 通过店铺的id查询购物车的信息 -->
+    <select id="findShoppingCart" resultMap="shoppingCartVo" useCache="false">
+        SELECT T.*, G.price goodsPrice, G.stock, G.point ,G.point_price, G.full_name AS goods_name, G.first_img AS goods_img, G.spec spec_names, G.is_market is_marketable
+        ,(SELECT O.shop_name FROM t_shop AS O WHERE O.id=T.shop_id) AS SHOP_NAME
+        FROM t_shopping_cart AS T LEFT JOIN t_goods AS G
+        ON T.goods_id = G.id
+        WHERE  T.is_buy = 0
+        <if test="@Ognl@isNotEmpty(memberId)"> AND T.member_id = #{memberId} </if>
+        <if test="@Ognl@isNotEmpty(type)"> AND T.buy_type = #{type} </if>
+        <if test="@Ognl@isNotEmpty(prodType)">AND G.prod_type = #{prodType} </if>
+        <if test="@Ognl@isNotEmpty(shopId)">AND T.shop_id = #{shopId} </if>
+        <if test="@Ognl@isNotEmpty(channelType)">AND T.channel_type = #{channelType} </if>
+    </select>
+
+    <select id="findByUnique" resultMap="shoppingCartMap">
+        SELECT * FROM t_shopping_cart AS T WHERE member_id = #{memberId} AND goods_id = #{goodsId} AND buy_type = #{type} AND T.shop_id=#{shopId} AND T.is_buy = 0
+    </select>
+
+    <delete id="deleteIds">
+        DELETE FROM t_shopping_cart WHERE  ID IN (${ids})
+    </delete>
+
+    <!-- 查询购物车的信息-->
+    <select id="shopingCartInfo" resultMap="shoppingCartMap">
+        SELECT *
+        FROM t_shopping_cart AS T WHERE T.member_id = #{memberId} AND T.goods_id =#{goodsId} AND T.is_buy = 0
+    </select>
+
+    <!-- 通过id查询店铺LIST-->
+    <select id="shopListByids" resultMap="shoppingCartMap">
+        SELECT distinct T.shop_id
+        FROM t_shopping_cart AS T
+        WHERE  T.id  in
+        <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="shoppingCartByids" resultMap="shoppingCartVo" useCache="false">
+        SELECT T.*, G.price goodsPrice, G.stock, G.point ,G.point_price, G.full_name AS goods_name, G.first_img AS goods_img, G.spec spec_names, G.is_market is_marketable
+        ,(SELECT O.shop_name FROM t_shop AS O WHERE O.id=T.shop_id) AS SHOP_NAME
+        FROM t_shopping_cart AS T LEFT JOIN t_goods AS G
+        ON T.goods_id = G.id
+        WHERE  T.shop_id = #{shopId} AND T.id  in
+        <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="cartByids" resultMap="shoppingCartMap" useCache="false">
+        SELECT T.*
+        FROM t_shopping_cart T
+        WHERE T.id  in
+        <foreach collection="ids" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
+
+    <select id="getBygoodsId" resultMap="shoppingCartMap" useCache="false">
+        SELECT T.id
+        FROM t_shopping_cart T
+        WHERE T.goodsId = #{goodsId}
+        AND T.memberId = #{memberId}
+    </select>
+
+</mapper>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>直链商城</title>
+</head>
+<link rel="stylesheet" href="../../shopping/css/pager.css" />
+<link rel="stylesheet" href="../../shopping/css/searchPage.css" />
+<link rel="stylesheet" href="../../shopping/css/header.css" />
+
+
+<body>
+    <div id="head"></div>
+    <div class="serch">
+        <div class="serch_con">
+            <!-- logo -->
+            <div class="logo">
+                <img src="../../shopping/img/index/logo.png" />
+            </div>
+            <div class="searcha">
+                <!-- 搜索框 -->
+                <div class="search">
+                    <!-- <div class="search_frame">
+                        <input type="text" id="resou" maxlength="50" />
+                    </div> -->
+
+                    <form autocomplete="off" class="search_frame" onsubmit="return false">
+                        <input type="text" id="resou" maxlength="50" />
+                    </form>
+                    <!-- 搜索按钮 -->
+                    <div class="search_icon" id="search_iconxin">
+                        <img src="../../shopping/img/index/ic_sousuo.png" />
+                    </div>
+                    <!--简单查询-->
+                    <div class="pro">
+                        <ul class="proCon">
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- 热搜词 -->
+                <div class="search_hot">
+                    <ul class="search_hot_ul" id="search_hot_ul">
+                        <!--<li>电气控制</li>-->
+                        <!--<li>刀具磨具</li>-->
+                        <!--<li>电气控制</li>-->
+                        <!--<li>电气控制</li>-->
+                        <!--<li>电气控制</li>-->
+                        <!--<li>电气控制</li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dt_top">
+        <div class="dt_topcon"></div>
+    </div>
+    <div class="sp" id="term">
+        <div class="sp_d">
+            <p id="chichi">
+
+            </p>
+        </div>
+    </div>
+    <div class="serp" id="serp">
+        <div class="serp_con">
+            <div class="serch_a">
+                <div class="serch_pin"><span>品牌:</span></div>
+                <div class="serch_mc" id="mco">
+                    <ul class="serch_mcul" id="ppl"></ul>
+                </div>
+                <div class="serp_gd">
+                    <div id="btn" class="btn">
+                        <span>更多<i><img src="../../shopping/img/searchPage/x.png"/></i></span>
+                    </div>
+                    <div id="btn1" class="btn1">
+                        <span>收起<i><img src="../../shopping/img/searchPage/s.png"/></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="serch_a">
+                <div class="serch_pin"><span>系列:</span></div>
+                <div class="serch_mc" id="mcone">
+                    <ul class="serch_mcul" id="xl"></ul>
+                </div>
+                <div class="serp_gd">
+                    <div id="btna" class="btn">
+                        <span>更多<i><img src="../../shopping/img/searchPage/x.png"/></i></span>
+                    </div>
+                    <div id="btna1" class="btn1">
+                        <span>收起<i><img src="../../shopping/img/searchPage/s.png"/></i></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="serch_a">
+                <div class="serch_pin"><span>型号:</span></div>
+                <div class="serch_mc" id="mctwo">
+                    <ul class="serch_mcul" id="xhao"></ul>
+                </div>
+                <div class="serp_gd">
+                    <div id="btnb" class="btn">
+                        <span>更多<i><img src="../../shopping/img/searchPage/x.png"/></i></span>
+                    </div>
+                    <div id="btnb1" class="btn1">
+                        <span>收起<i><img src="../../shopping/img/searchPage/s.png"/></i></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="serch_a">
+                <div class="serch_pin"><span>分类:</span></div>
+                <div class="serch_mc" id="mcthree">
+                    <ul class="serch_mcul" id="fnei"></ul>
+                </div>
+                <div class="serp_gd">
+                    <div id="btnc" class="btn">
+                        <span>更多<i><img src="../../shopping/img/searchPage/x.png"/></i></span>
+                    </div>
+                    <div id="btnc1" class="btn1">
+                        <span>收起<i><img src="../../shopping/img/searchPage/s.png"/></i></span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="serProut">
+        <div class="serProut_con">
+            <ul id="shulian">
+
+            </ul>
+        </div>
+    </div>
+    <!-- 加载效果 -->
+    <div class='loading'>
+        <img src="../../shopping/img/upload/login.gif" alt="">
+        <p>正在急速加载中...</p>
+    </div>
+    <!--分页-->
+    <!-- <div class="tbpager">
+        <div class="tbapager">
+
+        </div>
+    </div> -->
+
+    <!--分页-->
+    <div class="ta3">
+        <div class="pageJump" class="fright">
+            <span>跳转到</span>
+            <input type="text" />
+            <span>页</span>
+            <button type="button" class="button">确定</button>
+        </div>
+        <ul class="pagination" class="fright" id="page1">
+        </ul>
+    </div>
+
+
+    <!--无结果-->
+    <div class="spwu">
+        <div class="spwuCon">
+            <div class="spwucon_a">
+                <div class="spwu_top">
+                    <div class="spwu_lv">
+                        <img src="../../shopping/img/searchPage/Fill 1.png" />
+                    </div>
+                    <div class="spwu_lz">
+                        <span id="xinxi">非常抱歉没有找到相关信息</span>
+                    </div>
+                </div>
+                <div class="spwu_bo">
+                    <p>建议您：重新筛选</p>
+                    <!--<p>1：重新筛选 </p>-->
+                    <!-- <p>2：通过拨打客服电话，<span>400-000-9999</span>进行咨询</p>-->
+                </div>
+                <div class="spwu_btn">
+                    <div class="btnfan">
+                        <span>返回</span>
+                    </div>
+                    <div class="btnshou">
+                        <span>去首页</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--立即购买和添加购物车弹窗-->
+    <div class="meng3"></div>
+    <div class="popupMsg3">
+        <img class="close" src="../../shopping/img/car/close@2x.png" />
+        <img class="tips" src="../../shopping/img/car/Fill 1.png" />
+        <p class="msg3">提示信息</p>
+        <div class="know">知道了</div>
+    </div>
+
+    <!--添加购物车弹窗成功-->
+    <div class="meng" id="megou">
+        <div class="guanlian">
+            <div class="toptan" id="tuicart"><img src="../../shopping/img/lhpimg/guanbi.png" class="img" /></div>
+            <div class="tu"><img src="../../shopping/img/lhpimg/Fill_2.png" /></div>
+            <div class="ren faultMsg">成功加入购物车</div>
+            <div id="fo" class="yiyan">去购物车结算</div>
+        </div>
+    </div>
+
+
+
+    <iframe src="footer.html" width="100%" height="292px" style="border:none"></iframe>
+</body>
+<script type="text/javascript" src="../../shopping/js/jquery-2.1.0.js"></script>
+<script src="../../shopping/js/pager.js"></script>
+<script src="../../shopping/js/loading.js"></script>
+<!-- <script type="text/javascript" src="../../shopping/js/pagerUtil.js"></script> -->
+<script type="text/javascript" src="../../shopping/js/querypage1.js"></script>
+<!-- <script type="text/javascript" src="../../shopping/js/head.js"></script> -->
+<srcipt type="text/javascript" src="../../shopping/js/urlcs.js"></srcipt>
+
+<!--<script type="text/javascript" src="../../shopping/js/paging.js"></script>-->
+<script type="text/javascript" src="../../shopping/js/jinzi.js"></script>
+
+
+</html>

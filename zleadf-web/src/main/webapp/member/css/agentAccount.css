@@ -1,0 +1,277 @@
+
+.headImg > img {
+    width: 1.53rem;
+    height: 1.53rem;
+    border-radius: 1.53rem;
+}
+
+.head-img {
+    margin: 0.48rem auto 0;
+    margin-top: -3px;
+    background: none;
+    float: left;
+}
+
+.headImg {
+    width: 1.53rem;
+    height: 1.53rem;
+    margin: 0.25rem 0.2rem 0.1rem 0.5rem;
+    border-radius: 100px;
+    float: left;
+}
+
+.infos {
+    margin-top: 13px;
+    margin-right: 2%;
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #fff;
+    text-align: center;
+    float: right;
+}
+
+.acId {
+    margin-top: 30px;
+    /*margin-right: 0px;*/
+    margin-left: 12%;
+    color: #fff;
+    text-align: center;
+    float: left;
+}
+
+.head-div {
+    width: 100%;
+    height: 3.9rem;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+
+.accountInfo {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    margin-bottom: 1.4rem;
+    -webkit-overflow-scrolling: touch;
+    background: white;
+}
+
+.accountList-2 {
+    font-size: 14px;
+    font-family: STXihei;
+    color: #3d4d5d;
+    width: 78px;
+    text-indent: 0.2rem;
+    margin-left: 14px;
+}
+
+.img1 {
+    width: 25px;
+    display: inline-block;
+    margin-left: 35px;
+    margin-top: 10px
+}
+
+.img2 {
+    width: 25px;
+    display: inline-block;
+    margin-left: 35px;
+    margin-top: 10px
+}
+
+.img3 {
+    font-size: 14px;
+    font-family: STXihei;
+    color: #3d4d5d;
+    width: 88px;
+    margin-left: 7px;
+}
+
+.img4 {
+    margin-top: -1px;
+    height: 4px;
+    display: inline-block;
+}
+
+.accountList-3 {
+    font-size: 14px;
+    font-family: STXihei;
+    color: #3d4d5d;
+    width: 85px;
+    text-indent: 0.2rem;
+    margin-left: 14px;
+}
+
+.img-2 {
+    width: 25px;
+    display: inline-block;
+    margin-left: 40px;
+    margin-top: 10px
+}
+.share {
+    width: 20%;
+    margin-left: 65%;
+    display: inline-block
+}
+
+/*.agentcontent {*/
+    /*margin-top: -30px*/
+/*}*/
+
+.infoDiv-money {
+    color: sandybrown
+}
+
+.infoDiv-text {
+    font-size: 10px
+}
+
+.personName {
+    font-size: 12px;
+}
+
+.personId {
+    color: sandybrown
+}
+
+.infomation {
+    border-bottom: 30px saddlebrown solid
+}
+
+.userId {
+    color: sandybrown
+}
+
+.div-agent {
+    background-color: grey
+}
+
+.backLogin {
+    width: 7%;
+    display: inline-block
+}
+
+.content {
+    background-color: white
+}
+
+.titleImg {
+    margin-left: 6%;
+    margin-top: 5px;
+    width: 8%;
+    float: left;
+}
+.titleImg img{
+    width: 20px;
+    height: 20px;
+}
+.tat {
+    color: #333333;
+    width: 25%;
+    font-size: 0.3rem;
+    display: block;
+    float: left;
+}
+.endImg {
+    width: 10%;
+    margin-left: 50%;
+    display: block;
+    float: left;
+}
+.endImg img{
+    width: 10px;
+    height: 20px;
+}
+
+/*.agentMsg {*/
+    /*border-collapse: collapse;*/
+    /*border-collapse: separate;*/
+    /*border-spacing: 0px 10px;*/
+    /*width: 100%*/
+/*}*/
+
+.pName {
+    font-size: 12px;
+
+}
+
+.shareTitle {
+    width: 100%
+}
+
+.div-line {
+    height: 1px;
+    width: 90%;
+    margin: 0 auto;
+    background-color: #F6F6F6
+}
+
+.mall {
+    border-bottom: solid 1px #d0dee5;
+}
+
+.accountMsg {
+    border-collapse: separate;
+    border-spacing: 0px 10px;
+    width: 100%
+}
+
+.titleLine {
+    height: 8px;
+    background-color: #F6F6F6
+}
+
+.shareImg {
+    width: 7px;
+    display: inline-block;
+    margin-left: 210px
+}
+
+.mineMsg {
+    border-collapse: separate;
+    border-spacing: 0px 10px;
+    width: 75%
+}
+
+.personTop {
+    margin-top: 15px;
+    width: 100%;
+}
+
+.userId {
+    color: sandybrown
+}
+.itemContainer {
+    width: 100%;
+    height: 73px;
+    text-align: center;
+}
+.itemContainer div{
+    float: left;
+    width: 25%;
+    margin: 10px auto 0px;
+}
+.itemContainer div>img {
+    width: 25px;
+    height: 24px;
+    margin: 0 auto;
+}
+.shareFirst{
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    border-bottom: 7px solid #F4F4F4;
+    border-image: -webkit-linear-gradient(#F4F4F4,#fff) 30 30;
+    border-image: -moz-linear-gradient(#F4F4F4,#fff) 30 30;
+    border-image: linear-gradient(#F4F4F4,#fff) 30 30;
+}
+.shareSecond{
+    display: block;
+    width: 100%;
+    height: auto;
+    border-bottom: 7px solid #F4F4F4;
+}
+
+p{
+    margin-top: 10px;
+}

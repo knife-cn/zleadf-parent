@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>登陆</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="../css/init.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="../js/rem.js"></script>
+</head>
+
+<body>
+    <div id="login">
+        <div class="welcomeLogin">
+            <p>欢迎登陆！</p>
+            <span>登陆</span>
+        </div>
+        <div class="loginForm container">
+            <!-- 
+                errorDv  输入格式错误
+                rightDv  输入格式正确
+             -->
+            <div class="inputDv">
+                <label for="">工厂端账号</label>
+                <div>
+                    <input type="text" data-name="phone" placeholder="请输入手机号" maxlength="11">
+                    <span></span>
+                </div>
+            </div>
+            <div class="inputDv ">
+                <label for="">密码</label>
+                <div>
+                    <input type="text" placeholder="密码" maxlength="6">
+                    <span></span>
+                </div>
+            </div>
+            <div class="rememberPasswordDv">
+                <input type="checkbox" id="rememberPassword">
+                <label for="rememberPassword">记住密码</label>
+                <a href="javascript:;" id="forgetPassword">忘记密码</a>
+            </div>
+
+            <button class="loginBtn">登陆</button>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+
+    <!-- <script src="../js/index.js "></script> -->
+    <script>
+        function verifyInput(el, regular, error) {
+            el.bind('input porpertychange', function() {
+                if (regular.test($(this).val())) {
+                    console.log("正确");
+                    $(this).parents('.inputDv').addClass('rightDv')
+                } else {
+                    $(this).parents('.inputDv').removeClass('rightDv');
+                    $(this).parents('.inputDv').addClass('errorDv');
+                    $(this).parent().siblings('label').text("请输入正确的手机号！");
+                }
+            });
+        }
+        verifyInput($('input[data-name="phone"]'), /^1[34578]\d{9}$/, "请输入正确的手机号！")
+    </script>
+</body>
+
+</html>

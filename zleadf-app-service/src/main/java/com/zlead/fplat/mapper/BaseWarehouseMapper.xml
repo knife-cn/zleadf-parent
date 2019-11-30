@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.BaseWarehouseMapper" >
+  <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.BaseWarehouse" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <id column="wh_id" property="whId" jdbcType="INTEGER" />
+    <result column="wh_no" property="whNo" jdbcType="VARCHAR" />
+    <result column="wh_name" property="whName" jdbcType="VARCHAR" />
+    <result column="loc_flag" property="locFlag" jdbcType="VARCHAR" />
+    <result column="box_flag" property="boxFlag" jdbcType="VARCHAR" />
+    <result column="batch_flag" property="batchFlag" jdbcType="VARCHAR" />
+    <result column="sn_flag" property="snFlag" jdbcType="VARCHAR" />
+    <result column="mgr_user" property="mgrUser" jdbcType="VARCHAR" />
+    <result column="mgr_userid" property="mgrUserid" jdbcType="VARCHAR" />
+    <result column="wh_state" property="whState" jdbcType="VARCHAR" />
+    <result column="wh_desc" property="whDesc" jdbcType="VARCHAR" />
+    <result column="org_id" property="orgId" jdbcType="INTEGER" />
+    <result column="sys_id" property="sysId" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="INTEGER" />
+    <result column="modifier" property="modifier" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    wh_id, wh_no, wh_name, loc_flag, box_flag, batch_flag, sn_flag, mgr_user, wh_state, 
+    wh_desc, org_id, sys_id, creator, modifier, create_time, modify_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.BaseWarehouseExample" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from base_warehouse
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select 
+    <include refid="Base_Column_List" />
+    from base_warehouse
+    where wh_id = #{whId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    delete from base_warehouse
+    where wh_id = #{whId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.fplat.entity.BaseWarehouse" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into base_warehouse (wh_id, wh_no, wh_name, 
+      loc_flag, box_flag, batch_flag, 
+      sn_flag, mgr_user, wh_state, 
+      wh_desc, org_id, sys_id, 
+      creator, modifier, create_time, 
+      modify_time)
+    values (#{whId,jdbcType=INTEGER}, #{whNo,jdbcType=VARCHAR}, #{whName,jdbcType=VARCHAR}, 
+      #{locFlag,jdbcType=VARCHAR}, #{boxFlag,jdbcType=VARCHAR}, #{batchFlag,jdbcType=VARCHAR}, 
+      #{snFlag,jdbcType=VARCHAR}, #{mgrUser,jdbcType=VARCHAR}, #{whState,jdbcType=VARCHAR}, 
+      #{whDesc,jdbcType=VARCHAR}, #{orgId,jdbcType=INTEGER}, #{sysId,jdbcType=INTEGER}, 
+      #{creator,jdbcType=INTEGER}, #{modifier,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{modifyTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlead.fplat.entity.BaseWarehouse" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into base_warehouse
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="whId != null" >
+        wh_id,
+      </if>
+      <if test="whNo != null" >
+        wh_no,
+      </if>
+      <if test="whName != null" >
+        wh_name,
+      </if>
+      <if test="locFlag != null" >
+        loc_flag,
+      </if>
+      <if test="boxFlag != null" >
+        box_flag,
+      </if>
+      <if test="batchFlag != null" >
+        batch_flag,
+      </if>
+      <if test="snFlag != null" >
+        sn_flag,
+      </if>
+      <if test="mgrUser != null" >
+        mgr_user,
+      </if>
+      <if test="whState != null" >
+        wh_state,
+      </if>
+      <if test="whDesc != null" >
+        wh_desc,
+      </if>
+      <if test="orgId != null" >
+        org_id,
+      </if>
+      <if test="sysId != null" >
+        sys_id,
+      </if>
+      <if test="creator != null" >
+        creator,
+      </if>
+      <if test="modifier != null" >
+        modifier,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="modifyTime != null" >
+        modify_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="whId != null" >
+        #{whId,jdbcType=INTEGER},
+      </if>
+      <if test="whNo != null" >
+        #{whNo,jdbcType=VARCHAR},
+      </if>
+      <if test="whName != null" >
+        #{whName,jdbcType=VARCHAR},
+      </if>
+      <if test="locFlag != null" >
+        #{locFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="boxFlag != null" >
+        #{boxFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="batchFlag != null" >
+        #{batchFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="snFlag != null" >
+        #{snFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="mgrUser != null" >
+        #{mgrUser,jdbcType=VARCHAR},
+      </if>
+      <if test="whState != null" >
+        #{whState,jdbcType=VARCHAR},
+      </if>
+      <if test="whDesc != null" >
+        #{whDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="sysId != null" >
+        #{sysId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null" >
+        #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.BaseWarehouse" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update base_warehouse
+    <set >
+      <if test="whNo != null" >
+        wh_no = #{whNo,jdbcType=VARCHAR},
+      </if>
+      <if test="whName != null" >
+        wh_name = #{whName,jdbcType=VARCHAR},
+      </if>
+      <if test="locFlag != null" >
+        loc_flag = #{locFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="boxFlag != null" >
+        box_flag = #{boxFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="batchFlag != null" >
+        batch_flag = #{batchFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="snFlag != null" >
+        sn_flag = #{snFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="mgrUser != null" >
+        mgr_user = #{mgrUser,jdbcType=VARCHAR},
+      </if>
+      <if test="whState != null" >
+        wh_state = #{whState,jdbcType=VARCHAR},
+      </if>
+      <if test="whDesc != null" >
+        wh_desc = #{whDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null" >
+        org_id = #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="sysId != null" >
+        sys_id = #{sysId,jdbcType=INTEGER},
+      </if>
+      <if test="creator != null" >
+        creator = #{creator,jdbcType=INTEGER},
+      </if>
+      <if test="modifier != null" >
+        modifier = #{modifier,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyTime != null" >
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where wh_id = #{whId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.BaseWarehouse" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update base_warehouse
+    set wh_no = #{whNo,jdbcType=VARCHAR},
+      wh_name = #{whName,jdbcType=VARCHAR},
+      loc_flag = #{locFlag,jdbcType=VARCHAR},
+      box_flag = #{boxFlag,jdbcType=VARCHAR},
+      batch_flag = #{batchFlag,jdbcType=VARCHAR},
+      sn_flag = #{snFlag,jdbcType=VARCHAR},
+      mgr_user = #{mgrUser,jdbcType=VARCHAR},
+      wh_state = #{whState,jdbcType=VARCHAR},
+      wh_desc = #{whDesc,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=INTEGER},
+      sys_id = #{sysId,jdbcType=INTEGER},
+      creator = #{creator,jdbcType=INTEGER},
+      modifier = #{modifier,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+    where wh_id = #{whId,jdbcType=INTEGER}
+  </update>
+
+  <select id="findMgrUserIdByUserId" resultMap="BaseResultMap">
+    SELECT * FROM base_warehouse WHERE sys_id=#{sysId}
+  </select>
+</mapper>

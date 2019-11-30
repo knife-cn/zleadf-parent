@@ -1,0 +1,24 @@
+// 设计图 750px  使用 flexible, 认为全屏是 10 rem， 所以 1rem 就对应 75px
+// px => rem 要除以 75
+
+// 基准值 设计图 / 10
+@remBase : 75;
+
+// 使用例子 1：
+//    高度量出来 88px => height: 88*@rem;
+
+// 这里 round 是一个函数可以对小数进行保留，这里就是保留 6位小数的意思
+@rem: round(1 / @remBase, 6) * 1rem;
+
+// 为了方便，我们也会用 less 写一个 mixin
+// 例如： .font-size(12); 一倍尺寸多少像素就写多少，
+//       一般字体大小为：12px 14px 16px 18px... 尽量避免奇数字号字体出现
+.font-size(@px) {
+    font-size: round(@px) * 1px;
+    [data-dpr='2'] & {
+        font-size: @px * 2px;
+    }
+    [data-dpr="3"] & {
+        font-size: round(@px * 3) * 1px
+    }
+}

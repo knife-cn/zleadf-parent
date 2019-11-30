@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>直链商城</title>
+	</head>
+	<link rel="stylesheet" href="../../shopping/css/Identity_verification3.css" />
+
+	<body>
+		<div class="complete">
+			<!--top-->
+			<div id="top"></div>
+			<!--渐变-->
+			<div class="top2">
+				<div class="top3"></div>
+			</div>
+			<div class="tu">
+				<img src="../../shopping/img/lhpimg/pic_lock.png"/>
+			</div>
+			<div class="tiao">
+				<div class="tiao2"><img src="../../shopping/img/lhpimg/step_complete1.png"/></div>
+				<span class="tiao11">身份验证</span>
+				<div class="tiao111"></div>
+				
+				<div class="tiao2 "><img src="../../shopping/img/lhpimg/step_complete1.png"/></div>
+				<span class="tiao11">重置密码</span>
+				<div class="tiao111"></div>
+				
+				<div class="tiao1 yan">3</div>
+				<span class="tiao11">重置成功</span>
+			</div>
+			<div class="xia yan" id="next_login">去登录</div>
+			<div class="meng">
+				<div class="wei"></div>
+				<div class="tupian">
+					<img src="../../shopping/img/lhpimg/success.png"/>
+				</div>
+				<div class="ti">密码重置成功</div>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript" src="../../shopping/js/jquery-2.1.0.js" ></script>
+	<script type="text/javascript" src="../../shopping/js/Identity_verification3.js" ></script>
+	<script type="text/javascript" src="../../shopping/js/Placeholder.js" ></script>
+	
+	<script>
+		$("#top").load("head.html");
+		var phoneto=window.sessionStorage.getItem("phone");
+		if(phoneto==null || phoneto==""){
+			window.location.href="Identity_verification1.html"
+		}
+	</script>
+
+</html>

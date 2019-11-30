@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.OrderShippingDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.OrderShippingEntity" id="orderShippingMap">
+            <result property="id" column="ID"/>
+            <result property="orderId" column="ORDER_ID"/>
+            <result property="exCmpNo" column="EX_CMP_NO"/>
+            <result property="deliveryNumber" column="DELIVERY_NUMBER"/>
+            <result property="sender" column="SENDER"/>
+            <result property="sendAddress" column="SEND_ADDRESS"/>
+            <result property="sendMobile" column="SEND_MOBILE"/>
+            <result property="zipCode" column="ZIP_CODE"/>
+            <result property="createDate" column="CREATE_DATE"/>
+            <result property="creatorId" column="CREATOR_ID"/>
+            <result property="sendType" column="SEND_TYPE"/>
+        </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_order_shipping (
+                ID,
+                ORDER_ID,
+                EX_CMP_NO,
+                DELIVERY_NUMBER,
+                SENDER,
+                SEND_ADDRESS,
+                SEND_MOBILE,
+                ZIP_CODE,
+                CREATE_DATE,
+                CREATOR_ID,
+                SEND_TYPE
+                ) VALUES (
+                #{id},
+                #{orderId},
+                #{exCmpNo},
+                #{deliveryNumber},
+                #{sender},
+                #{sendAddress},
+                #{sendMobile},
+                #{zipCode},
+                #{createDate},
+                #{creatorId},
+                #{sendType}
+                )
+    </insert>
+
+    <update id="update">
+        UPDATE t_order_shipping AS T SET
+                  T.ID = #{id} ,
+                 T.ORDER_ID = #{orderId} ,
+                 T.EX_CMP_NO = #{exCmpNo} ,
+                 T.DELIVERY_NUMBER = #{deliveryNumber} ,
+                 T.SENDER = #{sender} ,
+                 T.SEND_ADDRESS = #{sendAddress} ,
+                 T.SEND_MOBILE = #{sendMobile} ,
+                 T.ZIP_CODE = #{zipCode} ,
+                 T.CREATE_DATE = #{createDate} ,
+                 T.CREATOR_ID = #{creatorId},
+                 T.SEND_TYPE = #{sendType}
+                WHERE T.ID = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM t_order_shipping WHERE  ID = #{id}
+    </delete>
+
+    <select id="findPage" parameterType="map" resultMap="orderShippingMap">
+        SELECT *  FROM t_order_shipping AS T
+    </select>
+
+    <select id="findById" resultMap="orderShippingMap" useCache="false">
+        SELECT * FROM t_order_shipping AS T WHERE  T.ID = #{id}
+    </select>
+
+    <select id="findByOrderId" resultMap="orderShippingMap" useCache="false">
+        SELECT * FROM t_order_shipping AS T WHERE  T.ORDER_ID = #{orderId}
+    </select>
+
+    <!-- 通过快递单号查询信息 -->
+    <select id="findByDeliveryNumber" resultMap="orderShippingMap">
+        SELECT * FROM t_order_shipping AS T WHERE  T.DELIVERY_NUMBER = #{deliveryNumber}
+    </select>
+</mapper>

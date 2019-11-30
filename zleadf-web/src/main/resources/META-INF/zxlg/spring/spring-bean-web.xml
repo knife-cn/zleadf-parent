@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+       default-lazy-init="false">
+
+
+    <bean  class="com.up72.framework.util.holder.ApplicationContextHolder" lazy-init="false"/>
+    <!--使用PropertyPlaceHolder统一加载properties配置文件，如果key同名，后面文件中的值会覆盖前面文件中的值，推荐使用前缀区分-->
+     <bean id="placeholderConfig" class="com.up72.framework.util.holder.PropertyPlaceHolder" lazy-init="false"> 
+         <property name="ignoreResourceNotFound" value="true"></property> 
+         <property name="locations"> 
+             <list> 
+                 <value>classpath:/application.properties</value> 
+             </list> 
+         </property> 
+    </bean> 
+
+    <import resource="spring-db.xml"></import>
+
+    <!--加载核心里面的配置文件-->
+    <import resource="classpath*:META-INF/sys/spring/spring-datasource.xml"></import>
+<!--     <import resource="classpath*:META-INF/sys/spring/spring-mybatis.xml"></import> -->
+    <import resource="classpath*:META-INF/sys/spring/spring-resource.xml"></import>
+
+
+    <!--加载Web中的配置文件-->
+    <import resource="spring-mybatis.xml"></import>
+    <import resource="spring-shiro.xml"></import>
+    <import resource="spring-redis.xml"></import>
+    <import resource="spring-validator.xml"></import>
+    <import resource="spring-jsp.xml"></import>
+    <import resource="spring-task.xml"></import>
+    <!--<import resource="spring-quartz.xml"></import>-->
+
+</beans>

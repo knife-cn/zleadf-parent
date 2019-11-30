@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <title>直链商城</title>
+    <link rel="stylesheet" href="../../shopping/css/left.css" />
+    <link rel="stylesheet" href="../../shopping/css/Personal_information1.css" />
+    <link rel="stylesheet" href="../../shopping/css/header.css" />
+    <link rel="stylesheet" href="../../shopping/css/upload.css" />
+    <link rel="stylesheet" href="../../shopping/css/User_center.css" />
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_234130_nem7eskcrkpdgqfr.css">
+
+</head>
+
+<body>
+    <div class="complete">
+        <!--top-->
+        <div id="head">
+
+        </div>
+        <div class="serch">
+            <div class="serch_con">
+                <!-- logo -->
+                <div class="logo">
+                    <img src="../../shopping/img/index/logo.png" />
+                </div>
+                <div class="searcha">
+                    <!-- 搜索框 -->
+                    <div class="search">
+                        <!-- <div class="search_frame">
+                            <input type="text" id="resou" maxlength="50" />
+                        </div> -->
+                        <form autocomplete="off" class="search_frame" onsubmit="return false">
+                            <input type="text" id="resou" maxlength="50" />
+                        </form>
+                        <!-- 搜索按钮 -->
+                        <div class="search_icon" id="search_icon">
+                            <img src="../../shopping/img/index/ic_sousuo.png" />
+                        </div>
+                        <!--简单查询-->
+                        <div class="pro">
+                            <ul class="proCon">
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- 热搜词 -->
+                    <div class="search_hot">
+                        <ul class="search_hot_ul" id="search_hot_ul">
+                            <!--<li>电气控制</li>-->
+                            <!--<li>刀具磨具</li>-->
+                            <!--<li>电气控制</li>-->
+                            <!--<li>电气控制</li>-->
+                            <!--<li>电气控制</li>-->
+                            <!--<li>电气控制</li>-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--渐变-->
+        <div class="top2"></div>
+        <!--内容-->
+        <div class="content">
+            <!--左-->
+            <div class="left">
+                <ul>
+                    <li class="onedaoli">
+                        <div class="tu"><img src="../../shopping/img/lhpimg/juxin1.png" /></div>
+                        <div class="dao">订单中心</div>
+                        <ul class="towdao">
+                            <a style="text-decoration: none;color: silver" href="#dd">
+                                <li class="yan goLeft" id="User1">我的订单</li>
+                            </a>
+                        </ul>
+                    </li>
+                    <li class="onedaoli">
+                        <div class="tu"><img src="../../shopping/img/lhpimg/juxin.png" /></div>
+                        <div class="dao">基本信息</div>
+                        <ul class="towdao">
+                            <a style="text-decoration: none" href="#gx">
+                                <li class="towdaoli goLeft" id="Personal">个人信息</li>
+                            </a>
+                            <a style="text-decoration: none" href="#dz">
+                                <li class="towdaoli goLeft" id="Receiving">收货地址</li>
+                            </a>
+                            <a style="text-decoration: none" href="#sc">
+                                <li class="towdaoli goLeft" id="collection1">收藏信息</li>
+                            </a>
+                            <a style="text-decoration: none" href="#pz">
+                                <li class="towdaoli goLeft" id="upload1">上传凭证</li>
+                            </a>
+                        </ul>
+                    </li>
+                    <li class="onedaoli">
+                        <div class="tu"><img src="../../shopping/img/lhpimg/juxin2.png" /></div>
+                        <div class="dao">安全信息</div>
+                        <ul class="towdao">
+                            <a style="text-decoration: none" href="#gm">
+                                <li class="towdaoli goLeft" id="Change">修改密码</li>
+                            </a>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+            <!--右-->
+            <div class="rightda" id="User_center" style="display:block">
+            </div>
+            <div class="rightda" id="upload" style="display: none">
+            </div>
+            <div class="rightda" id="Change_Password1" style="display: none">
+            </div>
+            <div class="rightda" id="collection" style="display: none">
+            </div>
+            <div class="rightda" id="Personal_information" style="display: none">
+            </div>
+            <div class="rightda" id="Receiving_address" style="display: none">
+            </div>
+
+        </div>
+        <iframe src="footer.html" width="100%" height="295px" style="border: none;"></iframe>
+    </div>
+    <!--<div class="meng" id="megou">-->
+
+    <!--<div class="guanlian">-->
+    <!--<div class="toptan" id="tuicart"><img src="../../shopping/img/lhpimg/guanbi.png" class="img" /></div>-->
+    <!--<div class="icons"><img src="../../shopping/img/lhpimg/Fill_2.png" /></div>-->
+    <!--<div class="success_add">成功加入购物车</div>-->
+
+    <!--<div id="fo" class="yiyan">去购物车结算</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <div class="collection_popbox">
+
+        <div class='collection_popbox_content'>
+            <img src="../../shopping/img/searchPage/Fill 1.png">
+            <img src="../../shopping/img/footer/close.png" class='collection_close'>
+            <p>确定要取消收藏商品吗？</p>
+            <div>
+                <a href="javascript:;">确定</a>
+                <a href="javascript:;">取消</a>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <script type="text/javascript" src="../../shopping/js/jquery-2.1.0.js"></script>
+    <!--<script src="https://cdn.bootcss.com/jquery/1.9.1/jquery.min.js"></script>-->
+    <!--<script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.min.js"></script>-->
+    <!--<script type="text/javascript" src="../../shopping/js/User_center.js" ></script>-->
+    <!--<script type="text/javascript" src="../../shopping/js/head.js"></script>-->
+    <!--<script type="text/javascript" src="../../shopping/js/toubu.js"></script>-->
+    <script type="text/javascript" src="../../shopping/js/jinzi.js"></script>
+    <script type="text/javascript" src="../../shopping/js/urlcs.js"></script>
+    <script>
+        $(function() {
+            //移除我的订单里边的状态标记
+            $(".goLeft").click(function() {
+                if (window.localStorage.getItem("active5")) {
+                    window.localStorage.removeItem("active5");
+                }
+            });
+
+            var pt = window.location.hash.substring(1);
+            $("#head").load("head.html", function() {
+                $('#yh').click(function() { //点击a标签
+                    if ($(this).hasClass('myactive')) {
+                        $(this).removeClass('myactive')
+                    } else {
+                        $(this).addClass('myactive')
+                    }
+
+                    if ($(this).hasClass('myactive')) { //如果当前隐藏
+                        $('.yxi').show(); //那么就显示div
+                        $('#yho').hide();
+                        $('#yht').show();
+
+                    } else { //否则
+                        $('.yxi').hide(); //就隐藏div
+                        $('#yho').show();
+                        $('#yht').hide();
+                        $(this).removeClass('myactive')
+                    }
+                    return false;
+                });
+            });
+
+            // $("#Receiving_address").load("Receiving_address.html");
+            // $("#User_center").load("User_center.html");
+            // $("#Personal_information").load("Personal_information.html");
+
+
+
+            // $("#Change_Password1").load("Change_Password1.html");
+            // $("#upload").load("upload.html");
+            // $.getScript("../../shopping/js/head.js");
+
+            $(".towdao li").click(function() {
+                $("li").removeClass("yan");
+                $(this).addClass("yan");
+
+            });
+            if (pt == "dd" || pt == '') {
+                $("#upload").hide();
+                $("#Change_Password1").hide();
+                $("#collection").hide();
+                $("#Personal_information").hide();
+                $("#Receiving_address").hide();
+                $("#User_center").show();
+                $("#User_center").load("User_center.html");
+                $("li").removeClass("yan");
+                $("#User1").addClass("yan");
+            }
+            $("#User1").click(function() {
+                $("#upload").hide();
+                $("#Change_Password1").hide();
+                $("#collection").hide();
+                $("#Personal_information").hide();
+                $("#Receiving_address").hide();
+                $("#User_center").show();
+                $("#User_center").load("User_center.html");
+
+
+            });
+            if (pt == "gx") {
+                $("#upload").hide();
+                $("#collection").hide();
+                $("#Change_Password1").hide();
+                $("#Receiving_address").hide();
+                $("#User_center").hide();
+                $("#Personal_information").show();
+                $("#Personal_information").load("Personal_information.html");
+                $("li").removeClass("yan");
+                $("#Personal").addClass("yan");
+
+            }
+            $("#Personal").click(function() {
+                $("#upload").hide();
+                $("#collection").hide();
+                $("#Change_Password1").hide();
+                $("#Receiving_address").hide();
+                $("#User_center").hide();
+                $("#Personal_information").show();
+                $("#Personal_information").load("Personal_information.html");
+
+
+            });
+            if (pt == "dz") {
+                $("#upload").hide();
+                $("#collection").hide();
+                $("#Personal_information").hide();
+                $("#Change_Password1").hide();
+                $("#User_center").hide();
+                $("#Receiving_address").show();
+                $("#Receiving_address").load("Receiving_address.html");
+
+                $("li").removeClass("yan");
+                $("#Receiving").addClass("yan");
+            }
+            $("#Receiving").click(function() {
+                $("#upload").hide();
+                $("#collection").hide();
+                $("#Personal_information").hide();
+                $("#Change_Password1").hide();
+                $("#User_center").hide();
+                $("#Receiving_address").show();
+                $("#Receiving_address").load("Receiving_address.html");
+
+
+            });
+            if (pt == "sc") {
+                $("#upload").hide();
+                $("#Receiving_address").hide();
+                $("#Personal_information").hide();
+                $("#Change_Password1").hide();
+                $("#User_center").hide();
+                $("#collection").show();
+                $("li").removeClass("yan");
+                $("#collection1").addClass("yan");
+                $("#collection").load("collection.html", function() {
+                    $('.ct_lt').children('div').children('img').click(function() {
+                        if ($('#allProduct').find('.active').length > 0) {
+                            $('.collection_popbox').show();
+                        }
+                        return false;
+                    })
+
+                    $('.collection_popbox').find('.collection_close').click(function() {
+                        $('.collection_popbox').hide()
+                    })
+
+                    $('.collection_popbox').find('a').eq(1).click(function() {
+                        $('.collection_popbox').hide()
+                    })
+                    $('.collection_popbox').find('a').eq(0).click(function() {
+                        var coll = $('#allProduct').find('.active').length;
+                        if (coll > 0) {
+                            $('.collection_popbox').hide();
+                            $('.all_control').removeClass('active').html('批量管理').siblings('div').css('display', 'none').children('span').removeClass('active');
+                            var myarr = [];
+                            for (var i = coll - 1; i >= 0; i--) {
+                                var shouId = $('#allProduct').find('.active').eq(i).attr("data-id9")
+                                myarr.push(shouId);
+                            };
+                            // var mydata = JSON.stringify({
+                            //     goodsId: myarr
+                            // });
+                            var mydata = {
+                                goodsId: myarr.join(',')
+                            };
+
+                            $.ajax({
+                                type: "post", //提交请求的方式
+                                cache: true, //是否有缓存
+                                // url: "/zlead/fplat/deleteCollect/" + shouId + "", //访问servlet的路径
+                                // url: '/batchDeleteCollect/',
+                                url: "/zlead/fplat/deleteAllCollect",
+                                dataType: "json", //没有这个，将把后台放会的json解析成字符串
+                                data: mydata,
+                                async: false, //是否异步
+                                success: function(res) {
+                                    history.go(0);
+                                    // location.href = 'left.html#sc';
+                                },
+                                error: function(request) { //请求出错
+                                }
+                            })
+
+                        }
+
+
+
+                    })
+
+
+                });
+                // $(document).click(function() {
+                //     $('.collection_popbox').hide()
+                // })
+            }
+            $("#collection1").click(function() {
+                $("#upload").hide();
+                $("#Receiving_address").hide();
+                $("#Personal_information").hide();
+                $("#Change_Password1").hide();
+                $("#User_center").hide();
+
+                $("#collection").show();
+                $("#collection").load("collection.html", function() {
+                    $('.ct_lt').children('div').children('img').click(function() {
+                        if ($('#allProduct').find('.active').length > 0) {
+                            $('.collection_popbox').show();
+                        }
+                        return false;
+                    })
+
+                    $('.collection_popbox').find('.collection_close').click(function() {
+                        $('.collection_popbox').hide()
+                    })
+
+                    $('.collection_popbox').find('a').eq(1).click(function() {
+                        $('.collection_popbox').hide()
+                    })
+                    $('.collection_popbox').find('a').eq(0).click(function() {
+                        var coll = $('#allProduct').find('.active').length;
+                        if (coll > 0) {
+                            $('.collection_popbox').hide();
+                            $('.all_control').removeClass('active').html('批量管理').siblings('div').css('display', 'none').children('span').removeClass('active');
+                            var myarr = [];
+                            for (var i = coll - 1; i >= 0; i--) {
+                                var shouId = $('#allProduct').find('.active').eq(i).attr("data-id9")
+                                myarr.push(shouId);
+                            };
+                            // var mydata = JSON.stringify({
+                            //     goodsId: myarr
+                            // });
+                            var mydata = {
+                                goodsId: myarr.join(',')
+                            };
+                            $.ajax({
+                                type: "post", //提交请求的方式
+                                cache: true, //是否有缓存
+                                // url: "/zlead/fplat/deleteCollect/" + shouId + "", //访问servlet的路径
+                                // url: '/batchDeleteCollect/',
+                                url: "/zlead/fplat/deleteAllCollect",
+                                dataType: "json", //没有这个，将把后台放会的json解析成字符串
+                                data: mydata,
+                                async: false, //是否异步
+                                success: function(res) {
+                                    history.go(0);
+                                    // location.href = 'left.html#sc';
+                                },
+                                error: function(request) { //请求出错
+                                }
+                            })
+
+                        }
+
+
+                    })
+
+
+                });
+                // $(document).click(function() {
+                //     $('.collection_popbox').hide()
+                // })
+            });
+            if (pt == "pz") {
+                $("#Receiving_address").hide();
+                $("#Personal_information").hide();
+                $("#Change_Password1").hide();
+                $("#User_center").hide();
+                $("#collection").hide();
+                $("#upload").load("upload.html");
+                $("#upload").show();
+
+                $("li").removeClass("yan");
+                $("#upload1").addClass("yan");
+            }
+
+            $("#upload1").click(function() {
+                $("#Receiving_address").hide();
+                $("#Personal_information").hide();
+                $("#Change_Password1").hide();
+                $("#User_center").hide();
+                $("#collection").hide();
+                $("#upload").load("upload.html");
+                $("#upload").show();
+
+                $("li").removeClass("yan");
+                $("#upload").addClass("yan");
+            });
+            if (pt == "gm") {
+                $("#Receiving_address").hide();
+                $("#Personal_information").hide();
+                $("#upload").hide();
+                $("#User_center").hide();
+                $("#collection").hide();
+                $("#Change_Password1").load("Change_Password1.html");
+                $("#Change_Password1").show();
+
+                $("li").removeClass("yan");
+                $("#Change").addClass("yan");
+            }
+            $("#Change").click(function() {
+                $("#Receiving_address").hide();
+                $("#Personal_information").hide();
+                $("#upload").hide();
+                $("#User_center").hide();
+                $("#collection").hide();
+                $("#Change_Password1").load("Change_Password1.html");
+                $("#Change_Password1").show();
+
+            });
+        });
+    </script>
+</body>
+
+
+</html>

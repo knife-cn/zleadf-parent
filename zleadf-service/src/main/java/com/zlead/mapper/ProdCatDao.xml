@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.ProdCatDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.ProdCatEntity" id="prodCatMap">
+        <result property="id" column="id"/>
+        <result property="prodId" column="prod_id"/>
+        <result property="catId" column="cat_id"/>
+        <result property="catName" column="cat_name"/>
+        <result property="status" column="status"/>
+    </resultMap>
+
+    <insert id="insert">
+        INSERT INTO t_prod_cat (id,prod_id,cat_id,cat_name,band_id,status) VALUES (#{id},#{prodId},#{catId},#{catName},#{status})
+    </insert>
+
+    <select id="selectAllByProdId" resultMap="prodCatMap" parameterType="java.lang.Long">
+        select * from t_prod_cat where prod_id=#{prodId}
+    </select>
+</mapper>

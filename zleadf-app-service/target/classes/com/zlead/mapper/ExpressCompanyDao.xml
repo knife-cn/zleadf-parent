@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.ExpressCompanyDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.ExpressCompanyEntity" id="expressCompanyMap">
+            <result property="expressCompanyId" column="express_company_ID"/>
+            <result property="comNu" column="COM_NU"/>
+            <result property="comName" column="COM_NAME"/>
+            <result property="dataExplain" column="DATA_EXPLAIN"/>
+            <result property="type" column="TYPE"/>
+            <result property="countryCode" column="COUNTRY_CODE"/>
+            <result property="craeteDate" column="CRAETE_DATE"/>
+        </resultMap>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO express_company (
+                express_company_ID,
+                COM_NU,
+                COM_NAME,
+                DATA_EXPLAIN,
+                TYPE,
+                COUNTRY_CODE,
+                CRAETE_DATE
+                ) VALUES (
+                #{expressCompanyId},
+                #{comNu},
+                #{comName},
+                #{dataExplain},
+                #{type},
+                #{countryCode},
+                #{craeteDate}
+                )
+    </insert>
+
+    <update id="update">
+        UPDATE express_company AS T SET
+                  T.express_company_ID = #{expressCompanyId} ,
+                 T.COM_NU = #{comNu} ,
+                 T.COM_NAME = #{comName} ,
+                 T.DATA_EXPLAIN = #{dataExplain} ,
+                 T.TYPE = #{type} ,
+                 T.COUNTRY_CODE = #{countryCode} ,
+                 T.CRAETE_DATE = #{craeteDate}
+                WHERE T.ID = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM express_company WHERE  ID = #{id}
+    </delete>
+
+    <select id="findPage" parameterType="map" resultMap="expressCompanyMap">
+        SELECT *  FROM express_company AS T
+    </select>
+
+    <select id="findById" resultMap="expressCompanyMap" useCache="false">
+        SELECT * FROM express_company AS T WHERE  T.ID = #{id}
+    </select>
+
+    <select id="findByComNo" resultMap="expressCompanyMap" useCache="false">
+        SELECT * FROM express_company AS T WHERE  T.COM_NU = #{comNo}
+    </select>
+
+    <select id="getList" parameterType="map" resultMap="expressCompanyMap">
+        SELECT *  FROM express_company AS T
+        <where>
+            <if test="@Ognl@isNotEmpty(name)"> AND T.COM_NAME like  concat(concat('%',#{name}),'%')</if>
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,1582 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.CrmPrdCatMapper">
+    <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.CrmPrdCat">
+        <id column="cat_id" property="catId" jdbcType="INTEGER"/>
+        <result column="cat_no" property="catNo" jdbcType="VARCHAR"/>
+        <result column="cat_name" property="catName" jdbcType="VARCHAR"/>
+        <result column="pcat_id" property="pcatId" jdbcType="INTEGER"/>
+        <result column="pinyin" property="pinyin" jdbcType="VARCHAR"/>
+        <result column="pinyin_sh" property="pinyinSh" jdbcType="VARCHAR"/>
+        <result column="pic_path" property="picPath" jdbcType="VARCHAR"/>
+        <result column="cat_state" property="catState" jdbcType="VARCHAR"/>
+        <result column="bcat_id" property="bcatId" jdbcType="INTEGER"/>
+        <result column="cat_desc" property="catDesc" jdbcType="VARCHAR"/>
+        <result column="shop_id" property="shopId" jdbcType="INTEGER"/>
+        <result column="creator" property="creator" jdbcType="INTEGER"/>
+        <result column="modifier" property="modifier" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+        <result column="is_fac" property="isFac" jdbcType="INTEGER"/>
+        <result column="catDesc" property="catDesc"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
+            </foreach>
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
+        cat_id
+        ,
+        cat_no,
+        cat_name,
+        pcat_id,
+        pinyin,
+        pinyin_sh,
+        pic_path,
+        cat_state,
+        bcat_id,
+        cat_desc,
+        shop_id,
+        creator,
+        modifier,
+        create_time,
+        modify_time,
+        is_fac
+    </sql>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.CrmPrdCatExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from crm_prd_cat
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+        <if test="limit != null">
+            <if test="offset != null">
+                limit ${offset}, ${limit}
+            </if>
+            <if test="offset == null">
+                limit ${limit}
+            </if>
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from crm_prd_cat
+        where cat_id = #{catId,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from crm_prd_cat
+        where cat_id = #{catId,jdbcType=INTEGER}
+    </delete>
+    <delete id="deleteByExample" parameterType="com.zlead.fplat.entity.CrmPrdCatExample">
+        delete from crm_prd_cat
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.zlead.fplat.entity.CrmPrdCat">
+        insert into crm_prd_cat (cat_id, cat_no, cat_name,
+                                 pcat_id, pinyin, pinyin_sh,
+                                 pic_path, cat_state, bcat_id,
+                                 cat_desc, shop_id, creator,
+                                 modifier, create_time, modify_time,
+                                 is_fac)
+        values (#{catId,jdbcType=INTEGER}, #{catNo,jdbcType=VARCHAR}, #{catName,jdbcType=VARCHAR},
+                #{pcatId,jdbcType=INTEGER}, #{pinyin,jdbcType=VARCHAR}, #{pinyinSh,jdbcType=VARCHAR},
+                #{picPath,jdbcType=VARCHAR}, #{catState,jdbcType=VARCHAR}, #{bcatId,jdbcType=INTEGER},
+                #{catDesc,jdbcType=VARCHAR}, #{shopId,jdbcType=INTEGER}, #{creator,jdbcType=INTEGER},
+                #{modifier,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP},
+                #{isFac,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" parameterType="com.zlead.fplat.entity.CrmPrdCat">
+        insert into crm_prd_cat
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="catId != null">
+                cat_id,
+            </if>
+            <if test="catNo != null">
+                cat_no,
+            </if>
+            <if test="catName != null">
+                cat_name,
+            </if>
+            <if test="pcatId != null">
+                pcat_id,
+            </if>
+            <if test="pinyin != null">
+                pinyin,
+            </if>
+            <if test="pinyinSh != null">
+                pinyin_sh,
+            </if>
+            <if test="picPath != null">
+                pic_path,
+            </if>
+            <if test="catState != null">
+                cat_state,
+            </if>
+            <if test="bcatId != null">
+                bcat_id,
+            </if>
+            <if test="catDesc != null">
+                cat_desc,
+            </if>
+            <if test="shopId != null">
+                shop_id,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="modifier != null">
+                modifier,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+            <if test="isFac != null">
+                is_fac,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="catId != null">
+                #{catId,jdbcType=INTEGER},
+            </if>
+            <if test="catNo != null">
+                #{catNo,jdbcType=VARCHAR},
+            </if>
+            <if test="catName != null">
+                #{catName,jdbcType=VARCHAR},
+            </if>
+            <if test="pcatId != null">
+                #{pcatId,jdbcType=INTEGER},
+            </if>
+            <if test="pinyin != null">
+                #{pinyin,jdbcType=VARCHAR},
+            </if>
+            <if test="pinyinSh != null">
+                #{pinyinSh,jdbcType=VARCHAR},
+            </if>
+            <if test="picPath != null">
+                #{picPath,jdbcType=VARCHAR},
+            </if>
+            <if test="catState != null">
+                #{catState,jdbcType=VARCHAR},
+            </if>
+            <if test="bcatId != null">
+                #{bcatId,jdbcType=INTEGER},
+            </if>
+            <if test="catDesc != null">
+                #{catDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="shopId != null">
+                #{shopId,jdbcType=INTEGER},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=INTEGER},
+            </if>
+            <if test="modifier != null">
+                #{modifier,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isFac != null">
+                #{isFac,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.zlead.fplat.entity.CrmPrdCatExample" resultType="java.lang.Integer">
+        select count(*) from crm_prd_cat
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update crm_prd_cat
+        <set>
+            <if test="record.catId != null">
+                cat_id = #{record.catId,jdbcType=INTEGER},
+            </if>
+            <if test="record.catNo != null">
+                cat_no = #{record.catNo,jdbcType=VARCHAR},
+            </if>
+            <if test="record.catName != null">
+                cat_name = #{record.catName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.pcatId != null">
+                pcat_id = #{record.pcatId,jdbcType=INTEGER},
+            </if>
+            <if test="record.pinyin != null">
+                pinyin = #{record.pinyin,jdbcType=VARCHAR},
+            </if>
+            <if test="record.pinyinSh != null">
+                pinyin_sh = #{record.pinyinSh,jdbcType=VARCHAR},
+            </if>
+            <if test="record.picPath != null">
+                pic_path = #{record.picPath,jdbcType=VARCHAR},
+            </if>
+            <if test="record.catState != null">
+                cat_state = #{record.catState,jdbcType=VARCHAR},
+            </if>
+            <if test="record.bcatId != null">
+                bcat_id = #{record.bcatId,jdbcType=INTEGER},
+            </if>
+            <if test="record.catDesc != null">
+                cat_desc = #{record.catDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="record.shopId != null">
+                shop_id = #{record.shopId,jdbcType=INTEGER},
+            </if>
+            <if test="record.creator != null">
+                creator = #{record.creator,jdbcType=INTEGER},
+            </if>
+            <if test="record.modifier != null">
+                modifier = #{record.modifier,jdbcType=INTEGER},
+            </if>
+            <if test="record.createTime != null">
+                create_time = #{record.createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.modifyTime != null">
+                modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="record.isFac != null">
+                is_fac = #{record.isFac,jdbcType=INTEGER},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update crm_prd_cat
+        set cat_id = #{record.catId,jdbcType=INTEGER},
+        cat_no = #{record.catNo,jdbcType=VARCHAR},
+        cat_name = #{record.catName,jdbcType=VARCHAR},
+        pcat_id = #{record.pcatId,jdbcType=INTEGER},
+        pinyin = #{record.pinyin,jdbcType=VARCHAR},
+        pinyin_sh = #{record.pinyinSh,jdbcType=VARCHAR},
+        pic_path = #{record.picPath,jdbcType=VARCHAR},
+        cat_state = #{record.catState,jdbcType=VARCHAR},
+        bcat_id = #{record.bcatId,jdbcType=INTEGER},
+        cat_desc = #{record.catDesc,jdbcType=VARCHAR},
+        shop_id = #{record.shopId,jdbcType=INTEGER},
+        creator = #{record.creator,jdbcType=INTEGER},
+        modifier = #{record.modifier,jdbcType=INTEGER},
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+        modify_time = #{record.modifyTime,jdbcType=TIMESTAMP},
+        is_fac = #{record.isFac,jdbcType=INTEGER}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.CrmPrdCat">
+        update crm_prd_cat
+        <set>
+            <if test="catNo != null">
+                cat_no = #{catNo,jdbcType=VARCHAR},
+            </if>
+            <if test="catName != null">
+                cat_name = #{catName,jdbcType=VARCHAR},
+            </if>
+            <if test="pcatId != null">
+                pcat_id = #{pcatId,jdbcType=INTEGER},
+            </if>
+            <if test="pinyin != null">
+                pinyin = #{pinyin,jdbcType=VARCHAR},
+            </if>
+            <if test="pinyinSh != null">
+                pinyin_sh = #{pinyinSh,jdbcType=VARCHAR},
+            </if>
+            <if test="picPath != null">
+                pic_path = #{picPath,jdbcType=VARCHAR},
+            </if>
+            <if test="catState != null">
+                cat_state = #{catState,jdbcType=VARCHAR},
+            </if>
+            <if test="bcatId != null">
+                bcat_id = #{bcatId,jdbcType=INTEGER},
+            </if>
+            <if test="catDesc != null">
+                cat_desc = #{catDesc,jdbcType=VARCHAR},
+            </if>
+            <if test="shopId != null">
+                shop_id = #{shopId,jdbcType=INTEGER},
+            </if>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=INTEGER},
+            </if>
+            <if test="modifier != null">
+                modifier = #{modifier,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="isFac != null">
+                is_fac = #{isFac,jdbcType=INTEGER},
+            </if>
+        </set>
+        where cat_id = #{catId,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.CrmPrdCat">
+        update crm_prd_cat
+        set cat_no      = #{catNo,jdbcType=VARCHAR},
+            cat_name    = #{catName,jdbcType=VARCHAR},
+            pcat_id     = #{pcatId,jdbcType=INTEGER},
+            pinyin      = #{pinyin,jdbcType=VARCHAR},
+            pinyin_sh   = #{pinyinSh,jdbcType=VARCHAR},
+            pic_path    = #{picPath,jdbcType=VARCHAR},
+            cat_state   = #{catState,jdbcType=VARCHAR},
+            bcat_id     = #{bcatId,jdbcType=INTEGER},
+            cat_desc    = #{catDesc,jdbcType=VARCHAR},
+            shop_id     = #{shopId,jdbcType=INTEGER},
+            creator     = #{creator,jdbcType=INTEGER},
+            modifier    = #{modifier,jdbcType=INTEGER},
+            create_time = #{createTime,jdbcType=TIMESTAMP},
+            modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            is_fac      = #{isFac,jdbcType=INTEGER}
+        where cat_id = #{catId,jdbcType=INTEGER}
+    </update>
+
+    <select id="findOwnCat" resultMap="BaseResultMap" parameterType="List">
+        select * from crm_prd_cat WHERE is_fac=1 and cat_state=1 and pcat_id=0
+        <if test="ids != null and ids.size>0">
+            and shop_id IN
+            <foreach collection="ids" item="list" open="(" close=")" separator=",">
+                #{list}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="findAllNameList" resultType="java.util.LinkedHashMap">
+        select cat_id as id,cat_name as name
+        from crm_prd_cat
+        where pcat_id = 0
+          and is_fac = 1
+        order by create_time asc;
+    </select>
+
+    <select id="findNameListByFactoryIdsAndKey" resultType="java.util.LinkedHashMap">
+        select cat_id as id,cat_name as name from crm_prd_cat where pcat_id=0 and is_fac=1
+        <if test="factoryIds!=null and factoryIds.size>0">
+            and shop_id in (select shop_id from oa_factory_info where fact_state=1 and fact_id in
+            <foreach collection="factoryIds" item="factId" separator="," open="(" close=")">
+                #{factId}
+            </foreach>
+            )
+        </if>
+        <if test="key != null and key != ''">
+            <bind name="pattern" value="'%' + key + '%'"/>
+            and cat_name like #{pattern}
+        </if>
+        group by cat_id order by create_time asc;
+    </select>
+
+
+    <select id="selectCatAll" resultMap="BaseResultMap">
+        select *
+        from crm_prd_cat
+        where pcat_id = 0
+          and cat_state = 1
+          and is_fac = 1
+          and cat_id in (select DISTINCT cat_id
+                         from t_goods_cat
+                         where goods_id in (select id from t_goods where terminal in (2, 3) and is_market = '1'))
+          and shop_id in
+              (select shop_id from oa_factory_info WHERE fact_state = 1 order BY create_time ASC);
+    </select>
+
+    <select id="selectCatByAgentId" resultMap="BaseResultMap" parameterType="Long">
+        select *
+        from crm_prd_cat
+        where pcat_id = 0
+          and cat_state = 1
+          and is_fac = 1
+          and shop_id in
+              (select factory_id from t_agent_fac WHERE status = 1 and agent_id = #{id} order BY create_time ASC);
+    </select>
+
+
+    <select id="findSecondCat" resultMap="BaseResultMap" parameterType="com.zlead.fplat.entity.vo.SecondCatRequest">
+        select * from crm_prd_cat where cat_state=1 and is_fac=1 and pcat_id in (
+        select cat_id from crm_prd_cat where pcat_id=0 and cat_state=1 and is_fac=1
+        and cat_name=#{firstCatName}
+        <if test="shopIds!=null and shopIds.size>0">
+            and shop_id IN
+            <foreach collection="shopIds" item="list" open="(" close=")" separator=",">
+                #{list}
+            </foreach>
+        </if>
+        )
+    </select>
+
+
+    <select id="selectBycatNameAndFacIds" resultMap="BaseResultMap"
+            parameterType="com.zlead.fplat.entity.vo.CatSecondQueryRequest">
+        select * from crm_prd_cat where is_fac=1 and cat_state=1 and cat_name in
+        <foreach collection="seCat" item="cat" open="(" close=")" separator=",">
+            #{cat}
+        </foreach>
+        and shop_id in
+        <foreach collection="facIds" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+
+    <select id="selectByFirstCatName" resultMap="BaseResultMap">
+        SELECT *
+        from crm_prd_cat
+        WHERE pcat_id = 0
+          AND cat_name = #{catName}
+          AND cat_state = 1
+          AND is_fac = 1
+    </select>
+
+    <select id="selectByIds" resultMap="BaseResultMap" parameterType="List">
+        SELECT DISTINCT a.*
+        ,(select concat(group_concat(a.cat_id separator ','))) as catIds
+        from crm_prd_cat AS a WHERE a.pcat_id=0 AND a.cat_state=1 AND a.is_fac=1
+        <if test="lists!=null and lists.size>0">
+            AND a.cat_id IN
+            <foreach collection="lists" item="list" open="(" close=")" separator=",">
+                #{list}
+            </foreach>
+        </if>
+        GROUP BY a.cat_name order by a.`create_time` desc LIMIT 0,6
+    </select>
+
+    <select id="selectByCIds" resultMap="BaseResultMap" parameterType="List">
+        SELECT a.* from crm_prd_cat AS a WHERE a.cat_state=1 AND a.is_fac=1
+        <if test="lists!=null and lists.size>0">
+            AND a.cat_id IN
+            <foreach collection="lists" item="list" open="(" close=")" separator=",">
+                #{list}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="selectByCId" resultMap="BaseResultMap">
+        SELECT a.* from crm_prd_cat AS a WHERE a.cat_state=1 AND a.is_fac=1
+        <if test="catid!=null ">
+            AND a.cat_id IN=#{catid}
+        </if>
+    </select>
+
+    <select id="oldQueryCatIdsList" resultType="integer" parameterType="long">
+        select cat_id
+        from crm_prd_cat
+        where (cat_id in (
+            SELECT DISTINCT
+                cat_id
+            FROM
+                t_goods_level tv,
+                t_goods_cat cat
+            WHERE
+                tv.goods_id = cat.goods_id
+              AND tv.level_id IN (SELECT level_id FROM t_agent_fac WHERE agent_id = #{agentId} AND STATUS = 1)
+              AND tv.goods_id IN (
+                SELECT
+                    ds.id
+                FROM
+                    t_goods ds
+                        LEFT JOIN oa_agent_band ban ON ds.brand_id = ban.band_id
+                WHERE
+                    ban.agent_id = #{agentId}
+                  AND ds.is_market = 1
+                  AND ds.terminal IN (2, 3)
+                  AND ds.prod_type = 0
+            )
+              AND tv.STATUS = 1) or pcat_id in (
+            SELECT DISTINCT
+                cat_id
+            FROM
+                t_goods_level tv,
+                t_goods_cat cat
+            WHERE
+                tv.goods_id = cat.goods_id
+              AND tv.level_id IN (SELECT level_id FROM t_agent_fac WHERE agent_id = #{agentId} AND STATUS = 1)
+              AND tv.goods_id IN (
+                SELECT
+                    ds.id
+                FROM
+                    t_goods ds
+                        LEFT JOIN oa_agent_band ban ON ds.brand_id = ban.band_id
+                WHERE
+                    ban.agent_id = #{agentId}
+                  AND ds.is_market = 1
+                  AND ds.terminal IN (2, 3)
+                  AND ds.prod_type = 0
+            )
+              AND tv.STATUS = 1)
+            )
+          and pcat_id = 0
+          and is_fac = 1;
+    </select>
+    <select id="queryCatIdsList" resultType="integer" parameterType="long">
+        SELECT
+            *
+        FROM
+            crm_prd_cat
+        WHERE
+            (
+                        cat_id IN (
+                        SELECT DISTINCT
+                            cat_id
+                        FROM
+                            t_goods_level tv,
+                            t_goods_cat cat
+                        WHERE
+                            tv.goods_id = cat.goods_id
+                          AND tv.level_id IN (
+                            SELECT
+                                level_id
+                            FROM
+                                t_agent_fac
+                            WHERE
+                                agent_id = #{agentId}
+                              AND STATUS = 1
+                        )
+                          AND tv.goods_id IN (
+                            SELECT
+                                ds.id
+                            FROM
+                                t_goods ds
+                                    INNER JOIN oa_agent_band_lists lists ON ds.list_id = lists.list_id AND lists.agent_id =#{agentId}
+                                    INNER JOIN oa_agent_band ban ON ds.brand_id = ban.band_id AND ban.agent_id = #{agentId}
+                            WHERE
+                               ds.is_market = 1
+                              AND ds.terminal IN (2, 3)
+                              AND ds.prod_type = 0
+                        )
+                          AND tv. STATUS = 1
+                    )
+                    OR cat_id IN (
+                    SELECT DISTINCT
+                        pcat_id
+                    FROM
+                        crm_prd_cat cat LEFT JOIN t_goods_cat gcat on cat.cat_id=gcat.cat_id
+                                        LEFT JOIN  t_goods_level tv on tv.goods_id=gcat.goods_id
+                    WHERE
+                            tv.level_id IN (
+                            SELECT
+                                level_id
+                            FROM
+                                t_agent_fac
+                            WHERE
+                                agent_id = #{agentId}
+                              AND STATUS = 1
+                        )
+                      AND tv.goods_id IN (
+                        SELECT
+                            ds.id
+                        FROM
+                            t_goods ds
+                                INNER JOIN oa_agent_band_lists lists ON ds.list_id = lists.list_id AND lists.agent_id = #{agentId}
+                                INNER JOIN oa_agent_band ban ON ds.brand_id = ban.band_id AND ban.agent_id = #{agentId}
+                        WHERE
+                            ds.is_market = 1
+                          AND ds.terminal IN (2, 3)
+                          AND ds.prod_type = 0
+                    )
+                      AND tv. STATUS = 1
+                )
+                )
+          AND is_fac = 1 and pcat_id=0 <!--AND cat_state = 1-->
+    </select>
+
+    <select id="oldSelectFirstCatByAgentId" resultMap="BaseResultMap">
+        select distinct *,
+        (
+        SELECT
+        concat(
+        group_concat(cat_id SEPARATOR ',')
+        )
+        ) AS catIds,IFNULL(cat_desc,cat_name) as catDesc
+        from crm_prd_cat where ( cat_id in (
+        SELECT DISTINCT
+        cat_id
+        FROM
+        t_goods_level tv,
+        t_goods_cat cat
+        WHERE
+        tv.goods_id = cat.goods_id
+        AND tv.level_id IN ( SELECT level_id FROM t_agent_fac WHERE agent_id = #{agentId} AND STATUS = 1
+        <if test="factId != null and factId != 0">
+            and factory_id = #{factId}
+        </if>
+        )
+        and tv.goods_id in (
+        select ds.id from t_goods ds LEFT JOIN oa_agent_band ban
+        on ds.brand_id = ban.band_id where ban.agent_id = #{agentId} and ds.is_market = 1 and ds.terminal in (2,3) and
+        ds.prod_type = 0)
+        AND tv.STATUS = 1) or pcat_id in (
+        SELECT DISTINCT
+        cat_id
+        FROM
+        t_goods_level tv,
+        t_goods_cat cat
+        WHERE
+        tv.goods_id = cat.goods_id
+        AND tv.level_id IN ( SELECT level_id FROM t_agent_fac WHERE agent_id = #{agentId} AND STATUS = 1
+        <if test="factId != null and factId != 0">
+            and factory_id = #{factId}
+        </if>
+        )
+        and tv.goods_id in (
+        select ds.id from t_goods ds LEFT JOIN oa_agent_band ban
+        on ds.brand_id = ban.band_id where ban.agent_id = #{agentId} and ds.is_market = 1 and ds.terminal in (2,3) and
+        ds.prod_type = 0)
+        AND tv.STATUS = 1)) and pcat_id = 0 and cat_state = 1
+        <choose>
+            <when test="factId != null and factId != 0">
+                and 1=1
+            </when>
+            <otherwise>
+                and is_fac = 1
+            </otherwise>
+        </choose>
+        GROUP BY cat_name;
+    </select>
+
+    <select id="selectFirstCatByAgentId" resultMap="BaseResultMap">
+        SELECT
+            *,IFNULL(cat_desc, cat_name) as catDesc ,
+        (
+        SELECT
+        concat(
+        group_concat(cat_id SEPARATOR ',')
+        )
+        ) AS catIds
+        FROM
+            crm_prd_cat
+        WHERE
+            (
+                        cat_id IN (
+                        SELECT DISTINCT
+                            cat_id
+                        FROM
+                            t_goods_level tv,
+                            t_goods_cat cat
+                        WHERE
+                            tv.goods_id = cat.goods_id
+                          AND tv.level_id IN (
+                            SELECT
+                                level_id
+                            FROM
+                                t_agent_fac
+                            WHERE
+                                agent_id = #{agentId}
+                              AND STATUS = 1
+                        <if test="factId != null and factId != 0">
+                            and factory_id = #{factId}
+                        </if>
+                        )
+                          AND tv.goods_id IN (
+                            SELECT
+                                ds.id
+                            FROM
+                                t_goods ds
+                                INNER JOIN oa_agent_band_lists lists ON ds.list_id = lists.list_id AND lists.agent_id = #{agentId}
+                                    <if test="factId != null and factId != 0">
+                                        and factory_id = #{factId}
+                                    </if>
+                                INNER JOIN oa_agent_band ban ON ds.brand_id = ban.band_id AND ban.agent_id = #{agentId}
+                                    <if test="factId != null and factId != 0">
+                                        and factory_id = #{factId}
+                                    </if>
+                          WHERE
+                                ds.is_market = 1
+                              AND ds.terminal IN (2, 3)
+                              AND ds.prod_type = 0
+                        )
+                          AND tv. STATUS = 1
+                    )
+                    OR cat_id IN (
+                    SELECT DISTINCT
+                        pcat_id
+                    FROM
+                        crm_prd_cat cat LEFT JOIN t_goods_cat gcat on cat.cat_id=gcat.cat_id
+                                        LEFT JOIN  t_goods_level tv on tv.goods_id=gcat.goods_id
+                    WHERE
+                            tv.level_id IN (
+                            SELECT
+                                level_id
+                            FROM
+                                t_agent_fac
+                            WHERE
+                                agent_id = #{agentId}
+                              AND STATUS = 1
+                        <if test="factId != null and factId != 0">
+                            and factory_id = #{factId}
+                        </if>
+                        )
+                      AND tv.goods_id IN (
+                        SELECT
+                            ds.id
+                        FROM
+                            t_goods ds
+                                INNER JOIN oa_agent_band_lists lists ON ds.list_id = lists.list_id AND lists.agent_id = #{agentId}
+                                    <if test="factId != null and factId != 0">
+                                        and factory_id = #{factId}
+                                    </if>
+                                INNER JOIN oa_agent_band ban ON ds.brand_id = ban.band_id AND ban.agent_id = #{agentId}
+                                    <if test="factId != null and factId != 0">
+                                        and factory_id = #{factId}
+                                    </if>
+                        WHERE
+                            ds.is_market = 1
+                          AND ds.terminal IN (2, 3)
+                          AND ds.prod_type = 0
+                    )
+                      AND tv. STATUS = 1
+                )
+                )
+          and pcat_id=0
+        <choose>
+            <when test="factId != null and factId != 0">
+                and 1=1
+            </when>
+            <otherwise>
+                and is_fac = 1
+            </otherwise>
+        </choose>
+        GROUP BY cat_name LIMIT 0,6;
+    </select>
+    <!-- 之前的工厂分类商品查询-->
+    <select id="oldSelectFirstFacCatByAgentId" resultMap="BaseResultMap">
+        SELECT
+            *, IFNULL(cat_desc, cat_name) AS catDesc,
+            (SELECT concat(group_concat(cat_id SEPARATOR ','))) AS catIds
+        FROM
+            crm_prd_cat
+        WHERE 
+         cat_id IN (SELECT DISTINCT
+                                cat.cat_id
+                            FROM
+                                crm_prd_cat cat
+                                    INNER JOIN t_goods_cat gcat ON cat.cat_id = gcat.cat_id
+                                    INNER JOIN t_goods_level tv ON tv.goods_id = gcat.goods_id
+                                    INNER JOIN t_agent_fac fac ON fac.level_id = tv.level_id
+                                     INNER JOIN t_goods ds ON ds.id = tv.goods_id
+																		INNER JOIN oa_agent_band ban ON ds.brand_id = ban.band_id AND ban.agent_id = #{agentId}
+                                        AND ban.fact_id = #{factId}
+																		INNER JOIN oa_agent_band_lists lists ON ds.list_id = lists.list_id
+                                        AND lists.agent_id = #{agentId}
+                                        AND lists.fact_id = #{factId}
+                            WHERE
+                                fac.agent_id = #{agentId}
+                              AND fac. STATUS = 1
+                              AND fac.factory_id = #{factId}
+                              AND tv. STATUS = 1                               
+                              AND ds.is_market = 1
+                                  AND ds.terminal IN (2, 3)
+                                  AND ds.prod_type = 0                         
+                    )
+                    OR cat_id IN (
+                            SELECT DISTINCT
+                                pcat_id
+                            FROM
+                                crm_prd_cat cat
+                                    INNER JOIN t_goods_cat gcat ON cat.cat_id = gcat.cat_id
+                                    INNER JOIN t_goods_level tv ON tv.goods_id = gcat.goods_id
+                                    INNER JOIN t_agent_fac fac ON fac.level_id = tv.level_id
+                                     INNER JOIN t_goods ds ON ds.id = tv.goods_id
+																		INNER JOIN oa_agent_band ban ON ds.brand_id = ban.band_id AND ban.agent_id = #{agentId}
+                                        AND ban.fact_id = #{factId}
+																		INNER JOIN oa_agent_band_lists lists ON ds.list_id = lists.list_id
+                                        AND lists.agent_id = #{agentId}
+                                        AND lists.fact_id = #{factId}
+                            WHERE
+                                fac.agent_id = #{agentId}
+                              AND fac. STATUS = 1
+                              AND fac.factory_id = #{factId}
+                              AND tv. STATUS = 1                               
+                              AND ds.is_market = 1
+                                  AND ds.terminal IN (2, 3)
+                                  AND ds.prod_type = 0
+                                  )
+          AND pcat_id = 0
+          AND cat_state = 1
+        GROUP BY
+            cat_name
+        ORDER BY
+            create_time
+            LIMIT 0, 6
+    </select>
+    <!--按照分类ID排序-->
+    <select id="selectFirstFacCatByAgentId2" resultMap="BaseResultMap">
+        SELECT DISTINCT
+        *, IFNULL(cat_desc, cat_name) AS catDesc,
+        cat_id AS catIds,
+        cat_id AS catId
+        FROM
+        crm_prd_cat
+        WHERE
+        cat_id IN
+        <foreach collection="catIds" item="catIds" open="(" close=")" separator=",">
+            #{catIds}
+        </foreach>
+        AND pcat_id = 0
+        order by catId asc
+        LIMIT 0,6
+    </select>
+    <!--按照商品上架时间排序-->
+    <select id="selectFirstFacCatByAgentId" resultMap="BaseResultMap">
+        SELECT DISTINCT
+        cpc.*, IFNULL(cpc.cat_desc, cpc.cat_name) AS catDesc,cpc.cat_id as catId,cpc.cat_id as catIds,MAX(ois.create_time) as market_time
+        FROM
+        t_goods g
+        INNER JOIN t_goods_cat cat ON g.id = cat.goods_id
+        AND g.is_market = 1
+        AND g.terminal IN (2, 3)
+        <if test="catIds != null and catIds.size > 0">
+            AND cat.cat_id IN
+            <foreach collection="catIds" item="catId" open="(" close=")" separator=",">
+                #{catId}
+            </foreach>
+        </if>
+        INNER JOIN oa_item_state ois ON ois.item_id = g.id
+        INNER JOIN crm_prd_cat cpc ON cat.cat_id = cpc.cat_id
+        AND cpc.pcat_id = 0
+        <if test="catIds != null and catIds.size > 0">
+            AND cpc.cat_id IN
+            <foreach collection="catIds" item="catId" open="(" close=")" separator=",">
+                #{catId}
+            </foreach>
+        </if>
+        GROUP BY cpc.cat_id
+        ORDER BY
+        market_time DESC
+        LIMIT 0,
+        6
+    </select>
+
+    <select id="selectAllBycatIds" resultMap="BaseResultMap">
+        select * from crm_prd_cat WHERE cat_state=1 AND is_fac=1 AND
+        <if test="catIds!=null and catIds.size>0">
+            cat_id IN
+            <foreach collection="catIds" item="catId" open="(" close=")" separator=",">
+                #{catId}
+            </foreach>
+        </if>
+        <if test="facIds!=null and facIds.size>0">
+            and shop_id IN (select shop_id from oa_factory_info where fact_state=1 and fact_id in
+            <foreach collection="facIds" item="facId" open="(" close=")" separator=",">
+                #{facId}
+            </foreach>
+            )
+        </if>
+    </select>
+
+
+    <select id="selectFirstCatByIds" resultMap="BaseResultMap">
+        select * from crm_prd_cat WHERE pcat_id=0 AND cat_state=1 AND is_fac=1
+        <if test="catIds!=null and catIds.size>0">
+            AND cat_id IN
+            <foreach collection="catIds" item="catId" open="(" close=")" separator=",">
+                #{catId}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="selectSecByAllcatIds" resultMap="BaseResultMap" parameterType="List">
+        select distinct * from crm_prd_cat where is_fac=1 and cat_state=1
+        <if test="catlist!=null and catlist.size>1">
+            and ( pcat_id in
+            <foreach collection="catlist" item="cat" open="(" close=")" separator=",">
+                #{cat}
+            </foreach>
+            or pcat_id in (select cat_id from crm_prd_cat where pcat_id in
+            <foreach collection="catlist" item="cat" open="(" close=")" separator=",">
+                #{cat}
+            </foreach>
+            ))
+        </if>
+        <if test="shopIds!=null and shopIds.size>0">
+            AND shop_id IN
+            <foreach collection="shopIds" item="shopId" open="(" close=")" separator=",">
+                #{shopId}
+            </foreach>
+        </if>
+        and cat_id in (
+        select cat_id from t_goods_cat where goods_id in (
+        select goods_id from t_goods_level where level_id in (
+        select level_id from t_agent_fac where agent_id = #{agentId} and status = 1)
+        ))
+    </select>
+
+    <select id="selectSecByAllcatId" resultMap="BaseResultMap">
+        select distinct * from crm_prd_cat where is_fac=1 and cat_state=1
+        <if test="catId!=null">
+            and ( pcat_id = #{catId} or pcat_id in (select cat_id from crm_prd_cat where pcat_id = #{catId} ) )
+        </if>
+        <if test="shopIds!=null and shopIds.size > 0 ">
+            and shop_id in
+            <foreach collection="shopIds" item="shopId" open="(" close=")" separator=",">
+                #{shopId}
+            </foreach>
+        </if>
+        and cat_id in (
+        select cat_id from t_goods_cat where goods_id in (
+        select id from t_goods where terminal in (2,3) and is_market = 1
+        <if test="shopIds!=null and shopIds.size > 0 ">
+            and shop_id in
+            <foreach collection="shopIds" item="shopId" open="(" close=")" separator=",">
+                #{shopId}
+            </foreach>
+        </if>
+        ))
+    </select>
+
+
+    <select id="selectSecByAllcatIds2" resultMap="BaseResultMap" parameterType="List">
+        select * from crm_prd_cat where is_fac=1 and cat_state=1
+        <if test="list!=null and list.size>0">
+            and pcat_id in
+            <foreach collection="list" item="list" open="(" close=")" separator=",">
+                #{list}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="selectSecByCatId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select * from crm_prd_cat where cat_state=1
+        <if test="catId!=null ">
+            and pcat_id = #{catId}
+        </if> limit 6
+    </select>
+
+    <select id="selectFir" resultMap="BaseResultMap">
+        select * from crm_prd_cat where pcat_id=0 and cat_name=#{catName} and is_fac=1 and cat_state=1
+        <if test="allCatIds!=null and allCatIds.size>0">
+            and cat_id in
+            <foreach collection="allCatIds" item="catId" open="(" close=")" separator=",">
+                #{catId}
+            </foreach>
+        </if>
+        <if test="shopIds!=null and shopIds.size > 0">
+            and shop_id in
+            <foreach collection="shopIds" item="shopId" open="(" close=")" separator=",">
+                #{shopId}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="findAllCatidsByfactoryIdsSet" resultType="java.lang.Long">
+        select cat_id from crm_prd_cat where cat_state=1
+        <if test="factoryIds!=null and factoryIds.size>0">
+            and shop_id IN (select shop_id from oa_factory_info where fact_state=1 and fact_id in
+            <foreach collection="factoryIds" item="facId" open="(" close=")" separator=",">
+                #{facId}
+            </foreach>
+            )
+        </if>
+    </select>
+
+    <select id="findChildCatids" resultType="java.lang.Long">
+        select cat_id from crm_prd_cat where cat_state=1
+        <if test="catids!=null and catids.size>0">
+            and pcat_id in
+            <foreach collection="catids" item="cid" open="(" close=")" separator=",">
+                #{cid}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="findChildCatidsAPP" resultType="java.lang.Long">
+        select cat_id from crm_prd_cat where cat_state=1
+        <if test="catids!=null and catids.size>0">
+            and pcat_id in
+            <foreach collection="catids" item="cid" open="(" close=")" separator=",">
+                #{cid}
+            </foreach>
+        </if>
+    </select>
+
+    <select id="findNameListByListIdsAndKey" resultType="java.util.LinkedHashMap">
+        select a.cat_id as id,a.cat_name as name,IFNULL(a.cat_desc,a.cat_name) as catDesc, a.pcat_id,a.pic_path,a.is_fac
+        from crm_prd_cat a
+        where a.cat_state=1 AND a.cat_id in (
+        select distinct cat_id from crm_prd_list_cats where `status`=1
+        <if test="listIds!=null and listIds.size>0">
+            and list_id in
+            <foreach collection="listIds" item="lid" open="(" close=")" separator=",">
+                #{lid}
+            </foreach>
+        </if>
+        ) and a.cat_id in ( select cat_id from t_goods_cat where goods_id in (
+        select id from t_goods where terminal in (2,3) and is_market = 1 AND prod_type = 0
+        <if test="listIds!=null and listIds.size>0">
+            AND list_id in
+            <foreach collection="listIds" item="lid" open="(" close=")" separator=",">
+                #{lid}
+            </foreach>
+        </if>
+        )
+        )
+        <if test="key != null and key != ''">
+            <bind name="pattern" value="'%' + key + '%'"/>
+            and a.cat_name like #{pattern}
+        </if>
+        order by a.cat_id asc
+    </select>
+
+    <select id="getAllCatIds" resultType="long" parameterType="long">
+        SELECT DISTINCT
+                                    cat_id
+                                FROM
+                                    t_goods_level tv,
+                                    t_goods_cat cat,
+                                    t_agent_fac fac
+                                WHERE
+                                    tv.goods_id = cat.goods_id
+                                  AND fac.level_id = tv.level_id
+                                  AND fac.agent_id = #{agentId}
+                                  AND fac. STATUS = 1
+                                  AND fac.factory_id = #{factId}
+                                  AND tv.goods_id IN (
+                                    SELECT
+                                        ds.id
+                                    FROM
+                                        t_goods ds
+                                            INNER JOIN oa_agent_band ban ON ds.brand_id = ban.band_id AND ban.agent_id = #{agentId}  AND ban.fact_id = #{factId}
+                                            INNER JOIN oa_agent_band_lists lists ON ds.list_id = lists.list_id  AND lists.agent_id = #{agentId}  AND lists.fact_id = #{factId}
+                                    WHERE
+                                        ds.is_market = 1
+                                      AND ds.terminal IN (2, 3)
+                                      AND ds.prod_type = 0
+                                )
+                                  AND tv. STATUS = 1
+    </select>
+
+    <select id="getAllPcatIds" resultType="long" parameterType="long">
+        SELECT DISTINCT
+                                pcat_id
+                            FROM
+                                crm_prd_cat cat
+                                    LEFT JOIN t_goods_cat gcat ON cat.cat_id = gcat.cat_id
+                                    LEFT JOIN t_goods_level tv ON tv.goods_id = gcat.goods_id
+                                    LEFT JOIN t_agent_fac fac ON fac.level_id = tv.level_id
+                            WHERE
+                                fac.agent_id = #{agentId}
+                              AND fac. STATUS = 1
+                              AND fac.factory_id = #{factId}
+                              AND tv.goods_id IN (
+                                SELECT
+                                    ds.id
+                                FROM
+                                    t_goods ds
+                                        INNER JOIN oa_agent_band ban ON ds.brand_id = ban.band_id AND ban.agent_id = #{agentId}  AND ban.fact_id = #{factId}
+                                        INNER JOIN oa_agent_band_lists lists ON ds.list_id = lists.list_id  AND lists.agent_id = #{agentId}  AND lists.fact_id =  #{factId}
+                                WHERE
+                                    ds.is_market = 1
+                                  AND ds.terminal IN (2, 3)
+                                  AND ds.prod_type = 0
+                            )
+                              AND tv. STATUS = 1
+    </select>
+    <!--按照分类ID排序-->
+    <select id="oldFastFindNameListByListIdsAndKey" resultType="java.util.Map">
+        SELECT DISTINCT
+            *, IFNULL(cat_desc, cat_name) AS catDesc,
+            cat_id AS catIds,
+            cat_id AS catId
+        FROM
+            crm_prd_cat
+        WHERE
+            cat_id IN
+            <foreach collection="catIds" item="catIds" open="(" close=")" separator=",">
+                #{catIds}
+            </foreach>
+          AND pcat_id = 0
+          order by catId asc
+            LIMIT 0,6
+    </select>
+    <!--按照商品上架时间排序-->
+    <select id="fastFindNameListByListIdsAndKey" resultType="java.util.Map">
+        SELECT DISTINCT
+	    cpc.*, IFNULL(cpc.cat_desc, cpc.cat_name) AS catDesc,cpc.cat_id as catId,cpc.cat_id as catIds,MAX(ois.create_time) as market_time
+        FROM
+            t_goods g
+        INNER JOIN t_goods_cat cat ON g.id = cat.goods_id
+        AND g.is_market = 1
+        AND g.terminal IN (2, 3)
+        <if test="catIds != null and catIds.size > 0">
+            AND cat.cat_id IN
+            <foreach collection="catIds" item="catId" open="(" close=")" separator=",">
+                #{catId}
+            </foreach>
+        </if>
+        INNER JOIN oa_item_state ois ON ois.item_id = g.id
+        INNER JOIN crm_prd_cat cpc ON cat.cat_id = cpc.cat_id
+        AND cpc.pcat_id = 0
+        <if test="catIds != null and catIds.size > 0">
+            AND cpc.cat_id IN
+            <foreach collection="catIds" item="catId" open="(" close=")" separator=",">
+              #{catId}
+            </foreach>
+        </if>
+        GROUP BY cpc.cat_id
+        ORDER BY
+          market_time DESC
+        LIMIT 0,
+         6
+    </select>
+
+    <select id="newFindNameListByListIdsAndKey" resultType="java.util.Map">
+        SELECT DISTINCT
+            *, IFNULL(cat_desc, cat_name) AS catDesc,
+            cat_id AS catIds,
+            cat_id AS catId
+        FROM
+            crm_prd_cat
+        WHERE
+            (  cat_id IN (
+                                SELECT DISTINCT
+                                    cat_id
+                                FROM
+                                    t_goods_level tv,
+                                    t_goods_cat cat,
+                                    t_agent_fac fac
+                                WHERE
+                                    tv.goods_id = cat.goods_id
+                                  AND fac.level_id = tv.level_id
+                                  AND fac.agent_id = #{agentId}
+                                  AND fac. STATUS = 1
+                                  AND fac.factory_id = #{factId}
+                                  AND tv.goods_id IN (
+                                    SELECT
+                                        ds.id
+                                    FROM
+                                        t_goods ds
+                                            INNER JOIN oa_agent_band ban ON ds.brand_id = ban.band_id AND ban.agent_id = #{agentId}  AND ban.fact_id = #{factId}
+                                            INNER JOIN oa_agent_band_lists lists ON ds.list_id = lists.list_id  AND lists.agent_id = #{agentId}  AND lists.fact_id = #{factId}
+                                    WHERE
+                                        ds.is_market = 1
+                                      AND ds.terminal IN (2, 3)
+                                      AND ds.prod_type = 0
+                                )
+                                  AND tv. STATUS = 1 
+                    )
+                    OR  cat_id IN (
+                            SELECT DISTINCT
+                                pcat_id
+                            FROM
+                                crm_prd_cat cat
+                                    LEFT JOIN t_goods_cat gcat ON cat.cat_id = gcat.cat_id
+                                    LEFT JOIN t_goods_level tv ON tv.goods_id = gcat.goods_id
+                                    LEFT JOIN t_agent_fac fac ON fac.level_id = tv.level_id
+                            WHERE
+                                fac.agent_id = #{agentId}
+                              AND fac. STATUS = 1
+                              AND fac.factory_id = #{factId}
+                              AND tv.goods_id IN (
+                                SELECT
+                                    ds.id
+                                FROM
+                                    t_goods ds
+                                        INNER JOIN oa_agent_band ban ON ds.brand_id = ban.band_id AND ban.agent_id = #{agentId}  AND ban.fact_id = #{factId}
+                                        INNER JOIN oa_agent_band_lists lists ON ds.list_id = lists.list_id  AND lists.agent_id = #{agentId}  AND lists.fact_id =  #{factId}
+                                WHERE
+                                    ds.is_market = 1
+                                  AND ds.terminal IN (2, 3)
+                                  AND ds.prod_type = 0
+                            )
+                              AND tv. STATUS = 1
+                        )
+                )
+          AND pcat_id = 0 
+          order by catId asc
+            LIMIT 0,6
+    </select>
+              <!-- up sql AND cat_state = 1 --> 
+
+    <select id="findNameListByAgent" resultType="java.util.LinkedHashMap">
+        select a.cat_id as id,a.cat_name as name,IFNULL(a.cat_desc,a.cat_name) as catDesc, a.pcat_id,a.pic_path,a.is_fac
+        from crm_prd_cat a
+        where a.cat_state=1 AND a.cat_id in (
+        select distinct cat_id from crm_prd_list_cats where `status`=1
+        <if test="listIds!=null and listIds.size>0">
+            and list_id in
+            <foreach collection="listIds" item="lid" open="(" close=")" separator=",">
+                #{lid}
+            </foreach>
+        </if>
+        ) and a.cat_id in ( select cat_id from t_goods_cat where goods_id in (
+        select id from t_goods where terminal in (2,3) and is_market = 1) and goods_id in(and a.id in (select goods_id
+        from t_goods_level where level_id in (select level_id from t_agent_fac where agent_id=#{agentId} and
+        `status`=1))))
+        <if test="key != null and key != ''">
+            <bind name="pattern" value="'%' + key + '%'"/>
+            and a.cat_name like #{pattern}
+        </if>
+        order by a.cat_id asc
+    </select>
+
+
+    <select id="findNameListByListIdsAndKeyAPP" resultType="java.util.LinkedHashMap">
+        select a.cat_id as id,a.cat_name as name,a.pcat_id,a.pic_path,a.is_fac from crm_prd_cat a
+        where a.cat_state=1 AND a.cat_id in (
+        select distinct cat_id from crm_prd_list_cats where `status`=1
+        <if test="listIds!=null and listIds.size>0">
+            and list_id in
+            <foreach collection="listIds" item="lid" open="(" close=")" separator=",">
+                #{lid}
+            </foreach>
+        </if>
+        )
+        <if test="key != null and key != ''">
+            <bind name="pattern" value="'%' + key + '%'"/>
+            and a.cat_name like #{pattern}
+        </if>
+    </select>
+
+    <select id="findListByIds" resultMap="BaseResultMap">
+        select * from crm_prd_cat WHERE cat_state=1
+        and cat_id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
+    <select id="findOneById" resultMap="BaseResultMap">
+        select *
+        from crm_prd_cat
+        WHERE 1 = 1
+          and cat_id = #{id}
+    </select>
+
+    <select id="findCatsByShopId" resultType="java.util.HashMap">
+        select cat_id as id,cat_name as name, pcat_id,pic_path,is_fac
+        from crm_prd_cat
+        WHERE cat_state = 1
+          and shop_id = #{ownShopid}
+    </select>
+
+    <select id="upCatIdQueryConTent2" resultMap="BaseResultMap">
+        select *,
+        (
+        SELECT concat( group_concat(cat_id SEPARATOR ',') )
+        ) AS catIds
+        from crm_prd_cat WHERE cat_id in (
+        SELECT cat_id from t_goods_cat cat WHERE cat.goods_id in (
+        select DISTINCT ds.id from t_goods_level le LEFT JOIN t_agent_fac fac
+        on le.level_id = fac.level_id LEFT JOIN t_goods ds
+        on le.goods_id = ds.id
+        INNER JOIN oa_agent_band_lists lists ON lists.list_id = ds.list_id AND lists.agent_id=#{agentId}
+        <if test="factId != null and factId != 0">
+            and lists.fact_id=#{factId}
+        </if>
+        INNER JOIN oa_agent_band ban ON ds.brand_id = ban.band_id AND ban.agent_id = #{agentId}
+        <if test="factId != null and factId != 0">
+            and ban.fact_id=#{factId}
+        </if>
+        where  1=1
+        <if test="factId != null and factId != 0">
+        	and fac.factory_id=#{factId}
+        </if>
+         and fac.agent_id = #{agentId}  and ds.is_market = 1 and ds.terminal in (2,3) and fac.status = 1 and
+        ds.prod_type = 0)
+        <!-- <if test="factId != null and factId != 0">
+            OR cat_id IN (
+            SELECT DISTINCT
+                gcat.cat_id
+            FROM
+                t_goods_cat gcat INNER JOIN
+            t_goods g on gcat.goods_id=g.id
+            INNER JOIN     oa_market_goods actg ON g.id = actg.goods_id
+            INNER JOIN oa_agent_band_lists lists on lists.list_id=g.list_id
+            inner join oa_market_act mact on mact.act_id=actg.act_id
+                WHERE
+            g.prod_type = 2
+            AND g.is_market = 1
+            AND g.terminal IN (2, 3)
+            AND actg.act_id IN (
+            SELECT
+            act_id
+            FROM
+            oa_market_agent
+            WHERE
+            agent_id = #{agentId}
+            )
+            and mact.shop_id in(select shop_id from oa_factory_info
+           where 1=1
+            <if test="factId != null and factId != 0">
+                and     fact_id = #{factId}
+            </if>)
+                    AND mact.cont_state = 2
+                    AND mact.eff_date  &lt;= NOW()
+            AND actg.is_market = 1
+            )
+        </if> -->
+          )
+        AND pcat_id in
+        <foreach collection="catIds" item="catId" open="(" close=")" separator=",">
+            #{catId}
+        </foreach>
+        GROUP BY cat_name limit 0,6;
+    </select>
+    <!--优化后-->
+    <select id="upCatIdQueryConTent" resultMap="BaseResultMap">
+        SELECT
+        cpc.*, (
+            SELECT
+                concat(
+                    group_concat(cat_id SEPARATOR ',')
+                )
+        ) AS catIds
+        FROM
+             crm_prd_cat cpc
+        WHERE
+            cat_id IN (
+                SELECT
+                    DISTINCT cat_id
+                FROM
+                    t_goods_cat cat
+                WHERE
+                    cat.goods_id IN (
+                        SELECT DISTINCT
+                            ds.id
+                        FROM
+                            (SELECT DISTINCT level_id,goods_id FROM t_goods_level WHERE `status` = 1) le
+                        INNER JOIN (SELECT DISTINCT level_id FROM t_agent_fac WHERE 1=1
+                        <if test="factId != null and factId != 0">
+                            AND factory_id =#{factId}
+                        </if>
+                        AND agent_id = #{agentId} AND STATUS = 1) fac ON le.level_id = fac.level_id
+                        INNER JOIN (SELECT DISTINCT id,list_id,brand_id FROM t_goods WHERE is_market = 1 AND terminal IN (2, 3) AND prod_type = 0) ds ON le.goods_id = ds.id
+                        INNER JOIN (SELECT DISTINCT list_id,band_id FROM oa_agent_band_lists WHERE agent_id = #{agentId}
+                        <if test="factId != null and factId != 0">
+                            AND fact_id = #{factId}
+                        </if>
+                        ) lists ON lists.list_id = ds.list_id AND lists.band_id = ds.brand_id
+                    )
+            )
+        AND cpc.pcat_id IN
+            <foreach collection="catIds" item="catId" open="(" close=")" separator=",">
+                #{catId}
+            </foreach>
+        GROUP BY
+            cpc.cat_name
+        LIMIT 0,
+         6;
+    </select>
+
+    <select id="brandQueryCat" resultMap="BaseResultMap">
+        SELECT *,(select concat(group_concat(cat_id separator ','))) as catIds FROM crm_prd_cat WHERE cat_id in (
+            select cat_id from t_goods_cat WHERE goods_id in (
+                select ds.id from t_goods ds LEFT JOIN t_goods_level lev
+                    ON ds.id = lev.goods_id LEFT JOIN t_agent_fac fac
+                    ON fac.level_id = lev.level_id LEFT JOIN oa_agent_band band
+                    ON band.band_id = ds.brand_id
+                where ds.is_market = 1  AND ds.terminal IN (2, 3) AND ds.prod_type = 0 AND lev.STATUS = 1 AND fac.agent_id = #{agentId} AND fac.STATUS = 1
+                  and band.agent_id = #{agentId} AND band.band_id = (select * FROM crm_cust_band WHERE band_name = #{bkey})))AND is_fac = 1 AND is_show = 1 GROUP BY cat_name
+    </select>
+
+
+    <select id="findChildByCatId" resultMap="BaseResultMap">
+        SELECT * FROM crm_prd_cat t WHERE t.`pcat_id`=#{catId}
+    </select>
+
+    <!--查询一级分类，工厂是根据分类描述查询-->
+    <select id="findLevelOneByAgentOrName" resultMap="BaseResultMap">
+    SELECT * FROM crm_prd_cat t
+            WHERE 1 = 1
+             <!-- AND t.`pcat_id` = 0，去掉一级分类限制，首页可能从二级分类点进来-->
+            <choose>
+                <when test="factoryId!=null">
+                    and ((t.is_fac = 1  and t.`cat_desc` = #{catName}) or  (t.is_fac = 0  and t.`cat_name` = #{catName}))
+                </when>
+                <otherwise>
+                     and t.`cat_name` = #{catName}
+                </otherwise>
+            </choose>
+           <if test="agentId != null">
+            AND t.`shop_id` IN (
+              SELECT af.`sys_id` FROM t_agent_fac af
+              WHERE af.`status` = 1
+              and af.`agent_id` = #{agentId}
+              <if test="factoryId!=null">
+              and af.`factory_id`=#{factoryId}
+              </if>
+              );
+           </if>
+    </select>
+
+
+    <select id="findOneByCondition" resultMap="BaseResultMap">
+        SELECT * FROM crm_prd_cat t
+        WHERE t.`cat_id`=#{catId}
+        <if test="agentId != null">
+            AND t.`shop_id` IN (
+            SELECT af.`sys_id` FROM t_agent_fac af
+            WHERE af.`status` = 1
+            and af.`agent_id` = #{agentId}
+            <if test="factoryId!=null">
+                and af.`factory_id`=#{factoryId}
+            </if>
+            );
+        </if>
+    </select>
+
+    <!--分类排序，按关联工厂时间和创建分类时间排序-->
+    <select id="findNameByIds" resultType="java.util.HashMap">
+        SELECT distinct t.`cat_id` as id,t.`cat_name` as name FROM crm_prd_cat t
+        LEFT JOIN t_agent_fac f ON f.`sys_id`=t.`shop_id`
+        AND f.`status` = 1
+        AND f.`coop_state` = 1
+        AND f.`agent_id` = #{agentId}
+        <if test="ids!=null and ids.size>0">
+            where t.cat_id IN
+            <foreach collection="ids" item="id" open="(" close=")" separator=",">
+                #{id}
+            </foreach>
+        </if>
+        ORDER BY f.`create_time` ASC,t.`create_time` ASC
+    </select>
+
+
+    <select id="getAllCatIdsWithGoods2" resultType="java.util.HashMap">
+        SELECT DISTINCT
+            cat.cat_id,cat.pcat_id
+            FROM
+            crm_prd_cat cat
+            INNER JOIN t_goods_cat gcat ON cat.cat_id = gcat.cat_id
+            INNER JOIN t_goods_level tv ON tv.goods_id = gcat.goods_id
+            INNER JOIN t_agent_fac fac ON fac.level_id = tv.level_id
+            INNER JOIN t_goods ds ON ds.id = tv.goods_id
+            INNER JOIN oa_agent_band ban ON ds.brand_id = ban.band_id AND ban.agent_id = #{agentId}  AND ban.fact_id = #{factId}
+            INNER JOIN oa_agent_band_lists lists ON ds.list_id = lists.list_id  AND lists.agent_id = #{agentId}  AND lists.fact_id = #{factId}
+            WHERE
+            fac.agent_id = #{agentId}
+            AND fac. STATUS = 1
+            AND fac.factory_id = #{factId}
+            AND ds.is_market = 1
+            AND ds.terminal IN (2, 3)
+            AND ds.prod_type = 0
+            AND tv. STATUS = 1
+    </select>
+    <!--优化后的-->
+    <select id="getAllCatIdsWithGoods" resultType="java.util.HashMap">
+        SELECT DISTINCT
+	    cat.cat_id,cat.pcat_id
+        FROM
+            (
+                SELECT DISTINCT
+                    id,
+                    list_id,
+                    brand_id
+                FROM
+                    t_goods
+                WHERE
+                    is_market = 1
+                AND terminal IN (2, 3)
+                AND prod_type = 0
+            ) ds
+        INNER JOIN (
+            SELECT DISTINCT
+                list_id,
+                band_id
+            FROM
+                oa_agent_band_lists
+            WHERE
+                agent_id = #{agentId}
+            AND fact_id = #{factId}
+        ) lists ON ds.list_id = lists.list_id
+        AND lists.band_id = ds.brand_id
+        INNER JOIN (
+            SELECT DISTINCT
+                goods_id,
+                level_id
+            FROM
+                t_goods_level
+            WHERE
+                `status` = 1
+        ) tv ON tv.goods_id = ds.id
+        INNER JOIN (
+            SELECT DISTINCT
+                level_id
+            FROM
+                t_agent_fac
+            WHERE
+                agent_id = #{agentId}
+            AND factory_id = #{factId}
+            AND `status` = 1
+        ) fac ON fac.level_id = tv.level_id
+        INNER JOIN t_goods_cat gcat ON ds.id = gcat.goods_id
+        INNER JOIN crm_prd_cat cat ON cat.cat_id = gcat.cat_id
+    </select>
+</mapper>

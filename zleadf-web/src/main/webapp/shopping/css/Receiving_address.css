@@ -1,0 +1,250 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    list-style: none;
+}
+
+.right123 {
+    width: 1055px;
+    height: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.rdao1 {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.rdao1 span {
+    display: block;
+    /* width: 100px; */
+    height: 25px;
+    font-size: 18px;
+    margin-bottom: 11px;
+    font-family: PingFang-SC-Bold;
+    font-weight: bold;
+    color: rgba(68, 68, 68, 1);
+    line-height: 25px;
+}
+
+.dizhi {
+    margin-top: 5px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 50px;
+}
+
+.zhi {
+    float: left;
+    width: 248px;
+    height: 150px;
+    background: #fff;
+    border: 1px solid rgba(229, 229, 229, 1);
+    margin: 15px;
+    position: relative;
+}
+
+.dizhi .zhi:nth-child(4n+4) {
+    /*margin-right: 0px;*/
+}
+
+.zhi:hover {
+    cursor: pointer;
+}
+
+.tiao {
+    width: 248px;
+    height: 6px;
+    background-image: url(../img/lhpimg/fenzu2.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.tiao1,
+.tiao2 {
+    width: 248px;
+    height: 6px;
+    background-image: url(../img/lhpimg/fenzu3.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.mo {
+    width: 100%;
+    height: 32px;
+}
+
+.clear {
+    clear: both;
+}
+
+.mo img:nth-of-type(1) {
+    display: none;
+    float: right;
+    margin-right: 12px;
+    margin-top: 14px;
+}
+
+.mo img:nth-of-type(2) {
+    display: none;
+    float: right;
+    margin-right: 12px;
+    margin-top: 14px;
+}
+
+.mo img:nth-of-type(3) {
+    display: none;
+    float: right;
+    margin-right: 12px;
+    margin-top: 14px;
+}
+
+.mo1 {
+    width: 100%;
+    height: 32px;
+}
+
+.mo1 img:nth-of-type(2) {
+    display: none;
+    float: right;
+    margin-right: 12px;
+    margin-top: 14px;
+}
+
+.mo1 img:nth-of-type(3) {
+    display: none;
+    float: right;
+    margin-right: 12px;
+    margin-top: 14px;
+}
+
+.mo1 img:nth-of-type(4) {
+    display: none;
+    float: right;
+    margin-right: 12px;
+    margin-top: 14px;
+}
+
+.ming {
+    width: 204px;
+    height: auto;
+    border-bottom: 1px dashed #E5E5E5;
+    font-size: 12px;
+    font-family: PingFang-SC-Bold;
+    font-weight: bold;
+    color: rgba(68, 68, 68, 1);
+    margin: 0 auto;
+    line-height: 30px;
+}
+
+.qu {
+    width: 204px;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 7px;
+}
+
+.qu span:nth-of-type(1) {
+    display: block;
+    width: 100%;
+    font-size: 12px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(68, 68, 68, 1);
+    line-height: 17px;
+}
+
+.qu span:nth-of-type(2) {
+    display: block;
+    width: 100%;
+    height: 17px;
+    font-size: 12px;
+    font-family: PingFang-SC-Medium;
+    font-weight: 500;
+    color: rgba(167, 167, 172, 1);
+    line-height: 17px;
+    margin-top: 6px;
+}
+
+.zhi:hover .mo img:nth-of-type(1) {
+    display: block;
+}
+
+.zhi:hover .mo img:nth-of-type(2) {
+    display: block;
+}
+
+.zhi:hover .mo img:nth-of-type(3) {
+    display: block;
+}
+
+.zhi:hover .tiao1 {
+    background-image: url(../img/lhpimg/fenzu2.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.zhi:hover .mo1 img:nth-of-type(2) {
+    display: block;
+}
+
+.zhi:hover .mo1 img:nth-of-type(3) {
+    display: block;
+}
+
+.zhi:hover {
+    background-color: rgba(244, 246, 249, 1);
+}
+
+.xiushi {
+    margin-right: -1px;
+    margin-bottom: -1px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+.tian {
+    float: left;
+    width: 248px;
+    height: 150px;
+    background: rgba(244, 246, 249, 1);
+    border-radius: 4px 4px 0px 0px;
+    border: 1px dashed rgba(229, 229, 229, 1);
+    margin: 15px;
+}
+
+.tian img {
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+    margin-top: 44px;
+}
+
+.tian div {
+    width: auto;
+    height: 20px;
+    font-size: 14px;
+    font-family: PingFangSC-Regular;
+    font-weight: 400;
+    color: rgba(167, 167, 172, 1);
+    line-height: 20px;
+    text-align: center;
+    margin-top: 13px;
+}
+
+.tian:hover {
+    cursor: pointer;
+}

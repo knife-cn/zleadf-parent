@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>直链商城</title>
+</head>
+<link rel="stylesheet" href="../../shopping/css/activityDetails.css" />
+<link rel="stylesheet" href="../../shopping/css/header.css" />
+
+
+<body>
+    <div id="head"></div>
+    <div class="serch">
+        <div class="serch_con">
+            <!-- logo -->
+            <div class="logo">
+                <img src="../../shopping/img/index/logo.png" />
+            </div>
+            <div class="searcha">
+                <!-- 搜索框 -->
+                <div class="search">
+                    <!-- <div class="search_frame">
+                        <input type="text" id="resou" maxlength="50" />
+                    </div> -->
+                    <form autocomplete="off" class="search_frame" onsubmit="return false">
+                        <input type="text" id="resou" maxlength="50" />
+                    </form>
+                    <!-- 搜索按钮 -->
+                    <div class="search_icon" id="search_icon">
+                        <img src="../../shopping/img/index/ic_sousuo.png" />
+                    </div>
+                </div>
+                <!-- 热搜词 -->
+                <div class="search_hot">
+                    <ul class="search_hot_ul" id="search_hot_ul">
+                        <!--<li>电气控制</li>-->
+                        <!--<li>刀具磨具</li>-->
+                        <!--<li>电气控制</li>-->
+                        <!--<li>电气控制</li>-->
+                        <!--<li>电气控制</li>-->
+                        <!--<li>电气控制</li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dt_top">
+        <div class="dt_topcon"></div>
+    </div>
+    <div class="sp">
+        <div class="sp_d">
+            <p>
+                活动列表
+            </p>
+        </div>
+    </div>
+    <div class="houd">
+        <div class="houd_con">
+            <ul id="houd_conul">
+
+            </ul>
+        </div>
+        <div class="tbpager">
+            <div class="tbapager">
+                <div class="pager" id="page3">
+                    <!--<span>上一页</span>-->
+                    <!--<ul>-->
+                    <!--<li>1</li>-->
+                    <!--<li class="yan">2</li>-->
+                    <!--<li>3</li>-->
+                    <!--<li>4</li>-->
+                    <!--<li>5</li>-->
+                    <!--<li>...</li>-->
+                    <!--<li>56</li>-->
+                    <!--</ul>-->
+                    <!--<span>下一页</span>-->
+
+                    <!--<span>跳转</span>-->
+                    <!--<div class="xuanye">-->
+                    <!--<input class="text_class" value="1" type="text"/>-->
+                    <!--<div class="tz_tiao">-->
+                    <!--<img src="../../shopping/img/searchPage/rij.png"/>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                    <!--<span>页</span>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 无活动情况：空态页 -->
+    <div class='sp_pop'>
+        <div class='sp_zero'>
+            <img src="../../shopping/img/index/upload.png" />
+            <h5>还没有活动哦~</h5>
+            <p>您可以<a href="index.html">去逛逛></a></p>
+        </div>
+    </div>
+
+
+    <iframe src="footer.html" width="100%" height="292px" style="border:none"></iframe>
+</body>
+<script type="text/javascript" src="../../shopping/js/jquery-2.1.0.js"></script>
+
+<!-- <script type="text/javascript" src="../../shopping/js/head.js"></script> -->
+<!--<script type="text/javascript" src="../../shopping/js/activityDetails.js" ></script>-->
+<script type="text/javascript" src="../../shopping/js/paging.js"></script>
+<script type="text/javascript" src="../../shopping/js/jinzi.js"></script>
+<script>
+    $("#head").load("head.html");
+    var rescount = "";
+    $.ajax({
+        type: "get", //提交请求的方式
+        cache: true, //是否有缓存
+        url: "/zlead/attr/findPageAct/1/12?t_=" + Math.random(), //访问servlet的路径
+        dataType: "json", //没有这个，将把后台放会的json解析成字符串
+        data: {
+
+        }, //把内容序列化
+        async: false, //是否异步
+        error: function(request) { //请求出错
+        },
+        success: function(res) { //获得返回值
+            if (res.code == 1) {
+                if (res.data.data.length > 0) {
+                    var str = "";
+                    for (var i = 0; i < res.data.data.length; i++) {
+
+                        str += '<li class="actli" data-id="' + res.data.data[i].actId + '">';
+                        str += '<div class="houd_conimg">';
+                        str += '<img src="' + res.data.data[i].image + '"/>';
+                        str += '</div>';
+                        str += '<p class="shuom">';
+                        // 标题限制最多20字
+                        if (res.data.data[i].actTitle.length > 20) {
+                            str += res.data.data[i].actTitle.substr(0, 20);
+                        } else {
+                            str += res.data.data[i].actTitle;
+                        }
+                        str += '</p>';
+                        // 活动简介限制最多40字
+                        if (res.data.data[i].actContent.replace(/<\/?.+?\/?>/g, '').length > 40) {
+                            str += '<span class="shouspan" style="text-align: left">' + res.data.data[i].actContent.replace(/<\/?.+?\/?>/g, '').substr(0, 40) + '...</span>';
+
+                        } else {
+                            str += '<span class="shouspan" style="text-align: left">' + res.data.data[i].actContent.replace(/<\/?.+?\/?>/g, '') + '</span>';
+
+                        }
+
+                        str += '</li>';
+
+                    }
+                    $("#houd_conul").html(str);
+                    rescount = (Math.ceil(res.data.count / 12));
+
+                    $(".actli").click(function() {
+                        var actliId = $(this).attr("data-id");
+                        window.location.href = "actDetails?actId=" + actliId + "";
+                    })
+                } else { // 无活动数据，显示空态页
+                    $('.sp').hide();
+                    $('.houd').hide();
+                    $('.sp_pop').show();
+                }
+            }
+
+        }
+    })
+
+    if (rescount > 1) {
+        $('#page3').paging({
+            pageNo: 1,
+            totalPage: rescount,
+            callback: function(cur) {
+                $.ajax({
+                    type: "get", //提交请求的方式
+                    cache: true, //是否有缓存
+                    url: "/zlead/attr/findPageAct/" + cur + "/12?t_=" + Math.random(), //访问servlet的路径
+                    dataType: "json", //没有这个，将把后台放会的json解析成字符串
+                    data: {
+
+                    }, //把内容序列化
+                    async: true, //是否异步
+                    error: function(request) { //请求出错
+                    },
+                    success: function(res) { //获得返回值
+                        if (res.code == 1) {
+
+                            var str = "";
+                            for (var i = 0; i < res.data.data.length; i++) {
+
+                                str += '<li class="actli" data-id="' + res.data.data[i].actId + '">';
+                                str += '<div class="houd_conimg">';
+                                str += '<img src="' + res.data.data[i].image + '"/>';
+                                str += '</div>';
+                                str += '<p class="shuom">活动说明</p>';
+                                if (res.data.data[i].actContent.length > 25) {
+                                    str += '<span class="shouspan">' + res.data.data[i].actContent.substr(0, 25) + '...</span>';
+                                } else {
+                                    str += '<span class="shouspan">' + res.data.data[i].actContent + '</span>';
+                                }
+                                str += '</li>';
+
+                            }
+                            $("#houd_conul").html(str);
+                            rescount = (Math.ceil(res.data.count / 12));
+                            $(".actli").click(function() {
+                                var actliId = $(this).attr("data-id");
+                                window.location.href = "actDetails?actId=" + actliId + "";
+                            })
+
+                        }
+
+                    }
+                })
+            }
+        });
+    }
+</script>
+
+</html>

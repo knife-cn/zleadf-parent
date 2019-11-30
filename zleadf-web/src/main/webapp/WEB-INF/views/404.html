@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="../../shopping/css/header.css" />
+    <link rel="stylesheet" href="../../shopping/css/error.css" />
+</head>
+
+<body>
+    <div id="head"></div>
+
+    <!--搜索-->
+    <div class="serch">
+        <div class="serch_con">
+            <!-- logo -->
+            <div class="logo">
+                <img src="../../shopping/img/index/logo.png" />
+            </div>
+            <div class="searcha">
+                <!-- 搜索框 -->
+                <div class="search">
+                    <div class="search_frame">
+                        <input type="text" id="resou" maxlength="50">
+                    </div>
+                    <!-- 搜索按钮 -->
+                    <div class="search_icon" id="search_icon">
+                        <img src="../../shopping/img/index/ic_sousuo.png" />
+                    </div>
+                </div>
+                <!-- 热搜词 -->
+                <div class="search_hot">
+                    <ul class="search_hot_ul" id="search_hot_ul">
+                        <!--<li>电气控制</li>-->
+                        <!--<li>刀具磨具</li>-->
+                        <!--<li>电气控制</li>-->
+                        <!--<li>电气控制</li>-->
+                        <!--<li>电气控制</li>-->
+                        <!--<li>电气控制</li>-->
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--渐变-->
+    <div class="top2">
+        <div class="top3" id="top3"></div>
+    </div>
+    <!--内容-->
+
+    <div class="neirou">
+
+        <div class="error">
+            <img src="../../shopping/img/index/404.png" />
+            <h5>很抱歉，页面不小心迷路了~</h5>
+            <p>您可以<a href="index.html">去逛逛></a></p>
+        </div>
+
+        <!--<div class="zhongwu">-->
+        <!--<img src="../../shopping/img/lhpimg/wuxi.png" />-->
+        <!--<span>暂无消息哦～</span><span>您可以<a href="index.html">去逛逛></a></span>-->
+        <!--</div>-->
+    </div>
+
+    <iframe src="footer.html" width="100%" height="292px" style="border: none;"></iframe>
+</body>
+<script type="text/javascript" src="../../shopping/js/jquery-2.1.0.js"></script>
+<script>
+    $("#head").load("head.html");
+    $(document).ready(function() {
+        var H = document.body.clientHeight;
+        $('.neirou').css({
+            minHeight: H - 412
+        })
+    })
+</script>
+
+</html>
+
+</html>

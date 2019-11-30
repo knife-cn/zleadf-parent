@@ -1,0 +1,138 @@
+@import url("function.less");
+@import url("common.less");
+
+body {
+    background-color: #fff;
+}
+.welcomeLogin {
+    position: relative;
+    padding-top: 53.333%;
+    -webkit-background: linear-gradient(90deg, #2C80FB, #196AE3);
+    background: linear-gradient(90deg, #2C80FB, #196AE3);
+    color: #fff;
+    p,
+    span {
+        position: absolute;
+    }
+    p {
+        top: 80/200*100%;
+        left: 30/375*100%;
+        font-size: 28/@r;
+        line-height: 40px;
+        font-weight: 700;
+    }
+    span {
+        bottom: 0;
+        left: 41/375*100%;
+        font-size: 16/@r;
+        line-height: 16/@r;
+        font-weight: 700;
+        padding: 0 15/@r 21/@r;
+        border-bottom: 2/@r solid #fff;
+    }
+}
+
+.loginForm {
+    font-size: 13/@r;
+    .inputDv {
+        padding-top: 44/375*100%;
+        label,
+        input {
+            display: inline-block;
+        }
+        label {
+            line-height: 18/@r;
+            color: #3E4A59;
+        }
+        &>div {
+            position: relative;
+        }
+        input {
+            width: 100%;
+            font-size: 20/@r;
+            line-height: 26/@r;
+            font-size: 20/@r;
+            color: #24272B;
+            border-bottom: 2/@r solid #D3DFEF;
+            padding: 10/@r 0;
+        }
+        span {
+            display: none;
+            position: absolute;
+            top: 50%;
+            right: 3/@r;
+            width: 14/@r;
+            height: 14/@r;
+            .transform(translateY(-50%));
+        }
+        &.errorDv,
+        &.rightDv {
+            span {
+                display: block;
+            }
+        }
+        &.errorDv {
+            label {
+                color: #FE4F62;
+            }
+            input {
+                border-bottom-color: #FE5067;
+            }
+            span {
+                background: url('../../image/login_icon.png') no-repeat -20/@r 0;
+            background-size: 54/@r  auto;
+
+            }
+        }
+        &.rightDv {
+            label {
+                color: #3E4A59;
+            }
+            input {
+                border-bottom-color: #30DA51;
+            }
+            span {
+                background: url('../../image/login_icon.png') no-repeat -40/@r 0;
+            background-size: 54/@r  auto;
+
+            }
+        }
+    }
+    .rememberPasswordDv {
+        padding-top: 30/375*100%;
+        padding-bottom: 144/375*100%;
+        line-height: 18/@r;
+        input {
+            width: 14/@r;
+            height: 14/@r;
+            border: 2/@r solid #B3BFD0;
+            background: #fff;
+            .border-radius(50%);
+            vertical-align: middle;
+            margin-top: -2px;
+            &:checked {
+                border: 0;
+                background: url('../../image/login_icon.png') no-repeat 0 0;
+                background-size: 54/@r auto;
+                &+label {
+                    color: @themeColor;
+                }
+            }
+        }
+        a {
+            float: right;
+            color: @themeColor;
+        }
+    }
+    .loginBtn {
+        display: block;
+        color: #fff;
+        width: 312/375*100%;
+        font-size: 14/@r;
+        line-height: 50/@r;
+        margin: 0 auto;
+        border-radius: 50/@r;
+        -webkit-background: linear-gradient(90deg, #2C80FB, #196AE3);
+        background: linear-gradient(90deg, #2C80FB, #196AE3);
+    }
+}

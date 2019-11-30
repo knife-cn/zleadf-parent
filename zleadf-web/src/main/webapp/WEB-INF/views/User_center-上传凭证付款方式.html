@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+
+    <title>直链商城</title>
+    <link rel="stylesheet" href="../../shopping/css/User_center.css" />
+    <!--<link rel="stylesheet" href="../../shopping/css/upload.css" />-->
+    <link rel="stylesheet" href="../../shopping/css/pager.css" />
+    <link rel="stylesheet" href="../../shopping/lib/layui-v2.4.5/layui/css/layui.css" media="all">
+
+</head>
+
+<body>
+    <!--右-->
+    <div class="right">
+        <!--内容右边头部导航-->
+        <div class="navt">
+            <ul>
+                <li class="ntitle active">全部订单(<span class="n1"></span>)</li>
+                <li class="ntitle">待付款(<span class="n2"></span>)</li>
+                <li class="ntitle">待发货(<span class="n3"></span>)</li>
+                <li class="ntitle">待收货(<span class="n4"></span>)</li>
+                <li class="ntitle">已完成(<span class="n5"></span>)</li>
+            </ul>
+        </div>
+        <!--信息参数-->
+        <div class="canshu">
+            <div>商品信息</div>
+            <div>数量</div>
+            <div>金额</div>
+            <div>状态</div>
+        </div>
+        <div class="tabCon">
+            <div class="tabC tab1">
+                <div class="ta2">
+
+                </div>
+                <div class="taNo">
+                    <div class="cons">
+                        <img src="../../shopping/img/lhpimg/wuxi.png" alt="无数据">
+                        <div class="rights">
+                            <p>暂无订单哦~</p>
+                            <p>您可以<a class="goIndex" href="index.html">去逛逛</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ta3">
+                    <div class="pageJump" class="fright">
+                        <span>跳转到</span>
+                        <input class="goNum" type="text" readonly onfocus="this.removeAttribute('readonly');" />
+                        <span>页</span>
+                        <button type="button" class="button">确定</button>
+                    </div>
+                    <ul class="pagination" class="fright" id="page1">
+                    </ul>
+                </div>
+                <!-- loading加载 -->
+                <div class="mloading">
+                    <img src="../../shopping/img/upload/login.gif" alt="">
+                    <p>正在急速加载中...</p>
+                </div>
+            </div>
+            <!--tabC-->
+
+        </div>
+
+        <!--二次确认删除按钮-->
+        <div class="collection_popbox2">
+            <div class='collection_popbox_content2'>
+                <img src="../../shopping/img/searchPage/Fill 1.png">
+                <img src="../../shopping/img/footer/close.png" class='collection_close closeN'>
+                <p>确定要删除订单吗？</p>
+                <div>
+                    <a href="javascript:;" class="confirmDel">确定</a>
+                    <a href="javascript:;" class="closeN">取消</a>
+                </div>
+            </div>
+        </div>
+
+        <!--点击跳转详情库存不足-->
+        <div class="meng4"></div>
+        <div class="popupMsg4">
+            <img class="close closeF" src="../../shopping/img/car/close@2x.png" />
+            <img class="tips" src="../../shopping/img/car/Fill 1.png" />
+            <p class="msg4"></p>
+            <div class="know closeF">知道了</div>
+        </div>
+
+
+
+        <!--上传凭证-->
+        <!-- 弹窗 -->
+        <div id="dialog_upload82" style="display: none">
+            <!--蒙版-->
+            <div class="meng8" id="meng82">
+                <div class="guanlian8" id="dialog82">
+                    <!-- 头 -->
+                    <img src="../../shopping/img/lhpimg/guanbi.png" id="qu22" class="img8" />
+                    <div class="scroll8">
+                        <div class="title8">
+                            <span>上传凭证</span>
+                        </div>
+                        <!--内容-->
+                        <!--<div class="message_tit8">-->
+                        <!--<p>付款金额</p>-->
+                        <!--<input placeholder="" name="names" id="inputs" class="order_input8" type="text">-->
+                        <!--<p>付款方式</p>-->
+                        <!--<input placeholder="" id="payWay" class="order_input8" type="text">-->
+                        <!--<p>付款时间</p>-->
+                        <!--<input placeholder="" name="time" readOnly="true" id="h3Ele2" class="order_input8" type="text">-->
+                        <!--<img class="date_up" src="../../shopping/img/lhpimg/Datepicker_nomal.png">-->
+                        <!--&lt;!&ndash;时间控件&ndash;&gt;-->
+                        <!--<div id='schedule-box1' class="boxshaw1">-->
+
+                        <!--</div>-->
+                        <!--<div class="anniu_uplode8">-->
+                        <!--<span>上传图片  <input  type="file" style="width: 110px;height: 45px;" name="demo_input" class='fileu'   accept="image/bmp,image/jpg,image/png,image/jpeg"/></span>-->
+                        <!--<p>图片不大于2M，格式支持JPG/PNG/JPEG/BMP。上传图片后，点击可放大</p>-->
+                        <!--</div>-->
+                        <!--<div id="imgBox">-->
+                        <!--<img id="imgsrc" src="" alt="">-->
+                        <!--</div>-->
+                        <!--</div>-->
+
+                        <div class="message_tit8">
+                            <p>付款金额</p>
+                            <input placeholder="" name="names" id="inputs2" class="order_input8" type="text">
+                            <!--<p>付款方式</p>-->
+                            <!--<input placeholder="" id="payWay2" class="order_input8" type="text">-->
+                            <p>付款方式</p>
+                            <select name="" id="payWayAll" class="order_input8">
+                                <option value="0">支付宝</option>
+                                <option value="1">线下付款</option>
+                                <option value="2">支票</option>
+                                <option value="3">白条</option>
+                                <option value="4">信用贷款（钱进家）</option>
+                                <option value="5">银行卡支付（线上银联）</option>
+                                <option value="6">货到付款</option>
+                                <option value="7">协议结算</option>
+                                <option value="8">网银转账</option>
+                                <option value="9">微信</option>
+                            </select>
+                            <p>付款时间</p>
+                            <!--时间控件-->
+                            <!-- <input placeholder="" name="time" readOnly="true" id="h3Ele22" class="order_input8" type="text">
+                            <img class="date_up" src="../../shopping/img/lhpimg/Datepicker_nomal.png">
+                            <div id='schedule-box12' class="boxshaw1">
+                            </div> -->
+                            <input placeholder="" name="time" readOnly="true" id="h3Ele22" class="order_input8" type="text">
+                            <div class="anniu_uplode8">
+                                <span>上传图片  <input  type="file" style="width: 110px;height: 45px;" name="demo_input" class='fileu'   accept="image/bmp,image/jpg,image/png,image/jpeg"/></span>
+                                <p>图片不大于2M，格式支持JPG/PNG/JPEG/BMP。上传图片后，点击可放大</p>
+                            </div>
+                            <div id="imgBox2">
+                                <img id="imgsrc22" src="" alt="">
+                            </div>
+                        </div>
+                        <div class="tipsNo">
+                            <!--提示信息-->
+                        </div>
+                    </div>
+                    <!--尾-->
+                    <div class="bottom8">
+                        <span id="qu82" class="yiyan8 qu8 ">取消</span>
+                        <span id="fo82" class="yiyan8 fo8">确定</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--提示-->
+        <div class="tishi3">
+            上传凭证成功 !
+        </div>
+
+        <!--放大图片-->
+        <div class="moban2" id="dialog-bg22">
+            <span class="closeImg"><img   src="../../shopping/img/upload/关闭.png" alt=""></span>
+            <div class="moban_img20" id="img-box22">
+                <img src="" />
+            </div>
+            <div class="bottom2">
+                <ul>
+                    <li><img id="suoxiao21" src="../../shopping/img/upload/narrow.png" alt=""></li>
+                    <li><img id="suoxiao22" src="../../shopping/img/upload/narrow.png" alt=""></li>
+                    <li><img id="suoxiao32" src="../../shopping/img/upload/narrow.png" alt=""></li>
+                    <li><img id="suoxiao42" src="../../shopping/img/upload/narrow.png" alt=""></li>
+
+                    <li id="huanyuan2">100%</li>
+
+                    <li><img id="fangda21" src="../../shopping/img/upload/enlarge.png" alt=""></li>
+                    <li><img id="fangda22" src="../../shopping/img/upload/enlarge.png" alt=""></li>
+                    <li><img id="fangda32" src="../../shopping/img/upload/enlarge.png" alt=""></li>
+                    <li><img id="fangda42" src="../../shopping/img/upload/enlarge.png" alt=""></li>
+
+                    <li><img id="xuanzhuan21" src="../../shopping/img/upload/rotate.png" alt=""></li>
+                    <li><img id="xuanzhuan22" src="../../shopping/img/upload/rotate.png" alt=""></li>
+                    <li><img id="xuanzhuan32" src="../../shopping/img/upload/rotate.png" alt=""></li>
+                    <li><img id="xuanzhuan42" src="../../shopping/img/upload/rotate.png" alt=""></li>
+
+                    <!--<li><img src="../../shopping/img/upload/narrow.png" alt=""></li>-->
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript" src="../../shopping/js/jquery-2.1.0.js"></script>
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="../../shopping/js/laydate.js"></script>
+    <script type="text/javascript" src="../../shopping/js/User_center.js"></script>
+    <script src="../../shopping/js/pager.js"></script>
+    <script type="text/javascript" src="../../shopping/js/checkDate.js"></script>
+
+    <!--<script type="text/javascript" src="../../shopping/js/myPagination.js" ></script>-->
+    <!--<script type="text/javascript" src="../../shopping/js/jinzi.js" ></script>-->
+    <!--<script type="text/javascript" src="../../shopping/js/pagenav1.1.cn.js"></script>-->
+
+
+    <script>
+        $(function() {
+            //查看订单进度
+            // $(".threetai1").click(function(){
+            //
+            // 	if ($(".xianqing9").is(":hidden")){
+            // 		$(".img1").hide();
+            // 		$(".img2").show();
+            // 		$(".xianqing9").show();
+            // 	}
+            // 	else
+            // 	{
+            // 		$(".img1").show();
+            // 		$(".img2").hide();
+            // 		$(".xianqing9").hide();
+            // 	}
+            // });
+        });
+    </script>
+
+</body>
+
+</html>

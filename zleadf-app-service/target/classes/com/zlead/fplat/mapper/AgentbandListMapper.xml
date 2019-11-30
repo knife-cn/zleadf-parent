@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlead.fplat.dao.AgentbandListMapper" >
+  <resultMap id="BaseResultMap" type="com.zlead.fplat.entity.AgentbandList" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="agent_id" property="agentId" jdbcType="INTEGER" />
+    <result column="fact_id" property="factId" jdbcType="INTEGER" />
+    <result column="band_id" property="bandId" jdbcType="INTEGER" />
+    <result column="band_name" property="bandName" jdbcType="VARCHAR" />
+    <result column="list_id" property="listId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    id, agent_id, fact_id, band_id, band_name, list_id
+  </sql>
+   
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select
+    <include refid="Base_Column_List" />
+    from oa_agent_band_lists
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="queryAgencyList" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    select
+    <include refid="Base_Column_List" />
+    from oa_agent_band_lists
+    where 1=1
+    <if test="agentId != null and agentId != 0">
+      and agent_id = #{agentId}
+    </if>
+    <if test="factId != null and factId != 0">
+      and fact_id = #{factId}
+    </if>
+    <if test="listId != null and listId != 0">
+      and list_id = #{listId}
+    </if>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    delete from oa_agent_band_lists
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlead.fplat.entity.AgentbandList" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into oa_agent_band_lists (id, agent_id, fact_id, 
+      band_id, band_name, list_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{agentId,jdbcType=INTEGER}, #{factId,jdbcType=INTEGER}, 
+      #{bandId,jdbcType=INTEGER}, #{bandName,jdbcType=VARCHAR}, #{listId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zlead.fplat.entity.AgentbandList" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    insert into oa_agent_band_lists
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="agentId != null" >
+        agent_id,
+      </if>
+      <if test="factId != null" >
+        fact_id,
+      </if>
+      <if test="bandId != null" >
+        band_id,
+      </if>
+      <if test="bandName != null" >
+        band_name,
+      </if>
+      <if test="listId != null" >
+        list_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="agentId != null" >
+        #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="factId != null" >
+        #{factId,jdbcType=INTEGER},
+      </if>
+      <if test="bandId != null" >
+        #{bandId,jdbcType=INTEGER},
+      </if>
+      <if test="bandName != null" >
+        #{bandName,jdbcType=VARCHAR},
+      </if>
+      <if test="listId != null" >
+        #{listId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zlead.fplat.entity.AgentbandList" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update oa_agent_band_lists
+    <set >
+      <if test="agentId != null" >
+        agent_id = #{agentId,jdbcType=INTEGER},
+      </if>
+      <if test="factId != null" >
+        fact_id = #{factId,jdbcType=INTEGER},
+      </if>
+      <if test="bandId != null" >
+        band_id = #{bandId,jdbcType=INTEGER},
+      </if>
+      <if test="bandName != null" >
+        band_name = #{bandName,jdbcType=VARCHAR},
+      </if>
+      <if test="listId != null" >
+        list_id = #{listId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zlead.fplat.entity.AgentbandList" >
+    <!--
+          common class -  @ET
+      model 属性定义, do not modify.
+    -->
+    update oa_agent_band_lists
+    set agent_id = #{agentId,jdbcType=INTEGER},
+      fact_id = #{factId,jdbcType=INTEGER},
+      band_id = #{bandId,jdbcType=INTEGER},
+      band_name = #{bandName,jdbcType=VARCHAR},
+      list_id = #{listId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+     <select id="selectByAgentFacIds" parameterType="List" resultMap="BaseResultMap">
+        select * from oa_agent_band_lists WHERE band_id
+       IN(SELECT DISTINCT a.brand_id FROM t_goods a, t_goods_level gd WHERE a.id = gd.goods_id AND gd.level_id IN(SELECT level_id FROM t_agent_fac WHERE agent_id = #{agentId})
+       AND a.is_market = 1
+       AND a.shop_id IN(SELECT shop_id FROM oa_factory_info WHERE 1=1
+       <if test="facIds != null and facIds.size>0" >
+       AND fact_id IN
+            <foreach collection="facIds" item="facId" open="(" close=")" separator=",">
+              #{facId}
+            </foreach>
+       </if>
+       AND fact_state = 1))
+         and agent_id = #{agentId}
+        <if test="facIds != null and facIds.size>0" >
+        and fact_id IN
+        <foreach collection="facIds" item="facId" open="(" close=")" separator=",">
+            #{facId}
+        </foreach>
+        </if>
+    </select>
+</mapper>

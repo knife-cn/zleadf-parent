@@ -1,0 +1,231 @@
+@import url("function.less");
+@import url("common.less");
+header.mui-bar-nav {
+    height: 42/@r;
+    padding-top: 5/@r;
+    box-sizing: border-box;
+    .backBtn {
+        position: absolute;
+        top: 0;
+        left: 12/375*100%;
+        height: 100%;
+        text-align: center;
+        width: 18/375*100%;
+        line-height: 42/@r;
+        span {
+            display: inline-block;
+            width: 12/@r;
+            height: 18/@r;
+            vertical-align: middle;
+            margin-top: -2px;
+            background: url('../../images/customer_icon.png') no-repeat -380/2/@r 0;
+            background-size: 454/2/@r auto;
+        }
+    }
+    .inputPart {
+        position: relative;
+        width: 283/375*100%;
+        margin: 0 auto;
+        input {
+            width: 100%;
+            height: 32/@r;
+            font-size: 11/@r;
+            padding: 8/@r 8/@r 8/@r 34/@r;
+            border-radius: 32/@r;
+            background-color: #F1F6FE;
+            margin: 0;
+            border: none;
+        }
+        span {
+            position: absolute;
+            top: 50%;
+            left: 15/283*100%;
+            width: 14/@r;
+            height: 14/@r;
+            background: url('../../images/customer_icon.png') no-repeat -380/2/@r -50/2/@r;
+            background-size: 454/2/@r auto;
+            .transform(translateY(-50%));
+        }
+    }
+    .classifyBtn {
+        position: absolute;
+        top: 0;
+        right: 17/375*100%;
+        height: 100%;
+        width: 20/375*100%;
+        text-align: center;
+        div {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 100%;
+            text-align: center;
+            .transform(translateY(-50%));
+            span {
+                display: inline-block;
+                width: 15/@r;
+                height: 15/@r;
+                vertical-align: middle;
+                margin-top: -2px;
+                background: url('../../images/customer_icon.png') no-repeat -424/2/@r 0;
+                background-size: 454/2/@r auto;
+            }
+            p {
+                font-size: 10/@r;
+                line-height: 16/@r;
+                color: #BEC5CF;
+            }
+        }
+    }
+}
+
+.goodsList {
+    li {
+        float: left; 
+        width: 372/2/375*100%;
+        margin-top: 3/375*100%;
+        &:nth-of-type(2n+1) {
+            margin-right: 3/375*100%;
+        }
+        a {
+            display: block;
+            background-color: #fff; // margin-right: 1.5%;
+        }
+        .imgDv {
+            line-height: 190/@r;
+            text-align: center;
+            img {
+                vertical-align: middle;
+                max-width: 100%;
+                max-height: 100%;
+            }
+        }
+        h4 {
+            font-size: 13/@r;
+            line-height: 18/@r;
+            color: #131314;
+            .multi-overflow(2);
+            padding: 0 10/186*100%;
+            margin-bottom: 19/186*100%;
+        }
+        .priceDv {
+            font-size: 18/@r;
+            line-height: 25px;
+            padding: 0 10/186*100% 10/186*100%;
+            color: #2F80F6;
+            .rmb {
+                font-size: 12/@r;
+                margin-right: 2/@r;
+            }
+            .storeNum {
+                float: right;
+                font-size: 10/@r;
+                color: #AFB8BB;
+                line-height: 25px;
+            }
+        }
+    }
+}
+
+#asideNav {
+    width: 100%;
+    background-color: rgba(0, 0, 0, .4);
+    #offCanvasSideScroll {
+        // position: relative;
+        width: 335/375*100%;
+        margin-left: 40/375*100%;
+        padding-top: 12/335*100%;
+    }
+    .mui-scroll {
+        width: 100%;
+        .mui-table-view {
+            &::after,
+            &::before {
+                display: none;
+            }
+            &>li {
+                font-size: 16/@r;
+                &>a {
+                    color: #202020;
+                    font-weight: 700;
+                    padding: 15/@r;
+                    &:not(.mui-btn).mui-active {
+                        background-color: #fff;
+                    }
+                }
+                &.mui-active {
+                    background-color: #fff;
+                    margin-top: 0;
+                }
+                .mui-collapse-content {
+                    ul {
+                        padding: 0 5/335*100%;
+                        li {
+                            float: left;
+                            width: 98.6/325*100%;
+                            margin: 0 5/335*100% 10/335*100%;
+                            a {
+                                display: block;
+                                width: 100%;
+                                color: #131314;
+                                line-height: 44px;
+                                text-align: center;
+                                border-radius: 4/@r;
+                                border: 1px solid transparent;
+                            }
+                            &.active {
+                                a {
+                                    color:#0076FF;
+                                    border: 1px solid #0076FF;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+    .confirmWrap {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+    }
+    .confirmBtn {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        z-index: 2;
+        font-size: 0;
+        background: #fff;
+        line-height: 50/@r;
+        a {
+            display: inline-block;
+            width: 50%;
+            font-size: 16/@r;
+            color: #3C3C3C;
+            text-align: center;
+            line-height: 50/@r;
+            &:last-child {
+                background-color: #0076FF;
+                color: #fff;
+            }
+        }
+    }
+}
+
+.chooseUl {
+    li {
+        width: 100%;
+        background: #fff;
+        height: 100px;
+    }
+}
+
+.mui-bar-nav~.mui-content {
+    padding-top: 42/@r;
+}

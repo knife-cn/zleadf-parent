@@ -1,0 +1,3185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zlead.dao.GoodsDao">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.zlead.entity.GoodsEntity" id="goodsMap">
+        <result property="id" column="id"/>
+        <result property="prodId" column="prod_id"/>
+        <result property="prodType" column="prod_type"/>
+        <result property="catagoryId" column="catagory_id"/>
+        <result property="brandId" column="brand_id"/>
+        <result property="listId" column="list_id"/>
+        <result property="modelId" column="model_id"/>
+        <result property="fullName" column="full_name"/>
+        <result property="channel" column="channel"/>
+        <result property="spec" column="spec"/>
+        <result property="supplyPrice" column="supply_price"/>
+        <result property="agentPrice" column="agent_price"/>
+        <result property="marketPrice" column="market_price"/>
+        <result property="showPrice" column="show_price"/>
+        <result property="ifShowPrice" column="if_show_price"/>
+        <result property="ifShowStock" column="if_show_stock"/>
+        <result property="marketConfig" column="market_config"/>
+        <result property="terminal" column="terminal"/>
+        <result property="discount" column="discount"/>
+        <result property="pointPrice" column="point_price"/>
+        <result property="point" column="point"/>
+        <result property="price" column="price"/>
+        <result property="stock" column="stock"/>
+        <result property="freezeStock" column="freeze_stock"/>
+        <result property="salesNum" column="sales_num"/>
+        <result property="clickNum" column="click_num"/>
+        <result property="isMarket" column="is_market"/>
+        <result property="firstImg" column="first_img"/>
+        <result property="imgs" column="imgs"/>
+        <result property="tags" column="tags"/>
+        <result property="solrName" column="solr_name"/>
+        <result property="isAudit" column="is_audit"/>
+        <result property="auditUserId" column="audit_user_id"/>
+        <result property="auditTime" column="audit_time"/>
+        <result property="isHome" column="is_home"/>
+        <result property="shopId" column="shop_id"/>
+        <result property="supplierShopId" column="supplier_shop_id"/>
+        <result property="integral" column="integral"/>
+        <result property="version" column="version"/>
+        <result property="updateDate" column="update_date"/>
+        <result property="remark" column="remark"/>
+        <result property="intro" column="intro"/>
+        <result property="stockType" column="stock_type"/>
+        <result property="prodAttrId" column="prod_attr_id"/>
+        <result property="createDate" column="create_date"/>
+        <result property="isMarket" column="is_market"/>
+    </resultMap>
+
+    <!-- app 应用 -->
+    <resultMap type="com.zlead.entity.vo.GoodsListVo" id="goodsListMap">
+        <result property="goodsId" column="id"/>
+        <result property="fullName" column="full_name"/>
+        <result property="firstImg" column="first_img"/>
+        <result property="marketPrice" column="show_price"/>
+        <result property="stock" column="im_qty"/>
+    </resultMap>
+
+    <!-- app 应用 -->
+    <resultMap type="com.zlead.entity.vo.GoodsDetailVo" id="goodsDetailVo">
+        <result property="goodsId" column="id"/>
+        <result property="prodId" column="prod_id"/>
+        <result property="imgs" column="imgs"/>
+        <result property="fullName" column="fullName"/>
+        <result property="showPrice" column="show_price"/>
+        <result property="brandName" column="band_name"/>
+        <result property="stock" column="im_qty"/>
+        <result property="intro" column="intro"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+
+    <insert id="insert" parameterType="com.zlead.entity.GoodsEntity" useGeneratedKeys="true" keyProperty="id"
+            keyColumn="id">
+        INSERT INTO t_goods (
+        id,
+        prod_id,
+        prod_type,
+        catagory_id,
+        brand_id,
+        list_id,
+        model_id,
+        full_name,
+        channel,
+        spec,
+        supply_price,
+        agent_price,
+        market_price,
+        discount,
+        point_price,
+        point,
+        price,
+        stock,
+        freeze_stock,
+        sales_num,
+        click_num,
+        is_market,
+        first_img,
+        imgs,
+        tags,
+        solr_name,
+        is_audit,
+        audit_user_id,
+        audit_time,
+        is_home,
+        shop_id,
+        supplier_shop_id,
+        integral,
+        version,
+        update_date,
+        remark,
+        create_date,
+        intro
+        ) VALUES (
+        #{id},
+        #{prodId},
+        #{prodType},
+        #{catagoryId},
+        #{brandId},
+        #{listId},
+        #{modelId},
+        #{fullName},
+        #{channel},
+        #{spec},
+        #{supplyPrice},
+        #{agentPrice},
+        #{marketPrice},
+        #{discount},
+        #{pointPrice},
+        #{point},
+        #{price},
+        #{stock},
+        #{freezeStock},
+        #{salesNum},
+        #{clickNum},
+        #{isMarket},
+        #{firstImg},
+        #{imgs},
+        #{tags},
+        #{solrName},
+        #{isAudit},
+        #{auditUserId},
+        #{auditTime},
+        #{isHome},
+        #{shopId},
+        #{supplierShopId},
+        #{integral},
+        #{version},
+        #{updateDate},
+        #{remark},
+        #{createDate},
+        #{intro}
+        )
+    </insert>
+
+    <insert id="insert2" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_goods (
+        id,
+        prod_id,
+        prod_type,
+        catagory_id,
+        brand_id,
+        list_id,
+        model_id,
+        full_name,
+        channel,
+        spec,
+        supply_price,
+        agent_price,
+        market_price,
+        discount,
+        point_price,
+        point,
+        price,
+        stock,
+        freeze_stock,
+        sales_num,
+        click_num,
+        is_market,
+        first_img,
+        imgs,
+        tags,
+        solr_name,
+        is_audit,
+        audit_user_id,
+        audit_time,
+        is_home,
+        shop_id,
+        supplier_shop_id,
+        integral,
+        version,
+        update_date,
+        remark,
+        create_date,
+        intro
+        ) VALUES (
+        #{id},
+        #{prodId},
+        #{prodType},
+        #{catagoryId},
+        #{brandId},
+        #{listId},
+        #{modelId},
+        #{fullName},
+        #{channel},
+        #{spec},
+        #{supplyPrice},
+        #{agentPrice},
+        #{marketPrice},
+        #{discount},
+        #{pointPrice},
+        #{point},
+        #{price},
+        #{stock},
+        #{freezeStock},
+        #{salesNum},
+        #{clickNum},
+        #{isMarket},
+        #{firstImg},
+        #{imgs},
+        #{tags},
+        #{solrName},
+        #{isAudit},
+        #{auditUserId},
+        #{auditTime},
+        #{isHome},
+        #{shopId},
+        #{supplierShopId},
+        #{integral},
+        #{version},
+        #{updateDate},
+        #{remark},
+        #{createDate},
+        #{intro}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE t_goods AS T SET
+        T.id = #{id} ,
+        T.prod_id = #{prodId} ,
+        T.prod_type = #{prodType} ,
+        T.catagory_id = #{catagoryId} ,
+        T.brand_id = #{brandId} ,
+        T.list_id = #{listId} ,
+        T.model_id = #{modelId} ,
+        T.full_name = #{fullName} ,
+        T.channel = #{channel} ,
+        T.spec = #{spec} ,
+        T.supply_price = #{supplyPrice} ,
+        T.agent_price = #{agentPrice} ,
+        T.market_price = #{marketPrice} ,
+        T.discount = #{discount} ,
+        T.point_price = #{pointPrice} ,
+        T.point = #{point} ,
+        T.price = #{price} ,
+        T.stock = #{stock} ,
+        T.freeze_stock = #{freezeStock} ,
+        T.sales_num = #{salesNum} ,
+        T.click_num = #{clickNum} ,
+        T.is_market = #{isMarket} ,
+        T.first_img = #{firstImg} ,
+        T.imgs = #{imgs} ,
+        T.tags = #{tags} ,
+        T.solr_name = #{solrName} ,
+        T.is_audit = #{isAudit} ,
+        T.audit_user_id = #{auditUserId} ,
+        T.audit_time = #{auditTime} ,
+        T.is_home = #{isHome} ,
+        T.shop_id = #{shopId} ,
+        T.supplier_shop_id = #{supplierShopId} ,
+        T.integral = #{integral} ,
+        T.version = #{version} ,
+        T.update_date = #{updateDate} ,
+        T.remark = #{remark},
+        T.create_date = #{createDate},
+        T.intro = #{intro}
+        WHERE T.ID = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM t_goods WHERE ID = #{id}
+    </delete>
+
+    <delete id="deleteItemState">
+        delete from oa_item_state where item_id = #{goodsId}
+    </delete>
+
+    <select id="findPage" parameterType="map" resultMap="goodsMap">
+        SELECT * FROM t_goods AS T where 1=1
+        <if test="@Ognl@isNotEmpty(isMarketable)">AND T.is_market = #{isMarketable}</if>
+        <if test="@Ognl@isNotEmpty(isAudit)">AND T.is_audit = #{isAudit}</if>
+        <if test="@Ognl@isNotEmpty(isHome)">AND T.is_home = #{isAudit}</if>
+        <if test="@Ognl@isNotEmpty(prodType)">AND T.prod_type = #{prodType}</if>
+        <if test="@Ognl@isNotEmpty(supplierShopId)">AND T.supplier_shop_id = #{supplierShopId}</if>
+        <if test="@Ognl@isNotEmpty(shopId)">AND T.shop_id = #{shopId}</if>
+    </select>
+
+    <select id="findById" resultMap="goodsMap" useCache="false">
+        SELECT * FROM t_goods AS T WHERE T.ID = #{id}
+    </select>
+
+    <!-- 查询商品详情 -->
+    <select id="queryDetailById" parameterType="java.lang.Integer" resultType="com.zlead.entity.dto.GoodsDetailDto">
+        SELECT
+        tg.id AS 'id',
+        tg.full_name AS 'goodsName',
+        tg.prod_type AS 'prodType',
+        tg.imgs AS 'imgs',
+        tg.first_img AS 'firstImag',
+        tg.stock AS 'stock',
+        tg.spec AS 'spec',
+        tg.show_price AS 'showPrice',
+        tg.price AS 'price',
+        tg.agent_price AS 'agentPrice',
+        tg.market_price AS 'marketPrice',
+        tg.if_show_price as 'ifShowPrice',
+        tg.if_show_stock as 'ifShowStock',
+        tg.market_config as 'marketConfig',
+        tg.supply_price as 'supplyPrice',
+        tg.intro AS 'intro',
+        tg.prod_attr_id AS 'attrId',
+        tg.prod_id AS 'prodId',
+        tg.price AS 'price',
+        tg.shop_id as 'shopId',
+        tg.stock_type as 'stockType',
+        tg.is_market as 'isMarket',
+        cb.band_name as 'bandName',
+        pl.list_name as 'listName',
+        pm.model_name as 'modelName',
+        tp.packagespec as 'packagespec'
+        FROM
+        t_goods tg
+        LEFT JOIN t_product tp on tg.prod_id = tp.id
+        LEFT JOIN crm_cust_band cb on tg.brand_id = cb.band_id
+        LEFT JOIN crm_prd_list pl on pl.list_id = tg.list_id
+        LEFT JOIN crm_prd_model pm on pm.model_id = tg.model_id
+        where tg.id = #{id}
+
+    </select>
+
+    <select id="findByPageByCollect" parameterType="map" resultType="com.zlead.entity.dto.GoodsPageDto">
+SELECT * FROM (
+        SELECT
+    tc.create_time ,
+	go.id,
+	go.full_name AS goodsName,
+	go.show_price AS price,
+	go.first_img AS image,
+	go.list_id as listId,
+	go.prod_type as prodType,
+	(
+		CASE
+		WHEN lists.fact_id
+		AND go.is_market = 1 THEN
+			1
+		ELSE
+			0
+		END
+	)  isMarket,lists.fact_id
+    FROM
+        t_collect tc
+    INNER JOIN t_goods go ON tc.goods_id = go.id
+    LEFT JOIN oa_agent_band_lists lists ON go.brand_id = lists.band_id AND go.list_id = lists.list_id AND lists.agent_id = #{agentId}
+    LEFT JOIN t_agent_fac fac ON fac.factory_id = lists.fact_id AND fac.agent_id = #{agentId} AND fac.`status` = 1
+    WHERE
+        1 = 1
+    AND go.terminal IN (2, 3)
+    AND tc.agent_id = #{agentId}) item
+    ORDER BY
+	item.isMarket DESC,
+	item.create_time DESC
+    </select>
+
+    <select id="getByGoodsId" resultType="java.util.Map">
+        select t.goods_id as 'goodsId'
+        from (select a.prod_id as pid ,
+        a.goods_id,
+        <foreach collection="list" separator="," item="item">
+            (select b.attr_value
+            from t_goods_attr_val b
+            where b.attr_name = #{item.key}
+            and b.goods_id = a.goods_id
+            and b.prod_id = a.prod_id limit 0 , 1) as ${item.key}
+        </foreach>
+        from t_goods_attr_val a
+        group by a.prod_id,a.goods_id) t
+        where
+        pid = ${prdId}
+        <foreach collection="list" open="and" separator="and" item="item">
+            ${item.key} = #{item.value}
+        </foreach>
+        limit 0,1
+    </select>
+
+    <select id="findByProdTypePage" resultType="com.zlead.entity.dto.GoodsPageDto">
+        select
+        id,full_name as 'goodsName',price, first_img as 'image',is_market isMarket
+        from t_goods
+        where prod_type = #{prodType}
+    </select>
+
+
+    <select id="findByPordId" resultMap="goodsMap" useCache="false">
+        SELECT * FROM t_goods AS T WHERE T.prod_id = #{prodId}
+    </select>
+
+    <!-- 查询首页推荐商品（查询最新的6个） -->
+    <select id="findHomeGoods" resultMap="goodsMap">
+        select * from t_goods T
+        where 1=1 and T.is_audit='1' and T.is_market ='1'
+        <if test="prodType != null">
+            AND T.prod_type = #{prodType}
+        </if>
+        <if test="supplierShopId != null">
+            AND T.supplier_shop_id = #{supplierShopId}
+        </if>
+        <if test="shopId != null">
+            AND T.shop_id = #{shopId}
+        </if>
+        <if test="channel != null">
+            AND T.channel = #{channel}
+        </if>
+        order by T.audit_time desc LIMIT #{showNum}
+    </select>
+
+    <update id="freezeStock">
+        update t_goods SET version = #{version} + 1 , stock = stock - #{buyNum},freeze_stock = freeze_stock + #{buyNum}
+        where id =#{id} and version =#{version}
+    </update>
+
+    <update id="addSaleNum">
+        update t_goods SET version = #{version} + 1 , stock = stock - #{buyNum},sales_num = sales_num + #{buyNum} where
+        id =#{id} and version =#{version}
+    </update>
+
+    <update id="minusStock">
+        update t_goods SET stock = stock - #{buyNum} where id =#{id}
+    </update>
+
+
+    <select id="queryStock" resultType="java.lang.Integer">
+        select stock from t_goods where id =#{id}
+    </select>
+
+
+    <select id="queryCountByTerm" resultType="int">
+        select count(*) from t_goods a
+        where a.is_market=1
+        <if test="bids!=null and bids.size>0">
+            and a.brand_id in
+            <foreach collection="bids" item="bid" separator="," open="(" close=")">
+                #{bid}
+            </foreach>
+        </if>
+        <if test="lids!=null and lids.size>0">
+            and a.list_id in
+            <foreach collection="lids" item="lid" separator="," open="(" close=")">
+                #{lid}
+            </foreach>
+        </if>
+        <if test="mids!=null and mids.size>0">
+            and a.model_id in
+            <foreach collection="mids" item="mid" separator="," open="(" close=")">
+                #{mid}
+            </foreach>
+        </if>
+        <if test="cids!=null and cids.size>0">
+            and a.id in (
+            select b.goods_id from t_goods_cat b
+            where b.status=1
+            and b.cat_id in
+            <foreach collection="cids" item="cid" separator="," open="(" close=")">
+                #{cid}
+            </foreach>
+            )
+        </if>
+        <if test="key!=null and key !=''">
+            <bind name="pattern" value="'%' + key + '%'"/>
+            and a.full_name like #{pattern}
+        </if>
+    </select>
+
+    <select id="queryListByTerm1" resultType="java.util.Map">
+        select a.id,a.prod_id,a.prod_type,a.brand_id,a.list_id,a.model_id,a.full_name,a.show_price,a.first_img from
+        t_goods a
+        where a.is_market=1
+        <if test="bids!=null and bids.size>0">
+            and a.brand_id in
+            <foreach collection="bids" item="bid" separator="," open="(" close=")">
+                #{bid}
+            </foreach>
+        </if>
+        <if test="lids!=null and lids.size>0">
+            and a.list_id in
+            <foreach collection="lids" item="lid" separator="," open="(" close=")">
+                #{lid}
+            </foreach>
+        </if>
+        <if test="mids!=null and mids.size>0">
+            and a.model_id in
+            <foreach collection="mids" item="mid" separator="," open="(" close=")">
+                #{mid}
+            </foreach>
+        </if>
+        <if test="cids!=null and cids.size>0">
+            and a.id in (
+            select b.goods_id from t_goods_cat b
+            where b.status=1
+            and b.cat_id in
+            <foreach collection="cids" item="cid" separator="," open="(" close=")">
+                #{cid}
+            </foreach>
+            )
+        </if>
+        <if test="key!=null and key !=''">
+            <bind name="pattern" value="'%' + key + '%'"/>
+            and a.full_name like #{pattern}
+        </if>
+        order by a.update_date desc limit #{start},#{end};
+    </select>
+
+    <select id="queryAllListByTerm" resultType="java.util.Map">
+        select m.brand_id,m.list_id,m.model_id,e.cat_ids from (select
+        a.id,a.prod_id,a.prod_type,a.brand_id,a.list_id,a.model_id,a.full_name,a.show_price,a.first_img,a.update_date
+        from t_goods a
+        where a.is_market=1 and a.terminal in (2,3) and a.id in (select goods_id from t_goods_level where level_id in
+        (select level_id from t_agent_fac where agent_id=#{agentId} and `status`=1))) m
+        right join (
+        select band_id from crm_cust_band where band_state=1 and band_id in (
+        select band_id from oa_agent_band where agent_id=#{agentId} and fact_id in (select factory_id from
+        t_agent_fac where agent_id=#{agentId} and status=1
+        <if test="factoryId!=null and factoryId!=''">
+            and factory_id=#{factoryId}
+        </if>
+        ))) b on m.brand_id=b.band_id
+        right join (
+        select list_id from crm_prd_list where list_state=1 and list_id in (
+        select list_id from oa_agent_band_lists where agent_id=#{agentId} and band_id in (select band_id
+        from oa_agent_band where agent_id=#{agentId} and fact_id in (select factory_id from t_agent_fac where
+        agent_id=#{agentId} and status=1
+        <if test="factoryId!=null and factoryId!=''">
+            and factory_id=#{factoryId}
+        </if>
+        )))) c on c.list_id=m.list_id
+        right join (
+        select model_id from crm_prd_model where model_state=1 and model_id in (
+        select model_id from crm_prd_model where list_id in (select list_id from oa_agent_band_lists where
+        agent_id=#{agentId} and band_id in (select band_id from oa_agent_band where agent_id=#{agentId} and fact_id in
+        (select factory_id from t_agent_fac where agent_id=#{agentId} and status=1
+        <if test="factoryId!=null and factoryId!=''">
+            and factory_id=#{factoryId}
+        </if>
+        ))))) d on d.model_id=m.model_id
+        left join (
+        select gc.goods_id,group_concat(gc.cat_id) cat_ids from t_goods_cat gc
+        where
+        gc.cat_id in (
+        select cat_id from crm_prd_cat where cat_state=1 and cat_id in (
+        select cat_id from crm_prd_list_cats where list_id in (select list_id from oa_agent_band_lists where
+        agent_id=#{agentId} and band_id in (select band_id from oa_agent_band where agent_id=#{agentId} and fact_id in
+        (select factory_id from t_agent_fac where agent_id=#{agentId} and status=1
+        <if test="factoryId!=null and factoryId!=''">
+            and factory_id=#{factoryId}
+        </if>
+        )))))
+        <if test="cids!=null and cids.size>0">
+            and gc.cat_id in
+            <foreach collection="cids" item="cid" separator="," open="(" close=")">
+                #{cid}
+            </foreach>
+        </if>
+        group by gc.goods_id
+        ) e on e.goods_id=m.id
+        <where>
+            <if test="key!=null and key !=''">
+                <bind name="pattern" value="'%' + key + '%'"/>
+                and m.full_name like #{pattern}
+            </if>
+            <if test="bids!=null and bids.size>0">
+                and m.brand_id in
+                <foreach collection="bids" item="bid" separator="," open="(" close=")">
+                    #{bid}
+                </foreach>
+            </if>
+            <if test="lids!=null and lids.size>0">
+                and m.list_id in
+                <foreach collection="lids" item="lid" separator="," open="(" close=")">
+                    #{lid}
+                </foreach>
+            </if>
+            <if test="mids!=null and mids.size>0">
+                and m.model_id in
+                <foreach collection="mids" item="mid" separator="," open="(" close=")">
+                    #{mid}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+    <select id="queryAllListByTermAPP" resultType="java.util.Map">
+        select m.brand_id,m.list_id,m.model_id,e.cat_ids from (select
+        a.id,a.prod_id,a.prod_type,a.brand_id,a.list_id,a.model_id,a.full_name,a.show_price,a.first_img,a.update_date
+        from t_goods a
+        where a.is_market=1 and a.id in (select goods_id from t_goods_level where level_id in (select level_id from
+        t_agent_fac where `status`=1))) m
+        right join (select band_id from oa_agent_band where fact_id in (select factory_id from
+        t_agent_fac where status=1
+        <if test="factoryId!=null and factoryId!=''">
+            and factory_id=#{factoryId}
+        </if>
+        )) b on m.brand_id=b.band_id
+        right join (select list_id from oa_agent_band_lists where band_id in (select band_id
+        from oa_agent_band where fact_id in (select factory_id from t_agent_fac where
+        status=1
+        <if test="factoryId!=null and factoryId!=''">
+            and factory_id=#{factoryId}
+        </if>
+        ))) c on c.list_id=m.list_id
+        right join (select model_id from crm_prd_model where list_id in (select list_id from oa_agent_band_lists where
+        band_id in (select band_id from oa_agent_band where fact_id in
+        (select factory_id from t_agent_fac where status=1
+        <if test="factoryId!=null and factoryId!=''">
+            and factory_id=#{factoryId}
+        </if>
+        )))) d on d.model_id=m.model_id
+        inner join (
+        select gc.goods_id,group_concat(gc.cat_id) cat_ids from t_goods_cat gc
+        where
+        gc.cat_id in (
+        select cat_id from crm_prd_list_cats where list_id in (select list_id from oa_agent_band_lists where
+        band_id in (select band_id from oa_agent_band where fact_id in
+        (select factory_id from t_agent_fac where status=1
+        <if test="factoryId!=null and factoryId!=''">
+            and factory_id=#{factoryId}
+        </if>
+        )))
+        )
+        <if test="cids!=null and cids.size>0">
+            and gc.cat_id in
+            <foreach collection="cids" item="cid" separator="," open="(" close=")">
+                #{cid}
+            </foreach>
+        </if>
+        group by gc.goods_id
+        ) e on e.goods_id=m.id
+        <where>
+            <if test="key!=null and key !=''">
+                <bind name="pattern" value="'%' + key + '%'"/>
+                and m.full_name like #{pattern}
+            </if>
+            <if test="bids!=null and bids.size>0">
+                and m.brand_id in
+                <foreach collection="bids" item="bid" separator="," open="(" close=")">
+                    #{bid}
+                </foreach>
+            </if>
+            <if test="lids!=null and lids.size>0">
+                and m.list_id in
+                <foreach collection="lids" item="lid" separator="," open="(" close=")">
+                    #{lid}
+                </foreach>
+            </if>
+            <if test="mids!=null and mids.size>0">
+                and m.model_id in
+                <foreach collection="mids" item="mid" separator="," open="(" close=")">
+                    #{mid}
+                </foreach>
+            </if>
+        </where>
+    </select>
+
+    <select id="queryListByTerm" resultType="java.util.Map">
+        select m.*,e.cat_ids from (select
+        a.id,a.prod_id,a.prod_type,a.brand_id,a.list_id,a.model_id,
+        (select concat(a.full_name,group_concat(attr_value)) from t_goods_attr_val where goods_id=a.id) full_name,
+        a.show_price,a.first_img,a.update_date,a.if_show_price
+        from t_goods a
+        where a.is_market=1 and a.terminal in (2,3) and a.id in (select goods_id from t_goods_level where level_id in
+        (select level_id from t_agent_fac where agent_id=#{agentId} and `status`=1))) m
+        right join (
+        select band_id from crm_cust_band where band_state=1 and band_id in (
+        select band_id from oa_agent_band where agent_id=#{agentId} and fact_id in (select factory_id from
+        t_agent_fac where agent_id=#{agentId} and status=1
+        <if test="factoryId!=null and factoryId!=''">
+            and factory_id=#{factoryId}
+        </if>
+        ))) b on m.brand_id=b.band_id
+        right join (
+        select list_id from crm_prd_list where list_state=1 and list_id in (
+        select list_id from oa_agent_band_lists where agent_id=#{agentId} and band_id in (select band_id
+        from oa_agent_band where agent_id=#{agentId} and fact_id in (select factory_id from t_agent_fac where
+        agent_id=#{agentId} and status=1
+        <if test="factoryId!=null and factoryId!=''">
+            and factory_id=#{factoryId}
+        </if>
+        )))) c on c.list_id=m.list_id
+        right join (
+        select model_id from crm_prd_model where model_state=1 and model_id in (
+        select model_id from crm_prd_model where list_id in (select list_id from oa_agent_band_lists where
+        agent_id=#{agentId} and band_id in (select band_id from oa_agent_band where agent_id=#{agentId} and fact_id in
+        (select factory_id from t_agent_fac where agent_id=#{agentId} and status=1
+        <if test="factoryId!=null and factoryId!=''">
+            and factory_id=#{factoryId}
+        </if>
+        ))))) d on d.model_id=m.model_id
+        left join (
+        select gc.goods_id,group_concat(gc.cat_id) cat_ids from t_goods_cat gc
+        where
+        gc.cat_id in (
+        select cat_id from crm_prd_cat where cat_state=1 and cat_id in (
+        select cat_id from crm_prd_list_cats where list_id in (select list_id from oa_agent_band_lists where
+        agent_id=#{agentId} and band_id in (select band_id from oa_agent_band where agent_id=#{agentId} and fact_id in
+        (select factory_id from t_agent_fac where agent_id=#{agentId} and status=1
+        <if test="factoryId!=null and factoryId!=''">
+            and factory_id=#{factoryId}
+        </if>
+        )))))
+        <if test="cids!=null and cids.size>0">
+            and gc.cat_id in
+            <foreach collection="cids" item="cid" separator="," open="(" close=")">
+                #{cid}
+            </foreach>
+        </if>
+        group by gc.goods_id
+        ) e on e.goods_id=m.id
+        <where>
+            <if test="key!=null and key !=''">
+                <bind name="pattern" value="'%' + key + '%'"/>
+                and m.full_name like #{pattern}
+            </if>
+            <if test="bids!=null and bids.size>0">
+                and m.brand_id in
+                <foreach collection="bids" item="bid" separator="," open="(" close=")">
+                    #{bid}
+                </foreach>
+            </if>
+            <if test="lids!=null and lids.size>0">
+                and m.list_id in
+                <foreach collection="lids" item="lid" separator="," open="(" close=")">
+                    #{lid}
+                </foreach>
+            </if>
+            <if test="mids!=null and mids.size>0">
+                and m.model_id in
+                <foreach collection="mids" item="mid" separator="," open="(" close=")">
+                    #{mid}
+                </foreach>
+            </if>
+        </where>
+        order by m.update_date desc
+        <if test="start!=null and end!=null">
+            limit #{start},#{end}
+        </if>
+    </select>
+
+    <select id="queryListByTermAPP" resultType="java.util.Map">
+        select m.*,e.cat_ids from (select
+        a.id,a.prod_id,a.prod_type,a.brand_id,a.list_id,a.model_id,a.full_name,a.show_price,a.first_img,a.update_date
+        from t_goods a
+        where a.is_market=1 and a.id in (select goods_id from t_goods_level where level_id in (select level_id from
+        t_agent_fac where `status`=1))) m
+        right join (select band_id from oa_agent_band where fact_id in (select factory_id from
+        t_agent_fac where status=1
+        <if test="factoryId!=null and factoryId!=''">
+            and factory_id=#{factoryId}
+        </if>
+        )) b on m.brand_id=b.band_id
+        right join (select list_id from oa_agent_band_lists where band_id in (select band_id
+        from oa_agent_band where fact_id in (select factory_id from t_agent_fac where
+        status=1
+        <if test="factoryId!=null and factoryId!=''">
+            and factory_id=#{factoryId}
+        </if>
+        ))) c on c.list_id=m.list_id
+        right join (select model_id from crm_prd_model where list_id in (select list_id from oa_agent_band_lists where
+        band_id in (select band_id from oa_agent_band where fact_id in
+        (select factory_id from t_agent_fac where status=1
+        <if test="factoryId!=null and factoryId!=''">
+            and factory_id=#{factoryId}
+        </if>
+        )))) d on d.model_id=m.model_id
+        inner join (
+        select gc.goods_id,group_concat(gc.cat_id) cat_ids from t_goods_cat gc
+        where
+        gc.cat_id in (
+        select cat_id from crm_prd_list_cats where list_id in (select list_id from oa_agent_band_lists where
+        band_id in (select band_id from oa_agent_band where fact_id in
+        (select factory_id from t_agent_fac where status=1
+        <if test="factoryId!=null and factoryId!=''">
+            and factory_id=#{factoryId}
+        </if>
+        )))
+        )
+        <if test="cids!=null and cids.size>0">
+            and gc.cat_id in
+            <foreach collection="cids" item="cid" separator="," open="(" close=")">
+                #{cid}
+            </foreach>
+        </if>
+        group by gc.goods_id
+        ) e on e.goods_id=m.id
+        <where>
+            <if test="key!=null and key !=''">
+                <bind name="pattern" value="'%' + key + '%'"/>
+                and m.full_name like #{pattern}
+            </if>
+            <if test="bids!=null and bids.size>0">
+                and m.brand_id in
+                <foreach collection="bids" item="bid" separator="," open="(" close=")">
+                    #{bid}
+                </foreach>
+            </if>
+            <if test="lids!=null and lids.size>0">
+                and m.list_id in
+                <foreach collection="lids" item="lid" separator="," open="(" close=")">
+                    #{lid}
+                </foreach>
+            </if>
+            <if test="mids!=null and mids.size>0">
+                and m.model_id in
+                <foreach collection="mids" item="mid" separator="," open="(" close=")">
+                    #{mid}
+                </foreach>
+            </if>
+        </where>
+        order by m.update_date desc limit #{start},#{end}
+    </select>
+
+    <select id="queryGoodsListByagentId2" resultMap="goodsMap">
+        SELECT DISTINCT a.* FROM t_goods AS a,oa_agent_band_lists AS b WHERE a.brand_id=b.band_id AND
+        b.agent_id=#{agentId}
+        AND b.list_id IN (SELECT list_id FROM crm_prd_list_cats WHERE cat_id=#{catId}) AND a.is_market=1 AND a.stock>0
+        ORDER BY update_date DESC limit 0 , 10;
+    </select>
+
+    <select id="queryGoodsListByagentId" resultMap="goodsMap">
+        SELECT DISTINCT a.* FROM t_goods AS a,oa_agent_band_lists AS b WHERE a.brand_id=b.band_id AND
+        b.agent_id=#{agentId}
+        AND b.list_id IN (SELECT list_id FROM crm_prd_list_cats WHERE cat_id = #{catId})
+        AND a.is_market=1
+        and a.id in (select goods_id from t_goods_level where level_id in (select level_id from t_agent_fac where
+        agent_id=#{agentId} and `status`=1))
+        ORDER BY update_date DESC limit 0 , 8;
+    </select>
+
+    <select id="querySecGoodsListByagentId" resultMap="goodsMap">
+        select * from t_goods where is_market=1 and id in(select DISTINCT goods_id from t_goods_cat where 1=1
+        <if test="catIds != null and catIds.size > 0">
+            and cat_id in
+            <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+                #{catId}
+            </foreach>
+        </if>
+        )
+        <if test="shopIds != null and shopIds.size > 0">
+            and shop_id in
+            <foreach collection="shopIds" item="shopId" separator="," open="(" close=")">
+                #{shopId}
+            </foreach>
+        </if>
+        and id in (select goods_id from t_goods_level where level_id in (select level_id from t_agent_fac where
+        agent_id=#{agentId} and status=1))
+        and terminal in (2,3)
+        order by update_date desc limit 0 , 10;
+    </select>
+
+
+    <select id="queryGoodsListByagentId3" resultType="java.util.Map">
+        select * from t_goods where is_market=1 and stock>0
+        <if test="agentId != null">
+            and brand_id in(select band_id from oa_agent_band where agent_id=#{agentId} )
+        </if>
+        <if test="catId != null">
+            and list_id in(select list_id from crm_prd_list_cats where cat_id=#{catId})
+        </if>
+        order by update_date desc limit 0,10;
+    </select>
+
+
+    <select id="getGoods" parameterType="com.zlead.fplat.entity.vo.GoodsQueryRequest" resultMap="goodsMap">
+        select DISTINCT (select concat(g.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val where
+        goods_id=g.id) AS full_name,g.* from t_goods g LEFT join t_goods_cat c on g.id=c.goods_id WHERE
+        g.is_market=#{isMarket} and c.cat_id IN
+        <foreach collection="ids" item="list" open="(" close=")" separator=",">
+            #{list}
+        </foreach>
+        <!--<if test="agentId != null and agentId != 0">
+           and g.list_id in (SELECT  list_id FROM t_agent_fac WHERE agent_id = #{agentId} AND STATUS = 1)
+        </if> -->
+        order BY g.show_price ASC
+        limit 0,8
+    </select>
+
+    <select id="getGoodsByCatId" parameterType="java.lang.Integer" resultMap="goodsMap">
+        select DISTINCT (select concat(g.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val where
+        goods_id=g.id) AS full_name,g.* from t_goods g LEFT join t_goods_cat c on g.id=c.goods_id WHERE
+        g.is_market=1 and g.terminal in(2,3) and ( c.cat_id = #{catId} or c.cat_id in(select cat_id from crm_prd_cat
+        where pcat_id=#{catId}))
+        order BY g.show_price ASC
+        limit 0,8
+    </select>
+
+    <select id="getGoodsByCatIdWithAgent" parameterType="java.lang.Integer" resultMap="goodsMap">
+        select DISTINCT g.* from t_goods g, t_goods_cat cat, t_goods_level lv where g.id=cat.goods_id and
+        g.id=lv.goods_id
+        <if test="catId != null and catId != 0">
+            and cat.cat_id in (select cat_id from crm_prd_cat where pcat_id=#{catId} or cat_id=#{catId})
+        </if>
+        <if test="agentId != null and agentId != 0">
+
+            and lv.level_id in(select level_id from t_agent_fac where agent_id=#{agentId} AND STATUS = 1)
+        </if>
+        and g.is_market=1 and g.terminal in(2,3)
+        order BY g.show_price ASC
+        limit 0,8
+    </select>
+    <select id="newGetGoodsByCatIdWithAgent" parameterType="java.lang.Integer" resultMap="goodsMap">
+        select DISTINCT g.first_img as first_img,
+        (select concat(g.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val where
+        goods_id=g.id) AS full_name,g.*
+        from t_goods g, t_goods_cat cat, t_goods_level lv ,oa_agent_band band
+        where g.id=cat.goods_id
+        and g.id=lv.goods_id
+        and band.band_id=g.brand_id and band.agent_id=#{agentId}
+        and cat.cat_id in (select cat_id from crm_prd_cat where 1=1 and pcat_id in
+        <foreach collection="catIds" item="catId" open="(" close=")" separator=",">
+            #{catId}
+        </foreach>
+        or cat_id in
+        <foreach collection="catIds" item="catId" open="(" close=")" separator=",">
+            #{catId}
+        </foreach>
+        )
+        <if test="agentId != null and agentId != 0">
+            and lv.level_id in(select level_id from t_agent_fac where agent_id=#{agentId} AND STATUS = 1
+            <if test="factoryId != null and factoryId != 0">
+                and factory_id = #{factoryId}
+            </if>
+            )
+        </if>
+        and g.is_market=1 and g.terminal in(2,3)
+        order BY g.show_price ASC
+        limit 0,8
+    </select>
+
+    <select id="newTowGetGoodsByCatIdWithAgent" parameterType="java.lang.Integer" resultMap="goodsMap">
+        select DISTINCT g.first_img as first_img,g.shop_id,
+        (select concat(g.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val where
+        goods_id=g.id) AS full_name,g.*
+        from t_goods g, t_goods_cat cat, t_goods_level lv ,oa_agent_band_lists band,oa_item_state ois
+        where g.id=cat.goods_id
+        and g.id=lv.goods_id
+        and band.band_id=g.brand_id AND band.list_id = g.list_id and band.agent_id=#{agentId}
+        and ois.`item_id` = g.`id`
+        and cat.cat_id in (select cat_id from crm_prd_cat where 1=1 and pcat_id in
+        <foreach collection="catIds" item="catId" open="(" close=")" separator=",">
+            #{catId}
+        </foreach>
+        or cat_id in
+        <foreach collection="catIds" item="catId" open="(" close=")" separator=",">
+            #{catId}
+        </foreach>
+        )
+        <if test="agentId != null and agentId != 0">
+            and lv.level_id in(select level_id from t_agent_fac where agent_id=#{agentId} AND STATUS = 1
+            <if test="factoryId != null and factoryId != 0">
+                and factory_id = #{factoryId}
+            </if>
+            )
+        </if>
+        and g.is_market=1 and g.terminal in(2,3)
+        order by ois.`modify_time` DESC
+        limit 0,#{limtCount}
+    </select>
+    <select id="newFacGetGoodsByCatIdWithAgent" parameterType="java.lang.Integer" resultMap="goodsMap">
+        select DISTINCT ds.first_img AS first_img,
+        (select concat(ds.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val
+        where
+        goods_id=ds.id) AS full_name,ds.*
+        from t_goods ds INNER JOIN oa_item_state ois ON ois.item_id = ds.id
+        INNER JOIN t_goods_cat gc ON ds.id = gc.goods_id
+        INNER JOIN t_goods_level gl ON gc.goods_id = gl.goods_id
+        INNER JOIN oa_agent_band_lists lists ON lists.list_id = ds.list_id AND lists.agent_id = #{agentId} AND
+        lists.fact_id = #{factoryId}
+        INNER JOIN oa_agent_band ban ON ban.band_id = ds.brand_id AND ban.agent_id = #{agentId} AND ban.fact_id =
+        #{factoryId}
+        WHERE
+        gl.level_id = (
+        SELECT
+        level_id
+        FROM
+        t_agent_fac
+        WHERE
+        agent_id = #{agentId}
+        AND STATUS = 1
+        AND factory_id = #{factoryId}
+        )
+        AND gc.cat_id IN (
+        SELECT
+        cat_id
+        FROM
+        crm_prd_cat
+        WHERE
+        1 = 1
+        AND pcat_id IN
+        <foreach collection="catIds" item="catId" open="(" close=")" separator=",">
+            #{catId}
+        </foreach>
+        OR cat_id IN
+        <foreach collection="catIds" item="catId" open="(" close=")" separator=",">
+            #{catId}
+        </foreach>
+        )
+        AND ds.is_market = 1
+        AND ds.terminal IN (2, 3)
+        order BY  ois.create_time DESC
+    </select>
+    <!--迭代newFacGetGoodsByCatIdWithAgent方法，2019/5/15隔了半个月左右可以删掉上面的方法-->
+    <select id="newFacGetGoodsByCatIdWithAgent2" parameterType="java.lang.Integer" resultMap="goodsMap">
+        select DISTINCT ds.first_img AS first_img,
+        (select concat(ds.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val
+        where
+        goods_id=ds.id) AS full_name,ds.*
+        from t_goods ds INNER JOIN oa_item_state ois ON ois.item_id = ds.id
+        INNER JOIN t_goods_cat gc ON ds.id = gc.goods_id
+        INNER JOIN t_goods_level gl ON gc.goods_id = gl.goods_id
+        INNER JOIN oa_agent_band_lists lists ON lists.list_id = ds.list_id AND lists.agent_id = #{agentId} AND
+        lists.fact_id = #{factoryId}
+        INNER JOIN oa_agent_band ban ON ban.band_id = ds.brand_id AND ban.agent_id = #{agentId} AND ban.fact_id =
+        #{factoryId}
+        WHERE
+        gl.level_id = (
+        SELECT
+        level_id
+        FROM
+        t_agent_fac
+        WHERE
+        agent_id = #{agentId}
+        AND STATUS = 1
+        AND factory_id = #{factoryId}
+        )
+        AND gc.cat_id IN (
+        SELECT
+        cat_id
+        FROM
+        crm_prd_cat
+        WHERE
+        1 = 1
+        AND cat_id IN
+        <foreach collection="catIds" item="catId" open="(" close=")" separator=",">
+            #{catId}
+        </foreach>
+        )
+        AND ds.is_market = 1
+        AND ds.terminal IN (2, 3)
+        order BY  ois.create_time DESC,ds.id DESC
+    </select>
+    
+     <select id="newFacGetGoodsByCatIdWithAgent_bak" parameterType="java.lang.Integer" resultMap="goodsMap">
+        select ds.first_img AS first_img,
+        (select concat(ds.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val
+        where
+        goods_id=ds.id) AS full_name,ds.*
+        from t_goods ds
+        where ds.id in (
+        SELECT DISTINCT
+        ds.id
+        FROM
+        t_goods ds
+        INNER JOIN t_goods_cat gc ON ds.id = gc.goods_id
+        INNER JOIN t_goods_level gl ON gc.goods_id = gl.goods_id
+        INNER JOIN oa_agent_band_lists lists ON lists.list_id = ds.list_id AND lists.band_id = ds.brand_id AND lists.agent_id = #{agentId} AND
+        lists.fact_id = #{factoryId}
+        WHERE
+        gl.level_id = (
+        SELECT
+        level_id
+        FROM
+        t_agent_fac
+        WHERE
+        agent_id = #{agentId}
+        AND STATUS = 1
+        AND factory_id = #{factoryId}
+        )
+        AND gc.cat_id IN (
+        SELECT
+        cat_id
+        FROM
+        crm_prd_cat
+        WHERE
+        1 = 1
+        AND pcat_id IN
+        <foreach collection="catIds" item="catId" open="(" close=")" separator=",">
+            #{catId}
+        </foreach>
+        OR cat_id IN
+        <foreach collection="catIds" item="catId" open="(" close=")" separator=",">
+            #{catId}
+        </foreach>
+        )
+        AND ds.is_market = 1
+        AND ds.terminal IN (2, 3)
+        )
+        AND EXISTS (SELECT id FROM oa_agent_band_lists WHERE agent_id = #{agentId} AND fact_id = #{factoryId} AND band_id = ds.brand_id AND list_id = ds.list_id)
+        order BY ois.create_time DESC
+    </select>
+
+    <select id="getGoodsByCatIds" parameterType="java.lang.Integer" resultMap="goodsMap">
+        select DISTINCT g.* from t_goods g LEFT join t_goods_cat c on g.id=c.goods_id WHERE
+        g.is_market=1 and c.cat_id IN
+        <foreach collection="catIds" item="list" open="(" close=")" separator=",">
+            #{list}
+        </foreach>
+        AND terminal in(2,3)
+        order BY g.show_price ASC
+        limit 0,8
+    </select>
+
+    <select id="Hgoods" resultMap="goodsMap">
+        SELECT DISTINCT c.* FROM oa_factory_info as a
+        LEFT JOIN t_shop AS b ON a.shop_id= b.id
+        LEFT JOIN t_goods AS c ON b.id=c.shop_id
+        where c.is_market =1
+    </select>
+
+    <select id="findShopStock" resultType="java.lang.Integer">
+        SELECT SUM(a.stock) FROM t_goods as a where a.shop_id=#{shopId}
+    </select>
+
+    <select id="findShopGoodsTotalPrice" resultType="java.math.BigDecimal">
+        SELECT SUM(a.show_price) FROM t_goods as a where a.shop_id=#{shopId}
+    </select>
+
+    <select id="findShopGoodsInfo" resultMap="goodsMap">
+        SELECT a.* FROM t_goods as a where a.shop_id=#{shopId}
+    </select>
+
+    <select id="findGoodsDetail" resultMap="goodsMap">
+        SELECT a.* FROM t_goods as a where a.shop_id=#{shopId} and a.id=#{goodsId}
+    </select>
+
+    <select id="goodsCanvs" resultType="com.zlead.entity.GoodsAttrValEntity">
+        SELECT a.* FROM t_goods_attr_val as a where a.goods_id IN
+        <foreach collection="List" item="goodsId" index="index" open="(" close=")" separator=",">
+            ${goodsId}
+        </foreach>
+    </select>
+
+    <update id="setMarket">
+        update t_goods SET version = version + 1 , is_market=#{isMarket}
+        <!--
+        <if test="stocknum!=null and stocknum !=''">
+               and stock =stock+ #{stocknum}
+         </if> -->
+        where id =#{goodsId}
+    </update>
+    <update id="setMarketByStock">
+        update t_goods SET version = version + 1 , is_market=#{isMarket}
+        where id =#{goodsId}
+    </update>
+    <update id="updateIsMarketByActIds">
+        update t_goods set is_market = 0 where id in
+        (select goods_id from oa_market_goods where act_id in
+        <foreach collection="actIds" item="actIds" open="(" close=")" separator=",">
+            #{actIds}
+        </foreach>
+        )
+    </update>
+
+    <!-- app 应用 -->
+    <select id="findGoodsList" resultMap="goodsListMap">
+        SELECT
+        a.id,
+        (SELECT
+        CONCAT(
+        CONCAT(b.band_name,' ',c.list_name,' ',d.model_name,' ',a.full_name),
+        ' ',
+        GROUP_CONCAT(
+        DISTINCT attr_value
+        ORDER BY sort SEPARATOR ''
+        )
+        )
+        FROM
+        t_goods_attr_val gav
+        WHERE gav.goods_id = a.id) AS fullName,
+        a.first_img,
+        ois.`sale_price` AS show_price,
+        CASE
+            WHEN ois.`stock_type` = '1' THEN pcp.`total_qty`
+            ELSE ois.`sale_qty`
+        END AS im_qty
+        FROM t_goods as a
+        inner join oa_item_state ois on ois.`item_id` = a.id
+        <if test="catIds!=null and catIds.size>0">
+        inner join (select distinct t.goods_id from t_goods_cat t where t.cat_id in
+            <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+                #{catId}
+            </foreach>
+            ) gc on gc.goods_id=a.id
+        </if>
+        left join crm_cust_band as b on a.brand_id = b.band_id
+        left join crm_prd_list as c on a.list_id = c.list_id
+        left join crm_prd_model as d on a.model_id = d.model_id
+        left join prd_cust_price pcp on pcp.`item_id` = ois.`item_id`
+        where a.shop_id in (select own_shopid from t_member where id=#{memberId})
+        <if test="fullName!=null and fullName !=''">
+            and a.full_name like concat(concat("%",#{fullName}),"%")
+        </if>
+        <if test="brandId!=null and brandId !=''">
+            and a.brand_id = #{brandId}
+        </if>
+        <if test="listId!=null and listId !=''">
+            and a.list_id = #{listId}
+        </if>
+        <if test="modelId!=null and modelId !=''">
+            and a.model_id = #{modelId}
+        </if>
+        order by ois.modify_time desc
+    </select>
+
+    <!-- app 应用 -->
+    <select id="findShopGoodsDetail" resultMap="goodsDetailVo">
+      SELECT a.id,
+             a.prod_id,
+             a.imgs,
+             CONCAT(b.band_name,' ',c.list_name,' ',d.model_name,' ',a.full_name) as fullName,
+             b.band_name,
+             a.first_img,
+             ois.`sale_price` as show_price,
+             CASE
+                WHEN ois.`stock_type` = '1' THEN pcp.`total_qty`
+                ELSE ois.`sale_qty`
+             END AS im_qty,
+             a.intro,
+             p.remark
+        FROM t_goods as a
+        inner join oa_item_state ois on ois.`item_id` = a.`id`
+        inner join t_product as p on p.prod_id=a.prod_id
+        left join crm_cust_band as b on a.brand_id = b.band_id
+        left join crm_prd_list as c on a.list_id = c.list_id
+        left join crm_prd_model as d on a.model_id = d.model_id
+        left join crm_prd_cat as e on a.catagory_id = e.cat_id
+        left join prd_cust_price pcp ON pcp.`item_id` = ois.`item_id`
+        where a.id=#{goodsId}
+    </select>
+
+    <select id="findProdCntWithBrand" resultType="integer">
+        SELECT
+        count(prod_id) as prodcnt
+        FROM
+        t_goods
+        WHERE
+        brand_id IN ( SELECT brand_id FROM t_goods WHERE id = #{goodsId} );
+    </select>
+    <select id="selectGoodsListByIds" resultMap="goodsMap">
+        select * from t_goods where 1=1
+        <if test="goodsIds!=null and goodsIds.size>0">
+            and id in
+            <foreach collection="goodsIds" item="goodsId" separator="," open="(" close=")">
+                #{goodsId}
+            </foreach>
+        </if>
+    </select>
+
+    <!-- app 应用 -->
+    <sql id="goodsStockFromSql">
+        FROM
+        prd_invent_mas mas
+        LEFT JOIN prd_cust_price price ON mas.item_id=price.item_id
+        LEFT JOIN t_goods goods ON goods.id = mas.item_id
+        LEFT JOIN t_goods_attr_val attr ON goods.id = attr.goods_id
+        LEFT JOIN base_warehouse wh ON wh.wh_id = mas.wh_id
+        LEFT JOIN crm_cust_band brand ON goods.brand_id = brand.band_id
+        <if test="catagoryId != null">
+            LEFT JOIN t_goods_cat cat ON goods.id = cat.goods_id
+        </if>
+        LEFT JOIN crm_prd_list list ON goods.list_id = list.list_id
+        LEFT JOIN crm_prd_model model ON goods.model_id = model.model_id
+        LEFT JOIN t_member member ON goods.shop_id = member.own_shopid
+        LEFT JOIN t_product prd on goods.prod_id = prd.prod_id
+    </sql>
+
+    <sql id="goodsStockWhereSql">
+        <where>
+            1 = 1
+            <if test="memberId != null">
+                AND member.id = #{memberId}
+            </if>
+            <if test="warehouseId != null">
+                AND mas.wh_id = #{warehouseId}
+            </if>
+            <if test="brandId != null">
+                AND goods.brand_id = #{brandId}
+            </if>
+            <if test="modelId != null">
+                AND goods.model_id = #{modelId}
+            </if>
+            <if test="listId != null">
+                AND goods.list_id = #{listId}
+            </if>
+            <if test="catagoryId != null">
+                AND cat.cat_id = #{catagoryId}
+            </if>
+            <if test="keyword != null">
+                AND (
+                goods.full_name LIKE CONCAT( "%", #{keyword}, "%" )
+                OR goods.spec LIKE CONCAT( "%", #{keyword}, "%" )
+                OR prd.item_no LIKE CONCAT( "%", #{keyword}, "%" )
+                )
+            </if>
+        </where>
+    </sql>
+
+    <select id="countTotalNumber" resultType="java.lang.Integer">
+        SELECT
+        count(DISTINCT mas.item_id) goodsTotalNumber
+        <include refid="goodsStockFromSql"></include>
+        <include refid="goodsStockWhereSql"></include>
+    </select>
+
+    <!-- app 应用 -->
+    <select id="sumGoodsSupplyPrice" resultType="java.math.BigDecimal">
+    SELECT
+	SUM( mas.im_qty * price.cost_price ) totalGoodsSupplyAmount
+    FROM
+	prd_invent_mas mas
+	LEFT JOIN prd_cust_price price ON mas.item_id = price.item_id
+	LEFT JOIN t_goods goods on goods.id=mas.item_id
+	LEFT JOIN t_member member ON goods.shop_id = member.own_shopid
+    WHERE
+	member.id = #{memberId}
+    </select>
+
+    <select id="getGoodsStockSummaryList" resultType="com.zlead.entity.vo.GoodsStockSummaryListVO">
+        SELECT
+        goods.id goodsId,
+        brand.band_name brandName,
+        model.model_name goodsModel,
+        list.list_name goodsList,
+        goods.full_name goodsFullName,
+        goods.spec goodsSpec,
+        GROUP_CONCAT(attr.attr_value) attrName,
+        wh.wh_name warehouseName,
+
+        cprice.cost_price supplyPrice,
+        cprice.batch_price agentPrice,
+        cprice.item_price price,
+        cprice.retail_price marketPrice,
+
+--         goods.price price,
+--         goods.market_price marketPrice,
+--         mas.cost_price supplyPrice,
+--         goods.agent_price agentPrice,
+
+        price.total_qty stock
+        FROM
+        prd_invent_mas mas
+        LEFT JOIN prd_cust_price price ON mas.item_id=price.item_id
+        LEFT JOIN t_goods goods ON goods.id = mas.item_id
+        LEFT JOIN t_goods_attr_val attr ON goods.id = attr.goods_id
+        LEFT JOIN base_warehouse wh ON wh.wh_id = mas.wh_id
+        LEFT JOIN crm_cust_band brand ON goods.brand_id = brand.band_id
+        LEFT JOIN prd_cust_price cprice on goods.id = cprice.item_id
+        <if test="catagoryId != null">
+            LEFT JOIN t_goods_cat cat ON goods.id = cat.goods_id
+        </if>
+        LEFT JOIN crm_prd_list list ON goods.list_id = list.list_id
+        LEFT JOIN crm_prd_model model ON goods.model_id = model.model_id
+        LEFT JOIN t_member member ON goods.shop_id = member.own_shopid
+        LEFT JOIN t_product prd on goods.prod_id = prd.prod_id
+        <include refid="goodsStockWhereSql"></include>
+        GROUP BY goods.id
+    </select>
+
+    <select id="findProdId" resultType="integer">
+        SELECT DISTINCT prod_id
+        from t_goods where id=#{goodsId}
+    </select>
+
+    <select id="findAllBLMC" resultType="java.util.HashMap">
+        select a.brand_id,a.list_id,a.model_id
+        <if test="cids!=null and cids.size>0">
+            ,b.cat_ids
+        </if>
+        from t_goods a
+        <if test="cids!=null and cids.size>0">
+            <if test="catlf==true">
+                left
+            </if>
+            join (
+            select goods_id,cat_id,group_concat(cat_id) cat_ids from t_goods_cat where cat_id in
+            <foreach collection="cids" item="cid" separator="," open="(" close=")">
+                #{cid}
+            </foreach>
+            group by goods_id
+            ) b on a.id=b.goods_id
+        </if>
+        where a.is_market=1 and a.terminal in (2,3)
+        and a.id in (select goods_id from t_goods_level where level_id in (select level_id from t_agent_fac where
+        agent_id=#{agentId} and `status`=1))
+        <if test="bids!=null and bids.size>0">
+            and a.brand_id in
+            <foreach collection="bids" item="bid" separator="," open="(" close=")">
+                #{bid}
+            </foreach>
+        </if>
+        <if test="lids!=null and lids.size>0">
+            and a.list_id in
+            <foreach collection="lids" item="lid" separator="," open="(" close=")">
+                #{lid}
+            </foreach>
+        </if>
+        <if test="mids!=null and mids.size>0">
+            and a.model_id in
+            <foreach collection="mids" item="mid" separator="," open="(" close=")">
+                #{mid}
+            </foreach>
+        </if>
+        <if test="key!=null and key !=''">
+            <bind name="pattern" value="'%' + key + '%'"/>
+            and a.full_name like #{pattern}
+        </if>
+    </select>
+
+    <select id="findList" resultType="java.util.HashMap">
+        select a.id,a.prod_id,a.prod_type,a.brand_id,a.list_id,a.model_id,
+        (select concat(a.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val where
+        goods_id=a.id) fullName,
+        a.show_price as showPrice,a.first_img as firstImg,a.imgs,a.if_show_price,a.if_show_stock
+        <if test="cids!=null and cids.size>0">
+            ,b.cat_ids
+        </if>
+        from t_goods a
+        <if test="cids!=null and cids.size>0">
+            <if test="catlf==true">
+                left
+            </if>
+            join (
+            select goods_id,cat_id,group_concat(cat_id) cat_ids from t_goods_cat where cat_id in
+            <foreach collection="cids" item="cid" separator="," open="(" close=")">
+                #{cid}
+            </foreach>
+            group by goods_id
+            ) b on a.id=b.goods_id
+        </if>
+        where a.is_market=1 and a.terminal in (2,3)
+        <!--      and a.id in (select goods_id from t_goods_level where level_id in (select level_id from t_agent_fac where agent_id=#{agentId} and `status`=1))  -->
+        <if test="bids!=null and bids.size>0">
+            and a.brand_id in
+            <foreach collection="bids" item="bid" separator="," open="(" close=")">
+                #{bid}
+            </foreach>
+        </if>
+        <if test="lids!=null and lids.size>0">
+            and a.list_id in
+            <foreach collection="lids" item="lid" separator="," open="(" close=")">
+                #{lid}
+            </foreach>
+        </if>
+        <if test="mids!=null and mids.size>0">
+            and a.model_id in
+            <foreach collection="mids" item="mid" separator="," open="(" close=")">
+                #{mid}
+            </foreach>
+        </if>
+        <if test="key!=null and key !=''">
+            <bind name="pattern" value="'%' + key + '%'"/>
+            and a.full_name like #{pattern}
+        </if>
+        order by a.update_date desc limit #{start},#{end}
+    </select>
+
+    <!--查询商品名，型号名，系列名-->
+    <select id="goodsFull" resultType="java.util.HashMap">
+        SELECT oab.band_id as bandId,oab.band_name as bandName,cpl.list_id as listId,cpl.list_name as listDesc,goods.id
+        as goodsId,goods.full_name as fullName,cpm.model_id as modelId,cpm.model_name as modelName
+        FROM t_goods AS goods
+        LEFT JOIN crm_prd_model AS cpm
+        ON goods.model_id = cpm.model_id
+        LEFT JOIN crm_prd_list AS cpl
+        ON goods.list_id = cpl.list_id
+        LEFT JOIN oa_agent_band AS oab
+        ON goods.brand_id = oab.band_id
+        WHERE goods.id = #{goodsId} LIMIT 1
+    </select>
+
+    <select id="queryNameKey" resultType="string">
+        select distinct a.full_name from t_goods a
+        <if test="cids!=null and cids.size>0">
+            join (
+            select goods_id,cat_id,group_concat(cat_id) cat_ids from t_goods_cat where cat_id in
+            <foreach collection="cids" item="cid" separator="," open="(" close=")">
+                #{cid}
+            </foreach>
+            group by goods_id
+            ) b on a.id=b.goods_id
+        </if>
+        where a.is_market=1 and a.terminal in (2,3)
+        and a.id in (select goods_id from t_goods_level where level_id in (select level_id from t_agent_fac where
+        agent_id=#{agentId} and `status`=1))
+        <if test="bids!=null and bids.size>0">
+            and a.brand_id in
+            <foreach collection="bids" item="bid" separator="," open="(" close=")">
+                #{bid}
+            </foreach>
+        </if>
+        <if test="lids!=null and lids.size>0">
+            and a.list_id in
+            <foreach collection="lids" item="lid" separator="," open="(" close=")">
+                #{lid}
+            </foreach>
+        </if>
+        <if test="mids!=null and mids.size>0">
+            and a.model_id in
+            <foreach collection="mids" item="mid" separator="," open="(" close=")">
+                #{mid}
+            </foreach>
+        </if>
+        <if test="key!=null and key !=''">
+            <bind name="pattern" value="key + '%'"/>
+            and a.full_name like #{pattern}
+        </if>
+    </select>
+
+    <select id="findActGoods" resultType="com.zlead.entity.dto.GoodsDetailDto">
+        select
+        b.id AS 'id',
+        b.full_name AS 'goodsName',
+        b.prod_type AS 'prodType',
+        b.imgs AS 'imgs',
+        b.first_img AS 'firstImag',
+        b.stock AS 'stock',
+        b.spec AS 'spec',
+        a.sale_price AS 'actPrice',
+        b.show_price AS 'showPrice',
+        b.price AS 'price',
+        b.agent_price AS 'agentPrice',
+        b.market_price AS 'marketPrice',
+        b.if_show_price as 'ifShowPrice',
+        b.if_show_stock as 'ifShowStock',
+        b.market_config as 'marketConfig',
+        b.intro AS 'intro',
+        b.prod_attr_id AS 'attrId',
+        b.prod_id AS 'prodId',
+        b.stock_type as 'stockType',
+        d.band_name as 'bandName',
+        e.list_name as 'listName',
+        f.model_name as 'modelName',
+        c.packagespec as 'packagespec'
+        from oa_market_goods a
+        left join t_goods b on a.goods_id=b.id
+        left join t_product c on b.prod_id=b.id
+        left join crm_cust_band d on d.band_id=b.brand_id
+        left join crm_prd_list e on e.list_id=b.list_id
+        left join crm_prd_model f on f.model_id=b.model_id
+        where a.act_id=#{actId} and a.goods_id=#{goodId}
+    </select>
+    <select id="findFactoryId" resultType="java.util.Map" parameterType="java.lang.Long">
+        select distinct b.factory_id from t_shop a
+        left join t_agent_fac b on a.id=b.sys_id
+        where a.id=#{shopId}
+    </select>
+
+    <!--add by ykf 二级页面搜索需要搜索到活动商品-->
+    <select id="findAllAndActivityBLMC" resultType="java.util.HashMap">
+        <if test="queryFlag == 'ALL' or queryFlag == 'PT'">
+            select a.brand_id,a.list_id,a.model_id
+            <choose>
+                <when test="cids!=null and cids.size>0">
+                    ,b.cat_ids
+                </when>
+                <otherwise>
+                    ,null as cat_ids
+                </otherwise>
+            </choose>
+            from t_goods a
+            <if test="cids!=null and cids.size>0">
+                <if test="catlf==true">
+                    left
+                </if>
+                join (
+                select goods_id,cat_id,group_concat(cat_id) cat_ids from t_goods_cat where cat_id in
+                <foreach collection="cids" item="cid" separator="," open="(" close=")">
+                    #{cid}
+                </foreach>
+                group by goods_id
+                ) b on a.id=b.goods_id
+            </if>
+            where a.is_market=1 and a.terminal in (2,3)
+            and a.id in (select goods_id from t_goods_level where level_id in (select level_id from t_agent_fac where
+            agent_id=#{agentId} and `status`=1))
+            <if test="bids!=null and bids.size>0">
+                and a.brand_id in
+                <foreach collection="bids" item="bid" separator="," open="(" close=")">
+                    #{bid}
+                </foreach>
+            </if>
+            <if test="lids!=null and lids.size>0">
+                and a.list_id in
+                <foreach collection="lids" item="lid" separator="," open="(" close=")">
+                    #{lid}
+                </foreach>
+            </if>
+            <if test="mids!=null and mids.size>0">
+                and a.model_id in
+                <foreach collection="mids" item="mid" separator="," open="(" close=")">
+                    #{mid}
+                </foreach>
+            </if>
+            <if test="key!=null and key !=''">
+                <bind name="pattern" value="'%' + key + '%'"/>
+                and a.full_name like #{pattern}
+            </if>
+        </if>
+        <if test="queryFlag=='ALL'">
+            union all
+        </if>
+        <if test="queryFlag=='ALL' or queryFlag=='ACT'">
+            select a.brand_id,a.list_id,a.model_id
+            <choose>
+                <when test="cActIds!=null and cActIds.size>0">
+                    ,b.cat_ids
+                </when>
+                <otherwise>
+                    ,null as cat_ids
+                </otherwise>
+            </choose>
+            from t_goods a
+            <if test="cActIds!=null and cActIds.size>0">
+                <if test="catlf==true">
+                    left
+                </if>
+                join (
+                select goods_id,cat_id,group_concat(cat_id) cat_ids from t_goods_cat where cat_id in
+                <foreach collection="cActIds" item="cid" separator="," open="(" close=")">
+                    #{cid}
+                </foreach>
+                group by goods_id
+                ) b on a.id=b.goods_id
+            </if>
+            where a.id in (
+            SELECT
+            mg.goods_id
+            FROM t_agent_fac af
+            INNER JOIN oa_factory_info fi
+            ON af.factory_id = fi.fact_id
+            AND fi.fact_state = 1
+            INNER JOIN oa_market_act ma
+            ON ma.shop_id = fi.shop_id
+            AND ma.cont_state = 2
+            AND ma.terminal IN (2, 3)
+            INNER JOIN oa_market_agent ag
+            ON ag.agent_id = af.agent_id
+            AND ag.act_id = ma.act_id
+            INNER JOIN oa_market_goods mg
+            ON mg.act_id = ma.act_id
+            WHERE af.status = 1
+            AND af.agent_id = #{agentId}
+            )
+            <if test="bActIds!=null and bActIds.size>0">
+                and a.brand_id in
+                <foreach collection="bActIds" item="bid" separator="," open="(" close=")">
+                    #{bid}
+                </foreach>
+            </if>
+            <if test="lActIds!=null and lActIds.size>0">
+                and a.list_id in
+                <foreach collection="lActIds" item="lid" separator="," open="(" close=")">
+                    #{lid}
+                </foreach>
+            </if>
+            <if test="mActIds!=null and mActIds.size>0">
+                and a.model_id in
+                <foreach collection="mActIds" item="mid" separator="," open="(" close=")">
+                    #{mid}
+                </foreach>
+            </if>
+            <if test="key!=null and key !=''">
+                <bind name="pattern" value="'%' + key + '%'"/>
+                and a.full_name like #{pattern}
+            </if>
+        </if>
+    </select>
+
+    <!--add by ykf 二级页面搜索需要搜索到活动商品-->
+    <select id="findAllList" resultType="java.util.HashMap">
+        select DISTINCT * from (
+        <if test="queryFlag=='ALL' or queryFlag=='PT'">
+            select a.id,a.prod_id,a.prod_type,a.brand_id,a.list_id,a.model_id,a.update_date,
+            (select concat(a.full_name,'',group_concat(attr_value order by sort separator '')) from t_goods_attr_val
+            where
+            goods_id=a.id) full_name,
+            a.show_price,a.first_img,a.imgs,a.if_show_price,a.if_show_stock
+            <choose>
+                <when test="cids!=null and cids.size>0">
+                    ,b.cat_ids
+                </when>
+                <otherwise>
+                    ,null as cat_ids
+                </otherwise>
+            </choose>
+            from t_goods a
+            <if test="cids!=null and cids.size>0">
+                <if test="catlf==true">
+                    left
+                </if>
+                join (
+                select goods_id,cat_id,group_concat(cat_id) cat_ids from t_goods_cat where cat_id in
+                <foreach collection="cids" item="cid" separator="," open="(" close=")">
+                    #{cid}
+                </foreach>
+                group by goods_id
+                ) b on a.id=b.goods_id
+            </if>
+            where a.is_market=1 and a.terminal in (2,3)
+            and a.id in (select goods_id from t_goods_level where level_id in (select level_id from t_agent_fac where
+            agent_id=#{agentId} and `status`=1))
+            <if test="bids!=null and bids.size>0">
+                and a.brand_id in
+                <foreach collection="bids" item="bid" separator="," open="(" close=")">
+                    #{bid}
+                </foreach>
+            </if>
+            <if test="lids!=null and lids.size>0">
+                and a.list_id in
+                <foreach collection="lids" item="lid" separator="," open="(" close=")">
+                    #{lid}
+                </foreach>
+            </if>
+            <if test="mids!=null and mids.size>0">
+                and a.model_id in
+                <foreach collection="mids" item="mid" separator="," open="(" close=")">
+                    #{mid}
+                </foreach>
+            </if>
+            <if test="key!=null and key !=''">
+                <bind name="pattern" value="'%' + key + '%'"/>
+                and a.full_name like #{pattern}
+            </if>
+        </if>
+        <if test="queryFlag=='ALL'">
+            union all
+        </if>
+        <if test="queryFlag=='ALL' or queryFlag=='ACT'">
+            select a.id,a.prod_id,a.prod_type,a.brand_id,a.list_id,a.model_id,a.update_date,
+            (select concat(a.full_name,'',group_concat(attr_value order by sort separator '')) from t_goods_attr_val
+            where
+            goods_id=a.id) full_name,
+            a.show_price,a.first_img,a.imgs,a.if_show_price,a.if_show_stock
+            <choose>
+                <when test="cActIds!=null and cActIds.size>0">
+                    ,b.cat_ids
+                </when>
+                <otherwise>
+                    ,null as cat_ids
+                </otherwise>
+            </choose>
+            from t_goods a
+            <if test="cActIds!=null and cActIds.size>0">
+                <if test="catlf==true">
+                    left
+                </if>
+                join (
+                select goods_id,cat_id,group_concat(cat_id) cat_ids from t_goods_cat where cat_id in
+                <foreach collection="cActIds" item="cid" separator="," open="(" close=")">
+                    #{cid}
+                </foreach>
+                group by goods_id
+                ) b on a.id=b.goods_id
+            </if>
+            where a.id in (
+            SELECT mg.goods_id
+            FROM t_agent_fac af
+            INNER JOIN oa_factory_info fi
+            ON af.factory_id = fi.fact_id
+            AND fi.fact_state = 1
+            INNER JOIN oa_market_act ma
+            ON ma.shop_id = fi.shop_id
+            AND ma.cont_state = 2
+            AND ma.terminal IN (2, 3)
+            INNER JOIN oa_market_agent ag
+            ON ag.agent_id = af.agent_id
+            AND ag.act_id = ma.act_id
+            INNER JOIN oa_market_goods mg
+            ON mg.act_id = ma.act_id
+            WHERE af.status = 1
+            AND af.agent_id = #{agentId}
+            )
+            <if test="bActIds!=null and bActIds.size>0">
+                and a.brand_id in
+                <foreach collection="bActIds" item="bid" separator="," open="(" close=")">
+                    #{bid}
+                </foreach>
+            </if>
+            <if test="lActIds!=null and lActIds.size>0">
+                and a.list_id in
+                <foreach collection="lActIds" item="lid" separator="," open="(" close=")">
+                    #{lid}
+                </foreach>
+            </if>
+            <if test="mActIds!=null and mActIds.size>0">
+                and a.model_id in
+                <foreach collection="mActIds" item="mid" separator="," open="(" close=")">
+                    #{mid}
+                </foreach>
+            </if>
+            <if test="key!=null and key !=''">
+                <bind name="pattern" value="'%' + key + '%'"/>
+                and a.full_name like #{pattern}
+            </if>
+        </if>
+        ) v order by v.update_date desc limit #{start},#{end}
+    </select>
+
+
+    <!--add by ykf 二级页面搜索需要搜索到活动商品（分页查询）-->
+    <select id="findAllListByPage" resultType="java.util.HashMap">
+        select * from (
+        <if test="queryFlag=='ALL' or queryFlag=='PT'">
+            select a.id,a.prod_id,a.prod_type,a.brand_id,a.list_id,a.model_id,a.update_date,
+            (select concat(a.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val
+            where
+            goods_id=a.id) full_name,
+            a.show_price,a.first_img,a.imgs,a.if_show_price,a.if_show_stock
+            <choose>
+                <when test="cids!=null and cids.size>0">
+                    ,b.cat_ids
+                </when>
+                <otherwise>
+                    ,null as cat_ids
+                </otherwise>
+            </choose>
+            from t_goods a
+            <if test="cids!=null and cids.size>0">
+                <if test="catlf==true">
+                    left
+                </if>
+                join (
+                select goods_id,cat_id,group_concat(cat_id) cat_ids from t_goods_cat where cat_id in
+                <foreach collection="cids" item="cid" separator="," open="(" close=")">
+                    #{cid}
+                </foreach>
+                group by goods_id
+                ) b on a.id=b.goods_id
+            </if>
+            where a.is_market=1 and a.terminal in (2,3)
+            and a.id in (select goods_id from t_goods_level where level_id in (select level_id from t_agent_fac where
+            agent_id=#{agentId} and `status`=1))
+            <if test="bids!=null and bids.size>0">
+                and a.brand_id in
+                <foreach collection="bids" item="bid" separator="," open="(" close=")">
+                    #{bid}
+                </foreach>
+            </if>
+            <if test="lids!=null and lids.size>0">
+                and a.list_id in
+                <foreach collection="lids" item="lid" separator="," open="(" close=")">
+                    #{lid}
+                </foreach>
+            </if>
+            <if test="mids!=null and mids.size>0">
+                and a.model_id in
+                <foreach collection="mids" item="mid" separator="," open="(" close=")">
+                    #{mid}
+                </foreach>
+            </if>
+            <if test="key!=null and key !=''">
+                <bind name="pattern" value="'%' + key + '%'"/>
+                and a.full_name like #{pattern}
+            </if>
+        </if>
+        <if test="queryFlag=='ALL'">
+            union
+        </if>
+        <if test="queryFlag=='ALL' or queryFlag=='ACT'">
+            select a.id,a.prod_id,a.prod_type,a.brand_id,a.list_id,a.model_id,a.update_date,
+            (select concat(a.full_name,'',group_concat(attr_value order by sort separator '')) from t_goods_attr_val
+            where
+            goods_id=a.id) full_name,
+            a.show_price,a.first_img,a.imgs,a.if_show_price,a.if_show_stock
+            <choose>
+                <when test="cActIds!=null and cActIds.size>0">
+                    ,b.cat_ids
+                </when>
+                <otherwise>
+                    ,null as cat_ids
+                </otherwise>
+            </choose>
+            from t_goods a
+            <if test="cActIds!=null and cActIds.size>0">
+                <if test="catlf==true">
+                    left
+                </if>
+                join (
+                select goods_id,cat_id,group_concat(cat_id) cat_ids from t_goods_cat where cat_id in
+                <foreach collection="cActIds" item="cid" separator="," open="(" close=")">
+                    #{cid}
+                </foreach>
+                group by goods_id
+                ) b on a.id=b.goods_id
+            </if>
+            where a.id in (
+            SELECT mg.goods_id
+            FROM t_agent_fac af
+            INNER JOIN oa_factory_info fi
+            ON af.factory_id = fi.fact_id
+            AND fi.fact_state = 1
+            INNER JOIN oa_market_act ma
+            ON ma.shop_id = fi.shop_id
+            AND ma.cont_state = 2
+            AND ma.terminal IN (2, 3)
+            INNER JOIN oa_market_agent ag
+            ON ag.agent_id = af.agent_id
+            AND ag.act_id = ma.act_id
+            INNER JOIN oa_market_goods mg
+            ON mg.act_id = ma.act_id
+            WHERE af.status = 1
+            AND af.agent_id = #{agentId}
+            )
+            <if test="bActIds!=null and bActIds.size>0">
+                and a.brand_id in
+                <foreach collection="bActIds" item="bid" separator="," open="(" close=")">
+                    #{bid}
+                </foreach>
+            </if>
+            <if test="lActIds!=null and lActIds.size>0">
+                and a.list_id in
+                <foreach collection="lActIds" item="lid" separator="," open="(" close=")">
+                    #{lid}
+                </foreach>
+            </if>
+            <if test="mActIds!=null and mActIds.size>0">
+                and a.model_id in
+                <foreach collection="mActIds" item="mid" separator="," open="(" close=")">
+                    #{mid}
+                </foreach>
+            </if>
+            <if test="key!=null and key !=''">
+                <bind name="pattern" value="'%' + key + '%'"/>
+                and a.full_name like #{pattern}
+            </if>
+        </if>
+        ) v order by v.update_date desc
+    </select>
+
+
+    <!--add by ykf 二级页面搜索需要搜索到活动商品（总数查询）-->
+    <select id="findAllListCount" resultType="java.lang.Integer">
+        select count(*) from (
+        <if test="queryFlag=='ALL' or queryFlag=='PT'">
+            select a.id,a.prod_id,a.prod_type,a.brand_id,a.list_id,a.model_id,a.update_date,
+            (select concat(a.full_name,'',group_concat(attr_value order by sort separator '')) from t_goods_attr_val
+            where
+            goods_id=a.id) full_name,
+            a.show_price,a.first_img,a.imgs,a.if_show_price,a.if_show_stock
+            <choose>
+                <when test="cids!=null and cids.size>0">
+                    ,b.cat_ids
+                </when>
+                <otherwise>
+                    ,null as cat_ids
+                </otherwise>
+            </choose>
+            from t_goods a
+            <if test="cids!=null and cids.size>0">
+                <if test="catlf==true">
+                    left
+                </if>
+                join (
+                select goods_id,cat_id,group_concat(cat_id) cat_ids from t_goods_cat where cat_id in
+                <foreach collection="cids" item="cid" separator="," open="(" close=")">
+                    #{cid}
+                </foreach>
+                group by goods_id
+                ) b on a.id=b.goods_id
+            </if>
+            where a.is_market=1 and a.terminal in (2,3)
+            and a.id in (select goods_id from t_goods_level where level_id in (select level_id from t_agent_fac where
+            agent_id=#{agentId} and `status`=1))
+            <if test="bids!=null and bids.size>0">
+                and a.brand_id in
+                <foreach collection="bids" item="bid" separator="," open="(" close=")">
+                    #{bid}
+                </foreach>
+            </if>
+            <if test="lids!=null and lids.size>0">
+                and a.list_id in
+                <foreach collection="lids" item="lid" separator="," open="(" close=")">
+                    #{lid}
+                </foreach>
+            </if>
+            <if test="mids!=null and mids.size>0">
+                and a.model_id in
+                <foreach collection="mids" item="mid" separator="," open="(" close=")">
+                    #{mid}
+                </foreach>
+            </if>
+            <if test="key!=null and key !=''">
+                <bind name="pattern" value="'%' + key + '%'"/>
+                and a.full_name like #{pattern}
+            </if>
+        </if>
+        <if test="queryFlag=='ALL'">
+            union
+        </if>
+        <if test="queryFlag=='ALL' or queryFlag=='ACT'">
+            select a.id,a.prod_id,a.prod_type,a.brand_id,a.list_id,a.model_id,a.update_date,
+            (select concat(a.full_name,'',group_concat(attr_value order by sort separator '')) from t_goods_attr_val
+            where
+            goods_id=a.id) full_name,
+            a.show_price,a.first_img,a.imgs,a.if_show_price,a.if_show_stock
+            <choose>
+                <when test="cActIds!=null and cActIds.size>0">
+                    ,b.cat_ids
+                </when>
+                <otherwise>
+                    ,null as cat_ids
+                </otherwise>
+            </choose>
+            from t_goods a
+            <if test="cActIds!=null and cActIds.size>0">
+                <if test="catlf==true">
+                    left
+                </if>
+                join (
+                select goods_id,cat_id,group_concat(cat_id) cat_ids from t_goods_cat where cat_id in
+                <foreach collection="cActIds" item="cid" separator="," open="(" close=")">
+                    #{cid}
+                </foreach>
+                group by goods_id
+                ) b on a.id=b.goods_id
+            </if>
+            where a.id in (
+            SELECT mg.goods_id
+            FROM t_agent_fac af
+            INNER JOIN oa_factory_info fi
+            ON af.factory_id = fi.fact_id
+            AND fi.fact_state = 1
+            INNER JOIN oa_market_act ma
+            ON ma.shop_id = fi.shop_id
+            AND ma.cont_state = 2
+            AND ma.terminal IN (2, 3)
+            INNER JOIN oa_market_agent ag
+            ON ag.agent_id = af.agent_id
+            AND ag.act_id = ma.act_id
+            INNER JOIN oa_market_goods mg
+            ON mg.act_id = ma.act_id
+            WHERE af.status = 1
+            AND af.agent_id = #{agentId}
+            )
+            <if test="bActIds!=null and bActIds.size>0">
+                and a.brand_id in
+                <foreach collection="bActIds" item="bid" separator="," open="(" close=")">
+                    #{bid}
+                </foreach>
+            </if>
+            <if test="lActIds!=null and lActIds.size>0">
+                and a.list_id in
+                <foreach collection="lActIds" item="lid" separator="," open="(" close=")">
+                    #{lid}
+                </foreach>
+            </if>
+            <if test="mActIds!=null and mActIds.size>0">
+                and a.model_id in
+                <foreach collection="mActIds" item="mid" separator="," open="(" close=")">
+                    #{mid}
+                </foreach>
+            </if>
+            <if test="key!=null and key !=''">
+                <bind name="pattern" value="'%' + key + '%'"/>
+                and a.full_name like #{pattern}
+            </if>
+        </if>
+        ) v
+    </select>
+
+    <select id="QueryGoodsByCats" resultType="java.util.HashMap">
+        SELECT
+        (select concat(g.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val where
+        goods_id=g.id) full_name,
+        g.*
+        FROM
+        t_goods g
+        INNER JOIN t_goods_cat cat ON g.id = cat.goods_id
+        INNER JOIN crm_prd_cat pcat ON cat.cat_id = pcat.cat_id
+        INNER JOIN t_goods_level dle ON g.id = dle.goods_id
+        INNER JOIN t_agent_fac fac ON dle.level_id = fac.level_id
+        INNER JOIN oa_agent_band b ON g.brand_id = b.band_id AND fac.agent_id = b.agent_id AND fac.factory_id =
+        b.fact_id
+        INNER JOIN oa_agent_band_lists bl ON g.list_id = bl.list_id AND fac.agent_id = b.agent_id AND fac.factory_id =
+        b.fact_id AND bl.band_id = b.band_id
+        WHERE 1=1
+        AND g.terminal IN ('2', '3')
+        AND g.is_market = '1'
+        AND fac.agent_id = #{agentId}
+        AND fac.`status` = 1
+        AND dle.STATUS = 1
+        and b.agent_id=#{agentId}
+        AND cat.cat_id IN (
+        SELECT
+        cat_id
+        FROM
+        crm_prd_cat
+        WHERE
+        (
+        cat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        OR pcat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        OR pcat_id IN (
+        SELECT DISTINCT
+        cat_id
+        FROM
+        crm_prd_cat cat
+        WHERE
+        pcat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        )
+        )
+        AND is_fac = 1
+
+        ) and prod_type =0
+       <!--  union
+        select
+        (select concat(g.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val where
+        goods_id=g.id) full_name,
+        g.*
+        from t_goods g LEFT JOIN oa_market_goods actg ON g.id = actg.goods_id LEFT JOIN oa_market_act act on
+        act.act_id=actg.act_id LEFT JOIN oa_market_agent ma on ma.act_id=act.act_id
+        left join t_goods_cat gc on g.id=gc.goods_id LEFT JOIN crm_prd_cat pc on pc.cat_id=gc.cat_id
+        where ma.agent_id=#{agentId}
+        and g.prod_type='2'
+        and ( pc.cat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        OR pc.pcat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        OR pc.pcat_id IN (
+        SELECT DISTINCT
+        cat_id
+        FROM
+        crm_prd_cat cat
+        WHERE
+        cat.pcat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        )
+        ) -->
+        GROUP BY g.id
+    </select>
+
+    <select id="QueryCountGoodsByCats" resultType="java.lang.Integer">
+        select count(goods.id) from (
+        SELECT
+        g.*
+        FROM
+        t_goods g
+        INNER JOIN t_goods_cat cat ON g.id = cat.goods_id
+        INNER JOIN crm_prd_cat pcat ON cat.cat_id = pcat.cat_id
+        INNER JOIN t_goods_level dle ON g.id = dle.goods_id
+        INNER JOIN t_agent_fac fac ON dle.level_id = fac.level_id
+        INNER JOIN oa_agent_band b ON g.brand_id = b.band_id AND fac.agent_id = b.agent_id AND fac.factory_id =
+        b.fact_id
+        INNER JOIN oa_agent_band_lists bl ON g.list_id = bl.list_id AND fac.agent_id = b.agent_id AND fac.factory_id =
+        b.fact_id AND bl.band_id = b.band_id
+        WHERE 1=1
+        AND g.terminal IN ('2', '3')
+        AND g.is_market = '1'
+        AND fac.agent_id = #{agentId}
+        AND fac.`status` = 1
+        AND dle.STATUS = 1
+        and b.agent_id=#{agentId}
+        AND cat.cat_id IN (
+        SELECT
+        cat_id
+        FROM
+        crm_prd_cat
+        WHERE
+        (
+        cat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        OR pcat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        OR pcat_id IN (
+        SELECT DISTINCT
+        cat_id
+        FROM
+        crm_prd_cat cat
+        WHERE
+        pcat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        )
+        )
+        AND is_fac = 1
+        ) and prod_type =0
+       <!--  union
+        select g.* from t_goods g LEFT JOIN oa_market_goods actg ON g.id = actg.goods_id LEFT JOIN oa_market_act act on
+        act.act_id=actg.act_id LEFT JOIN oa_market_agent ma on ma.act_id=act.act_id
+        left join t_goods_cat gc on g.id=gc.goods_id LEFT JOIN crm_prd_cat pc on pc.cat_id=gc.cat_id
+        where ma.agent_id=#{agentId}
+        and g.prod_type='2'
+        and ( pc.cat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        OR pc.pcat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        OR pc.pcat_id IN (
+        SELECT DISTINCT
+        cat_id
+        FROM
+        crm_prd_cat cat
+        WHERE
+        cat.pcat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        )
+        ) -->
+
+        )goods
+
+    </select>
+
+    <select id="QueryGoodsBylist" resultType="java.util.HashMap">
+        SELECT
+        (select concat(ds.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val
+        where
+        goods_id=ds.id) full_name,
+        ds.*
+        FROM
+        t_goods ds
+        INNER JOIN t_goods_level lev ON ds.id = lev.goods_id
+        INNER JOIN t_agent_fac fac ON fac.level_id = lev.level_id
+        INNER JOIN oa_agent_band b ON ds.brand_id = b.band_id AND fac.agent_id = b.agent_id AND fac.factory_id =
+        b.fact_id
+        INNER JOIN oa_agent_band_lists bl ON ds.list_id = bl.list_id AND fac.agent_id = b.agent_id AND fac.factory_id =
+        b.fact_id AND bl.band_id = b.band_id
+        WHERE
+        ds.is_market = 1
+        AND ds.terminal IN (2, 3)
+        AND ds.prod_type = 0
+        AND lev. STATUS = 1
+        AND fac.agent_id = #{agentId}
+        AND fac. STATUS = 1
+        <if test="listIds != null and listIds.size >0">
+            AND ds.list_id in
+            <foreach collection="listIds" item="listId" separator="," open="(" close=")">
+                #{listId}
+            </foreach>
+        </if>
+        OR ds.id in (
+        select g.id from t_goods g LEFT JOIN oa_market_goods actg on g.id= actg.goods_id LEFT JOIN t_goods_cat gcat on
+        gcat.cat_id=actg.act_id
+        WHERE g.list_id in
+        <foreach collection="listIds" item="listId" separator="," open="(" close=")">
+            #{listId}
+        </foreach>
+        and g.prod_type=2 and g.is_market=1 and g.terminal in(2,3) and actg.act_id in (
+        SELECT act_id FROM oa_market_agent WHERE agent_id = #{agentId}
+        ) AND actg.is_market = 1)GROUP BY gs.id
+    </select>
+
+    <select id="QueryCountGoodsBylist" resultType="java.lang.Integer">
+        SELECT
+        count(DISTINCT gd.id )
+        FROM
+        (SELECT
+        ds.*
+        FROM
+        t_goods ds
+        INNER JOIN t_goods_level lev ON ds.id = lev.goods_id
+        INNER JOIN t_agent_fac fac ON fac.level_id = lev.level_id
+        INNER JOIN oa_agent_band b ON ds.brand_id = b.band_id AND fac.agent_id = b.agent_id AND fac.factory_id =
+        b.fact_id
+        INNER JOIN oa_agent_band_lists bl ON ds.list_id = bl.list_id AND fac.agent_id = b.agent_id AND fac.factory_id =
+        b.fact_id AND bl.band_id = b.band_id
+        WHERE
+        ds.is_market = 1
+        AND ds.terminal IN (2, 3)
+        AND ds.prod_type = 0
+        AND lev. STATUS = 1
+        AND fac.agent_id = #{agentId}
+        AND fac. STATUS = 1
+        <if test="listIds != null and listIds.size >0">
+            AND ds.list_id in
+            <foreach collection="listIds" item="listId" separator="," open="(" close=")">
+                #{listId}
+            </foreach>
+        </if>
+        OR ds.id in (
+        select g.id from t_goods g LEFT JOIN oa_market_goods actg on g.id= actg.goods_id LEFT JOIN t_goods_cat gcat on
+        gcat.cat_id=actg.act_id
+        WHERE g.list_id in
+        <foreach collection="listIds" item="listId" separator="," open="(" close=")">
+            #{listId}
+        </foreach>
+        and g.prod_type=2 and g.is_market=1 and g.terminal in(2,3) and actg.act_id in (
+        SELECT act_id FROM oa_market_agent WHERE agent_id = #{agentId}
+        ) AND actg.is_market = 1) ) gd
+    </select>
+
+    <select id="QueryGoodsBybrand" resultType="java.util.HashMap">
+        select (select concat(dg.full_name,' ',group_concat(attr_value order by sort separator ' ')) from
+        t_goods_attr_val where
+        goods_id=dg.id) full_name,dg.* from t_goods dg where dg.id in (SELECT
+        distinct ds.id
+        FROM
+        t_goods ds
+        INNER JOIN t_goods_level lev ON ds.id = lev.goods_id
+        INNER JOIN t_agent_fac fac ON fac.level_id = lev.level_id
+        INNER JOIN oa_agent_band b ON ds.brand_id = b.band_id AND fac.agent_id = b.agent_id AND fac.factory_id =
+        b.fact_id
+        INNER JOIN oa_agent_band_lists bl ON ds.list_id = bl.list_id AND fac.agent_id = b.agent_id AND fac.factory_id =
+        b.fact_id AND bl.band_id = b.band_id
+        WHERE
+        ds.is_market = 1
+        AND ds.terminal IN (2, 3)
+        AND ds.prod_type = 0
+        AND lev. STATUS = 1
+        AND fac.agent_id = #{agentId}
+        AND fac. STATUS = 1
+        <if test="brandIds != null and brandIds.size >0">
+            AND ds.brand_id in
+            <foreach collection="brandIds" item="brandId" separator="," open="(" close=")">
+                #{brandId}
+            </foreach>
+        </if>
+        )
+        OR dg.id in (
+        select distinct g.id from t_goods g LEFT JOIN oa_market_goods actg on g.id= actg.goods_id LEFT JOIN t_goods_cat
+        gcat on gcat.cat_id=actg.act_id
+        WHERE g.brand_id in
+        <foreach collection="brandIds" item="brandId" separator="," open="(" close=")">
+            #{brandId}
+        </foreach>
+        and g.prod_type=2 and g.is_market=1 and g.terminal in(2,3) and actg.act_id in (
+        SELECT act_id FROM oa_market_agent WHERE agent_id = #{agentId}
+        ) AND actg.is_market = 1
+        )
+    </select>
+
+    <select id="QueryCountGoodsBybrand" resultType="java.lang.Integer">
+        SELECT
+        count(DISTINCT gd.id )
+        FROM
+        t_goods gd
+        WHERE
+        gd.id IN (
+        SELECT
+        ds.id from t_goods ds
+        INNER JOIN t_goods_level lev ON ds.id = lev.goods_id
+        INNER JOIN t_agent_fac fac ON fac.level_id = lev.level_id
+        INNER JOIN oa_agent_band b ON ds.brand_id = b.band_id AND fac.agent_id = b.agent_id AND fac.factory_id =
+        b.fact_id
+        INNER JOIN oa_agent_band_lists bl ON ds.list_id = bl.list_id AND fac.agent_id = b.agent_id AND fac.factory_id =
+        b.fact_id AND bl.band_id = b.band_id
+        WHERE
+        ds.is_market = 1
+        AND ds.terminal IN (2, 3)
+        AND ds.prod_type = 0
+        AND lev. STATUS = 1
+        AND fac.agent_id = #{agentId}
+        AND fac. STATUS = 1
+        <if test="brandIds != null and brandIds.size >0">
+            AND ds.brand_id in
+            <foreach collection="brandIds" item="brandId" separator="," open="(" close=")">
+                #{brandId}
+            </foreach>
+        </if>
+        )
+        OR gd.id in (
+        select g.id from t_goods g LEFT JOIN oa_market_goods actg on g.id= actg.goods_id LEFT JOIN t_goods_cat gcat on
+        gcat.cat_id=actg.act_id
+        WHERE g.brand_id in
+        <foreach collection="brandIds" item="brandId" separator="," open="(" close=")">
+            #{brandId}
+        </foreach>
+        and g.prod_type=2 and g.is_market=1 and g.terminal in(2,3) and actg.act_id in (
+        SELECT act_id FROM oa_market_agent WHERE agent_id = #{agentId}
+        ) AND actg.is_market = 1
+        )
+    </select>
+
+
+    <select id="facQueryCountGoodsBybrand" resultType="java.lang.Integer">
+        select count(DISTINCT goods.id ) from (
+        SELECT
+        ds.*
+        FROM
+        t_goods ds
+        where ds.id in(
+        SELECT
+        g.id
+        FROM
+        t_goods g
+        LEFT JOIN t_goods_level lev ON g.id = lev.goods_id
+        LEFT JOIN t_agent_fac fac ON fac.level_id = lev.level_id
+        WHERE
+        g.is_market = 1
+        AND fac.factory_id = #{factId}
+        AND g.terminal IN (2, 3)
+        AND g.prod_type = 0
+        AND lev.status = 1
+        AND fac.agent_id = #{agentId}
+        AND fac.status = 1
+        AND g.brand_id in
+        <foreach collection="brandIds" item="brandId" separator="," open="(" close=")">
+            #{brandId}
+        </foreach>
+        )
+       <!--  OR ds.id in (
+        select g.id from t_goods g LEFT JOIN oa_market_goods actg on g.id= actg.goods_id LEFT JOIN t_goods_cat gcat on
+        gcat.cat_id=actg.act_id
+        WHERE g.brand_id in
+        <foreach collection="brandIds" item="brandId" separator="," open="(" close=")">
+            #{brandId}
+        </foreach>
+        and g.prod_type=2 and g.is_market=1 and g.terminal in(2,3) and actg.act_id in (
+        select act.act_id from oa_market_act act LEFT JOIN oa_factory_info fin
+        ON act.shop_id = fin.shop_id
+        WHERE fin.shop_id = (select shop_id from oa_factory_info WHERE fact_id = #{factId} ) AND fact_state = 1
+        AND act.act_id in (SELECT act_id FROM oa_market_agent WHERE agent_id = #{agentId})
+        ) AND actg.is_market = 1
+        ) -->
+        )
+        goods
+    </select>
+    <select id="facQueryGoodsBybrand" resultType="java.util.HashMap">
+        SELECT DISTINCT
+        ds.`if_show_price` AS ifShowPrice,
+        ds.`show_price` AS showPrice,
+        (select concat(ds.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val
+        where goods_id=ds.id) fullName,
+        ds.first_img as firstImg,
+        ds.*
+        FROM
+        t_goods ds INNER JOIN oa_item_state ois ON ois.item_id = ds.id
+        where ds.id in(
+        SELECT
+        g.id
+        FROM
+        t_goods g
+        INNER JOIN t_goods_level lev ON g.id = lev.goods_id
+        INNER JOIN t_agent_fac fac ON fac.level_id = lev.level_id
+        INNER JOIN oa_agent_band_lists lists ON g.list_id = lists.list_id AND lists.band_id = g.brand_id AND lists.agent_id = #{agentId} AND
+        lists.fact_id = #{factId}
+        WHERE
+        g.is_market = 1
+        AND fac.factory_id = #{factId}
+        AND g.terminal IN (2, 3)
+        AND g.prod_type = 0
+        AND lev.status = 1
+        AND fac.agent_id = #{agentId}
+        AND fac.status = 1
+        AND g.brand_id in
+        <foreach collection="brandIds" item="brandId" separator="," open="(" close=")">
+            #{brandId}
+        </foreach>
+        )
+      <!--   OR ds.id in (
+        select g.id from t_goods g LEFT JOIN oa_market_goods actg
+        on g.id= actg.goods_id LEFT JOIN t_goods_cat gcat
+        on gcat.cat_id=actg.act_id LEFT JOIN oa_agent_band_lists lists
+        ON g.list_id = lists.list_id AND lists.agent_id = #{agentId} AND lists.fact_id = #{factId}
+        WHERE g.brand_id in
+        <foreach collection="brandIds" item="brandId" separator="," open="(" close=")">
+            #{brandId}
+        </foreach>
+        and g.prod_type=2 and g.is_market=1 and g.terminal in(2,3) and actg.act_id in (
+        select act.act_id from oa_market_act act LEFT JOIN oa_factory_info fin
+        ON act.shop_id = fin.shop_id
+        WHERE fin.shop_id = (select shop_id from oa_factory_info WHERE fact_id = #{factId} ) AND fact_state = 1
+        AND act.act_id in (SELECT act_id FROM oa_market_agent WHERE agent_id = #{agentId})
+        AND act.eff_date &lt;= NOW()
+        ) AND actg.is_market = 1
+        ) -->
+        GROUP BY ds.id ORDER BY ois.create_time DESC
+    </select>
+    <select id="facQueryGoodsBylist" resultType="java.util.HashMap">
+        SELECT distinct
+        ds.show_price as showPrice,
+        (select concat(ds.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val
+        where goods_id=ds.id) full_name,
+        ds.*
+        FROM
+        t_goods ds
+        where ds.id in(
+        SELECT
+        g.id
+        FROM
+        t_goods g
+        LEFT JOIN t_goods_level lev ON g.id = lev.goods_id
+        LEFT JOIN t_agent_fac fac ON fac.level_id = lev.level_id
+        WHERE
+        g.is_market = 1
+        AND fac.factory_id = #{factId}
+        AND g.terminal IN (2, 3)
+        AND g.prod_type = 0
+        AND lev. STATUS = 1
+        AND fac.agent_id = #{agentId}
+        AND fac. STATUS = 1
+        AND g.list_id in
+        <foreach collection="listIds" item="listId" separator="," open="(" close=")">
+            #{listId}
+        </foreach>
+        )
+        <!-- OR ds.id in (
+        select g.id from t_goods g LEFT JOIN oa_market_goods actg on g.id= actg.goods_id LEFT JOIN t_goods_cat gcat on
+        gcat.cat_id=actg.act_id
+        WHERE g.list_id in
+        <foreach collection="listIds" item="listId" separator="," open="(" close=")">
+            #{listId}
+        </foreach>
+        and g.prod_type=2 and g.is_market=1 and g.terminal in(2,3) and actg.act_id in (
+        select act.act_id from oa_market_act act LEFT JOIN oa_factory_info fin
+        ON act.shop_id = fin.shop_id
+        WHERE fin.shop_id = (select shop_id from oa_factory_info WHERE fact_id = #{factId} ) AND fact_state = 1
+        AND act.act_id in (SELECT act_id FROM oa_market_agent WHERE agent_id = #{agentId})
+        ) AND actg.is_market = 1
+        ) -->
+    </select>
+    <select id="facQueryCountGoodsBylist" resultType="java.lang.Integer">
+        select count(DISTINCT goods.id ) from (
+        SELECT
+        ds.*
+        FROM
+        t_goods ds
+        where ds.id in(
+        SELECT
+        g.id
+        FROM
+        t_goods g
+        LEFT JOIN t_goods_level lev ON g.id = lev.goods_id
+        LEFT JOIN t_agent_fac fac ON fac.level_id = lev.level_id
+        WHERE
+        g.is_market = 1
+        AND fac.factory_id = #{factId}
+        AND g.terminal IN (2, 3)
+        AND g.prod_type = 0
+        AND lev. STATUS = 1
+        AND fac.agent_id = #{agentId}
+        AND fac. STATUS = 1
+        AND g.list_id in
+        <foreach collection="listIds" item="listId" separator="," open="(" close=")">
+            #{listId}
+        </foreach>
+        )
+       <!--  OR ds.id in (
+        select g.id from t_goods g LEFT JOIN oa_market_goods actg on g.id= actg.goods_id LEFT JOIN t_goods_cat gcat on
+        gcat.cat_id=actg.act_id
+        WHERE g.list_id in
+        <foreach collection="listIds" item="listId" separator="," open="(" close=")">
+            #{listId}
+        </foreach>
+        and g.prod_type=2 and g.is_market=1 and g.terminal in(2,3) and actg.act_id in (
+        select act.act_id from oa_market_act act LEFT JOIN oa_factory_info fin
+        ON act.shop_id = fin.shop_id
+        WHERE fin.shop_id = (select shop_id from oa_factory_info WHERE fact_id = #{factId} ) AND fact_state = 1
+        AND act.act_id in (SELECT act_id FROM oa_market_agent WHERE agent_id = #{agentId})
+        ) AND actg.is_market = 1
+        ) -->
+        )
+        goods
+    </select>
+    <select id="facQueryGoodsBylist2" resultType="java.util.HashMap">
+        SELECT distinct a.id,a.prod_id,a.prod_type,a.brand_id,a.list_id,a.model_id,
+        (select concat(a.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val where
+        goods_id=a.id) fullName,
+        a.show_price as showPrice,a.`if_show_price` AS ifShowPrice,a.first_img as
+        firstImg,a.imgs,a.if_show_price,a.if_show_stock
+        FROM
+        t_goods a INNER JOIN oa_item_state ois ON ois.item_id = a.id
+        where a.id in(
+        SELECT
+        g.id
+        FROM
+        t_goods g
+        INNER JOIN t_goods_level lev ON g.id = lev.goods_id
+        INNER JOIN t_agent_fac fac ON fac.level_id = lev.level_id
+        INNER JOIN oa_agent_band_lists lists ON g.list_id = lists.list_id AND lists.band_id = g.brand_id AND lists.agent_id = #{agentId} AND
+        lists.fact_id = #{factId}
+        WHERE
+        g.is_market = 1
+        AND fac.factory_id = #{factId}
+        AND g.terminal IN (2, 3)
+        AND g.prod_type = 0
+        AND lev. STATUS = 1
+        AND fac.agent_id = #{agentId}
+        AND fac. STATUS = 1
+        AND g.list_id in
+        <foreach collection="listIds" item="listId" separator="," open="(" close=")">
+            #{listId}
+        </foreach>
+        )ORDER BY ois.create_time DESC
+       <!--  OR a.id in (
+        select g.id from t_goods g
+        INNER JOIN oa_market_goods actg on g.id= actg.goods_id
+        INNER JOIN oa_agent_band_lists lists ON g.list_id = lists.list_id AND g.brand_id = lists.band_id AND lists.agent_id = #{agentId} AND lists.fact_id = #{factId}
+        WHERE g.list_id in
+        <foreach collection="listIds" item="listId" separator="," open="(" close=")">
+            #{listId}
+        </foreach>
+        and g.prod_type=2 and g.is_market=1 and g.terminal in(2,3) and actg.act_id in (
+        select act.act_id from oa_market_act act LEFT JOIN oa_factory_info fin
+        ON act.shop_id = fin.shop_id
+        WHERE fin.shop_id = (select shop_id from oa_factory_info WHERE fact_id = #{factId} ) AND fact_state = 1
+        AND act.act_id in (SELECT act_id FROM oa_market_agent WHERE agent_id = #{agentId})
+        AND act.eff_date &lt;= NOW()
+        ) AND actg.is_market = 1
+        ) -->
+    </select>
+
+    <select id="facQueryCountGoodsBylist2" resultType="java.lang.Integer">
+        select count(distinct a.id) from
+        t_goods a
+        where a.id in(
+        SELECT
+        g.id
+        FROM
+        t_goods g
+        LEFT JOIN t_goods_level lev ON g.id = lev.goods_id
+        LEFT JOIN t_agent_fac fac ON fac.level_id = lev.level_id
+        WHERE
+        g.is_market = 1
+        AND fac.factory_id = #{factId}
+        AND g.terminal IN (2, 3)
+        AND g.prod_type = 0
+        AND lev. STATUS = 1
+        AND fac.agent_id = #{agentId}
+        AND fac. STATUS = 1
+        AND g.list_id in
+        <foreach collection="listIds" item="listId" separator="," open="(" close=")">
+            #{listId}
+        </foreach>
+        )
+       <!--  OR a.id in (
+        select g.id from t_goods g LEFT JOIN oa_market_goods actg on g.id= actg.goods_id LEFT JOIN t_goods_cat gcat on
+        gcat.cat_id=actg.act_id
+        WHERE g.list_id in
+        <foreach collection="listIds" item="listId" separator="," open="(" close=")">
+            #{listId}
+        </foreach>
+        and g.prod_type=2 and g.is_market=1 and g.terminal in(2,3) and actg.act_id in (
+        select act.act_id from oa_market_act act LEFT JOIN oa_factory_info fin
+        ON act.shop_id = fin.shop_id
+        WHERE fin.shop_id = (select shop_id from oa_factory_info WHERE fact_id = #{factId} ) AND fact_state = 1
+        AND act.act_id in (SELECT act_id FROM oa_market_agent WHERE agent_id = #{agentId})
+        ) AND actg.is_market = 1
+        ) -->
+    </select>
+
+    <select id="facQueryGoodsByCats" resultType="java.util.HashMap">
+        SELECT
+        (select concat(g.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val where
+        goods_id=g.id) full_name,
+        g.*
+        FROM
+        t_goods g
+        INNER JOIN t_goods_cat cat ON g.id = cat.goods_id
+        INNER JOIN crm_prd_cat pcat ON cat.cat_id = pcat.cat_id
+        INNER JOIN t_goods_level dle ON g.id = dle.goods_id
+        INNER JOIN t_agent_fac fac ON dle.level_id = fac.level_id
+        INNER JOIN oa_agent_band b ON g.brand_id = b.band_id AND fac.agent_id = b.agent_id AND fac.factory_id =
+        b.fact_id
+        INNER JOIN oa_agent_band_lists bl ON g.list_id = bl.list_id AND fac.agent_id = b.agent_id AND fac.factory_id =
+        b.fact_id AND bl.band_id = b.band_id
+        WHERE
+        1=1
+        AND g.terminal IN ('2', '3')
+        AND g.is_market = '1'
+        AND fac.agent_id = #{agentId}
+        AND fac.`status` = 1
+        AND fac.factory_id = #{factId}
+        AND dle. STATUS = 1
+        AND cat.cat_id IN (
+        SELECT
+        cat_id
+        FROM
+        crm_prd_cat
+        WHERE
+        (
+        cat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        OR pcat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        OR pcat_id IN (
+        SELECT DISTINCT
+        cat_id
+        FROM
+        crm_prd_cat cat
+        WHERE
+        pcat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        )
+        )
+
+        ) and prod_type =0
+       <!--  union
+        select
+        (select concat(g.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val where
+        goods_id=g.id) full_name,
+        g.*
+        from t_goods g LEFT JOIN oa_market_goods actg ON g.id = actg.goods_id LEFT JOIN oa_market_act act on
+        act.act_id=actg.act_id LEFT JOIN oa_market_agent ma on ma.act_id=act.act_id
+        left join t_goods_cat gc on g.id=gc.goods_id LEFT JOIN crm_prd_cat pc on pc.cat_id=gc.cat_id
+        where ma.agent_id=#{agentId} and act.shop_id in(select shop_id from oa_factory_info where fact_id=#{factId})
+        and g.prod_type='2'
+        and ( pc.cat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        OR pc.pcat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        OR pc.pcat_id IN (
+        SELECT DISTINCT
+        cat_id
+        FROM
+        crm_prd_cat cat
+        WHERE
+        cat.pcat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        )
+        ) -->
+        GROUP BY g.id
+    </select>
+
+    <select id="facQueryCountGoodsByCats" resultType="java.lang.Integer">
+        select count(DISTINCT goods.id ) from (
+        SELECT
+        g.*
+        FROM
+        t_goods g
+        INNER JOIN t_goods_cat cat ON g.id = cat.goods_id
+        INNER JOIN crm_prd_cat pcat ON cat.cat_id = pcat.cat_id
+        INNER JOIN t_goods_level dle ON g.id = dle.goods_id
+        INNER JOIN t_agent_fac fac ON dle.level_id = fac.level_id
+        INNER JOIN oa_agent_band b ON g.brand_id = b.band_id AND fac.agent_id = b.agent_id AND fac.factory_id =
+        b.fact_id
+        INNER JOIN oa_agent_band_lists bl ON g.list_id = bl.list_id AND fac.agent_id = b.agent_id AND fac.factory_id =
+        b.fact_id AND bl.band_id = b.band_id
+        WHERE
+        1=1
+        AND g.terminal IN ('2', '3')
+        AND g.is_market = '1'
+        AND fac.agent_id = #{agentId}
+        AND fac.`status` = 1
+        AND fac.factory_id = #{factId}
+        AND dle. STATUS = 1
+        AND cat.cat_id IN (
+        SELECT
+        cat_id
+        FROM
+        crm_prd_cat
+        WHERE
+        (
+        cat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        OR pcat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        OR pcat_id IN (
+        SELECT DISTINCT
+        cat_id
+        FROM
+        crm_prd_cat cat
+        WHERE
+        pcat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        )
+        )
+        ) and prod_type =0
+        <!-- union
+        select g.* from t_goods g LEFT JOIN oa_market_goods actg ON g.id = actg.goods_id LEFT JOIN oa_market_act act on
+        act.act_id=actg.act_id LEFT JOIN oa_market_agent ma on ma.act_id=act.act_id
+        left join t_goods_cat gc on g.id=gc.goods_id LEFT JOIN crm_prd_cat pc on pc.cat_id=gc.cat_id
+        where ma.agent_id=#{agentId} and act.shop_id in(select shop_id from oa_factory_info where fact_id=#{factId})
+        and g.prod_type='2'
+        AND EXISTS (SELECT list_id FROM oa_agent_band_lists WHERE list_id = g.list_id AND g.brand_id = band_id AND agent_id = #{agentId} <if test="factId!=null"> AND fact_id=#{factId}</if>)
+        and ( pc.cat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        OR pc.pcat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        OR pc.pcat_id IN (
+        SELECT DISTINCT
+        cat_id
+        FROM
+        crm_prd_cat cat
+        WHERE
+        cat.pcat_id IN
+        <foreach collection="catIds" item="catId" separator="," open="(" close=")">
+            #{catId}
+        </foreach>
+        )
+        ) -->
+        )goods
+    </select>
+
+    <!--代理商代理了品牌系列的查询条件-->
+    <sql id="agentWhereSql">
+        AND g.`list_id` IN (
+            SELECT DISTINCT bl.`list_id`
+              FROM oa_agent_band_lists bl
+        INNER JOIN t_agent_fac t
+                ON t.`agent_id` = bl.`agent_id`
+               AND t.`status` = 1
+               AND t.`coop_state` = 1
+        INNER JOIN oa_factory_info fi
+                ON fi.`fact_id` = t.`factory_id`
+               AND fi.`fact_state` = 1
+             WHERE bl.`agent_id` = #{agentId}
+            <if test="factoryId!=null">
+               AND bl.`fact_id`=#{factoryId}
+            </if>
+        )
+    </sql>
+
+    <!--查询代理的普通商品数据限制条件-->
+    <sql id="commonGoodsWhereSql">
+        g.`prod_type` = 0
+        AND g.id IN (
+             SELECT gl.`goods_id`
+               FROM t_goods_level gl
+              WHERE gl.`level_id` IN (
+                    SELECT t.`level_id`
+                      FROM t_agent_fac t
+                     WHERE t.`status` = 1
+                       AND t.`coop_state` = 1
+                       AND t.`agent_id` = #{agentId}
+                    <if test="factoryId!=null">
+                       AND t.`factory_id`=#{factoryId}
+                    </if>
+             )
+        )
+    </sql>
+
+    <!--查询代理人参与的活动的商品的限制条件-->
+    <sql id="actGoodsWhereSql">
+        g.`prod_type` = 2
+        AND g.`id` IN (
+            SELECT mg.goods_id
+              FROM t_agent_fac af
+        INNER JOIN oa_factory_info fi
+                ON af.factory_id = fi.fact_id
+               AND fi.fact_state = 1
+        INNER JOIN oa_market_act ma
+                ON ma.shop_id = fi.shop_id
+               AND ma.cont_state = 2
+               AND ma.terminal IN (2, 3)
+               AND ma.`eff_date` &lt;= NOW()
+               AND ma.`exp_date` &gt;= NOW()
+        INNER JOIN oa_market_agent ag
+               ON ag.agent_id = af.agent_id
+              AND ag.act_id = ma.act_id
+       INNER JOIN oa_market_goods mg
+               ON mg.act_id = ma.act_id
+            WHERE af.status = 1
+            <if test="factoryId!=null">
+              AND af.`factory_id`=#{factoryId}
+            </if>
+            AND af.agent_id = #{agentId}
+        )
+    </sql>
+
+    <sql id="otherWhereSql">
+        <if test="brandIds!=null and brandIds.size>0">
+            AND g.`brand_id` IN
+            <foreach collection="brandIds" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="listIds!=null and listIds.size>0">
+            AND g.`list_id` IN
+            <foreach collection="listIds" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="modelIds!=null and modelIds.size>0">
+            AND g.`model_id` IN
+            <foreach collection="modelIds" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="catIds!=null and catIds.size>0">
+            AND g.`id` IN (
+            SELECT gc.`goods_id` FROM t_goods_cat gc
+            WHERE gc.`cat_id` IN
+            <foreach collection="catIds" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+            )
+        </if>
+        <if test="key!=null and key !=''">
+            <bind name="pattern" value="'%' + key + '%'"/>
+            and g.full_name like #{pattern}
+        </if>
+    </sql>
+
+    <!--根据代理人、品牌、系列、型号分类查询商品总数（包括活动的）-->
+    <select id="findGoodsTotalByCondition_bak" resultType="java.lang.Integer">
+        SELECT count(1) FROM t_goods g
+        WHERE g.is_market = 1
+        AND g.terminal IN (2, 3)
+        <include refid="agentWhereSql" />
+        AND ((<include refid="commonGoodsWhereSql" />) <!--OR (<include refid="actGoodsWhereSql"/>)-->)
+        <include refid="otherWhereSql" />
+    </select>
+
+    <!--根据条件查询商品列表-->
+    <select id="findGoodsListByCondition_bak" resultType="java.util.HashMap">
+       select a.* from (
+            select g.id,g.prod_id,g.prod_type,g.brand_id,g.list_id,g.model_id,g.update_date,
+            (select concat(g.full_name,' ',group_concat(attr_value order by sort separator ' ')) from t_goods_attr_val where
+            goods_id=g.id) full_name,
+            g.show_price,g.show_price as showPrice,g.first_img,g.imgs,g.if_show_price,`if_show_price` AS
+            ifShowPrice,g.if_show_stock
+            from t_goods g
+            WHERE g.is_market = 1
+            AND g.terminal IN (2, 3)
+            <include refid="agentWhereSql"/>
+            AND ((<include refid="commonGoodsWhereSql"/>) <!--OR (<include refid="actGoodsWhereSql"/>)-->)
+            <include refid="otherWhereSql"/>
+        )  a LEFT JOIN (
+          SELECT tmp.goods_id,tmp.prod_type,MAX(market_time) AS market_time
+            FROM (
+             SELECT ois.`item_id` AS goods_id,1 AS prod_type,ois.`modify_time` AS market_time
+               FROM oa_item_state ois
+           /* UNION ALL
+            SELECT omg.`goods_id`,2 AS prod_type,oma.`eff_date` AS market_time
+              FROM oa_market_goods omg
+        INNER JOIN oa_market_act oma ON oma.`act_id` = omg.`act_id`*/) tmp
+            GROUP BY tmp.goods_id,tmp.prod_type
+        ) b ON a.id=b.goods_id
+        order by b.market_time DESC
+    </select>
+
+    <!--根据代理人、品牌、系列、型号分类查询商品分类（包括活动商品的）-->
+    <select id="findGoodsKindByCondition_bak" resultType="java.util.HashMap">
+        SELECT g.`brand_id`,g.`list_id`,g.`model_id`,gc.`cat_id`
+          FROM t_goods g
+     LEFT JOIN t_goods_cat gc
+            ON gc.`goods_id` = g.`id`
+         WHERE g.is_market = 1
+           AND g.terminal IN (2, 3)
+        <include refid="agentWhereSql" />
+        AND ((<include refid="commonGoodsWhereSql" />) <!--OR (<include refid="actGoodsWhereSql"/>)-->)
+        <include refid="otherWhereSql" />
+        GROUP BY g.`brand_id`,g.`list_id`,g.`model_id`,gc.`cat_id`
+    </select>
+
+    <!--根据代理人品牌、系列、分类查询商品分类（包括活动商品的）-->
+    <select id="findGoodsBandListCatByAgent" resultType="java.util.HashMap">
+        SELECT g.`brand_id`,g.`list_id`,gc.`cat_id`,g.prod_type
+        FROM t_goods g LEFT JOIN t_goods_cat gc ON gc.`goods_id` = g.`id`
+        WHERE g.is_market = 1
+        AND g.terminal IN (2, 3)
+        <include refid="agentWhereSql" />
+        AND ((<include refid="commonGoodsWhereSql" />) <!--OR (<include refid="actGoodsWhereSql"/>)-->)
+        GROUP BY g.`brand_id`,g.`list_id`,gc.`cat_id`
+    </select>
+
+    <select id="queryGoods" resultMap="goodsMap">
+      select  * from t_goods where  id = #{goodsId}  and terminal IN (2, 3) limit 0 ,1
+    </select>
+
+    <select id="queryGoods_bak" resultMap="goodsMap">
+      select  * from t_goods where  id = #{goodsId} and is_market = 1 and terminal IN (2, 3)  limit 0 ,1
+    </select>
+    
+     <!--查询普通商品 的数据-->
+    <select id="queryGoodsWithAgent" resultType="com.zlead.entity.dto.GoodsDetailDto">
+    SELECT
+        g.id AS 'id',
+        g.full_name AS 'goodsName',
+        g.prod_type AS 'prodType',
+        g.imgs AS 'imgs',
+        g.first_img AS 'firstImag',
+        g.stock AS 'stock',
+        g.spec AS 'spec',
+        g.show_price AS 'showPrice',
+        g.price AS 'price',
+        g.agent_price AS 'agentPrice',
+        g.market_price AS 'marketPrice',
+        g.if_show_price as 'ifShowPrice',
+        g.if_show_stock as 'ifShowStock',
+        g.market_config as 'marketConfig',
+        g.supply_price as 'supplyPrice',
+        g.intro AS 'intro',
+        g.prod_attr_id AS 'attrId',
+        g.prod_id AS 'prodId',
+        g.price AS 'price',
+        g.shop_id as 'shopId',
+        g.stock_type as 'stockType',
+        g.is_market as 'isMarket',
+        cb.band_name as 'bandName',
+        pl.list_name as 'listName',
+        pm.model_name as 'modelName',
+        tp.packagespec as 'packagespec'
+        FROM
+        t_goods g
+        LEFT JOIN t_product tp on g.prod_id = tp.id
+        LEFT JOIN crm_cust_band cb on g.brand_id = cb.band_id
+        LEFT JOIN crm_prd_list pl on pl.list_id = g.list_id
+        LEFT JOIN crm_prd_model pm on pm.model_id = g.model_id
+        INNER JOIN oa_agent_band_lists lists on lists.band_id=g.brand_id and lists.list_id=g.list_id   AND
+        lists.agent_id=#{agentId} INNER JOIN t_goods_level lev on lev.goods_id=g.id INNER JOIN t_agent_fac fac on fac.agent_id=#{agentId} and fac.level_id=lev.level_id  
+	where  g.prod_type='0' and g.is_market='1' and g.terminal IN (2, 3) and g.id = #{goodsId}   limit 0 ,1
+    </select>
+
+    <!--代理人权限查询sql-->
+    <sql id="agentPermissionSql">
+          SELECT af.`agent_id`,af.`factory_id`,fi.`shop_id`,bl.`band_id`,bl.`list_id`,af.`level_id`,af.`create_time` AS fac_time
+            FROM t_agent_fac af
+      INNER JOIN oa_factory_info fi
+              ON fi.`fact_id` = af.`factory_id`
+             AND fi.`fact_state` = 1
+             AND af.`status` = 1
+             AND af.`coop_state` = 1
+             AND af.`agent_id` = #{agentId}
+        <if test="factoryId!=null">
+            AND af.`factory_id`=#{factoryId}
+        </if>
+      INNER JOIN oa_agent_band_lists bl
+              ON bl.`agent_id` = af.`agent_id`
+             AND bl.`agent_id` = #{agentId}
+    </sql>
+
+    <!--二级搜索查询条件sql-->
+    <sql id="queryConditionSql">
+        <if test="brandIds!=null and brandIds.size>0">
+            AND goods.`brand_id` IN
+            <foreach collection="brandIds" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="listIds!=null and listIds.size>0">
+            AND goods.`list_id` IN
+            <foreach collection="listIds" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="modelIds!=null and modelIds.size>0">
+            AND goods.`model_id` IN
+            <foreach collection="modelIds" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="key!=null and key !=''">
+            <bind name="pattern" value="'%' + key + '%'"/>
+            and goods.full_name like #{pattern}
+        </if>
+    </sql>
+
+    <!--查询商品数据sql，二级页面商品列表需要的数据-->
+    <sql id="queryGoodsSql">
+       SELECT DISTINCT g.`brand_id`,
+                       g.`list_id`,
+                       g.`model_id`,
+                       g.id,
+                       g.prod_id,
+                       g.prod_type,
+                       CONCAT(g.full_name,'',val.attr_value) as full_name,
+                       g.update_date,
+                       g.show_price,
+                       g.show_price AS showPrice,
+                       g.first_img,
+                       g.imgs,
+                       g.if_show_price,
+                       g.`if_show_price` AS ifShowPrice,
+                       g.if_show_stock
+                  FROM t_goods g
+            INNER JOIN (<include refid="agentPermissionSql"/>) aps
+                    ON aps.`band_id` = g.`brand_id`
+                   AND aps.`list_id` = g.`list_id`
+                   AND g.`is_market` = 1
+                   AND g.`terminal` IN (2, 3)
+                   AND g.`prod_type` = 0
+            INNER JOIN t_goods_level gl
+                    ON gl.`goods_id` = g.`id`
+                   AND gl.`level_id` = aps.`level_id`
+             LEFT JOIN (SELECT gav.`goods_id`,GROUP_CONCAT(DISTINCT gav.attr_value ORDER BY gav.sort SEPARATOR '') AS attr_value
+                         FROM t_goods_attr_val gav
+                     GROUP BY gav.`goods_id`) val
+                    ON val.goods_id= g.id
+    </sql>
+
+    <!--根据代理人、品牌、系列、型号分类查询商品分类-->
+    <select id="findGoodsKindByCondition" resultType="java.util.HashMap">
+        SELECT goods.`brand_id`,goods.`list_id`,goods.`model_id`,gc.`cat_id`
+          FROM (<include refid="queryGoodsSql"/>) goods
+    <choose>
+        <when test="catIds!=null and catIds.size>0">
+    INNER JOIN t_goods_cat gc
+            ON gc.`goods_id` = goods.`id`
+           AND gc.`cat_id` IN
+        <foreach collection="catIds" item="item" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+        </when>
+        <otherwise>
+    LEFT JOIN t_goods_cat gc
+           ON gc.`goods_id` = goods.`id`
+        </otherwise>
+    </choose>
+         WHERE 1 = 1 <include refid="queryConditionSql" />
+      GROUP BY goods.`brand_id`,goods.`list_id`,goods.`model_id`,gc.`cat_id`
+    </select>
+
+    <!--根据代理人、品牌、系列、型号分类查询商品总数（包括活动的）-->
+    <select id="findGoodsTotalByCondition" resultType="java.lang.Integer">
+        SELECT COUNT(DISTINCT goods.id)
+          FROM (<include refid="queryGoodsSql"/>) goods
+   <if test="catIds!=null and catIds.size>0">
+    INNER JOIN t_goods_cat gc
+            ON gc.`goods_id` = goods.`id`
+           AND gc.`cat_id` IN
+            <foreach collection="catIds" item="item" separator="," open="(" close=")">
+                #{item}
+            </foreach>
+   </if>
+         WHERE 1 = 1 <include refid="queryConditionSql" />
+    </select>
+
+    <!--根据条件查询商品列表-->
+    <select id="findGoodsListByCondition" resultType="java.util.HashMap">
+        SELECT DISTINCT goods.*
+          FROM (<include refid="queryGoodsSql"/>) goods
+    <if test="catIds!=null and catIds.size>0">
+    INNER JOIN t_goods_cat gc
+            ON gc.`goods_id` = goods.`id`
+           AND gc.`cat_id` IN
+        <foreach collection="catIds" item="item" separator="," open="(" close=")">
+            #{item}
+        </foreach>
+    </if>
+     LEFT JOIN oa_item_state ois
+            ON ois.`item_id` = goods.`id`
+         WHERE 1 = 1 <include refid="queryConditionSql" />
+      ORDER BY ois.`modify_time` DESC,goods.`id` ASC
+    </select>
+</mapper>

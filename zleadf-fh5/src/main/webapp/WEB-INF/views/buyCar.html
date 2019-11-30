@@ -1,0 +1,201 @@
+<!--购物车列表-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>直链商城</title>
+
+    <!-- CSS文件 -->
+    <link rel="stylesheet" href="../../shopping/css/header.css" />
+    <link rel="stylesheet" href="../../shopping/css/car.css" />
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+</head>
+
+<body>
+    
+        <!-- 头部 -->
+        <div id="head">
+
+        </div>
+        <div class="serch">
+            <div class="serch_con">
+                <!-- logo -->
+                <div class="logo">
+                    <img src="../../shopping/img/index/logo.png" />
+                </div>
+                <div class="searcha">
+                    <ul>
+                        <li>
+                            <i class='steps'><img src="../../shopping/img/success/ic_finish.png" alt=""></i>
+                             <!-- <i  class='step'>1</i> -->
+                             我的购物车</li>
+                        <li >
+                            <!-- <i class='steps' ><img src="../../shopping/img/success/ic_finish.png" alt=""></i> -->
+                            <i  class='step'>2</i>
+                            核对订单信息
+                        </li>
+                        <li>
+                            <!-- <i class='steps'><img src="../../shopping/img/success/ic_finish.png" alt=""></i> -->
+                            <i class='step'>3</i>成功提交订单
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 购物车 -->
+        <div class="car_title"></div>
+
+        <div class="car_box">
+            <ul class="car_th">
+                <!--<li> <i class="checkbox"><img class="cAll2" src="../../shopping/img/car/Checked_default2.png" alt=""></i> 全选</li>-->
+                <li> <i class="checkbox"></i> 全选</li>
+                <li>商品信息</li>
+                <li>型号</li>
+                <li>单价</li>
+                <li>数量</li>
+                <li>金额</li>
+                <li></li>
+            </ul>
+            <ul class="content" id="list">
+                <!--<li class="kdef">-->
+                    <!--<div class="car_tit">-->
+                        <!--<span><img src="../../shopping/img/car/home／ic_home_tab.png" alt=""></span>-->
+                        <!--<span><img src="../../shopping/img/car/home1.png" alt=""></span>-->
+                        <!--<span class="conpany">上海五金机电有限公司</span>-->
+                    <!--</div>-->
+
+                    <!--<div class="car_content" >-->
+                        <!--&lt;!&ndash; 有效 &ndash;&gt;-->
+                        <!--<span class="product_car use1">-->
+                            <!--<i class="check_png cp1"><img src="../../shopping/img/car/Checked_default.png" alt=""></i>-->
+                            <!--<i class="check_png cp2"><img src="../../shopping/img//car/home／ic_home_tab.png" alt=""></i>-->
+                            <!--<i class="img_cars"><img src="../../shopping/img/car/1547285288(1).png" alt=""></i>-->
+                            <!--<div class="clear"></div>-->
+                        <!--</span>-->
+                        <!--&lt;!&ndash; 无效 &ndash;&gt;-->
+                        <!--<span  class="product_car use2">-->
+                              <!--<i class="check_png"><img src="../../shopping/img/car/label_shixiao.png" alt=""></i>-->
+                              <!--<i class="img_cars"><img src="../../shopping/img/car/1547285288(1).png" alt=""></i>-->
+                              <!--<div class="clear"></div>-->
+                        <!--</span>-->
+                        <!--&lt;!&ndash; 商品信息 &ndash;&gt;-->
+                        <!--<span class="product_p">-->
+                            <!--<p>手电转家用充电式电动螺丝刀手枪电钻迷你工具2V小锂电手钻电转</p>-->
+                        <!--</span>-->
+                        <!--&lt;!&ndash; 型号 &ndash;&gt;-->
+                        <!--<span class="type_car" id="type_car">-->
+                            <!--GSR 120-Li 单电版-->
+                        <!--</span>-->
+                        <!--&lt;!&ndash; 选择型号 &ndash;&gt;-->
+                        <!--<div class="type_check hide" id="type_check">-->
+                            <!--<ul>-->
+                                <!--<li class="un_selected isShow">-->
+                                    <!--12345-->
+                                <!--</li>-->
+                                <!--<li class="un_selected">-->
+                                    <!--123456-->
+                                <!--</li>-->
+                                <!--<li class="un_selected">-->
+                                    <!--123457-->
+                                <!--</li>-->
+                                <!--<li class="un_selected">-->
+                                    <!--123458-->
+                                <!--</li>-->
+                                <!--<li class="un_selected">-->
+                                    <!--123459-->
+                                <!--</li>-->
+                                <!--<div class="clear"></div>-->
+                                <!--<div class="btns">-->
+                                    <!--<span class="btn1">确定</span>-->
+                                    <!--<span class="btn2">取消</span>-->
+                                <!--</div>-->
+
+                            <!--</ul>-->
+                        <!--</div>-->
+                        <!--<div class="type_car1" id="type_car1">-->
+                            <!--<span class="type_reset" id="type_reset">-->
+                                <!--修改-->
+                            <!--</span>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash; 单价 &ndash;&gt;-->
+                        <!--<span class="monet_car">-->
+                            <!--￥197.50-->
+                        <!--</span>-->
+                        <!--&lt;!&ndash; 数量 &ndash;&gt;-->
+                        <!--<span class="number_car">-->
+                            <!--&lt;!&ndash; <span class="num">{{number}}</span> &ndash;&gt;-->
+                            <!--<div class="inputk">-->
+                                <!--<input class="num" type="text" value="1">-->
+                            <!--</div>-->
+                            <!--<div class="btn_car">-->
+                                <!--<i class="add">+</i>-->
+                                <!--<i class="down">-</i>-->
+                            <!--</div>-->
+                        <!--</span>-->
+                        <!--&lt;!&ndash; 金额 &ndash;&gt;-->
+                        <!--<span class="jine">-->
+                            <!--￥200.20-->
+                        <!--</span>-->
+                        <!--&lt;!&ndash; 删除 &ndash;&gt;-->
+                        <!--<span class="tsash_car">-->
+                            <!--<img src="../../shopping/img//car//Trash.png" alt="">-->
+                        <!--</span>-->
+                    <!--</div>-->
+                    <!--&lt;!&ndash;清除浮动  &ndash;&gt;-->
+                    <!--<div class="clear"></div>-->
+                    <!--<div class="line_car"></div>-->
+                <!--</li>-->
+            </ul>
+
+
+            <div class="footer_car">
+                <span class="number">
+                    <i>
+                        <img class="ft1 cAll" src="../../shopping/img/car/Checked_default2.png" alt="">
+                    </i>
+                    <span class="all">全部(共<span class="goodsNum" style="color:#FF7A47;font-weight: 700">3</span>件 )</span>
+                    <span class="del_car">批量删除</span>
+                </span>
+
+                <span class="btn_car2">立即支付</span>
+                <span class="alls">
+                    合计：<span class="money_car">￥</span><span class="money_car allM">0</span>
+                    <i class="yuanjia">
+                        <img src="../../shopping/img/car/down.png" alt="" class="down">
+                        <img src="../../shopping/img/car/up.png" alt="" style="display:none" class="up">
+                    </i>
+                </span>
+                <div class="dialogs_car hide">
+                    <i>原价：<span style="font-size:16px;">￥500</span></i>
+                    <i>运费：<span style="font-size:16px;">￥30</span></i>
+                </div>
+            </div>
+        </div>
+        <!--删除弹窗 -->
+        <div class="meng">
+        </div>
+        <div id="dialog" style="width:392px;height:312px" class="dialog">
+            <span class="error_img"><img src="../../shopping/img/car/Fill 1.png" alt=""></span>
+            <p class="text">确定要删除该商品？</p>
+            <span class="dialog-footer">
+                <button class="comfirm">确 定</button>
+                <button class="cancel">取 消</button>
+            </span>
+        </div>
+ 
+    <script src="../../shopping/lib/jquery/jquery.min.js"></script>
+    <!-- <script src="src="../../shopping/lib/artTemplate/artTemplate/template-web.js"></script> -->
+    <!-- <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script> -->
+    <script src="../../shopping/js/carBuy.js"></script>
+
+    <script>
+        // $("#head").load("speedHead.html");
+    </script>
+
+
+
+</body>
+
+</html>

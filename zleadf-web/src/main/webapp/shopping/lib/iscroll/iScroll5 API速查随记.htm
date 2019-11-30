@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="zh-cn"><head id="Head1"><style id="znBdcsStyle" type="text/css">.bdcs-container .bdcs-main,.bdcs-container .bdcs-main *{box-sizing:content-box;margin:0;padding:0;float:none;clear:none;overflow:hidden;white-space:nowrap;word-wrap:normal;border:0;background:0 0;width:auto;height:auto;max-width:none;min-width:none;max-height:none;min-height:none;border-radius:0;box-shadow:none;transition:none;text-align:left}.bdcs-container .bdcs-clearfix:after{content:'';display:block;clear:both;height:0}.bdcs-container .bdcs-clearfix{zoom:1}.bdcs-container .bdcs-main{overflow:visible}.bdcs-container .bdcs-search{display:block;overflow:visible;position:relative;border-style:solid}.bdcs-container .bdcs-search-form-input-wrap{display:inline-block}.bdcs-container .bdcs-search-form-input{border-width:1px;border-style:solid;display:inline-block;vertical-align:top;text-indent:5px;background-color:#fff;float:left}.bdcs-container .bdcs-search-form-input:focus{border-width:1px;border-style:solid;outline:0}.bdcs-container .bdcs-search-form-submit-wrap{display:inline-block}.bdcs-container .bdcs-search-form-submit{display:inline-block;cursor:pointer;border-width:1px;border-style:solid;vertical-align:top;text-align:center;width:50px;//_overflow:hidden}.bdcs-container .bdcs-search-form-submit-magnifier{width:45px;padding:0;text-indent:-999em;overflow:hidden;background:url(http://znsv.baidu.com/static/customer-search/component/search/magnifier-icon.png) no-repeat center center;_background:url(http://znsv.baidu.com/static/customer-search/component/search/magnifier-icon_ie6.png) no-repeat center center}div#default-searchbox .default-channel-meun{position:relative;width:75px;display:inline-block;vertical-align:middle;cursor:pointer;background:#fff;float:left;overflow:visible}div#default-searchbox .default-channel-current{border:1px solid;position:relative;width:100%;border-right:0}div#default-searchbox .default-channel-current span{margin-left:8px}div#default-searchbox .default-channel-current i{overflow:hidden;width:0;height:0;border-width:6px 6px 0;border-color:#9E9E9E #fff;border-style:solid;display:block;position:absolute;right:10px;top:11px}div.cse-default-channel-container{display:block;position:absolute;z-index:30061000000}div.cse-default-channel-container .default-channel-list{display:none;width:99%;list-style:none;background:#fff;border:1px solid #DDD;border-top:0;margin:0;padding:0}div.cse-default-channel-container .default-channel-list li{background:0 0;line-height:24px;list-style:none;display:block;padding-left:7px;cursor:pointer}div.cse-default-channel-container .default-channel-list li:hover{background:#DDD}.bdcs-container .bdcs-search-form-input-wrap{}.bdcs-container .bdcs-search-form-input-notspan{margin-left:0px;font-family:Arial,SimSun,sans-serif;color:#000000;font-size:14px;}.bdcs-container .bdcs-search-form-input .icon-nofocus{left:;right:;top:;height:;width:;}.bdcs-container .bdcs-search{width:299px;height:36px;overflow:hidden;border-color:#1a89ed;border-radius:5px;border-width:2px;box-shadow:none;background-color:none;}.bdcs-container .bdcs-search-form-input{border-color:#ffffff;margin-right:0px;width:246px;height:34px;line-height:34px;font-family:Arial,SimSun,sans-serif;color:#000000;font-size:14px;border-radius:1px;background-color:#FFFFFF;}.bdcs-container .bdcs-search-form-input:focus{border-color:#1a89ed;}.bdcs-container .bdcs-search-form-submit-wrap{}.bdcs-container .bdcs-search-form-submit{border-color:#1c89ea;height:34px;width:50px;background-color:#1c89ea;color:#ffffff;font-family:Arial,SimSun,sans-serif;font-size:14px;border-radius:0px;}.bdcs-container .bdcs-search-form-submit{*height:36px;*margin-top:1px;}.bdcs-container .bdcs-search-form-submit{height:36px;}.bdcs-container .bdcs-search-form-submit{line-height:34px;}.bdcs-container .bdcs-search-form-input{margin-right:-1px;}#bdcs-rec{display:none;}</style><script src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/push.js"></script><script type="text/javascript" async="" src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/js"></script><script src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/b2.js"></script><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="keywords" content="码迷,mamicode.com,互联网,软件开发,开源,asp,asp.net,android,apple,jsp,php,Windows,数据库,HTML,JS,CSS,技术文章,游戏,手机相关"><meta name="description" content="iscroll.js，这个版本是常规应用的脚本。它包含大多数常用的功能，有很高的性能和很小的体积。
+iscroll-lite.js，精简版本。它不支持快速跳跃，滚动条，鼠标滚轮，快捷键绑定。但如果你所需要的是滚动(特别是在移动平台) iScroll 精简版 是又小又快的解决方案。
+iscroll..."><title>
+	iScroll5 API速查随记
+</title><link href="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/css.css" type="text/css" rel="stylesheet">
+<script type="text/javascript" async="" src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/ecqm_003"></script><script type="text/javascript" async="" src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/ecqm_005"></script><script type="text/javascript" async="" src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/ecqm_004"></script><script type="text/javascript" async="" src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/ecqm"></script><script src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/ca-pub-8616102841876629.js"></script><script type="text/javascript" async="" src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/ecqm_002"></script><script src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/hm.js"></script><script src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/jquery-1.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?408b7cb341bcbccbc03cf31a305b01dd";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<link rel="stylesheet" type="text/css" href="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/prettify.css">
+    <script type="text/javascript" charset="utf-8" src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/prettify.js"></script>
+</head>
+<body><div id="BAIDU_DUP_fp_wrapper" style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;"><iframe id="BAIDU_DUP_fp_iframe" src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/o.htm" style="width: 0px; height: 0px; visibility: hidden; display: none;"></iframe></div>
+    
+
+
+
+    
+    <div class="divmain">
+        <div class="width70bi divfloatleft" style="min-height:2000px;">
+            <div class="marginright20">
+                
+
+                <div class="detailtitle divtextaligncenter divborderbottomdotted">
+                    <h1 id="Htitle" class="detailtitle">iScroll5 API速查随记</h1>
+                </div>
+                <div class="detail1 divtextaligncenter">
+                    时间：<span id="Label2" class="colorlv">2014-11-24 18:29:31</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp; 阅读：<span id="Label1" class="colorCheng">81598</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp; 评论：<span id="lblcommentcount" class="colorCheng">1</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp; 收藏：<span id="lblfavorite" class="colorCheng">0</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp; <a id="infofavorite" class="acursorpointer">[点我收藏+]</a>
+                </div>
+                
+                <div class="detailcontennt">
+                    <span id="Label3"><p>标签：<a href="http://www.mamicode.com/so/1/des" title="des">des</a>&nbsp;&nbsp;&nbsp;<a href="http://www.mamicode.com/so/1/style" title="style">style</a>&nbsp;&nbsp;&nbsp;<a href="http://www.mamicode.com/so/1/http" title="http">http</a>&nbsp;&nbsp;&nbsp;<a href="http://www.mamicode.com/so/1/io" title="io">io</a>&nbsp;&nbsp;&nbsp;<a href="http://www.mamicode.com/so/1/ar" title="ar">ar</a>&nbsp;&nbsp;&nbsp;<a href="http://www.mamicode.com/so/1/os" title="os">os</a>&nbsp;&nbsp;&nbsp;<a href="http://www.mamicode.com/so/1/%e4%bd%bf%e7%94%a8" title="使用">使用</a>&nbsp;&nbsp;&nbsp;<a href="http://www.mamicode.com/so/1/sp" title="sp">sp</a>&nbsp;&nbsp;&nbsp;<a href="http://www.mamicode.com/so/1/java" title="java">java</a>&nbsp;&nbsp;&nbsp;</p><h2 id="dir0">版本</h2>
+<p>针对iScroll的优化。为了达到更高的性能，iScroll分为了多个版本。你可以选择最适合你的版本。<br>目前我们有以下版本：</p>
+<ul>
+<li>iscroll.js，这个版本是常规应用的脚本。它包含大多数常用的功能，有很高的性能和很小的体积。</li>
+<li>iscroll-lite.js，精简版本。它不支持快速跳跃，滚动条，鼠标滚轮，快捷键绑定。但如果你所需要的是滚动(特别是在移动平台) iScroll 精简版 是又小又快的解决方案。</li>
+<li>iscroll-probe.js，探查当前滚动位置是一个要求很高的任务,这就是为什么我决定建立一个专门的版本。如果你需要知道滚动位置在任何给定的时间,这是iScroll给你的。（我正在做更多的测试,这可能最终在常规iscroll.js脚本，请留意）。</li>
+<li>iscroll-zoom.js，在标准滚动功能上增加缩放功能。</li>
+<li>iscroll-infinite.js，可以做无限缓存的滚动。处理很长的列表的元素为移动设备并非易事。 iScroll infinite版本使用缓存机制,允许你滚动一个潜在的无限数量的元素。</li>
+
+</ul>
+<h2 id="dir3">入门</h2>
+<hr>
+<p><strong>IScroll是一个类，每个需要使用滚动功能的区域均要进行初始化</strong>。每个页面上的iScroll实例数目在设备的CPU和内存能承受的范围内是没有限制的。</p>
+<p>尽可能保持DOM结构的简洁。iScroll使用硬件合成层但是有一个限制硬件可以处理的元素。<br>最佳的HTML结构如下：</p>
+<pre class="html prettyprint prettyprinted"><code class=" hljs "><span class="tag"><span class="hljs-tag"><span class="tag">&lt;</span><span class="hljs-title"><span class="tag">div</span><span class="pln"><span class="hljs-tag"><span class="pln"> </span><span class="atn"><span class="hljs-tag"><span class="hljs-attribute"><span class="atn">id</span><span class="pun"><span class="hljs-tag"><span class="pun">=</span><span class="atv"><span class="hljs-tag"><span class="hljs-value"><span class="atv">"wrapper"</span><span class="tag"><span class="hljs-tag"><span class="tag">&gt;</span><span class="pln"><span class="pln">
+    </span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;</span><span class="hljs-title"><span class="tag">ul&gt;</span><span class="pln"><span class="pln">
+        </span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;</span><span class="hljs-title"><span class="tag">li&gt;</span><span class="pln"><span class="pln">...</span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;/</span><span class="hljs-title"><span class="tag">li&gt;</span><span class="pln"><span class="pln">
+        </span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;</span><span class="hljs-title"><span class="tag">li&gt;</span><span class="pln"><span class="pln">...</span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;/</span><span class="hljs-title"><span class="tag">li&gt;</span><span class="pln"><span class="pln">
+        ...
+    </span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;/</span><span class="hljs-title"><span class="tag">ul&gt;</span><span class="pln"><span class="pln">
+</span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;/</span><span class="hljs-title"><span class="tag">div&gt;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>iScroll作用于滚动区域的外层。在上面的例子中，UL元素能进行滚动。只有容器元素的第一个子元素能进行滚动，其他子元素完全被忽略。</p>
+<p>最基本的脚本初始化的方式如下：</p>
+<pre class="html prettyprint prettyprinted"><code class=" hljs "><span class="tag"><span class="hljs-tag"><span class="tag">&lt;</span><span class="hljs-title"><span class="tag">script</span><span class="pln"><span class="hljs-tag"><span class="pln"> </span><span class="atn"><span class="hljs-tag"><span class="hljs-attribute"><span class="atn">type</span><span class="pun"><span class="hljs-tag"><span class="pun">=</span><span class="atv"><span class="hljs-tag"><span class="hljs-value"><span class="atv">"text/javascript"</span><span class="tag"><span class="hljs-tag"><span class="tag">&gt;</span><span class="pln"><span class="javascript"><span class="pln">
+    </span><span class="kwd"><span class="javascript"><span class="hljs-keyword"><span class="kwd">var</span><span class="pln"><span class="javascript"><span class="pln"> myScroll </span><span class="pun"><span class="javascript"><span class="pun">=</span><span class="pln"><span class="javascript"><span class="pln"> </span><span class="kwd"><span class="javascript"><span class="hljs-keyword"><span class="kwd">new</span><span class="pln"><span class="javascript"><span class="pln"> </span><span class="typ"><span class="javascript"><span class="typ">IScroll</span><span class="pun"><span class="javascript"><span class="pun">(</span><span class="str"><span class="javascript"><span class="hljs-string"><span class="pun">‘#</span><span class="pln">wrapper</span><span class="pun">‘</span><span class="pun"><span class="javascript"><span class="pun">);</span><span class="pln"><span class="javascript"><span class="pln">
+</span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;/</span><span class="hljs-title"><span class="tag">script&gt;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p><strong>第一个参数可以是滚动容器元素的DOM选择器字符串</strong>，也可以是滚动容器元素的引用对象。下面是一个有效的语法：</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="kwd"><span class="hljs-keyword"><span class="kwd">var</span><span class="pln"><span class="pln"> wrapper </span><span class="pun"><span class="pun">=</span><span class="pln"><span class="pln"> </span><span class="hljs-built_in"><span class="pln">document</span><span class="pun"><span class="pun">.</span><span class="pln"><span class="pln">getElementById</span><span class="pun"><span class="pun">(</span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="pln">wrapper</span><span class="pun">‘</span><span class="pun"><span class="pun">);</span><span class="pln"><span class="pln">
+</span><span class="kwd"><span class="hljs-keyword"><span class="kwd">var</span><span class="pln"><span class="pln"> myScroll </span><span class="pun"><span class="pun">=</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-keyword"><span class="kwd">new</span><span class="pln"><span class="pln"> </span><span class="typ"><span class="typ">IScroll</span><span class="pun"><span class="pun">(</span><span class="pln"><span class="pln">wrapper</span><span class="pun"><span class="pun">);</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>所以基本上你要么直接传递元素，要么传递一个querySelector字符串。因此可以使用css名称代替ID去选择一个滚动器容器,如下:</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="kwd"><span class="hljs-keyword"><span class="kwd">var</span><span class="pln"><span class="pln"> myScroll </span><span class="pun"><span class="pun">=</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-keyword"><span class="kwd">new</span><span class="pln"><span class="pln"> </span><span class="typ"><span class="typ">IScroll</span><span class="pun"><span class="pun">(</span><span class="str"><span class="hljs-string"><span class="pun">‘.</span><span class="pln">wrapper</span><span class="pun">‘</span><span class="pun"><span class="pun">);</span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<blockquote>
+<p>注意，iScroll使用的是querySelector 而不是 querySelectorAll，所以iScroll只会作用到选择器选中元素的第一个。如果你需要对多个对象使用iScroll，你需要构建自己的循环机制。</p>
+</blockquote>
+<h2 id="dir16">初始化</h2>
+<hr>
+<p>当DOM准备完成后iScroll需要被初始化。最保险的方式是在window的<code>onload</code>事件中启动它。<br>在<code>DOMContentLoaded</code>事件中或者<code>inline initialization</code>中做也可以，需要记住的是脚本需要知道滚动区域的高度和宽度。如果你有一些图片在滚动区域导致不能立马获取区域的高度和宽度，iScroll的滚动尺寸有可能会错误。</p>
+<p>为滚动起容器增加<code>position:relative</code>或者<code>absolute</code>样式。这将解决大多数滚动器容器大小计算不正确的问题。<br>综上所述，最小的iScroll配置如下：</p>
+<pre class="html prettyprint prettyprinted"><code class=" hljs "><span class="pln"><span class="pln"> </span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;</span><span class="hljs-title"><span class="tag">head&gt;</span><span class="pln"><span class="pln">
+    ...
+    </span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;</span><span class="hljs-title"><span class="tag">script</span><span class="pln"><span class="hljs-tag"><span class="pln"> </span><span class="atn"><span class="hljs-tag"><span class="hljs-attribute"><span class="atn">type</span><span class="pun"><span class="hljs-tag"><span class="pun">=</span><span class="atv"><span class="hljs-tag"><span class="hljs-value"><span class="atv">"text/javascript"</span><span class="pln"><span class="hljs-tag"><span class="pln"> </span><span class="atn"><span class="hljs-tag"><span class="hljs-attribute"><span class="atn">src</span><span class="pun"><span class="hljs-tag"><span class="pun">=</span><span class="atv"><span class="hljs-tag"><span class="hljs-value"><span class="atv">"iscroll.js"</span><span class="tag"><span class="hljs-tag"><span class="tag">&gt;</span><span class="javascript"><span class="hljs-tag"><span class="tag">&lt;/</span><span class="hljs-title"><span class="tag">script&gt;</span><span class="pln"><span class="pln">
+    </span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;</span><span class="hljs-title"><span class="tag">script</span><span class="pln"><span class="hljs-tag"><span class="pln"> </span><span class="atn"><span class="hljs-tag"><span class="hljs-attribute"><span class="atn">type</span><span class="pun"><span class="hljs-tag"><span class="pun">=</span><span class="atv"><span class="hljs-tag"><span class="hljs-value"><span class="atv">"text/javascript"</span><span class="tag"><span class="hljs-tag"><span class="tag">&gt;</span><span class="pln"><span class="javascript"><span class="pln">
+    </span><span class="kwd"><span class="javascript"><span class="hljs-keyword"><span class="kwd">var</span><span class="pln"><span class="javascript"><span class="pln"> myScroll</span><span class="pun"><span class="javascript"><span class="pun">;</span><span class="pln"><span class="javascript"><span class="pln">
+    </span><span class="kwd"><span class="javascript"><span class="hljs-function"><span class="hljs-keyword"><span class="kwd">function</span><span class="pln"><span class="javascript"><span class="hljs-function"><span class="pln"> </span><span class="hljs-title"><span class="pln">loaded</span><span class="pun"><span class="javascript"><span class="hljs-function"><span class="hljs-params"><span class="pun">()</span><span class="pln"><span class="javascript"><span class="hljs-function"><span class="pln"> </span><span class="pun"><span class="javascript"><span class="pun">{</span><span class="pln"><span class="javascript"><span class="pln">
+        myScroll </span><span class="pun"><span class="javascript"><span class="pun">=</span><span class="pln"><span class="javascript"><span class="pln"> </span><span class="kwd"><span class="javascript"><span class="hljs-keyword"><span class="kwd">new</span><span class="pln"><span class="javascript"><span class="pln"> </span><span class="typ"><span class="javascript"><span class="typ">IScroll</span><span class="pun"><span class="javascript"><span class="pun">(</span><span class="str"><span class="javascript"><span class="hljs-string"><span class="pun">‘#</span><span class="pln">wrapper</span><span class="pun">‘</span><span class="pun"><span class="javascript"><span class="pun">);</span><span class="pln"><span class="javascript"><span class="pln">
+    </span><span class="pun"><span class="javascript"><span class="pun">}</span><span class="pln"><span class="javascript"><span class="pln">
+    </span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;/</span><span class="hljs-title"><span class="tag">script&gt;</span><span class="pln"><span class="pln">
+    </span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;/</span><span class="hljs-title"><span class="tag">head&gt;</span><span class="pln"><span class="pln">
+    ...
+    </span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;</span><span class="hljs-title"><span class="tag">body</span><span class="pln"><span class="hljs-tag"><span class="pln"> </span><span class="atn"><span class="hljs-tag"><span class="hljs-attribute"><span class="atn">onload</span><span class="pun"><span class="hljs-tag"><span class="pun">=</span><span class="atv"><span class="hljs-tag"><span class="hljs-value"><span class="atv">"</span><span class="pln"><span class="hljs-tag"><span class="hljs-value"><span class="pln">loaded</span><span class="pun"><span class="hljs-tag"><span class="hljs-value"><span class="pun">()</span><span class="atv"><span class="hljs-tag"><span class="hljs-value"><span class="atv">"</span><span class="tag"><span class="hljs-tag"><span class="tag">&gt;</span><span class="pln"><span class="pln">
+    </span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;</span><span class="hljs-title"><span class="tag">div</span><span class="pln"><span class="hljs-tag"><span class="pln"> </span><span class="atn"><span class="hljs-tag"><span class="hljs-attribute"><span class="atn">id</span><span class="pun"><span class="hljs-tag"><span class="pun">=</span><span class="atv"><span class="hljs-tag"><span class="hljs-value"><span class="atv">"wrapper"</span><span class="tag"><span class="hljs-tag"><span class="tag">&gt;</span><span class="pln"><span class="pln">
+        </span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;</span><span class="hljs-title"><span class="tag">ul&gt;</span><span class="pln"><span class="pln">
+            </span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;</span><span class="hljs-title"><span class="tag">li&gt;</span><span class="pln"><span class="pln">...</span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;/</span><span class="hljs-title"><span class="tag">li&gt;</span><span class="pln"><span class="pln">
+            </span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;</span><span class="hljs-title"><span class="tag">li&gt;</span><span class="pln"><span class="pln">...</span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;/</span><span class="hljs-title"><span class="tag">li&gt;</span><span class="pln"><span class="pln">
+            ...
+        </span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;/</span><span class="hljs-title"><span class="tag">ul&gt;</span><span class="pln"><span class="pln">
+    </span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;/</span><span class="hljs-title"><span class="tag">div&gt;</span><span class="pln"><span class="pln">
+    </span><span class="tag"><span class="hljs-tag"><span class="tag">&lt;/</span><span class="hljs-title"><span class="tag">body&gt;</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<blockquote>
+<p>如果你有一个复杂的DOM结构，最好在onload事件之后适当的延迟，再去初始化iScroll。最好给浏览器100或者200毫秒的间隙再去初始化iScroll。</p>
+</blockquote>
+<h2 id="dir22">配置</h2>
+<hr>
+<p>在iScroll初始化阶段可以通过构造函数的第二个参数配置它。</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="kwd"><span class="hljs-keyword"><span class="kwd">var</span><span class="pln"><span class="pln"> myScroll </span><span class="pun"><span class="pun">=</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-keyword"><span class="kwd">new</span><span class="pln"><span class="pln"> </span><span class="typ"><span class="typ">IScroll</span><span class="pun"><span class="pun">(</span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="com">#wrapper‘</span><span class="pun"><span class="com">,</span><span class="pln"><span class="com"> </span><span class="pun"><span class="com">{</span><span class="pln"><span class="pln">
+    mouseWheel</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-literal"><span class="kwd">true</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+    scrollbars</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-literal"><span class="kwd">true</span><span class="pln"><span class="pln">
+</span><span class="pun"><span class="pun">});</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>上面的例子示例了在iScroll初始化时开启鼠标滚轮支持和滚动条支持。</p>
+<blockquote>
+<p>在初始化后你可以通过options对象访问标准化值。例如：&nbsp;<code>js console.dir(myScroll.options);</code><br>上面的语句将返回myScroll实例的配置信息。所谓的标准化意味着如果你设置<code>useTransform:true</code>，但是浏览器并不支持CSS<br>transforms，那么useTransform属性值将为<code>false</code>。</p>
+
+</blockquote>
+<h2 id="dir28">理解核心</h2>
+<hr>
+<p>iScroll使用基于设备和浏览器性能的各种技术来进行滚动。<strong>通常不需要你来配置引擎，iScroll会为你选择最佳的方式。</strong></p>
+<p>尽管如此，理解iScroll工作机制和了解如何去配置他们也是很重要的。</p>
+<h3 id="options.usetransform">options.useTransform</h3>
+<p>默认情况下引擎会使用CSStransform属性。如果现在还是2007年，那么可以设置这个属性为false，这就是说：引擎将使用top/left属性来进行滚动。<br>这个属性在滚动器感知到Flash，iframe或者视频插件内容时会有用，但是需要注意：性能会有极大的损耗。<br>默认值：<code>true</code></p>
+<h3 id="options.usetransition">options.useTransition</h3>
+<p>iScroll使用CSS transition来实现动画效果（动量和弹力）。如果设置为<code>false</code>，那么将使用<code>requestAnimationFrame</code>代替。<br>在现在浏览器中这两者之间的差异并不明显。在老的设备上transitions执行得更好。<br>默认值：<code>true</code></p>
+<h3 id="options.hwcompositing">options.HWCompositing</h3>
+<p>这个选项尝试使用<code>translateZ(0)</code>来把滚动器附加到硬件层，以此来改变CSS属性。在移动设备上这将提高性能，但在有些情况下,你可能想要禁用它(特别是如果你有太多的元素和硬件性能跟不上)。<br>默认值：<code>true</code></p>
+<blockquote>
+<p>如果不确定iScroll的最优配置。从性能角度出发，上面的所有选项应该设置为true。（或者更好的方式，让他们自动设置属性为true）。你可以尝试这配置他们，但是要小心内存泄漏。</p>
+
+</blockquote>
+<h2 id="dir39">基本功能</h2>
+<hr>
+<h3 id="options.bounce">options.bounce</h3>
+<p>当滚动器到达容器边界时他将执行一个小反弹动画。在老的或者性能低的设备上禁用反弹对实现平滑的滚动有帮助。<br>默认值：<code>true</code></p>
+<h3 id="options.click">options.click</h3>
+<p>为了重写原生滚动条，iScroll禁止了一些默认的浏览器行为，比如鼠标的点击。如果你想你的应用程序响应click事件，那么该设置次属性为true。请注意，建议使用自定义的tap 事件来代替它（见下面）。<br>默认属性：<code>false</code></p>
+<h3 id="options.disablemouse">options.disableMouse</h3>
+<h3 id="options.disablepointer">options.disablePointer</h3>
+<h3 id="options.disabletouch">options.disableTouch</h3>
+<p>默认情况下，iScroll监听所有的指针事件，并且对这些事件中第一个被触发的做出反应。这看上去是浪费资源，但是在大量的浏览器/设备上兼容，特定的事件侦测证明是无效的，所以<code>listen-to-all</code>是一个安全的做法。</p>
+<p>如果你有一种设备侦测的内部机制，或者你知道你的脚本将在什么地方运行，你可以把你不需要的事件禁用（鼠标，指针或者触摸事件）。<br>下面的例子是禁用鼠标和指针事件：</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="kwd"><span class="hljs-keyword"><span class="kwd">var</span><span class="pln"><span class="pln"> myScroll </span><span class="pun"><span class="pun">=</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-keyword"><span class="kwd">new</span><span class="pln"><span class="pln"> </span><span class="typ"><span class="typ">IScroll</span><span class="pun"><span class="pun">(</span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="com">#wrapper‘</span><span class="pun"><span class="com">,</span><span class="pln"><span class="com"> </span><span class="pun"><span class="com">{</span><span class="pln"><span class="pln">
+    disableMouse</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-literal"><span class="kwd">true</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+    disablePointer</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-literal"><span class="kwd">true</span><span class="pln"><span class="pln">
+</span><span class="pun"><span class="pun">});</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>默认值：<code>false</code></p>
+<h3 id="options.eventpassthrough">options.eventPassthrough</h3>
+<p>有些时候你想保留原生纵向的滚动条但想为横向滚动条增加iScroll功能（比如走马灯）。设置这个属性为<code>true</code>并且iScroll区域只将影响横向滚动，纵向滚动将滚动整个页面。</p>
+<p>在移动设备上访问<a href="http://lab.cubiq.org/iscroll5/demos/event-passthrough/">event passthrough demo</a>。注意，这个值也可以设置为<code>horizontal</code>，其作用和上面介绍的相反（横向滚动条保持原生，纵向滚动条使用iScroll）。</p>
+<h3 id="options.freescroll">options.freeScroll</h3>
+<p>此属性针对于两个两个纬度的滚动条（当你需要横向和纵向滚动条）。通常情况下你开始滚动一个方向上的滚动条，另外一个方向上会被锁定不动。有些时候，你需要无约束的移动（横向和纵向可以同时响应），在这样的情况下此属性需要设置为<code>true</code>。请参考&nbsp;<a href="http://lab.cubiq.org/iscroll5/demos/2d-scroll/">2D scroll demo</a>。<br>默认值：<code>false</code></p>
+<h3 id="options.keybindings">options.keyBindings</h3>
+<p>此属性为true时激活键盘（和远程控制）绑定。请参考下面的Key bindings内容。<br>默认值：<code>false</code></p>
+<h3 id="options.invertwheeldirection">options.invertWheelDirection</h3>
+<p>当鼠标滚轮支持激活后，在有些情况下需要反转滚动的方向。（比如，鼠标滚轮向下滚动条向上，反之亦然）。<br>默认值：<code>false</code></p>
+<h3 id="options.momentum">options.momentum</h3>
+<p>在用户快速触摸屏幕时，你可以开/关势能动画。关闭此功能将大幅度提升性能。<br>默认值：<code>true</code></p>
+<h3 id="options.mousewheel">options.mouseWheel</h3>
+<p>侦听鼠标滚轮事件。<br>默认值：<code>false</code></p>
+<h3 id="options.preventdefault">options.preventDefault</h3>
+<p>当事件触发时师傅执行preventDefault()。此属性应该设置为true，除非你真的知道你需要怎么做。<br>请参考下面的Advanced features中的<code>preventDefaultException</code>，可以获取更多控制preventDefault行为的信息。<br>默认值：<code>true</code></p>
+<h3 id="options.scrollbars">options.scrollbars</h3>
+<p>是否显示为默认的滚动条。更多信息请查看Scrollbar<br>默认值：<code>false</code></p>
+<h3 id="options.scrollx">options.scrollX</h3>
+<h3 id="options.scrolly">options.scrollY</h3>
+<p>默认情况下只有纵向滚动条可以使用。如果你需要使用横向滚动条，需要将scrollX 属性值设置为 true。请参考示例<a href="http://lab.cubiq.org/iscroll5/demos/horizontal/">horizontal demo</a>。</p>
+<p>也可以参考<strong>freeScroll</strong>选项。</p>
+<p>默认值：<code>scrollX: false，scrollY: true</code></p>
+<blockquote>
+<p>注意属性&nbsp;<code>scrollX/Y: true</code>&nbsp;与<code>overflow: auto</code>有相同的效果。设置一个方向上的值为&nbsp;<code>false</code>&nbsp;可以节省一些检测的时间和CPU的计算周期。</p>
+
+</blockquote>
+<h3 id="options.startx">options.startX</h3>
+<h3 id="options.starty">options.startY</h3>
+<p>默认情况下iScroll从<code>0, 0 (top left)</code>位置开始，通过此属性可以让滚动条从不同的位置开始滚动。<br>默认值：<code>0</code></p>
+<h3 id="options.tap">options.tap</h3>
+<p>设置此属性为<code>true</code>，当滚动区域被点击或者触摸但并没有滚动时，可以让iScroll抛出一个自定义的tap事件。<br>这是处理与可以点击元素之间的用户交互的建议方式。侦听tap事件和侦听标准事件的方式一致。示例如下：</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="pln"><span class="pln">element</span><span class="pun"><span class="pun">.</span><span class="pln"><span class="pln">addEventListener</span><span class="pun"><span class="pun">(</span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="pln">tap</span><span class="pun">‘</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln"> doSomething</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-literal"><span class="kwd">false</span><span class="pun"><span class="pun">);</span><span class="pln"><span class="pln"> \\ </span><span class="typ"><span class="typ">Native</span><span class="pln"><span class="pln">
+$</span><span class="pun"><span class="pun">(</span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="com">#element‘</span><span class="pun"><span class="com">).</span><span class="pln"><span class="com">on</span><span class="pun"><span class="com">(</span><span class="str"><span class="hljs-string"><span class="com">‘tap‘</span><span class="pun"><span class="com">,</span><span class="pln"><span class="com"> doSomething</span><span class="pun"><span class="com">);</span><span class="pln"><span class="com"> \\ jQuery</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>你可以通过传递一个字符串来自定义事件名称。比如：</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="pln"><span class="pln">tap</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="pln">myCustomTapEvent</span><span class="pun">‘</span></span></span></span></span></span></code></pre>
+<p>在这个示例里你应该侦听名为myCustomTapEvent的事件。<br>默认值：<code>false</code></p>
+<h2 id="dir84">滚动条</h2>
+<hr>
+<p>滚动条不只是像名字所表达的意义一样，在内部它们是作为indicators的引用。</p>
+<p>一个指示器侦听滚动条的位置并且现实它在全局中的位置，但是它可以做更多的事情。<br>先从最基本的开始。</p>
+<h3 id="options.scrollbars-1">options.scrollbars</h3>
+<p>正如我们在基本功能介绍中提到的，激活滚动条只需要做一件事情，这件事情就是：</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="kwd"><span class="hljs-keyword"><span class="kwd">var</span><span class="pln"><span class="pln"> myScroll </span><span class="pun"><span class="pun">=</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-keyword"><span class="kwd">new</span><span class="pln"><span class="pln"> </span><span class="typ"><span class="typ">IScroll</span><span class="pun"><span class="pun">(</span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="com">#wrapper‘</span><span class="pun"><span class="com">,</span><span class="pln"><span class="com"> </span><span class="pun"><span class="com">{</span><span class="pln"><span class="pln">
+    scrollbars</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-literal"><span class="kwd">true</span><span class="pln"><span class="pln">
+</span><span class="pun"><span class="pun">});</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>当然这个默认的行为是可以定制的。</p>
+<h3 id="options.fadescrollbars">options.fadeScrollbars</h3>
+<p>不想使用滚动条淡入淡出方式时，需要设置此属性为<code>false</code>以便节省资源。<br>默认值：<code>false</code></p>
+<h3 id="options.interactivescrollbars">options.interactiveScrollbars</h3>
+<p>此属性可以让滚动条能拖动，用户可以与之交互。<br>默认值：<code>false</code></p>
+<h3 id="options.resizescrollbars">options.resizeScrollbars</h3>
+<p>滚动条尺寸改变基于容器和滚动区域的宽/高之间的比例。此属性设置为<code>false</code>让滚动条固定大小。这可能有助于自定义滚动条样式（参考下面的<strong>滚动条样式</strong>）。<br>默认值：<code>true</code></p>
+<h3 id="options.shrinkscrollbars">options.shrinkScrollbars</h3>
+<p>当在滚动区域外面滚动时滚动条是否可以收缩到较小的尺寸。<br>有效的值为：<code>clip</code>&nbsp;和&nbsp;<code>scale</code>。<br><code>clip</code>是移动指示器到它容器的外面，效果就是滚动条收缩起来，简单的移动到屏幕以外的区域。属性设置为此值后将大大的提升整个iScroll的性能。<br><code>scale</code>是关闭属性useTransition，之后所有的动画效果将使用requestAnimationFrame实现。指示器实际上有各种尺寸，并且最终的效果最好。<br>默认值：<code>false</code></p>
+<blockquote>
+<p>注意改变大小不是在GPU上执行的，所以‘scale‘ 是在CPU上执行。</p>
+
+</blockquote>
+<p>请参考&nbsp;<a href="http://lab.cubiq.org/iscroll5/demos/scrollbars/">滚动条示例</a>。</p>
+<h3>滚动条样式</h3>
+<p>如果你不喜欢默认的滚动条样式，而且你认为你可以做的更好，你可以自定义滚动条样式。第一步就是设置选项scrollbars的值为<code>custom</code>：</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="kwd"><span class="hljs-keyword"><span class="kwd">var</span><span class="pln"><span class="pln"> myScroll </span><span class="pun"><span class="pun">=</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-keyword"><span class="kwd">new</span><span class="pln"><span class="pln"> </span><span class="typ"><span class="typ">IScroll</span><span class="pun"><span class="pun">(</span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="com">#wrapper‘</span><span class="pun"><span class="com">,</span><span class="pln"><span class="com"> </span><span class="pun"><span class="com">{</span><span class="pln"><span class="pln">
+    scrollbars</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="pln">custom</span><span class="pun">‘</span><span class="pln"><span class="pln">
+</span><span class="pun"><span class="pun">});</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>使用下面的CSS类可以简单的改变滚动条样式。</p>
+<ul>
+<li>.iScrollHorizontalScrollbar，这个样式应用到横向滚动条的容器。这个元素实际上承载了滚动条指示器。</li>
+<li>.iScrollVerticalScrollbar，和上面的样式类似，只不过适用于纵向滚动条容器。</li>
+<li>.iScrollIndicator，真正的滚动条指示器。</li>
+<li>.iScrollBothScrollbars，这个样式将在双向滚动条显示的情况下被加载到容器元素上。通常情况下其中一个（横向或者纵向）是可见的</li>
+</ul>
+<p><a href="http://lab.cubiq.org/iscroll5/demos/styled-scrollbars/">自定义滚动条样式示例</a>。</p>
+<p>如果你设置<code>resizeScrollbars: false</code>，滚动条将是固定大小，否则它将基于滚动区域的尺寸变化。</p>
+<h3>指示</h3>
+<hr>
+<p>上面所有关于滚动条的选项实际上是包装了一个底层的选项indicators。它看起来或多或少像这样：</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="kwd"><span class="hljs-keyword"><span class="kwd">var</span><span class="pln"><span class="pln"> myScroll </span><span class="pun"><span class="pun">=</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-keyword"><span class="kwd">new</span><span class="pln"><span class="pln"> </span><span class="typ"><span class="typ">IScroll</span><span class="pun"><span class="pun">(</span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="com">#wrapper‘</span><span class="pun"><span class="com">,</span><span class="pln"><span class="com"> </span><span class="pun"><span class="com">{</span><span class="pln"><span class="pln">
+    indicators</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="pun"><span class="pun">{</span><span class="pln"><span class="pln">
+        el</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="pun"><span class="pun">[</span><span class="pln"><span class="pln">element</span><span class="pun"><span class="pun">|</span><span class="pln"><span class="pln">element selector</span><span class="pun"><span class="pun">]</span><span class="pln"><span class="pln">
+        fade</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-literal"><span class="kwd">false</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+        ignoreBoundaries</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-literal"><span class="kwd">false</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+        interactive</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-literal"><span class="kwd">false</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+        listenX</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-literal"><span class="kwd">true</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+        listenY</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-literal"><span class="kwd">true</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+        resize</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-literal"><span class="kwd">true</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+        shrink</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-literal"><span class="kwd">false</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+        speedRatioX</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="lit"><span class="hljs-number"><span class="lit">0</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+        speedRatioY</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="lit"><span class="hljs-number"><span class="lit">0</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+    </span><span class="pun"><span class="pun">}</span><span class="pln"><span class="pln">
+</span><span class="pun"><span class="pun">});</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<h3 id="options.indicators.el">options.indicators.el</h3>
+<p>这是一个强制性的参数，它保留了指向滚动条容器元素的引用。容器里的第一个子元素就是指示器。<br>有效的语法如下：</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="pln"><span class="pln">indicators</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="pun"><span class="pun">{</span><span class="pln"><span class="pln">
+    el</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="hljs-built_in"><span class="pln">document</span><span class="pun"><span class="pun">.</span><span class="pln"><span class="pln">getElementById</span><span class="pun"><span class="pun">(</span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="pln">indicator</span><span class="pun">‘</span><span class="pun"><span class="pun">)</span><span class="pln"><span class="pln">
+</span><span class="pun"><span class="pun">}</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>更简单的方式：</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="pln"><span class="pln">indicators</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="pun"><span class="pun">{</span><span class="pln"><span class="pln">
+    el</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="com">#indicator‘</span><span class="pln"><span class="pln">
+</span><span class="pun"><span class="pun">}</span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<blockquote>
+<p>注意，滚动条可以在你的文档的任意地方，它不需要在滚动条包装器内。</p>
+</blockquote>
+<h3 id="options.indicators.ignoreboundaries">options.indicators.ignoreBoundaries</h3>
+<p>这个属性是告诉指示器忽略它容器所带来的边界。当我们能改变滚动条速度的比率，在让滚动条滚动时这个属性很有用。比如你想让指示器是滚动条速度的两倍，指示器将很快到达它的结尾。这个属性被用在<strong>视差滚动</strong>。<br>默认值：<code>false</code></p>
+<h3 id="options.indicators.listenx">options.indicators.listenX</h3>
+<h3 id="options.indicators.listeny">options.indicators.listenY</h3>
+<p>指示器的那一个轴（横向和纵向）被侦听。可以设置一个或者都设置<br>默认值：<code>true</code></p>
+<h3 id="options.indicators.speedratiox">options.indicators.speedRatioX</h3>
+<h3 id="options.indicators.speedratioy">options.indicators.speedRatioY</h3>
+<p>指示器移动的速度和主要滚动条大小的关系。默认情况下是设置为自动。你很少需要去改变这个值。<br>默认值：<code>0</code></p>
+<h3 id="options.indicators.fade">options.indicators.fade</h3>
+<h3 id="options.indicators.interactive">options.indicators.interactive</h3>
+<h3 id="options.indicators.resize">options.indicators.resize</h3>
+<h3 id="options.indicators.shrink">options.indicators.shrink</h3>
+<p>这几个选项和我们已经介绍过的<strong>滚动条</strong>中的一样，在这里不重复介绍。<br>请参考<a href="http://lab.cubiq.org/iscroll5/demos/minimap/">迷你地图</a>示例，你将体验indicators选项的神奇力量。</p>
+<blockquote>
+<p>你应该已经注意到选项<code>indicators</code>是复数，是的，实际上，传递一个对象数组你可以得到一个虚拟的无限大小的指示器。我不知道你是否需要，但是，这里我是想你介绍参数设置，所以要提及此。</p>
+
+</blockquote>
+<h3>视差滚动</h3>
+<p>视差滚动是指示器功能的一个&nbsp;<em>附属功能</em><br>指示器是一个遵循主滚动条移动和动画的层。如果你了解它你就会理解这个功能背后的力量。增加这个功能你就可以创建任意数量的指示器和视差滚动。<br>请参考&nbsp;<a href="http://lab.cubiq.org/iscroll5/demos/minimap/">视差滚动示例</a>.</p>
+<h4>滚动的编程接口</h4>
+<p>当然还可以通过编程来进行滚动。</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="pln"><span class="pln">scrollTo</span><span class="pun"><span class="pun">(</span><span class="pln"><span class="pln">x</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln"> y</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln"> time</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln"> easing</span><span class="pun"><span class="pun">)</span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>对应存在的一个叫做myScroll的iScroll实例，可以通过下面的方式滚动到任意的位置：</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="pln"><span class="pln">myScroll</span><span class="pun"><span class="pun">.</span><span class="pln"><span class="pln">scrollTo</span><span class="pun"><span class="pun">(</span><span class="lit"><span class="hljs-number"><span class="lit">0</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln"> </span><span class="pun"><span class="pun">-</span><span class="lit"><span class="hljs-number"><span class="lit">100</span><span class="pun"><span class="pun">);</span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>通过上面的方式将向下滚动100个像素。记住：0永远是左上角。需要滚动你必须传递负数。<br><code>time</code>&nbsp;和&nbsp;<code>easing</code>是可选项。他们控制滚动周期（毫秒级别）和动画的擦除效果。<br>擦除功能是一个有效的IScroll.utils.ease对象。例如应用一个一秒的经典擦除动画你应该这么做：</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="pln"><span class="pln">myScroll</span><span class="pun"><span class="pun">.</span><span class="pln"><span class="pln">scrollTo</span><span class="pun"><span class="pun">(</span><span class="lit"><span class="hljs-number"><span class="lit">0</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln"> </span><span class="pun"><span class="pun">-</span><span class="lit"><span class="hljs-number"><span class="lit">100</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln"> </span><span class="lit"><span class="hljs-number"><span class="lit">1000</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln"> </span><span class="typ"><span class="typ">IScroll</span><span class="pun"><span class="pun">.</span><span class="pln"><span class="pln">utils</span><span class="pun"><span class="pun">.</span><span class="pln"><span class="pln">ease</span><span class="pun"><span class="pun">.</span><span class="pln"><span class="pln">elastic</span><span class="pun"><span class="pun">);</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>擦除动画的类型选项有：<code>quadratic</code>,&nbsp;<code>circular</code>,&nbsp;<code>back</code>,&nbsp;<code>bounce</code>,&nbsp;<code>elastic</code>。</p>
+<h4 id="scrollbyx-y-time-easing">scrollBy(x, y, time, easing)</h4>
+<p>和上面一个方法类似，但是可以传递X和Y的值从当前位置进行滚动。</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="pln"><span class="pln">myScroll</span><span class="pun"><span class="pun">.</span><span class="pln"><span class="pln">scrollBy</span><span class="pun"><span class="pun">(</span><span class="lit"><span class="hljs-number"><span class="lit">0</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln"> </span><span class="pun"><span class="pun">-</span><span class="lit"><span class="hljs-number"><span class="lit">10</span><span class="pun"><span class="pun">);</span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>上面这个语句将在当前位置向下滚动10个像素。如果你当前所在位置为-100，那么滚动结束后位置为-110.</p>
+<h4 id="scrolltoelementel-time-offsetx-offsety-easing">scrollToElement(el, time, offsetX, offsetY, easing)</h4>
+<p>这是一个很有用的方法，你会喜欢它的。<br>在这个方法中只有一个强制的参数就是<code>el</code>。传递一个元素或者一个选择器，iScroll将尝试滚动到这个元素的左上角位置。<br><code>time</code>是可选项，用于设置动画周期。<br><code>offsetX</code>&nbsp;和&nbsp;<code>offsetY</code>定义像素级的偏移量，所以你可以滚动到元素并且加上特别的偏移量。但并不仅限于此。如果把这两个参数设置为<code>true</code>，元素将会位于屏幕的中间。请参考例子 滚动到元素 example。<br><code>easing</code>参数和<code>scrollTo</code>方法里的一样。</p>
+<h2 id="dir149">对齐</h2>
+<hr>
+<p>iScroll能对齐到固定的位置和元素。</p>
+<h3 id="options.snap">options.snap</h3>
+<p>最简单的对齐配置如下：</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="kwd"><span class="hljs-keyword"><span class="kwd">var</span><span class="pln"><span class="pln"> myScroll </span><span class="pun"><span class="pun">=</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-keyword"><span class="kwd">new</span><span class="pln"><span class="pln"> </span><span class="typ"><span class="typ">IScroll</span><span class="pun"><span class="pun">(</span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="com">#wrapper‘</span><span class="pun"><span class="com">,</span><span class="pln"><span class="com"> </span><span class="pun"><span class="com">{</span><span class="pln"><span class="pln">
+    snap</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-literal"><span class="kwd">true</span><span class="pln"><span class="pln">
+</span><span class="pun"><span class="pun">});</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>这将按照页面容器的大小自动分割滚动条。<br><code>snap</code>属性也可以传递字符类型类型的值。这个值是滚动条将要对齐到的元素的选择器。比如下面：</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="kwd"><span class="hljs-keyword"><span class="kwd">var</span><span class="pln"><span class="pln"> myScroll </span><span class="pun"><span class="pun">=</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-keyword"><span class="kwd">new</span><span class="pln"><span class="pln"> </span><span class="typ"><span class="typ">IScroll</span><span class="pun"><span class="pun">(</span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="com">#wrapper‘</span><span class="pun"><span class="com">,</span><span class="pln"><span class="com"> </span><span class="pun"><span class="com">{</span><span class="pln"><span class="pln">
+    snap</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="pln">li</span><span class="pun">‘</span><span class="pln"><span class="pln">
+</span><span class="pun"><span class="pun">});</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>这个示例中滚动条将会对齐到每一个<code>LI</code>标记的元素。<br>下面将帮助你快速浏览iScroll提供的关于对齐的一系列有趣的方法。</p>
+<h3 id="gotopagex-y-time-easing">goToPage(x, y, time, easing)</h3>
+<p><code>x</code>&nbsp;和&nbsp;<code>y</code>呈现你想滚动到横向轴或者纵向轴的页面数。如果你需要在单个唯独上使用滚动条，只需要为你不需要的轴向传递<code>0</code>值。<br><code>time</code>属性是动画周期，<code>easing</code>属性是滚动到指定点使用的擦除功能类型。请参考<strong>高级功能</strong>中的option.bounceEasing。这两个属性都是可选项。</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="pln"><span class="pln">myScroll</span><span class="pun"><span class="pun">.</span><span class="pln"><span class="pln">goToPage</span><span class="pun"><span class="pun">(</span><span class="lit"><span class="hljs-number"><span class="lit">10</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln"> </span><span class="lit"><span class="hljs-number"><span class="lit">0</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln"> </span><span class="lit"><span class="hljs-number"><span class="lit">1000</span><span class="pun"><span class="pun">);</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>上面这个例子将在一秒内沿着横向滚动到第10页。</p>
+<h3 id="next">next()</h3>
+<h3 id="prev">prev()</h3>
+<p>滚动到当前位置的下一页或者前一页。</p>
+<h2 id="dir165">缩放</h2>
+<hr>
+<p>为了使用缩放功能，你最好使用<code>iscroll-zoom.js</code>脚本。</p>
+<h3 id="options.zoom">options.zoom</h3>
+<p>此属性设置为true启用缩放功能。<br>默认值：<code>false</code></p>
+<h3 id="options.zoommax">options.zoomMax</h3>
+<p>最大缩放级数。<br>默认值：<code>4</code></p>
+<h3 id="options.zoommin">options.zoomMin</h3>
+<p>最小缩放级数。<br>默认值：<code>1</code></p>
+<h3 id="options.zoomstart">options.zoomStart</h3>
+<p>初始的缩放级数。<br>默认值：<code>1</code></p>
+<h3 id="options.wheelaction">options.wheelAction</h3>
+<p>鼠标滚轮的动作可以设置为<code>zoom</code>，这样在滚动滚轮时缩放操作会代替原来的滚动操作。<br>默认值：<code>undefined</code>（即：鼠标滚轮滚动）</p>
+<p>和前面的示例一样，一个好的缩放功能的配置如下：</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="pln"><span class="pln">myScroll </span><span class="pun"><span class="pun">=</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-keyword"><span class="kwd">new</span><span class="pln"><span class="pln"> </span><span class="typ"><span class="typ">IScroll</span><span class="pun"><span class="pun">(</span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="com">#wrapper‘</span><span class="pun"><span class="com">,</span><span class="pln"><span class="com"> </span><span class="pun"><span class="com">{</span><span class="pln"><span class="pln">
+    zoom</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-literal"><span class="kwd">true</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+    mouseWheel</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-literal"><span class="kwd">true</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+    wheelAction</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="pln">zoom</span><span class="pun">‘</span><span class="pln"><span class="pln">
+</span><span class="pun"><span class="pun">});</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<blockquote>
+<p>缩放功能使用的CSS的转换功能。iScroll只能在支持此CSS功能的浏览器上执行。</p>
+<p>一些浏览器（特别是基于webkit的）采取的快照缩放区域就放在硬件合成层(比如当你申请转换)。该快照作为纹理的缩放区域,它几乎不能被更新。这意味着您的纹理将基于<br>scale 1 进行缩放,将导致文本和图像模糊,清晰度低。</p>
+<p>一个简单的解决方案是使用实际分辨率双倍（或者三倍）装载内容，然后<br>放到一个按照scale(0.5)比例缩小的div中。这种方法大多数情况下能适用。</p>
+
+</blockquote>
+<p>请参考&nbsp;<a href="http://lab.cubiq.org/iscroll5/demos/zoom/">缩放示例</a>。</p>
+<h3 id="zoomscale-x-y-time">zoom(scale, x, y, time)</h3>
+<p>一个有意思的的方法，能让你进行缩放编程。<br><code>scale</code>是缩放因子。<br><code>x</code>&nbsp;和&nbsp;<code>y</code>是缩放关注点，即缩放的中心。如果没有指定，这个中心就是屏幕中心。<br><code>time</code>是毫秒级别的动画周期（可选项）。</p>
+<h2 id="dir184">无限滚动</h2>
+<hr>
+<p>iScroll集成智能缓存系统，允许处理的使用(重用)一群元素几乎无限数量的数据。<br>无限滚动开发的早期阶段，尽管它可以被认为是稳定的，但它还没有准备好被广泛使用。<br>请参考&nbsp;<a href="http://lab.cubiq.org/iscroll5/demos/infinite/">无限滚动示例</a>&nbsp;并请提交你的建议和报告bug。</p>
+<h2 id="dir187">高级选项</h2>
+<hr>
+<p>下面这些选项主要针对核心开发人员。</p>
+<h3 id="options.bindtowrapper">options.bindToWrapper</h3>
+<p><code>move</code>事件通常绑定到文档而不是滚动器容器（wrapper）。当你在滚动器容器（wrapper）外移动光标/手指，滚动条将不断滚动。这通常是你想要的,但是你也可以绑定事件转移到滚动器容器（wrapper）本身。这样做一旦指针离开了容器，滚动就会停止。<br>默认值：<code>false</code></p>
+<h3 id="options.bounceeasing">options.bounceEasing</h3>
+<p>擦除功能在弹跳动画过程中执行。有效的值为：‘quadratic‘, ‘circular‘, ‘back‘, ‘bounce‘, ‘elastic‘. 参见bounce easing demo，往下拽滚动条然后释放。<br>bounceEasing比上面的示例更强大。你可以自定义一个消除的方式，比如：</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="pln"><span class="pln">bounceEasing</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="pun"><span class="pun">{</span><span class="pln"><span class="pln">
+    style</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="pln">cubic</span><span class="pun">-</span><span class="pln">bezier</span><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="lit">0</span><span class="pun">,</span><span class="lit">1</span><span class="pun">,</span><span class="lit">1</span><span class="pun">)‘</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+    fn</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-function"><span class="hljs-keyword"><span class="kwd">function</span><span class="pln"><span class="hljs-function"><span class="pln"> </span><span class="pun"><span class="hljs-function"><span class="hljs-params"><span class="pun">(</span><span class="pln"><span class="hljs-function"><span class="hljs-params"><span class="pln">k</span><span class="pun"><span class="hljs-function"><span class="hljs-params"><span class="pun">)</span><span class="pln"><span class="hljs-function"><span class="pln"> </span><span class="pun"><span class="pun">{</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-keyword"><span class="kwd">return</span><span class="pln"><span class="pln"> k</span><span class="pun"><span class="pun">;</span><span class="pln"><span class="pln"> </span><span class="pun"><span class="pun">}</span><span class="pln"><span class="pln">
+</span><span class="pun"><span class="pun">}</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>上面这个示例将执行一个线性的擦出。style选项将在在每次动画执行时使用CSS转场执行。fn和requestAnimationFrame一起使用。如果一个擦出功能太复杂，不能由一个三次贝塞尔曲线展现，那么为style属性传递 ‘‘ （空字符串）。<br>默认值：<code>circular</code></p>
+<blockquote>
+<p>注意：bounce 和 elastic这两种方式不能被CSS转场执行。</p>
+
+</blockquote>
+<h3 id="options.bouncetime">options.bounceTime</h3>
+<p>弹跳动画的持续时间，使用毫秒级。<br>默认值：<code>600</code></p>
+<h3 id="options.deceleration">options.deceleration</h3>
+<p>这个值可以改变改变动画的势头持续时间/速度。更高的数字使动画更短。你可以从0.01开始去体验，这个值和基本的值比较，基本上没有动能。<br>默认值：<code>0.0006</code></p>
+<h3 id="options.mousewheelspeed">options.mouseWheelSpeed</h3>
+<p>设置鼠标滚轮滚动的速度值。<br>默认值：<code>20</code></p>
+<h3 id="options.preventdefaultexception">options.preventDefaultException</h3>
+<p>调用<code>preventDefault()</code>方法时所有的异常将被触发，尽管<code>preventDefault</code>设置了值。<br>这是一个强大的选项，如果你想为所有包含formfield样式名称的元素上应用preventDefault()方法，你可以设置为下面的值：</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="pln"><span class="pln">preventDefaultException</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="pun"><span class="pun">{</span><span class="pln"><span class="pln"> className</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="str"><span class="hljs-regexp"><span class="str">/(^|\s)formfield(\s|$)/</span><span class="pln"><span class="pln"> </span><span class="pun"><span class="pun">}</span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>默认值：<code>{ tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT)$/ }.</code></p>
+<h3 id="options.resizepolling">options.resizePolling</h3>
+<p>当你改变窗口的大小iScroll重新计算元素的位置和尺寸。这可能是一个相当艰巨的任务。轮询设置为60毫秒。<br>通过降低这个值你获得更好的视觉效果，但会占用更多的CPU资源。默认值是一个很好的折中。<br>默认值：<code>60</code></p>
+<h2 id="dir209">刷新</h2>
+<hr>
+<p>iScroll需要知道包装器和滚动器确切的尺寸，在iScroll初始化的时候进行计算，如果元素大小发生了变化，需要告诉iScroll DOM发生了变化。<br>下面将提供调用<code>refresh</code>方法的正确时机。</p>
+<p>每次触摸DOM，浏览器渲染器重绘页面。一旦发生了重画我们可以安全地读新的DOM属性。重新绘制阶段不是瞬时发生的只是范围结束时触发。这就是为什么我们需要给渲染器刷新iScroll之前一点时间。</p>
+<p>为了确保javascript得到更新后的属性，应该像下面的例子这样使用刷新方法：</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="pln"><span class="pln">ajax</span><span class="pun"><span class="pun">(</span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="pln">page</span><span class="pun">.</span><span class="pln">php</span><span class="pun">‘</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln"> onCompletion</span><span class="pun"><span class="pun">);</span><span class="pln"><span class="pln">
+
+</span><span class="kwd"><span class="hljs-function"><span class="hljs-keyword"><span class="kwd">function</span><span class="pln"><span class="hljs-function"><span class="pln"> </span><span class="hljs-title"><span class="pln">onCompletion </span><span class="pun"><span class="hljs-function"><span class="hljs-params"><span class="pun">()</span><span class="pln"><span class="hljs-function"><span class="pln"> </span><span class="pun"><span class="pun">{</span><span class="pln"><span class="pln">
+    </span><span class="com"><span class="hljs-comment"><span class="com">// Update here your DOM</span><span class="pln"><span class="pln">
+
+    setTimeout</span><span class="pun"><span class="pun">(</span><span class="kwd"><span class="hljs-function"><span class="hljs-keyword"><span class="kwd">function</span><span class="pln"><span class="hljs-function"><span class="pln"> </span><span class="pun"><span class="hljs-function"><span class="hljs-params"><span class="pun">()</span><span class="pln"><span class="hljs-function"><span class="pln"> </span><span class="pun"><span class="pun">{</span><span class="pln"><span class="pln">
+        myScroll</span><span class="pun"><span class="pun">.</span><span class="pln"><span class="pln">refresh</span><span class="pun"><span class="pun">();</span><span class="pln"><span class="pln">
+    </span><span class="pun"><span class="pun">},</span><span class="pln"><span class="pln"> </span><span class="lit"><span class="hljs-number"><span class="lit">0</span><span class="pun"><span class="pun">);</span><span class="pln"><span class="pln">
+</span><span class="pun"><span class="pun">};</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>这里调用refresh()使用了零秒等待，如果你需要立即刷新iScroll边界就是如此使用。当然还有其他方法可以等待页面重绘，但零超时方式相当稳定。</p>
+<blockquote>
+<p>如果你有一个相当复杂的HTML结构，你应该给浏览器更多的执行事件，可以设置100到200毫秒的超时时间。</p>
+<p>这通常适用于所有任务必须在DOM上进行。通常给渲染器一些执行的时间。</p>
+</blockquote>
+<h2 id="dir217">自定义事件</h2>
+<hr>
+<h3 id="custom-events">Custom events</h3>
+<p>iScroll还提供额一些你可以挂靠的有用的自定义事件。<br>使用<code>on(type, fn)</code>方法注册事件。</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="pln"><span class="pln">myScroll </span><span class="pun"><span class="pun">=</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-keyword"><span class="kwd">new</span><span class="pln"><span class="pln"> </span><span class="typ"><span class="typ">IScroll</span><span class="pun"><span class="pun">(</span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="com">#wrapper‘</span><span class="pun"><span class="com">);</span><span class="pln"><span class="pln">
+myScroll</span><span class="pun"><span class="pun">.</span><span class="pln"><span class="pln">on</span><span class="pun"><span class="pun">(</span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="pln">scrollEnd</span><span class="pun">‘</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln"> doSomething</span><span class="pun"><span class="pun">);</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>上面的代码会在每次滚动停止是执行doSomething方法。<br>可以挂靠的事件如下：</p>
+<ul>
+<li>beforeScrollStart，在用户触摸屏幕但还没有开始滚动时触发。</li>
+<li>scrollCancel，滚动初始化完成，但没有执行。</li>
+<li>scrollStart，开始滚动</li>
+<li>scroll，内容滚动时触发，只有在scroll-probe.js版本中有效，请参考onScroll event。</li>
+<li>scrollEnd，停止滚动时触发。</li>
+<li>flick，用户打开左/右。</li>
+<li>zoomStart，开始缩放。</li>
+<li>zoomEnd，缩放结束。</li>
+
+</ul>
+<h3 id="onscroll">onScroll事件</h3>
+<p>scroll事件在iScroll probe edition版本中有效（仅包含在iscroll-probe.js脚本文件中）。可以通过改变probeType选项值来改变scroll事件的触发时机。</p>
+<h4 id="options.probetype">options.probeType</h4>
+<p>这个属性是调节在scroll事件触发中探针的活跃度或者频率。有效值有：1, 2, 3。数值越高表示更活跃的探测。探针活跃度越高对CPU的影响就越大。</p>
+<ul>
+<li>probeType: 1 对性能没有影响。scroll事件只有在滚动条不繁忙的时候触发。</li>
+<li>probeType: 2 除了在势能和反弹范围内，将在scroll事件周期内一直执行。这类似于原生的onScroll事件。</li>
+<li>probeType: 3 像素级的触发scroll事件。注意，此时滚动只关注requestAnimationFrame (即：useTransition:false).</li>
+
+</ul>
+<p>请参考&nbsp;<a href="http://lab.cubiq.org/iscroll5/demos/probe/">probe demo</a>.</p>
+<h2 id="dir230">按键绑定</h2>
+<hr>
+<p>你可以激活keyBindings选项来支持键盘控制。默认情况下iScroll监听方向键，上下翻页建，home/end键，但这些按键绑定完全可以自定义。<br>你可以通过传递一个包含按键代码列表的对象来进行按键绑定。<br>默认的按键值如下:</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="pln"><span class="pln">keyBindings</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="pun"><span class="pun">{</span><span class="pln"><span class="pln">
+    pageUp</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="lit"><span class="hljs-number"><span class="lit">33</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+    pageDown</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="lit"><span class="hljs-number"><span class="lit">34</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+    </span><span class="kwd"><span class="kwd">end</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="lit"><span class="hljs-number"><span class="lit">35</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+    home</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="lit"><span class="hljs-number"><span class="lit">36</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+    left</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="lit"><span class="hljs-number"><span class="lit">37</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+    up</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="lit"><span class="hljs-number"><span class="lit">38</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+    right</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="lit"><span class="hljs-number"><span class="lit">39</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln">
+    down</span><span class="pun"><span class="pun">:</span><span class="pln"><span class="pln"> </span><span class="lit"><span class="hljs-number"><span class="lit">40</span><span class="pln"><span class="pln">
+</span><span class="pun"><span class="pun">}</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>当然你也可以传递字符串进行按键绑定（例如：pageUp: ‘a‘）。只要你设置了对于的按键值，那么iScroll就会响应你的设置。</p>
+<h2 id="dir235">滚动条信息</h2>
+<hr>
+<p>iScroll存储了很多有用的信息，您可以使用它们来增强您的应用。<br>你可能会发现有用的：</p>
+<ul>
+<li>myScroll.x/y，当前位置</li>
+<li>myScroll.directionX/Y，最后的方向 (-1 down/right, 0 still, 1 up/left)</li>
+<li>myScroll.currentPage，当前对齐捕获点</li>
+
+</ul>
+<p>下面是关于处理时间的代码示例：</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="pln"><span class="pln">myScroll </span><span class="pun"><span class="pun">=</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-keyword"><span class="kwd">new</span><span class="pln"><span class="pln"> </span><span class="typ"><span class="typ">IScroll</span><span class="pun"><span class="pun">(</span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="com">#wrapper‘</span><span class="pun"><span class="com">);</span><span class="pln"><span class="pln">
+myScroll</span><span class="pun"><span class="pun">.</span><span class="pln"><span class="pln">on</span><span class="pun"><span class="pun">(</span><span class="str"><span class="hljs-string"><span class="pun">‘</span><span class="pln">scrollEnd</span><span class="pun">‘</span><span class="pun"><span class="pun">,</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-function"><span class="hljs-keyword"><span class="kwd">function</span><span class="pln"><span class="hljs-function"><span class="pln"> </span><span class="pun"><span class="hljs-function"><span class="hljs-params"><span class="pun">()</span><span class="pln"><span class="hljs-function"><span class="pln"> </span><span class="pun"><span class="pun">{</span><span class="pln"><span class="pln">
+    </span><span class="kwd"><span class="hljs-keyword"><span class="kwd">if</span><span class="pln"><span class="pln"> </span><span class="pun"><span class="pun">(</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-keyword"><span class="kwd">this</span><span class="pun"><span class="pun">.</span><span class="pln"><span class="pln">x </span><span class="pun"><span class="pun">&lt;</span><span class="pln"><span class="pln"> </span><span class="pun"><span class="pun">-</span><span class="lit"><span class="hljs-number"><span class="lit">1000</span><span class="pln"><span class="pln"> </span><span class="pun"><span class="pun">)</span><span class="pln"><span class="pln"> </span><span class="pun"><span class="pun">{</span><span class="pln"><span class="pln">
+        </span><span class="com"><span class="hljs-comment"><span class="com">// do something</span><span class="pln"><span class="pln">
+    </span><span class="pun"><span class="pun">}</span><span class="pln"><span class="pln">
+</span><span class="pun"><span class="pun">});</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>如果 x 位置是低于-1000 像素滚轮停止时，上述执行某些代码。请注意我用这个产品而不是 myScroll，您可以使用两个当然，但 iScroll 传递本身作为这种情况下，当触发自定义事件的功能。</p>
+<h2 id="dir242">销毁</h2>
+<hr>
+<p>在不需要使用iScoll的时候调用iScroll实例的公共方法destroy()可以释放一些内存。</p>
+<pre class="js prettyprint prettyprinted"><code class=" hljs "><span class="pln"><span class="pln">myScroll</span><span class="pun"><span class="pun">.</span><span class="pln"><span class="pln">destroy</span><span class="pun"><span class="pun">();</span><span class="pln"><span class="pln">
+myScroll </span><span class="pun"><span class="pun">=</span><span class="pln"><span class="pln"> </span><span class="kwd"><span class="hljs-literal"><span class="kwd">null</span><span class="pun"><span class="pun">;</span></span></span></span></span></span></span></span></span></span></span></code></pre>
+<p>原文链接:<a href="http://iiunknown.gitbooks.io/iscroll-5-api-cn/content/">http://iiunknown.gitbooks.io/iscroll-5-api-cn/content/</a></p><p><a href="http://www.mamicode.com/info-detail-331827.html" title="iScroll5 API速查随记,mamicode.com" style="color:#ffffff" target="_blank">iScroll5 API速查随记</a></p><p>标签：<a href="http://www.mamicode.com/so/1/des" title="des">des</a>&nbsp;&nbsp;&nbsp;<a href="http://www.mamicode.com/so/1/style" title="style">style</a>&nbsp;&nbsp;&nbsp;<a href="http://www.mamicode.com/so/1/http" title="http">http</a>&nbsp;&nbsp;&nbsp;<a href="http://www.mamicode.com/so/1/io" title="io">io</a>&nbsp;&nbsp;&nbsp;<a href="http://www.mamicode.com/so/1/ar" title="ar">ar</a>&nbsp;&nbsp;&nbsp;<a href="http://www.mamicode.com/so/1/os" title="os">os</a>&nbsp;&nbsp;&nbsp;<a href="http://www.mamicode.com/so/1/%e4%bd%bf%e7%94%a8" title="使用">使用</a>&nbsp;&nbsp;&nbsp;<a href="http://www.mamicode.com/so/1/sp" title="sp">sp</a>&nbsp;&nbsp;&nbsp;<a href="http://www.mamicode.com/so/1/java" title="java">java</a>&nbsp;&nbsp;&nbsp;</p></span>
+                </div>
+                <div id="divcomment">
+                    <div>
+                        <div class="divtextaligncenter paddingright2 overflowauto">
+                            <div class="detailcai" id="infono">
+                                <div class="detailcai1 colorboldlan">
+                                    踩</div>
+                                <div class="detailcai2 colorboldlan">
+                                    (<span id="spanNo">9</span>)</div>
+                            </div>
+                            <div class="detailzan" id="infoyes">
+                                <div class="detailzan1 colorboldHong">
+                                    赞</div>
+                                <div class="detailzan2 colorboldHong">
+                                    (<span id="spanYes">40</span>)</div>
+                            </div>
+                        </div>
+                        <div class="divtextalignright margintop10">
+                            <div class="width100bi paddingleft10right10">
+                                <span id="spanYesContent" class="colorboldHong"></span>&nbsp; <span id="spanNoContent" class="colorboldlan"></span>&nbsp; <span id="spanBadContent" class="colorboldHong">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divtextalignright margintop10">
+                        <span class="detailjubao" id="infobad">举报</span>
+                    </div>
+                    
+<div class="margintop20">
+    <script type="text/javascript">
+        /*mamicode-bottom-680x250*/
+        var cpro_id = "u2811621";
+    </script>
+    <script type="text/javascript" src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/c.js"></script><div id="BAIDU_SSP__wrapper_u2811621_0"></div>
+</div>
+
+                    <div id="comment" class="divtextalignleft margintop20">
+                        <div class="detailpinglun1">
+                            <span class="detailpinglun2 title6">评论</span> <span class="detailpinglun3">一句话评论（<span id="commentCount" class="colorboldHong">0</span>）</span>
+                        </div>
+                        <div class="paddingtop20">
+                            
+                            <div id="commentlistend" name="commentlistend" class="divtextaligncenter margintop20">
+                                <span id="lblpage">共<span class="pagecolorc">0</span>条&nbsp;&nbsp;</span>
+                            </div>
+                        </div>
+                        <div class="margintop20">
+                            <form method="post" action="/ajaxjs/info_detail_commentadd.aspx">
+                            <div class="divtextalignleft paddingtop20">
+                                <div id="commenthf" class="divbackgroundcolor1">
+                                </div>
+                                <div>
+                                    <textarea name="tbcommentcontent" id="tbcommentcontent" class="tb" style="width: 680px;
+                                        height: 120px;"></textarea>
+                                </div>
+                            </div>
+                            <div class="divtextalignright paddingtop10 ">
+                                <span id="addCommentTishi" class="colorboldHong">登录后才能评论！</span>
+                                <span id="loginno"><input class="mbtn1" value="登录" onclick="location.href='http://member.mamicode.com/login.aspx?returnUrl='+document.URL.replace(new RegExp('&amp;', 'g'), '(_)')" type="button"></span>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+        
+        <div class="divfloatclear">
+        </div>
+    </div>
+    <div class="width1000px divmargin0auto paddingtop20bottom20">
+    <div class="width1000px divborder margintop20">
+        <div class="youqingtitle">
+            <a title="友情链接">友情链接</a>
+        </div>
+        <div class="youqingcontent">
+            <a href="http://www.lightinit.com/" target="_blank" title="互联网产品定制开发专家">兰亭集智</a>&nbsp;&nbsp;<a href="http://www.guozhihua.net/" target="_blank">国之画</a>&nbsp;&nbsp;<a href="http://tongji.baidu.com/" target="_blank">百度统计</a>&nbsp;&nbsp; <a href="http://www.cnzz.com/" target="_blank">
+                        站长统计</a>&nbsp;&nbsp;<a href="http://www.aliyun.com/" target="_blank">阿里云</a>&nbsp;&nbsp;<a href="http://www.cnplugins.com/" target="_blank">chrome插件</a>
+        </div>
+    </div>
+</div>
+<div class="bottomdiv">
+    <div class="width1000px divmargin0auto paddingtop20">
+        <div class="height30px divtextalignleft">
+            <a href="http://www.mamicode.com/about.html" title="mamicode.com关于我们">关于我们</a> - <a href="http://www.mamicode.com/contactus.html" title="mamicode.com联系我们">联系我们</a> - <a href="http://www.mamicode.com/guest.html" title="mamicode.com留言反馈">留言反馈</a>
+        </div>
+        <div class="height30px divtextalignleft">
+            © 2014 <a href="http://www.mamicode.com/" target="_blank" title="mamicode.com,技术分享">mamicode.com</a>
+            版权所有 京ICP备13008772号-2
+        </div>
+        <div class="divtextalignleft">
+            <span class="colorlan">迷上了代码！</span>
+        </div>
+        <div class="paddingtop20">
+            <script type="text/javascript">                var 
+cnzz_protocol = (("https:" == document.location.protocol) ? " https://" :
+ " http://"); document.write(unescape("%3Cspan 
+id='cnzz_stat_icon_1254666564'%3E%3C/span%3E%3Cscript src='" + 
+cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1254666564%26show%3Dpic1'
+ type='text/javascript'%3E%3C/script%3E"));</script><span id="cnzz_stat_icon_1254666564"><a href="http://www.cnzz.com/stat/website.php?web_id=1254666564" target="_blank" title="站长统计"><img src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/pic1.gif" vspace="0" hspace="0" border="0"></a></span><script src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/z_stat.php" type="text/javascript"></script><script src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/core.php" charset="utf-8" type="text/javascript"></script>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <script type="text/javascript">
+                var _bdhmProtocol = (("https:" == 
+document.location.protocol) ? " https://" : " http://");
+                document.write(unescape("%3Cscript src='" + 
+_bdhmProtocol + "hm.baidu.com/h.js%3Fb65e01a9bac157f881c4d8cbac4b6995' 
+type='text/javascript'%3E%3C/script%3E"));
+            </script><script src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/h.js" type="text/javascript"></script><a href="http://tongji.baidu.com/hm-web/welcome/ico?s=b65e01a9bac157f881c4d8cbac4b6995" target="_blank"><img src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/21.gif" width="20" border="0" height="20"></a>
+            <script>
+                (function () {
+                    var bp = document.createElement('script');
+                    var curProtocol = window.location.protocol.split(':')[0];
+                    if (curProtocol === 'https') {
+                        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+                    }
+                    else {
+                        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+                    }
+                    var s = document.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(bp, s);
+                })();
+            </script>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/mamicodejs.js"></script>
+
+    <script type="text/javascript">        var mid = ''; var id = 
+'331827'; var idm = 'a383d5'; var commentitemcount = '0'; var memberhost
+ = 'http://member.mamicode.com/'; prettyPrint(); </script>  
+    <script src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/infodetail.js" type="text/javascript" charset="utf-8"></script>
+    <script src="iScroll5%20API%E9%80%9F%E6%9F%A5%E9%9A%8F%E8%AE%B0_files/member.js" type="text/javascript" charset="utf-8"></script>
+
+
+<div id="mococn-c86381a9-54fa-4c1b-a0c9-b42b314cd9b5-crop-overlay" title="拖动开始，双击或回车完成" style="display: none; left: 0px; top: 0px; width: 1903px; height: 18192px;"><div id="mococn-c86381a9-54fa-4c1b-a0c9-b42b314cd9b5-crop-top" style="left: 0px; top: 0px; width: 1903px; height: 1px;"></div><div id="mococn-c86381a9-54fa-4c1b-a0c9-b42b314cd9b5-crop-left" style="left: 0px; top: 1px; width: 366px; height: 17609px;"></div><div id="mococn-c86381a9-54fa-4c1b-a0c9-b42b314cd9b5-crop-right" style="left: 1479px; top: 1px; width: 424px; height: 17609px;"></div><div id="mococn-c86381a9-54fa-4c1b-a0c9-b42b314cd9b5-crop-bottom" style="left: 0px; top: 17610px; width: 1903px; height: 582px;"></div><div id="mococn-c86381a9-54fa-4c1b-a0c9-b42b314cd9b5-crop-target" style="left: 366px; top: 1px; width: 1113px; height: 17609px;"><div id="mococn-c86381a9-54fa-4c1b-a0c9-b42b314cd9b5-crop-ctrlnw"></div><div id="mococn-c86381a9-54fa-4c1b-a0c9-b42b314cd9b5-crop-ctrlne"></div><div id="mococn-c86381a9-54fa-4c1b-a0c9-b42b314cd9b5-crop-ctrlse"></div><div id="mococn-c86381a9-54fa-4c1b-a0c9-b42b314cd9b5-crop-ctrlsw"></div></div></div></body></html>
