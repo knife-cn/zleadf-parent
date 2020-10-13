@@ -121,7 +121,7 @@
         <codehaus.jackson>1.9.3</codehaus.jackson>
 
         <aspectj.version>1.7.4</aspectj.version>
-        <junit.version>4.12</junit.version>
+        <junit.version>4.13.1</junit.version>
         <assertj.version>1.6.1</assertj.version>
         <mockito.version>1.9.5</mockito.version>
         <powermock.version>1.5.5</powermock.version>
