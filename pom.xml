@@ -140,7 +140,7 @@
         <commons_codec_version>1.9</commons_codec_version>
 
         <!-- poi -->
-        <poi_version>3.9</poi_version>
+        <poi_version>4.1.2</poi_version>
         <!-- poi -->
 
         <!-- servlet configuration -->
