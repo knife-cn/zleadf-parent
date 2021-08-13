@@ -136,7 +136,7 @@
 
         <!--腾讯云 生成签名-->
         <bcpkix_jdk15on_version>1.52</bcpkix_jdk15on_version>
-        <bcprov_jdk15on_version>1.52</bcprov_jdk15on_version>
+        <bcprov_jdk15on_version>1.67</bcprov_jdk15on_version>
         <commons_codec_version>1.9</commons_codec_version>
 
         <!-- poi -->
