@@ -95,7 +95,7 @@
         <netty.version>3.7.0.Final</netty.version>
         <zkclient.version>0.1</zkclient.version>
         <hessian.version>4.0.7</hessian.version>
-        <zookeeper.version>3.4.6</zookeeper.version>
+        <zookeeper.version>3.4.14</zookeeper.version>
         <!-- dubbo-->
 
         <jackson.version>2.6.0</jackson.version>
