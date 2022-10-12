@@ -130,7 +130,7 @@
         <jetty.version>7.6.16.v20140903</jetty.version>
         <h2.version>1.4.191</h2.version>
         <solr-solrj_version>5.3.0</solr-solrj_version>
-        <shiro-core_version>1.2.4</shiro-core_version>
+        <shiro-core_version>1.10.0</shiro-core_version>
         <commons_collections_version>3.2.1</commons_collections_version>
         <jedis_version>2.9.0</jedis_version>
 
