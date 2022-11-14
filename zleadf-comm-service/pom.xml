@@ -26,7 +26,7 @@
         <up_log_core_version>1.0.0-SNAPSHOT</up_log_core_version>
         <mybatis.version>3.2.8</mybatis.version>
         <mybatis-spring.version>1.2.1</mybatis-spring.version>
-        <spring.version>4.2.5.RELEASE</spring.version>
+        <spring.version>4.2.7.RELEASE</spring.version>
         <jackson.version>2.3.0</jackson.version>
         <codehaus.jackson>1.9.3</codehaus.jackson>
         <jstl_version>1.2</jstl_version>
